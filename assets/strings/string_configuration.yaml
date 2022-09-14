@@ -1,0 +1,40 @@
+Version: 2022051201
+Ui:
+  - Code: welcome
+    Msg: Welcome to PERPLAY
+  - Code: login
+    Msg: LOGIN
+  - Code: signUpLow
+    Msg: Sign up
+  - Code: signUpUp
+    Msg: SIGN UP
+  - Code: email
+    Msg: Email Address
+  - Code: username
+    Msg: Username
+  - Code: password
+    Msg: Password
+  - Code: repeatPassword
+    Msg: Repeat Password
+  - Code: rememberMe
+    Msg: Remember Me
+  - Code: forgotPassword
+    Msg: Forgot Password?
+  - Code: haveAccount
+    Msg: Dont have an Account?
+  - Code: dataReset
+    Msg: Data Reset
+  - Code: hello
+    Msg: hello
+  - Code: guestUp
+    Msg: GUEST
+  - Code: todayEarn
+    Msg: Today's Earn
+  - Code: totalStatus
+    Msg: Total Status
+  - Code: selectedCar
+    Msg: Selected Car
+  - Code: gamePlay
+    Msg: Game Play
+  - Code: seeAll
+    Msg: See All
