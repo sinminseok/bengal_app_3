@@ -5,13 +5,7 @@ import 'package:bengal_app/pages/lobby/widget/game_slider_widget.dart';
 import 'package:bengal_app/pages/lobby/widget/gift_box_widget.dart';
 import 'package:bengal_app/pages/lobby/widget/main_navigation_widget.dart';
 import 'package:bengal_app/pages/lobby/widget/my_nft_widget.dart';
-import 'package:bengal_app/pages/login/signup_page.dart';
-import 'package:bengal_app/pages/login/widget/login_logo_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../../common/string_configuration.dart';
-import '../../types/string_type.dart';
 
 class LobbyPage extends StatefulWidget {
   const LobbyPage({Key? key}) : super(key: key);
