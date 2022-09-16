@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 class MainNavigationWidget extends StatefulWidget {
   const MainNavigationWidget({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class MainNavigationWidgetState extends State<MainNavigationWidget> {
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
-            child: Image.asset('assets/images/lobby/navi_lobby.png',
+            child: Image.asset("assets/images/lobby/navi_lobby.png",
               width: 50,
               height: 50,
               alignment: Alignment.topCenter,
@@ -26,7 +26,7 @@ class MainNavigationWidgetState extends State<MainNavigationWidget> {
 
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-            child: Image.asset('assets/images/lobby/navi_inventory.png',
+            child: Image.asset("assets/images/lobby/navi_inventory.png",
               width: 50,
               height: 50,
               alignment: Alignment.topCenter,
@@ -35,7 +35,7 @@ class MainNavigationWidgetState extends State<MainNavigationWidget> {
 
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-            child: Image.asset('assets/images/lobby/navi_workshop.png',
+            child: Image.asset("assets/images/lobby/navi_workshop.png",
               width: 50,
               height: 50,
               alignment: Alignment.topCenter,
@@ -44,7 +44,7 @@ class MainNavigationWidgetState extends State<MainNavigationWidget> {
 
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-            child: Image.asset('assets/images/lobby/navi_game.png',
+            child: Image.asset("assets/images/lobby/navi_game.png",
               width: 50,
               height: 50,
               alignment: Alignment.topCenter,
@@ -53,7 +53,7 @@ class MainNavigationWidgetState extends State<MainNavigationWidget> {
 
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-            child: Image.asset('assets/images/lobby/navi_market.png',
+            child: Image.asset("assets/images/lobby/navi_market.png",
               width: 50,
               height: 50,
               alignment: Alignment.topCenter,

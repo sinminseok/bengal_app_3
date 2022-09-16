@@ -1,7 +1,7 @@
-import 'package:flutter/services.dart';
-import 'package:yaml/yaml.dart';
-import '../types/string_type.dart';
-import 'config_base.dart';
+import "package:flutter/services.dart";
+import "package:yaml/yaml.dart";
+import "../types/string_type.dart";
+import "config_base.dart";
 
 class StringConfiguration {
   static final StringConfiguration _instance = StringConfiguration._internal();
@@ -13,7 +13,7 @@ class StringConfiguration {
 
   Future<void> _loadString() async {
     var value =
-        await rootBundle.loadString('assets/strings/string_configuration.yaml');
+        await rootBundle.loadString("assets/strings/string_configuration.yaml");
 
     _uiStringList = UiStringList.fromJson(loadYaml(value));
   }

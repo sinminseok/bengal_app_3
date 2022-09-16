@@ -1,11 +1,11 @@
-import 'package:bengal_app/pages/lobby/widget/account_status_widget.dart';
-import 'package:bengal_app/pages/lobby/widget/earn_today_widget.dart';
-import 'package:bengal_app/pages/lobby/widget/game_sell_all.dart';
-import 'package:bengal_app/pages/lobby/widget/game_slider_widget.dart';
-import 'package:bengal_app/pages/lobby/widget/gift_box_widget.dart';
-import 'package:bengal_app/pages/lobby/widget/main_navigation_widget.dart';
-import 'package:bengal_app/pages/lobby/widget/my_nft_widget.dart';
-import 'package:flutter/material.dart';
+import "package:bengal_app/pages/lobby/widget/account_status_widget.dart";
+import "package:bengal_app/pages/lobby/widget/earn_today_widget.dart";
+import "package:bengal_app/pages/lobby/widget/game_sell_all.dart";
+import "package:bengal_app/pages/lobby/widget/game_slider_widget.dart";
+import "package:bengal_app/pages/lobby/widget/gift_box_widget.dart";
+import "package:bengal_app/pages/lobby/widget/main_navigation_widget.dart";
+import "package:bengal_app/pages/lobby/widget/my_nft_widget.dart";
+import "package:flutter/material.dart";
 
 class LobbyPage extends StatefulWidget {
   const LobbyPage({Key? key}) : super(key: key);
