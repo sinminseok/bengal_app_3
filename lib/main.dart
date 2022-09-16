@@ -1,3 +1,4 @@
+import 'package:bengal_app/utils/relative_coordinate.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'common/string_configuration.dart';
@@ -14,6 +15,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     StringConfiguration();
+
     return const GetMaterialApp(
       home: LandingPage(),
     );

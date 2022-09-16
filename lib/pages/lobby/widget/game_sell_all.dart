@@ -18,7 +18,7 @@ class GameSeeAllWidgetState extends State<GameSeeAllWidget> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(StringConfiguration().getUi(UiStringType.gamePlay),
+        Text(StringConfiguration().uiString(UiStringType.gamePlay),
           style: GoogleFonts.lato(textStyle: const TextStyle(color: Color(0xFF342B35), fontWeight: FontWeight.w700),
               fontSize: 16),
         ),
@@ -27,7 +27,7 @@ class GameSeeAllWidgetState extends State<GameSeeAllWidget> {
           padding: const EdgeInsets.fromLTRB(0, 7, 0, 0),
           child: TextButton(
             onPressed: () {  },
-            child: Text(StringConfiguration().getUi(UiStringType.seeAll),
+            child: Text(StringConfiguration().uiString(UiStringType.seeAll),
               style: GoogleFonts.lato(textStyle: const TextStyle(color: Color(0xFF8B80F8),
                   fontWeight: FontWeight.w400),
                   fontSize: 12),

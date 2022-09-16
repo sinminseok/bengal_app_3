@@ -10,7 +10,7 @@ enum UiStringType
 
   // login
   welcome,
-  login,
+  loginUp,
   signUpLow,
   signUpUp,
   email,

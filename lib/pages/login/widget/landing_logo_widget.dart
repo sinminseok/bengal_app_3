@@ -16,8 +16,7 @@ class LandingLogoWidgetState extends State<LandingLogoWidget> {
   void initState() {
     super.initState();
 
-    Timer(const Duration(milliseconds: 10), ()
-    {
+    Timer(const Duration(milliseconds: 10), () {
       setState(() {
         _alignment = Alignment.center;
       });
@@ -29,9 +28,7 @@ class LandingLogoWidgetState extends State<LandingLogoWidget> {
     return AnimatedAlign(
         alignment: _alignment,
         duration: const Duration(milliseconds: 500),
-        child: Image.asset('assets/images/login/logo_1.png',
-            fit: BoxFit.cover)
-    );
+        child:
+            Image.asset('assets/images/login/logo_1.png', fit: BoxFit.cover));
   }
-
 }
