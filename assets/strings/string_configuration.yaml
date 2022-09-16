@@ -1,40 +1,617 @@
 Version: 2022051201
 Ui:
-  - Code: welcome
-    Msg: Welcome to PERPLAY
-  - Code: loginUp
-    Msg: LOGIN
-  - Code: signUpLow
-    Msg: Sign up
-  - Code: signUpUp
-    Msg: SIGN UP
-  - Code: email
-    Msg: Email Address
-  - Code: username
-    Msg: Username
-  - Code: password
-    Msg: Password
-  - Code: repeatPassword
-    Msg: Repeat Password
-  - Code: rememberMe
-    Msg: Remember Me
-  - Code: forgotPassword
-    Msg: Forgot Password?
-  - Code: haveAccount
-    Msg: Don't have an Account?
-  - Code: dataReset
-    Msg: Data Reset
-  - Code: hello
-    Msg: hello
-  - Code: guestUp
+  - Code: TOKEN_NAME_01
+    Msg: XPER
+  - Code: TOKEN_NAME_02
+    Msg: PER
+  - Code: TOKEN_NAME_03
+    Msg: HVH
+  - Code: TOKEN_NAME_04
+    Msg: USDC
+  - Code: STATUS_NAME_01
+    Msg: Speed
+  - Code: STATUS_NAME_02
+    Msg: Luck
+  - Code: STATUS_NAME_03
+    Msg: Charge
+  - Code: STATUS_NAME_04
+    Msg: Repair
+  - Code: CAR_TYPE_01
+    Msg: SUV
+  - Code: CAR_TYPE_02
+    Msg: OFF ROAD
+  - Code: CAR_TYPE_03
+    Msg: SEDAN
+  - Code: CAR_TYPE_04
+    Msg: SPORTS
+  - Code: CAR_GRADE_01
+    Msg: NOMAL
+  - Code: CAR_GRADE_02
+    Msg: RARE
+  - Code: CAR_GRADE_03
+    Msg: ELITE
+  - Code: CAR_GRADE_04
+    Msg: EPIC
+  - Code: CAR_GRADE_05
+    Msg: ULTIMATE
+  - Code: CARBOX_GRADE_01
+    Msg: NOMAL
+  - Code: CARBOX_GRADE_02
+    Msg: RARE
+  - Code: CARBOX_GRADE_03
+    Msg: ELITE
+  - Code: CARBOX_GRADE_04
+    Msg: EPIC
+  - Code: CARBOX_GRADE_05
+    Msg: ULTIMATE
+  - Code: TOP_MENU_01
+    Msg: Hello,
+  - Code: TOP_MENU_02
     Msg: GUEST
-  - Code: todayEarn
-    Msg: Today's Earn
-  - Code: totalStatus
+  - Code: BOTTOM_NAVIGATION_01
+    Msg: LOBBY
+  - Code: BOTTOM_NAVIGATION_02
+    Msg: INVENTORY
+  - Code: BOTTOM_NAVIGATION_03
+    Msg: WORKSHOP
+  - Code: BOTTOM_NAVIGATION_04
+    Msg: GAME
+  - Code: BOTTOM_NAVIGATION_05
+    Msg: MARKET
+  - Code: TOAST_MESSAGE_01
+    Msg: Coming Soon
+  - Code: TOAST_MESSAGE_02
+    Msg: Treansaction submitted (Can take a few minutes)
+  - Code: TOAST_MESSAGE_03
+    Msg: Account creation complete
+  - Code: TOAST_MESSAGE_04
+    Msg: Trade complete
+  - Code: TOAST_MESSAGE_05
+    Msg: Database Reset
+  - Code: LOGIN_01
+    Msg: Your play is worth it!
+  - Code: LOGIN_02
+    Msg: LOGIN
+  - Code: LOGIN_03
+    Msg: Email Adress
+  - Code: LOGIN_04
+    Msg: Password
+  - Code: LOGIN_05
+    Msg: Remember Me
+  - Code: LOGIN_06
+    Msg: Forgot Password?
+  - Code: LOGIN_07
+    Msg: Don’t have an account?
+  - Code: LOGIN_08
+    Msg: Sign up
+  - Code: LOGIN_09
+    Msg: SIGN UP
+  - Code: LOGIN_10
+    Msg: Data Reset
+  - Code: LOGIN_11
+    Msg: Username
+  - Code: LOGIN_12
+    Msg: Repeat Password
+  - Code: LOGIN_13
+    Msg: Welcome to PERPLAY
+  - Code: CAR_MILEAGE_STATE_01
+    Msg: Fine
+  - Code: CAR_MILEAGE_STATE_02
+    Msg: Warning
+  - Code: CAR_MILEAGE_STATE_03
+    Msg: Danger
+  - Code: LOBBY_CAR_01
+    Msg: Buy a car and enjoy the game
+  - Code: LOBBY_CAR_02
+    Msg: "Lv {0}"
+  - Code: LOBBY_CAR_03
+    Msg: "Durability {0}/{1} ({3}%)"
+  - Code: LOBBY_CAR_04
+    Msg: "{0} km {1}"
+  - Code: LOBBY_TAB_01
+    Msg: Today"s Earn
+  - Code: LOBBY_TAB_02
     Msg: Total Status
-  - Code: selectedCar
+  - Code: LOBBY_TAB_03
     Msg: Selected Car
-  - Code: gamePlay
+  - Code: LOBBY_TAB_04
+    Msg: "{0} / {1}"
+  - Code: LOBBY_TAB_05
+    Msg: Next Charge
+  - Code: LOBBY_TAB_06
+    Msg: "{0}h {1}m"
+  - Code: LOBBY_TAB_07
+    Msg: "{0} (+{1})"
+  - Code: LOBBY_SPECIALBOX_01
+    Msg: "Lv{0}"
+  - Code: LOBBY_SPECIALBOX_02
+    Msg: READY
+  - Code: LOBBY_SPECIALBOX_03
+    Msg: "{0}h {1}m"
+  - Code: LOBBY_SPECIALBOX_03
     Msg: Game Play
-  - Code: seeAll
+  - Code: LOBBY_SPECIALBOX_04
     Msg: See All
+  - Code: LOBBY_SPECIALBOX_OPEN_01
+    Msg: "LV {0}. SPECIAL BOX"
+  - Code: LOBBY_SPECIALBOX_OPEN_02
+    Msg: Reamaing Time
+  - Code: LOBBY_SPECIALBOX_OPEN_03
+    Msg: Base Cost
+  - Code: LOBBY_SPECIALBOX_OPEN_04
+    Msg: Boost Cost
+  - Code: LOBBY_SPECIALBOX_OPEN_05
+    Msg: Total
+  - Code: LOBBY_SPECIALBOX_OPEN_06
+    Msg: Open
+  - Code: LOBBY_SPECIALBOX_OPEN_07
+    Msg: RESULT
+  - Code: LOBBY_GAMEPLAY_01
+    Msg: "+{0} XPER"
+  - Code: LOBBY_GAMEPLAY_02
+    Msg: "+{0} PER"
+  - Code: LOBBY_GAMEPLAY_03
+    Msg: "Lv {0}"
+  - Code: LOBBY_GAMEPLAY_04
+    Msg: "{0} (+{1})"
+  - Code: INVENTORY_TABNAME_01
+    Msg: Cars
+  - Code: INVENTORY_TABNAME_02
+    Msg: Car Boxes
+  - Code: INVENTORY_TABNAME_03
+    Msg: Gems
+  - Code: INVENTORY_TABNAME_04
+    Msg: Others
+  - Code: INVENTORY_TAB_CARS_SORT_01
+    Msg: Highest Level
+  - Code: INVENTORY_TAB_CARS_SORT_02
+    Msg: Lowest Level
+  - Code: INVENTORY_TAB_CARS_SORT_03
+    Msg: Highest Grade
+  - Code: INVENTORY_TAB_CARS_SORT_04
+    Msg: Lowest Grade
+  - Code: INVENTORY_TAB_CARS_FILTER_01
+    Msg: Filter
+  - Code: INVENTORY_TAB_CARS_FILTER_02
+    Msg: Clear Filter
+  - Code: INVENTORY_TAB_CARS_FILTER_03
+    Msg: Type
+  - Code: INVENTORY_TAB_CARS_FILTER_04
+    Msg: Grade
+  - Code: INVENTORY_TAB_CARS_FILTER_05
+    Msg: Rarity
+  - Code: INVENTORY_TAB_CARS_FILTER_06
+    Msg: Level
+  - Code: INVENTORY_TAB_CARS_FILTER_07
+    Msg: Base
+  - Code: INVENTORY_TAB_CARS_FILTER_08
+    Msg: Mint
+  - Code: INVENTORY_TAB_CARS_FILTER_09
+    Msg: Socket Color Included
+  - Code: INVENTORY_TAB_CARS_FILTER_10
+    Msg: RED
+  - Code: INVENTORY_TAB_CARS_FILTER_11
+    Msg: GREEN
+  - Code: INVENTORY_TAB_CARS_FILTER_12
+    Msg: YELLOW
+  - Code: INVENTORY_TAB_CARS_FILTER_13
+    Msg: BLUE
+  - Code: INVENTORY_TAB_CARS_FILTER_14
+    Msg: RAINBOW
+  - Code: INVENTORY_TAB_CARS_FILTER_15
+    Msg: Confirm
+  - Code: INVENTORY_TAB_CARS_01
+    Msg: "Mint: {0}: null"
+  - Code: INVENTORY_TAB_CARS_02
+    Msg: "Level {0}"
+  - Code: INVENTORY_TAB_CARS_03
+    Msg: "{0} km {1}"
+  - Code: INVENTORY_CARBOX_OPEN_01
+    Msg: "{0} CARBOX"
+  - Code: INVENTORY_CARBOX_OPEN_02
+    Msg: SELL
+  - Code: INVENTORY_CARBOX_OPEN_03
+    Msg: TRANSFER
+  - Code: INVENTORY_CARBOX_OPEN_04
+    Msg: Minted From
+  - Code: INVENTORY_CARBOX_OPEN_05
+    Msg: Open
+  - Code: INVENTORY_CARBOX_OPEN_06
+    Msg: Are you sure you want to open this Car box?
+  - Code: INVENTORY_CARBOX_OPEN_07
+    Msg: No
+  - Code: INVENTORY_CARBOX_OPEN_08
+    Msg: Yes
+  - Code: WORKSHOP_TABNAME_01
+    Msg: Mint
+  - Code: WORKSHOP_TABNAME_02
+    Msg: Enhance
+  - Code: WORKSHOP_TABNAME_03
+    Msg: Gem Upgrade
+  - Code: WORKSHOP_TAB_MINT_SORT_01
+    Msg: Highest Level
+  - Code: WORKSHOP_TAB_MINT_SORT_02
+    Msg: Lowest Level
+  - Code: WORKSHOP_TAB_MINT_SORT_03
+    Msg: Highest Grade
+  - Code: WORKSHOP_TAB_MINT_SORT_04
+    Msg: Lowest Grade
+  - Code: WORKSHOP_TAB_MINT_FILTER_01
+    Msg: Filter
+  - Code: WORKSHOP_TAB_MINT_FILTER_02
+    Msg: Clear Filter
+  - Code: WORKSHOP_TAB_MINT_FILTER_03
+    Msg: Type
+  - Code: WORKSHOP_TAB_MINT_FILTER_04
+    Msg: Grade
+  - Code: WORKSHOP_TAB_MINT_FILTER_05
+    Msg: Rarity
+  - Code: WORKSHOP_TAB_MINT_FILTER_06
+    Msg: Level
+  - Code: WORKSHOP_TAB_MINT_FILTER_07
+    Msg: Base
+  - Code: WORKSHOP_TAB_MINT_FILTER_08
+    Msg: Mint
+  - Code: WORKSHOP_TAB_MINT_FILTER_09
+    Msg: Socket Color Included
+  - Code: WORKSHOP_TAB_MINT_FILTER_10
+    Msg: RED
+  - Code: WORKSHOP_TAB_MINT_FILTER_11
+    Msg: GREEN
+  - Code: WORKSHOP_TAB_MINT_FILTER_12
+    Msg: YELLOW
+  - Code: WORKSHOP_TAB_MINT_FILTER_13
+    Msg: BLUE
+  - Code: WORKSHOP_TAB_MINT_FILTER_14
+    Msg: RAINBOW
+  - Code: WORKSHOP_TAB_MINT_FILTER_15
+    Msg: Confirm
+  - Code: WORKSHOP_TAB_MINT_01
+    Msg: "Mint: {0}: null"
+  - Code: WORKSHOP_TAB_MINT_02
+    Msg: Select
+  - Code: WORKSHOP_TAB_MINT_03
+    Msg: Already Selected
+  - Code: WORKSHOP_TAB_MINT_04
+    Msg: Minting
+  - Code: WORKSHOP_TAB_MINT_05
+    Msg: Car
+  - Code: WORKSHOP_TAB_MINT_06
+    Msg: Later
+  - Code: WORKSHOP_TAB_MINT_07
+    Msg: Open Now
+  - Code: MARKET_TABNAME_01
+    Msg: Cars
+  - Code: MARKET_TABNAME_02
+    Msg: Car Boxes
+  - Code: MARKET_TABNAME_03
+    Msg: Gems
+  - Code: MARKET_TABNAME_04
+    Msg: Others
+  - Code: MARKET_TAB_CARS_SORT_01
+    Msg: Highest Level
+  - Code: MARKET_TAB_CARS_SORT_02
+    Msg: Lowest Level
+  - Code: MARKET_TAB_CARS_SORT_03
+    Msg: Highest Grade
+  - Code: MARKET_TAB_CARS_SORT_04
+    Msg: Lowest Grade
+  - Code: MARKET_TAB_CARS_FILTER_01
+    Msg: Filter
+  - Code: MARKET_TAB_CARS_FILTER_02
+    Msg: Clear Filter
+  - Code: MARKET_TAB_CARS_FILTER_03
+    Msg: Type
+  - Code: MARKET_TAB_CARS_FILTER_04
+    Msg: Grade
+  - Code: MARKET_TAB_CARS_FILTER_05
+    Msg: Rarity
+  - Code: MARKET_TAB_CARS_FILTER_06
+    Msg: Level
+  - Code: MARKET_TAB_CARS_FILTER_07
+    Msg: Base
+  - Code: MARKET_TAB_CARS_FILTER_08
+    Msg: Mint
+  - Code: MARKET_TAB_CARS_FILTER_09
+    Msg: Socket Color Included
+  - Code: MARKET_TAB_CARS_FILTER_10
+    Msg: RED
+  - Code: MARKET_TAB_CARS_FILTER_11
+    Msg: GREEN
+  - Code: MARKET_TAB_CARS_FILTER_12
+    Msg: YELLOW
+  - Code: MARKET_TAB_CARS_FILTER_13
+    Msg: BLUE
+  - Code: MARKET_TAB_CARS_FILTER_14
+    Msg: RAINBOW
+  - Code: MARKET_TAB_CARS_FILTER_15
+    Msg: Confirm
+  - Code: MARKET_TAB_CARS_01
+    Msg: Buy
+  - Code: MARKET_TAB_CARS_BUYPOPUP_01
+    Msg: BUY
+  - Code: MARKET_TAB_CARS_BUYPOPUP_02
+    Msg: Type
+  - Code: MARKET_TAB_CARS_BUYPOPUP_03
+    Msg: Grade
+  - Code: MARKET_TAB_CARS_BUYPOPUP_04
+    Msg: Level
+  - Code: MARKET_TAB_CARS_BUYPOPUP_05
+    Msg: Mint
+  - Code: MARKET_TAB_CARS_BUYPOPUP_06
+    Msg: Price
+  - Code: MARKET_TAB_CARS_BUYPOPUP_07
+    Msg: Buy Now
+  - Code: CAR_INFO_01
+    Msg: "Lv {0} / 30"
+  - Code: CAR_INFO_02
+    Msg: "Mint: {0}: null"
+  - Code: CAR_INFO_03
+    Msg: EMPTY
+  - Code: CAR_INFO_04
+    Msg: "Durability {0}/{1} ({3}%)"
+  - Code: CAR_INFO_05
+    Msg: "{0} km {1}"
+  - Code: CAR_INFO_06
+    Msg: Status
+  - Code: CAR_INFO_07
+    Msg: "0"
+  - Code: CAR_INFO_08
+    Msg: Currently
+  - Code: CAR_INFO_09
+    Msg: Base
+  - Code: CAR_INFO_10
+    Msg: Mint Information
+  - Code: CAR_INFO_11
+    Msg: View
+  - Code: CAR_INFO_BOTTOM_MENU_01
+    Msg: LEVEL UP
+  - Code: CAR_INFO_BOTTOM_MENU_02
+    Msg: REPAIR
+  - Code: CAR_INFO_BOTTOM_MENU_03
+    Msg: RECOVERY
+  - Code: CAR_INFO_BOTTOM_MENU_04
+    Msg: LEASE
+  - Code: CAR_INFO_BOTTOM_MENU_05
+    Msg: SELL
+  - Code: CAR_INFO_BOTTOM_MENU_06
+    Msg: TRANSFER
+  - Code: CAR_INFO_ADDSTATUS_POPUP_01
+    Msg: ADD STATUS POINTS
+  - Code: CAR_INFO_ADDSTATUS_POPUP_02
+    Msg: Available Points
+  - Code: CAR_INFO_ADDSTATUS_POPUP_03
+    Msg: Confirm
+  - Code: CAR_INFO_LEVELUP_POPUP_01
+    Msg: LEVEL UP
+  - Code: CAR_INFO_LEVELUP_POPUP_02
+    Msg: "Lv {0}"
+  - Code: CAR_INFO_LEVELUP_POPUP_03
+    Msg: "Time taken {0}h {1}m"
+  - Code: CAR_INFO_LEVELUP_POPUP_04
+    Msg: Cost
+  - Code: CAR_INFO_LEVELUP_POPUP_05
+    Msg: Needed for next Level
+  - Code: CAR_INFO_LEVELUP_POPUP_06
+    Msg: Confirm
+  - Code: CAR_INFO_LEVELUP_POPUP_07
+    Msg: Leveling
+  - Code: CAR_INFO_LEVELUP_POPUP_08
+    Msg: Remaing Time
+  - Code: CAR_INFO_LEVELUP_POPUP_09
+    Msg: Boost
+  - Code: CAR_INFO_LEVELUP_POPUP_10
+    Msg: LEVEL UP BOOST
+  - Code: CAR_INFO_REPAIR_POPUP_01
+    Msg: REPAIR
+  - Code: CAR_INFO_REPAIR_POPUP_02
+    Msg: "Durability {0}/{1}"
+  - Code: CAR_INFO_REPAIR_POPUP_03
+    Msg: Cost
+  - Code: CAR_INFO_REPAIR_POPUP_04
+    Msg: Move the slide to set the target durability
+  - Code: CAR_INFO_REPAIR_POPUP_05
+    Msg: Repair
+  - Code: CAR_INFO_SELL_POPUP_01
+    Msg: SELL
+  - Code: CAR_INFO_SELL_POPUP_02
+    Msg: Price
+  - Code: CAR_INFO_SELL_POPUP_03
+    Msg: Please enter the selling price
+  - Code: CAR_INFO_SELL_POPUP_04
+    Msg: Confirm
+  - Code: CAR_INFO_SELL_POPUP_05
+    Msg: CONFIRM TO SELL
+  - Code: CAR_INFO_SELL_POPUP_06
+    Msg: List Price
+  - Code: CAR_INFO_SELL_POPUP_07
+    Msg: Royalties
+  - Code: CAR_INFO_SELL_POPUP_08
+    Msg: Transcation Fee
+  - Code: CAR_INFO_SELL_POPUP_09
+    Msg: Listing/Cancel
+  - Code: CAR_INFO_SELL_POPUP_10
+    Msg: Free
+  - Code: CAR_INFO_SELL_POPUP_11
+    Msg: SELLING
+  - Code: CAR_INFO_SELL_POPUP_12
+    Msg: Date
+  - Code: CAR_INFO_SELL_POPUP_13
+    Msg: Price
+  - Code: CAR_INFO_SELL_POPUP_14
+    Msg: Revoke
+  - Code: CAR_INFO_SELL_POPUP_15
+    Msg: Change
+  - Code: PLAY_INFO_01
+    Msg: Power
+  - Code: PLAY_INFO_02
+    Msg: "{0}/{1}"
+  - Code: PLAY_INFO_03
+    Msg: Today"s Earn
+  - Code: PLAY_INFO_04
+    Msg: Earning Token
+  - Code: PLAY_INFO_05
+    Msg: Play Game
+  - Code: PLAY_INFO_06
+    Msg: Back to game
+  - Code: PLAY_INFO_07
+    Msg: Finish
+  - Code: PLAY_INFO_RESULT_01
+    Msg: Result
+  - Code: PLAY_INFO_RESULT_02
+    Msg: PLAY GAME
+  - Code: PLAY_INFO_RESULT_03
+    Msg: Play Time
+  - Code: PLAY_INFO_RESULT_04
+    Msg: Power
+  - Code: PLAY_INFO_RESULT_05
+    Msg: Earned
+  - Code: PLAY_INFO_RESULT_06
+    Msg: Durability
+  - Code: PLAY_INFO_RESULT_07
+    Msg: "(-{0})"
+  - Code: PLAY_INFO_RESULT_08
+    Msg: "{0}km"
+  - Code: PLAY_INFO_RESULT_09
+    Msg: "(+{0})"
+  - Code: PLAY_INFO_RESULT_10
+    Msg: Lobby
+  - Code: TOKENMANAGEMENT_TABNAME_01
+    Msg: Spending
+  - Code: TOKENMANAGEMENT_TABNAME_02
+    Msg: Wallet
+  - Code: TOKENMANAGEMENT_TAB_SPENDING_01
+    Msg: Spending Account
+  - Code: TOKENMANAGEMENT_TAB_SPENDING_02
+    Msg: Transfer
+  - Code: TOKENMANAGEMENT_TAB_SPENDING_03
+    Msg: Pending
+  - Code: TOKENMANAGEMENT_TAB_SPENDING_04
+    Msg: History
+  - Code: TOKENMANAGEMENT_TAB_SPENDING_05
+    Msg: Show past 30 days
+  - Code: TOKENMANAGEMENT_TAB_SPENDING_06
+    Msg: Sent
+  - Code: TOKENMANAGEMENT_TAB_SPENDING_07
+    Msg: Received
+  - Code: TOKENMANAGEMENT_TAB_SPENDING_08
+    Msg: NO RECORD HISTORY
+  - Code: TOKENMANAGEMENT_TAB_SPENDING_09
+    Msg: SPENDING ACCOUNT
+  - Code: TOKENMANAGEMENT_TAB_SPENDING_10
+    Msg: To use token in the Perplay App, you must hold Tokens in this account.
+  - Code: TOKENMANAGEMENT_TAB_SPENDING_11
+    Msg: Ok
+  - Code: TOKENMANAGEMENT_TAB_WALLET_01
+    Msg: Wallet Account
+  - Code: TOKENMANAGEMENT_TAB_WALLET_02
+    Msg: Address
+  - Code: TOKENMANAGEMENT_TAB_WALLET_03
+    Msg: GaL7sUm8f8A7..
+  - Code: TOKENMANAGEMENT_TAB_WALLET_04
+    Msg: Detailed
+  - Code: TOKENMANAGEMENT_TAB_WALLET_05
+    Msg: Cars
+  - Code: TOKENMANAGEMENT_TAB_WALLET_06
+    Msg: Car Boxes
+  - Code: TOKENMANAGEMENT_TAB_WALLET_07
+    Msg: To Spending
+  - Code: TOKENMANAGEMENT_TAB_WALLET_08
+    Msg: Trade
+  - Code: TOKENMANAGEMENT_TAB_WALLET_09
+    Msg: To External
+  - Code: TOKENMANAGEMENT_TAB_WALLET_10
+    Msg: Wallet Account
+  - Code: TOKENMANAGEMENT_TAB_WALLET_11
+    Msg: This account allows you to send and receive tokens outside of Perplay and to your Spending Account.
+      You can also exchange
+      XPER/PER/HVH/USDC tokens
+      with each other through the Trade function.
+  - Code: TOKENMANAGEMENT_TAB_WALLET_12
+    Msg: Ok
+  - Code: TOKENMANAGEMENT_TAB_WALLET_13
+    Msg: GaL7sUm8F8AF7jzWgf48ijWoKWxk2oVbZy575uF7zvvi
+  - Code: TOKENMANAGEMENT_TAB_WALLET_14
+    Msg: Copy Address
+  - Code: TOKENMANAGEMENT_PASSWORD_01
+    Msg: Secured Wallet
+  - Code: TOKENMANAGEMENT_PASSWORD_02
+    Msg: ENTER YOUR PASSCODE
+  - Code: TOKENMANAGEMENT_PASSWORD_03
+    Msg: FORGOT PASSCODE
+  - Code: TOKENMANAGEMENT_TRANSFER_01
+    Msg: Transfer
+  - Code: TOKENMANAGEMENT_TRANSFER_02
+    Msg: From
+  - Code: TOKENMANAGEMENT_TRANSFER_03
+    Msg: To
+  - Code: TOKENMANAGEMENT_TRANSFER_04
+    Msg: Spending
+  - Code: TOKENMANAGEMENT_TRANSFER_05
+    Msg: Wallet
+  - Code: TOKENMANAGEMENT_TRANSFER_06
+    Msg: Token
+  - Code: TOKENMANAGEMENT_TRANSFER_07
+    Msg: Change
+  - Code: TOKENMANAGEMENT_TRANSFER_08
+    Msg: Amount
+  - Code: TOKENMANAGEMENT_TRANSFER_09
+    Msg: Please enter the selling price
+  - Code: TOKENMANAGEMENT_TRANSFER_10
+    Msg: All
+  - Code: TOKENMANAGEMENT_TRANSFER_11
+    Msg: "Available: {0} {1}"
+  - Code: TOKENMANAGEMENT_TRANSFER_TOKENSELECT_01
+    Msg: Token Select
+  - Code: TOKENMANAGEMENT_TRANSFER_TOKENSELECT_02
+    Msg: Cars
+  - Code: TOKENMANAGEMENT_TRANSFER_TOKENSELECT_03
+    Msg: Car Boxes
+  - Code: TOKENMANAGEMENT_TRANSFER_POPUP_01
+    Msg: TRANSFER
+  - Code: TOKENMANAGEMENT_TRANSFER_POPUP_02
+    Msg: "Transfer {0}"
+  - Code: TOKENMANAGEMENT_TRANSFER_POPUP_03
+    Msg: Spending
+  - Code: TOKENMANAGEMENT_TRANSFER_POPUP_04
+    Msg: Wallet
+  - Code: TOKENMANAGEMENT_TRANSFER_POPUP_05
+    Msg: Your Request
+  - Code: TOKENMANAGEMENT_TRANSFER_POPUP_06
+    Msg: Fee
+  - Code: TOKENMANAGEMENT_TRANSFER_POPUP_07
+    Msg: Confirm
+  - Code: TOKENMANAGEMENT_TRADE_01
+    Msg: Trade
+  - Code: TOKENMANAGEMENT_TRADE_02
+    Msg: From
+  - Code: TOKENMANAGEMENT_TRADE_03
+    Msg: Change
+  - Code: TOKENMANAGEMENT_TRADE_04
+    Msg: Please enter the selling price
+  - Code: TOKENMANAGEMENT_TRADE_05
+    Msg: "Available: {0} {1}"
+  - Code: TOKENMANAGEMENT_TRADE_06
+    Msg: To
+  - Code: TOKENMANAGEMENT_TRADE_07
+    Msg: Silppage Tolerance
+  - Code: TOKENMANAGEMENT_TRADE_08
+    Msg: Create token account
+  - Code: TOKENMANAGEMENT_TRADE_POPUP_01
+    Msg: TRADE
+  - Code: TOKENMANAGEMENT_TRADE_POPUP_02
+    Msg: Trade Informatin
+  - Code: TOKENMANAGEMENT_TRADE_POPUP_03
+    Msg: From Token
+  - Code: TOKENMANAGEMENT_TRADE_POPUP_04
+    Msg: To Token
+  - Code: TOKENMANAGEMENT_TRADE_POPUP_05
+    Msg: Confirm
+  - Code: TOKENMANAGEMENT_SLIPPAGE_POPUP_01
+    Msg: SLIPPAGE TOLERANCE
+  - Code: TOKENMANAGEMENT_SLIPPAGE_POPUP_02
+    Msg: Set
+  - Code: TOKENMANAGEMENT_SLIPPAGE_POPUP_03
+    Msg: Yout transation may fail.
+  - Code: TOKENMANAGEMENT_SLIPPAGE_POPUP_04
+    Msg: Confirm

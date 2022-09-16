@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 class GiftBoxWidget extends StatefulWidget {
   const GiftBoxWidget({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class GiftBoxWidgetState extends State<GiftBoxWidget> {
       children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(17, 10, 0, 0),
-          child: Image.asset('assets/images/lobby/btn_gift_box1.png',
+          child: Image.asset("assets/images/lobby/btn_gift_box1.png",
             width: 78,
             height: 50,
             alignment: Alignment.center,
@@ -25,7 +25,7 @@ class GiftBoxWidgetState extends State<GiftBoxWidget> {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(5, 10, 0, 0),
-          child: Image.asset('assets/images/lobby/btn_gift_box2.png',
+          child: Image.asset("assets/images/lobby/btn_gift_box2.png",
             width: 78,
             height: 50,
             alignment: Alignment.center,
@@ -33,7 +33,7 @@ class GiftBoxWidgetState extends State<GiftBoxWidget> {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(5, 10, 0, 0),
-          child: Image.asset('assets/images/lobby/btn_gift_box_empty.png',
+          child: Image.asset("assets/images/lobby/btn_gift_box_empty.png",
             width: 78,
             height: 50,
             alignment: Alignment.center,
@@ -41,7 +41,7 @@ class GiftBoxWidgetState extends State<GiftBoxWidget> {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(5, 10, 0, 0),
-          child: Image.asset('assets/images/lobby/btn_gift_box_empty.png',
+          child: Image.asset("assets/images/lobby/btn_gift_box_empty.png",
             width: 78,
             height: 50,
             alignment: Alignment.center,

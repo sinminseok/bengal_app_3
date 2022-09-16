@@ -1,11 +1,11 @@
-import 'package:bengal_app/pages/login/widget/login_logo_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../../common/string_configuration.dart';
-import '../../controls/icon_input_box_widget.dart';
-import '../../types/string_type.dart';
-import '../../utils/font.dart';
-import '../../utils/relative_coordinate.dart';
+import "package:bengal_app/pages/login/widget/login_logo_widget.dart";
+import "package:flutter/material.dart";
+import "package:google_fonts/google_fonts.dart";
+import "../../common/string_configuration.dart";
+import "../../controls/icon_input_box_widget.dart";
+import "../../types/string_type.dart";
+import "../../utils/font.dart";
+import "../../utils/relative_coordinate.dart";
 
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
@@ -35,7 +35,7 @@ class SignupPageState extends State<SignupPage> {
             margin: RelativeCoordinate()
                 .getEdgeInsetsFromLTRB(PageType.login, context, 0, 40, 0, 0),
             child: Text(
-              StringConfiguration().uiString(UiStringType.signUpUp),
+              StringConfiguration().uiString(UiStringType.LOGIN_09),
               textAlign: TextAlign.center,
               style: Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20),
             ),
@@ -45,8 +45,8 @@ class SignupPageState extends State<SignupPage> {
                 .getEdgeInsetsFromLTRB(PageType.login, context, 15, 20, 15, 0),
             height: 50,
             child: IconTextInputBox(
-              assetImage: 'assets/images/login/ico_account.png',
-              hintText: StringConfiguration().uiString(UiStringType.username),
+              assetImage: "assets/images/login/ico_account.png",
+              hintText: StringConfiguration().uiString(UiStringType.LOGIN_11),
               hintFontWeight: FontWeight.w400,
               hintFontSize: 12,
               fillColor: Colors.white,
@@ -68,8 +68,8 @@ class SignupPageState extends State<SignupPage> {
                 .getEdgeInsetsFromLTRB(PageType.login, context, 15, 10, 15, 0),
             height: 50,
             child: IconTextInputBox(
-              assetImage: 'assets/images/login/ico_mail.png',
-              hintText: StringConfiguration().uiString(UiStringType.email),
+              assetImage: "assets/images/login/ico_mail.png",
+              hintText: StringConfiguration().uiString(UiStringType.LOGIN_03),
               hintFontWeight: FontWeight.w400,
               hintFontSize: 12,
               fillColor: Colors.white,
@@ -91,8 +91,8 @@ class SignupPageState extends State<SignupPage> {
                 .getEdgeInsetsFromLTRB(PageType.login, context, 15, 10, 15, 0),
             height: 50,
             child: IconTextInputBox(
-              assetImage: 'assets/images/login/ico_password.png',
-              hintText: StringConfiguration().uiString(UiStringType.password),
+              assetImage: "assets/images/login/ico_password.png",
+              hintText: StringConfiguration().uiString(UiStringType.LOGIN_04),
               hintFontWeight: FontWeight.w400,
               hintFontSize: 12,
               fillColor: Colors.white,
@@ -114,9 +114,9 @@ class SignupPageState extends State<SignupPage> {
                 .getEdgeInsetsFromLTRB(PageType.login, context, 15, 10, 15, 0),
             height: 50,
             child: IconTextInputBox(
-              assetImage: 'assets/images/login/ico_repeat_password.png',
+              assetImage: "assets/images/login/ico_repeat_password.png",
               hintText:
-                  StringConfiguration().uiString(UiStringType.repeatPassword),
+                  StringConfiguration().uiString(UiStringType.LOGIN_12),
               hintFontWeight: FontWeight.w400,
               hintFontSize: 12,
               fillColor: Colors.white,
@@ -146,7 +146,7 @@ class SignupPageState extends State<SignupPage> {
                     fit: BoxFit.cover,
                     child: Center(
                       child: Text(
-                        StringConfiguration().uiString(UiStringType.signUpUp),
+                        StringConfiguration().uiString(UiStringType.LOGIN_09),
                         style: Font.lato(
                             const Color(0xFFFFFFFF), FontWeight.w700, 14),
                       ),

@@ -1,13 +1,13 @@
-import 'package:bengal_app/pages/login/signup_page.dart';
-import 'package:bengal_app/pages/login/widget/login_logo_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../common/string_configuration.dart';
-import '../../controls/icon_input_box_widget.dart';
-import '../../types/string_type.dart';
-import '../../utils/font.dart';
-import '../../utils/relative_coordinate.dart';
-import '../lobby/lobby_page.dart';
+import "package:bengal_app/pages/login/signup_page.dart";
+import "package:bengal_app/pages/login/widget/login_logo_widget.dart";
+import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "../../common/string_configuration.dart";
+import "../../controls/icon_input_box_widget.dart";
+import "../../types/string_type.dart";
+import "../../utils/font.dart";
+import "../../utils/relative_coordinate.dart";
+import "../lobby/lobby_page.dart";
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -59,7 +59,7 @@ class LoginPageState extends State<LoginPage> {
             margin: RelativeCoordinate()
                 .getEdgeInsetsFromLTRB(PageType.login, context, 0, 40, 0, 0),
             child: Text(
-              StringConfiguration().uiString(UiStringType.loginUp),
+              StringConfiguration().uiString(UiStringType.LOGIN_02),
               textAlign: TextAlign.center,
               style: Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20),
             ),
@@ -69,8 +69,8 @@ class LoginPageState extends State<LoginPage> {
                 .getEdgeInsetsFromLTRB(PageType.login, context, 15, 20, 15, 0),
             height: 50,
             child: IconTextInputBox(
-              assetImage: 'assets/images/login/ico_mail.png',
-              hintText: StringConfiguration().uiString(UiStringType.email),
+              assetImage: "assets/images/login/ico_mail.png",
+              hintText: StringConfiguration().uiString(UiStringType.LOGIN_03),
               hintFontWeight: FontWeight.w400,
               hintFontSize: 12,
               fillColor: Colors.white,
@@ -92,8 +92,8 @@ class LoginPageState extends State<LoginPage> {
                 .getEdgeInsetsFromLTRB(PageType.login, context, 15, 10, 15, 0),
             height: 50,
             child: IconTextInputBox(
-              assetImage: 'assets/images/login/ico_password.png',
-              hintText: StringConfiguration().uiString(UiStringType.password),
+              assetImage: "assets/images/login/ico_password.png",
+              hintText: StringConfiguration().uiString(UiStringType.LOGIN_04),
               hintFontWeight: FontWeight.w400,
               hintFontSize: 12,
               fillColor: Colors.white,
@@ -146,7 +146,7 @@ class LoginPageState extends State<LoginPage> {
                             PageType.login, context, 5, 0, 0, 0),
                         child: Text(
                           StringConfiguration()
-                              .uiString(UiStringType.rememberMe),
+                              .uiString(UiStringType.LOGIN_05),
                           style: Font.lato(
                               const Color(0xFF746F7B), FontWeight.w400, 16),
                         ),
@@ -157,7 +157,7 @@ class LoginPageState extends State<LoginPage> {
                     onPressed: () {},
                     child: Text(
                       StringConfiguration()
-                          .uiString(UiStringType.forgotPassword),
+                          .uiString(UiStringType.LOGIN_06),
                       style: Font.lato(
                           const Color(0xFF8B80F8), FontWeight.w400, 16),
                     ),
@@ -177,7 +177,7 @@ class LoginPageState extends State<LoginPage> {
                     fit: BoxFit.cover,
                     child: Center(
                       child: Text(
-                        StringConfiguration().uiString(UiStringType.loginUp),
+                        StringConfiguration().uiString(UiStringType.LOGIN_02),
                         style: Font.lato(
                             const Color(0xFFFFFFFF), FontWeight.w700, 14),
                       ),
@@ -191,7 +191,7 @@ class LoginPageState extends State<LoginPage> {
                 .getEdgeInsetsFromLTRB(PageType.login, context, 0, 21, 0, 0),
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
-                StringConfiguration().uiString(UiStringType.haveAccount),
+                StringConfiguration().uiString(UiStringType.LOGIN_07),
                 style: Font.lato(const Color(0xFFBAB8C4), FontWeight.w400, 12),
               ),
               TextButton(
@@ -199,7 +199,7 @@ class LoginPageState extends State<LoginPage> {
                   Get.offAll(const SignupPage());
                 },
                 child: Text(
-                  StringConfiguration().uiString(UiStringType.signUpLow),
+                  StringConfiguration().uiString(UiStringType.LOGIN_08),
                   style:
                       Font.lato(const Color(0xFF8B80F8), FontWeight.w400, 12),
                 ),
@@ -211,10 +211,10 @@ class LoginPageState extends State<LoginPage> {
                 .getEdgeInsetsFromLTRB(PageType.login, context, 0, 30, 0, 0),
             child: TextButton(
               onPressed: () {
-                debugPrint('dataReset tapped');
+                debugPrint("dataReset tapped");
               },
               child: Text(
-                StringConfiguration().uiString(UiStringType.dataReset),
+                StringConfiguration().uiString(UiStringType.LOGIN_10),
                 style: Font.lato(
                     const Color(0xFF746F7B), FontWeight.w400, 14, true),
               ),

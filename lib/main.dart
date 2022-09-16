@@ -1,8 +1,8 @@
-import 'package:bengal_app/utils/relative_coordinate.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'common/string_configuration.dart';
-import 'pages/login/landing_page.dart';
+import "package:bengal_app/utils/relative_coordinate.dart";
+import "package:flutter/material.dart";
+import "package:get/get_navigation/src/root/get_material_app.dart";
+import "common/string_configuration.dart";
+import "pages/login/landing_page.dart";
 
 void main() {
   runApp(const MainApp());

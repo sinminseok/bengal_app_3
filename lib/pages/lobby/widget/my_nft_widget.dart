@@ -1,6 +1,6 @@
-import 'dart:async';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import "dart:async";
+import "package:flutter/cupertino.dart";
+import "package:flutter/material.dart";
 
 class MyNftWidget extends StatefulWidget {
   const MyNftWidget({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class MyNftWidgetState extends State<MyNftWidget> {
   Widget build(BuildContext context) {
     return Stack(
         children: [
-          Image.asset('assets/images/lobby/btn_buy_car.png',
+          Image.asset("assets/images/lobby/btn_buy_car.png",
             width: 360,
             height: 247,
             alignment: Alignment.center,
@@ -25,7 +25,7 @@ class MyNftWidgetState extends State<MyNftWidget> {
           // Positioned(
           //   left: MediaQuery.of(context).size.width * 0.07,
           //   top: MediaQuery.of(context).size.height * 0.25,
-          //   child: Image.asset('assets/images/login/logo_2.png',
+          //   child: Image.asset("assets/images/login/logo_2.png",
           //     fit: BoxFit.cover,),
           // ),
           //

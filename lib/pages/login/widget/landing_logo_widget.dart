@@ -1,6 +1,6 @@
-import 'dart:async';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import "dart:async";
+import "package:flutter/cupertino.dart";
+import "package:flutter/material.dart";
 
 class LandingLogoWidget extends StatefulWidget {
   const LandingLogoWidget({Key? key}) : super(key: key);
@@ -29,6 +29,6 @@ class LandingLogoWidgetState extends State<LandingLogoWidget> {
         alignment: _alignment,
         duration: const Duration(milliseconds: 500),
         child:
-            Image.asset('assets/images/login/logo_1.png', fit: BoxFit.cover));
+            Image.asset("assets/images/login/logo_1.png", fit: BoxFit.cover));
   }
 }
