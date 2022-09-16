@@ -12,7 +12,8 @@ class StringConfiguration {
   }
 
   Future<void> _loadString() async {
-    var value = await rootBundle.loadString('assets/strings/string_configuration.yaml');
+    var value =
+        await rootBundle.loadString('assets/strings/string_configuration.yaml');
 
     _uiStringList = UiStringList.fromJson(loadYaml(value));
   }
@@ -21,6 +22,7 @@ class StringConfiguration {
     _loadString();
   }
 
-  String getUi(UiStringType code, [LanguageType language = LanguageType.eng]) =>
+  String uiString(UiStringType code,
+          [LanguageType language = LanguageType.eng]) =>
       _uiStringList.get(code);
 }

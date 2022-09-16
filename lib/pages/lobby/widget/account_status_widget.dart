@@ -30,13 +30,13 @@ class AccountStatusWidgetState extends State<AccountStatusWidget> {
               padding: const EdgeInsets.fromLTRB(6, 0, 0, 0),
               child: Column(
                 children: [
-                  Text(StringConfiguration().getUi(UiStringType.hello),
+                  Text(StringConfiguration().uiString(UiStringType.hello),
                     textAlign: TextAlign.left,
                     style: GoogleFonts.lato(textStyle: const TextStyle(color: Color(0xFFBAB8C4),
                         fontWeight: FontWeight.w400),
                         fontSize: 12),
                   ),
-                  Text(StringConfiguration().getUi(UiStringType.guestUp),
+                  Text(StringConfiguration().uiString(UiStringType.guestUp),
                     textAlign: TextAlign.left,
                     style: GoogleFonts.lato(textStyle: const TextStyle(color: Color(0xFF8B80F8),
                         fontWeight: FontWeight.w400),

@@ -23,7 +23,7 @@ class EarnTodayWidgetState extends State<EarnTodayWidget> {
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(15, 10, 0, 0),
-                child: Text(StringConfiguration().getUi(UiStringType.todayEarn),
+                child: Text(StringConfiguration().uiString(UiStringType.todayEarn),
                   style: GoogleFonts.lato(textStyle: const TextStyle(color: Color(0xFF342B35),
                       fontWeight: FontWeight.w700),
                       fontSize: 12),
@@ -31,7 +31,7 @@ class EarnTodayWidgetState extends State<EarnTodayWidget> {
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
-                child: Text(StringConfiguration().getUi(UiStringType.totalStatus),
+                child: Text(StringConfiguration().uiString(UiStringType.totalStatus),
                   style: GoogleFonts.lato(textStyle: const TextStyle(color: Color(0xFFE4E4E4),
                       fontWeight: FontWeight.w700),
                       fontSize: 12),
@@ -39,7 +39,7 @@ class EarnTodayWidgetState extends State<EarnTodayWidget> {
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
-                child: Text(StringConfiguration().getUi(UiStringType.selectedCar),
+                child: Text(StringConfiguration().uiString(UiStringType.selectedCar),
                   style: GoogleFonts.lato(textStyle: const TextStyle(color: Color(0xFFE4E4E4),
                       fontWeight: FontWeight.w700),
                       fontSize: 12),

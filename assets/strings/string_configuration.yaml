@@ -2,7 +2,7 @@ Version: 2022051201
 Ui:
   - Code: welcome
     Msg: Welcome to PERPLAY
-  - Code: login
+  - Code: loginUp
     Msg: LOGIN
   - Code: signUpLow
     Msg: Sign up
@@ -21,7 +21,7 @@ Ui:
   - Code: forgotPassword
     Msg: Forgot Password?
   - Code: haveAccount
-    Msg: Dont have an Account?
+    Msg: Don't have an Account?
   - Code: dataReset
     Msg: Data Reset
   - Code: hello

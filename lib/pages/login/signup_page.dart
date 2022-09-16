@@ -2,7 +2,10 @@ import 'package:bengal_app/pages/login/widget/login_logo_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../common/string_configuration.dart';
+import '../../controls/icon_input_box_widget.dart';
 import '../../types/string_type.dart';
+import '../../utils/font.dart';
+import '../../utils/relative_coordinate.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
@@ -13,106 +16,149 @@ class SignupPage extends StatefulWidget {
 
 class SignupPageState extends State<SignupPage> {
   late ScrollController _scrollController;
+  final GlobalKey _scrollKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF5F8FF),
-      body: Column(
-          children: [
-            const LoginLogoWidget(),
-
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
-              child: Text(StringConfiguration().getUi(UiStringType.signUpUp),
-                textAlign: TextAlign.center,
-                style: GoogleFonts.lato(textStyle: const TextStyle(color: Color(0xFF8B80F8)),
-                    fontSize: 20),
-              ),
+      resizeToAvoidBottomInset: false,
+      body: SingleChildScrollView(
+        reverse: true,
+        child: Column(children: [
+          Container(
+            margin: RelativeCoordinate()
+                .getEdgeInsetsFromLTRB(PageType.login, context, 0, 0, 0, 0),
+            child: LoginLogoWidget(scrollKey: _scrollKey),
+          ),
+          Container(
+            margin: RelativeCoordinate()
+                .getEdgeInsetsFromLTRB(PageType.login, context, 0, 40, 0, 0),
+            child: Text(
+              StringConfiguration().uiString(UiStringType.signUpUp),
+              textAlign: TextAlign.center,
+              style: Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20),
             ),
-
-            Padding(
-              padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  prefixIcon: ImageIcon(AssetImage("assets/images/login/ico_account.png"),),
-                  labelText: 'Username',
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    borderSide: BorderSide(
-                      color: Colors.blue,
+          ),
+          Container(
+            margin: RelativeCoordinate()
+                .getEdgeInsetsFromLTRB(PageType.login, context, 15, 20, 15, 0),
+            height: 50,
+            child: IconTextInputBox(
+              assetImage: 'assets/images/login/ico_account.png',
+              hintText: StringConfiguration().uiString(UiStringType.username),
+              hintFontWeight: FontWeight.w400,
+              hintFontSize: 12,
+              fillColor: Colors.white,
+              prefixIconDefaultColor: const Color(0xFFBAB8C4),
+              prefixIconFocusColor: const Color(0xFF8B80F8),
+              boardDefaultColor: const Color(0x33D1D4DD),
+              boardFocusColor: const Color(0xFFC2BAFF),
+              borderRadius: 10,
+              onTap: () {
+                Scrollable.ensureVisible(
+                  _scrollKey.currentContext!,
+                  duration: const Duration(microseconds: 500),
+                );
+              },
+            ),
+          ),
+          Container(
+            margin: RelativeCoordinate()
+                .getEdgeInsetsFromLTRB(PageType.login, context, 15, 10, 15, 0),
+            height: 50,
+            child: IconTextInputBox(
+              assetImage: 'assets/images/login/ico_mail.png',
+              hintText: StringConfiguration().uiString(UiStringType.email),
+              hintFontWeight: FontWeight.w400,
+              hintFontSize: 12,
+              fillColor: Colors.white,
+              prefixIconDefaultColor: const Color(0xFFBAB8C4),
+              prefixIconFocusColor: const Color(0xFF8B80F8),
+              boardDefaultColor: const Color(0x33D1D4DD),
+              boardFocusColor: const Color(0xFFC2BAFF),
+              borderRadius: 10,
+              onTap: () {
+                Scrollable.ensureVisible(
+                  _scrollKey.currentContext!,
+                  duration: const Duration(microseconds: 500),
+                );
+              },
+            ),
+          ),
+          Container(
+            margin: RelativeCoordinate()
+                .getEdgeInsetsFromLTRB(PageType.login, context, 15, 10, 15, 0),
+            height: 50,
+            child: IconTextInputBox(
+              assetImage: 'assets/images/login/ico_password.png',
+              hintText: StringConfiguration().uiString(UiStringType.password),
+              hintFontWeight: FontWeight.w400,
+              hintFontSize: 12,
+              fillColor: Colors.white,
+              prefixIconDefaultColor: const Color(0xFFBAB8C4),
+              prefixIconFocusColor: const Color(0xFF8B80F8),
+              boardDefaultColor: const Color(0x33D1D4DD),
+              boardFocusColor: const Color(0xFFC2BAFF),
+              borderRadius: 10,
+              onTap: () {
+                Scrollable.ensureVisible(
+                  _scrollKey.currentContext!,
+                  duration: const Duration(microseconds: 500),
+                );
+              },
+            ),
+          ),
+          Container(
+            margin: RelativeCoordinate()
+                .getEdgeInsetsFromLTRB(PageType.login, context, 15, 10, 15, 0),
+            height: 50,
+            child: IconTextInputBox(
+              assetImage: 'assets/images/login/ico_repeat_password.png',
+              hintText:
+                  StringConfiguration().uiString(UiStringType.repeatPassword),
+              hintFontWeight: FontWeight.w400,
+              hintFontSize: 12,
+              fillColor: Colors.white,
+              prefixIconDefaultColor: const Color(0xFFBAB8C4),
+              prefixIconFocusColor: const Color(0xFF8B80F8),
+              boardDefaultColor: const Color(0x33D1D4DD),
+              boardFocusColor: const Color(0xFFC2BAFF),
+              borderRadius: 10,
+              onTap: () {
+                Scrollable.ensureVisible(
+                  _scrollKey.currentContext!,
+                  duration: const Duration(microseconds: 500),
+                );
+              },
+            ),
+          ),
+          Container(
+              margin: RelativeCoordinate()
+                  .getEdgeInsetsFromLTRB(PageType.login, context, 0, 40, 0, 0),
+              child: InkWell(
+                  borderRadius: BorderRadius.circular(28),
+                  child: Ink.image(
+                    width: 200,
+                    height: 50,
+                    image:
+                        const AssetImage("assets/images/login/btn_login.png"),
+                    fit: BoxFit.cover,
+                    child: Center(
+                      child: Text(
+                        StringConfiguration().uiString(UiStringType.signUpUp),
+                        style: Font.lato(
+                            const Color(0xFFFFFFFF), FontWeight.w700, 14),
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  prefixIcon: ImageIcon(AssetImage("assets/images/login/ico_mail.png"),),
-                  //hintText: 'Hint Text',
-                  labelText: 'Email Address',
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  prefixIcon: ImageIcon(AssetImage("assets/images/login/ico_password.png"),),
-                  labelText: 'Password',
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  prefixIcon: ImageIcon(AssetImage("assets/images/login/ico_repeat_password.png"),),
-                  labelText: 'Repeat Password',
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 45, 0, 0),
-              child: GestureDetector(
-                onTap: () {
-                  debugPrint('btn_signup tapped');
-                },
-                child: Image.asset('assets/images/login/btn_signup.png',
-                  width: 200,
-                  height: 50,
-                  alignment: Alignment.topCenter,
-                  fit: BoxFit.cover,),
-              ),
-            ),
-
-          ]
+                  onTap: () {})),
+          Container(
+              margin: EdgeInsets.only(
+                  bottom: RelativeCoordinate().getY(PageType.login, context,
+                      MediaQuery.of(context).viewInsets.bottom))),
+        ]),
       ),
     );
   }
-
 }
