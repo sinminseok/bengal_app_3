@@ -40,6 +40,11 @@ dependencies:
   google_fonts: ^3.0.1
   yaml: ^3.1.1
   cli_util: ^0.3.5
+  percent_indicator: ^4.2.2
+  page_transition: ^2.0.9
+  provider: ^6.0.3
+  flutter_animation_progress_bar: ^2.2.1
+  #dropdown_button2: ^1.8.1
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +72,17 @@ flutter:
   assets:
     - assets/images/login/
     - assets/images/lobby/
+    - assets/images/lobby/boxes/
+    - assets/images/lobby/icons/
+    - assets/images/lobby/icons/appbar_icons/
+    - assets/images/lobby/icons/bottom_nav_icon/
+    - assets/images/Inventory/
+    - assets/images/Inventory/car_boxes/
+    - assets/images/Inventory/card_icons/
+    - assets/images/workshop/
+    - assets/images/common/
+    - assets/images/common/cars/
+    - assets/images/common/cars/icons/
     - assets/strings/
     - assets/back_data/
 

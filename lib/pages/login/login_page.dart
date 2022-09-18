@@ -2,12 +2,12 @@ import "package:bengal_app/pages/login/signup_page.dart";
 import "package:bengal_app/pages/login/widget/login_logo_widget.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import '../../common/frame/Frame_View.dart';
 import "../../common/string_configuration.dart";
-import "../../controls/icon_input_box_widget.dart";
+import 'widget/icon_input_box_widget.dart';
 import "../../types/string_type.dart";
 import "../../utils/font.dart";
 import "../../utils/relative_coordinate.dart";
-import "../lobby/lobby_page.dart";
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -184,7 +184,7 @@ class LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   onTap: () {
-                    Get.offAll(const LobbyPage());
+                    Get.offAll(const Frame_View());
                   })),
           Container(
             margin: RelativeCoordinate()
