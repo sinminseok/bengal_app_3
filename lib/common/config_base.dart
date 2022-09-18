@@ -18,7 +18,6 @@ class UiStringList extends ConfigBase {
 
   static UiStringList fromJson(YamlMap map) {
     var ret = UiStringList();
-    debugPrint(map.toString());
     if (map.containsKey("Version")) ret.Version = map["Version"];
     if (map.containsKey("Ui")) {
       map["Ui"].forEach((o) => ret.Ui.add(StringUnit(o["Code"], o["Msg"])));
