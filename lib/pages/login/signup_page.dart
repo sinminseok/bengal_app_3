@@ -2,7 +2,7 @@ import "package:bengal_app/pages/login/widget/login_logo_widget.dart";
 import "package:flutter/material.dart";
 import "package:google_fonts/google_fonts.dart";
 import "../../common/string_configuration.dart";
-import "../../controls/icon_input_box_widget.dart";
+import 'widget/icon_input_box_widget.dart';
 import "../../types/string_type.dart";
 import "../../utils/font.dart";
 import "../../utils/relative_coordinate.dart";
