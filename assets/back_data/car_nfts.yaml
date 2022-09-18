@@ -1,0 +1,158 @@
+Version: 2022091201
+carNftList:
+  - id: 121
+    modelId: 1
+    price: 86000.45
+    condition: 26554.36
+    level: 2
+    curDurability: 455.89
+    curDriven: 655.77
+    curRepair: 870.98
+    remainGemSockets: 2
+    remainMintingCount: 3
+    valid: true
+    burnedAt: '2022-09-02 03:04:05'
+  - id: 122
+    modelId: 2
+    price: 76000.45
+    condition: 22554.36
+    level: 2
+    curDurability: 425.89
+    curDriven: 625.77
+    curRepair: 820.98
+    remainGemSockets: 1
+    remainMintingCount: 3
+    valid: true
+    burnedAt: '2022-09-02 03:04:05'
+  - id: 123
+    modelId: 3
+    price: 88000.45
+    condition: 23554.36
+    level: 3
+    curDurability: 435.89
+    curDriven: 355.77
+    curRepair: 370.98
+    remainGemSockets: 0
+    remainMintingCount: 1
+    valid: true
+    burnedAt: '2022-09-02 03:04:05'
+  - id: 124
+    modelId: 4
+    price: 96000.45
+    condition: 12554.36
+    level: 5
+    curDurability: 255.89
+    curDriven: 255.77
+    curRepair: 820.98
+    remainGemSockets: 2
+    remainMintingCount: 2
+    valid: true
+    burnedAt: '2022-09-02 03:04:05'
+  - id: 125
+    modelId: 5
+    price: 76000.45
+    condition: 46554.36
+    level: 8
+    curDurability: 355.89
+    curDriven: 635.77
+    curRepair: 370.98
+    remainGemSockets: 1
+    remainMintingCount: 2
+    valid: true
+    burnedAt: '2022-09-02 03:04:05'
+  - id: 126
+    modelId: 6
+    price: 126000.45
+    condition: 12554.36
+    level: 3
+    curDurability: 85.89
+    curDriven: 355.77
+    curRepair: 270.98
+    remainGemSockets: 1
+    remainMintingCount: 1
+    valid: true
+    burnedAt: '2022-09-02 03:04:05'
+  - id: 127
+    modelId: 7
+    price: 136000.45
+    condition: 19554.36
+    level: 1
+    curDurability: 255.89
+    curDriven: 635.77
+    curRepair: 370.98
+    remainGemSockets: 2
+    remainMintingCount: 2
+    valid: true
+    burnedAt: '2022-09-02 03:04:05'
+  - id: 128
+    modelId: 8
+    price: 186000.45
+    condition: 20554.36
+    level: 7
+    curDurability: 155.89
+    curDriven: 955.77
+    curRepair: 970.98
+    remainGemSockets: 3
+    remainMintingCount: 2
+    valid: true
+    burnedAt: '2022-09-02 03:04:05'
+  - id: 129
+    modelId: 9
+    price: 126000.45
+    condition: 46554.36
+    level: 4
+    curDurability: 95.89
+    curDriven: 455.77
+    curRepair: 840.98
+    remainGemSockets: 2
+    remainMintingCount: 3
+    valid: true
+    burnedAt: '2022-09-02 03:04:05'
+  - id: 130
+    modelId: 10
+    price: 286000.45
+    condition: 27554.36
+    level: 5
+    curDurability: 475.89
+    curDriven: 675.77
+    curRepair: 870.98
+    remainGemSockets: 3
+    remainMintingCount: 3
+    valid: true
+    burnedAt: '2022-09-02 03:04:05'
+  - id: 131
+    modelId: 1
+    price: 386000.45
+    condition: 23554.36
+    level: 2
+    curDurability: 355.89
+    curDriven: 355.77
+    curRepair: 370.98
+    remainGemSockets: 1
+    remainMintingCount: 1
+    valid: true
+    burnedAt: '2022-09-02 03:04:05'
+  - id: 132
+    modelId: 2
+    price: 236000.45
+    condition: 56554.36
+    level: 6
+    curDurability: 555.89
+    curDriven: 555.77
+    curRepair: 570.98
+    remainGemSockets: 0
+    remainMintingCount: 0
+    valid: true
+    burnedAt: '2022-09-02 03:04:05'
+  - id: 133
+    modelId: 3
+    price: 223000.45
+    condition: 29554.36
+    level: 9
+    curDurability: 495.89
+    curDriven: 659.77
+    curRepair: 970.98
+    remainGemSockets: 1
+    remainMintingCount: 3
+    valid: true
+    burnedAt: '2022-09-02 03:04:05'
