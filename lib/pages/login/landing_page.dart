@@ -1,8 +1,8 @@
 import "dart:async";
 import "package:bengal_app/pages/login/login_page.dart";
 import "package:flutter/material.dart";
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:get/get.dart";
-import "../../utils/relative_coordinate.dart";
 import "widget/landing_logo_widget.dart";
 
 class LandingPage extends StatefulWidget {
@@ -28,8 +28,8 @@ class LandingPageState extends State<LandingPage> {
       body: Stack(children: [
         Image.asset(
           "assets/images/login/bg_start_1.png",
-          width: RelativeCoordinate().getX(PageType.login, context, 390),
-          height: RelativeCoordinate().getY(PageType.login, context, 564),
+          width: 390.w,
+          height: 564.h,
           alignment: Alignment.topCenter,
           fit: BoxFit.fill,
         ),
