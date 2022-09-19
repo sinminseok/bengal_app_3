@@ -1,11 +1,10 @@
 import "package:bengal_app/pages/login/widget/login_logo_widget.dart";
 import "package:flutter/material.dart";
-import "package:google_fonts/google_fonts.dart";
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "../../common/string_configuration.dart";
 import 'widget/icon_input_box_widget.dart';
 import "../../types/string_type.dart";
 import "../../utils/font.dart";
-import "../../utils/relative_coordinate.dart";
 
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
@@ -27,28 +26,25 @@ class SignupPageState extends State<SignupPage> {
         reverse: true,
         child: Column(children: [
           Container(
-            margin: RelativeCoordinate()
-                .getEdgeInsetsFromLTRB(PageType.login, context, 0, 0, 0, 0),
+            margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
             child: LoginLogoWidget(scrollKey: _scrollKey),
           ),
           Container(
-            margin: RelativeCoordinate()
-                .getEdgeInsetsFromLTRB(PageType.login, context, 0, 40, 0, 0),
+            margin: EdgeInsets.fromLTRB(0.w, 40.h, 0.w, 0.h),
             child: Text(
               StringConfiguration().uiString(UiStringType.LOGIN_09),
               textAlign: TextAlign.center,
-              style: Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20),
+              style: Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20.sp),
             ),
           ),
           Container(
-            margin: RelativeCoordinate()
-                .getEdgeInsetsFromLTRB(PageType.login, context, 15, 20, 15, 0),
+            margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 0.h),
             height: 50,
             child: IconTextInputBox(
               assetImage: "assets/images/login/ico_account.png",
               hintText: StringConfiguration().uiString(UiStringType.LOGIN_11),
               hintFontWeight: FontWeight.w400,
-              hintFontSize: 12,
+              hintFontSize: 12.sp,
               fillColor: Colors.white,
               prefixIconDefaultColor: const Color(0xFFBAB8C4),
               prefixIconFocusColor: const Color(0xFF8B80F8),
@@ -64,14 +60,13 @@ class SignupPageState extends State<SignupPage> {
             ),
           ),
           Container(
-            margin: RelativeCoordinate()
-                .getEdgeInsetsFromLTRB(PageType.login, context, 15, 10, 15, 0),
+            margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
             height: 50,
             child: IconTextInputBox(
               assetImage: "assets/images/login/ico_mail.png",
               hintText: StringConfiguration().uiString(UiStringType.LOGIN_03),
               hintFontWeight: FontWeight.w400,
-              hintFontSize: 12,
+              hintFontSize: 12.sp,
               fillColor: Colors.white,
               prefixIconDefaultColor: const Color(0xFFBAB8C4),
               prefixIconFocusColor: const Color(0xFF8B80F8),
@@ -87,14 +82,13 @@ class SignupPageState extends State<SignupPage> {
             ),
           ),
           Container(
-            margin: RelativeCoordinate()
-                .getEdgeInsetsFromLTRB(PageType.login, context, 15, 10, 15, 0),
+            margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
             height: 50,
             child: IconTextInputBox(
               assetImage: "assets/images/login/ico_password.png",
               hintText: StringConfiguration().uiString(UiStringType.LOGIN_04),
               hintFontWeight: FontWeight.w400,
-              hintFontSize: 12,
+              hintFontSize: 12.sp,
               fillColor: Colors.white,
               prefixIconDefaultColor: const Color(0xFFBAB8C4),
               prefixIconFocusColor: const Color(0xFF8B80F8),
@@ -110,15 +104,14 @@ class SignupPageState extends State<SignupPage> {
             ),
           ),
           Container(
-            margin: RelativeCoordinate()
-                .getEdgeInsetsFromLTRB(PageType.login, context, 15, 10, 15, 0),
+            margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
             height: 50,
             child: IconTextInputBox(
               assetImage: "assets/images/login/ico_repeat_password.png",
               hintText:
                   StringConfiguration().uiString(UiStringType.LOGIN_12),
               hintFontWeight: FontWeight.w400,
-              hintFontSize: 12,
+              hintFontSize: 12.sp,
               fillColor: Colors.white,
               prefixIconDefaultColor: const Color(0xFFBAB8C4),
               prefixIconFocusColor: const Color(0xFF8B80F8),
@@ -134,13 +127,12 @@ class SignupPageState extends State<SignupPage> {
             ),
           ),
           Container(
-              margin: RelativeCoordinate()
-                  .getEdgeInsetsFromLTRB(PageType.login, context, 0, 40, 0, 0),
+              margin: EdgeInsets.fromLTRB(0.w, 40.h, 0.w, 0.h),
               child: InkWell(
                   borderRadius: BorderRadius.circular(28),
                   child: Ink.image(
-                    width: 200,
-                    height: 50,
+                    width: 200.w,
+                    height: 50.h,
                     image:
                         const AssetImage("assets/images/login/btn_login.png"),
                     fit: BoxFit.cover,
@@ -148,15 +140,14 @@ class SignupPageState extends State<SignupPage> {
                       child: Text(
                         StringConfiguration().uiString(UiStringType.LOGIN_09),
                         style: Font.lato(
-                            const Color(0xFFFFFFFF), FontWeight.w700, 14),
+                            const Color(0xFFFFFFFF), FontWeight.w700, 14.sp),
                       ),
                     ),
                   ),
                   onTap: () {})),
           Container(
               margin: EdgeInsets.only(
-                  bottom: RelativeCoordinate().getY(PageType.login, context,
-                      MediaQuery.of(context).viewInsets.bottom))),
+                  bottom: MediaQuery.of(context).viewInsets.bottom))
         ]),
       ),
     );

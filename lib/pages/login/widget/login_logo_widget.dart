@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "../../../common/string_configuration.dart";
 import "../../../types/string_type.dart";
 import "../../../utils/font.dart";
-import "../../../utils/relative_coordinate.dart";
 
 class LoginLogoWidget extends StatelessWidget {
   const LoginLogoWidget({Key? key, required this.scrollKey}) : super(key: key);
@@ -15,31 +15,33 @@ class LoginLogoWidget extends StatelessWidget {
     return Stack(children: [
       Image.asset(
         "assets/images/login/bg_start_2.png",
-        width: RelativeCoordinate().getX(PageType.login, context, 390),
-        height: RelativeCoordinate().getY(PageType.login, context, 300),
+        width: 390.w,
+        height: 300.h,
         alignment: Alignment.topCenter,
         fit: BoxFit.fill,
       ),
       Positioned(
         key: scrollKey,
-        left: RelativeCoordinate().getX(PageType.login, context, 0),
-        top: RelativeCoordinate().getY(PageType.login, context, 100),
+        left: 0.w,
+        top: 100.h,
         child: const Text(""),
       ),
       Positioned(
-        left: RelativeCoordinate().getX(PageType.login, context, 30),
-        top: RelativeCoordinate().getY(PageType.login, context, 214),
+        left: 30.w,
+        top: 214.h,
+        width: 192.w,
+        height: 30.h,
         child: Image.asset(
           "assets/images/login/logo_2.png",
           fit: BoxFit.fill,
         ),
       ),
       Positioned(
-        left: RelativeCoordinate().getX(PageType.login, context, 30),
-        top: RelativeCoordinate().getY(PageType.login, context, 253),
+        left: 30,
+        top: 253,
         child: Text(
           StringConfiguration().uiString(UiStringType.LOGIN_13),
-          style: Font.lato(const Color(0xFFC2BAFF), FontWeight.w400, 14),
+          style: Font.lato(const Color(0xFFC2BAFF), FontWeight.w400, 14.sp),
         ),
       ),
     ]);

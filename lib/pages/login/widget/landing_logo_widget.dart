@@ -29,6 +29,6 @@ class LandingLogoWidgetState extends State<LandingLogoWidget> {
         alignment: _alignment,
         duration: const Duration(milliseconds: 500),
         child:
-            Image.asset("assets/images/login/logo_1.png", fit: BoxFit.cover));
+            Image.asset("assets/images/login/logo_1.png", fit: BoxFit.fill));
   }
 }

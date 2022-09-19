@@ -1,13 +1,13 @@
 import "package:bengal_app/pages/login/signup_page.dart";
 import "package:bengal_app/pages/login/widget/login_logo_widget.dart";
 import "package:flutter/material.dart";
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:get/get.dart";
 import "../../common/string_configuration.dart";
 import '../frame/Frame_View.dart';
 import 'widget/icon_input_box_widget.dart';
 import "../../types/string_type.dart";
 import "../../utils/font.dart";
-import "../../utils/relative_coordinate.dart";
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -51,28 +51,25 @@ class LoginPageState extends State<LoginPage> {
         reverse: true,
         child: Column(children: [
           Container(
-            margin: RelativeCoordinate()
-                .getEdgeInsetsFromLTRB(PageType.login, context, 0, 0, 0, 0),
+            margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
             child: LoginLogoWidget(scrollKey: _scrollKey),
           ),
           Container(
-            margin: RelativeCoordinate()
-                .getEdgeInsetsFromLTRB(PageType.login, context, 0, 40, 0, 0),
+            margin: EdgeInsets.fromLTRB(0.w, 40.h, 0.w, 0.h),
             child: Text(
               StringConfiguration().uiString(UiStringType.LOGIN_02),
               textAlign: TextAlign.center,
-              style: Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20),
+              style: Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20.sp),
             ),
           ),
           Container(
-            margin: RelativeCoordinate()
-                .getEdgeInsetsFromLTRB(PageType.login, context, 15, 20, 15, 0),
-            height: 50,
+            margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.h, 0.w),
+            height: 50.h,
             child: IconTextInputBox(
               assetImage: "assets/images/login/ico_mail.png",
               hintText: StringConfiguration().uiString(UiStringType.LOGIN_03),
               hintFontWeight: FontWeight.w400,
-              hintFontSize: 12,
+              hintFontSize: 12.sp,
               fillColor: Colors.white,
               prefixIconDefaultColor: const Color(0xFFBAB8C4),
               prefixIconFocusColor: const Color(0xFF8B80F8),
@@ -88,14 +85,13 @@ class LoginPageState extends State<LoginPage> {
             ),
           ),
           Container(
-            margin: RelativeCoordinate()
-                .getEdgeInsetsFromLTRB(PageType.login, context, 15, 10, 15, 0),
-            height: 50,
+            margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+            height: 50.h,
             child: IconTextInputBox(
               assetImage: "assets/images/login/ico_password.png",
               hintText: StringConfiguration().uiString(UiStringType.LOGIN_04),
               hintFontWeight: FontWeight.w400,
-              hintFontSize: 12,
+              hintFontSize: 12.sp,
               fillColor: Colors.white,
               prefixIconDefaultColor: const Color(0xFFBAB8C4),
               prefixIconFocusColor: const Color(0xFF8B80F8),
@@ -111,8 +107,7 @@ class LoginPageState extends State<LoginPage> {
             ),
           ),
           Container(
-            margin: RelativeCoordinate()
-                .getEdgeInsetsFromLTRB(PageType.login, context, 15, 15, 15, 0),
+            margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -120,8 +115,8 @@ class LoginPageState extends State<LoginPage> {
                     children: [
                       Container(
                         alignment: Alignment.center,
-                        width: 18,
-                        height: 18,
+                        width: 18.w,
+                        height: 18.h,
                         color: Colors.white,
                         child: Checkbox(
                           shape: const RoundedRectangleBorder(
@@ -142,31 +137,32 @@ class LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       Container(
-                        margin: RelativeCoordinate().getEdgeInsetsFromLTRB(
-                            PageType.login, context, 5, 0, 0, 0),
+                        margin: EdgeInsets.fromLTRB(5.w, 2.h, 0.w, 0.h),
                         child: Text(
                           StringConfiguration()
                               .uiString(UiStringType.LOGIN_05),
                           style: Font.lato(
-                              const Color(0xFF746F7B), FontWeight.w400, 16),
+                              const Color(0xFF746F7B), FontWeight.w400, 12.sp),
                         ),
                       ),
                     ],
                   ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      StringConfiguration()
-                          .uiString(UiStringType.LOGIN_06),
-                      style: Font.lato(
-                          const Color(0xFF8B80F8), FontWeight.w400, 16),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0.w, 2.h, 0.w, 0.h),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        StringConfiguration()
+                            .uiString(UiStringType.LOGIN_06),
+                        style: Font.lato(
+                            const Color(0xFF8B80F8), FontWeight.w400, 12.sp),
+                      ),
                     ),
                   ),
                 ]),
           ),
           Container(
-              margin: RelativeCoordinate()
-                  .getEdgeInsetsFromLTRB(PageType.login, context, 0, 45, 0, 0),
+              margin: EdgeInsets.fromLTRB(0.w, 45.h, 0.w, 0.h),
               child: InkWell(
                   borderRadius: BorderRadius.circular(28),
                   child: Ink.image(
@@ -179,7 +175,7 @@ class LoginPageState extends State<LoginPage> {
                       child: Text(
                         StringConfiguration().uiString(UiStringType.LOGIN_02),
                         style: Font.lato(
-                            const Color(0xFFFFFFFF), FontWeight.w700, 14),
+                            const Color(0xFFFFFFFF), FontWeight.w700, 14.sp),
                       ),
                     ),
                   ),
@@ -187,12 +183,11 @@ class LoginPageState extends State<LoginPage> {
                     Get.offAll(const Frame_View());
                   })),
           Container(
-            margin: RelativeCoordinate()
-                .getEdgeInsetsFromLTRB(PageType.login, context, 0, 21, 0, 0),
+            margin: EdgeInsets.fromLTRB(0.w, 21.h, 0.w, 0.h),
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
                 StringConfiguration().uiString(UiStringType.LOGIN_07),
-                style: Font.lato(const Color(0xFFBAB8C4), FontWeight.w400, 12),
+                style: Font.lato(const Color(0xFFBAB8C4), FontWeight.w400, 12.sp),
               ),
               TextButton(
                 onPressed: () {
@@ -201,14 +196,13 @@ class LoginPageState extends State<LoginPage> {
                 child: Text(
                   StringConfiguration().uiString(UiStringType.LOGIN_08),
                   style:
-                      Font.lato(const Color(0xFF8B80F8), FontWeight.w400, 12),
+                      Font.lato(const Color(0xFF8B80F8), FontWeight.w400, 12.sp),
                 ),
               ),
             ]),
           ),
           Container(
-            margin: RelativeCoordinate()
-                .getEdgeInsetsFromLTRB(PageType.login, context, 0, 30, 0, 0),
+            margin: EdgeInsets.fromLTRB(0.w, 30.h, 0.w, 0.h),
             child: TextButton(
               onPressed: () {
                 debugPrint("dataReset tapped");
@@ -216,14 +210,13 @@ class LoginPageState extends State<LoginPage> {
               child: Text(
                 StringConfiguration().uiString(UiStringType.LOGIN_10),
                 style: Font.lato(
-                    const Color(0xFF746F7B), FontWeight.w400, 14, true),
+                    const Color(0xFF746F7B), FontWeight.w400, 14.sp, true),
               ),
             ),
           ),
           Container(
               margin: EdgeInsets.only(
-                  bottom: RelativeCoordinate().getY(PageType.login, context,
-                      MediaQuery.of(context).viewInsets.bottom))),
+                  bottom: MediaQuery.of(context).viewInsets.bottom))
         ]),
       ),
     );
