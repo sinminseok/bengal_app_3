@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:percent_indicator/percent_indicator.dart';
 
 Widget Inventory_CarBoxes_Card(
     Size size,
@@ -33,7 +31,7 @@ Widget Inventory_CarBoxes_Card(
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Image.asset(
-                "assets/images/Inventory/car_boxes/$badge_title.png",
+                "assets/images/inventory/car_boxes/$badge_title.png",
                 width: size.width * 0.21,
               ),
             ),

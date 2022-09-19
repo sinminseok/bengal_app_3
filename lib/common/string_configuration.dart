@@ -12,10 +12,8 @@ class StringConfiguration {
   }
 
   Future<void> _loadString() async {
-    var value =
-        await rootBundle.loadString("assets/strings/string_configuration.yaml");
-
-    _uiStringList = UiStringList.fromJson(loadYaml(value));
+    _uiStringList = UiStringList.fromJson(loadYaml(await rootBundle
+        .loadString("assets/strings/string_configuration.yaml")));
   }
 
   StringConfiguration._internal() {

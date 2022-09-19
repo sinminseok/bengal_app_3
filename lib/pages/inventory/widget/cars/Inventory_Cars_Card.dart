@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -124,7 +123,7 @@ Widget Inventory_Car_Card(
                     child: Column(
                       children: [
                         Image.asset(
-                          "assets/images/Inventory/card_icons/card_icon2.png",
+                          "assets/images/inventory/card_icons/card_icon2.png",
                           width: size.width * 0.06,
                         ),
                         Text(
@@ -139,7 +138,7 @@ Widget Inventory_Car_Card(
                     child: Column(
                       children: [
                         Image.asset(
-                          "assets/images/Inventory/card_icons/card_icon3.png",
+                          "assets/images/inventory/card_icons/card_icon3.png",
                           width: size.width * 0.06,
                         ),
                         Text(
@@ -154,7 +153,7 @@ Widget Inventory_Car_Card(
                     child: Column(
                       children: [
                         Image.asset(
-                          "assets/images/Inventory/card_icons/card_icon4.png",
+                          "assets/images/inventory/card_icons/card_icon4.png",
                           width: size.width * 0.06,
                         ),
                         Text(
@@ -169,7 +168,7 @@ Widget Inventory_Car_Card(
                     child: Column(
                       children: [
                         Image.asset(
-                          "assets/images/Inventory/card_icons/card_icon1.png",
+                          "assets/images/inventory/card_icons/card_icon1.png",
                           width: size.width * 0.06,
                         ),
                         Text(
@@ -198,7 +197,7 @@ Widget Inventory_Car_Card(
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: Image.asset(
-                        "assets/images/Inventory/card_icons/card_car_icon.png",
+                        "assets/images/inventory/card_icons/card_car_icon.png",
                         width: size.width * 0.1,
                       ),
                     ),
