@@ -36,7 +36,7 @@ class _MyPage_ViewState extends State<MyPage_View> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text(
-                  "PROFILE",
+                  "PROFILEE",
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold),
                 ),
