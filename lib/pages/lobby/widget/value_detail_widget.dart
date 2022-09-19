@@ -1,6 +1,3 @@
-
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Widget Value_Detail_Widget(String icon_url,String title,String main_value,String? suv_value,Size size){

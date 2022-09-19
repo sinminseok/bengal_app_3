@@ -44,7 +44,9 @@ dependencies:
   page_transition: ^2.0.9
   provider: ^6.0.3
   flutter_animation_progress_bar: ^2.2.1
-  #dropdown_button2: ^1.8.1
+  rflutter_alert: ^2.0.4
+  bottom_drawer: ^0.0.5
+  dropdown_button2: ^1.8.1
 
 dev_dependencies:
   flutter_test:
@@ -70,19 +72,24 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/login/
+    - assets/images/common/
+    - assets/images/common/cars/
+    - assets/images/common/cars/icons/
+    - assets/images/game/
+    - assets/images/game/icons/
+    - assets/images/inventory/
+    - assets/images/inventory/car_boxes/
+    - assets/images/inventory/card_icons/
     - assets/images/lobby/
     - assets/images/lobby/boxes/
     - assets/images/lobby/icons/
     - assets/images/lobby/icons/appbar_icons/
     - assets/images/lobby/icons/bottom_nav_icon/
-    - assets/images/Inventory/
-    - assets/images/Inventory/car_boxes/
-    - assets/images/Inventory/card_icons/
+    - assets/images/login/
+    - assets/images/my_page/
+    - assets/images/wallet/
+    - assets/images/wallet/icons/
     - assets/images/workshop/
-    - assets/images/common/
-    - assets/images/common/cars/
-    - assets/images/common/cars/icons/
     - assets/strings/
     - assets/back_data/
 

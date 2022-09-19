@@ -1,13 +1,6 @@
-
-
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'Inventory_CarBoxes_Card.dart';
-
-
 
 Widget Inventory_CarBoxes_View(Size size){
   return Center(

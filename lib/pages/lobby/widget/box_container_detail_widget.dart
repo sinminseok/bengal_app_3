@@ -1,6 +1,3 @@
-
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Widget BoxContainer_Detail_Widget(Size size,bool isempty,bool ready,bool during,String? during_value){

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:page_transition/page_transition.dart';
-import '../../../common/car/Car_Detail_FrameView.dart';
+import '../../car/Car_Detail_FrameView.dart';
 
 Widget Car_Main_Widget(BuildContext context,Size size,int level,int nft_id,double Durability,int distance,String distance_status){
   return InkWell(

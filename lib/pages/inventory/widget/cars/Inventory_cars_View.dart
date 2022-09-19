@@ -1,8 +1,4 @@
-
-
-
 import 'package:flutter/cupertino.dart';
-
 import 'Inventory_Cars_Card.dart';
 
 Widget Inventory_Cars_View(Size size){

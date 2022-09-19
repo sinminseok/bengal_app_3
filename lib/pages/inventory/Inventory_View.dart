@@ -1,5 +1,6 @@
 import 'package:bengal_app/pages/inventory/widget/carboxes/Inventory_CarBoxes_View.dart';
 import 'package:bengal_app/pages/inventory/widget/cars/Inventory_cars_View.dart';
+import 'package:bengal_app/pages/inventory/widget/dropdown_button/DropdownButton2.dart';
 import 'package:flutter/material.dart';
 import '../../types/constants.dart';
 
@@ -209,26 +210,26 @@ class _Inventory_ViewState extends State<Inventory_View> {
                   ),
                   Row(
                     children: [
-                      // Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child: CustomDropdownButton2(
-                      //     hint: 'Lowest Level',
-                      //     dropdownItems: items,
-                      //     value: selectedValue,
-                      //     onChanged: (value) {
-                      //       setState(() {
-                      //         selectedValue = value;
-                      //       });
-                      //     },
-                      //   ),
-                      // ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CustomDropdownButton2(
+                          hint: 'Lowest Level',
+                          dropdownItems: items,
+                          value: selectedValue,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedValue = value;
+                            });
+                          },
+                        ),
+                      ),
                       SizedBox(
                         width: size.width * 0.45,
                       ),
                       InkWell(
                           onTap: () {},
                           child: Image.asset(
-                            "assets/images/Inventory/filter.png",
+                            "assets/images/inventory/filter.png",
                             height: size.height * 0.05,
                           ))
                     ],

@@ -59,7 +59,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         height: 65,
         width: MediaQuery.of(context).size.width / _iconList.length,
         decoration: index == _selectedIndex
-            ? const BoxDecoration(
+            ? BoxDecoration(
                 border: Border(
                   top: BorderSide(
                     width: 1,
@@ -83,8 +83,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                 child: Text(
                   "$title",
                   style: index == _selectedIndex
-                      ? const TextStyle(fontSize: 10, color: kPrimaryColor)
-                      : const TextStyle(fontSize: 10),
+                      ? TextStyle(fontSize: 10, color: kPrimaryColor)
+                      : TextStyle(fontSize: 10),
                 ),
               )
             ],
