@@ -1,8 +1,12 @@
 import 'package:bengal_app/pages/lobby/widget/value_detail_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
+import '../../../common/string_configuration.dart';
 import '../../../types/constants.dart';
+import '../../../types/string_type.dart';
+import '../../../utils/font.dart';
 
 class Value_Container extends StatefulWidget {
   String XPER_Value;
@@ -35,13 +39,13 @@ class _Value_ContainerState extends State<Value_Container> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return Container(
+      margin: EdgeInsets.fromLTRB(15.w, 15.h, 15.w, 0.h),
       child: Container(
-        width: size.width * 0.9,
-        height: size.height * 0.2,
+        width: 360.w,
+        height: 114.h,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(13),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.3),
@@ -53,75 +57,86 @@ class _Value_ContainerState extends State<Value_Container> {
             color: Colors.white),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  InkWell(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: InkWell(
-                          onTap: () {
-                            setState(() {
-                              today_status_bool = true;
-                              total_status_bool = false;
-                              selected_status_bool = false;
-                            });
-                          },
-                          child: Text(
-                            "Today's Earn",
-                            style: today_status_bool == true
-                                ? TextStyle(color: Colors.black)
-                                : TextStyle(color: Colors.grey),
-                          )),
+            Row(
+              children: [
+                InkWell(
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(15.w, 11.h, 0.w, 0.h),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          today_status_bool = true;
+                          total_status_bool = false;
+                          selected_status_bool = false;
+                        });
+                      },
+                      child: Text(
+                        StringConfiguration()
+                            .uiString(UiStringType.LOBBY_TAB_01),
+                        style: Font.lato(
+                            today_status_bool == true
+                                ? Colors.black
+                                : Colors.grey,
+                            FontWeight.w700,
+                            12.sp),
+                      ),
                     ),
                   ),
-                  InkWell(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: InkWell(
-                          onTap: () {
-                            setState(() {
-                              today_status_bool = false;
-                              total_status_bool = true;
-                              selected_status_bool = false;
-                            });
-                          },
-                          child: Text(
-                            "Total Status",
-                            style: total_status_bool == true
-                                ? TextStyle(color: Colors.black)
-                                : TextStyle(color: Colors.grey),
-                          )),
-                    ),
+                ),
+                InkWell(
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(20.w, 11.h, 0.w, 0.h),
+                    child: InkWell(
+                        onTap: () {
+                          setState(() {
+                            today_status_bool = false;
+                            total_status_bool = true;
+                            selected_status_bool = false;
+                          });
+                        },
+                        child: Text(
+                          StringConfiguration()
+                              .uiString(UiStringType.LOBBY_TAB_02),
+                          style: Font.lato(
+                              total_status_bool == true
+                                  ? Colors.black
+                                  : Colors.grey,
+                              FontWeight.w700,
+                              12.sp),
+                        )),
                   ),
-                  InkWell(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: InkWell(
-                          onTap: () {
-                            setState(() {
-                              today_status_bool = false;
-                              total_status_bool = false;
-                              selected_status_bool = true;
-                            });
-                          },
-                          child: Text(
-                            "Selected Car",
-                            style: selected_status_bool == true
-                                ? TextStyle(color: Colors.black)
-                                : TextStyle(color: Colors.grey),
-                          )),
-                    ),
+                ),
+                InkWell(
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(20.w, 11.h, 0.w, 0.h),
+                    child: InkWell(
+                        onTap: () {
+                          setState(() {
+                            today_status_bool = false;
+                            total_status_bool = false;
+                            selected_status_bool = true;
+                          });
+                        },
+                        child: Text(
+                          StringConfiguration()
+                              .uiString(UiStringType.LOBBY_TAB_03),
+                          style: Font.lato(
+                              selected_status_bool == true
+                                  ? Colors.black
+                                  : Colors.grey,
+                              FontWeight.w700,
+                              12.sp),
+                        )),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             today_status_bool != true
                 ? Container()
                 : Container(
-                    width: size.width * 0.87,
-                    height: size.height * 0.12,
+                    margin: EdgeInsets.fromLTRB(15.w, 16.h, 15.w, 0.h),
+                    width: 330.w,
+                    height: 52.h,
                     child: Row(
                       children: [
                         Column(
@@ -130,33 +145,42 @@ class _Value_ContainerState extends State<Value_Container> {
                               children: [
                                 Image.asset(
                                   "assets/images/lobby/icons/appbar_icons/xper_icon.png",
-                                  height: size.height * 0.04,
+                                  width: 20.w,
+                                  height: 20.h,
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                Container(
+                                  margin: EdgeInsets.only(left: 6.h),
+                                  width: 200.w,
                                   child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
                                     children: [
                                       Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text("XPER"),
-                                          SizedBox(
-                                            width: size.width * 0.2,
+                                          Text(
+                                            StringConfiguration().uiString(
+                                                UiStringType.TOKEN_NAME_01),
+                                            style: Font.lato(
+                                                const Color(0xFF8E8E8E),
+                                                FontWeight.w700,
+                                                12.sp),
                                           ),
                                           Text(
                                             "${widget.XPER_Value}/200",
-                                            style:
-                                                TextStyle(color: Colors.grey),
-                                          )
+                                            style: Font.lato(
+                                                const Color(0xFF8E8E8E),
+                                                FontWeight.w700,
+                                                12.sp),
+                                          ),
                                         ],
                                       ),
                                       LinearPercentIndicator(
-                                        barRadius: Radius.circular(10),
-                                        width: size.width * 0.4,
-                                        lineHeight: 3.0,
-                                        percent: 0.9,
+                                        barRadius: const Radius.circular(10),
+                                        width: 200.w,
+                                        lineHeight: 2.h,
+                                        percent: 0.7,
                                         progressColor: Colors.grey,
+                                        padding: const EdgeInsets.only(top: 0),
                                       )
                                     ],
                                   ),
@@ -165,38 +189,48 @@ class _Value_ContainerState extends State<Value_Container> {
                             ),
                             Row(
                               children: [
-                                Image.asset(
-                                  "assets/images/lobby/icons/appbar_icons/per_icon.png",
-                                  height: size.height * 0.04,
-                                ),
                                 Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.only(top: 12.h),
+                                  child: Image.asset(
+                                    "assets/images/lobby/icons/appbar_icons/per_icon.png",
+                                    width: 20.w,
+                                    height: 20.h,
+                                  ),
+                                ),
+                                Container(
+                                  margin:
+                                      EdgeInsets.fromLTRB(6.w, 12.h, 0.w, 0.h),
+                                  width: 200.w,
                                   child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
                                     children: [
                                       Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            "PER",
-                                            style: TextStyle(
-                                                color: Colors.orange.shade700),
-                                          ),
-                                          SizedBox(
-                                            width: size.width * 0.2,
+                                            StringConfiguration().uiString(
+                                                UiStringType.TOKEN_NAME_02),
+                                            style: Font.lato(
+                                                const Color(0xFFECB133),
+                                                FontWeight.w700,
+                                                12.sp),
                                           ),
                                           Text(
                                             "${widget.PER_Value}/2.0",
-                                            style: TextStyle(color: kPerColor),
-                                          )
+                                            style: Font.lato(
+                                                const Color(0xFFECB133),
+                                                FontWeight.w700,
+                                                12.sp),
+                                          ),
                                         ],
                                       ),
                                       LinearPercentIndicator(
-                                        barRadius: Radius.circular(10),
-                                        width: size.width * 0.4,
-                                        lineHeight: 3.0,
-                                        percent: 0.9,
-                                        progressColor: Color(0xffe8ad09),
+                                        barRadius: const Radius.circular(10),
+                                        width: 200.w,
+                                        lineHeight: 2.h,
+                                        percent: 0.4,
+                                        progressColor: const Color(0xFFECB133),
+                                        padding: const EdgeInsets.only(top: 0),
                                       )
                                     ],
                                   ),
@@ -209,22 +243,28 @@ class _Value_ContainerState extends State<Value_Container> {
                           children: [
                             Stack(
                               children: [
-                                FAProgressBar(
-                                  backgroundColor: Colors.grey.shade300,
-                                  maxValue: 16,
-                                  borderRadius: BorderRadius.circular(30),
-                                  verticalDirection: VerticalDirection.up,
-                                  progressColor: kCharColor,
-                                  direction: Axis.vertical,
-                                  currentValue: 13,
-                                  displayText: null,
+                                Padding(
+                                  padding:
+                                      EdgeInsets.fromLTRB(26.w, 0.h, 0.w, 0.h),
+                                  child: FAProgressBar(
+                                    backgroundColor: Colors.grey.shade300,
+                                    maxValue: 100,
+                                    borderRadius: BorderRadius.circular(30),
+                                    verticalDirection: VerticalDirection.up,
+                                    progressColor: kCharColor,
+                                    direction: Axis.vertical,
+                                    currentValue: 50,
+                                    displayText: null,
+                                    size: 20.w,
+                                  ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 6.0),
+                                  padding: EdgeInsets.only(left: 28.w),
                                   child: Center(
                                       child: Image.asset(
                                     "assets/images/lobby/lightning.png",
-                                    width: size.width * 0.04,
+                                    width: 16.w,
+                                    height: 15.41.h,
                                   )),
                                 ),
                               ],
@@ -233,23 +273,23 @@ class _Value_ContainerState extends State<Value_Container> {
                               children: [
                                 Text(
                                   "${widget.Charge_Value}/16.0",
-                                  style: TextStyle(
-                                    color: kCharColor,
-                                  ),
+                                  style: Font.lato(const Color(0xFF15BEA0),
+                                      FontWeight.w700, 12.sp),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.w),
                                   child: Text(
-                                    "Next Charge",
-                                    style: TextStyle(color: Colors.grey),
+                                    StringConfiguration()
+                                        .uiString(UiStringType.LOBBY_TAB_05),
+                                    style: Font.lato(const Color(0xFF766D84),
+                                        FontWeight.w400, 8.sp),
                                   ),
                                 ),
                                 Text(
                                   "4h 59m",
-                                  style: TextStyle(
-                                    color: kCharColor,
-                                  ),
-                                )
+                                  style: Font.lato(const Color(0xFF15BEA0),
+                                      FontWeight.w700, 8.sp),
+                                ),
                               ],
                             ),
                           ],
@@ -260,24 +300,34 @@ class _Value_ContainerState extends State<Value_Container> {
             total_status_bool != true
                 ? Container()
                 : Container(
-                    width: size.width * 0.82,
-                    height: size.height * 0.12,
+                    margin: EdgeInsets.fromLTRB(15.w, 16.h, 15.w, 0.h),
+                    width: 330.w,
+                    height: 60.h,
                     child: Column(
                       children: [
                         Row(
                           children: [
                             Value_Detail_Widget(
                                 "gauge_icon", "Speed", "21.8", "10.0", size),
-                            Value_Detail_Widget(
-                                "dice_icon", "Luck", "21.8", "10.0", size)
+                            Container(
+                              margin: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 0.h),
+                              child: Value_Detail_Widget(
+                                  "dice_icon", "Luck", "21.8", "10.0", size),
+                            )
                           ],
                         ),
                         Row(
                           children: [
-                            Value_Detail_Widget(
-                                "charge_icon", "Charge", "21.8", "10.0", size),
-                            Value_Detail_Widget(
-                                "repair_icon", "Repair", "21.8", "10.0", size)
+                            Container(
+                              margin: EdgeInsets.fromLTRB(0.w, 4.h, 0.w, 0.h),
+                              child: Value_Detail_Widget("charge_icon",
+                                  "Charge", "21.8", "10.0", size),
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(4.w, 4.h, 0.w, 0.h),
+                              child: Value_Detail_Widget("repair_icon",
+                                  "Repair", "21.8", "10.0", size),
+                            )
                           ],
                         ),
                       ],
@@ -286,24 +336,34 @@ class _Value_ContainerState extends State<Value_Container> {
             selected_status_bool != true
                 ? Container()
                 : Container(
-                    width: size.width * 0.82,
-                    height: size.height * 0.12,
+                    margin: EdgeInsets.fromLTRB(15.w, 16.h, 15.w, 0.h),
+                    width: 330.w,
+                    height: 60.h,
                     child: Column(
                       children: [
                         Row(
                           children: [
                             Value_Detail_Widget(
                                 "gauge_icon", "Speed", "21.8", "10.0", size),
-                            Value_Detail_Widget(
-                                "dice_icon", "Luck", "21.8", "10.0", size)
+                            Container(
+                              margin: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 0.h),
+                              child: Value_Detail_Widget(
+                                  "dice_icon", "Luck", "21.8", "10.0", size),
+                            ),
                           ],
                         ),
                         Row(
                           children: [
-                            Value_Detail_Widget(
-                                "charge_icon", "Charge", "21.8", "10.0", size),
-                            Value_Detail_Widget(
-                                "repair_icon", "Repair", "21.8", "10.0", size)
+                            Container(
+                              margin: EdgeInsets.fromLTRB(0.w, 4.h, 0.w, 0.h),
+                              child: Value_Detail_Widget("charge_icon",
+                                  "Charge", "21.8", "10.0", size),
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(4.w, 4.h, 0.w, 0.h),
+                              child: Value_Detail_Widget("repair_icon",
+                                  "Repair", "21.8", "10.0", size),
+                            )
                           ],
                         ),
                       ],

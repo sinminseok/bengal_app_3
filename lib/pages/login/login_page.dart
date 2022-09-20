@@ -85,7 +85,7 @@ class LoginPageState extends State<LoginPage> {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+            margin: EdgeInsets.fromLTRB(15.w, 15.h, 15.w, 0.h),
             height: 50.h,
             child: IconTextInputBox(
               assetImage: "assets/images/login/ico_password.png",
@@ -107,7 +107,9 @@ class LoginPageState extends State<LoginPage> {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+            margin: EdgeInsets.fromLTRB(15.w, 2.h, 15.w, 0.h),
+            //color: Colors.red,
+            height: 32.h,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -137,7 +139,7 @@ class LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.fromLTRB(5.w, 2.h, 0.w, 0.h),
+                        margin: EdgeInsets.fromLTRB(5.w, 0.h, 0.w, 0.h),
                         child: Text(
                           StringConfiguration()
                               .uiString(UiStringType.LOGIN_05),
@@ -147,30 +149,27 @@ class LoginPageState extends State<LoginPage> {
                       ),
                     ],
                   ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0.w, 2.h, 0.w, 0.h),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        StringConfiguration()
-                            .uiString(UiStringType.LOGIN_06),
-                        style: Font.lato(
-                            const Color(0xFF8B80F8), FontWeight.w400, 12.sp),
-                      ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      StringConfiguration()
+                          .uiString(UiStringType.LOGIN_06),
+                      style: Font.lato(
+                          const Color(0xFF8B80F8), FontWeight.w400, 12.sp),
                     ),
                   ),
                 ]),
           ),
           Container(
-              margin: EdgeInsets.fromLTRB(0.w, 45.h, 0.w, 0.h),
+              margin: EdgeInsets.fromLTRB(0.w, 40.h, 0.w, 0.h),
               child: InkWell(
                   borderRadius: BorderRadius.circular(28),
                   child: Ink.image(
-                    width: 200,
-                    height: 50,
+                    width: 175.w,
+                    height: 46.h,
                     image:
                         const AssetImage("assets/images/login/btn_login.png"),
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                     child: Center(
                       child: Text(
                         StringConfiguration().uiString(UiStringType.LOGIN_02),
@@ -183,7 +182,9 @@ class LoginPageState extends State<LoginPage> {
                     Get.offAll(const Frame_View());
                   })),
           Container(
-            margin: EdgeInsets.fromLTRB(0.w, 21.h, 0.w, 0.h),
+            //color: Colors.red,
+            height: 32.h,
+            margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
                 StringConfiguration().uiString(UiStringType.LOGIN_07),
@@ -202,7 +203,7 @@ class LoginPageState extends State<LoginPage> {
             ]),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(0.w, 30.h, 0.w, 0.h),
+            margin: EdgeInsets.fromLTRB(0.w, 45.h, 0.w, 0.h),
             child: TextButton(
               onPressed: () {
                 debugPrint("dataReset tapped");
