@@ -109,7 +109,7 @@ Ui:
   - Code: LOBBY_CAR_04
     Msg: "{0} km {1}"
   - Code: LOBBY_TAB_01
-    Msg: Today"s Earn
+    Msg: Today's Earn
   - Code: LOBBY_TAB_02
     Msg: Total Status
   - Code: LOBBY_TAB_03
@@ -128,9 +128,9 @@ Ui:
     Msg: READY
   - Code: LOBBY_SPECIALBOX_03
     Msg: "{0}h {1}m"
-  - Code: LOBBY_SPECIALBOX_03
-    Msg: Game Play
   - Code: LOBBY_SPECIALBOX_04
+    Msg: Game Play
+  - Code: LOBBY_SPECIALBOX_05
     Msg: See All
   - Code: LOBBY_SPECIALBOX_OPEN_01
     Msg: "LV {0}. SPECIAL BOX"

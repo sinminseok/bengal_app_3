@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget Coin_Widget(String img_name,String value,Size size){
+Widget Coin_Widget(String img_name, String value, Size size) {
   return Row(
     children: [
       Padding(
@@ -19,15 +20,20 @@ Widget Coin_Widget(String img_name,String value,Size size){
                 //       shape: BoxShape.circle
                 //   ),
                 // ),
-                Image.asset("assets/images/lobby/icons/appbar_icons/$img_name.png",width: size.width*0.055,)
+                Image.asset(
+                  "assets/images/lobby/icons/appbar_icons/$img_name.png",
+                  height: 20.h,
+                  width: 20.w,
+                )
               ],
             ),
             Padding(
               padding: const EdgeInsets.all(4.0),
-              child: Text("$value",style: TextStyle(fontSize: 12,color: Colors.black),),
+              child: Text(
+                "$value",
+                style: TextStyle(fontSize: 12.sp, color: Colors.black),
+              ),
             )
-
-
           ],
         ),
       )
