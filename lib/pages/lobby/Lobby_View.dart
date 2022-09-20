@@ -27,10 +27,6 @@ class _Lobby_ViewState extends State<Lobby_View> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Container(
-            //   color: Colors.yellow,
-            //   height: size.height * 0.03,
-            // ),
             //Buy a car Widget
             current_car == true
                 ? InkWell(
@@ -138,7 +134,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
                   // ),
                   InkWell(
                     onTap: () {
-                      print("move");
+                      print("movee");
                     },
                     child: Text(
                       StringConfiguration()
