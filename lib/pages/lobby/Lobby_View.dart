@@ -116,7 +116,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
             BoxContainer_Widget(),
 
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 23.h, 15.w, 0.h),
+              margin: EdgeInsets.fromLTRB(16.w, 23.h, 15.w, 0.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
