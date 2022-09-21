@@ -30,9 +30,6 @@ Widget Game_Play_Widget(Size size, String title, String xper_value,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // SizedBox(
-              //   height: size.height * 0.02,
-              // ),
               Padding(
                 padding: EdgeInsets.only(top: 17.h),
                 child: Text(
@@ -49,7 +46,7 @@ Widget Game_Play_Widget(Size size, String title, String xper_value,
                     height: 14.h,
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.w),
+                    padding: EdgeInsets.fromLTRB(3.w, 3.h, 10.w, 0.h),
                     child: Text(
                       "+ $xper_value",
                       style: Font.lato(
@@ -62,7 +59,7 @@ Widget Game_Play_Widget(Size size, String title, String xper_value,
                     height: 14.h,
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.w),
+                    padding: EdgeInsets.fromLTRB(3.w, 3.h, 10.w, 0.h),
                     child: Text(
                       "+ $per_value",
                       style: Font.lato(
@@ -72,12 +69,12 @@ Widget Game_Play_Widget(Size size, String title, String xper_value,
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 3.0),
+                padding: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
                 child: Row(
                   children: [
                     Container(
-                      width: size.width * 0.28,
-                      height: size.height * 0.03,
+                      width: 70.w,
+                      height: 16.h,
                       decoration: BoxDecoration(
                           color: Colors.grey.shade200,
                           borderRadius: BorderRadius.circular(10)),
