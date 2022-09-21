@@ -14,8 +14,10 @@ class IconTextInputBox extends StatefulWidget {
     required this.boardFocusColor,
     required this.borderRadius,
     this.onTap,
+    required this.controller,
   }) : super(key: key);
 
+  final TextEditingController controller;
   final void Function()? onTap;
   final String assetImage;
 
@@ -37,6 +39,7 @@ class IconTextInputBox extends StatefulWidget {
 
 class IconTextInputBoxState extends State<IconTextInputBox> {
   final FocusNode _focusNode = FocusNode();
+  //final controller = TextEditingController();
 
   @override
   void initState() {
@@ -60,6 +63,7 @@ class IconTextInputBoxState extends State<IconTextInputBox> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller,
       onTap: () {
         widget.onTap!();
       },

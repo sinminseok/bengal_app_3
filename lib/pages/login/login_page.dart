@@ -2,7 +2,9 @@ import "package:bengal_app/pages/login/signup_page.dart";
 import "package:bengal_app/pages/login/widget/login_logo_widget.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import "package:get/get.dart";
+import '../../Controller/account_controller.dart';
 import "../../common/string_configuration.dart";
 import '../frame/Frame_View.dart';
 import 'widget/icon_input_box_widget.dart';
@@ -22,6 +24,9 @@ class LoginPageState extends State<LoginPage> {
   final GlobalKey _scrollKey = GlobalKey();
 
   final FocusNode _focusNode = FocusNode();
+
+  final mailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -66,23 +71,23 @@ class LoginPageState extends State<LoginPage> {
             margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.h, 0.w),
             height: 50.h,
             child: IconTextInputBox(
-              assetImage: "assets/images/login/ico_mail.png",
-              hintText: StringConfiguration().uiString(UiStringType.LOGIN_03),
-              hintFontWeight: FontWeight.w400,
-              hintFontSize: 12.sp,
-              fillColor: Colors.white,
-              prefixIconDefaultColor: const Color(0xFFBAB8C4),
-              prefixIconFocusColor: const Color(0xFF8B80F8),
-              boardDefaultColor: const Color(0x33D1D4DD),
-              boardFocusColor: const Color(0xFFC2BAFF),
-              borderRadius: 10,
-              onTap: () {
-                Scrollable.ensureVisible(
-                  _scrollKey.currentContext!,
-                  duration: const Duration(microseconds: 500),
-                );
-              },
-            ),
+                assetImage: "assets/images/login/ico_mail.png",
+                hintText: StringConfiguration().uiString(UiStringType.LOGIN_03),
+                hintFontWeight: FontWeight.w400,
+                hintFontSize: 12.sp,
+                fillColor: Colors.white,
+                prefixIconDefaultColor: const Color(0xFFBAB8C4),
+                prefixIconFocusColor: const Color(0xFF8B80F8),
+                boardDefaultColor: const Color(0x33D1D4DD),
+                boardFocusColor: const Color(0xFFC2BAFF),
+                borderRadius: 10,
+                onTap: () {
+                  Scrollable.ensureVisible(
+                    _scrollKey.currentContext!,
+                    duration: const Duration(microseconds: 500),
+                  );
+                },
+                controller: mailController),
           ),
           Container(
             margin: EdgeInsets.fromLTRB(15.w, 15.h, 15.w, 0.h),
@@ -104,6 +109,7 @@ class LoginPageState extends State<LoginPage> {
                   duration: const Duration(microseconds: 500),
                 );
               },
+              controller: passwordController,
             ),
           ),
           Container(
@@ -141,8 +147,7 @@ class LoginPageState extends State<LoginPage> {
                       Container(
                         margin: EdgeInsets.fromLTRB(5.w, 0.h, 0.w, 0.h),
                         child: Text(
-                          StringConfiguration()
-                              .uiString(UiStringType.LOGIN_05),
+                          StringConfiguration().uiString(UiStringType.LOGIN_05),
                           style: Font.lato(
                               const Color(0xFF746F7B), FontWeight.w400, 12.sp),
                         ),
@@ -152,8 +157,7 @@ class LoginPageState extends State<LoginPage> {
                   TextButton(
                     onPressed: () {},
                     child: Text(
-                      StringConfiguration()
-                          .uiString(UiStringType.LOGIN_06),
+                      StringConfiguration().uiString(UiStringType.LOGIN_06),
                       style: Font.lato(
                           const Color(0xFF8B80F8), FontWeight.w400, 12.sp),
                     ),
@@ -179,7 +183,16 @@ class LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   onTap: () {
-                    Get.offAll(const Frame_View());
+                    if (!AccountController()
+                        .signIn(mailController.text, passwordController.text)) {
+                      Fluttertoast.showToast(
+                          msg: 'Login Fail',
+                          backgroundColor: Colors.grey,
+                          textColor: Colors.black,
+                          gravity: ToastGravity.CENTER);
+                    } else {
+                      Get.offAll(const Frame_View());
+                    }
                   })),
           Container(
             //color: Colors.red,
@@ -188,7 +201,8 @@ class LoginPageState extends State<LoginPage> {
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
                 StringConfiguration().uiString(UiStringType.LOGIN_07),
-                style: Font.lato(const Color(0xFFBAB8C4), FontWeight.w400, 12.sp),
+                style:
+                    Font.lato(const Color(0xFFBAB8C4), FontWeight.w400, 12.sp),
               ),
               TextButton(
                 onPressed: () {
@@ -196,8 +210,8 @@ class LoginPageState extends State<LoginPage> {
                 },
                 child: Text(
                   StringConfiguration().uiString(UiStringType.LOGIN_08),
-                  style:
-                      Font.lato(const Color(0xFF8B80F8), FontWeight.w400, 12.sp),
+                  style: Font.lato(
+                      const Color(0xFF8B80F8), FontWeight.w400, 12.sp),
                 ),
               ),
             ]),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../types/constants.dart';
+import '../../../utils/font.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   final int defaultSelectedIndex;
@@ -43,8 +44,12 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       _navBarItemList.add(buildNavBarItem(_iconList[i], i, _titleList[i]));
     }
 
-    return Row(
-      children: _navBarItemList,
+    return Container(
+      margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 0.h),
+      color: Colors.white,
+      child: Row(
+        children: _navBarItemList,
+      ),
     );
   }
 
@@ -57,46 +62,40 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         });
       },
       child: Container(
-        height: 89.h,
-        width: MediaQuery.of(context).size.width / _iconList.length,
+        height: 50.h,
+        width: 60.w,
+        margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 0.h),
         decoration: index == _selectedIndex
             ? BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                    width: 1,
+                    width: 1.w,
                     color: kPrimaryColor,
                   ),
                 ),
 
                 // color: index == _selectedItemIndex ? Colors.green : Colors.white,
               )
-            : BoxDecoration(),
+            : const BoxDecoration(),
         child: Container(
           //padding: const EdgeInsets.only(bottom: 0.0),
           color: Colors.white,
-          child: Container(
-            margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
-            child: Column(
-              //mainAxisAlignment: MainAxisAlignment.center,
-
-              children: [
-                ImageIcon(
-                size: 26.86.w,
-                  AssetImage(icon),
-                  color: index == _selectedIndex ? kPrimaryColor : Colors.grey,
-                ),
-                Container(
-                  padding: const EdgeInsets.all(4.0),
-
-                  child: Text(
-                    "$title",
-                    style: index == _selectedIndex
-                        ? TextStyle(fontSize: 8.sp, color: kPrimaryColor)
-                        : TextStyle(fontSize: 8.sp),
-                  ),
-                )
-              ],
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ImageIcon(
+                size: 30,
+                AssetImage(icon),
+                color: index == _selectedIndex ? kPrimaryColor : Colors.grey,
+              ),
+              Text(
+                "$title",
+                style: index == _selectedIndex
+                    ? Font.lato(kPrimaryColor, FontWeight.w400, 8.sp)
+                    : Font.lato(
+                        const Color(0xFFBAB8C4), FontWeight.w400, 8.sp),
+              )
+            ],
           ),
         ),
       ),
