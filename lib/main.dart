@@ -11,7 +11,6 @@ void main() {
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (context) => Http_services()),
-
     ], child: MainApp()),
   );
 }
@@ -29,35 +28,12 @@ class MainApp extends StatelessWidget {
       designSize: const Size(390, 844),
       minTextAdapt: true,
       splitScreenMode: false,
-      builder: (context , child) {
+      builder: (context, child) {
         return const GetMaterialApp(
-            home: LandingPage(),
+          home: LandingPage(),
         );
-        // return MaterialApp(
-        //   debugShowCheckedModeBanner: false,
-        //   // theme: ThemeData(
-        //   //   primarySwatch: Colors.blue,
-        //   //   textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
-        //   // ),
-        //   home: child,
-        // );
       },
       child: const LandingPage(),
     );
-
-    // return ScreenUtilInit(
-    //   builder: () => MaterialApp(
-    //     theme: ThemeData(
-    //       primarySwatch: Colors.blue,
-    //     ),
-    //     home: LandingPage(),
-    //   ),
-    //   designSize: const Size(390, 844),
-    // );
-    // // var account = BackDataManager().getAccount(1);
-    // // debugPrint('account=$account');
-    // // return const GetMaterialApp(
-    // //   home: LandingPage(),
-    // // );
   }
 }

@@ -1,0 +1,29 @@
+{
+  "Version": 2022091201,
+  "gameRewardList": [
+    {
+      "game": 1,
+      "reward": 1
+    },
+    {
+      "game": 2,
+      "reward": 4
+    },
+    {
+      "game": 3,
+      "reward": 2
+    },
+    {
+      "game": 4,
+      "reward": 7
+    },
+    {
+      "game": 5,
+      "reward": 3
+    },
+    {
+      "game": 6,
+      "reward": 6
+    }
+  ]
+}
