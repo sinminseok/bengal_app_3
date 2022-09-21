@@ -33,7 +33,7 @@ class _Market_ViewState extends State<Market_View> {
             //Selected_Bar
             Container(
               width: size.width * 1,
-              height: size.height * 0.2,
+              height: size.height * 0.21,
               decoration: BoxDecoration(
                 border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
               ),
