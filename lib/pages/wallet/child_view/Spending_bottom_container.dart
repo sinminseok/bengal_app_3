@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../types/constants.dart';
 import '../widget/History_listview_Widget.dart';
 import '../widget/Pending_listview_Widget.dart';
@@ -20,7 +21,7 @@ class _Spending_bottom_containerState extends State<Spending_bottom_container> {
     return Container(
 
       width: size.width*1,
-      height: size.height*0.31,
+      height: 339.h,
       decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(

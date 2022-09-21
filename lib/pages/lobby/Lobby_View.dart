@@ -116,7 +116,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
             BoxContainer_Widget(),
 
             Container(
-              margin: EdgeInsets.fromLTRB(16.w, 23.h, 15.w, 0.h),
+              margin: EdgeInsets.fromLTRB(15.w, 23.h, 15.w, 0.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -160,7 +160,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext ctx, int idx) {
                       return Game_Play_Widget(
-                          size, "Jewel Match", "0.08", "0.05", "10");
+                          size,context, "Jewel Match", "0.08", "0.05", "10");
                     }),
               ),
             ),

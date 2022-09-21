@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'Game_Special_Container.dart';
 
 Widget Game_Special_View(Size size) {
@@ -7,7 +8,7 @@ Widget Game_Special_View(Size size) {
     padding: const EdgeInsets.all(8.0),
     child: Container(
       width: size.width * 0.9,
-      height: size.height * 0.55,
+      height: 700.h,
       //추후 ListView Builder로 변경
       child: ListView(
         children: [

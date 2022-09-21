@@ -136,7 +136,7 @@ class _Value_ContainerState extends State<Value_Container> {
                 : Container(
                     margin: EdgeInsets.fromLTRB(15.w, 16.h, 15.w, 0.h),
                     width: 330.w,
-                    height: 52.h,
+                    height: 60.h,
                     child: Row(
                       children: [
                         Column(

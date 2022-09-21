@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget Inventory_CarBoxes_Card(
     Size size,
@@ -15,8 +16,8 @@ Widget Inventory_CarBoxes_Card(
     children: [
 
       Container(
-        width: size.width * 0.41,
-        height: size.height * 0.27,
+        width: 175.w,
+        height: 200.h,
         decoration: BoxDecoration(
           border: Border.all(color: Colors.red),
           borderRadius: BorderRadius.all(
@@ -28,56 +29,55 @@ Widget Inventory_CarBoxes_Card(
           children: [
 
             //car img
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            Container(
+              margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
+
+              width:82.w,
+              height: 100.h,
               child: Image.asset(
                 "assets/images/inventory/car_boxes/$badge_title.png",
-                width: size.width * 0.21,
+
               ),
             ),
             //nftID
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                width: size.width * 0.23,
-                height: size.height * 0.03,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.all(
-                      Radius.circular(30.0) //         <--- border radius here
-                  ),
+            Container(
+              width: 76.w,
+              height:24.h,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.all(
+                    Radius.circular(30.0) //         <--- border radius here
                 ),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 3.0),
-                      child: Container(
-                        width: size.width * 0.04,
-                        height: size.height * 0.04,
-                        decoration: BoxDecoration(
-                            color: Colors.orange, shape: BoxShape.circle),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: size.width * 0.0073,
-                            ),
-                            Text(
-                              "#",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ],
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(1.w, 1.h, 1.w, 1.h),
+
+                    width:24.w,
+                    height: 24.h,
+                    decoration: BoxDecoration(
+                        color: Colors.orange, shape: BoxShape.circle),
+                    child: Row(
+                      children: [
+
+                        Container(
+                          margin: EdgeInsets.fromLTRB(8.5.w, 1.h, 0.w, 0.h),
+
+                          child: Text(
+                            "#",
+                            style: TextStyle(color: Colors.white,fontSize: 10),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                    SizedBox(
-                      width: size.width * 0.02,
-                    ),
-                    Text(
-                      "$nft_id",
-                      style: TextStyle(fontSize: 12),
-                    )
-                  ],
-                ),
+                  ),
+
+                  Text(
+                    "$nft_id",
+                    style: TextStyle(fontSize: 12),
+                  )
+                ],
               ),
             ),
             //Level
@@ -85,6 +85,8 @@ Widget Inventory_CarBoxes_Card(
           ],
         ),
       ),
+
+      //추후 badge 이미지 받으면 변경
       Positioned(
         right: size.width*0.265,
         child: Image.asset("assets/images/common/cars/badge.png",width: size.width*0.17,),

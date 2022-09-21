@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'Inventory_Cars_Card.dart';
 
 Widget Inventory_Cars_View(Size size){
@@ -6,8 +7,8 @@ Widget Inventory_Cars_View(Size size){
     child: Padding(
       padding: const EdgeInsets.all(0.0),
       child: Container(
-        width: size.width*1,
-        height: size.height*0.6,
+        width: 360.w,
+        height: 700.h,
         child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
@@ -31,7 +32,7 @@ Widget Inventory_Cars_View(Size size){
                 //     int Repair_value,
                 //     int distance)
                 child: Inventory_Car_Card(
-                    size, "SPORTS", 3, 12345, 10, 13, 14, 15, 16, 13),
+                    size,context, "SPORTS", 3, 12345, 10, 13, 14, 15, 16, 13),
               );
             }
         ),

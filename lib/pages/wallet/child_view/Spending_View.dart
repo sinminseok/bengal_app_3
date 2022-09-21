@@ -1,59 +1,62 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:page_transition/page_transition.dart';
 import '../../../types/constants.dart';
 import 'Spending_bottom_container.dart';
+import 'Transfer_Password_View.dart';
 
 Widget Spending_View(
-    Size size, double xper_value, double per_value, double hvh_value) {
+    Size size,BuildContext context, double xper_value, double per_value, double hvh_value) {
   return Column(
-    mainAxisAlignment: MainAxisAlignment.end,
+
     children: [
       Container(
-        width: size.width * 0.9,
-        height: size.height * 0.3,
+        margin: EdgeInsets.fromLTRB(15.w, 23.h, 15.w, 0.h),
+
+        width: 360.w,
+        height: 230.h,
         child: ListView(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0, bottom: 1.3),
-              child: Container(
-                height: size.height * 0.084,
-                width: size.width * 0.9,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Image.asset(
-                      "assets/images/lobby/icons/appbar_icons/xper_icon.png",
-                      width: size.width * 0.08,
+            Container(
+              height: 56.h,
+              width: size.width * 0.9,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Image.asset(
+                    "assets/images/lobby/icons/appbar_icons/xper_icon.png",
+                    width: 30.w,
+                    height: 30.h,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "XPER",
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "XPER",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey),
-                      ),
-                    ),
-                    SizedBox(
-                      width: size.width * 0.47,
-                    ),
-                    Text(
-                      "$xper_value",
-                      style: TextStyle(fontSize: 16, color: Colors.grey),
-                    )
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    width: size.width * 0.47,
+                  ),
+                  Text(
+                    "$xper_value",
+                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                  )
+                ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0, bottom: 1.3),
               child: Container(
-                height: size.height * 0.084,
+                height: 56.h,
                 width: size.width * 0.9,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -91,7 +94,7 @@ Widget Spending_View(
             Padding(
               padding: const EdgeInsets.only(top: 8.0, bottom: 1.3),
               child: Container(
-                height: size.height * 0.084,
+                height: 56.h,
                 width: size.width * 0.9,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -129,16 +132,27 @@ Widget Spending_View(
           ],
         ),
       ),
-      SizedBox(
-        height: size.height * 0.03,
+
+      InkWell(
+        onTap: (){
+          Navigator.push(
+              context,
+              PageTransition(
+                  type: PageTransitionType.fade,
+                  child: Transfer_Password_View(
+
+                  )));
+        },
+        child: Container(
+          margin: EdgeInsets.only(bottom: 60.h),
+          child: Image.asset(
+            "assets/images/wallet/icons/transfer_button.png",
+            width: 175.w,
+            height: 46.h,
+          ),
+        ),
       ),
-      Image.asset(
-        "assets/images/wallet/icons/transfer_button.png",
-        width: size.width * 0.4,
-      ),
-      SizedBox(
-        height: size.height * 0.03,
-      ),
+
       Spending_bottom_container()
     ],
   );
