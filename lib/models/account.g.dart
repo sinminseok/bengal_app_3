@@ -14,10 +14,7 @@ Account _$AccountFromJson(Map<String, dynamic> json) => Account(
       json['twoFaKey'] as String,
       DateTime.parse(json['createdAt'] as String),
       DateTime.parse(json['updatedAt'] as String),
-      json['enabled'] as bool,
-      json['maxPower'] as int,
-      json['dailyPower'] as int,
-      DateTime.parse(json['timeToMaxPower'] as String),
+      json['enabled'] as bool? ?? true,
     );
 
 Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
@@ -29,7 +26,15 @@ Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
       'enabled': instance.enabled,
-      'maxPower': instance.maxPower,
-      'dailyPower': instance.dailyPower,
-      'timeToMaxPower': instance.timeToMaxPower.toIso8601String(),
+    };
+
+AccountList _$AccountListFromJson(Map<String, dynamic> json) => AccountList(
+      (json['list'] as List<dynamic>)
+          .map((e) => Account.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$AccountListToJson(AccountList instance) =>
+    <String, dynamic>{
+      'list': instance.list,
     };

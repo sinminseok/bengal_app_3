@@ -1,44 +1,34 @@
 {
-  "Version": 2022091201,
-  "accountList": [
+  "list": [
     {
       "id": 1,
       "password": "1",
-      "email": "abc@naver.com",
+      "email": "1",
       "name": "1",
       "twoFaKey": "adf3fe4566ff",
       "createdAt": "2022-09-02 03:04:05",
       "updatedAt": "2022-09-05 03:04:05",
-      "enabled": true,
-      "maxPower": 10000,
-      "dailyPower": 200,
-      "timeToMaxPower": "1900-01-01 00:05:00"
+      "enabled": true
     },
     {
       "id": 2,
       "password": "2",
-      "email": "abc@naver.com",
+      "email": "2",
       "name": "2",
       "twoFaKey": "adf3fe4566ff",
       "createdAt": "2022-09-02 03:04:05",
       "updatedAt": "2022-09-05 03:04:05",
-      "enabled": true,
-      "maxPower": 10000,
-      "dailyPower": 200,
-      "timeToMaxPower": "1900-01-01 00:05:00"
+      "enabled": true
     },
     {
       "id": 3,
       "password": "3",
-      "email": "abc@naver.com",
+      "email": "3",
       "name": "3",
       "twoFaKey": "adf3fe4566ff",
       "createdAt": "2022-09-02 03:04:05",
       "updatedAt": "2022-09-05 03:04:05",
-      "enabled": true,
-      "maxPower": 10000,
-      "dailyPower": 200,
-      "timeToMaxPower": "1900-01-01 00:05:00"
+      "enabled": true
     }
   ]
 }

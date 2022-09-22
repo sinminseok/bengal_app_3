@@ -25,7 +25,7 @@ class LoginPageState extends State<LoginPage> {
 
   final FocusNode _focusNode = FocusNode();
 
-  final mailController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   @override
@@ -87,7 +87,7 @@ class LoginPageState extends State<LoginPage> {
                     duration: const Duration(microseconds: 500),
                   );
                 },
-                controller: mailController),
+                controller: emailController),
           ),
           Container(
             margin: EdgeInsets.fromLTRB(15.w, 15.h, 15.w, 0.h),
@@ -184,7 +184,7 @@ class LoginPageState extends State<LoginPage> {
                   ),
                   onTap: () {
                     if (!AccountController()
-                        .signIn(mailController.text, passwordController.text)) {
+                        .signIn(emailController.text, passwordController.text)) {
                       Fluttertoast.showToast(
                           msg: 'Login Fail',
                           backgroundColor: Colors.grey,

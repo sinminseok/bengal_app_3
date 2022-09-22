@@ -23,3 +23,14 @@ Map<String, dynamic> _$WalletToJson(Wallet instance) => <String, dynamic>{
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
     };
+
+WalletList _$WalletListFromJson(Map<String, dynamic> json) => WalletList(
+      (json['list'] as List<dynamic>)
+          .map((e) => Wallet.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$WalletListToJson(WalletList instance) =>
+    <String, dynamic>{
+      'list': instance.list,
+    };

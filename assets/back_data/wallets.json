@@ -1,9 +1,8 @@
 {
-  "Version": 2022091201,
-  "walletList": [
+  "list": [
     {
       "id": 234111,
-      "accountId": 123111,
+      "accountId": 1,
       "balancePer": 7745.34,
       "balanceXPer": 496678.06,
       "createdAt": "2022-09-02 03:04:05",
@@ -11,7 +10,7 @@
     },
     {
       "id": 234112,
-      "accountId": 123112,
+      "accountId": 2,
       "balancePer": 3445.34,
       "balanceXPer": 546699.06,
       "createdAt": "2022-09-02 03:04:05",
@@ -19,7 +18,7 @@
     },
     {
       "id": 234113,
-      "accountId": 123113,
+      "accountId": 3,
       "balancePer": 9645.34,
       "balanceXPer": 766698.06,
       "createdAt": "2022-09-02 03:04:05",

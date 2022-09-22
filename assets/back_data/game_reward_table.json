@@ -1,6 +1,5 @@
 {
-  "Version": 2022091201,
-  "gameRewardList": [
+  "list": [
     {
       "game": 1,
       "reward": 1

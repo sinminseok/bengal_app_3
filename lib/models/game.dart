@@ -3,29 +3,36 @@ part 'game.g.dart';
 
 @JsonSerializable()
 class GameInfo {
-  late int id;
-  late String title;
+  final int id;
+  final String title;
 
-  GameInfo(
-      this.id,
-      this.title,
-      );
+  GameInfo(this.id,this.title);
 
   factory GameInfo.fromJson(Map<String, dynamic> json) => _$GameInfoFromJson(json);
   Map<String, dynamic> toJson() => _$GameInfoToJson(this);
 }
 
 @JsonSerializable()
+class GameInfoList {
+  final List<GameInfo> list;
+
+  GameInfoList(this.list);
+
+  factory GameInfoList.fromJson(Map<String, dynamic> json) => _$GameInfoListFromJson(json);
+  Map<String, dynamic> toJson() => _$GameInfoListToJson(this);
+}
+
+@JsonSerializable()
 class GameReward {
-  late int id;
-  late double perPerDay;
-  late double perPerPower;
-  late double xPerPerDay;
-  late double xPerPerPower;
-  late List<int /*CarModel.id*/ > carModelList;
-  late int grade;
-  late int level;
-  late DateTime dueTime;
+  final int id;
+  final double perPerDay;
+  final double perPerPower;
+  final double xPerPerDay;
+  final double xPerPerPower;
+  final List<int /*CarModel.id*/ > carModelList;
+  final int grade;
+  final int level;
+  final DateTime dueTime;
 
   GameReward(
       this.id,
@@ -44,15 +51,32 @@ class GameReward {
 }
 
 @JsonSerializable()
-class GameRewardTable {
-  late int game;
-  late int reward;
+class GameRewardList {
+  final List<GameReward> list;
 
-  GameRewardTable(
-      this.game,
-      this.reward,
-      );
+  GameRewardList(this.list);
+
+  factory GameRewardList.fromJson(Map<String, dynamic> json) => _$GameRewardListFromJson(json);
+  Map<String, dynamic> toJson() => _$GameRewardListToJson(this);
+}
+
+@JsonSerializable()
+class GameRewardTable {
+  final int game;
+  final int reward;
+
+  GameRewardTable(this.game, this.reward);
 
   factory GameRewardTable.fromJson(Map<String, dynamic> json) => _$GameRewardTableFromJson(json);
   Map<String, dynamic> toJson() => _$GameRewardTableToJson(this);
+}
+
+@JsonSerializable()
+class GameRewardTableList {
+  final List<GameRewardTable> list;
+
+  GameRewardTableList(this.list);
+
+  factory GameRewardTableList.fromJson(Map<String, dynamic> json) => _$GameRewardTableListFromJson(json);
+  Map<String, dynamic> toJson() => _$GameRewardTableListToJson(this);
 }

@@ -1,6 +1,5 @@
 {
-  "Version": 2022091201,
-  "todaysEarnList": [
+  "list": [
     {
       "account_id": 1,
       "max_charge": 2000.99,
