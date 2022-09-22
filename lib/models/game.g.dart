@@ -16,6 +16,17 @@ Map<String, dynamic> _$GameInfoToJson(GameInfo instance) => <String, dynamic>{
       'title': instance.title,
     };
 
+GameInfoList _$GameInfoListFromJson(Map<String, dynamic> json) => GameInfoList(
+      (json['list'] as List<dynamic>)
+          .map((e) => GameInfo.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$GameInfoListToJson(GameInfoList instance) =>
+    <String, dynamic>{
+      'list': instance.list,
+    };
+
 GameReward _$GameRewardFromJson(Map<String, dynamic> json) => GameReward(
       json['id'] as int,
       (json['perPerDay'] as num).toDouble(),
@@ -41,6 +52,18 @@ Map<String, dynamic> _$GameRewardToJson(GameReward instance) =>
       'dueTime': instance.dueTime.toIso8601String(),
     };
 
+GameRewardList _$GameRewardListFromJson(Map<String, dynamic> json) =>
+    GameRewardList(
+      (json['list'] as List<dynamic>)
+          .map((e) => GameReward.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$GameRewardListToJson(GameRewardList instance) =>
+    <String, dynamic>{
+      'list': instance.list,
+    };
+
 GameRewardTable _$GameRewardTableFromJson(Map<String, dynamic> json) =>
     GameRewardTable(
       json['game'] as int,
@@ -51,4 +74,17 @@ Map<String, dynamic> _$GameRewardTableToJson(GameRewardTable instance) =>
     <String, dynamic>{
       'game': instance.game,
       'reward': instance.reward,
+    };
+
+GameRewardTableList _$GameRewardTableListFromJson(Map<String, dynamic> json) =>
+    GameRewardTableList(
+      (json['list'] as List<dynamic>)
+          .map((e) => GameRewardTable.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$GameRewardTableListToJson(
+        GameRewardTableList instance) =>
+    <String, dynamic>{
+      'list': instance.list,
     };

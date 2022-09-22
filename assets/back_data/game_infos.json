@@ -1,6 +1,5 @@
 {
-  "Version": 2022091201,
-  "gameList": [
+  "list": [
     {
       "id": 1,
       "title": "game1"

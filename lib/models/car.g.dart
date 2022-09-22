@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'car_nft.dart';
+part of 'car.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -40,6 +40,17 @@ Map<String, dynamic> _$CarModelToJson(CarModel instance) => <String, dynamic>{
       'mintedFormTableId': instance.mintedFormTableId,
     };
 
+CarModelList _$CarModelListFromJson(Map<String, dynamic> json) => CarModelList(
+      (json['list'] as List<dynamic>)
+          .map((e) => CarModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$CarModelListToJson(CarModelList instance) =>
+    <String, dynamic>{
+      'list': instance.list,
+    };
+
 CarNft _$CarNftFromJson(Map<String, dynamic> json) => CarNft(
       json['id'] as int,
       json['modelId'] as int,
@@ -70,6 +81,17 @@ Map<String, dynamic> _$CarNftToJson(CarNft instance) => <String, dynamic>{
       'burnedAt': instance.burnedAt.toIso8601String(),
     };
 
+CarNftList _$CarNftListFromJson(Map<String, dynamic> json) => CarNftList(
+      (json['nftList'] as List<dynamic>)
+          .map((e) => CarNft.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$CarNftListToJson(CarNftList instance) =>
+    <String, dynamic>{
+      'nftList': instance.nftList,
+    };
+
 CarMintingTable _$CarMintingTableFromJson(Map<String, dynamic> json) =>
     CarMintingTable(
       json['id'] as int,
@@ -82,4 +104,17 @@ Map<String, dynamic> _$CarMintingTableToJson(CarMintingTable instance) =>
       'id': instance.id,
       'mintedCarList': instance.mintedCarList,
       'mintCarList': instance.mintCarList,
+    };
+
+CarMintingTableList _$CarMintingTableListFromJson(Map<String, dynamic> json) =>
+    CarMintingTableList(
+      (json['list'] as List<dynamic>)
+          .map((e) => CarMintingTable.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$CarMintingTableListToJson(
+        CarMintingTableList instance) =>
+    <String, dynamic>{
+      'list': instance.list,
     };

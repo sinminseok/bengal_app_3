@@ -1,38 +1,43 @@
 import 'dart:convert';
-import 'package:bengal_app/common/back_data/wallet_manager.dart';
 import "package:flutter/services.dart";
-import '../../models/account.dart';
-import '../../models/wallet.dart';
-import 'account_manager.dart';
-import 'box_nft_manager.dart';
-import 'car_nft_manager.dart';
-import 'game_manager.dart';
-import 'gem_nft_manager.dart';
+import '../models/account.dart';
+import '../models/box.dart';
+import '../models/car.dart';
+import '../models/common_data.dart';
+import '../models/game.dart';
+import '../models/gem.dart';
+import '../models/wallet.dart';
 
 class BackDataManager {
   static final BackDataManager _instance = BackDataManager._internal();
 
-  AccountList accountList = AccountList();
-  WalletList walletList = WalletList();
+  late AccountList accountList;
+  late WalletList walletList;
 
-  CarModelList carModelList = CarModelList();
-  CarNftList carNftList = CarNftList();
-  CarMintingTableList carMintingTableList = CarMintingTableList();
+  late CarModelList carModelList;
+  late CarNftList carNftList;
+  late CarMintingTableList carMintingTableList;
 
-  BoxModelList boxModelList = BoxModelList();
-  BoxNftList boxNftList = BoxNftList();
-  BoxMintingTableList boxMintingTableList = BoxMintingTableList();
+  late BoxModelList boxModelList;
+  late BoxNftList boxNftList;
+  late BoxMintingTableList boxMintingTableList;
 
-  GemModelList gemModelList = GemModelList();
-  GemNftList gemNftList = GemNftList();
-  GemMintingTableList gemMintingTableList = GemMintingTableList();
+  late GemModelList gemModelList;
+  late GemNftList gemNftList;
+  late GemMintingTableList gemMintingTableList;
 
-  GameList gameList = GameList();
-  GameRewardList gameRewardList = GameRewardList();
-  GameRewardTableList gameRewardTableList = GameRewardTableList();
+  late GameInfoList gameList;
+  late GameRewardList gameRewardList;
+  late GameRewardTableList gameRewardTableList;
+
+  late CommonData commonData;
 
   factory BackDataManager() {
     return _instance;
+  }
+
+  BackDataManager._internal() {
+    _loadData();
   }
 
   Future<void> _loadData() async {
@@ -73,7 +78,7 @@ class BackDataManager {
         .decode(await rootBundle.loadString("assets/back_data/gem_minting_table.json")));
 
 
-    gameList = GameList.fromJson(await json
+    gameList = GameInfoList.fromJson(await json
         .decode(await rootBundle.loadString("assets/back_data/game_infos.json")));
 
     gameRewardList = GameRewardList.fromJson(await json
@@ -81,13 +86,9 @@ class BackDataManager {
 
     gameRewardTableList = GameRewardTableList.fromJson(await json
         .decode(await rootBundle.loadString("assets/back_data/game_reward_table.json")));
+
+    commonData = CommonData.fromJson(await json
+        .decode(await rootBundle.loadString("assets/back_data/common_data.json")));
   }
 
-  BackDataManager._internal() {
-    _loadData();
-  }
-
-  //Account? signIn(String name, String password) => accountList.signIn(name, password);
-  //Account? getAccountToId(int id) => accountList.get(id);
-  Wallet? getWallet(int accountId) => walletList.get(accountId);
 }

@@ -2,7 +2,8 @@ import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:get/get_navigation/src/root/get_material_app.dart";
 import 'package:provider/provider.dart';
-import 'common/back_data/back_data_manager.dart';
+import 'Controller/back_data_controller.dart';
+import 'Controller/storage_controller.dart';
 import "common/string_configuration.dart";
 import 'models/test_viewmodel.dart';
 import "pages/login/landing_page.dart";
@@ -23,9 +24,10 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     StringConfiguration();
     BackDataManager();
+    StorageController();
 
     return ScreenUtilInit(
-      designSize: const Size(390, 844),
+      designSize: const Size(390, 810),
       minTextAdapt: true,
       splitScreenMode: false,
       builder: (context, child) {
