@@ -82,14 +82,14 @@ Map<String, dynamic> _$CarNftToJson(CarNft instance) => <String, dynamic>{
     };
 
 CarNftList _$CarNftListFromJson(Map<String, dynamic> json) => CarNftList(
-      (json['nftList'] as List<dynamic>)
+      (json['list'] as List<dynamic>)
           .map((e) => CarNft.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$CarNftListToJson(CarNftList instance) =>
     <String, dynamic>{
-      'nftList': instance.nftList,
+      'list': instance.list,
     };
 
 CarMintingTable _$CarMintingTableFromJson(Map<String, dynamic> json) =>
