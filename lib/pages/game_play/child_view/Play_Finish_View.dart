@@ -1,8 +1,10 @@
 import 'dart:ui';
 
+import 'package:bengal_app/pages/game_play/child_view/Play_Result_View.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../common/string_configuration.dart';
@@ -349,12 +351,23 @@ class _Play_Finish_View extends State<Play_Finish_View> {
                       },
                       child: Image.asset("assets/images/game/finish_button.png")),
                 ),
-                Container(
+                InkWell(
+                  onTap: (){
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.fade,
+                            child: Play_Result_View(
+
+                            )));
+                  },
+                  child: Container(
 
 
-                  width: 176.w,
-                  height: 50.h,
-                  child: Image.asset("assets/images/game/finish_button.png"),
+                    width: 176.w,
+                    height: 50.h,
+                    child: Image.asset("assets/images/game/finish_button.png"),
+                  ),
                 )
               ],
             ),

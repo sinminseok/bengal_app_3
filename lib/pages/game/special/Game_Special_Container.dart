@@ -7,7 +7,7 @@ Widget Game_Special_Container(Size size) {
   return Padding(
     padding: const EdgeInsets.only(top: 8.0),
     child: Container(
-      width: size.width * 0.9,
+      width: 360.w,
       height: 200.h,
       decoration:
           BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -33,7 +33,7 @@ Widget Game_Special_Container(Size size) {
                       children: [
                         Image.asset(
                           "assets/images/lobby/icons/appbar_icons/xper_icon.png",
-                          width: size.width * 0.05,
+                          width: 16.w,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(3.0),
@@ -51,7 +51,7 @@ Widget Game_Special_Container(Size size) {
                       children: [
                         Image.asset(
                           "assets/images/lobby/icons/appbar_icons/per_icon.png",
-                          width: size.width * 0.05,
+                          width: 16.w,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(3.0),
@@ -69,7 +69,7 @@ Widget Game_Special_Container(Size size) {
                 margin: EdgeInsets.only(bottom: 60.h),
                 child: Text(
                   "Until datetime",
-                  style: TextStyle(color: kPrimaryColor, fontSize: 13),
+                  style: TextStyle(color: kPrimaryColor, fontSize: 10),
                 ),
               ),
             ],
@@ -92,7 +92,7 @@ Widget Game_Special_Container(Size size) {
                     children: [
                       Container(
                         margin: EdgeInsets.fromLTRB(1.w, 7.h, 15.w, 7.h),
-                        width: size.width * 0.25,
+                        width: 93.w,
                         height: 34.h,
                         decoration: BoxDecoration(
                             color: Colors.grey.shade200,
@@ -109,19 +109,20 @@ Widget Game_Special_Container(Size size) {
                           children: [
                             Image.asset(
                               "assets/images/game/icons/car1.png",
-                              width: size.width * 0.08,
+                              width: 23.w,
+
                             ),
                             Image.asset(
                               "assets/images/game/icons/car2.png",
-                              width: size.width * 0.08,
+                              width: 23.w,
                             ),
                             Image.asset(
                               "assets/images/game/icons/car3.png",
-                              width: size.width * 0.08,
+                              width: 23.w,
                             ),
                             Image.asset(
                               "assets/images/game/icons/car4.png",
-                              width: size.width * 0.08,
+                              width: 23.w,
                             )
                           ],
                         ),
@@ -130,7 +131,7 @@ Widget Game_Special_Container(Size size) {
                   ),
                 ),
                 Container(
-                  width: size.width * 0.9,
+                  width: 360.w,
                   height: 46.h,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade300),
@@ -157,14 +158,18 @@ Widget Game_Special_Container(Size size) {
                           ],
                         ),
                       ),
-                      Image.asset(
-                        "assets/images/lobby/icons/appbar_icons/per_icon.png",
-                        width: 20.w,
-                        height: 20.h,
+                      Container(
+                        margin: EdgeInsets.fromLTRB(1.w, 3.h, 6.w, 0.h),
+
+                        child: Image.asset(
+                          "assets/images/lobby/icons/appbar_icons/per_icon.png",
+                          width: 20.w,
+                          height: 20.h,
+                        ),
                       ),
                       Text(
                         "999,1010 Per",
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),

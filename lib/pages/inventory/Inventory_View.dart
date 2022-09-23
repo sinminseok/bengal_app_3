@@ -34,7 +34,7 @@ class _Inventory_ViewState extends State<Inventory_View> {
           children: [
             //Selected_Bar
             Container(
-              width: 360.w,
+              width: 390.w,
               height: 110.h,
               decoration: BoxDecoration(
                 border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
@@ -62,6 +62,7 @@ class _Inventory_ViewState extends State<Inventory_View> {
                               color: Cars_selected != true
                                   ? Colors.white
                                   : kPrimaryColor,
+                              border: Border.all(color: Colors.grey.shade400),
                               borderRadius:
                               BorderRadius.all(Radius.circular(10))),
                           child: Center(
@@ -88,7 +89,7 @@ class _Inventory_ViewState extends State<Inventory_View> {
                           width: 86.w,
                           height: 34.h,
                           decoration: BoxDecoration(
-
+                              border: Border.all(color: Colors.grey.shade400),
                               color: Car_Boxes_selected != true
                                   ? Colors.white
                                   : kPrimaryColor,
@@ -118,7 +119,7 @@ class _Inventory_ViewState extends State<Inventory_View> {
                           width: 86.w,
                           height: 34.h,
                           decoration: BoxDecoration(
-
+                              border: Border.all(color: Colors.grey.shade400),
                               color: Gems_selected != true
                                   ? Colors.white
                                   : kPrimaryColor,
@@ -148,7 +149,7 @@ class _Inventory_ViewState extends State<Inventory_View> {
                           width: 86.w,
                           height: 34.h,
                           decoration: BoxDecoration(
-
+                              border: Border.all(color: Colors.grey.shade400),
 
                               color: Others_selected != true
                                   ? Colors.white

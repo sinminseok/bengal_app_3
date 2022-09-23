@@ -1,10 +1,11 @@
+import 'package:bengal_app/pages/wallet/popup/address_popup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../types/constants.dart';
-import 'child_view/Spending_View.dart';
-import 'child_view/Wallet_Account_View.dart';
+import 'child_view/spending/Spending_View.dart';
+import 'child_view/wallet/Wallet_Account_View.dart';
 
 class Wallet_View extends StatefulWidget {
   const Wallet_View({Key? key}) : super(key: key);
@@ -151,11 +152,16 @@ class _Wallet_ViewState extends State<Wallet_View> {
                                 fontSize: 18),
                           ),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(top: 20.h),
-                          child: Image.asset(
-                            "assets/images/wallet/icons/question_icon.png",
-                            width: size.width * 0.06,
+                        InkWell(
+                          onTap: (){
+                            Address_popup().showDialog_question(size,context);
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(top: 20.h),
+                            child: Image.asset(
+                              "assets/images/wallet/icons/question_icon.png",
+                              width: size.width * 0.06,
+                            ),
                           ),
                         )
                       ],
@@ -176,11 +182,16 @@ class _Wallet_ViewState extends State<Wallet_View> {
                           fontSize: 18),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(top: 20.h),
-                    child: Image.asset(
-                      "assets/images/wallet/icons/question_icon.png",
-                      width: size.width * 0.06,
+                  InkWell(
+                    onTap: (){
+                      Address_popup().showDialog_question(size,context);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(top: 20.h),
+                      child: Image.asset(
+                        "assets/images/wallet/icons/question_icon.png",
+                        width: size.width * 0.06,
+                      ),
                     ),
                   )
                 ],

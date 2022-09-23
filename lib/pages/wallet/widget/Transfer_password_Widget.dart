@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../../types/constants.dart';
-import '../child_view/Transfer_View.dart';
+import '../child_view/transfer/Transfer_View.dart';
 
 class Wallet_Transfer_password_Widget extends StatefulWidget {
   const Wallet_Transfer_password_Widget({Key? key}) : super(key: key);

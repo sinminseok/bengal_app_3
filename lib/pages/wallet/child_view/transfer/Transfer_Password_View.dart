@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
-import '../../../types/constants.dart';
-import '../widget/Transfer_password_Widget.dart';
+import '../../../../types/constants.dart';
+import '../../widget/Transfer_password_Widget.dart';
 
 
 

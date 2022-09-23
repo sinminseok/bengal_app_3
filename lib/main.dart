@@ -4,15 +4,12 @@ import "package:get/get_navigation/src/root/get_material_app.dart";
 import 'package:provider/provider.dart';
 import 'common/back_data/back_data_manager.dart';
 import "common/string_configuration.dart";
-import 'models/test_viewmodel.dart';
+
 import "pages/login/landing_page.dart";
 
 void main() {
   runApp(
-    MultiProvider(providers: [
-      ChangeNotifierProvider(create: (context) => Http_services()),
-
-    ], child: MainApp()),
+      MainApp()
   );
 }
 

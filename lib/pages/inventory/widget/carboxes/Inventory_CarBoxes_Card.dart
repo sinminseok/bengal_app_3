@@ -2,24 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget Inventory_CarBoxes_Card(
-    Size size,
+
+    Color color,
     String badge_title,
+    String grade,
     int nft_id,
     // Colors colors,
 
   ) {
 
-  const card_color = Colors.red;
+
 
   return Stack(
     clipBehavior: Clip.none,
     children: [
 
       Container(
-        width: 175.w,
-        height: 200.h,
+        width: 170.w,
+        height: 160.h,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.red),
+          border: Border.all(color: color),
           borderRadius: BorderRadius.all(
               Radius.circular(6.0) //         <--- border radius here
           ),
@@ -30,7 +32,7 @@ Widget Inventory_CarBoxes_Card(
 
             //car img
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
+              margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 0.h),
 
               width:82.w,
               height: 100.h,
@@ -57,7 +59,7 @@ Widget Inventory_CarBoxes_Card(
                     width:24.w,
                     height: 24.h,
                     decoration: BoxDecoration(
-                        color: Colors.orange, shape: BoxShape.circle),
+                        color: color, shape: BoxShape.circle),
                     child: Row(
                       children: [
 
@@ -88,17 +90,13 @@ Widget Inventory_CarBoxes_Card(
 
       //추후 badge 이미지 받으면 변경
       Positioned(
-        right: size.width*0.265,
-        child: Image.asset("assets/images/common/cars/badge.png",width: size.width*0.17,),
+        right: 110.w,
+        child: Image.asset("assets/images/common/tags/tag_$grade.png",width: 65.w,),
       ),
+
       Positioned(
-        top: size.height*0.013,
-        right: size.width*0.41,
-        child: Image.asset("assets/images/common/cars/badge_bottom.png",width: size.width*0.02,height: size.height*0.05,fit: BoxFit.fitWidth,),
-      ),
-      Positioned(
-          right: size.width*0.3,
-          top: size.height*0.005,
+          right: 140.w,
+          top: 5.h,
           child: Text("$badge_title",style: TextStyle(fontSize: 12,color: Colors.white),)
       ),
     ],

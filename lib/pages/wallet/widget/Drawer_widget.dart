@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../types/constants.dart';
 
-Widget Drawer_Coin_Widet(Size size){
+Widget Drawer_Coin_Widet(Size size,int xper_value,int per_value,int hvh_value){
   return Column(
     children: [
       Padding(
@@ -37,7 +37,7 @@ Widget Drawer_Coin_Widet(Size size){
                   width: size.width * 0.3,
                 ),
                 Text(
-                  "Valye",
+                  "$xper_value",
                   style: TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.bold,
@@ -78,7 +78,7 @@ Widget Drawer_Coin_Widet(Size size){
                   width: size.width * 0.3,
                 ),
                 Text(
-                  "Valye",
+                  "$per_value",
                   style: TextStyle(
                       color: kPerColor,
                       fontWeight: FontWeight.bold,
@@ -119,7 +119,7 @@ Widget Drawer_Coin_Widet(Size size){
                   width: size.width * 0.3,
                 ),
                 Text(
-                  "Valye",
+                  "$hvh_value",
                   style: TextStyle(
                       color: kCharColor,
                       fontWeight: FontWeight.bold,

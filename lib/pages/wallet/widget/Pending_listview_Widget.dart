@@ -5,8 +5,8 @@ import 'Sent_and_Receive_Widget.dart';
 
 Widget Pending_listview(Size size){
   return Container(
-
-    width: size.width*0.9,
+    margin: EdgeInsets.fromLTRB(3.w, 20.h, 5.w, 3.h),
+    width: 360.w,
     height: 200.h,
     //추후 ListView builder로 변경
     child: ListView(

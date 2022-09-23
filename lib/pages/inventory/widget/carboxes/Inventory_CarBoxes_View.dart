@@ -12,8 +12,8 @@ Widget Inventory_CarBoxes_View(Size size){
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing:1.w,
-            mainAxisSpacing: 2.h,
-            childAspectRatio: 1 / 1,
+            mainAxisSpacing: 1.h,
+            childAspectRatio: 1.h / 1.h,
           ),
           itemCount: 10,
           // shrinkWrap: true,
@@ -31,7 +31,7 @@ Widget Inventory_CarBoxes_View(Size size){
               //     int Repair_value,
               //     int distance)
               child: Inventory_CarBoxes_Card(
-                  size, "RARE", 12345),
+                  Colors.blue, "RARE","rare", 12345),
             );
           }
       ),

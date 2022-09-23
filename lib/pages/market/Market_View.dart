@@ -1,5 +1,6 @@
 import 'package:bengal_app/pages/market/widget/cars/Market_Cars_View.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../types/constants.dart';
 import '../inventory/widget/dropdown_button/DropdownButton2.dart';
 
@@ -32,17 +33,18 @@ class _Market_ViewState extends State<Market_View> {
           children: [
             //Selected_Bar
             Container(
-              width: size.width * 11,
-              height: size.height * 0.21,
+              width: 390.w,
+              height: 105.h,
               decoration: BoxDecoration(
                 border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
               ),
               child: Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      Container(
+
                         child: InkWell(
                           onTap: () {
                             setState(() {
@@ -53,18 +55,10 @@ class _Market_ViewState extends State<Market_View> {
                             });
                           },
                           child: Container(
-                            width: size.width * 0.2,
-                            height: size.height * 0.065,
+                            width: 86.w,
+                            height: 34.h,
                             decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.4),
-                                    spreadRadius: 2,
-                                    blurRadius: 2,
-                                    offset: Offset(
-                                        0, 1), // changes position of shadow
-                                  ),
-                                ],
+                                border: Border.all(color: Colors.grey.shade300),
                                 color: Cars_selected != true
                                     ? Colors.white
                                     : kPrimaryColor,
@@ -82,8 +76,8 @@ class _Market_ViewState extends State<Market_View> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      Container(
+
                         child: InkWell(
                           onTap: () {
                             setState(() {
@@ -94,18 +88,10 @@ class _Market_ViewState extends State<Market_View> {
                             });
                           },
                           child: Container(
-                            width: size.width * 0.2,
-                            height: size.height * 0.065,
+                            width: 86.w,
+                            height: 34.h,
                             decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.4),
-                                    spreadRadius: 2,
-                                    blurRadius: 2,
-                                    offset: Offset(
-                                        0, 1), // changes position of shadow
-                                  ),
-                                ],
+                                border: Border.all(color: Colors.grey.shade300),
                                 color: Car_Boxes_selected != true
                                     ? Colors.white
                                     : kPrimaryColor,
@@ -123,8 +109,8 @@ class _Market_ViewState extends State<Market_View> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      Container(
+
                         child: InkWell(
                           onTap: () {
                             setState(() {
@@ -135,18 +121,10 @@ class _Market_ViewState extends State<Market_View> {
                             });
                           },
                           child: Container(
-                            width: size.width * 0.2,
-                            height: size.height * 0.065,
+                            width: 86.w,
+                            height: 34.h,
                             decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.4),
-                                    spreadRadius: 2,
-                                    blurRadius: 2,
-                                    offset: Offset(
-                                        0, 1), // changes position of shadow
-                                  ),
-                                ],
+                                border: Border.all(color: Colors.grey.shade300),
                                 color: Gems_selected != true
                                     ? Colors.white
                                     : kPrimaryColor,
@@ -164,8 +142,8 @@ class _Market_ViewState extends State<Market_View> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      Container(
+
                         child: InkWell(
                           onTap: () {
                             setState(() {
@@ -176,18 +154,10 @@ class _Market_ViewState extends State<Market_View> {
                             });
                           },
                           child: Container(
-                            width: size.width * 0.2,
-                            height: size.height * 0.065,
+                            width: 86.w,
+                            height: 34.h,
                             decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.4),
-                                    spreadRadius: 2,
-                                    blurRadius: 2,
-                                    offset: Offset(
-                                        0, 1), // changes position of shadow
-                                  ),
-                                ],
+                                border: Border.all(color: Colors.grey.shade300),
                                 color: Others_selected != true
                                     ? Colors.white
                                     : kPrimaryColor,
@@ -208,9 +178,13 @@ class _Market_ViewState extends State<Market_View> {
                     ],
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+
+                        width:120.w,
+                        height: 40.h,
                         child: CustomDropdownButton2(
                           hint: 'Lowest Level',
                           dropdownItems: items,
@@ -222,14 +196,17 @@ class _Market_ViewState extends State<Market_View> {
                           },
                         ),
                       ),
-                      SizedBox(
-                        width: size.width * 0.45,
-                      ),
+
                       InkWell(
                           onTap: () {},
-                          child: Image.asset(
-                            "assets/images/inventory/filter.png",
-                            height: size.height * 0.05,
+                          child: Container(
+                            margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+
+                            child: Image.asset(
+                              "assets/images/inventory/filter.png",
+                              height: 40.h,
+                              width: 40.w,
+                            ),
                           ))
                     ],
                   ),

@@ -134,8 +134,8 @@ class _Value_ContainerState extends State<Value_Container> {
             today_status_bool != true
                 ? Container()
                 : Container(
-                    margin: EdgeInsets.fromLTRB(15.w, 16.h, 15.w, 0.h),
-                    width: 330.w,
+                    margin: EdgeInsets.fromLTRB(15.w, 16.h, 0.w, 0.h),
+                    width: 360.w,
                     height: 60.h,
                     child: Row(
                       children: [
