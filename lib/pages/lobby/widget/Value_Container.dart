@@ -189,8 +189,8 @@ class _Value_ContainerState extends State<Value_Container> {
                             ),
                             Row(
                               children: [
-                                Padding(
-                                  padding: EdgeInsets.only(top: 12.h),
+                                Container(
+                                  margin: EdgeInsets.only(top: 8.h),
                                   child: Image.asset(
                                     "assets/images/lobby/icons/appbar_icons/per_icon.png",
                                     width: 20.w,
@@ -199,7 +199,7 @@ class _Value_ContainerState extends State<Value_Container> {
                                 ),
                                 Container(
                                   margin:
-                                      EdgeInsets.fromLTRB(6.w, 12.h, 0.w, 0.h),
+                                      EdgeInsets.fromLTRB(6.w, 8.h, 0.w, 0.h),
                                   width: 200.w,
                                   child: Column(
                                     children: [
@@ -245,7 +245,7 @@ class _Value_ContainerState extends State<Value_Container> {
                               children: [
                                 Padding(
                                   padding:
-                                      EdgeInsets.fromLTRB(26.w, 0.h, 0.w, 0.h),
+                                      EdgeInsets.fromLTRB(20.w, 0.h, 0.w, 0.h),
                                   child: FAProgressBar(
                                     backgroundColor: Colors.grey.shade300,
                                     maxValue: 100,
@@ -259,7 +259,7 @@ class _Value_ContainerState extends State<Value_Container> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 28.w),
+                                  padding: EdgeInsets.only(left: 22.w),
                                   child: Center(
                                       child: Image.asset(
                                     "assets/images/lobby/lightning.png",
@@ -269,28 +269,52 @@ class _Value_ContainerState extends State<Value_Container> {
                                 ),
                               ],
                             ),
-                            Column(
-                              children: [
-                                Text(
-                                  "${widget.Charge_Value}/16.0",
-                                  style: Font.lato(const Color(0xFF15BEA0),
-                                      FontWeight.w700, 12.sp),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.all(8.w),
-                                  child: Text(
-                                    StringConfiguration()
-                                        .uiString(UiStringType.LOBBY_TAB_05),
-                                    style: Font.lato(const Color(0xFF766D84),
-                                        FontWeight.w400, 8.sp),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(6.w, 0.h, 0.w, 0.h),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 2.w),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          "${widget.Charge_Value}",
+                                          style: Font.lato(const Color(0xFF15BEA0),
+                                              FontWeight.w700, 12.sp),
+                                        ),
+                                        Text(
+                                          "/16.0",
+                                          style: Font.lato(const Color(0xFF15BEA0),
+                                              FontWeight.w700, 8.sp),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  "4h 59m",
-                                  style: Font.lato(const Color(0xFF15BEA0),
-                                      FontWeight.w700, 8.sp),
-                                ),
-                              ],
+                                  // Padding(
+                                  //   padding: EdgeInsets.only(top: 2.w),
+                                  //   child: Text(
+                                  //     "${widget.Charge_Value}/16.0",
+                                  //     style: Font.lato(const Color(0xFF15BEA0),
+                                  //         FontWeight.w700, 12.sp),
+                                  //   ),
+                                  // ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 5.w),
+                                    child: Text(
+                                      StringConfiguration()
+                                          .uiString(UiStringType.LOBBY_TAB_05),
+                                      style: Font.lato(const Color(0xFF766D84),
+                                          FontWeight.w400, 8.sp),
+                                    ),
+                                  ),
+                                  Text(
+                                    "4h 59m",
+                                    style: Font.lato(const Color(0xFF15BEA0),
+                                        FontWeight.w700, 8.sp),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         )

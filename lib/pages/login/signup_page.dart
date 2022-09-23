@@ -17,6 +17,11 @@ class SignupPageState extends State<SignupPage> {
   late ScrollController _scrollController;
   final GlobalKey _scrollKey = GlobalKey();
 
+  final nameController = TextEditingController();
+  final mailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final repeatController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +62,7 @@ class SignupPageState extends State<SignupPage> {
                   duration: const Duration(microseconds: 500),
                 );
               },
+              controller: nameController,
             ),
           ),
           Container(
@@ -79,6 +85,7 @@ class SignupPageState extends State<SignupPage> {
                   duration: const Duration(microseconds: 500),
                 );
               },
+              controller: mailController,
             ),
           ),
           Container(
@@ -101,6 +108,7 @@ class SignupPageState extends State<SignupPage> {
                   duration: const Duration(microseconds: 500),
                 );
               },
+              controller: passwordController,
             ),
           ),
           Container(
@@ -124,6 +132,7 @@ class SignupPageState extends State<SignupPage> {
                   duration: const Duration(microseconds: 500),
                 );
               },
+              controller: repeatController,
             ),
           ),
           Container(

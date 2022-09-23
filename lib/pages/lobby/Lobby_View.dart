@@ -120,18 +120,12 @@ class _Lobby_ViewState extends State<Lobby_View> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // SizedBox(
-                  //   width: size.width * 0.07,
-                  // ),
                   Text(
                     StringConfiguration()
                         .uiString(UiStringType.LOBBY_SPECIALBOX_04),
                     style: Font.lato(
                         const Color(0xFF342B35), FontWeight.bold, 16.sp),
                   ),
-                  // SizedBox(
-                  //   width: size.width * 0.6,
-                  // ),
                   InkWell(
                     onTap: () {
                       print("movee");
@@ -146,9 +140,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
                 ],
               ),
             ),
-            // SizedBox(
-            //   height: size.height * 0.02,
-            // ),
+
             Container(
               margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
               child: Container(

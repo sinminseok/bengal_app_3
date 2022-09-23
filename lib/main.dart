@@ -2,14 +2,17 @@ import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:get/get_navigation/src/root/get_material_app.dart";
 import 'package:provider/provider.dart';
-import 'common/back_data/back_data_manager.dart';
+import 'Controller/back_data_controller.dart';
+import 'Controller/storage_controller.dart';
 import "common/string_configuration.dart";
 
 import "pages/login/landing_page.dart";
 
 void main() {
   runApp(
-      MainApp()
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context) => Http_services()),
+    ], child: MainApp()),
   );
 }
 
@@ -21,40 +24,18 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     StringConfiguration();
     BackDataManager();
+    StorageController();
 
     return ScreenUtilInit(
-      designSize: const Size(390, 844),
+      designSize: const Size(390, 810),
       minTextAdapt: true,
       splitScreenMode: false,
-      builder: (context , child) {
+      builder: (context, child) {
         return const GetMaterialApp(
-            home: LandingPage(),
+          home: LandingPage(),
         );
-        // return MaterialApp(
-        //   debugShowCheckedModeBanner: false,
-        //   // theme: ThemeData(
-        //   //   primarySwatch: Colors.blue,
-        //   //   textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
-        //   // ),
-        //   home: child,
-        // );
       },
       child: const LandingPage(),
     );
-
-    // return ScreenUtilInit(
-    //   builder: () => MaterialApp(
-    //     theme: ThemeData(
-    //       primarySwatch: Colors.blue,
-    //     ),
-    //     home: LandingPage(),
-    //   ),
-    //   designSize: const Size(390, 844),
-    // );
-    // // var account = BackDataManager().getAccount(1);
-    // // debugPrint('account=$account');
-    // // return const GetMaterialApp(
-    // //   home: LandingPage(),
-    // // );
   }
 }

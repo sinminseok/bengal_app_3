@@ -1,0 +1,28 @@
+{
+  "list": [
+    {
+      "id": 1,
+      "title": "game1"
+    },
+    {
+      "id": 2,
+      "title": "game2"
+    },
+    {
+      "id": 3,
+      "title": "game3"
+    },
+    {
+      "id": 4,
+      "title": "game4"
+    },
+    {
+      "id": 5,
+      "title": "game5"
+    },
+    {
+      "id": 6,
+      "title": "game6"
+    }
+  ]
+}

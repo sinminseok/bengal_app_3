@@ -1,0 +1,22 @@
+{
+  "list": [
+    {
+      "account_id": 1,
+      "max_charge": 2000.99,
+      "cur_charge": 1100.82,
+      "remain_charge_time": "2022-09-02 03:04:05"
+    },
+    {
+      "account_id": 2,
+      "max_charge": 4000.82,
+      "cur_charge": 1200.82,
+      "remain_charge_time": "2022-09-02 03:04:05"
+    },
+    {
+      "account_id": 3,
+      "max_charge": 2000.82,
+      "cur_charge": 1300.82,
+      "remain_charge_time": "2022-09-02 03:04:05"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "initialInfo": {
+    "defaultXPerAmount": 1000,
+    "defaultPerAmount": 0,
+    "defaultHvhAmount": 0,
+    "dailyLimitXPer": 200,
+    "dailyLimitPer": 20,
+    "maxPower": 16,
+    "maxPowerChargeSec": 600,
+    "specialBoxInitialLifeTime": 3600,
+    "specialBoxOpenBaseCost": 30.0,
+    "specialBoxOpenCostPerSec": 0.01,
+    "carMaxDurability": 100
+  }
+}
