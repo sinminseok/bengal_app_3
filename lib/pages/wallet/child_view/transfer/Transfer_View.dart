@@ -34,55 +34,29 @@ class _Transfer_ViewState extends State<Transfer_View> {
       ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        iconTheme: IconThemeData(
-          color: kAppbarColor, //change your color here
-        ),
-        toolbarHeight: 97.h,
+        toolbarHeight: 50.h,
         elevation: 0,
         backgroundColor: kAppbarColor,
-        title: Padding(
-          padding: const EdgeInsets.only(top: 18.0),
-          child: Row(
-            children: [
-              InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 13.0),
-                  child: Container(
-                    width: size.width * 0.1,
-                    height: size.height * 0.08,
-                    decoration: BoxDecoration(
-                        color: Colors.white, shape: BoxShape.circle),
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Icon(
-                          Icons.arrow_back_ios,
-                          color: kPrimaryColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+        title: Row(
+          children: [
+            InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Image.asset(
+                "assets/images/common/back_button.png",
+                width: 40.w,
+                height: 40.h,
               ),
-              SizedBox(
-                width: size.width * 0.24,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text(
-                  "Transfer",
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(107.w, 3.h, 45.w, 0.h),
+              child: Text("Transfer",
                   style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-              ),
-              SizedBox(
-                width: size.width * 0.15,
-              ),
-            ],
-          ),
+                      color: Colors.black, fontWeight: FontWeight.bold,fontSize: 18)),
+            ),
+
+          ],
         ),
       ),
       body: SingleChildScrollView(

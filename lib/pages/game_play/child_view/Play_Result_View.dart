@@ -51,7 +51,7 @@ class _Play_Result_View extends State<Play_Result_View> {
             children: [
 
               Container(
-                margin: EdgeInsets.fromLTRB(15.w, 40.h, 15.w, 0.h),
+                margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
 
                 width: 370.w,
                 height: 50.h,
@@ -63,7 +63,7 @@ class _Play_Result_View extends State<Play_Result_View> {
                     "PLAY GAME",
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 19,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -94,15 +94,20 @@ class _Play_Result_View extends State<Play_Result_View> {
                                     color: Colors.grey.shade700,
                                     size: 17,
                                   ),
-                                  Text("Play Time")
+                                  Container(
+                                      margin: EdgeInsets.fromLTRB(5.w, 0.h, 4.w, 0.h),
+                                      child: Text("Play Time",style: TextStyle(fontSize: 12),))
                                 ],
                               ),
-                              Text(
-                                "01:23:59",
-                                style: TextStyle(
-                                    color: kPrimaryColor,
-                                    fontSize: 21,
-                                    fontWeight: FontWeight.bold),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(0.w,10.h, 0.w, 0.h),
+                                child: Text(
+                                  "01:23:59",
+                                  style: TextStyle(
+                                      color: kPrimaryColor,
+                                      fontSize: 21,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               )
                             ],
                           ),
@@ -113,10 +118,13 @@ class _Play_Result_View extends State<Play_Result_View> {
                                 width: 80.w,
                                 height: 90.h,
                               ),
-                              Text(
-                                "Game Name",
-                                style: TextStyle(
-                                    fontSize: 21, fontWeight: FontWeight.bold),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(0.w,10.h, 0.w, 0.h),
+                                child: Text(
+                                  "Game Name",
+                                  style: TextStyle(
+                                      fontSize: 19, fontWeight: FontWeight.bold),
+                                ),
                               )
                             ],
                           ),
@@ -129,15 +137,25 @@ class _Play_Result_View extends State<Play_Result_View> {
                                     color: Colors.grey.shade700,
                                     size: 17,
                                   ),
-                                  Text("Power")
+                                  Container(
+                                      margin: EdgeInsets.fromLTRB(5.w, 0.h, 15.w, 0.h),
+
+
+
+                                      child: Text(
+
+                                    "Power",style: TextStyle(fontSize: 12),))
                                 ],
                               ),
-                              Text(
-                                "01:23:59",
-                                style: TextStyle(
-                                    color: kPrimaryColor,
-                                    fontSize: 21,
-                                    fontWeight: FontWeight.bold),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(0.w,7.h, 0.w, 0.h),
+                                child: Text(
+                                  "01:23:59",
+                                  style: TextStyle(
+                                      color: kPrimaryColor,
+                                      fontSize: 21,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               )
                             ],
                           ),
@@ -146,11 +164,11 @@ class _Play_Result_View extends State<Play_Result_View> {
                     ),
                     Image.asset("assets/images/game/line.png"),
                     Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 10.h, 270.w, 20.h),
+                      margin: EdgeInsets.fromLTRB(15.w, 10.h, 270.w, 10.h),
 
                       child: Text(
                         "Earned",
-                        style: TextStyle(color: Colors.grey.shade600,fontSize: 20,fontWeight: FontWeight.bold),
+                        style: TextStyle(color: Colors.grey.shade600,fontSize: 18,fontWeight: FontWeight.bold),
                       ),
                     ),
                     //double xper_value,double per_value,int special_box_lv,int special_box_value

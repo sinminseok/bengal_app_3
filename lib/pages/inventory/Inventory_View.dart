@@ -4,6 +4,7 @@ import 'package:bengal_app/pages/inventory/widget/dropdown_button/DropdownButton
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../types/constants.dart';
+import '../game/popup/filter_popup.dart';
 
 class Inventory_View extends StatefulWidget {
   const Inventory_View({Key? key}) : super(key: key);
@@ -194,7 +195,10 @@ class _Inventory_ViewState extends State<Inventory_View> {
                         height: 37.h,
                         width: 37.h,
                         child: InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Filter_popup().showDialog(size, context);
+
+                            },
                             child: Image.asset(
                               "assets/images/inventory/filter.png",
 
