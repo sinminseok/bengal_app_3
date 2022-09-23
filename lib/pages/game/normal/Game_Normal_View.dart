@@ -1,40 +1,38 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'Game_Normal_Container.dart';
 
 Widget Game_Normal_View(Size size) {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Column(
-      children: [
-        Image.asset("assets/images/game/Add_game_img.png"),
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: Container(
-              width: size.width * 1,
-              height: size.height * 0.6,
-             // shrinkwrap true
-              child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
+  return Column(
+    children: [
+      Container(
+          width: 360.w,
+          height: 100.h,
+          child: Image.asset("assets/images/game/Add_game_img.png")),
+      Center(
+        child:Container(
+          width: 360.w,
+          height: 600.h,
+          // shrinkwrap true
+          child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
 
-                    crossAxisSpacing: size.width * 0.01,
-                    mainAxisSpacing: size.height * 0.01,
-                    childAspectRatio: 1 / 0.6,
+                crossAxisSpacing: 1.w,
+                mainAxisSpacing: 1.h,
+                childAspectRatio: 1 / 0.35,
 
-                  ),
-                  itemCount: 10,
-                  // shrinkWrap: true,
+              ),
+              itemCount: 10,
+              // shrinkWrap: true,
 
-                  itemBuilder: (BuildContext context, int index) {
-                    return Center(
-                      child: Game_Normal_Container(size),
-                    );
-                  }),
-            ),
-          ),
-        )
-      ],
-    ),
+              itemBuilder: (BuildContext context, int index) {
+                return Center(
+                  child: Game_Normal_Container(size),
+                );
+              }),
+        ),
+      )
+    ],
   );
 }

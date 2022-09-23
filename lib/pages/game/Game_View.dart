@@ -1,9 +1,12 @@
+import 'dart:ui';
+
 import 'package:bengal_app/pages/game/popup/filter_popup.dart';
 import 'package:bengal_app/pages/game/recommended/Game_Recommended_View.dart';
 import 'package:bengal_app/pages/game/special/Game_Special_View.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../../models/test_viewmodel.dart';
 import '../../types/constants.dart';
 import '../inventory/widget/dropdown_button/DropdownButton2.dart';
 import 'normal/Game_Normal_View.dart';
@@ -23,6 +26,8 @@ class _Game_ViewState extends State<Game_View> {
   bool Normal_selected = false;
   bool animation = false;
 
+  TextEditingController _searchController = TextEditingController();
+
   final List<String> items = [
     'Lowest Level',
     'Highest Level',
@@ -30,39 +35,48 @@ class _Game_ViewState extends State<Game_View> {
   ];
   String? selectedValue = "Lowest Level";
   double _height_animtaion = 200;
+
   updateState() {
     setState(() {
-      _height_animtaion = 300;
+      if (_hegith == 170.h) {
+        _hegith = 125.h;
+      } else {
+        _hegith = 170.h;
+      }
     });
   }
+
+  double _width = 390.w;
+  double _hegith = 125.h;
+
   @override
   Widget build(BuildContext context) {
-    BuildContext? cc =
-        Provider.of<Http_services>(context, listen: false).out_context;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+
       backgroundColor: Colors.grey.shade100,
       body: SingleChildScrollView(
         child: Column(
           children: [
             //Selected_Bar
-            Container(
-                width: size.width * 1,
-                height: size.height*0.17,
+            AnimatedContainer(
+              duration: const Duration(seconds: 1),
+              curve: Curves.fastOutSlowIn,
+              child: Container(
+                width: 390.w,
+                height: _hegith,
                 decoration: BoxDecoration(
                   border:
                       Border(bottom: BorderSide(color: Colors.grey.shade300)),
                 ),
                 child: Column(
                   children: [
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: size.width * 0.03,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: InkWell(
+                    Container(
+                      margin: EdgeInsets.fromLTRB(15.w, 23.h, 15.w, 0.h),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
                             onTap: () {
                               setState(() {
                                 Special_selected = true;
@@ -71,18 +85,10 @@ class _Game_ViewState extends State<Game_View> {
                               });
                             },
                             child: Container(
-                              width: size.width * 0.27,
-                              height: size.height * 0.06,
+                              width: 116.w,
+                              height: 35.h,
                               decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.4),
-                                      spreadRadius: 2,
-                                      blurRadius: 2,
-                                      offset: Offset(
-                                          0, 1), // changes position of shadow
-                                    ),
-                                  ],
+                                  border: Border.all(color: Colors.grey.shade300),
                                   color: Special_selected != true
                                       ? Colors.white
                                       : kPrimaryColor,
@@ -99,10 +105,7 @@ class _Game_ViewState extends State<Game_View> {
                               ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: InkWell(
+                          InkWell(
                             onTap: () {
                               setState(() {
                                 Special_selected = false;
@@ -111,18 +114,10 @@ class _Game_ViewState extends State<Game_View> {
                               });
                             },
                             child: Container(
-                              width: size.width * 0.27,
-                              height: size.height * 0.06,
+                              width: 116.w,
+                              height: 35.h,
                               decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.4),
-                                      spreadRadius: 2,
-                                      blurRadius: 2,
-                                      offset: Offset(
-                                          0, 1), // changes position of shadow
-                                    ),
-                                  ],
+                                  border: Border.all(color: Colors.grey.shade300),
                                   color: Recommended_selected != true
                                       ? Colors.white
                                       : kPrimaryColor,
@@ -139,10 +134,7 @@ class _Game_ViewState extends State<Game_View> {
                               ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: InkWell(
+                          InkWell(
                             onTap: () {
                               setState(() {
                                 Special_selected = false;
@@ -151,18 +143,10 @@ class _Game_ViewState extends State<Game_View> {
                               });
                             },
                             child: Container(
-                              width: size.width * 0.27,
-                              height: size.height * 0.06,
+                              width: 116.w,
+                              height: 35.h,
                               decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.4),
-                                      spreadRadius: 2,
-                                      blurRadius: 2,
-                                      offset: Offset(
-                                          0, 1), // changes position of shadow
-                                    ),
-                                  ],
+                               border: Border.all(color: Colors.grey.shade300),
                                   color: Normal_selected != true
                                       ? Colors.white
                                       : kPrimaryColor,
@@ -179,13 +163,15 @@ class _Game_ViewState extends State<Game_View> {
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(15.w, 10.h, 150.w, 0.h),
+                          width: 120.w,
+                          height: 30.h,
                           child: CustomDropdownButton2(
                             hint: 'Lowest Level',
                             dropdownItems: items,
@@ -197,38 +183,63 @@ class _Game_ViewState extends State<Game_View> {
                             },
                           ),
                         ),
-                        SizedBox(
-                          width: size.width * 0.35,
+                        Container(
+                          margin: EdgeInsets.fromLTRB(15.w, 7.h, 1.w, 0.h),
+                          child: InkWell(
+                              onTap: () {
+                                Filter_popup().showDialog(size, context);
+                              },
+                              child: Image.asset(
+                                "assets/images/inventory/filter.png",
+                                height: 36.h,
+                              )),
                         ),
-                        InkWell(
-                            onTap: () {
-                              Filter_popup().showDialog(size, context);
-                            },
-                            child: Image.asset(
-                              "assets/images/inventory/filter.png",
-                              height: size.height * 0.05,
-                            )),
-                        InkWell(
-                            onTap: () {
-                              updateState();
-                              // Navigator.push(
-                              //     context,
-                              //     PageTransition(
-                              //         type: PageTransitionType.fade,
-                              //         child: textView(
-                              //           size
-                              //         )));
-                            },
-                            child: Image.asset(
-                              "assets/images/game/icons/search_icon.png",
-                              height: size.height * 0.05,
-                            )),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(5.w, 7.h, 1.w, 0.h),
+                          child: InkWell(
+                              onTap: () {
+                                updateState();
+                              },
+                              child: Image.asset(
+                                "assets/images/game/icons/search_icon.png",
+                                height: 36.h,
+                              )),
+                        ),
                       ],
                     ),
+                    _hegith == 170.h
+                        ? Container(
+                            margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 0.h),
+                            width: 360.w,
+                            height: 37.h,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: TextField(
+
+                              decoration: InputDecoration(
+
+                                border: InputBorder.none,
+                                  prefixIcon:  IconTheme(data: IconThemeData(
+                                      color: Colors.grey
+                                  ), child: Icon(Icons.search,)),
+                                  contentPadding: EdgeInsets.all(14.0),
+                                  hintText: 'Please enter game name.',
+                                hintStyle: TextStyle(fontSize: 13)
+
+                              ),
+
+
+                              style: TextStyle(color: Colors.black),
+                              controller: _searchController,
+                            ),
+                          )
+                        : Container()
                   ],
                 ),
               ),
-
+            ),
 
             Special_selected == true ? Game_Special_View(size) : Container(),
             Recommended_selected == true

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../types/constants.dart';
 
 class Selected_box_popup {
@@ -18,8 +19,8 @@ class Selected_box_popup {
             child: DefaultTextStyle(
               style: TextStyle(fontSize: 16, color: Colors.black),
               child: Container(
-                  width: size.width * 0.76,
-                  height: size.height * 0.7,
+                  width: 300.w,
+                  height: 470.h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.white,
@@ -27,8 +28,8 @@ class Selected_box_popup {
                   child: Column(
                     children: [
                       Container(
-                        width: size.width * 0.76,
-                        height: size.height * 0.08,
+                        width: 300.w,
+                        height: 55.h,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(20),
@@ -40,9 +41,7 @@ class Selected_box_popup {
                           style: TextStyle(color: Colors.white, fontSize: 18),
                         )),
                       ),
-                      SizedBox(
-                        height: size.height * 0.07,
-                      ),
+
                       Image.asset("assets/images/lobby/boxes/ready_box.png"),
                       Text(
                         "Reamaing Time",
@@ -56,20 +55,21 @@ class Selected_box_popup {
                         ),
                       ),
                       Container(
-                        width: size.width * 0.6,
-                        height: size.height * 0.1,
+                        width: 270.w,
+                        height: 90.h,
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SizedBox(height: size.height * 0.02),
-                            Padding(
-                              padding: const EdgeInsets.all(3.0),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(15.w, 23.h, 15.w, 0.h),
+
                               child: Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     "Base Cost",
@@ -84,11 +84,12 @@ class Selected_box_popup {
                                 ],
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(3.0),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+
                               child: Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     "Base Cost",
@@ -106,55 +107,58 @@ class Selected_box_popup {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          width: size.width * 0.6,
-                          height: size.height * 0.05,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: kPrimaryColor),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text(
-                                "Total",
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                "30.00",
-                                style: TextStyle(
-                                    color: kPrimaryColor, fontSize: 13),
-                              )
-                            ],
-                          ),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+
+                        width: 280.w,
+                        height: 40.h,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: kPrimaryColor),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                              "Total",
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "30.00",
+                              style: TextStyle(
+                                  color: kPrimaryColor, fontSize: 13),
+                            )
+                          ],
                         ),
                       ),
-                      ElevatedButton(
-                        style: ButtonStyle(
-                          elevation: MaterialStateProperty.all(0),
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                          showDialog2(size, context);
-                        },
-                        child: Container(
-                          width: size.width * 0.43,
-                          height: size.height * 0.055,
-                          decoration: BoxDecoration(
-                              color: kPrimaryColor,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(35))),
-                          child: Center(
-                            child: Text(
-                              "Boost",
-                              style: TextStyle(color: Colors.white),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(15.w, 35.h, 15.w, 0.h),
+
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            elevation: MaterialStateProperty.all(0),
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.white),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            showDialog2(size, context);
+                          },
+                          child: Container(
+                            width: 120.w,
+                            height: 35.h,
+                            decoration: BoxDecoration(
+                                color: kPrimaryColor,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(35))),
+                            child: Center(
+                              child: Text(
+                                "Boost",
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                           ),
                         ),
@@ -180,8 +184,8 @@ class Selected_box_popup {
             child: DefaultTextStyle(
               style: TextStyle(fontSize: 16, color: Colors.black),
               child: Container(
-                  width: size.width * 0.76,
-                  height: size.height * 0.4,
+                  width: 320.w,
+                  height: 283.h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.white,
@@ -189,8 +193,8 @@ class Selected_box_popup {
                   child: Column(
                     children: [
                       Container(
-                        width: size.width * 0.76,
-                        height: size.height * 0.05,
+                        width: 320.w,
+                        height: 55.h,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(20),
@@ -202,122 +206,127 @@ class Selected_box_popup {
                           style: TextStyle(color: Colors.white, fontSize: 18),
                         )),
                       ),
-                      SizedBox(
-                        height: size.height * 0.03,
-                      ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 30.0),
-                            child: Text(
-                              "Boost Cost",
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                          ),
-                          SizedBox(
-                            width: size.width * 0.2,
-                          )
-                        ],
+
+                      Container(
+                        margin: EdgeInsets.fromLTRB(10.w, 10.h, 170.w, 0.h),
+
+                        child: Text(
+                          "Boost Cost",
+                          style: TextStyle(color: Colors.grey),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          width: size.width * 0.7,
-                          height: size.height * 0.1,
+                          width: 260.w,
+                          height: 65.h,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey),
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 25.0, right: 10.0),
-                                child: Image.asset(
-                                  "assets/images/lobby/icons/appbar_icons/xper_icon.png",
-                                  width: size.width * 0.06,
+                              Row(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
+
+                                    child: Image.asset(
+                                      "assets/images/lobby/icons/appbar_icons/xper_icon.png",
+                                      width: size.width * 0.06,
+                                    ),
+                                  ),
+                                  Text(
+                                    "XPER",
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+
+
+                              Container(
+                                margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+
+                                child: Text(
+                                  "12.91",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: kPrimaryColor,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                              ),
-                              Text(
-                                "XPER",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                width: size.width * 0.3,
-                              ),
-                              Text(
-                                "12.91",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    color: kPrimaryColor,
-                                    fontWeight: FontWeight.bold),
                               )
                             ],
                           ),
                         ),
                       ),
                       Text(
+
                         "Do you want to proceed with the boost?",
                         style: TextStyle(fontSize: 12, color: Colors.grey),
+
                       ),
-                      SizedBox(height: size.height*0.03,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                            style: ButtonStyle(
-                              elevation: MaterialStateProperty.all(0),
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.white),
+
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              style: ButtonStyle(
+                                elevation: MaterialStateProperty.all(0),
+                                backgroundColor:
+                                    MaterialStateProperty.all(Colors.white),
+                              ),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Container(
+                                width: 120.w,
+                                height: 37.h,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(35)),
+                                    border: Border.all(color: kPrimaryColor)),
+                                child: Center(
+                                  child: Text(
+                                    "No",
+                                    style: TextStyle(color: kPrimaryColor),
+                                  ),
+                                ),
+                              ),
                             ),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Container(
-                              width: size.width * 0.3,
-                              height: size.height * 0.055,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
+                            ElevatedButton(
+                              style: ButtonStyle(
+                                elevation: MaterialStateProperty.all(0),
+                                backgroundColor:
+                                    MaterialStateProperty.all(Colors.white),
+                              ),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Container(
+                                width: 120.w,
+                                height: 37.h,
+                                decoration: BoxDecoration(
+                                  color: kPrimaryColor,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(35)),
-                                  border: Border.all(color: kPrimaryColor)),
-                              child: Center(
-                                child: Text(
-                                  "No",
-                                  style: TextStyle(color: kPrimaryColor),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "Yes",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          ElevatedButton(
-                            style: ButtonStyle(
-                              elevation: MaterialStateProperty.all(0),
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.white),
-                            ),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Container(
-                              width: size.width * 0.3,
-                              height: size.height * 0.055,
-                              decoration: BoxDecoration(
-                                color: kPrimaryColor,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(35)),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "Yes",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       )
                     ],
                   )),

@@ -1,41 +1,39 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'Inventory_CarBoxes_Card.dart';
 
 Widget Inventory_CarBoxes_View(Size size){
   return Center(
-    child: Padding(
-      padding: const EdgeInsets.all(0.0),
-      child: Container(
-        width: size.width*1,
-        height: size.height*0.6,
-        child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing:size.width*0.01,
-              mainAxisSpacing: size.height*0.01,
-              childAspectRatio: 1 / 1,
-            ),
-            itemCount: 10,
-            // shrinkWrap: true,
+    child:Container(
+      width: 360.w,
+      height: 600.h,
+      child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing:1.w,
+            mainAxisSpacing: 1.h,
+            childAspectRatio: 1.h / 1.h,
+          ),
+          itemCount: 10,
+          // shrinkWrap: true,
 
-            itemBuilder: (BuildContext context, int index) {
-              return Center(
-                //Inventory_Card(Size size,
-                //     String badge_title,
-                //     int Mint_value,
-                //     int nft_id,
-                //     int Level,
-                //     int Speed_value,
-                //     int Luck_value,
-                //     int Charge_value,
-                //     int Repair_value,
-                //     int distance)
-                child: Inventory_CarBoxes_Card(
-                    size, "RARE", 12345),
-              );
-            }
-        ),
+          itemBuilder: (BuildContext context, int index) {
+            return Center(
+              //Inventory_Card(Size size,
+              //     String badge_title,
+              //     int Mint_value,
+              //     int nft_id,
+              //     int Level,
+              //     int Speed_value,
+              //     int Luck_value,
+              //     int Charge_value,
+              //     int Repair_value,
+              //     int distance)
+              child: Inventory_CarBoxes_Card(
+                  Colors.blue, "RARE","rare", 12345),
+            );
+          }
       ),
     ),
   );

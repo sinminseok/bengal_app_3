@@ -1,6 +1,7 @@
 import 'package:bengal_app/pages/my_page/widget/Mypage_Account_Widget.dart';
 import 'package:bengal_app/pages/my_page/widget/Mypage_info_Widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../types/constants.dart';
 import '../lobby/widget/Button_Widget.dart';
 
@@ -18,32 +19,39 @@ class _MyPage_ViewState extends State<MyPage_View> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+
       backgroundColor: kAppbarColor,
       appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.black, //change your color here
-        ),
-        toolbarHeight: size.height * 0.082,
+        automaticallyImplyLeading: false,
+
+        toolbarHeight: 100.h,
         elevation: 0,
         backgroundColor: kAppbarColor,
         title: Padding(
           padding: const EdgeInsets.only(top: 18.0),
           child: Row(
             children: [
-              SizedBox(
-                width: size.width * 0.2,
+              InkWell(
+                onTap: (){
+                  Navigator.pop(context);
+                },
+                child: Container(
+                    margin: EdgeInsets.fromLTRB(4.w, 1.h, 1.w, 20.h),
+
+                    child: Image.asset("assets/images/common/back_button.png",width: 50.h,height: 50.h,)),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
+
+
+              Container(
+                margin: EdgeInsets.fromLTRB(95.w, 1.h, 15.w, 20.h),
+
                 child: Text(
                   "PROFILEE",
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold),
                 ),
               ),
-              SizedBox(
-                width: size.width * 0.15,
-              ),
+
 
               // Image.asset(
               //   "assets/Wallet/icons/setting_button.png",
@@ -53,13 +61,13 @@ class _MyPage_ViewState extends State<MyPage_View> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
+      body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0, left: 20.0, bottom: 10),
+            Container(
+              margin: EdgeInsets.fromLTRB(20.w, 10.h, 15.w, 20.h),
+
               child: Text(
                 "ACCOUNT",
                 style: TextStyle(color: Colors.grey),
@@ -71,11 +79,9 @@ class _MyPage_ViewState extends State<MyPage_View> {
 
             Mypage_info_Widget(size),
 
-            SizedBox(
-              height: size.height * 0.01,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
+
+            Container(
+              margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 15.h),
               child: Text(
                 "NOTICATION",
                 style: TextStyle(color: Colors.grey),
@@ -85,8 +91,8 @@ class _MyPage_ViewState extends State<MyPage_View> {
               child: Column(
                 children: [
                   Container(
-                    width: size.width * 0.9,
-                    height: size.height * 0.07,
+                    width: 360.w,
+                    height: 50.h,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
@@ -94,20 +100,23 @@ class _MyPage_ViewState extends State<MyPage_View> {
                             topRight: Radius.circular(10))),
                     child: Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(10.w, 10.h, 15.w, 0.h),
+
                           child: Icon(
                             Icons.notifications_none,
                             color: Colors.grey,
                           ),
                         ),
-                        Text(
-                          "App Notification",
-                          style: TextStyle(color: Colors.grey.shade600),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(1.w, 4.h, 150.w, 0.h),
+
+                          child: Text(
+                            "App Notification",
+                            style: TextStyle(color: Colors.grey.shade600),
+                          ),
                         ),
-                        SizedBox(
-                          width: size.width * 0.4,
-                        ),
+
                         Switch(
                           activeColor: kPrimaryColor,
                           value: ischeck,
@@ -127,29 +136,32 @@ class _MyPage_ViewState extends State<MyPage_View> {
               child: Column(
                 children: [
                   Container(
-                    width: size.width * 0.9,
-                    height: size.height * 0.07,
+                    width: 360.w,
+                    height: 50.h,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(10),
-                            bottomLeft: Radius.circular(10))),
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10))),
                     child: Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(10.w, 10.h, 15.w, 0.h),
+
                           child: Icon(
                             Icons.email_outlined,
                             color: Colors.grey,
                           ),
                         ),
-                        Text(
-                          "Email Notification",
-                          style: TextStyle(color: Colors.grey.shade600),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(1.w, 4.h, 140.w, 0.h),
+
+                          child: Text(
+                            "Email Notification",
+                            style: TextStyle(color: Colors.grey.shade600),
+                          ),
                         ),
-                        SizedBox(
-                          width: size.width * 0.377,
-                        ),
+
                         Switch(
                           activeColor: kPrimaryColor,
                           value: ischeck,
@@ -165,12 +177,14 @@ class _MyPage_ViewState extends State<MyPage_View> {
                 ],
               ),
             ),
-            SizedBox(height: size.height*0.08,),
-            Center(child: Button_Widget(size,"CONFIRM"))
+            Container(
+                margin: EdgeInsets.fromLTRB(15.w, 100.h, 15.w, 0.h),
+
+                child: Center(child: Button_Widget(size,"CONFIRM")))
 
           ],
         ),
-      ),
+
     );
   }
 }

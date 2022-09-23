@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'Market_Car_Card.dart';
 
 Widget Market_Cars_View(Size size){
@@ -6,14 +7,14 @@ Widget Market_Cars_View(Size size){
     child: Padding(
       padding: const EdgeInsets.all(0.0),
       child: Container(
-        width: size.width*1,
-        height: size.height*0.6,
+        width: 360.w,
+        height: 600.h,
         child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              crossAxisSpacing:size.width*0.01,
-              mainAxisSpacing: size.height*0.01,
-              childAspectRatio: 1 / 1.5,
+              crossAxisSpacing:3.w,
+              mainAxisSpacing: 10.h,
+              childAspectRatio: 1.h / 1.5.h,
             ),
             itemCount: 10,
             // shrinkWrap: true,
@@ -22,6 +23,7 @@ Widget Market_Cars_View(Size size){
               return Center(
                 //Inventory_Card(Size size,
                 //     String badge_title,
+                //     String grade
                 //     int Mint_value,
                 //     int nft_id,
                 //     int Level,
@@ -31,7 +33,7 @@ Widget Market_Cars_View(Size size){
                 //     int Repair_value,
                 //     int distance)
                 child: Market_Car_Card(
-                    size, "SPORTS", 3, 12345, 10, 13, 14, 15, 16, 13),
+                    size,context, "SPORTS","normal", 3, 12345, 10, 13, 14, 15, 16, 13),
               );
             }
         ),

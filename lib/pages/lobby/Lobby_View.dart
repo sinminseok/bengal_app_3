@@ -27,10 +27,6 @@ class _Lobby_ViewState extends State<Lobby_View> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Container(
-            //   color: Colors.yellow,
-            //   height: size.height * 0.03,
-            // ),
             //Buy a car Widget
             current_car == true
                 ? InkWell(
@@ -132,7 +128,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
                   ),
                   InkWell(
                     onTap: () {
-                      print("move");
+                      print("movee");
                     },
                     child: Text(
                       StringConfiguration()
@@ -147,16 +143,18 @@ class _Lobby_ViewState extends State<Lobby_View> {
 
             Container(
               margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
-              width: 360.w,
-              height: 100.h,
-              child: ListView.builder(
-                  //사용할 게임수 builder
-                  itemCount: 3,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext ctx, int idx) {
-                    return Game_Play_Widget(
-                        size, "Jewel Match", "0.08", "0.05", "10");
-                  }),
+              child: Container(
+                width: 360.w,
+                height: 100.h,
+                child: ListView.builder(
+                    //사용할 게임수 builder
+                    itemCount: 3,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (BuildContext ctx, int idx) {
+                      return Game_Play_Widget(
+                          size,context, "Jewel Match", "0.08", "0.05", "10");
+                    }),
+              ),
             ),
           ],
         ),

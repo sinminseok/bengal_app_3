@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '../../common/string_configuration.dart';
-import '../../models/test_viewmodel.dart';
 import '../../types/constants.dart';
 import '../../types/string_type.dart';
 import '../game/Game_View.dart';
@@ -26,16 +25,7 @@ class Frame_View extends StatefulWidget {
 class _Frame_View extends State<Frame_View> {
   int _selectedItem = 0;
 
-  @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<Http_services>(context, listen: false)
-          .change_tutorial(context);
-    });
 
-    // TODO: implement initState
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,16 +37,16 @@ class _Frame_View extends State<Frame_View> {
         frame_context: context,
       ),
       Market_View()
-      // Home_Screen(),
-      // Calendar_Screen(),
-      // Deliver_Screen(),
+
       // Mypage_Screen()
     ];
     Size size = MediaQuery.of(context).size;
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
+          resizeToAvoidBottomInset : false,
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             elevation: 0,
             backgroundColor: kAppbarColor,
             title: SizedBox(
@@ -134,7 +124,7 @@ class _Frame_View extends State<Frame_View> {
               ),
             ),
           ),
-          resizeToAvoidBottomInset: false,
+
           bottomNavigationBar: CustomBottomNavigationBar(
             iconList: [
               "assets/images/lobby/icons/bottom_nav_icon/lobby_icon.png",

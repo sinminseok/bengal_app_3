@@ -12,7 +12,7 @@ Widget Car_Main_Widget(BuildContext context, Size size, int level, int nft_id,
       Navigator.push(
           context,
           PageTransition(
-              type: PageTransitionType.fade, child: Car_Detail_FrameView()));
+              type: PageTransitionType.fade, child: Car_Detail_FrameView(car_buy: false,)));
     },
     child: Container(
       //margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
