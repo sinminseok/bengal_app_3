@@ -1,617 +1,1228 @@
- Version: 2022051201
-Ui:
-  - Code: TOKEN_NAME_01
-    Msg: XPER
-  - Code: TOKEN_NAME_02
-    Msg: PER
-  - Code: TOKEN_NAME_03
-    Msg: HVH
-  - Code: TOKEN_NAME_04
-    Msg: USDC
-  - Code: STATUS_NAME_01
-    Msg: Speed
-  - Code: STATUS_NAME_02
-    Msg: Luck
-  - Code: STATUS_NAME_03
-    Msg: Charge
-  - Code: STATUS_NAME_04
-    Msg: Repair
-  - Code: CAR_TYPE_01
-    Msg: SUV
-  - Code: CAR_TYPE_02
-    Msg: OFF ROAD
-  - Code: CAR_TYPE_03
-    Msg: SEDAN
-  - Code: CAR_TYPE_04
-    Msg: SPORTS
-  - Code: CAR_GRADE_01
-    Msg: NOMAL
-  - Code: CAR_GRADE_02
-    Msg: RARE
-  - Code: CAR_GRADE_03
-    Msg: ELITE
-  - Code: CAR_GRADE_04
-    Msg: EPIC
-  - Code: CAR_GRADE_05
-    Msg: ULTIMATE
-  - Code: CARBOX_GRADE_01
-    Msg: NOMAL
-  - Code: CARBOX_GRADE_02
-    Msg: RARE
-  - Code: CARBOX_GRADE_03
-    Msg: ELITE
-  - Code: CARBOX_GRADE_04
-    Msg: EPIC
-  - Code: CARBOX_GRADE_05
-    Msg: ULTIMATE
-  - Code: TOP_MENU_01
-    Msg: Hello,
-  - Code: TOP_MENU_02
-    Msg: GUEST
-  - Code: BOTTOM_NAVIGATION_01
-    Msg: LOBBY
-  - Code: BOTTOM_NAVIGATION_02
-    Msg: INVENTORY
-  - Code: BOTTOM_NAVIGATION_03
-    Msg: WORKSHOP
-  - Code: BOTTOM_NAVIGATION_04
-    Msg: GAME
-  - Code: BOTTOM_NAVIGATION_05
-    Msg: MARKET
-  - Code: TOAST_MESSAGE_01
-    Msg: Coming Soon
-  - Code: TOAST_MESSAGE_02
-    Msg: Treansaction submitted (Can take a few minutes)
-  - Code: TOAST_MESSAGE_03
-    Msg: Account creation complete
-  - Code: TOAST_MESSAGE_04
-    Msg: Trade complete
-  - Code: TOAST_MESSAGE_05
-    Msg: Database Reset
-  - Code: LOGIN_01
-    Msg: Your play is worth it!
-  - Code: LOGIN_02
-    Msg: LOGIN
-  - Code: LOGIN_03
-    Msg: Email Adress
-  - Code: LOGIN_04
-    Msg: Password
-  - Code: LOGIN_05
-    Msg: Remember Me
-  - Code: LOGIN_06
-    Msg: Forgot Password?
-  - Code: LOGIN_07
-    Msg: Don’t have an account?
-  - Code: LOGIN_08
-    Msg: Sign up
-  - Code: LOGIN_09
-    Msg: SIGN UP
-  - Code: LOGIN_10
-    Msg: Data Reset
-  - Code: LOGIN_11
-    Msg: Username
-  - Code: LOGIN_12
-    Msg: Repeat Password
-  - Code: LOGIN_13
-    Msg: Welcome to PERPLAY
-  - Code: CAR_MILEAGE_STATE_01
-    Msg: Fine
-  - Code: CAR_MILEAGE_STATE_02
-    Msg: Warning
-  - Code: CAR_MILEAGE_STATE_03
-    Msg: Danger
-  - Code: LOBBY_CAR_01
-    Msg: Buy a car and enjoy the game
-  - Code: LOBBY_CAR_02
-    Msg: "Lv {0}"
-  - Code: LOBBY_CAR_03
-    Msg: "Durability {0}/{1} ({3}%)"
-  - Code: LOBBY_CAR_04
-    Msg: "{0} km {1}"
-  - Code: LOBBY_TAB_01
-    Msg: Today's Earn
-  - Code: LOBBY_TAB_02
-    Msg: Total Status
-  - Code: LOBBY_TAB_03
-    Msg: Selected Car
-  - Code: LOBBY_TAB_04
-    Msg: "{0} / {1}"
-  - Code: LOBBY_TAB_05
-    Msg: Next Charge
-  - Code: LOBBY_TAB_06
-    Msg: "{0}h {1}m"
-  - Code: LOBBY_TAB_07
-    Msg: "{0} (+{1})"
-  - Code: LOBBY_SPECIALBOX_01
-    Msg: "Lv{0}"
-  - Code: LOBBY_SPECIALBOX_02
-    Msg: READY
-  - Code: LOBBY_SPECIALBOX_03
-    Msg: "{0}h {1}m"
-  - Code: LOBBY_SPECIALBOX_04
-    Msg: Game Play
-  - Code: LOBBY_SPECIALBOX_05
-    Msg: See All
-  - Code: LOBBY_SPECIALBOX_OPEN_01
-    Msg: "LV {0}. SPECIAL BOX"
-  - Code: LOBBY_SPECIALBOX_OPEN_02
-    Msg: Reamaing Time
-  - Code: LOBBY_SPECIALBOX_OPEN_03
-    Msg: Base Cost
-  - Code: LOBBY_SPECIALBOX_OPEN_04
-    Msg: Boost Cost
-  - Code: LOBBY_SPECIALBOX_OPEN_05
-    Msg: Total
-  - Code: LOBBY_SPECIALBOX_OPEN_06
-    Msg: Open
-  - Code: LOBBY_SPECIALBOX_OPEN_07
-    Msg: RESULT
-  - Code: LOBBY_GAMEPLAY_01
-    Msg: "+{0} XPER"
-  - Code: LOBBY_GAMEPLAY_02
-    Msg: "+{0} PER"
-  - Code: LOBBY_GAMEPLAY_03
-    Msg: "Lv {0}"
-  - Code: LOBBY_GAMEPLAY_04
-    Msg: "{0} (+{1})"
-  - Code: INVENTORY_TABNAME_01
-    Msg: Cars
-  - Code: INVENTORY_TABNAME_02
-    Msg: Car Boxes
-  - Code: INVENTORY_TABNAME_03
-    Msg: Gems
-  - Code: INVENTORY_TABNAME_04
-    Msg: Others
-  - Code: INVENTORY_TAB_CARS_SORT_01
-    Msg: Highest Level
-  - Code: INVENTORY_TAB_CARS_SORT_02
-    Msg: Lowest Level
-  - Code: INVENTORY_TAB_CARS_SORT_03
-    Msg: Highest Grade
-  - Code: INVENTORY_TAB_CARS_SORT_04
-    Msg: Lowest Grade
-  - Code: INVENTORY_TAB_CARS_FILTER_01
-    Msg: Filter
-  - Code: INVENTORY_TAB_CARS_FILTER_02
-    Msg: Clear Filter
-  - Code: INVENTORY_TAB_CARS_FILTER_03
-    Msg: Type
-  - Code: INVENTORY_TAB_CARS_FILTER_04
-    Msg: Grade
-  - Code: INVENTORY_TAB_CARS_FILTER_05
-    Msg: Rarity
-  - Code: INVENTORY_TAB_CARS_FILTER_06
-    Msg: Level
-  - Code: INVENTORY_TAB_CARS_FILTER_07
-    Msg: Base
-  - Code: INVENTORY_TAB_CARS_FILTER_08
-    Msg: Mint
-  - Code: INVENTORY_TAB_CARS_FILTER_09
-    Msg: Socket Color Included
-  - Code: INVENTORY_TAB_CARS_FILTER_10
-    Msg: RED
-  - Code: INVENTORY_TAB_CARS_FILTER_11
-    Msg: GREEN
-  - Code: INVENTORY_TAB_CARS_FILTER_12
-    Msg: YELLOW
-  - Code: INVENTORY_TAB_CARS_FILTER_13
-    Msg: BLUE
-  - Code: INVENTORY_TAB_CARS_FILTER_14
-    Msg: RAINBOW
-  - Code: INVENTORY_TAB_CARS_FILTER_15
-    Msg: Confirm
-  - Code: INVENTORY_TAB_CARS_01
-    Msg: "Mint: {0}: null"
-  - Code: INVENTORY_TAB_CARS_02
-    Msg: "Level {0}"
-  - Code: INVENTORY_TAB_CARS_03
-    Msg: "{0} km {1}"
-  - Code: INVENTORY_CARBOX_OPEN_01
-    Msg: "{0} CARBOX"
-  - Code: INVENTORY_CARBOX_OPEN_02
-    Msg: SELL
-  - Code: INVENTORY_CARBOX_OPEN_03
-    Msg: TRANSFER
-  - Code: INVENTORY_CARBOX_OPEN_04
-    Msg: Minted From
-  - Code: INVENTORY_CARBOX_OPEN_05
-    Msg: Open
-  - Code: INVENTORY_CARBOX_OPEN_06
-    Msg: Are you sure you want to open this Car box?
-  - Code: INVENTORY_CARBOX_OPEN_07
-    Msg: No
-  - Code: INVENTORY_CARBOX_OPEN_08
-    Msg: Yes
-  - Code: WORKSHOP_TABNAME_01
-    Msg: Mint
-  - Code: WORKSHOP_TABNAME_02
-    Msg: Enhance
-  - Code: WORKSHOP_TABNAME_03
-    Msg: Gem Upgrade
-  - Code: WORKSHOP_TAB_MINT_SORT_01
-    Msg: Highest Level
-  - Code: WORKSHOP_TAB_MINT_SORT_02
-    Msg: Lowest Level
-  - Code: WORKSHOP_TAB_MINT_SORT_03
-    Msg: Highest Grade
-  - Code: WORKSHOP_TAB_MINT_SORT_04
-    Msg: Lowest Grade
-  - Code: WORKSHOP_TAB_MINT_FILTER_01
-    Msg: Filter
-  - Code: WORKSHOP_TAB_MINT_FILTER_02
-    Msg: Clear Filter
-  - Code: WORKSHOP_TAB_MINT_FILTER_03
-    Msg: Type
-  - Code: WORKSHOP_TAB_MINT_FILTER_04
-    Msg: Grade
-  - Code: WORKSHOP_TAB_MINT_FILTER_05
-    Msg: Rarity
-  - Code: WORKSHOP_TAB_MINT_FILTER_06
-    Msg: Level
-  - Code: WORKSHOP_TAB_MINT_FILTER_07
-    Msg: Base
-  - Code: WORKSHOP_TAB_MINT_FILTER_08
-    Msg: Mint
-  - Code: WORKSHOP_TAB_MINT_FILTER_09
-    Msg: Socket Color Included
-  - Code: WORKSHOP_TAB_MINT_FILTER_10
-    Msg: RED
-  - Code: WORKSHOP_TAB_MINT_FILTER_11
-    Msg: GREEN
-  - Code: WORKSHOP_TAB_MINT_FILTER_12
-    Msg: YELLOW
-  - Code: WORKSHOP_TAB_MINT_FILTER_13
-    Msg: BLUE
-  - Code: WORKSHOP_TAB_MINT_FILTER_14
-    Msg: RAINBOW
-  - Code: WORKSHOP_TAB_MINT_FILTER_15
-    Msg: Confirm
-  - Code: WORKSHOP_TAB_MINT_01
-    Msg: "Mint: {0}: null"
-  - Code: WORKSHOP_TAB_MINT_02
-    Msg: Select
-  - Code: WORKSHOP_TAB_MINT_03
-    Msg: Already Selected
-  - Code: WORKSHOP_TAB_MINT_04
-    Msg: Minting
-  - Code: WORKSHOP_TAB_MINT_05
-    Msg: Car
-  - Code: WORKSHOP_TAB_MINT_06
-    Msg: Later
-  - Code: WORKSHOP_TAB_MINT_07
-    Msg: Open Now
-  - Code: MARKET_TABNAME_01
-    Msg: Cars
-  - Code: MARKET_TABNAME_02
-    Msg: Car Boxes
-  - Code: MARKET_TABNAME_03
-    Msg: Gems
-  - Code: MARKET_TABNAME_04
-    Msg: Others
-  - Code: MARKET_TAB_CARS_SORT_01
-    Msg: Highest Level
-  - Code: MARKET_TAB_CARS_SORT_02
-    Msg: Lowest Level
-  - Code: MARKET_TAB_CARS_SORT_03
-    Msg: Highest Grade
-  - Code: MARKET_TAB_CARS_SORT_04
-    Msg: Lowest Grade
-  - Code: MARKET_TAB_CARS_FILTER_01
-    Msg: Filter
-  - Code: MARKET_TAB_CARS_FILTER_02
-    Msg: Clear Filter
-  - Code: MARKET_TAB_CARS_FILTER_03
-    Msg: Type
-  - Code: MARKET_TAB_CARS_FILTER_04
-    Msg: Grade
-  - Code: MARKET_TAB_CARS_FILTER_05
-    Msg: Rarity
-  - Code: MARKET_TAB_CARS_FILTER_06
-    Msg: Level
-  - Code: MARKET_TAB_CARS_FILTER_07
-    Msg: Base
-  - Code: MARKET_TAB_CARS_FILTER_08
-    Msg: Mint
-  - Code: MARKET_TAB_CARS_FILTER_09
-    Msg: Socket Color Included
-  - Code: MARKET_TAB_CARS_FILTER_10
-    Msg: RED
-  - Code: MARKET_TAB_CARS_FILTER_11
-    Msg: GREEN
-  - Code: MARKET_TAB_CARS_FILTER_12
-    Msg: YELLOW
-  - Code: MARKET_TAB_CARS_FILTER_13
-    Msg: BLUE
-  - Code: MARKET_TAB_CARS_FILTER_14
-    Msg: RAINBOW
-  - Code: MARKET_TAB_CARS_FILTER_15
-    Msg: Confirm
-  - Code: MARKET_TAB_CARS_01
-    Msg: Buy
-  - Code: MARKET_TAB_CARS_BUYPOPUP_01
-    Msg: BUY
-  - Code: MARKET_TAB_CARS_BUYPOPUP_02
-    Msg: Type
-  - Code: MARKET_TAB_CARS_BUYPOPUP_03
-    Msg: Grade
-  - Code: MARKET_TAB_CARS_BUYPOPUP_04
-    Msg: Level
-  - Code: MARKET_TAB_CARS_BUYPOPUP_05
-    Msg: Mint
-  - Code: MARKET_TAB_CARS_BUYPOPUP_06
-    Msg: Price
-  - Code: MARKET_TAB_CARS_BUYPOPUP_07
-    Msg: Buy Now
-  - Code: CAR_INFO_01
-    Msg: "Lv {0} / 30"
-  - Code: CAR_INFO_02
-    Msg: "Mint: {0}: null"
-  - Code: CAR_INFO_03
-    Msg: EMPTY
-  - Code: CAR_INFO_04
-    Msg: "Durability {0}/{1} ({3}%)"
-  - Code: CAR_INFO_05
-    Msg: "{0} km {1}"
-  - Code: CAR_INFO_06
-    Msg: Status
-  - Code: CAR_INFO_07
-    Msg: "0"
-  - Code: CAR_INFO_08
-    Msg: Currently
-  - Code: CAR_INFO_09
-    Msg: Base
-  - Code: CAR_INFO_10
-    Msg: Mint Information
-  - Code: CAR_INFO_11
-    Msg: View
-  - Code: CAR_INFO_BOTTOM_MENU_01
-    Msg: LEVEL UP
-  - Code: CAR_INFO_BOTTOM_MENU_02
-    Msg: REPAIR
-  - Code: CAR_INFO_BOTTOM_MENU_03
-    Msg: RECOVERY
-  - Code: CAR_INFO_BOTTOM_MENU_04
-    Msg: LEASE
-  - Code: CAR_INFO_BOTTOM_MENU_05
-    Msg: SELL
-  - Code: CAR_INFO_BOTTOM_MENU_06
-    Msg: TRANSFER
-  - Code: CAR_INFO_ADDSTATUS_POPUP_01
-    Msg: ADD STATUS POINTS
-  - Code: CAR_INFO_ADDSTATUS_POPUP_02
-    Msg: Available Points
-  - Code: CAR_INFO_ADDSTATUS_POPUP_03
-    Msg: Confirm
-  - Code: CAR_INFO_LEVELUP_POPUP_01
-    Msg: LEVEL UP
-  - Code: CAR_INFO_LEVELUP_POPUP_02
-    Msg: "Lv {0}"
-  - Code: CAR_INFO_LEVELUP_POPUP_03
-    Msg: "Time taken {0}h {1}m"
-  - Code: CAR_INFO_LEVELUP_POPUP_04
-    Msg: Cost
-  - Code: CAR_INFO_LEVELUP_POPUP_05
-    Msg: Needed for next Level
-  - Code: CAR_INFO_LEVELUP_POPUP_06
-    Msg: Confirm
-  - Code: CAR_INFO_LEVELUP_POPUP_07
-    Msg: Leveling
-  - Code: CAR_INFO_LEVELUP_POPUP_08
-    Msg: Remaing Time
-  - Code: CAR_INFO_LEVELUP_POPUP_09
-    Msg: Boost
-  - Code: CAR_INFO_LEVELUP_POPUP_10
-    Msg: LEVEL UP BOOST
-  - Code: CAR_INFO_REPAIR_POPUP_01
-    Msg: REPAIR
-  - Code: CAR_INFO_REPAIR_POPUP_02
-    Msg: "Durability {0}/{1}"
-  - Code: CAR_INFO_REPAIR_POPUP_03
-    Msg: Cost
-  - Code: CAR_INFO_REPAIR_POPUP_04
-    Msg: Move the slide to set the target durability
-  - Code: CAR_INFO_REPAIR_POPUP_05
-    Msg: Repair
-  - Code: CAR_INFO_SELL_POPUP_01
-    Msg: SELL
-  - Code: CAR_INFO_SELL_POPUP_02
-    Msg: Price
-  - Code: CAR_INFO_SELL_POPUP_03
-    Msg: Please enter the selling price
-  - Code: CAR_INFO_SELL_POPUP_04
-    Msg: Confirm
-  - Code: CAR_INFO_SELL_POPUP_05
-    Msg: CONFIRM TO SELL
-  - Code: CAR_INFO_SELL_POPUP_06
-    Msg: List Price
-  - Code: CAR_INFO_SELL_POPUP_07
-    Msg: Royalties
-  - Code: CAR_INFO_SELL_POPUP_08
-    Msg: Transcation Fee
-  - Code: CAR_INFO_SELL_POPUP_09
-    Msg: Listing/Cancel
-  - Code: CAR_INFO_SELL_POPUP_10
-    Msg: Free
-  - Code: CAR_INFO_SELL_POPUP_11
-    Msg: SELLING
-  - Code: CAR_INFO_SELL_POPUP_12
-    Msg: Date
-  - Code: CAR_INFO_SELL_POPUP_13
-    Msg: Price
-  - Code: CAR_INFO_SELL_POPUP_14
-    Msg: Revoke
-  - Code: CAR_INFO_SELL_POPUP_15
-    Msg: Change
-  - Code: PLAY_INFO_01
-    Msg: Power
-  - Code: PLAY_INFO_02
-    Msg: "{0}/{1}"
-  - Code: PLAY_INFO_03
-    Msg: Today"s Earn
-  - Code: PLAY_INFO_04
-    Msg: Earning Token
-  - Code: PLAY_INFO_05
-    Msg: Play Game
-  - Code: PLAY_INFO_06
-    Msg: Back to game
-  - Code: PLAY_INFO_07
-    Msg: Finish
-  - Code: PLAY_INFO_RESULT_01
-    Msg: Result
-  - Code: PLAY_INFO_RESULT_02
-    Msg: PLAY GAME
-  - Code: PLAY_INFO_RESULT_03
-    Msg: Play Time
-  - Code: PLAY_INFO_RESULT_04
-    Msg: Power
-  - Code: PLAY_INFO_RESULT_05
-    Msg: Earned
-  - Code: PLAY_INFO_RESULT_06
-    Msg: Durability
-  - Code: PLAY_INFO_RESULT_07
-    Msg: "(-{0})"
-  - Code: PLAY_INFO_RESULT_08
-    Msg: "{0}km"
-  - Code: PLAY_INFO_RESULT_09
-    Msg: "(+{0})"
-  - Code: PLAY_INFO_RESULT_10
-    Msg: Lobby
-  - Code: TOKENMANAGEMENT_TABNAME_01
-    Msg: Spending
-  - Code: TOKENMANAGEMENT_TABNAME_02
-    Msg: Wallet
-  - Code: TOKENMANAGEMENT_TAB_SPENDING_01
-    Msg: Spending Account
-  - Code: TOKENMANAGEMENT_TAB_SPENDING_02
-    Msg: Transfer
-  - Code: TOKENMANAGEMENT_TAB_SPENDING_03
-    Msg: Pending
-  - Code: TOKENMANAGEMENT_TAB_SPENDING_04
-    Msg: History
-  - Code: TOKENMANAGEMENT_TAB_SPENDING_05
-    Msg: Show past 30 days
-  - Code: TOKENMANAGEMENT_TAB_SPENDING_06
-    Msg: Sent
-  - Code: TOKENMANAGEMENT_TAB_SPENDING_07
-    Msg: Received
-  - Code: TOKENMANAGEMENT_TAB_SPENDING_08
-    Msg: NO RECORD HISTORY
-  - Code: TOKENMANAGEMENT_TAB_SPENDING_09
-    Msg: SPENDING ACCOUNT
-  - Code: TOKENMANAGEMENT_TAB_SPENDING_10
-    Msg: To use token in the Perplay App, you must hold Tokens in this account.
-  - Code: TOKENMANAGEMENT_TAB_SPENDING_11
-    Msg: Ok
-  - Code: TOKENMANAGEMENT_TAB_WALLET_01
-    Msg: Wallet Account
-  - Code: TOKENMANAGEMENT_TAB_WALLET_02
-    Msg: Address
-  - Code: TOKENMANAGEMENT_TAB_WALLET_03
-    Msg: GaL7sUm8f8A7..
-  - Code: TOKENMANAGEMENT_TAB_WALLET_04
-    Msg: Detailed
-  - Code: TOKENMANAGEMENT_TAB_WALLET_05
-    Msg: Cars
-  - Code: TOKENMANAGEMENT_TAB_WALLET_06
-    Msg: Car Boxes
-  - Code: TOKENMANAGEMENT_TAB_WALLET_07
-    Msg: To Spending
-  - Code: TOKENMANAGEMENT_TAB_WALLET_08
-    Msg: Trade
-  - Code: TOKENMANAGEMENT_TAB_WALLET_09
-    Msg: To External
-  - Code: TOKENMANAGEMENT_TAB_WALLET_10
-    Msg: Wallet Account
-  - Code: TOKENMANAGEMENT_TAB_WALLET_11
-    Msg: This account allows you to send and receive tokens outside of Perplay and to your Spending Account.
-      You can also exchange
-      XPER/PER/HVH/USDC tokens
-      with each other through the Trade function.
-  - Code: TOKENMANAGEMENT_TAB_WALLET_12
-    Msg: Ok
-  - Code: TOKENMANAGEMENT_TAB_WALLET_13
-    Msg: GaL7sUm8F8AF7jzWgf48ijWoKWxk2oVbZy575uF7zvvi
-  - Code: TOKENMANAGEMENT_TAB_WALLET_14
-    Msg: Copy Address
-  - Code: TOKENMANAGEMENT_PASSWORD_01
-    Msg: Secured Wallet
-  - Code: TOKENMANAGEMENT_PASSWORD_02
-    Msg: ENTER YOUR PASSCODE
-  - Code: TOKENMANAGEMENT_PASSWORD_03
-    Msg: FORGOT PASSCODE
-  - Code: TOKENMANAGEMENT_TRANSFER_01
-    Msg: Transfer
-  - Code: TOKENMANAGEMENT_TRANSFER_02
-    Msg: From
-  - Code: TOKENMANAGEMENT_TRANSFER_03
-    Msg: To
-  - Code: TOKENMANAGEMENT_TRANSFER_04
-    Msg: Spending
-  - Code: TOKENMANAGEMENT_TRANSFER_05
-    Msg: Wallet
-  - Code: TOKENMANAGEMENT_TRANSFER_06
-    Msg: Token
-  - Code: TOKENMANAGEMENT_TRANSFER_07
-    Msg: Change
-  - Code: TOKENMANAGEMENT_TRANSFER_08
-    Msg: Amount
-  - Code: TOKENMANAGEMENT_TRANSFER_09
-    Msg: Please enter the selling price
-  - Code: TOKENMANAGEMENT_TRANSFER_10
-    Msg: All
-  - Code: TOKENMANAGEMENT_TRANSFER_11
-    Msg: "Available: {0} {1}"
-  - Code: TOKENMANAGEMENT_TRANSFER_TOKENSELECT_01
-    Msg: Token Select
-  - Code: TOKENMANAGEMENT_TRANSFER_TOKENSELECT_02
-    Msg: Cars
-  - Code: TOKENMANAGEMENT_TRANSFER_TOKENSELECT_03
-    Msg: Car Boxes
-  - Code: TOKENMANAGEMENT_TRANSFER_POPUP_01
-    Msg: TRANSFER
-  - Code: TOKENMANAGEMENT_TRANSFER_POPUP_02
-    Msg: "Transfer {0}"
-  - Code: TOKENMANAGEMENT_TRANSFER_POPUP_03
-    Msg: Spending
-  - Code: TOKENMANAGEMENT_TRANSFER_POPUP_04
-    Msg: Wallet
-  - Code: TOKENMANAGEMENT_TRANSFER_POPUP_05
-    Msg: Your Request
-  - Code: TOKENMANAGEMENT_TRANSFER_POPUP_06
-    Msg: Fee
-  - Code: TOKENMANAGEMENT_TRANSFER_POPUP_07
-    Msg: Confirm
-  - Code: TOKENMANAGEMENT_TRADE_01
-    Msg: Trade
-  - Code: TOKENMANAGEMENT_TRADE_02
-    Msg: From
-  - Code: TOKENMANAGEMENT_TRADE_03
-    Msg: Change
-  - Code: TOKENMANAGEMENT_TRADE_04
-    Msg: Please enter the selling price
-  - Code: TOKENMANAGEMENT_TRADE_05
-    Msg: "Available: {0} {1}"
-  - Code: TOKENMANAGEMENT_TRADE_06
-    Msg: To
-  - Code: TOKENMANAGEMENT_TRADE_07
-    Msg: Silppage Tolerance
-  - Code: TOKENMANAGEMENT_TRADE_08
-    Msg: Create token account
-  - Code: TOKENMANAGEMENT_TRADE_POPUP_01
-    Msg: TRADE
-  - Code: TOKENMANAGEMENT_TRADE_POPUP_02
-    Msg: Trade Informatin
-  - Code: TOKENMANAGEMENT_TRADE_POPUP_03
-    Msg: From Token
-  - Code: TOKENMANAGEMENT_TRADE_POPUP_04
-    Msg: To Token
-  - Code: TOKENMANAGEMENT_TRADE_POPUP_05
-    Msg: Confirm
-  - Code: TOKENMANAGEMENT_SLIPPAGE_POPUP_01
-    Msg: SLIPPAGE TOLERANCE
-  - Code: TOKENMANAGEMENT_SLIPPAGE_POPUP_02
-    Msg: Set
-  - Code: TOKENMANAGEMENT_SLIPPAGE_POPUP_03
-    Msg: Yout transation may fail.
-  - Code: TOKENMANAGEMENT_SLIPPAGE_POPUP_04
-    Msg: Confirm
+{
+  "list": [
+    {
+      "code": "TOKEN_NAME_01",
+      "msg": "XPER"
+    },
+    {
+      "code": "TOKEN_NAME_02",
+      "msg": "PER"
+    },
+    {
+      "code": "TOKEN_NAME_03",
+      "msg": "HVH"
+    },
+    {
+      "code": "TOKEN_NAME_04",
+      "msg": "USDC"
+    },
+    {
+      "code": "STATUS_NAME_01",
+      "msg": "Speed"
+    },
+    {
+      "code": "STATUS_NAME_02",
+      "msg": "Luck"
+    },
+    {
+      "code": "STATUS_NAME_03",
+      "msg": "Charge"
+    },
+    {
+      "code": "STATUS_NAME_04",
+      "msg": "Repair"
+    },
+    {
+      "code": "CAR_TYPE_01",
+      "msg": "SUV"
+    },
+    {
+      "code": "CAR_TYPE_02",
+      "msg": "OFF ROAD"
+    },
+    {
+      "code": "CAR_TYPE_03",
+      "msg": "SEDAN"
+    },
+    {
+      "code": "CAR_TYPE_04",
+      "msg": "SPORTS"
+    },
+    {
+      "code": "CAR_GRADE_01",
+      "msg": "NOMAL"
+    },
+    {
+      "code": "CAR_GRADE_02",
+      "msg": "RARE"
+    },
+    {
+      "code": "CAR_GRADE_03",
+      "msg": "ELITE"
+    },
+    {
+      "code": "CAR_GRADE_04",
+      "msg": "EPIC"
+    },
+    {
+      "code": "CAR_GRADE_05",
+      "msg": "ULTIMATE"
+    },
+    {
+      "code": "CARBOX_GRADE_01",
+      "msg": "NOMAL"
+    },
+    {
+      "code": "CARBOX_GRADE_02",
+      "msg": "RARE"
+    },
+    {
+      "code": "CARBOX_GRADE_03",
+      "msg": "ELITE"
+    },
+    {
+      "code": "CARBOX_GRADE_04",
+      "msg": "EPIC"
+    },
+    {
+      "code": "CARBOX_GRADE_05",
+      "msg": "ULTIMATE"
+    },
+    {
+      "code": "TOP_MENU_01",
+      "msg": "Hello,"
+    },
+    {
+      "code": "TOP_MENU_02",
+      "msg": "GUEST"
+    },
+    {
+      "code": "BOTTOM_NAVIGATION_01",
+      "msg": "LOBBY"
+    },
+    {
+      "code": "BOTTOM_NAVIGATION_02",
+      "msg": "INVENTORY"
+    },
+    {
+      "code": "BOTTOM_NAVIGATION_03",
+      "msg": "WORKSHOP"
+    },
+    {
+      "code": "BOTTOM_NAVIGATION_04",
+      "msg": "GAME"
+    },
+    {
+      "code": "BOTTOM_NAVIGATION_05",
+      "msg": "MARKET"
+    },
+    {
+      "code": "TOAST_MESSAGE_01",
+      "msg": "Coming Soon"
+    },
+    {
+      "code": "TOAST_MESSAGE_02",
+      "msg": "Treansaction submitted (Can take a few minutes)"
+    },
+    {
+      "code": "TOAST_MESSAGE_03",
+      "msg": "Account creation complete"
+    },
+    {
+      "code": "TOAST_MESSAGE_04",
+      "msg": "Trade complete"
+    },
+    {
+      "code": "TOAST_MESSAGE_05",
+      "msg": "Database Reset"
+    },
+    {
+      "code": "LOGIN_01",
+      "msg": "Your play is worth it!"
+    },
+    {
+      "code": "LOGIN_02",
+      "msg": "LOGIN"
+    },
+    {
+      "code": "LOGIN_03",
+      "msg": "Email Adress"
+    },
+    {
+      "code": "LOGIN_04",
+      "msg": "Password"
+    },
+    {
+      "code": "LOGIN_05",
+      "msg": "Remember Me"
+    },
+    {
+      "code": "LOGIN_06",
+      "msg": "Forgot Password?"
+    },
+    {
+      "code": "LOGIN_07",
+      "msg": "Don’t have an account?"
+    },
+    {
+      "code": "LOGIN_08",
+      "msg": "Sign up"
+    },
+    {
+      "code": "LOGIN_09",
+      "msg": "SIGN UP"
+    },
+    {
+      "code": "LOGIN_10",
+      "msg": "Data Reset"
+    },
+    {
+      "code": "LOGIN_11",
+      "msg": "Username"
+    },
+    {
+      "code": "LOGIN_12",
+      "msg": "Repeat Password"
+    },
+    {
+      "code": "LOGIN_13",
+      "msg": "Welcome to PERPLAY"
+    },
+    {
+      "code": "CAR_MILEAGE_STATE_01",
+      "msg": "Fine"
+    },
+    {
+      "code": "CAR_MILEAGE_STATE_02",
+      "msg": "Warning"
+    },
+    {
+      "code": "CAR_MILEAGE_STATE_03",
+      "msg": "Danger"
+    },
+    {
+      "code": "LOBBY_CAR_01",
+      "msg": "Buy a car and enjoy the game"
+    },
+    {
+      "code": "LOBBY_CAR_02",
+      "msg": "Lv {0}"
+    },
+    {
+      "code": "LOBBY_CAR_03",
+      "msg": "Durability {0}/{1} ({3}%)"
+    },
+    {
+      "code": "LOBBY_CAR_04",
+      "msg": "{0} km {1}"
+    },
+    {
+      "code": "LOBBY_TAB_01",
+      "msg": "Today's Earn"
+    },
+    {
+      "code": "LOBBY_TAB_02",
+      "msg": "Total Status"
+    },
+    {
+      "code": "LOBBY_TAB_03",
+      "msg": "Selected Car"
+    },
+    {
+      "code": "LOBBY_TAB_04",
+      "msg": "{0} / {1}"
+    },
+    {
+      "code": "LOBBY_TAB_05",
+      "msg": "Next Charge"
+    },
+    {
+      "code": "LOBBY_TAB_06",
+      "msg": "{0}h {1}m"
+    },
+    {
+      "code": "LOBBY_TAB_07",
+      "msg": "{0} (+{1})"
+    },
+    {
+      "code": "LOBBY_SPECIALBOX_01",
+      "msg": "Lv{0}"
+    },
+    {
+      "code": "LOBBY_SPECIALBOX_02",
+      "msg": "READY"
+    },
+    {
+      "code": "LOBBY_SPECIALBOX_03",
+      "msg": "{0}h {1}m"
+    },
+    {
+      "code": "LOBBY_SPECIALBOX_04",
+      "msg": "Game Play"
+    },
+    {
+      "code": "LOBBY_SPECIALBOX_05",
+      "msg": "See All"
+    },
+    {
+      "code": "LOBBY_SPECIALBOX_OPEN_01",
+      "msg": "LV {0}. SPECIAL BOX"
+    },
+    {
+      "code": "LOBBY_SPECIALBOX_OPEN_02",
+      "msg": "Reamaing Time"
+    },
+    {
+      "code": "LOBBY_SPECIALBOX_OPEN_03",
+      "msg": "Base Cost"
+    },
+    {
+      "code": "LOBBY_SPECIALBOX_OPEN_04",
+      "msg": "Boost Cost"
+    },
+    {
+      "code": "LOBBY_SPECIALBOX_OPEN_05",
+      "msg": "Total"
+    },
+    {
+      "code": "LOBBY_SPECIALBOX_OPEN_06",
+      "msg": "Open"
+    },
+    {
+      "code": "LOBBY_SPECIALBOX_OPEN_07",
+      "msg": "RESULT"
+    },
+    {
+      "code": "LOBBY_GAMEPLAY_01",
+      "msg": "+{0} XPER"
+    },
+    {
+      "code": "LOBBY_GAMEPLAY_02",
+      "msg": "+{0} PER"
+    },
+    {
+      "code": "LOBBY_GAMEPLAY_03",
+      "msg": "Lv {0}"
+    },
+    {
+      "code": "LOBBY_GAMEPLAY_04",
+      "msg": "{0} (+{1})"
+    },
+    {
+      "code": "INVENTORY_TABNAME_01",
+      "msg": "Cars"
+    },
+    {
+      "code": "INVENTORY_TABNAME_02",
+      "msg": "Car Boxes"
+    },
+    {
+      "code": "INVENTORY_TABNAME_03",
+      "msg": "Gems"
+    },
+    {
+      "code": "INVENTORY_TABNAME_04",
+      "msg": "Others"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_SORT_01",
+      "msg": "Highest Level"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_SORT_02",
+      "msg": "Lowest Level"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_SORT_03",
+      "msg": "Highest Grade"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_SORT_04",
+      "msg": "Lowest Grade"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_FILTER_01",
+      "msg": "Filter"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_FILTER_02",
+      "msg": "Clear Filter"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_FILTER_03",
+      "msg": "Type"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_FILTER_04",
+      "msg": "Grade"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_FILTER_05",
+      "msg": "Rarity"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_FILTER_06",
+      "msg": "Level"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_FILTER_07",
+      "msg": "Base"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_FILTER_08",
+      "msg": "Mint"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_FILTER_09",
+      "msg": "Socket Color Included"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_FILTER_10",
+      "msg": "RED"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_FILTER_11",
+      "msg": "GREEN"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_FILTER_12",
+      "msg": "YELLOW"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_FILTER_13",
+      "msg": "BLUE"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_FILTER_14",
+      "msg": "RAINBOW"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_FILTER_15",
+      "msg": "Confirm"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_01",
+      "msg": "Mint: {0}: null"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_02",
+      "msg": "Level {0}"
+    },
+    {
+      "code": "INVENTORY_TAB_CARS_03",
+      "msg": "{0} km {1}"
+    },
+    {
+      "code": "INVENTORY_CARBOX_OPEN_01",
+      "msg": "{0} CARBOX"
+    },
+    {
+      "code": "INVENTORY_CARBOX_OPEN_02",
+      "msg": "SELL"
+    },
+    {
+      "code": "INVENTORY_CARBOX_OPEN_03",
+      "msg": "TRANSFER"
+    },
+    {
+      "code": "INVENTORY_CARBOX_OPEN_04",
+      "msg": "Minted From"
+    },
+    {
+      "code": "INVENTORY_CARBOX_OPEN_05",
+      "msg": "Open"
+    },
+    {
+      "code": "INVENTORY_CARBOX_OPEN_06",
+      "msg": "Are you sure you want to open this Car box?"
+    },
+    {
+      "code": "INVENTORY_CARBOX_OPEN_07",
+      "msg": "No"
+    },
+    {
+      "code": "INVENTORY_CARBOX_OPEN_08",
+      "msg": "Yes"
+    },
+    {
+      "code": "WORKSHOP_TABNAME_01",
+      "msg": "Mint"
+    },
+    {
+      "code": "WORKSHOP_TABNAME_02",
+      "msg": "Enhance"
+    },
+    {
+      "code": "WORKSHOP_TABNAME_03",
+      "msg": "Gem Upgrade"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_SORT_01",
+      "msg": "Highest Level"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_SORT_02",
+      "msg": "Lowest Level"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_SORT_03",
+      "msg": "Highest Grade"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_SORT_04",
+      "msg": "Lowest Grade"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_FILTER_01",
+      "msg": "Filter"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_FILTER_02",
+      "msg": "Clear Filter"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_FILTER_03",
+      "msg": "Type"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_FILTER_04",
+      "msg": "Grade"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_FILTER_05",
+      "msg": "Rarity"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_FILTER_06",
+      "msg": "Level"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_FILTER_07",
+      "msg": "Base"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_FILTER_08",
+      "msg": "Mint"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_FILTER_09",
+      "msg": "Socket Color Included"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_FILTER_10",
+      "msg": "RED"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_FILTER_11",
+      "msg": "GREEN"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_FILTER_12",
+      "msg": "YELLOW"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_FILTER_13",
+      "msg": "BLUE"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_FILTER_14",
+      "msg": "RAINBOW"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_FILTER_15",
+      "msg": "Confirm"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_01",
+      "msg": "Mint: {0}: null"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_02",
+      "msg": "Select"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_03",
+      "msg": "Already Selected"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_04",
+      "msg": "Minting"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_05",
+      "msg": "Car"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_06",
+      "msg": "Later"
+    },
+    {
+      "code": "WORKSHOP_TAB_MINT_07",
+      "msg": "Open Now"
+    },
+    {
+      "code": "MARKET_TABNAME_01",
+      "msg": "Cars"
+    },
+    {
+      "code": "MARKET_TABNAME_02",
+      "msg": "Car Boxes"
+    },
+    {
+      "code": "MARKET_TABNAME_03",
+      "msg": "Gems"
+    },
+    {
+      "code": "MARKET_TABNAME_04",
+      "msg": "Others"
+    },
+    {
+      "code": "MARKET_TAB_CARS_SORT_01",
+      "msg": "Highest Level"
+    },
+    {
+      "code": "MARKET_TAB_CARS_SORT_02",
+      "msg": "Lowest Level"
+    },
+    {
+      "code": "MARKET_TAB_CARS_SORT_03",
+      "msg": "Highest Grade"
+    },
+    {
+      "code": "MARKET_TAB_CARS_SORT_04",
+      "msg": "Lowest Grade"
+    },
+    {
+      "code": "MARKET_TAB_CARS_FILTER_01",
+      "msg": "Filter"
+    },
+    {
+      "code": "MARKET_TAB_CARS_FILTER_02",
+      "msg": "Clear Filter"
+    },
+    {
+      "code": "MARKET_TAB_CARS_FILTER_03",
+      "msg": "Type"
+    },
+    {
+      "code": "MARKET_TAB_CARS_FILTER_04",
+      "msg": "Grade"
+    },
+    {
+      "code": "MARKET_TAB_CARS_FILTER_05",
+      "msg": "Rarity"
+    },
+    {
+      "code": "MARKET_TAB_CARS_FILTER_06",
+      "msg": "Level"
+    },
+    {
+      "code": "MARKET_TAB_CARS_FILTER_07",
+      "msg": "Base"
+    },
+    {
+      "code": "MARKET_TAB_CARS_FILTER_08",
+      "msg": "Mint"
+    },
+    {
+      "code": "MARKET_TAB_CARS_FILTER_09",
+      "msg": "Socket Color Included"
+    },
+    {
+      "code": "MARKET_TAB_CARS_FILTER_10",
+      "msg": "RED"
+    },
+    {
+      "code": "MARKET_TAB_CARS_FILTER_11",
+      "msg": "GREEN"
+    },
+    {
+      "code": "MARKET_TAB_CARS_FILTER_12",
+      "msg": "YELLOW"
+    },
+    {
+      "code": "MARKET_TAB_CARS_FILTER_13",
+      "msg": "BLUE"
+    },
+    {
+      "code": "MARKET_TAB_CARS_FILTER_14",
+      "msg": "RAINBOW"
+    },
+    {
+      "code": "MARKET_TAB_CARS_FILTER_15",
+      "msg": "Confirm"
+    },
+    {
+      "code": "MARKET_TAB_CARS_01",
+      "msg": "Buy"
+    },
+    {
+      "code": "MARKET_TAB_CARS_BUYPOPUP_01",
+      "msg": "BUY"
+    },
+    {
+      "code": "MARKET_TAB_CARS_BUYPOPUP_02",
+      "msg": "Type"
+    },
+    {
+      "code": "MARKET_TAB_CARS_BUYPOPUP_03",
+      "msg": "Grade"
+    },
+    {
+      "code": "MARKET_TAB_CARS_BUYPOPUP_04",
+      "msg": "Level"
+    },
+    {
+      "code": "MARKET_TAB_CARS_BUYPOPUP_05",
+      "msg": "Mint"
+    },
+    {
+      "code": "MARKET_TAB_CARS_BUYPOPUP_06",
+      "msg": "Price"
+    },
+    {
+      "code": "MARKET_TAB_CARS_BUYPOPUP_07",
+      "msg": "Buy Now"
+    },
+    {
+      "code": "CAR_INFO_01",
+      "msg": "Lv {0} / 30"
+    },
+    {
+      "code": "CAR_INFO_02",
+      "msg": "Mint: {0}: null"
+    },
+    {
+      "code": "CAR_INFO_03",
+      "msg": "EMPTY"
+    },
+    {
+      "code": "CAR_INFO_04",
+      "msg": "Durability {0}/{1} ({3}%)"
+    },
+    {
+      "code": "CAR_INFO_05",
+      "msg": "{0} km {1}"
+    },
+    {
+      "code": "CAR_INFO_06",
+      "msg": "Status"
+    },
+    {
+      "code": "CAR_INFO_07",
+      "msg": "0"
+    },
+    {
+      "code": "CAR_INFO_08",
+      "msg": "Currently"
+    },
+    {
+      "code": "CAR_INFO_09",
+      "msg": "Base"
+    },
+    {
+      "code": "CAR_INFO_10",
+      "msg": "Mint Information"
+    },
+    {
+      "code": "CAR_INFO_11",
+      "msg": "View"
+    },
+    {
+      "code": "CAR_INFO_BOTTOM_MENU_01",
+      "msg": "LEVEL UP"
+    },
+    {
+      "code": "CAR_INFO_BOTTOM_MENU_02",
+      "msg": "REPAIR"
+    },
+    {
+      "code": "CAR_INFO_BOTTOM_MENU_03",
+      "msg": "RECOVERY"
+    },
+    {
+      "code": "CAR_INFO_BOTTOM_MENU_04",
+      "msg": "LEASE"
+    },
+    {
+      "code": "CAR_INFO_BOTTOM_MENU_05",
+      "msg": "SELL"
+    },
+    {
+      "code": "CAR_INFO_BOTTOM_MENU_06",
+      "msg": "TRANSFER"
+    },
+    {
+      "code": "CAR_INFO_ADDSTATUS_POPUP_01",
+      "msg": "ADD STATUS POINTS"
+    },
+    {
+      "code": "CAR_INFO_ADDSTATUS_POPUP_02",
+      "msg": "Available Points"
+    },
+    {
+      "code": "CAR_INFO_ADDSTATUS_POPUP_03",
+      "msg": "Confirm"
+    },
+    {
+      "code": "CAR_INFO_LEVELUP_POPUP_01",
+      "msg": "LEVEL UP"
+    },
+    {
+      "code": "CAR_INFO_LEVELUP_POPUP_02",
+      "msg": "Lv {0}"
+    },
+    {
+      "code": "CAR_INFO_LEVELUP_POPUP_03",
+      "msg": "Time taken {0}h {1}m"
+    },
+    {
+      "code": "CAR_INFO_LEVELUP_POPUP_04",
+      "msg": "Cost"
+    },
+    {
+      "code": "CAR_INFO_LEVELUP_POPUP_05",
+      "msg": "Needed for next Level"
+    },
+    {
+      "code": "CAR_INFO_LEVELUP_POPUP_06",
+      "msg": "Confirm"
+    },
+    {
+      "code": "CAR_INFO_LEVELUP_POPUP_07",
+      "msg": "Leveling"
+    },
+    {
+      "code": "CAR_INFO_LEVELUP_POPUP_08",
+      "msg": "Remaing Time"
+    },
+    {
+      "code": "CAR_INFO_LEVELUP_POPUP_09",
+      "msg": "Boost"
+    },
+    {
+      "code": "CAR_INFO_LEVELUP_POPUP_10",
+      "msg": "LEVEL UP BOOST"
+    },
+    {
+      "code": "CAR_INFO_REPAIR_POPUP_01",
+      "msg": "REPAIR"
+    },
+    {
+      "code": "CAR_INFO_REPAIR_POPUP_02",
+      "msg": "Durability {0}/{1}"
+    },
+    {
+      "code": "CAR_INFO_REPAIR_POPUP_03",
+      "msg": "Cost"
+    },
+    {
+      "code": "CAR_INFO_REPAIR_POPUP_04",
+      "msg": "Move the slide to set the target durability"
+    },
+    {
+      "code": "CAR_INFO_REPAIR_POPUP_05",
+      "msg": "Repair"
+    },
+    {
+      "code": "CAR_INFO_SELL_POPUP_01",
+      "msg": "SELL"
+    },
+    {
+      "code": "CAR_INFO_SELL_POPUP_02",
+      "msg": "Price"
+    },
+    {
+      "code": "CAR_INFO_SELL_POPUP_03",
+      "msg": "Please enter the selling price"
+    },
+    {
+      "code": "CAR_INFO_SELL_POPUP_04",
+      "msg": "Confirm"
+    },
+    {
+      "code": "CAR_INFO_SELL_POPUP_05",
+      "msg": "CONFIRM TO SELL"
+    },
+    {
+      "code": "CAR_INFO_SELL_POPUP_06",
+      "msg": "List Price"
+    },
+    {
+      "code": "CAR_INFO_SELL_POPUP_07",
+      "msg": "Royalties"
+    },
+    {
+      "code": "CAR_INFO_SELL_POPUP_08",
+      "msg": "Transcation Fee"
+    },
+    {
+      "code": "CAR_INFO_SELL_POPUP_09",
+      "msg": "Listing/Cancel"
+    },
+    {
+      "code": "CAR_INFO_SELL_POPUP_10",
+      "msg": "Free"
+    },
+    {
+      "code": "CAR_INFO_SELL_POPUP_11",
+      "msg": "SELLING"
+    },
+    {
+      "code": "CAR_INFO_SELL_POPUP_12",
+      "msg": "Date"
+    },
+    {
+      "code": "CAR_INFO_SELL_POPUP_13",
+      "msg": "Price"
+    },
+    {
+      "code": "CAR_INFO_SELL_POPUP_14",
+      "msg": "Revoke"
+    },
+    {
+      "code": "CAR_INFO_SELL_POPUP_15",
+      "msg": "Change"
+    },
+    {
+      "code": "PLAY_INFO_01",
+      "msg": "Power"
+    },
+    {
+      "code": "PLAY_INFO_02",
+      "msg": "{0}/{1}"
+    },
+    {
+      "code": "PLAY_INFO_03",
+      "msg": "Today\"s Earn"
+    },
+    {
+      "code": "PLAY_INFO_04",
+      "msg": "Earning Token"
+    },
+    {
+      "code": "PLAY_INFO_05",
+      "msg": "Play Game"
+    },
+    {
+      "code": "PLAY_INFO_06",
+      "msg": "Back to game"
+    },
+    {
+      "code": "PLAY_INFO_07",
+      "msg": "Finish"
+    },
+    {
+      "code": "PLAY_INFO_RESULT_01",
+      "msg": "Result"
+    },
+    {
+      "code": "PLAY_INFO_RESULT_02",
+      "msg": "PLAY GAME"
+    },
+    {
+      "code": "PLAY_INFO_RESULT_03",
+      "msg": "Play Time"
+    },
+    {
+      "code": "PLAY_INFO_RESULT_04",
+      "msg": "Power"
+    },
+    {
+      "code": "PLAY_INFO_RESULT_05",
+      "msg": "Earned"
+    },
+    {
+      "code": "PLAY_INFO_RESULT_06",
+      "msg": "Durability"
+    },
+    {
+      "code": "PLAY_INFO_RESULT_07",
+      "msg": "(-{0})"
+    },
+    {
+      "code": "PLAY_INFO_RESULT_08",
+      "msg": "{0}km"
+    },
+    {
+      "code": "PLAY_INFO_RESULT_09",
+      "msg": "(+{0})"
+    },
+    {
+      "code": "PLAY_INFO_RESULT_10",
+      "msg": "Lobby"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TABNAME_01",
+      "msg": "Spending"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TABNAME_02",
+      "msg": "Wallet"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_SPENDING_01",
+      "msg": "Spending Account"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_SPENDING_02",
+      "msg": "Transfer"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_SPENDING_03",
+      "msg": "Pending"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_SPENDING_04",
+      "msg": "History"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_SPENDING_05",
+      "msg": "Show past 30 days"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_SPENDING_06",
+      "msg": "Sent"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_SPENDING_07",
+      "msg": "Received"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_SPENDING_08",
+      "msg": "NO RECORD HISTORY"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_SPENDING_09",
+      "msg": "SPENDING ACCOUNT"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_SPENDING_10",
+      "msg": "To use token in the Perplay App, you must hold Tokens in this account."
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_SPENDING_11",
+      "msg": "Ok"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_WALLET_01",
+      "msg": "Wallet Account"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_WALLET_02",
+      "msg": "Address"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_WALLET_03",
+      "msg": "GaL7sUm8f8A7.."
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_WALLET_04",
+      "msg": "Detailed"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_WALLET_05",
+      "msg": "Cars"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_WALLET_06",
+      "msg": "Car Boxes"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_WALLET_07",
+      "msg": "To Spending"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_WALLET_08",
+      "msg": "Trade"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_WALLET_09",
+      "msg": "To External"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_WALLET_10",
+      "msg": "Wallet Account"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_WALLET_11",
+      "msg": "This account allows you to send and receive tokens outside of Perplay and to your Spending Account. You can also exchange XPER/PER/HVH/USDC tokens with each other through the Trade function."
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_WALLET_12",
+      "msg": "Ok"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_WALLET_13",
+      "msg": "GaL7sUm8F8AF7jzWgf48ijWoKWxk2oVbZy575uF7zvvi"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TAB_WALLET_14",
+      "msg": "Copy Address"
+    },
+    {
+      "code": "TOKENMANAGEMENT_PASSWORD_01",
+      "msg": "Secured Wallet"
+    },
+    {
+      "code": "TOKENMANAGEMENT_PASSWORD_02",
+      "msg": "ENTER YOUR PASScode"
+    },
+    {
+      "code": "TOKENMANAGEMENT_PASSWORD_03",
+      "msg": "FORGOT PASScode"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_01",
+      "msg": "Transfer"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_02",
+      "msg": "From"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_03",
+      "msg": "To"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_04",
+      "msg": "Spending"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_05",
+      "msg": "Wallet"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_06",
+      "msg": "Token"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_07",
+      "msg": "Change"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_08",
+      "msg": "Amount"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_09",
+      "msg": "Please enter the selling price"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_10",
+      "msg": "All"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_11",
+      "msg": "Available: {0} {1}"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_TOKENSELECT_01",
+      "msg": "Token Select"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_TOKENSELECT_02",
+      "msg": "Cars"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_TOKENSELECT_03",
+      "msg": "Car Boxes"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_POPUP_01",
+      "msg": "TRANSFER"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_POPUP_02",
+      "msg": "Transfer {0}"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_POPUP_03",
+      "msg": "Spending"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_POPUP_04",
+      "msg": "Wallet"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_POPUP_05",
+      "msg": "Your Request"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_POPUP_06",
+      "msg": "Fee"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRANSFER_POPUP_07",
+      "msg": "Confirm"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRADE_01",
+      "msg": "Trade"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRADE_02",
+      "msg": "From"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRADE_03",
+      "msg": "Change"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRADE_04",
+      "msg": "Please enter the selling price"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRADE_05",
+      "msg": "Available: {0} {1}"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRADE_06",
+      "msg": "To"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRADE_07",
+      "msg": "Silppage Tolerance"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRADE_08",
+      "msg": "Create token account"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRADE_POPUP_01",
+      "msg": "TRADE"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRADE_POPUP_02",
+      "msg": "Trade Informatin"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRADE_POPUP_03",
+      "msg": "From Token"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRADE_POPUP_04",
+      "msg": "To Token"
+    },
+    {
+      "code": "TOKENMANAGEMENT_TRADE_POPUP_05",
+      "msg": "Confirm"
+    },
+    {
+      "code": "TOKENMANAGEMENT_SLIPPAGE_POPUP_01",
+      "msg": "SLIPPAGE TOLERANCE"
+    },
+    {
+      "code": "TOKENMANAGEMENT_SLIPPAGE_POPUP_02",
+      "msg": "Set"
+    },
+    {
+      "code": "TOKENMANAGEMENT_SLIPPAGE_POPUP_03",
+      "msg": "Yout transation may fail."
+    },
+    {
+      "code": "TOKENMANAGEMENT_SLIPPAGE_POPUP_04",
+      "msg": "Confirm"
+    }
+  ]
+}

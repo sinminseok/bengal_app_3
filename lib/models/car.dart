@@ -1,6 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../common/config_base.dart';
 part 'car.g.dart';
 
 @JsonSerializable()
@@ -94,9 +92,9 @@ class CarNft {
 
 @JsonSerializable()
 class CarNftList {
-  final List<CarNft> nftList;
+  final List<CarNft> list;
 
-  CarNftList(this.nftList);
+  CarNftList(this.list);
 
   factory CarNftList.fromJson(Map<String, dynamic> json) => _$CarNftListFromJson(json);
   Map<String, dynamic> toJson() => _$CarNftListToJson(this);
