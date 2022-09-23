@@ -25,34 +25,33 @@ class _Wallet_ViewState extends State<Wallet_View> {
       backgroundColor: kAppbarColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        toolbarHeight: 60.h,
+        toolbarHeight: 50.h,
         elevation: 0,
         backgroundColor: kAppbarColor,
-        title: Padding(
-          padding: const EdgeInsets.only(top: 18.0),
-          child: Row(
-            children: [
-              InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Image.asset(
-                  "assets/images/common/back_button.png",
-                  width: 40.w,
-                ),
+        title: Row(
+          children: [
+            InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Image.asset(
+                "assets/images/common/back_button.png",
+                width: 40.w,
+                height: 40.h,
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(60.w, 3.h, 55.w, 0.h),
-                child: Text("Token Management",
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold)),
-              ),
-              Image.asset(
-                "assets/images/wallet/icons/setting_button.png",
-                width: size.width * 0.09,
-              )
-            ],
-          ),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(68.w, 3.h, 60.w, 0.h),
+              child: Text("Token Management",
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold,fontSize: 18)),
+            ),
+            Image.asset(
+              "assets/images/wallet/icons/setting_button.png",
+              width: 40.w,
+              height: 40.h,
+            )
+          ],
         ),
       ),
       body: SingleChildScrollView(

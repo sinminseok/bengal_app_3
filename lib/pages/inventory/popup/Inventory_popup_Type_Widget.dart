@@ -2,15 +2,15 @@ import 'package:bengal_app/types/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:group_button/group_button.dart';
-class Game_popup_Type_Widget extends StatefulWidget {
+class Inventory_popup_Type_Widget extends StatefulWidget {
 
-   Game_popup_Type_Widget({Key? key}) : super(key: key);
+  Inventory_popup_Type_Widget({Key? key}) : super(key: key);
 
   @override
-  _Game_popup_Type_Widget createState() => _Game_popup_Type_Widget();
+  _Inventory_popup_Type_Widget createState() => _Inventory_popup_Type_Widget();
 }
 
-class _Game_popup_Type_Widget extends State<Game_popup_Type_Widget> {
+class _Inventory_popup_Type_Widget extends State<Inventory_popup_Type_Widget> {
   bool SEDAN = false;
   bool SUV = false;
   bool OFF_ROAD = false;
@@ -98,7 +98,7 @@ class _Game_popup_Type_Widget extends State<Game_popup_Type_Widget> {
           onTap: (){
             setState(() {
 
-               SPORTS = !SPORTS;
+              SPORTS = !SPORTS;
             });
           },
           child: Container(
@@ -107,7 +107,7 @@ class _Game_popup_Type_Widget extends State<Game_popup_Type_Widget> {
             width: 90.w,
             height: 30.h,
             decoration: BoxDecoration(
-              color: SPORTS==true?kPrimaryColor:Colors.white,
+                color: SPORTS==true?kPrimaryColor:Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(30)),
                 border: Border.all(color: Colors.grey.shade300)
             ),
@@ -124,15 +124,15 @@ class _Game_popup_Type_Widget extends State<Game_popup_Type_Widget> {
 
 
 
-class Game_popup_Grade_Widget extends StatefulWidget {
+class Inventory_popup_Grade_Widget extends StatefulWidget {
 
-  Game_popup_Grade_Widget({Key? key}) : super(key: key);
+  Inventory_popup_Grade_Widget({Key? key}) : super(key: key);
 
   @override
-  _Game_popup_Grade_Widget createState() => _Game_popup_Grade_Widget();
+  _Inventory_popup_Grade_Widget createState() => _Inventory_popup_Grade_Widget();
 }
 
-class _Game_popup_Grade_Widget extends State<Game_popup_Grade_Widget> {
+class _Inventory_popup_Grade_Widget extends State<Inventory_popup_Grade_Widget> {
 
   bool Normal = false;
   bool Rare = false;
