@@ -15,6 +15,7 @@ class CommonData {
 class InitialInfo {
   final double defaultXPerAmount;
   final double defaultPerAmount;
+  final double defaultHavahAmount;
   final double dailyLimitXPer;
   final double dailyLimitPer;
   final int maxPower;
@@ -29,6 +30,7 @@ class InitialInfo {
   InitialInfo(
       this.defaultXPerAmount,
       this.defaultPerAmount,
+      this.defaultHavahAmount,
       this.dailyLimitXPer,
       this.dailyLimitPer,
       this.maxPower,

@@ -18,6 +18,7 @@ Map<String, dynamic> _$CommonDataToJson(CommonData instance) =>
 InitialInfo _$InitialInfoFromJson(Map<String, dynamic> json) => InitialInfo(
       (json['defaultXPerAmount'] as num).toDouble(),
       (json['defaultPerAmount'] as num).toDouble(),
+      (json['defaultHavahAmount'] as num).toDouble(),
       (json['dailyLimitXPer'] as num).toDouble(),
       (json['dailyLimitPer'] as num).toDouble(),
       json['maxPower'] as int,
@@ -34,6 +35,7 @@ Map<String, dynamic> _$InitialInfoToJson(InitialInfo instance) =>
     <String, dynamic>{
       'defaultXPerAmount': instance.defaultXPerAmount,
       'defaultPerAmount': instance.defaultPerAmount,
+      'defaultHavahAmount': instance.defaultHavahAmount,
       'dailyLimitXPer': instance.dailyLimitXPer,
       'dailyLimitPer': instance.dailyLimitPer,
       'maxPower': instance.maxPower,

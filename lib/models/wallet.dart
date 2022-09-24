@@ -8,6 +8,7 @@ class Wallet {
   final int accountId;
   final double balancePer;
   final double balanceXPer;
+  final double balanceHavah;
   final DateTime createdAt;
   final DateTime updatedAt;
 
@@ -16,6 +17,7 @@ class Wallet {
       this.accountId,
       this.balancePer,
       this.balanceXPer,
+      this.balanceHavah,
       this.createdAt,
       this.updatedAt,
       );
