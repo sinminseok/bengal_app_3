@@ -2,27 +2,123 @@
   "list": [
     {
       "id": 1,
-      "title": "game1"
+      "title": "Uma Musume: Pretty Derby",
+      "category": 1,
+      "perPerDay": 0.2,
+      "perPerPower": 0.02,
+      "xPerPerDay": 3.0,
+      "xPerPerPower": 0.3,
+      "needCarGrade": 1,
+      "needCarType": 0,
+      "minCarLevel": 1
     },
     {
       "id": 2,
-      "title": "game2"
+      "title": "Axie Infinity",
+      "category": 1,
+      "perPerDay": 0.1,
+      "perPerPower": 0.01,
+      "xPerPerDay": 3.0,
+      "xPerPerPower": 0.3,
+      "needCarGrade": 1,
+      "needCarType": 0,
+      "minCarLevel": 1
     },
     {
       "id": 3,
-      "title": "game3"
+      "title": "Bread Barbershop Differences",
+      "category": 1,
+      "perPerDay": 0.1,
+      "perPerPower": 0.01,
+      "xPerPerDay": 3.0,
+      "xPerPerPower": 0.3,
+      "needCarGrade": 1,
+      "needCarType": 0,
+      "minCarLevel": 1
     },
     {
       "id": 4,
-      "title": "game4"
+      "title": "Clash Royale",
+      "category": 2,
+      "perPerDay": 0.0,
+      "perPerPower": 0.0,
+      "xPerPerDay": 3.0,
+      "xPerPerPower": 0.3,
+      "needCarGrade": 1,
+      "needCarType": 0,
+      "minCarLevel": 1
     },
     {
       "id": 5,
-      "title": "game5"
+      "title": "Splinterlands",
+      "category": 2,
+      "perPerDay": 0.0,
+      "perPerPower": 0.0,
+      "xPerPerDay": 3.0,
+      "xPerPerPower": 0.3,
+      "needCarGrade": 3,
+      "needCarType": 0,
+      "minCarLevel": 1
     },
     {
       "id": 6,
-      "title": "game6"
+      "title": "Love is... in small things",
+      "category": 2,
+      "perPerDay": 0.0,
+      "perPerPower": 0.0,
+      "xPerPerDay": 3.0,
+      "xPerPerPower": 0.3,
+      "needCarGrade": 5,
+      "needCarType": 4,
+      "minCarLevel": 1
+    },
+    {
+      "id": 7,
+      "title": "Rise of Kingdoms",
+      "category": 3,
+      "perPerDay": 0.0,
+      "perPerPower": 0.0,
+      "xPerPerDay": 3.0,
+      "xPerPerPower": 0.3,
+      "needCarGrade": 1,
+      "needCarType": 0,
+      "minCarLevel": 1
+    },
+    {
+      "id": 8,
+      "title": "ROOMS! The Toymaker's Mansion",
+      "category": 3,
+      "perPerDay": 0.0,
+      "perPerPower": 0.0,
+      "xPerPerDay": 3.0,
+      "xPerPerPower": 0.3,
+      "needCarGrade": 1,
+      "needCarType": 0,
+      "minCarLevel": 1
+    },
+    {
+      "id": 9,
+      "title": "Jewel Match 3 Laser Quest",
+      "category": 3,
+      "perPerDay": 0.0,
+      "perPerPower": 0.0,
+      "xPerPerDay": 3.0,
+      "xPerPerPower": 0.3,
+      "needCarGrade": 1,
+      "needCarType": 0,
+      "minCarLevel": 1
+    },
+    {
+      "id": 10,
+      "title": "League of Masters: Legend MOBA",
+      "category": 3,
+      "perPerDay": 0.0,
+      "perPerPower": 0.0,
+      "xPerPerDay": 3.0,
+      "xPerPerPower": 0.3,
+      "needCarGrade": 1,
+      "needCarType": 0,
+      "minCarLevel": 1
     }
   ]
 }

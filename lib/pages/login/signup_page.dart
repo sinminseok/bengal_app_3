@@ -1,7 +1,12 @@
 import "package:bengal_app/pages/login/widget/login_logo_widget.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import '../../Controller/storage_controller.dart';
 import "../../common/string_configuration.dart";
+import 'login_page.dart';
 import 'widget/icon_input_box_widget.dart';
 import "../../types/string_type.dart";
 import "../../utils/font.dart";
@@ -18,7 +23,7 @@ class SignupPageState extends State<SignupPage> {
   final GlobalKey _scrollKey = GlobalKey();
 
   final nameController = TextEditingController();
-  final mailController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final repeatController = TextEditingController();
 
@@ -85,7 +90,7 @@ class SignupPageState extends State<SignupPage> {
                   duration: const Duration(microseconds: 500),
                 );
               },
-              controller: mailController,
+              controller: emailController,
             ),
           ),
           Container(
@@ -153,7 +158,18 @@ class SignupPageState extends State<SignupPage> {
                       ),
                     ),
                   ),
-                  onTap: () {})),
+                  onTap: () {
+                    StorageController().signUp(nameController.text, emailController.text, passwordController.text, repeatController.text).then((value) => Get.offAll(const LoginPage()));
+                    // if (!StorageController().signUp(nameController.text, emailController.text, passwordController.text, repeatController.text)) {
+                    //   Fluttertoast.showToast(
+                    //       msg: 'Login Fail',
+                    //       backgroundColor: Colors.grey,
+                    //       textColor: Colors.black,
+                    //       gravity: ToastGravity.CENTER);
+                    // } else {
+                    //   Get.offAll(const LoginPage());
+                    // }
+                  })),
           Container(
               margin: EdgeInsets.only(
                   bottom: MediaQuery.of(context).viewInsets.bottom))

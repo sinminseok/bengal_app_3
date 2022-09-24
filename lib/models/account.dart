@@ -8,7 +8,6 @@ class Account {
   final String password;
   final String email;
   final String name;
-  final String twoFaKey;
   final DateTime createdAt;
   final DateTime updatedAt;
   final bool enabled;
@@ -18,7 +17,6 @@ class Account {
       this.password,
       this.email,
       this.name,
-      this.twoFaKey,
       this.createdAt,
       this.updatedAt,
       [this.enabled = true]);
