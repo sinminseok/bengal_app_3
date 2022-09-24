@@ -8,7 +8,7 @@ import '../../../../types/constants.dart';
 
 Widget Car_Info_Widet(){
  return  Container(
-   margin: EdgeInsets.fromLTRB(3.w, 10.h, 3.w, 0.h),
+   margin: EdgeInsets.fromLTRB(3.w, 0.h, 3.w, 0.h),
 
    child: Column(
      children: [
@@ -23,16 +23,20 @@ Widget Car_Info_Widet(){
              crossAxisAlignment:
              CrossAxisAlignment.start,
              children: [
-               Text(
-                 " Sedan/ Normal / Lv7",
-                 style: TextStyle(
-                     color:
-                     Colors.grey.shade700,
-                     fontWeight:
-                     FontWeight.bold),
+               Container(
+                 margin: EdgeInsets.fromLTRB(10.w, 0.h, 10.w, 0.h),
+
+                 child: Text(
+                   " Sedan/ Normal / Lv7",
+                   style: TextStyle(
+                       color:
+                       Colors.grey.shade700,
+                       fontWeight:
+                       FontWeight.bold),
+                 ),
                ),
                Container(
-                 margin: EdgeInsets.fromLTRB(1.w, 20.h, 15.w, 0.h),
+                 margin: EdgeInsets.fromLTRB(10.w, 10.h, 10.w, 0.h),
 
                  child: Stack(
                    children: [
@@ -86,7 +90,7 @@ Widget Car_Info_Widet(){
          ],
        ),
        Container(
-         margin: EdgeInsets.fromLTRB(15.w, 24.h, 15.w, 0.h),
+         margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 10.h),
 
          width: 280.w,
          height: 1.h,

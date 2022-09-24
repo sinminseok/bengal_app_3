@@ -13,7 +13,7 @@ Widget Inventory_CarBoxes_View(Size size){
             crossAxisCount: 2,
             crossAxisSpacing:1.w,
             mainAxisSpacing: 1.h,
-            childAspectRatio: 1.h / 1.h,
+            childAspectRatio: 1.h / 0.8.h,
           ),
           itemCount: 10,
           // shrinkWrap: true,
@@ -31,7 +31,7 @@ Widget Inventory_CarBoxes_View(Size size){
               //     int Repair_value,
               //     int distance)
               child: Inventory_CarBoxes_Card(
-                  Colors.blue, "RARE","rare", 12345),
+                  Colors.blue,context, "rare", 12345),
             );
           }
       ),

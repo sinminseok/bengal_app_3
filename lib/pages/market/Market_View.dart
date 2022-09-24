@@ -1,7 +1,9 @@
+import 'package:bengal_app/pages/market/popup/filter_popup.dart';
 import 'package:bengal_app/pages/market/widget/cars/Market_Cars_View.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../types/constants.dart';
+import '../game/popup/filter_popup.dart';
 import '../inventory/widget/dropdown_button/DropdownButton2.dart';
 
 class Market_View extends StatefulWidget {
@@ -198,7 +200,10 @@ class _Market_ViewState extends State<Market_View> {
                       ),
 
                       InkWell(
-                          onTap: () {},
+                          onTap: () {
+
+                           Market_Filter_popup().showDialog(size,context);
+                          },
                           child: Container(
                             margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
 
