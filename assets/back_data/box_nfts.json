@@ -1,69 +1,94 @@
 {
   "list": [
     {
-      "id": 121,
-      "modelId": 1,
-      "price": 99000.72
+      "id": 433313483,
+      "grade": 1,
+      "price": 1.72,
+      "carNftId": 980459277,
+      "carGradeList": [
+        1, 2
+      ]
     },
     {
-      "id": 122,
-      "modelId": 2,
-      "price": 120000.82
+      "id": 414907932,
+      "grade": 1,
+      "price": 1.72,
+      "carNftId": 666904888,
+      "carGradeList": [
+        1, 2
+      ]
     },
     {
-      "id": 123,
-      "modelId": 3,
-      "price": 130000.82
+      "id": 422700561,
+      "grade": 1,
+      "price": 1.72,
+      "carNftId": 925493086,
+      "carGradeList": [
+        1, 2, 3
+      ]
     },
     {
-      "id": 124,
-      "modelId": 4,
-      "price": 110000.82
+      "id": 744614061,
+      "grade": 1,
+      "price": 1.72,
+      "carNftId": 618498699,
+      "carGradeList": [
+        1, 2, 3
+      ]
     },
     {
-      "id": 125,
-      "modelId": 5,
-      "price": 113000.32
+      "id": 503968973,
+      "grade": 1,
+      "price": 1.72,
+      "carNftId": 258129669,
+      "carGradeList": [
+        1, 2, 3
+      ]
     },
     {
-      "id": 126,
-      "modelId": 6,
-      "price": 211000.42
+      "id": 492425649,
+      "grade": 1,
+      "price": 1.72,
+      "carNftId": 404723221,
+      "carGradeList": [
+        2, 3, 4
+      ]
     },
     {
-      "id": 127,
-      "modelId": 7,
-      "price": 91000.22
+      "id": 647610137,
+      "grade": 1,
+      "price": 1.72,
+      "carNftId": 748552228,
+      "carGradeList": [
+        2, 3, 4
+      ]
     },
     {
-      "id": 128,
-      "modelId": 8,
-      "price": 220000.72
+      "id": 605314196,
+      "grade": 1,
+      "price": 1.72,
+      "carNftId": 533552249,
+      "carGradeList": [
+        3, 4, 5
+      ]
     },
     {
-      "id": 129,
-      "modelId": 9,
-      "price": 250000.72
+      "id": 903421757,
+      "grade": 1,
+      "price": 1.72,
+      "carNftId": 884782999,
+      "carGradeList": [
+        3, 4, 5
+      ]
     },
     {
-      "id": 130,
-      "modelId": 10,
-      "price": 320000.82
-    },
-    {
-      "id": 131,
-      "modelId": 1,
-      "price": 215000.82
-    },
-    {
-      "id": 132,
-      "modelId": 2,
-      "price": 119000.42
-    },
-    {
-      "id": 133,
-      "modelId": 3,
-      "price": 291000.42
+      "id": 775292094,
+      "grade": 1,
+      "price": 1.72,
+      "carNftId": 358194152,
+      "carGradeList": [
+        4, 5
+      ]
     }
   ]
 }

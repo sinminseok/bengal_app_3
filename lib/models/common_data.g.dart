@@ -16,24 +16,24 @@ Map<String, dynamic> _$CommonDataToJson(CommonData instance) =>
     };
 
 InitialInfo _$InitialInfoFromJson(Map<String, dynamic> json) => InitialInfo(
-      json['defaultXPerAmount'] as int,
-      json['defaultPerAmount'] as int,
-      json['defaultHvhAmount'] as int,
-      json['dailyLimitXPer'] as int,
-      json['dailyLimitPer'] as int,
+      (json['defaultXPerAmount'] as num).toDouble(),
+      (json['defaultPerAmount'] as num).toDouble(),
+      (json['dailyLimitXPer'] as num).toDouble(),
+      (json['dailyLimitPer'] as num).toDouble(),
       json['maxPower'] as int,
       json['maxPowerChargeSec'] as int,
       json['specialBoxInitialLifeTime'] as int,
       (json['specialBoxOpenBaseCost'] as num).toDouble(),
       (json['specialBoxOpenCostPerSec'] as num).toDouble(),
-      json['carMaxDurability'] as int,
+      json['levelUpStatusPoint'] as int,
+      json['breedXPerCost'] as int,
+      json['breedPerCost'] as int,
     );
 
 Map<String, dynamic> _$InitialInfoToJson(InitialInfo instance) =>
     <String, dynamic>{
       'defaultXPerAmount': instance.defaultXPerAmount,
       'defaultPerAmount': instance.defaultPerAmount,
-      'defaultHvhAmount': instance.defaultHvhAmount,
       'dailyLimitXPer': instance.dailyLimitXPer,
       'dailyLimitPer': instance.dailyLimitPer,
       'maxPower': instance.maxPower,
@@ -41,5 +41,7 @@ Map<String, dynamic> _$InitialInfoToJson(InitialInfo instance) =>
       'specialBoxInitialLifeTime': instance.specialBoxInitialLifeTime,
       'specialBoxOpenBaseCost': instance.specialBoxOpenBaseCost,
       'specialBoxOpenCostPerSec': instance.specialBoxOpenCostPerSec,
-      'carMaxDurability': instance.carMaxDurability,
+      'levelUpStatusPoint': instance.levelUpStatusPoint,
+      'breedXPerCost': instance.breedXPerCost,
+      'breedPerCost': instance.breedPerCost,
     };

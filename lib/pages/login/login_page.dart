@@ -4,7 +4,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import "package:get/get.dart";
-import '../../Controller/account_controller.dart';
+import '../../Controller/storage_controller.dart';
 import "../../common/string_configuration.dart";
 import '../frame/Frame_View.dart';
 import 'widget/icon_input_box_widget.dart';
@@ -183,7 +183,7 @@ class LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   onTap: () {
-                    if (!AccountController()
+                    if (!StorageController()
                         .signIn(emailController.text, passwordController.text)) {
                       Fluttertoast.showToast(
                           msg: 'Login Fail',

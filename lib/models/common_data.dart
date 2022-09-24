@@ -13,22 +13,22 @@ class CommonData {
 
 @JsonSerializable()
 class InitialInfo {
-  final int defaultXPerAmount;
-  final int defaultPerAmount;
-  final int defaultHvhAmount;
-  final int dailyLimitXPer;
-  final int dailyLimitPer;
+  final double defaultXPerAmount;
+  final double defaultPerAmount;
+  final double dailyLimitXPer;
+  final double dailyLimitPer;
   final int maxPower;
   final int maxPowerChargeSec;
   final int specialBoxInitialLifeTime;
   final double specialBoxOpenBaseCost;
   final double specialBoxOpenCostPerSec;
-  final int carMaxDurability;
+  final int levelUpStatusPoint;
+  final int breedXPerCost;
+  final int breedPerCost;
 
   InitialInfo(
       this.defaultXPerAmount,
       this.defaultPerAmount,
-      this.defaultHvhAmount,
       this.dailyLimitXPer,
       this.dailyLimitPer,
       this.maxPower,
@@ -36,7 +36,9 @@ class InitialInfo {
       this.specialBoxInitialLifeTime,
       this.specialBoxOpenBaseCost,
       this.specialBoxOpenCostPerSec,
-      this.carMaxDurability,
+      this.levelUpStatusPoint,
+      this.breedXPerCost,
+      this.breedPerCost,
       );
 
   factory InitialInfo.fromJson(Map<String, dynamic> json) => _$InitialInfoFromJson(json);
