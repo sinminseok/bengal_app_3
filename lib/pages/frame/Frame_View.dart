@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import '../../Controller/storage_controller.dart';
 import '../../common/string_configuration.dart';
 import '../../types/constants.dart';
 import '../../types/string_type.dart';
@@ -81,8 +82,7 @@ class _Frame_View extends State<Frame_View> {
                                     fontSize: 12.sp, color: Colors.grey),
                               ),
                               Text(
-                                StringConfiguration()
-                                    .uiString(UiStringType.TOP_MENU_02),
+                                  StorageController().account!.name,
                                 style: TextStyle(
                                     fontSize: 14.sp, color: kPrimaryColor),
                               )
@@ -101,9 +101,9 @@ class _Frame_View extends State<Frame_View> {
                         //mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Coin_Widget("xper_icon", "0.00"),
-                          Coin_Widget("per_icon", "0.00"),
-                          Coin_Widget("havah_icon", "0.00"),
+                          Coin_Widget("xper_icon", StorageController().wallet!.balanceXPer.toString()),
+                          Coin_Widget("per_icon", StorageController().wallet!.balancePer.toString()),
+                          Coin_Widget("havah_icon", StorageController().wallet!.balanceHavah.toString()),
                           InkWell(
                               onTap: () {
                                 Navigator.push(

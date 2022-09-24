@@ -63,6 +63,7 @@ class StorageController {
     await loadBoxNftPool();
   }
 
+  // Account
   Future<bool> saveAccount() async {
     if (null == account) return false;
     return await _prefs.setString(
@@ -77,6 +78,7 @@ class StorageController {
     return true;
   }
 
+  // Wallet
   Future<bool> saveWallet() async {
     if (null == account || null == wallet) return false;
     return await _prefs.setString(
@@ -91,6 +93,7 @@ class StorageController {
     return true;
   }
 
+  // Car Nft
   Future<bool> saveCarNftList() async {
     if (null == account || null == carNftList) return false;
     return await _prefs.setString(
@@ -105,6 +108,7 @@ class StorageController {
     return true;
   }
 
+  // Box Nft
   Future<bool> saveBoxNftList() async {
     if (null == account || null == boxNftList) return false;
     return await _prefs.setString(
@@ -119,6 +123,7 @@ class StorageController {
     return true;
   }
 
+  // Car Nft Market Pool
   Future<bool> saveCarNftPool() async {
     if (null == carNftPool) return false;
     return await _prefs.setString(
@@ -136,6 +141,7 @@ class StorageController {
     return true;
   }
 
+  // Box Nft Market Pool
   Future<bool> saveBoxNftPool() async {
     if (null == account || null == boxNftList) return false;
     return await _prefs.setString(
@@ -153,6 +159,7 @@ class StorageController {
     return true;
   }
 
+  // Account All Data Save
   Future<bool> savePlayerData() async {
     var ret = true;
     if (null == account) return false;
@@ -163,6 +170,7 @@ class StorageController {
     return ret;
   }
 
+  // Account All Data Load
   bool loadPlayerData() {
     var ret = loadWallet();
     ret &= loadCarNftList();
@@ -170,6 +178,7 @@ class StorageController {
     return ret;
   }
 
+  // Storage Clear
   Future<bool> clear() async {
     return await _prefs.clear();
   }
@@ -191,6 +200,7 @@ class StorageController {
       return false;
     }
 
+    await clear();
     account =
         Account(_baseId, password, email, name, DateTime.now(), DateTime.now());
 
@@ -199,6 +209,7 @@ class StorageController {
       account!.id,
       commonData.initialInfo.defaultPerAmount,
       commonData.initialInfo.defaultXPerAmount,
+      commonData.initialInfo.defaultHavahAmount,
       DateTime.now(),
       DateTime.now(),
     );

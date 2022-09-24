@@ -47,6 +47,31 @@ class CarNft {
 
   factory CarNft.fromJson(Map<String, dynamic> json) => _$CarNftFromJson(json);
   Map<String, dynamic> toJson() => _$CarNftToJson(this);
+
+  String getCarTypeString() {
+    switch (type) {
+      case 1: return "SUV";
+      case 2: return "Off Road";
+      case 3: return "Sedan";
+      case 4: return "Sports";
+      default: return "None";
+    }
+  }
+
+  String getCarGradeString() {
+    switch (grade) {
+      case 1: return "normal";
+      case 2: return "rare";
+      case 3: return "elite";
+      case 4: return "epic";
+      case 4: return "ultimate";
+      default: return "none";
+    }
+  }
+
+  String getCarCardTitle() {
+    return "${getCarTypeString()}/${getCarGradeString().toUpperCase()}";
+  }
 }
 
 @JsonSerializable()

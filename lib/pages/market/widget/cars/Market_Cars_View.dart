@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../Controller/storage_controller.dart';
 import 'Market_Car_Card.dart';
+import 'Market_Car_Card2.dart';
 
 Widget Market_Cars_View(Size size){
   return Center(
@@ -16,7 +18,7 @@ Widget Market_Cars_View(Size size){
               mainAxisSpacing: 10.h,
               childAspectRatio: 1.h / 1.5.h,
             ),
-            itemCount: 10,
+            itemCount: StorageController().carNftPool!.list.length,
             // shrinkWrap: true,
 
             itemBuilder: (BuildContext context, int index) {
@@ -32,8 +34,10 @@ Widget Market_Cars_View(Size size){
                 //     int Charge_value,
                 //     int Repair_value,
                 //     int distance)
-                child: Market_Car_Card(
-                    size,context, "SPORTS","normal", 3, 12345, 10, 13, 14, 15, 16, 13),
+                child: Market_Car_Card2(
+                    size,context, StorageController().carNftPool!.list[index]),
+                // child: Market_Car_Card(
+                //     size,context, "SPORTS","normal", 3, 12345, 10, 13, 14, 15, 16, 13),
               );
             }
         ),

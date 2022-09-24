@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
+import '../../../Controller/storage_controller.dart';
 import '../../../common/string_configuration.dart';
 import '../../../types/constants.dart';
 import '../../../types/string_type.dart';
@@ -166,7 +167,7 @@ class _Value_ContainerState extends State<Value_Container> {
                                                 12.sp),
                                           ),
                                           Text(
-                                            "${widget.XPER_Value}/200",
+                                            "${widget.XPER_Value}/${StorageController().commonData.initialInfo.dailyLimitXPer}",
                                             style: Font.lato(
                                                 const Color(0xFF8E8E8E),
                                                 FontWeight.w700,
@@ -216,7 +217,7 @@ class _Value_ContainerState extends State<Value_Container> {
                                                 12.sp),
                                           ),
                                           Text(
-                                            "${widget.PER_Value}/2.0",
+                                            "${widget.PER_Value}/${StorageController().commonData.initialInfo.dailyLimitPer}",
                                             style: Font.lato(
                                                 const Color(0xFFECB133),
                                                 FontWeight.w700,

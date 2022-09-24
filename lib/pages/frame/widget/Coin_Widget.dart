@@ -30,7 +30,7 @@ Widget Coin_Widget(String img_name, String value) {
             Padding(
               padding: const EdgeInsets.all(4.0),
               child: Text(
-                "$value",
+                value,
                 style: TextStyle(fontSize: 12.sp, color: Colors.black),
               ),
             )
