@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../types/constants.dart';
 
-class Address_popup {
-  void showDialog(Size size, BuildContext context) {
+class Wallet_popup {
+  void show_wallet_address(Size size, BuildContext context) {
     showGeneralDialog(
         context: context,
         barrierDismissible: true,
@@ -91,7 +91,7 @@ class Address_popup {
         });
   }
 
-  void showDialog_question(Size size, BuildContext context) {
+  void show_spending_question(Size size, BuildContext context) {
     showGeneralDialog(
         context: context,
         barrierDismissible: true,
@@ -137,6 +137,106 @@ class Address_popup {
                           style: TextStyle(color: Colors.grey, fontSize: 11),
                         ),
                       ),
+
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            elevation: MaterialStateProperty.all(0),
+                            backgroundColor:
+                            MaterialStateProperty.all(Colors.white),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Container(
+                            width: 120.w,
+                            height: 35.h,
+                            decoration: BoxDecoration(
+                                color: kPrimaryColor,
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(35))),
+                            child: Center(
+                              child: Text(
+                                "Ok",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  )),
+            ),
+          );
+        });
+  }
+
+  void show_wallet_question(Size size, BuildContext context) {
+    showGeneralDialog(
+        context: context,
+        barrierDismissible: true,
+        barrierLabel:
+        MaterialLocalizations.of(context).modalBarrierDismissLabel,
+        barrierColor: Colors.black45,
+        transitionDuration: const Duration(milliseconds: 200),
+        pageBuilder: (BuildContext buildContext, Animation animation,
+            Animation secondaryAnimation) {
+          return Center(
+            child: DefaultTextStyle(
+              style: TextStyle(fontSize: 16, color: Colors.black),
+              child: Container(
+                  width: 300.w,
+                  height: 290.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 300.w,
+                        height: 50.h,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20)),
+                            color: kPrimaryColor),
+                        child: Center(
+                            child: Text(
+                              "WALLET ACCOUNT",
+                              style: TextStyle(color: Colors.white, fontSize: 18),
+                            )),
+                      ),
+
+
+                      Container(
+                        margin: EdgeInsets.fromLTRB(15.w, 40.h, 15.w, 30.h),
+
+                        child: Text(
+                          " This account allows you to send and receive tokens \n outside of Perplay and to your Spending Account.",
+                          style: TextStyle(color: Colors.grey, fontSize: 11),
+                        ),
+                      ),
+
+                      Column(
+                        children: [
+                          Text(
+                            "You can also exchange ",
+                            style: TextStyle(color: Colors.grey, fontSize: 11),
+                          ),
+                          Text(
+                            "XPER/PER/HVH/USDC tokens ",
+                            style: TextStyle(color: Colors.grey, fontSize: 11),
+                          ),
+                          Text(
+                            "with each other through the Trade function.",
+                            style: TextStyle(color: Colors.grey, fontSize: 11),
+                          ),
+                        ],
+                      ),
+
+
 
                       Padding(
                         padding: const EdgeInsets.all(8.0),

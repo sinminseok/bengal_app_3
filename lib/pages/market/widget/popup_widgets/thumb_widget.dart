@@ -3,20 +3,36 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../types/constants.dart';
+import '../../../../types/constants.dart';
 
-class Inventory_Level_Thumb_Widget extends StatefulWidget {
-  const Inventory_Level_Thumb_Widget({Key? key}) : super(key: key);
+class Market_Thumb_Widget extends StatefulWidget {
+  double start_value;
+  double end_value;
+
+  double min_value;
+  double max_value;
+  Market_Thumb_Widget({Key? key, required this.start_value,required this.end_value,required this.min_value,required this.max_value}) : super(key: key);
 
   @override
-  _Inventory_Level_Thumb_Widget createState() => _Inventory_Level_Thumb_Widget();
+  _Market_Thumb_Widget createState() => _Market_Thumb_Widget();
 }
 
-class _Inventory_Level_Thumb_Widget extends State<Inventory_Level_Thumb_Widget> {
+class _Market_Thumb_Widget extends State<Market_Thumb_Widget> {
+
   RangeValues values = RangeValues(1, 30);
-  RangeValues _currentRangeValues = const RangeValues(10, 30);
+  RangeValues? _currentRangeValues;
+
+  @override
+  void initState() {
+    _currentRangeValues=
+    RangeValues(widget.start_value, widget.end_value);
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+
     return Column(
       children: [
         Container(
@@ -24,8 +40,9 @@ class _Inventory_Level_Thumb_Widget extends State<Inventory_Level_Thumb_Widget> 
           height: 30.h,
 
           child:RangeSlider(
-              values: _currentRangeValues,
-              max: 30,
+              values: _currentRangeValues!,
+              max: widget.max_value,
+              min: widget.min_value,
               inactiveColor: Colors.grey.shade300,
 
               activeColor: kPrimaryColor,
@@ -54,7 +71,10 @@ class _Inventory_Level_Thumb_Widget extends State<Inventory_Level_Thumb_Widget> 
 
 
                 child: Text("30",style: TextStyle(color: Colors.grey.shade500,fontSize: 10)))
-          ],)
+          ],),
+
+
+
       ],
     );
   }

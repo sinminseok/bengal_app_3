@@ -1,3 +1,4 @@
+import 'package:bengal_app/pages/inventory/popup/filter_popup.dart';
 import 'package:bengal_app/pages/inventory/widget/carboxes/Inventory_CarBoxes_View.dart';
 import 'package:bengal_app/pages/inventory/widget/cars/Inventory_cars_View.dart';
 import 'package:bengal_app/pages/inventory/widget/dropdown_button/DropdownButton2.dart';
@@ -41,7 +42,6 @@ class _Inventory_ViewState extends State<Inventory_View> {
                 border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
               ),
               child: Column(
-
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -59,13 +59,12 @@ class _Inventory_ViewState extends State<Inventory_View> {
                           width: 86.w,
                           height: 34.h,
                           decoration: BoxDecoration(
-
                               color: Cars_selected != true
                                   ? Colors.white
                                   : kPrimaryColor,
                               border: Border.all(color: Colors.grey.shade400),
                               borderRadius:
-                              BorderRadius.all(Radius.circular(10))),
+                                  BorderRadius.all(Radius.circular(10))),
                           child: Center(
                             child: Text(
                               "Cars",
@@ -95,7 +94,7 @@ class _Inventory_ViewState extends State<Inventory_View> {
                                   ? Colors.white
                                   : kPrimaryColor,
                               borderRadius:
-                              BorderRadius.all(Radius.circular(10))),
+                                  BorderRadius.all(Radius.circular(10))),
                           child: Center(
                             child: Text(
                               "Car Boxes",
@@ -125,7 +124,7 @@ class _Inventory_ViewState extends State<Inventory_View> {
                                   ? Colors.white
                                   : kPrimaryColor,
                               borderRadius:
-                              BorderRadius.all(Radius.circular(10))),
+                                  BorderRadius.all(Radius.circular(10))),
                           child: Center(
                             child: Text(
                               "Gems",
@@ -151,12 +150,11 @@ class _Inventory_ViewState extends State<Inventory_View> {
                           height: 34.h,
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.grey.shade400),
-
                               color: Others_selected != true
                                   ? Colors.white
                                   : kPrimaryColor,
                               borderRadius:
-                              BorderRadius.all(Radius.circular(10))),
+                                  BorderRadius.all(Radius.circular(10))),
                           child: Center(
                             child: Text(
                               "Others",
@@ -174,8 +172,7 @@ class _Inventory_ViewState extends State<Inventory_View> {
                     children: [
                       Container(
                         margin: EdgeInsets.fromLTRB(1.w, 10.h, 15.w, 0.h),
-
-                        width:125.w,
+                        width: 125.w,
                         height: 38.h,
                         child: CustomDropdownButton2(
                           hint: 'Lowest Level',
@@ -188,20 +185,16 @@ class _Inventory_ViewState extends State<Inventory_View> {
                           },
                         ),
                       ),
-
                       Container(
                         margin: EdgeInsets.fromLTRB(175.w, 10.h, 15.w, 0.h),
-
                         height: 37.h,
                         width: 37.h,
                         child: InkWell(
                             onTap: () {
-                              Filter_popup().showDialog(size, context);
-
+                              Inventory_Filter_popup().showDialog(size, context);
                             },
                             child: Image.asset(
                               "assets/images/inventory/filter.png",
-
                             )),
                       )
                     ],
@@ -209,12 +202,12 @@ class _Inventory_ViewState extends State<Inventory_View> {
                 ],
               ),
             ),
-            Cars_selected==true?Inventory_Cars_View(size):Container(),
-            Car_Boxes_selected==true?Inventory_CarBoxes_View(size):Container(),
-            Gems_selected==true?Inventory_Cars_View(size):Container(),
-            Others_selected==true?Inventory_Cars_View(size):Container(),
-
-
+            Cars_selected == true ? Inventory_Cars_View(size) : Container(),
+            Car_Boxes_selected == true
+                ? Inventory_CarBoxes_View(size)
+                : Container(),
+            Gems_selected == true ? Inventory_Cars_View(size) : Container(),
+            Others_selected == true ? Inventory_Cars_View(size) : Container(),
           ],
         ),
       ),

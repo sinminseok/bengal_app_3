@@ -104,6 +104,10 @@ flutter:
     - assets/images/workshop/
     - assets/strings/
     - assets/back_data/
+    - assets/images/common/cars/grey_icons/grey_speed.png
+    - assets/images/common/cars/grey_icons/grey_dice.png
+    - assets/images/common/cars/grey_icons/grey_repair.png
+    - assets/images/common/cars/grey_icons/grey_charge.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

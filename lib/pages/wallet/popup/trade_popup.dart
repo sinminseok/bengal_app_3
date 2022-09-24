@@ -9,11 +9,12 @@ class Traded_popup{
 
   TextEditingController _percentvalue = TextEditingController();
   Future<String?> openDialog(context) => showAnimatedDialog<String>(
-
+      barrierDismissible: true,
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setState) {
           return AlertDialog(
+
             contentPadding: EdgeInsets.zero,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15)),

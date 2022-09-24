@@ -153,7 +153,7 @@ class _Wallet_ViewState extends State<Wallet_View> {
                         ),
                         InkWell(
                           onTap: (){
-                            Address_popup().showDialog_question(size,context);
+                            Wallet_popup().show_spending_question(size,context);
                           },
                           child: Container(
                             margin: EdgeInsets.only(top: 20.h),
@@ -183,7 +183,7 @@ class _Wallet_ViewState extends State<Wallet_View> {
                   ),
                   InkWell(
                     onTap: (){
-                      Address_popup().showDialog_question(size,context);
+                      Wallet_popup().show_wallet_question(size,context);
                     },
                     child: Container(
                       margin: EdgeInsets.only(top: 20.h),

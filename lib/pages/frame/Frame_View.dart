@@ -101,9 +101,9 @@ class _Frame_View extends State<Frame_View> {
                         //mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Coin_Widget("xper_icon", "0.00", size),
-                          Coin_Widget("per_icon", "0.00", size),
-                          Coin_Widget("havah_icon", "0.00", size),
+                          Coin_Widget("xper_icon", "0.00"),
+                          Coin_Widget("per_icon", "0.00"),
+                          Coin_Widget("havah_icon", "0.00"),
                           InkWell(
                               onTap: () {
                                 Navigator.push(

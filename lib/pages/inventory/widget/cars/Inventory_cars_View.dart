@@ -13,9 +13,9 @@ Widget Inventory_Cars_View(Size size){
         child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              crossAxisSpacing:size.width*0.01,
-              mainAxisSpacing: size.height*0.01,
-              childAspectRatio: 1 / 1.5,
+              crossAxisSpacing:10.w,
+              mainAxisSpacing: 1.w,
+              childAspectRatio: 1.h / 1.56.h,
             ),
             itemCount: 10,
             // shrinkWrap: true,

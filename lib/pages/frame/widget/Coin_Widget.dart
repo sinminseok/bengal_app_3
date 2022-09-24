@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget Coin_Widget(String img_name, String value, Size size) {
+Widget Coin_Widget(String img_name, String value) {
   return Row(
     children: [
       Padding(

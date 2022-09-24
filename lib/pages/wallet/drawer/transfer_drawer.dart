@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../types/constants.dart';
 import '../widget/Drawer_widget.dart';
+import '../widget/drawer/CarBox_Info_Widget.dart';
 import '../widget/drawer/Car_Info_Widget.dart';
 
 class Transfer_Drawer extends StatefulWidget {
@@ -30,10 +31,8 @@ class _Transfer_DrawerState extends State<Transfer_Drawer> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               Container(
                 margin: EdgeInsets.fromLTRB(15.w, 60.h, 15.w, 19.h),
-
                 child: Text(
                   "Token Select",
                   style: TextStyle(
@@ -43,8 +42,8 @@ class _Transfer_DrawerState extends State<Transfer_Drawer> {
                 ),
               ),
               Container(
-                width: size.width * 0.8,
-                height: size.height * 0.002,
+                width: 330.w,
+                height: 1.h,
                 color: Colors.grey.shade300,
               ),
               Padding(
@@ -52,8 +51,9 @@ class _Transfer_DrawerState extends State<Transfer_Drawer> {
                 child: Drawer_Coin_Widet(size,20,30,20),
               ),
               Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+
                   child: InkWell(
                     onTap: () {
                       setState(() {
@@ -64,7 +64,7 @@ class _Transfer_DrawerState extends State<Transfer_Drawer> {
                       children: [
                         Container(
                           width: 290.w,
-                          height: 70.h,
+                          height: 46.h,
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.grey.shade400),
                               borderRadius:
@@ -84,20 +84,23 @@ class _Transfer_DrawerState extends State<Transfer_Drawer> {
                                 style: TextStyle(
                                     color: Colors.grey.shade700, fontSize: 17),
                               ),
-                              SizedBox(
-                                width: size.width * 0.4,
-                              ),
-                              Icon(
-                                cars_ontap == true
-                                    ? Icons.keyboard_arrow_up_sharp
-                                    : Icons.keyboard_arrow_down_sharp,
-                                color: Colors.grey,
+
+                              Container(
+                                margin: EdgeInsets.fromLTRB(160.w, 0.h, 15.w, 0.h),
+                                child: Icon(
+                                  cars_ontap == true
+                                      ? Icons.keyboard_arrow_up_sharp
+                                      : Icons.keyboard_arrow_down_sharp,
+                                  color: Colors.grey,
+                                ),
                               )
                             ],
                           ),
                         ),
                         cars_ontap == true
                             ? Container(
+                          margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 10.h),
+
                           width: 290.w,
                           height: 200.h,
                           decoration: BoxDecoration(
@@ -130,7 +133,7 @@ class _Transfer_DrawerState extends State<Transfer_Drawer> {
                       children: [
                         Container(
                           width: 290.w,
-                          height: 70.h,
+                          height: 46.h,
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.grey.shade400),
                               borderRadius:
@@ -150,14 +153,15 @@ class _Transfer_DrawerState extends State<Transfer_Drawer> {
                                 style: TextStyle(
                                     color: Colors.grey.shade700, fontSize: 17),
                               ),
-                              SizedBox(
-                                width: size.width * 0.3,
-                              ),
-                              Icon(
-                                boxs_ontap == true
-                                    ? Icons.keyboard_arrow_up_sharp
-                                    : Icons.keyboard_arrow_down_sharp,
-                                color: Colors.grey,
+                              
+                              Container(
+                                margin: EdgeInsets.fromLTRB(120.w, 0.h, 15.w, 0.h),
+                                child: Icon(
+                                  boxs_ontap == true
+                                      ? Icons.keyboard_arrow_up_sharp
+                                      : Icons.keyboard_arrow_down_sharp,
+                                  color: Colors.grey,
+                                ),
                               )
                             ],
                           ),
@@ -170,285 +174,16 @@ class _Transfer_DrawerState extends State<Transfer_Drawer> {
                               border: Border.all(color: Colors.grey),
                               borderRadius:
                               BorderRadius.all(Radius.circular(10))),
-                          child: ListView(
-                            children: [
-                              Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      SizedBox(width: size.width*0.13,),
-                                      Image.asset(
-                                        "assets/images/inventory/car_boxes/EPIC.png",
-                                        width: size.width * 0.14,
-                                      ),
-                                      SizedBox(width: size.width*0.07,),
-                                      Column(
-                                        //mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text("EPIC"),
-                                          ),
-                                          Padding(
-                                            padding:
-                                            const EdgeInsets.all(8.0),
-                                            child: Container(
-                                              width: size.width * 0.23,
-                                              height: size.height * 0.03,
-                                              decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.grey),
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(
-                                                        30.0) //         <--- border radius here
-                                                ),
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                    const EdgeInsets.only(
-                                                        left: 3.0),
-                                                    child: Container(
-                                                      width:
-                                                      size.width * 0.04,
-                                                      height:
-                                                      size.height * 0.04,
-                                                      decoration: BoxDecoration(
-                                                          color:
-                                                          kPrimaryColor,
-                                                          shape: BoxShape
-                                                              .circle),
-                                                      child: Row(
-                                                        children: [
-                                                          SizedBox(
-                                                            width:
-                                                            size.width *
-                                                                0.0073,
-                                                          ),
-                                                          Text(
-                                                            "#",
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .white),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: size.width * 0.02,
-                                                  ),
-                                                  Text(
-                                                    "12345",
-                                                    style: TextStyle(
-                                                        fontSize: 12),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      width: size.width * 0.68,
-                                      height: size.height * 0.001,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: ListView(
+                              children: [
+                                CarBox_Info_Widget(),
+                                CarBox_Info_Widget(),
+                                CarBox_Info_Widget(),
 
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      SizedBox(width: size.width*0.13,),
-                                      Image.asset(
-                                        "assets/images/inventory/car_boxes/EPIC.png",
-                                        width: size.width * 0.14,
-                                      ),
-                                      SizedBox(width: size.width*0.07,),
-                                      Column(
-                                        //mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text("EPIC"),
-                                          ),
-                                          Padding(
-                                            padding:
-                                            const EdgeInsets.all(8.0),
-                                            child: Container(
-                                              width: size.width * 0.23,
-                                              height: size.height * 0.03,
-                                              decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.grey),
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(
-                                                        30.0) //         <--- border radius here
-                                                ),
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                    const EdgeInsets.only(
-                                                        left: 3.0),
-                                                    child: Container(
-                                                      width:
-                                                      size.width * 0.04,
-                                                      height:
-                                                      size.height * 0.04,
-                                                      decoration: BoxDecoration(
-                                                          color:
-                                                          kPrimaryColor,
-                                                          shape: BoxShape
-                                                              .circle),
-                                                      child: Row(
-                                                        children: [
-                                                          SizedBox(
-                                                            width:
-                                                            size.width *
-                                                                0.0073,
-                                                          ),
-                                                          Text(
-                                                            "#",
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .white),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: size.width * 0.02,
-                                                  ),
-                                                  Text(
-                                                    "12345",
-                                                    style: TextStyle(
-                                                        fontSize: 12),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      width: size.width * 0.68,
-                                      height: size.height * 0.001,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      SizedBox(width: size.width*0.13,),
-                                      Image.asset(
-                                        "assets/images/inventory/car_boxes/EPIC.png",
-                                        width: size.width * 0.14,
-                                      ),
-                                      SizedBox(width: size.width*0.07,),
-                                      Column(
-                                        //mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text("EPIC"),
-                                          ),
-                                          Padding(
-                                            padding:
-                                            const EdgeInsets.all(8.0),
-                                            child: Container(
-                                              width: size.width * 0.23,
-                                              height: size.height * 0.03,
-                                              decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.grey),
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(
-                                                        30.0) //         <--- border radius here
-                                                ),
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                    const EdgeInsets.only(
-                                                        left: 3.0),
-                                                    child: Container(
-                                                      width:
-                                                      size.width * 0.04,
-                                                      height:
-                                                      size.height * 0.04,
-                                                      decoration: BoxDecoration(
-                                                          color:
-                                                          kPrimaryColor,
-                                                          shape: BoxShape
-                                                              .circle),
-                                                      child: Row(
-                                                        children: [
-                                                          SizedBox(
-                                                            width:
-                                                            size.width *
-                                                                0.0073,
-                                                          ),
-                                                          Text(
-                                                            "#",
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .white),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: size.width * 0.02,
-                                                  ),
-                                                  Text(
-                                                    "12345",
-                                                    style: TextStyle(
-                                                        fontSize: 12),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      width: size.width * 0.68,
-                                      height: size.height * 0.001,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-
-                                ],
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         )
                             : Container()

@@ -22,7 +22,7 @@ Widget Wallet_Account_View(
         margin: EdgeInsets.fromLTRB(15.w, 23.h, 15.w, 0.h),
         child: InkWell(
           onTap: () {
-            Address_popup().showDialog(size, context);
+            Wallet_popup().show_wallet_address(size, context);
           },
           child: Container(
             height: 66.h,

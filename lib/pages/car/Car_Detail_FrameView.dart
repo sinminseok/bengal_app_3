@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:bengal_app/pages/car/popup/Car_Detail_popup.dart';
+import 'package:bengal_app/pages/car/popup/Status_popup.dart';
 import 'package:bengal_app/pages/car/popup/levelup_popup/levelup1_popup.dart';
 import 'package:bengal_app/pages/car/popup/recovery/recovery_popup.dart';
 import 'package:bengal_app/pages/car/popup/repair/repair_popup.dart';
@@ -30,6 +31,8 @@ class Car_Detail_FrameView extends StatefulWidget {
 }
 
 class _Car_Detail_FrameView extends State<Car_Detail_FrameView> {
+  bool currently_status = true;
+  bool base_statue = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -58,12 +61,12 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView> {
                 SizedBox(
                   height: 40.h,
                   child: Row(
-                      //mainAxisAlignment: MainAxisAlignment.center,
+                    //mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Coin_Widget("xper_icon", "0.00", size),
-                        Coin_Widget("per_icon", "0.00", size),
-                        Coin_Widget("havah_icon", "0.00", size),
+                        Coin_Widget("xper_icon", "0.00"),
+                        Coin_Widget("per_icon", "0.00"),
+                        Coin_Widget("havah_icon", "0.00"),
                         InkWell(
                             onTap: () {
                               Navigator.push(
@@ -88,6 +91,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView> {
         body: SingleChildScrollView(
           child: Column(
             children: [
+
               Container(
                 width:390.w,
                 height: 40.h,
@@ -119,6 +123,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView> {
                   ],
                 ),
               ),
+              //Car main image
               Stack(
                 children: [
                   Container(
@@ -206,6 +211,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView> {
                   )
                 ],
               ),
+
               Container(
                 margin: EdgeInsets.fromLTRB(40.w, 20.h, 20.w, 15.h),
 
@@ -213,26 +219,87 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView> {
                   children: [
 
                     Container(
-                      margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
+                      margin: EdgeInsets.fromLTRB(0.w, 0.h, 5.w, 0.h),
 
                       child: Text(
                         "Status",
-                        style: TextStyle(color: Colors.grey.shade800, fontSize: 15),
+                        style: TextStyle(color: Colors.grey.shade600, fontSize: 18),
+                      ),
+                    ),
+
+                    InkWell(
+                      onTap: (){
+                        Status_popup().status_popup( context);
+                      },
+                      child: Container(
+                        width: 34.w,
+                        height: 22.h,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                            color: Colors.greenAccent.shade100),
+                        child: Center(
+                            child: Text(
+                              "+4.0",
+                              style: TextStyle(color: Colors.green,fontSize: 12),
+                            )),
                       ),
                     ),
 
                     Container(
-                      width: size.width * 0.15,
-                      height: size.height * 0.034,
+                      margin: EdgeInsets.fromLTRB(40.w, 0.h, 15.w, 0.h),
+
+                      width: 160.w,
+                      height: 24.h,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(30)),
-                          color: Colors.greenAccent.shade100),
-                      child: Center(
-                          child: Text(
-                            "+4.0",
-                            style: TextStyle(color: Colors.green),
-                          )),
-                    ),
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                        color: Colors.grey.shade300
+                      ),
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: 80.w,
+                            height: 24.h,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(30)),
+                                color: currently_status!=true?Colors.grey.shade300:kPrimaryColor
+                            ),
+                            child: InkWell(
+                              onTap: (){
+                                setState(() {
+                                  currently_status = true;
+                                  base_statue = false;
+                                });
+                              },
+                              child: Center(
+                                child: Text("Currently",style: TextStyle(color: currently_status!=true?Colors.grey:Colors.white,fontSize: 10),),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            left: 80.w,
+                            child: Container(
+                              width: 80.w,
+                              height: 24.h,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                                  color: base_statue == true?kPrimaryColor:Colors.grey.shade300
+                              ),
+                              child: InkWell(
+                                onTap: (){
+                                  setState(() {
+                                    currently_status = false;
+                                    base_statue = true;
+                                  });
+                                },
+                                child: Center(
+                                  child: Text("Base",style: TextStyle(color: base_statue == true?Colors.white :Colors.grey,fontSize: 10),),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),

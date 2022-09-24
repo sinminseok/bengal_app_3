@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../types/constants.dart';
 import '../../drawer/transfer_drawer.dart';
+import '../../popup/transfer_popup.dart';
 import '../../widget/Drawer_widget.dart';
 
 
@@ -28,10 +29,27 @@ class _Transfer_ViewState extends State<Transfer_View> {
 
     return Scaffold(
       backgroundColor: kAppbarColor,
-      endDrawer: Container(
-        width: MediaQuery.of(context).size.width * 0.8,
-        child: Transfer_Drawer()
-      ),
+      endDrawer: Stack(
+        clipBehavior: Clip.none,
+        children: [
+        Positioned(
+            bottom: 700.h,
+            left: -40.w,
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Image.asset(
+                  "assets/images/common/cancel_button.png",
+                  width: 40.w,
+                ))),
+        Container(
+            width: 330.w,
+            child: Transfer_Drawer()
+        ),
+
+
+      ],),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         toolbarHeight: 50.h,
@@ -310,13 +328,19 @@ class _Transfer_ViewState extends State<Transfer_View> {
                 style: TextStyle(color: kPrimaryColor),
               ),
 
-              Container(
-                margin: EdgeInsets.fromLTRB(15.w, 180.h, 15.w, 0.h),
+              InkWell(
+                onTap: (){
 
-                child: Image.asset(
-                  "assets/images/wallet/icons/transfer_button.png",
-                  width: 175.w,
-                  height:50.h
+                  Transfer_popup().transfer_popup(context);
+                },
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(15.w, 180.h, 15.w, 0.h),
+
+                  child: Image.asset(
+                    "assets/images/wallet/icons/transfer_button.png",
+                    width: 175.w,
+                    height:50.h
+                  ),
                 ),
               )
             ],

@@ -187,7 +187,7 @@ class _Game_ViewState extends State<Game_View> {
                           margin: EdgeInsets.fromLTRB(15.w, 7.h, 1.w, 0.h),
                           child: InkWell(
                               onTap: () {
-                                Filter_popup().showDialog(size, context);
+                                Game_Filter_popup().showDialog(size, context);
                               },
                               child: Image.asset(
                                 "assets/images/inventory/filter.png",

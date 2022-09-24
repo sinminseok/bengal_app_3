@@ -77,16 +77,20 @@ class Sell_popup {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
 
-                                  Image.asset(
-                                    "assets/images/lobby/icons/circle_icon.png",
-                                    width: 16.w,
-                                    height: 16.h,
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
+
+                                    child: Image.asset(
+                                      "assets/images/lobby/icons/circle_icon.png",
+                                      width: 16.w,
+                                      height: 16.h,
+                                    ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
                                       "13123",
-                                      style: TextStyle(fontWeight: FontWeight.bold),
+                                      style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),
                                     ),
                                   ),
                                   Padding(
