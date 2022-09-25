@@ -54,7 +54,7 @@ class CarNft {
       case 2: return "Off Road";
       case 3: return "Sedan";
       case 4: return "Sports";
-      default: return "None";
+      default: return "Sedan";
     }
   }
 
@@ -64,8 +64,8 @@ class CarNft {
       case 2: return "rare";
       case 3: return "elite";
       case 4: return "epic";
-      case 4: return "ultimate";
-      default: return "none";
+      case 5: return "ultimate";
+      default: return "normal";
     }
   }
 

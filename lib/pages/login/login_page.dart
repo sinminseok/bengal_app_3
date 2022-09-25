@@ -71,7 +71,8 @@ class LoginPageState extends State<LoginPage> {
               child: Text(
                 StringConfiguration().uiString(UiStringType.LOGIN_02),
                 textAlign: TextAlign.center,
-                style: Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20.sp),
+                style:
+                    Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20.sp),
               ),
             ),
             Container(
@@ -79,7 +80,8 @@ class LoginPageState extends State<LoginPage> {
               height: 50.h,
               child: IconTextInputBox(
                   assetImage: "assets/images/login/ico_mail.png",
-                  hintText: StringConfiguration().uiString(UiStringType.LOGIN_03),
+                  hintText:
+                      StringConfiguration().uiString(UiStringType.LOGIN_03),
                   hintFontWeight: FontWeight.w400,
                   hintFontSize: 12.sp,
                   fillColor: Colors.white,
@@ -141,7 +143,8 @@ class LoginPageState extends State<LoginPage> {
                           color: Colors.white,
                           child: Checkbox(
                             shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(5)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
                             ),
                             side: const BorderSide(
                                 color: Color(0xFFEBEBEB),
@@ -160,9 +163,10 @@ class LoginPageState extends State<LoginPage> {
                         Container(
                           margin: EdgeInsets.fromLTRB(5.w, 0.h, 0.w, 0.h),
                           child: Text(
-                            StringConfiguration().uiString(UiStringType.LOGIN_05),
-                            style: Font.lato(
-                                const Color(0xFF746F7B), FontWeight.w400, 12.sp),
+                            StringConfiguration()
+                                .uiString(UiStringType.LOGIN_05),
+                            style: Font.lato(const Color(0xFF746F7B),
+                                FontWeight.w400, 12.sp),
                           ),
                         ),
                       ],
@@ -196,8 +200,8 @@ class LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     onTap: () {
-                      if (!StorageController()
-                          .signIn(emailController.text, passwordController.text)) {
+                      if (!StorageController().signIn(
+                          emailController.text, passwordController.text)) {
                         Fluttertoast.showToast(
                             msg: 'Login Fail',
                             backgroundColor: Colors.grey,
@@ -211,11 +215,12 @@ class LoginPageState extends State<LoginPage> {
               //color: Colors.red,
               height: 32.h,
               margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              child:
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
                   StringConfiguration().uiString(UiStringType.LOGIN_07),
-                  style:
-                      Font.lato(const Color(0xFFBAB8C4), FontWeight.w400, 12.sp),
+                  style: Font.lato(
+                      const Color(0xFFBAB8C4), FontWeight.w400, 12.sp),
                 ),
                 TextButton(
                   onPressed: () {
@@ -233,7 +238,13 @@ class LoginPageState extends State<LoginPage> {
               margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 0.h),
               child: TextButton(
                 onPressed: () {
-                  debugPrint("dataReset tapped");
+                  StorageController().clear().then((value) => {
+                        Fluttertoast.showToast(
+                            msg: 'Data Cleared',
+                            backgroundColor: Colors.grey,
+                            textColor: Colors.black,
+                            gravity: ToastGravity.CENTER)
+                      });
                 },
                 child: Text(
                   StringConfiguration().uiString(UiStringType.LOGIN_10),

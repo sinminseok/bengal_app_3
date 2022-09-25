@@ -200,7 +200,6 @@ class StorageController {
       return false;
     }
 
-    await clear();
     account =
         Account(_baseId, password, email, name, DateTime.now(), DateTime.now());
 
