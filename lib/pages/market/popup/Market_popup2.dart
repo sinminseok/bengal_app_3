@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../Controller/storage_controller.dart';
 import '../../../common/string_configuration.dart';
 import '../../../models/car.dart';
 import '../../../types/constants.dart';
@@ -227,6 +228,7 @@ class Market_popup2 {
                               MaterialStateProperty.all(Colors.white),
                         ),
                         onPressed: () {
+                          StorageController().buyCar(carNft);
                           Navigator.of(context).pop();
                         },
                         child: Container(

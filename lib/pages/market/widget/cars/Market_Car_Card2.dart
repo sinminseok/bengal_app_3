@@ -58,12 +58,11 @@ Widget Market_Car_Card2(
               //nftID
               Container(
                 margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
-
                 width: 86.w,
                 height: 23.h,
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.all(
+                  borderRadius: const BorderRadius.all(
                       Radius.circular(30.0) //         <--- border radius here
                   ),
                 ),
@@ -74,7 +73,7 @@ Widget Market_Car_Card2(
                       height: 15.h,
                       margin: EdgeInsets.fromLTRB(1.w, 1.h, 7.w, 1.h),
 
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.grey, shape: BoxShape.circle),
                       child: Container(
                         margin: EdgeInsets.fromLTRB(4.w, 0.h, 1.w, 2.h),

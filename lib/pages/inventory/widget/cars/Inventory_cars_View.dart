@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../Controller/storage_controller.dart';
 import 'Inventory_Cars_Card.dart';
+import 'Inventory_Cars_Card2.dart';
 
 Widget Inventory_Cars_View(Size size){
   return Center(
@@ -17,7 +19,7 @@ Widget Inventory_Cars_View(Size size){
               mainAxisSpacing: 1.w,
               childAspectRatio: 1.h / 1.56.h,
             ),
-            itemCount: 10,
+            itemCount: StorageController().carNftList!.list.length,
             // shrinkWrap: true,
 
             itemBuilder: (BuildContext context, int index) {
@@ -32,8 +34,8 @@ Widget Inventory_Cars_View(Size size){
                 //     int Charge_value,
                 //     int Repair_value,
                 //     int distance)
-                child: Inventory_Car_Card(
-                    size,Colors.red,context, "SPORTS","ultimate", 3, 12345, 10, 13, 14, 15, 16, 13),
+                child: Inventory_Car_Card2(
+                    size, Colors.red, context, StorageController().carNftList!.list[index]),
               );
             }
         ),
