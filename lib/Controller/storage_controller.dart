@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flinq/flinq.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:random_string/random_string.dart';
@@ -17,6 +18,7 @@ enum StorageKey {
   boxNft,
   carNftPool,
   boxNftPool,
+  boxCarNftPool,
 }
 
 class StorageController {
@@ -42,6 +44,7 @@ class StorageController {
   late CommonData commonData;
   late CarNftList? carNftPool;
   late BoxNftList? boxNftPool;
+  late CarNftList? boxCarNftPool;
 
   String _genAutoKey(StorageKey key) =>
       "${account!.email}_${describeEnum(key)}";
@@ -61,6 +64,7 @@ class StorageController {
         await rootBundle.loadString("assets/back_data/common_data.json")));
     await loadCarNftPool();
     await loadBoxNftPool();
+    await loadBoxCarNftPool();
   }
 
   // Account
@@ -159,6 +163,24 @@ class StorageController {
     return true;
   }
 
+  // In Box Car Nft Market Pool
+  Future<bool> saveBoxCarNftPool() async {
+    if (null == boxCarNftPool) return false;
+    return await _prefs.setString(
+        describeEnum(StorageKey.boxCarNftPool), jsonEncode(boxCarNftPool!.toJson()));
+  }
+
+  Future<bool> loadBoxCarNftPool() async {
+    var value = _prefs.getString(describeEnum(StorageKey.boxCarNftPool));
+    if (null == value) {
+      boxCarNftPool = CarNftList.fromJson(await json.decode(
+          await rootBundle.loadString("assets/back_data/box_car_nfts.json")));
+    } else {
+      boxCarNftPool = CarNftList.fromJson(json.decode(value));
+    }
+    return true;
+  }
+
   // Account All Data Save
   Future<bool> savePlayerData() async {
     var ret = true;
@@ -189,6 +211,12 @@ class StorageController {
     if (!loadAccount(email)) return false;
     if (!account!.isValidPassword(password)) return false;
     return loadPlayerData();
+  }
+
+  Future<bool> signOut() async {
+    var ret = await saveAccount();
+    ret &= await savePlayerData();
+    return ret;
   }
 
   Future<bool> signUp(
@@ -226,5 +254,45 @@ class StorageController {
     boxNftList = null;
 
     return await _prefs.setInt(describeEnum(StorageKey.baseId), ++_baseId);
+  }
+
+  Future<bool> buyCar(CarNft nft) async {
+    if (0 > carNftPool!.list.indexWhere((o) => o.id == nft.id)) return false;
+    if (0 <= carNftList!.list.indexWhere((o) => o.id == nft.id)) return false;
+    carNftList!.list.add(nft);
+    carNftPool!.list.removeWhere((o) => o.id == nft.id);
+
+    var ret = await saveCarNftList();
+    ret &= await saveCarNftPool();
+    return ret;
+  }
+
+  Future<bool> buyBox(BoxNft nft) async {
+    if (0 > boxNftPool!.list.indexWhere((o) => o.id == nft.id)) return false;
+    if (0 <= boxNftList!.list.indexWhere((o) => o.id == nft.id)) return false;
+    boxNftList!.list.add(nft);
+    boxNftPool!.list.removeWhere((o) => o.id == nft.id);
+
+    var ret = await saveBoxNftList();
+    ret &= await saveBoxNftPool();
+    return ret;
+  }
+
+  Future<bool> openBox(BoxNft nft) async {
+    if (0 > boxNftList!.list.indexWhere((o) => o.id == nft.id)) return false;
+    var car = boxCarNftPool!.list.firstOrNullWhere((o) => o.id == nft.carNftId);
+    if (null == car) return false;
+    boxNftList!.list.removeWhere((o) => o.id == nft.id);
+    boxCarNftPool!.list.removeWhere((o) => o.id == car.id);
+    carNftList!.list.add(car);
+
+    var ret = await saveBoxNftList();
+    ret &= await saveBoxCarNftPool();
+    ret &= await saveCarNftList();
+    return ret;
+  }
+
+  Future<bool> mining() async {
+    return false;
   }
 }
