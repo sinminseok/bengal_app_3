@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
+import '../../../../common/string_configuration.dart';
 import '../../../../models/car.dart';
 import '../../../../types/constants.dart';
+import '../../../../types/string_type.dart';
+import '../../../../utils/font.dart';
 import '../../../car/Car_Detail_FrameView2.dart';
 import '../../popup/Market_popup.dart';
+import '../../popup/Market_popup2.dart';
 
 Widget Market_Car_Card2(
     Size size,
@@ -41,7 +45,7 @@ Widget Market_Car_Card2(
                 margin: EdgeInsets.fromLTRB(110.w, 3.h, 0.w, 3.h),
                 child: Text(
                   "Mint: ${carNft.mintingCount}",
-                  style: TextStyle(fontSize: 12),
+                  style: Font.lato(Colors.white, FontWeight.w400, 10.sp),
                 ),
               ),
 
@@ -77,14 +81,14 @@ Widget Market_Car_Card2(
 
                         child: Text(
                           "#",
-                          style: TextStyle(color: Colors.white,fontSize: 11),
+                          style: Font.lato(Colors.white, FontWeight.w400, 1.sp),
                         ),
                       ),
                     ),
 
                     Text(
                       "${carNft.id}",
-                      style: TextStyle(fontSize: 12),
+                      style: Font.lato(const Color(0xFF9196A5), FontWeight.bold, 10.sp),
                     )
                   ],
                 ),
@@ -97,13 +101,13 @@ Widget Market_Car_Card2(
                   children: [
                     Text(
                       "Level",
-                      style: TextStyle(fontSize: 11, color: Colors.grey),
+                      style: Font.lato(const Color(0xFF746F7B), FontWeight.w400, 10.sp),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 3.0, bottom: 6),
                       child: Text(
                         "${carNft.level}",
-                        style: TextStyle(fontSize: 14, color: Colors.black),
+                        style: Font.lato(const Color(0xFF342B35), FontWeight.bold, 14.sp),
                       ),
                     ),
                   ],
@@ -124,7 +128,7 @@ Widget Market_Car_Card2(
                         ),
                         Text(
                           "${carNft.speed}",
-                          style: TextStyle(fontSize: 12),
+                          style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                         )
                       ],
                     ),
@@ -140,7 +144,7 @@ Widget Market_Car_Card2(
                         ),
                         Text(
                           "${carNft.lucky}",
-                          style: TextStyle(fontSize: 12),
+                          style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                         )
                       ],
                     ),
@@ -156,7 +160,7 @@ Widget Market_Car_Card2(
                         ),
                         Text(
                           "${carNft.charge}",
-                          style: TextStyle(fontSize: 12),
+                          style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                         )
                       ],
                     ),
@@ -172,7 +176,7 @@ Widget Market_Car_Card2(
                         ),
                         Text(
                           "${carNft.repair}",
-                          style: TextStyle(fontSize: 12),
+                          style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                         )
                       ],
                     ),
@@ -184,12 +188,11 @@ Widget Market_Car_Card2(
                 children: [
                   Text(
                     "${carNft.price} HVH",
-                    style: TextStyle(
-                        color: kPrimaryColor, fontWeight: FontWeight.bold),
+                    style: Font.lato(kPrimaryColor, FontWeight.bold, 12.sp),
                   ),
                   InkWell(
                     onTap: () {
-                      Market_popup().showDialog(size, context);
+                      Market_popup2().showDialog(size, context, carNft);
                     },
                     child: Container(
                       width: 70.w,
@@ -203,8 +206,8 @@ Widget Market_Car_Card2(
                       ),
                       child: Center(
                           child: Text(
-                            "BUY",
-                            style: TextStyle(color: kPrimaryColor, fontSize: 12),
+                            StringConfiguration().uiString(UiStringType.MARKET_TAB_CARS_BUYPOPUP_01),
+                            style: Font.lato(kPrimaryColor, FontWeight.w700, 12.sp),
                           )),
                     ),
                   )
@@ -217,15 +220,16 @@ Widget Market_Car_Card2(
           right: 110.w,
           child: Image.asset(
             "assets/images/common/tags/tag_${carNft.getCarGradeString()}.png",
+            fit: BoxFit.fill,
             width: 65.w,
           ),
         ),
         Positioned(
-            right: 120.w,
-            top: 3.h,
+            right: 140.w,
+            top: 6.h,
             child: Text(
-              carNft.getCarTypeString(),
-              style: TextStyle(fontSize: 12, color: Colors.white),
+              carNft.getCarTypeString().toUpperCase(),
+              style: Font.lato(Colors.white, FontWeight.bold, 8.sp),
             )),
       ],
     ),

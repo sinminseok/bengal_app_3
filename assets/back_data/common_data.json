@@ -1,8 +1,8 @@
 {
   "initialInfo": {
     "defaultXPerAmount": 1000.0,
-    "defaultPerAmount": 0.0,
-    "defaultHavahAmount": 0.0,
+    "defaultPerAmount": 100.0,
+    "defaultHavahAmount": 200.0,
     "dailyLimitXPer": 200.0,
     "dailyLimitPer": 20.0,
     "maxPower": 16,

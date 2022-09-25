@@ -16,10 +16,12 @@ import '../../common/string_configuration.dart';
 import '../../models/car.dart';
 import '../../types/constants.dart';
 import '../../types/string_type.dart';
+import '../../utils/font.dart';
 import '../frame/widget/Coin_Widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../market/popup/Market_popup.dart';
+import '../market/popup/Market_popup2.dart';
 import '../my_page/Mypage_View.dart';
 import '../wallet/Wallet_View.dart';
 
@@ -307,7 +309,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                       ])),
                   InkWell(
                     onTap: (){
-                      Market_popup().showDialog(size, context);
+                      Market_popup2().showDialog(size, context, widget.carNft);
                     },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
@@ -319,11 +321,8 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                       ),
                       child:   Center(
                         child: Text(
-                          "Cost BUY",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold),
+                          "${widget.carNft.price}Hvh ${StringConfiguration().uiString(UiStringType.MARKET_TAB_CARS_BUYPOPUP_01)}",
+                          style: Font.lato(Colors.white, FontWeight.bold, 16.sp),
                         ),
                       ),
                     ),
