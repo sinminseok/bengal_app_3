@@ -9,6 +9,7 @@ import '../models/box.dart';
 import '../models/car.dart';
 import '../models/common_data.dart';
 import '../models/wallet.dart';
+import '../types/common.dart';
 
 enum StorageKey {
   baseId,
@@ -256,9 +257,30 @@ class StorageController {
     return await _prefs.setInt(describeEnum(StorageKey.baseId), ++_baseId);
   }
 
+  bool _buy({double havah = 0.0, double per = 0.0, double xPer = 0.0}) {
+    if (null == wallet) return false;
+    if (havah > wallet!.balanceHavah ||
+        per > wallet!.balancePer ||
+        xPer > wallet!.balanceXPer) return false;
+
+    if (0.0 < havah) {
+      wallet!.balanceHavah -= havah;
+    }
+    if (0.0 < per) {
+      wallet!.balancePer -= havah;
+    }
+    if (0.0 < xPer) {
+      wallet!.balanceXPer -= havah;
+    }
+    return true;
+  }
+
   Future<bool> buyCar(CarNft nft) async {
     if (0 > carNftPool!.list.indexWhere((o) => o.id == nft.id)) return false;
     if (0 <= carNftList!.list.indexWhere((o) => o.id == nft.id)) return false;
+
+    if (!_buy(havah: nft.price)) return false;
+
     carNftList!.list.add(nft);
     carNftPool!.list.removeWhere((o) => o.id == nft.id);
 
@@ -270,6 +292,9 @@ class StorageController {
   Future<bool> buyBox(BoxNft nft) async {
     if (0 > boxNftPool!.list.indexWhere((o) => o.id == nft.id)) return false;
     if (0 <= boxNftList!.list.indexWhere((o) => o.id == nft.id)) return false;
+
+    if (!_buy(havah: nft.price)) return false;
+
     boxNftList!.list.add(nft);
     boxNftPool!.list.removeWhere((o) => o.id == nft.id);
 
@@ -282,6 +307,9 @@ class StorageController {
     if (0 > boxNftList!.list.indexWhere((o) => o.id == nft.id)) return false;
     var car = boxCarNftPool!.list.firstOrNullWhere((o) => o.id == nft.carNftId);
     if (null == car) return false;
+
+    // todo: cost calculate
+
     boxNftList!.list.removeWhere((o) => o.id == nft.id);
     boxCarNftPool!.list.removeWhere((o) => o.id == car.id);
     carNftList!.list.add(car);
