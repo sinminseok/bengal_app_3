@@ -35,6 +35,11 @@ class LoginPageState extends State<LoginPage> {
     });
     super.initState();
     _scrollController = ScrollController();
+
+    _isRemember = StorageController().isRemember;
+    if (_isRemember) {
+      emailController.text = StorageController().rememberEmail;
+    }
   }
 
   @override
@@ -72,7 +77,7 @@ class LoginPageState extends State<LoginPage> {
                 StringConfiguration().uiString(UiStringType.LOGIN_02),
                 textAlign: TextAlign.center,
                 style:
-                    Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20.sp),
+                Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20.sp),
               ),
             ),
             Container(
@@ -81,7 +86,7 @@ class LoginPageState extends State<LoginPage> {
               child: IconTextInputBox(
                   assetImage: "assets/images/login/ico_mail.png",
                   hintText:
-                      StringConfiguration().uiString(UiStringType.LOGIN_03),
+                  StringConfiguration().uiString(UiStringType.LOGIN_03),
                   hintFontWeight: FontWeight.w400,
                   hintFontSize: 12.sp,
                   fillColor: Colors.white,
@@ -91,13 +96,13 @@ class LoginPageState extends State<LoginPage> {
                   boardFocusColor: const Color(0xFFC2BAFF),
                   borderRadius: 10,
                   onTap: () {
-                    _scrollController.animateTo(90.h,
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.ease);
-                    // Scrollable.ensureVisible(
-                    //   _scrollKey.currentContext!,
-                    //   duration: const Duration(microseconds: 500),
-                    // );
+                    // _scrollController.animateTo(90.h,
+                    //     duration: const Duration(milliseconds: 500),
+                    //     curve: Curves.ease);
+                    Scrollable.ensureVisible(
+                      _scrollKey.currentContext!,
+                      duration: const Duration(microseconds: 500),
+                    );
                   },
                   controller: emailController),
             ),
@@ -116,20 +121,19 @@ class LoginPageState extends State<LoginPage> {
                 boardFocusColor: const Color(0xFFC2BAFF),
                 borderRadius: 10,
                 onTap: () {
-                  _scrollController.animateTo(90.h,
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.ease);
-                  // Scrollable.ensureVisible(
-                  //   _scrollKey.currentContext!,
-                  //   duration: const Duration(microseconds: 500),
-                  // );
+                  // _scrollController.animateTo(90.h,
+                  //     duration: const Duration(milliseconds: 500),
+                  //     curve: Curves.ease);
+                  Scrollable.ensureVisible(
+                    _scrollKey.currentContext!,
+                    duration: const Duration(microseconds: 500),
+                  );
                 },
                 controller: passwordController,
               ),
             ),
             Container(
               margin: EdgeInsets.fromLTRB(15.w, 2.h, 15.w, 0.h),
-              //color: Colors.red,
               height: 32.h,
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -144,7 +148,7 @@ class LoginPageState extends State<LoginPage> {
                           child: Checkbox(
                             shape: const RoundedRectangleBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(5)),
+                              BorderRadius.all(Radius.circular(5)),
                             ),
                             side: const BorderSide(
                                 color: Color(0xFFEBEBEB),
@@ -189,7 +193,7 @@ class LoginPageState extends State<LoginPage> {
                       width: 175.w,
                       height: 46.h,
                       image:
-                          const AssetImage("assets/images/login/btn_login.png"),
+                      const AssetImage("assets/images/login/btn_login.png"),
                       fit: BoxFit.fill,
                       child: Center(
                         child: Text(
@@ -201,7 +205,9 @@ class LoginPageState extends State<LoginPage> {
                     ),
                     onTap: () {
                       if (!StorageController().signIn(
-                          emailController.text, passwordController.text)) {
+                          emailController.text,
+                          passwordController.text,
+                          _isRemember)) {
                         Fluttertoast.showToast(
                             msg: 'Login Fail',
                             backgroundColor: Colors.grey,
@@ -216,7 +222,7 @@ class LoginPageState extends State<LoginPage> {
               height: 32.h,
               margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
               child:
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
                   StringConfiguration().uiString(UiStringType.LOGIN_07),
                   style: Font.lato(
@@ -238,13 +244,14 @@ class LoginPageState extends State<LoginPage> {
               margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 0.h),
               child: TextButton(
                 onPressed: () {
-                  StorageController().clear().then((value) => {
-                        Fluttertoast.showToast(
-                            msg: 'Data Cleared',
-                            backgroundColor: Colors.grey,
-                            textColor: Colors.black,
-                            gravity: ToastGravity.CENTER)
-                      });
+                  StorageController().clear().then((value) =>
+                  {
+                    Fluttertoast.showToast(
+                        msg: 'Data Cleared',
+                        backgroundColor: Colors.grey,
+                        textColor: Colors.black,
+                        gravity: ToastGravity.CENTER)
+                  });
                 },
                 child: Text(
                   StringConfiguration().uiString(UiStringType.LOGIN_10),
@@ -255,7 +262,10 @@ class LoginPageState extends State<LoginPage> {
             ),
             Container(
                 margin: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).viewInsets.bottom))
+                    bottom: MediaQuery
+                        .of(context)
+                        .viewInsets
+                        .bottom))
           ]),
         ),
       ),

@@ -2,8 +2,11 @@ import 'package:bengal_app/pages/market/popup/filter_popup.dart';
 import 'package:bengal_app/pages/market/widget/cars/Market_Cars_View.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../Controller/storage_controller.dart';
+import '../../common/observer.dart';
 import '../../types/constants.dart';
 import '../game/popup/filter_popup.dart';
+import '../inventory/widget/carboxes/Inventory_CarBoxes_View.dart';
 import '../inventory/widget/dropdown_button/DropdownButton2.dart';
 
 class Market_View extends StatefulWidget {
@@ -218,8 +221,8 @@ class _Market_ViewState extends State<Market_View> {
                 ],
               ),
             ),
-            Cars_selected==true?Market_Cars_View(size):Container(),
-            // Car_Boxes_selected==true?Inventory_CarBoxes_View(size):Container(),
+            Cars_selected==true?Market_Cars_View(size, StorageController().carNftPool!):Container(),
+            // Car_Boxes_selected==true?Inventory_CarBoxes_View(size, StorageController().boxNftPool!):Container(),
             // Gems_selected==true?Inventory_Cars_View(size):Container(),
             // Others_selected==true?Inventory_Cars_View(size):Container(),
 
