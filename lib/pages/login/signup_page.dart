@@ -61,7 +61,8 @@ class SignupPageState extends State<SignupPage> {
               child: Text(
                 StringConfiguration().uiString(UiStringType.LOGIN_09),
                 textAlign: TextAlign.center,
-                style: Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20.sp),
+                style:
+                    Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20.sp),
               ),
             ),
             Container(
@@ -79,13 +80,13 @@ class SignupPageState extends State<SignupPage> {
                 boardFocusColor: const Color(0xFFC2BAFF),
                 borderRadius: 10,
                 onTap: () {
-                  _scrollController.animateTo(90.h,
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.ease);
-                  // Scrollable.ensureVisible(
-                  //   _scrollKey.currentContext!,
-                  //   duration: const Duration(microseconds: 500),
-                  // );
+                  // _scrollController.animateTo(90.h,
+                  //     duration: const Duration(milliseconds: 500),
+                  //     curve: Curves.ease);
+                  Scrollable.ensureVisible(
+                    _scrollKey.currentContext!,
+                    duration: const Duration(microseconds: 500),
+                  );
                 },
                 controller: nameController,
               ),
@@ -105,13 +106,13 @@ class SignupPageState extends State<SignupPage> {
                 boardFocusColor: const Color(0xFFC2BAFF),
                 borderRadius: 10,
                 onTap: () {
-                  _scrollController.animateTo(90.h,
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.ease);
-                  // Scrollable.ensureVisible(
-                  //   _scrollKey.currentContext!,
-                  //   duration: const Duration(microseconds: 500),
-                  // );
+                  // _scrollController.animateTo(90.h,
+                  //     duration: const Duration(milliseconds: 500),
+                  //     curve: Curves.ease);
+                  Scrollable.ensureVisible(
+                    _scrollKey.currentContext!,
+                    duration: const Duration(microseconds: 500),
+                  );
                 },
                 controller: emailController,
               ),
@@ -131,13 +132,13 @@ class SignupPageState extends State<SignupPage> {
                 boardFocusColor: const Color(0xFFC2BAFF),
                 borderRadius: 10,
                 onTap: () {
-                  _scrollController.animateTo(90.h,
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.ease);
-                  // Scrollable.ensureVisible(
-                  //   _scrollKey.currentContext!,
-                  //   duration: const Duration(microseconds: 500),
-                  // );
+                  // _scrollController.animateTo(90.h,
+                  //     duration: const Duration(milliseconds: 500),
+                  //     curve: Curves.ease);
+                  Scrollable.ensureVisible(
+                    _scrollKey.currentContext!,
+                    duration: const Duration(microseconds: 500),
+                  );
                 },
                 controller: passwordController,
               ),
@@ -147,8 +148,7 @@ class SignupPageState extends State<SignupPage> {
               height: 50,
               child: IconTextInputBox(
                 assetImage: "assets/images/login/ico_repeat_password.png",
-                hintText:
-                    StringConfiguration().uiString(UiStringType.LOGIN_12),
+                hintText: StringConfiguration().uiString(UiStringType.LOGIN_12),
                 hintFontWeight: FontWeight.w400,
                 hintFontSize: 12.sp,
                 fillColor: Colors.white,
@@ -158,13 +158,13 @@ class SignupPageState extends State<SignupPage> {
                 boardFocusColor: const Color(0xFFC2BAFF),
                 borderRadius: 10,
                 onTap: () {
-                  _scrollController.animateTo(90.h,
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.ease);
-                  // Scrollable.ensureVisible(
-                  //   _scrollKey.currentContext!,
-                  //   duration: const Duration(microseconds: 500),
-                  // );
+                  // _scrollController.animateTo(90.h,
+                  //     duration: const Duration(milliseconds: 500),
+                  //     curve: Curves.ease);
+                  Scrollable.ensureVisible(
+                    _scrollKey.currentContext!,
+                    duration: const Duration(microseconds: 500),
+                  );
                 },
                 controller: repeatController,
               ),
@@ -188,16 +188,21 @@ class SignupPageState extends State<SignupPage> {
                       ),
                     ),
                     onTap: () {
-                      StorageController().signUp(nameController.text, emailController.text, passwordController.text, repeatController.text).then((value) => Get.offAll(const LoginPage()));
-                      // if (!StorageController().signUp(nameController.text, emailController.text, passwordController.text, repeatController.text)) {
-                      //   Fluttertoast.showToast(
-                      //       msg: 'Login Fail',
-                      //       backgroundColor: Colors.grey,
-                      //       textColor: Colors.black,
-                      //       gravity: ToastGravity.CENTER);
-                      // } else {
-                      //   Get.offAll(const LoginPage());
-                      // }
+                      StorageController()
+                          .signUp(nameController.text, emailController.text,
+                              passwordController.text, repeatController.text)
+                          .then((value) => {
+                            if (value) {
+                              Get.offAll(const LoginPage())
+                            }
+                            else {
+                                Fluttertoast.showToast(
+                                    msg: 'SignUp Fail',
+                                    backgroundColor: Colors.grey,
+                                    textColor: Colors.black,
+                                    gravity: ToastGravity.CENTER)
+                            }
+                          });
                     })),
             Container(
                 margin: EdgeInsets.only(

@@ -13,7 +13,7 @@ import '../../popup/Market_popup2.dart';
 Widget Market_Car_Card2(
     Size size,
     BuildContext context,
-    CarNft carNft,
+    CarNft nft,
     ) {
   return InkWell(
     onTap: (){
@@ -22,7 +22,7 @@ Widget Market_Car_Card2(
           PageTransition(
               type: PageTransitionType.fade,
               child: Car_Detail_FrameView2(
-                carNft: carNft,
+                carNft: nft,
                 carBuy: true,
               )));
     },
@@ -44,7 +44,7 @@ Widget Market_Car_Card2(
               Container(
                 margin: EdgeInsets.fromLTRB(110.w, 3.h, 0.w, 3.h),
                 child: Text(
-                  "Mint: ${carNft.mintingCount}",
+                  "Mint: ${nft.mintingCount}",
                   style: Font.lato(Colors.white, FontWeight.w400, 10.sp),
                 ),
               ),
@@ -86,7 +86,7 @@ Widget Market_Car_Card2(
                     ),
 
                     Text(
-                      "${carNft.id}",
+                      "${nft.id}",
                       style: Font.lato(const Color(0xFF9196A5), FontWeight.bold, 10.sp),
                     )
                   ],
@@ -105,7 +105,7 @@ Widget Market_Car_Card2(
                     Padding(
                       padding: const EdgeInsets.only(left: 3.0, bottom: 6),
                       child: Text(
-                        "${carNft.level}",
+                        "${nft.level}",
                         style: Font.lato(const Color(0xFF342B35), FontWeight.bold, 14.sp),
                       ),
                     ),
@@ -126,7 +126,7 @@ Widget Market_Car_Card2(
                           height: 24.h,
                         ),
                         Text(
-                          "${carNft.speed}",
+                          "${nft.speed}",
                           style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                         )
                       ],
@@ -142,7 +142,7 @@ Widget Market_Car_Card2(
                           height: 24.h,
                         ),
                         Text(
-                          "${carNft.lucky}",
+                          "${nft.lucky}",
                           style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                         )
                       ],
@@ -158,7 +158,7 @@ Widget Market_Car_Card2(
                           height: 24.h,
                         ),
                         Text(
-                          "${carNft.charge}",
+                          "${nft.charge}",
                           style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                         )
                       ],
@@ -174,7 +174,7 @@ Widget Market_Car_Card2(
                           height: 24.h,
                         ),
                         Text(
-                          "${carNft.repair}",
+                          "${nft.repair}",
                           style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                         )
                       ],
@@ -186,12 +186,12 @@ Widget Market_Car_Card2(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    "${carNft.price} HVH",
+                    "${nft.price} HVH",
                     style: Font.lato(kPrimaryColor, FontWeight.bold, 12.sp),
                   ),
                   InkWell(
                     onTap: () {
-                      Market_popup2().showDialog(size, context, carNft);
+                      Market_popup2().showDialog(size, context, nft);
                     },
                     child: Container(
                       width: 70.w,
@@ -218,7 +218,7 @@ Widget Market_Car_Card2(
         Positioned(
           right: 110.w,
           child: Image.asset(
-            "assets/images/common/tags/tag_${carNft.getCarGradeString()}.png",
+            "assets/images/common/tags/tag_${nft.getCarGradeString()}.png",
             fit: BoxFit.fill,
             width: 65.w,
           ),
@@ -227,7 +227,7 @@ Widget Market_Car_Card2(
             right: 140.w,
             top: 6.h,
             child: Text(
-              carNft.getCarTypeString().toUpperCase(),
+              nft.getCarTypeString().toUpperCase(),
               style: Font.lato(Colors.white, FontWeight.bold, 8.sp),
             )),
       ],

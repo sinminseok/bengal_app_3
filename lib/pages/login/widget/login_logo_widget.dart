@@ -37,8 +37,8 @@ class LoginLogoWidget extends StatelessWidget {
         ),
       ),
       Positioned(
-        left: 30,
-        top: 253,
+        left: 30.w,
+        top: 253.h,
         child: Text(
           StringConfiguration().uiString(UiStringType.LOGIN_13),
           style: Font.lato(const Color(0xFFC2BAFF), FontWeight.w400, 14.sp),

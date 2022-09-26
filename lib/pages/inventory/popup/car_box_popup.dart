@@ -9,11 +9,12 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:vs_scrollbar/vs_scrollbar.dart';
 
 import '../../../../types/constants.dart';
+import '../../../models/box.dart';
 
 class Car_Box_popup {
 
 
-  void carbox_popup1(BuildContext context , Color color,String nft_id , String grade) {
+  void carbox_popup1(BuildContext context , BoxNft nft) {
 
     showAnimatedDialog(
       context: context,
@@ -79,7 +80,7 @@ class Car_Box_popup {
                                       height: 150.h,
                                       margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
 
-                                      child: Image.asset("assets/images/inventory/car_boxes/box_$grade.png")),
+                                      child: Image.asset("assets/images/inventory/car_boxes/box_${nft.getBoxGradeString()}.png")),
 
                                   Container(
                                       width:37.w,
@@ -106,7 +107,7 @@ class Car_Box_popup {
                                       width:13.w,
                                       height: 13.h,
                                       decoration: BoxDecoration(
-                                          color: color, shape: BoxShape.circle),
+                                          color: nft.getBoxGradeColor(), shape: BoxShape.circle),
                                       child: Row(
                                         children: [
 
@@ -123,7 +124,7 @@ class Car_Box_popup {
                                     ),
 
                                     Text(
-                                      "$nft_id",
+                                      "${nft.id}",
                                       style: TextStyle(fontSize: 10),
                                     )
                                   ],
@@ -188,7 +189,7 @@ class Car_Box_popup {
                                                     width:12.w,
                                                     height: 12.h,
                                                     decoration: BoxDecoration(
-                                                        color: color, shape: BoxShape.circle),
+                                                        color: nft.getBoxGradeColor(), shape: BoxShape.circle),
                                                     child: Row(
                                                       children: [
 
@@ -205,7 +206,7 @@ class Car_Box_popup {
                                                   ),
 
                                                   Text(
-                                                    "$nft_id",
+                                                    "${nft.id}",
                                                     style: TextStyle(fontSize: 8),
                                                   )
                                                 ],
@@ -217,13 +218,13 @@ class Car_Box_popup {
                                       Positioned(
                                         top: 20.h,
                                         right: 83.w,
-                                        child: Image.asset("assets/images/common/tags/tag_$grade.png",width: 60.w,height: 20.h,),
+                                        child: Image.asset("assets/images/common/tags/tag_${nft.getBoxGradeString()}.png",width: 60.w,height: 20.h,),
                                       ),
 
                                       Positioned(
                                           right: 110.w,
                                           top: 23.h,
-                                          child: Text("$grade",style: TextStyle(fontSize: 8,color: Colors.white),)
+                                          child: Text(nft.getBoxGradeString(),style: TextStyle(fontSize: 8,color: Colors.white),)
                                       ),
                                     ],
                                   ),
@@ -267,7 +268,7 @@ class Car_Box_popup {
                                                     width:12.w,
                                                     height: 12.h,
                                                     decoration: BoxDecoration(
-                                                        color: color, shape: BoxShape.circle),
+                                                        color: nft.getBoxGradeColor(), shape: BoxShape.circle),
                                                     child: Row(
                                                       children: [
 
@@ -284,7 +285,7 @@ class Car_Box_popup {
                                                   ),
 
                                                   Text(
-                                                    "$nft_id",
+                                                    "${nft.id}",
                                                     style: TextStyle(fontSize: 8),
                                                   )
                                                 ],
@@ -296,13 +297,13 @@ class Car_Box_popup {
                                       Positioned(
                                         top: 20.h,
                                         right: 83.w,
-                                        child: Image.asset("assets/images/common/tags/tag_$grade.png",width: 60.w,height: 20.h,),
+                                        child: Image.asset("assets/images/common/tags/tag_${nft.getBoxGradeString()}.png",width: 60.w,height: 20.h,),
                                       ),
 
                                       Positioned(
                                           right: 110.w,
                                           top: 23.h,
-                                          child: Text("$grade",style: TextStyle(fontSize: 8,color: Colors.white),)
+                                          child: Text(nft.getBoxGradeString(),style: TextStyle(fontSize: 8,color: Colors.white),)
                                       ),
                                     ],
                                   ),
@@ -313,7 +314,7 @@ class Car_Box_popup {
                               GestureDetector(
                                 onTap: () {
                                   Navigator.pop(context);
-                                  carbox_popup2(context,color,nft_id,grade);
+                                  carbox_popup2(context, nft);
                                 },
                                 child: Container(
                                   width: 120.w,
@@ -346,7 +347,7 @@ class Car_Box_popup {
     );
   }
 
-  void carbox_popup2(BuildContext context , Color color,String nft_id , String grade) {
+  void carbox_popup2(BuildContext context , BoxNft nft) {
 
     showAnimatedDialog(
       context: context,
@@ -403,7 +404,7 @@ class Car_Box_popup {
                                   height: 150.h,
                                   margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
 
-                                  child: Image.asset("assets/images/inventory/car_boxes/box_$grade.png")),
+                                  child: Image.asset("assets/images/inventory/car_boxes/box_${nft.getBoxGradeString()}.png")),
                               Container(
                                 width: 76.w,
                                 height:24.h,
@@ -421,7 +422,7 @@ class Car_Box_popup {
                                       width:13.w,
                                       height: 13.h,
                                       decoration: BoxDecoration(
-                                          color: color, shape: BoxShape.circle),
+                                          color: nft.getBoxGradeColor(), shape: BoxShape.circle),
                                       child: Row(
                                         children: [
 
@@ -438,7 +439,7 @@ class Car_Box_popup {
                                     ),
 
                                     Text(
-                                      "$nft_id",
+                                      "${nft.id}",
                                       style: TextStyle(fontSize: 10),
                                     )
                                   ],

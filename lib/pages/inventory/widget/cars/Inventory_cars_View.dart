@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../Controller/storage_controller.dart';
+import '../../../../models/car.dart';
 import 'Inventory_Cars_Card.dart';
 import 'Inventory_Cars_Card2.dart';
 
-Widget Inventory_Cars_View(Size size){
+Widget Inventory_Cars_View(Size size, CarNftList nftList){
   return Center(
     child: Padding(
       padding: const EdgeInsets.all(0.0),
@@ -19,7 +20,7 @@ Widget Inventory_Cars_View(Size size){
               mainAxisSpacing: 1.w,
               childAspectRatio: 1.h / 1.56.h,
             ),
-            itemCount: StorageController().carNftList!.list.length,
+            itemCount: nftList.list.length,
             // shrinkWrap: true,
 
             itemBuilder: (BuildContext context, int index) {
@@ -35,7 +36,7 @@ Widget Inventory_Cars_View(Size size){
                 //     int Repair_value,
                 //     int distance)
                 child: Inventory_Car_Card2(
-                    size, Colors.red, context, StorageController().carNftList!.list[index]),
+                    size, Colors.red, context, nftList.list[index]),
               );
             }
         ),

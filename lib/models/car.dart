@@ -9,10 +9,14 @@ class CarNft {
   final double price;
   final int type;
   final int grade;
-  final double speed;
-  final double lucky;
-  final double charge;
-  final double repair;
+  final double speedBase;
+  late double speed;
+  final double luckyBase;
+  late double lucky;
+  final double chargeBase;
+  late double charge;
+  final double repairBase;
+  late double repair;
   final String seal;
   final int socket1Color;
   final int socket2Color;
@@ -30,9 +34,13 @@ class CarNft {
       this.price,
       this.type,
       this.grade,
+      this.speedBase,
       this.speed,
+      this.luckyBase,
       this.lucky,
+      this.chargeBase,
       this.charge,
+      this.repairBase,
       this.repair,
       this.seal,
       this.socket1Color,
