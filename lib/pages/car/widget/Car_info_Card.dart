@@ -19,8 +19,8 @@ Widget Car_info_Card(
       children: [
         Container(
             width: 129.w,
-            height: 137.h,
-          margin: EdgeInsets.fromLTRB(10.w, 10.h, 5.w, 20.h),
+            height: 112.h,
+          margin: EdgeInsets.fromLTRB(13.w, 20.h, 5.w, 0.h),
 
           decoration: BoxDecoration(
               border: Border.all(color: color),
@@ -36,20 +36,27 @@ Widget Car_info_Card(
                 Container(
                   margin: EdgeInsets.fromLTRB(1.w, 3.h, 1.w, 0.h),
 
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    child: Image.asset(
-                      "assets/images/common/cars/car1.png",
-                      width: 110.w,
-                      height: 90.h,
+                  child: Container(
+                    width: 110.w,
+                    height: 63.h,
+                    child: ClipRRect(
+
+                      borderRadius: BorderRadius.all(Radius.circular(0)),
+                      child: Image.asset(
+
+
+                        "assets/images/common/cars/car1.png",
+                        fit: BoxFit.fitWidth,
+
+                      ),
                     ),
                   ),
                 ),
                 //nftID
                 Container(
-                  margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
-                  width: 79.w,
-                  height: 25.h,
+                  margin: EdgeInsets.fromLTRB(15.w, 8.93.h, 15.w, 0.h),
+                  width: 62.w,
+                  height: 16.h,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey.shade400),
                     borderRadius: BorderRadius.all(
@@ -59,24 +66,26 @@ Widget Car_info_Card(
                   child: Row(
                     children: [
                       Container(
-                        width: 16.w,
-                        height:16.h,
+                        width: 10.w,
+                        height:10.h,
                         decoration: BoxDecoration(
                             color: color, shape: BoxShape.circle),
                         child: Container(
-                          margin: EdgeInsets.fromLTRB(4.w, 1.h, 3.w, 3.h),
+                          margin: EdgeInsets.fromLTRB(2.w, 1.h, 3.w, 3.h),
 
                           child: Text(
                             "#",
-                            style: TextStyle(color: Colors.white,fontSize: 11),
+                            style: TextStyle(color: Colors.white,fontSize: 9),
                           ),
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.fromLTRB(3.w, 2.h, 2.w, 0.h),
-                        child: Text(
-                          "$nft_id",
-                          style: TextStyle(fontSize: 12,color: color),
+                        margin: EdgeInsets.fromLTRB(2.w, 1.h, 0.w, 0.h),
+                        child: Center(
+                          child: Text(
+                            "$nft_id",
+                            style: TextStyle(fontSize: 8,color: color),
+                          ),
                         ),
                       )
                     ],
@@ -99,11 +108,11 @@ Widget Car_info_Card(
         ),
 
         Positioned(
-            right: 90.w,
+            left: 12.w,
             top: 17.h,
             child: Text(
               "$badge_title",
-              style: TextStyle(fontSize: 12, color: Colors.white),
+              style: TextStyle(fontSize: 8, color: Colors.white),
             )),
       ],
     );

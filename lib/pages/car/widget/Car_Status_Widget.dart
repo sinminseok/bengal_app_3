@@ -2,123 +2,122 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget Car_Status_Widget(Size size){
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Container(
-      width: 330.w,
-      height: 80.h,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          //Speed Box
-          Container(
+  return Container(
+    margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 0.h),
 
-            width: 75.w,
-            height: 80.h,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Colors.grey.shade200),
-            child: Column(
-              children: [
+    width: 390.w,
+    height: 80.h,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        //Speed Box
+        Container(
 
-                Container(
-                  margin: EdgeInsets.only(top:6.h),
-                  child: Image.asset(
-                    "assets/images/common/cars/icons/speed_icon.png",
-                    width: 24.w,
-                    height: 24.h,
-                  ),
+          width: 75.w,
+          height: 80.h,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: Colors.grey.shade200),
+          child: Column(
+            children: [
+
+              Container(
+                margin: EdgeInsets.only(top:6.h),
+                child: Image.asset(
+                  "assets/images/common/cars/icons/speed_icon.png",
+                  width: 24.w,
+                  height: 24.h,
                 ),
-                Text("21.8",style: TextStyle(fontSize: 16),),
-                Text(
-                  "Speed",
-                  style: TextStyle(fontSize: 10, color: Colors.grey),
-                )
-              ],
-            ),
+              ),
+              Text("21.8",style: TextStyle(fontSize: 16),),
+              Text(
+                "Speed",
+                style: TextStyle(fontSize: 10, color: Colors.grey),
+              )
+            ],
           ),
-          Container(
+        ),
+        Container(
 
-            width: 75.w,
-            height: 80.h,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Colors.grey.shade200),
-            child: Column(
-              children: [
+          width: 75.w,
+          height: 80.h,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: Colors.grey.shade200),
+          child: Column(
+            children: [
 
-                Container(
-                  margin: EdgeInsets.only(top:6.h),
-                  child: Image.asset(
-                    "assets/images/common/cars/icons/dice_icon.png",
-                    width: 24.w,
-                    height: 24.h,
-                  ),
+              Container(
+                margin: EdgeInsets.only(top:6.h),
+                child: Image.asset(
+                  "assets/images/common/cars/icons/dice_icon.png",
+                  width: 24.w,
+                  height: 24.h,
                 ),
-                Text("21.8",style: TextStyle(fontSize: 16),),
-                Text(
-                  "Luck",
-                  style: TextStyle(fontSize: 10, color: Colors.grey),
-                )
-              ],
-            ),
+              ),
+              Text("21.8",style: TextStyle(fontSize: 16),),
+              Text(
+                "Luck",
+                style: TextStyle(fontSize: 10, color: Colors.grey),
+              )
+            ],
           ),
-          Container(
+        ),
+        Container(
 
-            width: 75.w,
-            height: 80.h,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Colors.grey.shade200),
-            child: Column(
-              children: [
+          width: 75.w,
+          height: 80.h,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: Colors.grey.shade200),
+          child: Column(
+            children: [
 
-                Container(
-                  margin: EdgeInsets.only(top:6.h),
-                  child: Image.asset(
-                    "assets/images/common/cars/icons/charge_icon.png",
-                    width: 24.w,
-                    height: 24.h,
-                  ),
+              Container(
+                margin: EdgeInsets.only(top:6.h),
+                child: Image.asset(
+                  "assets/images/common/cars/icons/charge_icon.png",
+                  width: 24.w,
+                  height: 24.h,
                 ),
-                Text("21.8",style: TextStyle(fontSize: 16),),
-                Text(
-                  "Charge",
-                  style: TextStyle(fontSize: 10, color: Colors.grey),
-                )
-              ],
-            ),
+              ),
+              Text("21.8",style: TextStyle(fontSize: 16),),
+              Text(
+                "Charge",
+                style: TextStyle(fontSize: 10, color: Colors.grey),
+              )
+            ],
           ),
-          Container(
+        ),
+        Container(
 
-            width: 75.w,
-            height: 80.h,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Colors.grey.shade200),
-            child: Column(
-              children: [
+          width: 75.w,
+          height: 80.h,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: Colors.grey.shade200),
+          child: Column(
+            children: [
 
-                Container(
-                  margin: EdgeInsets.only(top:6.h),
-                  child: Image.asset(
-                    "assets/images/common/cars/icons/repair_icon.png",
-                    width: 24.w,
-                    height: 24.h,
-                  ),
+              Container(
+                margin: EdgeInsets.only(top:6.h),
+                child: Image.asset(
+                  "assets/images/common/cars/icons/repair_icon.png",
+                  width: 24.w,
+                  height: 24.h,
                 ),
-                Text("21.8",style: TextStyle(fontSize: 16),),
-                Text(
-                  "Repair",
-                  style: TextStyle(fontSize: 10, color: Colors.grey),
-                )
-              ],
-            ),
+              ),
+              Text("21.8",style: TextStyle(fontSize: 16),),
+              Text(
+                "Repair",
+                style: TextStyle(fontSize: 10, color: Colors.grey),
+              )
+            ],
           ),
-          //Luck box
+        ),
+        //Luck box
 
-        ],
-      ),
+      ],
     ),
   );
 

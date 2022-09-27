@@ -8,6 +8,7 @@ class Traded_popup{
 
 
   TextEditingController _percentvalue = TextEditingController();
+
   Future<String?> openDialog(context) => showAnimatedDialog<String>(
       barrierDismissible: true,
       context: context,

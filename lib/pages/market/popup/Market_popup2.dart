@@ -227,6 +227,10 @@ class Market_popup2 {
                               MaterialStateProperty.all(Colors.white),
                         ),
                         onPressed: () {
+
+                          // Navigator.push(
+                          //     context,
+                          //     new MaterialPageRoute(builder: (context) => new SecondPage()),
                           Navigator.of(context).pop();
                         },
                         child: Container(

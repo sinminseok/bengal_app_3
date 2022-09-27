@@ -19,6 +19,9 @@ class LandingPageState extends State<LandingPage> {
     Timer(const Duration(milliseconds: 2000), () {
       Get.offAll(const LoginPage());
     });
+    // Timer(const Duration(milliseconds: 2000), () {
+    //   Get.offAll(const Frame_View());
+    // });
     super.initState();
   }
 

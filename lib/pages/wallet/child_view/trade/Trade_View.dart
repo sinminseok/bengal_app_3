@@ -264,9 +264,10 @@ class _Trade_ViewState extends State<Trade_View> {
                             )),
 
                         InkWell(
-                          onTap: () async {
-
-                            value =  await Traded_popup().openDialog(context);
+                          onTap: ()  {
+                            setState(() async{
+                              value =  await Traded_popup().openDialog(context);
+                            });
 
                           },
                           child: Text(

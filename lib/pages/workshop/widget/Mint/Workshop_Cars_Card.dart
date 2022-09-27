@@ -7,18 +7,38 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../car/Car_Detail_FrameView.dart';
 
-Widget Workshop_Car_Card(
-    Size size,
-    BuildContext context,
-    String badge_title,
-    String grade,
-    int Mint_value,
-    int nft_id,
-    int Level,
-  ) {
-  return InkWell(
-    onTap: () {},
-    child: Stack(
+
+
+class Mint_Car_Card extends StatefulWidget {
+  Size size;
+  Function? fun;
+  BuildContext context;
+  String badge_title;
+  String grade;
+  int Mint_value;
+  int nft_id;
+  int Level;
+
+  Mint_Car_Card(
+      {Key? key,
+      required this.size,
+        required this.fun,
+      required this.context,
+      required this.badge_title,
+      required this.grade,
+      required this.Mint_value,
+      required this.nft_id,
+      required this.Level})
+      : super(key: key);
+
+  @override
+  _Mint_Car_CardState createState() => _Mint_Car_CardState();
+}
+
+class _Mint_Car_CardState extends State<Mint_Car_Card> {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
       clipBehavior: Clip.none,
       children: [
         Container(
@@ -36,7 +56,7 @@ Widget Workshop_Car_Card(
               Container(
                 margin: EdgeInsets.fromLTRB(80.w, 6.h, 0.w, 6.h),
                 child: Text(
-                  "Lv $Level / Mint: $Mint_value",
+                  "Lv ${widget.Level} / Mint: ${widget.Mint_value}",
                   style: TextStyle(fontSize: 11,color: Colors.grey.shade600),
                 ),
               ),
@@ -83,24 +103,29 @@ Widget Workshop_Car_Card(
                     ),
 
                     Text(
-                      "$nft_id",
+                      "${widget.nft_id}",
                       style: TextStyle(fontSize: 12,color: Colors.grey.shade500,fontWeight: FontWeight.bold),
                     )
                   ],
                 ),
               ),
               //Level
-              Container(
-                margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+              InkWell(
+                onTap: (){
+                  widget.fun!();
+                },
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
 
-                width: 100.w,
-                height: 27.h,
-                decoration: BoxDecoration(
-                  color: kPrimaryColor,
-                  borderRadius: BorderRadius.all(Radius.circular(29))
-                ),
-                child: Center(
-                  child: Text("Select",style: TextStyle(color: Colors.white),),
+                  width: 100.w,
+                  height: 27.h,
+                  decoration: BoxDecoration(
+                      color: kPrimaryColor,
+                      borderRadius: BorderRadius.all(Radius.circular(29))
+                  ),
+                  child: Center(
+                    child: Text("Select",style: TextStyle(color: Colors.white),),
+                  ),
                 ),
               )
 
@@ -110,18 +135,19 @@ Widget Workshop_Car_Card(
         Positioned(
           right: 110.w,
           child: Image.asset(
-            "assets/images/common/tags/tag_$grade.png",
-            width: size.width * 0.17,
+            "assets/images/common/tags/tag_${widget.grade}.png",
+            width: widget.size.width * 0.17,
           ),
         ),
         Positioned(
-            right: size.width * 0.33,
-            top: size.height * 0.005,
+            right: widget.size.width * 0.33,
+            top: widget.size.height * 0.005,
             child: Text(
-              "$badge_title",
+              "${widget.badge_title}",
               style: TextStyle(fontSize: 12, color: Colors.white),
             )),
       ],
-    ),
-  );
+
+    );
+  }
 }

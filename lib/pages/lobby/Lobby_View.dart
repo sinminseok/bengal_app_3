@@ -28,7 +28,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
         child: Column(
           children: [
             //Buy a car Widget
-            current_car == true
+            current_car == false
                 ? InkWell(
                     onTap: () {
                       // setState(() {
@@ -45,8 +45,8 @@ class _Lobby_ViewState extends State<Lobby_View> {
                       });
                     },
                     child: Container(
-                      width: size.width,
-                      height: size.height * 0.4,
+                      width: 390.w,
+                      height: 277.h,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         boxShadow: [
@@ -60,45 +60,46 @@ class _Lobby_ViewState extends State<Lobby_View> {
                       ),
                       child: Stack(
                         children: [
-                          Center(
-                            child: Container(
-                                width: size.width * 0.93,
-                                height: size.height * 0.28,
-                                decoration: BoxDecoration(
-                                    color: Colors.grey.shade200,
-                                    borderRadius: BorderRadius.circular(10))),
-                          ),
+                          Container(
+                              margin: EdgeInsets.fromLTRB(15.w, 15.h, 015.w, 0.h),
+
+                              width: 360.w,
+                              height: 247.h,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey.shade200,
+                                  borderRadius: BorderRadius.circular(10))),
                           Column(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 50.0),
-                                child: Center(
-                                    child: Image.asset(
+                              Container(
+                                margin:
+                                EdgeInsets.fromLTRB(0.w, 68.74.h, 0.w, 0.h),
+                                width: 280.w,
+                                height: 110.h,
+                                child: Image.asset(
                                   "assets/images/lobby/car_empty_img.png",
-                                  width: size.width * 0.7,
-                                )),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      width: size.width * 0.26,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/lobby/icons/plus_icon_3.png",
-                                      width: size.width * 0.07,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        "Buy a car and enjoy the game",
-                                        style: TextStyle(fontSize: 12.3),
-                                      ),
-                                    )
-                                  ],
                                 ),
-                              )
+                              ),
+                              Row(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(105.w, 20.91.h, 0.w, 0.h),
+
+                                    child: Image.asset(
+                                      "assets/images/lobby/icons/plus_icon_3.png",
+                                      width: 20.w,
+                                      height: 20.h,
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        5.w, 18.91.h, 0.w, 0.h),
+                                    child: Text(
+                                      "Buy a car and enjoy the game",
+                                      style: TextStyle(fontSize: 12),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ],
                           )
                         ],
@@ -152,7 +153,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext ctx, int idx) {
                       return Game_Play_Widget(
-                          size,context, "Jewel Match", "0.08", "0.05", "10");
+                          size, context, "Jewel Match", "0.08", "0.05", "10");
                     }),
               ),
             ),

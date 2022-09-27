@@ -38,7 +38,7 @@ class _Spending_bottom_containerState extends State<Spending_bottom_container> {
       child: Column(
         children: [
           Container(
-            margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+            margin: EdgeInsets.fromLTRB(15.w, 16.h, 15.w, 0.h),
 
             child: Row(
               children: [
@@ -52,7 +52,7 @@ class _Spending_bottom_containerState extends State<Spending_bottom_container> {
                   child: Column(
                     children: [
                       Container(
-                        margin: EdgeInsets.fromLTRB(3.w, 3.h, 5.w, 3.h),
+                        margin: EdgeInsets.fromLTRB(15.w, 3.h, 0.w, 0.h),
 
                         child: Text(
                           "Pending",
@@ -66,6 +66,8 @@ class _Spending_bottom_containerState extends State<Spending_bottom_container> {
                               height: 3.w,
                             )
                           : Container(
+                        margin: EdgeInsets.fromLTRB(15.w, 10.h, 0.w, 0.h),
+
                         width: 50.w,
                         color: kPrimaryColor,
                         height: 4.h,
@@ -83,7 +85,7 @@ class _Spending_bottom_containerState extends State<Spending_bottom_container> {
                   child: Column(
                     children: [
                       Container(
-                        margin: EdgeInsets.fromLTRB(3.w, 3.h, 5.w, 3.h),
+                        margin: EdgeInsets.fromLTRB(29.w, 3.h, 0.w, 0.h),
                         child: Text(
                           "History",
                           style: history_selected != true
@@ -96,7 +98,9 @@ class _Spending_bottom_containerState extends State<Spending_bottom_container> {
                               height: 1.h,
                             )
                           : Container(
-                              width: 50.w,
+                        margin: EdgeInsets.fromLTRB(29.w, 10.h, 0.w, 0.h),
+
+                        width: 50.w,
                               color: kPrimaryColor,
                               height: 4.h,
                             ),

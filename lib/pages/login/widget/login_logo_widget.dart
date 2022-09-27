@@ -37,7 +37,7 @@ class LoginLogoWidget extends StatelessWidget {
         ),
       ),
       Positioned(
-        left: 30,
+        left: 40,
         top: 253,
         child: Text(
           StringConfiguration().uiString(UiStringType.LOGIN_13),

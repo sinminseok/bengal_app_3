@@ -98,6 +98,7 @@ class _Game_ViewState extends State<Game_View> {
                                 child: Text(
                                   "Special",
                                   style: TextStyle(
+                                    fontSize: 12,
                                       color: Special_selected != true
                                           ? Colors.grey
                                           : Colors.white),
@@ -127,6 +128,7 @@ class _Game_ViewState extends State<Game_View> {
                                 child: Text(
                                   "Recommended",
                                   style: TextStyle(
+                                      fontSize: 12,
                                       color: Recommended_selected != true
                                           ? Colors.grey
                                           : Colors.white),
@@ -154,8 +156,10 @@ class _Game_ViewState extends State<Game_View> {
                                       BorderRadius.all(Radius.circular(10))),
                               child: Center(
                                 child: Text(
+
                                   "Normal",
                                   style: TextStyle(
+                                      fontSize: 12,
                                       color: Normal_selected != true
                                           ? Colors.grey
                                           : Colors.white),

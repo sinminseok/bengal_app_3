@@ -29,6 +29,7 @@ class _Wallet_ViewState extends State<Wallet_View> {
         elevation: 0,
         backgroundColor: kAppbarColor,
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             InkWell(
               onTap: () {
@@ -41,7 +42,7 @@ class _Wallet_ViewState extends State<Wallet_View> {
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(68.w, 3.h, 60.w, 0.h),
+
               child: Text("Token Management",
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold,fontSize: 18)),
@@ -59,10 +60,11 @@ class _Wallet_ViewState extends State<Wallet_View> {
           children: [
             //selected buttons
             Container(
-              margin: EdgeInsets.only(top: 20.h),
+              margin: EdgeInsets.only(top: 15.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+
                   InkWell(
                     onTap: () {
                       setState(() {
@@ -71,6 +73,8 @@ class _Wallet_ViewState extends State<Wallet_View> {
                       });
                     },
                     child: Container(
+                      margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 0.h),
+
                       width: 177.w,
                       height: 34.h,
                       decoration: BoxDecoration(
@@ -106,6 +110,8 @@ class _Wallet_ViewState extends State<Wallet_View> {
                       });
                     },
                     child: Container(
+                      margin: EdgeInsets.fromLTRB(6.w, 0.h, 15.w, 0.h),
+
                       width: 177.w,
                       height: 34.h,
                       decoration: BoxDecoration(
@@ -139,10 +145,16 @@ class _Wallet_ViewState extends State<Wallet_View> {
             spending_selected != true
                 ? Container()
                 : Container(
-                    child: Row(
+              margin: EdgeInsets.fromLTRB(0.w, 30.h, 0.w, 0.h),
+
+              child: Row(
+
+
                       children: [
+
                         Container(
-                          margin: EdgeInsets.fromLTRB(120.w, 30.h, 70.w, 0.h),
+                          margin: EdgeInsets.fromLTRB(108.w, 0.h, 0.w, 0.h),
+
                           child: Text(
                             "Spending Account",
                             style: TextStyle(
@@ -156,7 +168,8 @@ class _Wallet_ViewState extends State<Wallet_View> {
                             Wallet_popup().show_spending_question(size,context);
                           },
                           child: Container(
-                            margin: EdgeInsets.only(top: 20.h),
+                            margin: EdgeInsets.fromLTRB(85.w, 0.h, 0.w, 0.h),
+
                             child: Image.asset(
                               "assets/images/wallet/icons/question_icon.png",
                               width: size.width * 0.06,
@@ -169,10 +182,14 @@ class _Wallet_ViewState extends State<Wallet_View> {
             wallet_selected != true
                 ? Container()
                 : Container(
+              margin: EdgeInsets.fromLTRB(0.w, 30.h, 0.w, 0.h),
+
               child: Row(
+
                 children: [
+
                   Container(
-                    margin: EdgeInsets.fromLTRB(120.w, 30.h, 95.w, 0.h),
+                    margin: EdgeInsets.fromLTRB(134.w, 0.h, 0.w, 0.h),
                     child: Text(
                       "Wallet Account",
                       style: TextStyle(
@@ -186,7 +203,8 @@ class _Wallet_ViewState extends State<Wallet_View> {
                       Wallet_popup().show_wallet_question(size,context);
                     },
                     child: Container(
-                      margin: EdgeInsets.only(top: 20.h),
+                      margin: EdgeInsets.fromLTRB(85.w, 0.h, 0.w, 0.h),
+
                       child: Image.asset(
                         "assets/images/wallet/icons/question_icon.png",
                         width: size.width * 0.06,

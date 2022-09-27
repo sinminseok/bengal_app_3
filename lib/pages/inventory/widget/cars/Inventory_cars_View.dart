@@ -5,38 +5,26 @@ import 'Inventory_Cars_Card.dart';
 
 Widget Inventory_Cars_View(Size size){
   return Center(
-    child: Padding(
-      padding: const EdgeInsets.all(0.0),
-      child: Container(
-        width: 360.w,
-        height: 700.h,
-        child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing:10.w,
-              mainAxisSpacing: 1.w,
-              childAspectRatio: 1.h / 1.56.h,
-            ),
-            itemCount: 10,
-            // shrinkWrap: true,
+    child:  Container(
+      width: 390.w,
+      height: 553.h,
+      child: GridView.builder(
+          shrinkWrap: true,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing:0.w,
+            mainAxisSpacing: 1.w,
+            childAspectRatio: 1.h/1.3.h,
+          ),
+          itemCount: 10,
+          // shrinkWrap: true,
 
-            itemBuilder: (BuildContext context, int index) {
-              return Center(
-                //Inventory_Card(Size size,
-                //     String badge_title,
-                //     int Mint_value,
-                //     int nft_id,
-                //     int Level,
-                //     int Speed_value,
-                //     int Luck_value,
-                //     int Charge_value,
-                //     int Repair_value,
-                //     int distance)
-                child: Inventory_Car_Card(
-                    size,Colors.red,context, "SPORTS","ultimate", 3, 12345, 10, 13, 14, 15, 16, 13),
-              );
-            }
-        ),
+          itemBuilder: (BuildContext context, int index) {
+            return Center(
+              child: Inventory_Car_Card(
+                  size,Colors.red,context, "SPORTS","ultimate", 3, 12345, 10, 13, 14, 15, 16, 13),
+            );
+          }
       ),
     ),
   );

@@ -20,102 +20,139 @@ Widget Game_Play_Widget(Size size,BuildContext context, String title, String xpe
               )));
     },
     child: Container(
+      margin: EdgeInsets.fromLTRB(0.w, 10.h, 5.w, 0.h),
+
       width: 360.w,
       height: 100.h,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: kPrimaryColor),
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(15),
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: 10.w),
-            child: Image.asset(
-              "assets/images/lobby/game_img.png",
-              width: 70.w,
-              height: 70.h,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 7.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // SizedBox(
-                //   height: size.height * 0.02,
-                // ),
-                Padding(
-                  padding: EdgeInsets.only(top: 17.h),
-                  child: Text(
-                    "$title",
-                    style:
-                        Font.lato(const Color(0xFF342B35), FontWeight.bold, 18.sp),
+          Row(
+            children: [
+              Container(
+                margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 0.h),
+
+                child: Image.asset(
+                  "assets/images/lobby/game_img.png",
+                  width: 70.w,
+                  height: 70.h,
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // SizedBox(
+                  //   height: size.height * 0.02,
+                  // ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(7.w, 8.h, 0.w, 6.h),
+
+                    child: Text(
+                      "$title",
+                      style:
+                      Font.lato(const Color(0xFF342B35), FontWeight.bold, 18.sp),
+                    ),
                   ),
-                ),
-                Row(
-                  children: [
-                    Image.asset(
-                      "assets/images/lobby/icons/appbar_icons/xper_icon.png",
-                      width: 14.w,
-                      height: 14.h,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(8.w),
-                      child: Text(
-                        "+ $xper_value",
-                        style: Font.lato(
-                            const Color(0xFF302F85), FontWeight.bold, 10.sp),
-                      ),
-                    ),
-                    Image.asset(
-                      "assets/images/lobby/icons/appbar_icons/per_icon.png",
-                      width: 14.w,
-                      height: 14.h,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(8.w),
-                      child: Text(
-                        "+ $per_value",
-                        style: Font.lato(
-                            const Color(0xFF302F85), FontWeight.bold, 10.sp),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 3.0),
-                  child: Row(
+                  Row(
                     children: [
                       Container(
-                        width: size.width * 0.28,
-                        height: size.height * 0.03,
+                        margin: EdgeInsets.fromLTRB(7.w, 0.h, 0.w, 0.h),
+
+                        child: Image.asset(
+                          "assets/images/lobby/icons/appbar_icons/xper_icon.png",
+                          width: 14.w,
+                          height: 14.h,
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
+
+                        child: Text(
+
+                          "+ $xper_value  XPER",
+                          style: Font.lato(
+                              const Color(0xFF302F85), FontWeight.bold, 10.sp),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 0.h),
+
+                        child: Image.asset(
+                          "assets/images/lobby/icons/appbar_icons/per_icon.png",
+                          width: 14.w,
+                          height: 14.h,
+                        ),
+                      ),
+                      Text(
+                        "+ $per_value  PER",
+                        style: Font.lato(
+                            const Color(0xFFD8B66C), FontWeight.bold, 10.sp),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.fromLTRB(10.w, 10.h, 0.w, 0.h),
+
+                        width: 70.w,
+                        height: 16.h,
                         decoration: BoxDecoration(
                             color: Colors.grey.shade200,
                             borderRadius: BorderRadius.circular(10)),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 8.0, top: 2),
+                        child: Center(
                           child: Text(
                             "Ultimate  Lv $ultimate_value",
                             style: Font.lato(
                                 const Color(0xFF746F7B), FontWeight.bold, 8.sp),
                           ),
                         ),
-                      )
+                      ),
+                      Container(
+                          margin: EdgeInsets.fromLTRB(5.w, 9.h, 0.w, 0.h),
+                          width: 21.58,
+                          height: 8.87.h,
+
+                          child: Image.asset("assets/images/game/empty_car/empty_car1.png",fit: BoxFit.fill,)),
+                      Container(
+                          margin: EdgeInsets.fromLTRB(5.w, 9.h, 0.w, 0.h),
+                          width: 21.58,
+                          height: 8.87.h,
+
+                          child: Image.asset("assets/images/game/empty_car/empty_car2.png",fit: BoxFit.fill,)),
+                      Container(
+                          margin: EdgeInsets.fromLTRB(5.w, 9.h, 0.w, 0.h),
+                          width: 21.58,
+                          height: 8.87.h,
+
+                          child: Image.asset("assets/images/game/empty_car/empty_car3.png",fit: BoxFit.fill,)),
+                      Container(
+                          margin: EdgeInsets.fromLTRB(5.w, 9.h, 0.w, 0.h),
+                          width: 21.58,
+                          height: 8.87.h,
+
+                          child: Image.asset("assets/images/game/empty_car/empty_car4.png",fit: BoxFit.fill,)),
                     ],
                   ),
-                )
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
-          SizedBox(
-            width: size.width * 0.15,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 0.0),
+
+
+          Container(
+            width: 60.w,
+            height: 60.h,
+            margin: EdgeInsets.fromLTRB(0.w, 5.h, 15.w, 0.h),
+
             child: Image.asset(
               "assets/images/lobby/game_play_button.png",
-              height: size.height * 0.08,
+
             ),
           ),
         ],

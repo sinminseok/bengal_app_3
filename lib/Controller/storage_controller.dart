@@ -11,12 +11,12 @@ import '../models/wallet.dart';
 
 enum StorageKey {
   baseId,
-  account,
-  wallet,
-  carNft,
-  boxNft,
-  carNftPool,
-  boxNftPool,
+  account,//내정보
+  wallet, //내가 가지고있는 coin 지갑
+  carNft, //소유 자동차 (인벤토리)
+  boxNft,// 소유 자동차 (인벤토리)
+  carNftPool, // 마켓에 보여줄
+  boxNftPool, // 마켓에 보여줄
 }
 
 class StorageController {
