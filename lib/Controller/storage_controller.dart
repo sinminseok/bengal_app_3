@@ -1,25 +1,30 @@
 import 'dart:convert';
+import 'package:flinq/flinq.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:random_string/random_string.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../common/observer.dart';
 import '../models/account.dart';
 import '../models/box.dart';
 import '../models/car.dart';
 import '../models/common_data.dart';
+import '../models/game.dart';
 import '../models/wallet.dart';
 
 enum StorageKey {
   baseId,
-  account,//내정보
-  wallet, //내가 가지고있는 coin 지갑
-  carNft, //소유 자동차 (인벤토리)
-  boxNft,// 소유 자동차 (인벤토리)
-  carNftPool, // 마켓에 보여줄
-  boxNftPool, // 마켓에 보여줄
+  isRemember,
+  rememberEmail,
+  account,
+  wallet,
+  carNft,
+  boxNft,
+  carNftPool,
+  boxNftPool,
+  boxCarNftPool,
 }
 
-class StorageController {
+class StorageController implements Subject {
   static final StorageController _instance = StorageController._internal();
 
   factory StorageController() {
@@ -33,6 +38,10 @@ class StorageController {
   late SharedPreferences _prefs;
 
   late int _baseId = 1;
+  late List<Observer> _observers = [];
+
+  late bool isRemember = false;
+  late String rememberEmail = '';
 
   late Account? account;
   late Wallet? wallet;
@@ -42,6 +51,8 @@ class StorageController {
   late CommonData commonData;
   late CarNftList? carNftPool;
   late BoxNftList? boxNftPool;
+  late CarNftList? boxCarNftPool;
+  late GameInfoList gameList;
 
   String _genAutoKey(StorageKey key) =>
       "${account!.email}_${describeEnum(key)}";
@@ -57,10 +68,60 @@ class StorageController {
       _baseId = baseId;
     }
 
-    commonData = CommonData.fromJson(await json.decode(
-        await rootBundle.loadString("assets/back_data/common_data.json")));
+    loadRemember();
+    await loadCommonData();
+    await loadGameList();
     await loadCarNftPool();
     await loadBoxNftPool();
+    await loadBoxCarNftPool();
+  }
+
+  @override
+  notifyObserver() {
+    _observers.map((observer){
+      observer.update();
+    }).toList();
+  }
+
+  @override
+  registerObserver(Observer o) {
+    _observers.add(o);
+  }
+
+  @override
+  removeObserver(Observer o) {
+    _observers.remove(o);
+  }
+
+  Future<bool> loadCommonData() async {
+    commonData = CommonData.fromJson(await json.decode(
+        await rootBundle.loadString("assets/back_data/common_data.json")));
+    return true;
+  }
+
+  Future<bool> loadGameList() async {
+    gameList = GameInfoList.fromJson(await json.decode(
+        await rootBundle.loadString("assets/back_data/game_infos.json")));
+    return true;
+  }
+
+  Future<bool> saveRemember(bool isRemember) async {
+    if (null == account) return false;
+    var ret = await _prefs.setBool(describeEnum(StorageKey.isRemember), isRemember);
+    var email = "";
+    if (isRemember) {
+      email = account!.email;
+    }
+    ret &= await _prefs.setString(describeEnum(StorageKey.rememberEmail), email);
+    return ret;
+  }
+
+  bool loadRemember() {
+    var remember = _prefs.getBool(describeEnum(StorageKey.isRemember)) ?? false;
+    isRemember = remember;
+    var email = _prefs.getString(describeEnum(StorageKey.rememberEmail)) ?? "";
+    rememberEmail = email;
+    return true;
   }
 
   // Account
@@ -72,8 +133,8 @@ class StorageController {
 
   bool loadAccount(String email) {
     if (email.isEmpty) return false;
-    var value = _prefs.getString(_genKey(StorageKey.account, email));
-    if (null == value || value.isEmpty) return false;
+    var value = _prefs.getString(_genKey(StorageKey.account, email)) ?? "";
+    if (value.isEmpty) return false;
     account = Account.fromJson(jsonDecode(value));
     return true;
   }
@@ -87,8 +148,8 @@ class StorageController {
 
   bool loadWallet() {
     if (null == account) return false;
-    var value = _prefs.getString(_genAutoKey(StorageKey.wallet));
-    if (null == value || value.isEmpty) return false;
+    var value = _prefs.getString(_genAutoKey(StorageKey.wallet)) ?? "";
+    if (value.isEmpty) return false;
     wallet = Wallet.fromJson(json.decode(value));
     return true;
   }
@@ -102,8 +163,8 @@ class StorageController {
 
   bool loadCarNftList() {
     if (null == account) return false;
-    var value = _prefs.getString(_genAutoKey(StorageKey.carNft));
-    if (null == value || value.isEmpty) return false;
+    var value = _prefs.getString(_genAutoKey(StorageKey.carNft)) ?? "";
+    if (value.isEmpty) return false;
     carNftList = CarNftList.fromJson(json.decode(value));
     return true;
   }
@@ -117,8 +178,8 @@ class StorageController {
 
   bool loadBoxNftList() {
     if (null == account) return false;
-    var value = _prefs.getString(_genAutoKey(StorageKey.boxNft));
-    if (null == value || value.isEmpty) return false;
+    var value = _prefs.getString(_genAutoKey(StorageKey.boxNft)) ?? "";
+    if (value.isEmpty) return false;
     boxNftList = BoxNftList.fromJson(json.decode(value));
     return true;
   }
@@ -159,6 +220,24 @@ class StorageController {
     return true;
   }
 
+  // In Box Car Nft Market Pool
+  Future<bool> saveBoxCarNftPool() async {
+    if (null == boxCarNftPool) return false;
+    return await _prefs.setString(
+        describeEnum(StorageKey.boxCarNftPool), jsonEncode(boxCarNftPool!.toJson()));
+  }
+
+  Future<bool> loadBoxCarNftPool() async {
+    var value = _prefs.getString(describeEnum(StorageKey.boxCarNftPool));
+    if (null == value) {
+      boxCarNftPool = CarNftList.fromJson(await json.decode(
+          await rootBundle.loadString("assets/back_data/box_car_nfts.json")));
+    } else {
+      boxCarNftPool = CarNftList.fromJson(json.decode(value));
+    }
+    return true;
+  }
+
   // Account All Data Save
   Future<bool> savePlayerData() async {
     var ret = true;
@@ -183,12 +262,20 @@ class StorageController {
     return await _prefs.clear();
   }
 
-  bool signIn(String email, String password) {
+  bool signIn(String email, String password, bool isRemember) {
     if (email.isEmpty || password.isEmpty) return false;
 
     if (!loadAccount(email)) return false;
     if (!account!.isValidPassword(password)) return false;
+
+    saveRemember(isRemember);
     return loadPlayerData();
+  }
+
+  Future<bool> signOut() async {
+    var ret = await saveAccount();
+    ret &= await savePlayerData();
+    return ret;
   }
 
   Future<bool> signUp(
@@ -227,4 +314,74 @@ class StorageController {
 
     return await _prefs.setInt(describeEnum(StorageKey.baseId), ++_baseId);
   }
+
+  bool _buyNft({double havah = 0.0, double per = 0.0, double xPer = 0.0}) {
+    if (null == wallet) return false;
+    if (havah > wallet!.balanceHavah ||
+        per > wallet!.balancePer ||
+        xPer > wallet!.balanceXPer) return false;
+
+    if (0.0 < havah) {
+      wallet!.balanceHavah -= havah;
+    }
+    if (0.0 < per) {
+      wallet!.balancePer -= havah;
+    }
+    if (0.0 < xPer) {
+      wallet!.balanceXPer -= havah;
+    }
+
+    notifyObserver();
+    return true;
+  }
+
+  Future<bool> buyCar(CarNft nft) async {
+    if (0 > carNftPool!.list.indexWhere((o) => o.id == nft.id)) return false;
+    if (0 <= carNftList!.list.indexWhere((o) => o.id == nft.id)) return false;
+
+    if (!_buyNft(havah: nft.price)) return false;
+
+    carNftList!.list.add(nft);
+    carNftPool!.list.removeWhere((o) => o.id == nft.id);
+
+    var ret = await saveCarNftList();
+    ret &= await saveCarNftPool();
+    return ret;
+  }
+
+  Future<bool> buyBox(BoxNft nft) async {
+    if (0 > boxNftPool!.list.indexWhere((o) => o.id == nft.id)) return false;
+    if (0 <= boxNftList!.list.indexWhere((o) => o.id == nft.id)) return false;
+
+    if (!_buyNft(havah: nft.price)) return false;
+
+    boxNftList!.list.add(nft);
+    boxNftPool!.list.removeWhere((o) => o.id == nft.id);
+
+    var ret = await saveBoxNftList();
+    ret &= await saveBoxNftPool();
+    return ret;
+  }
+
+  Future<bool> openBox(BoxNft nft) async {
+    if (0 > boxNftList!.list.indexWhere((o) => o.id == nft.id)) return false;
+    var car = boxCarNftPool!.list.firstOrNullWhere((o) => o.id == nft.carNftId);
+    if (null == car) return false;
+
+    // todo: cost calculate
+
+    boxNftList!.list.removeWhere((o) => o.id == nft.id);
+    boxCarNftPool!.list.removeWhere((o) => o.id == car.id);
+    carNftList!.list.add(car);
+
+    var ret = await saveBoxNftList();
+    ret &= await saveBoxCarNftPool();
+    ret &= await saveCarNftList();
+    return ret;
+  }
+
+  Future<bool> mining() async {
+    return false;
+  }
+
 }

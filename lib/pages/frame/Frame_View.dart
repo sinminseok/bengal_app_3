@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '../../Controller/storage_controller.dart';
+import '../../common/observer.dart';
 import '../../common/string_configuration.dart';
 import '../../types/constants.dart';
 import '../../types/string_type.dart';
@@ -23,10 +24,19 @@ class Frame_View extends StatefulWidget {
   _Frame_View createState() => _Frame_View();
 }
 
-class _Frame_View extends State<Frame_View> {
+class _Frame_View extends State<Frame_View>  implements Observer {
   int _selectedItem = 0;
 
+  @override
+  void initState() {
+    super.initState();
+    StorageController().registerObserver(this);
+  }
 
+  @override
+  update() {
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +136,7 @@ class _Frame_View extends State<Frame_View> {
           ),
 
           bottomNavigationBar: CustomBottomNavigationBar(
-            iconList: [
+            iconList: const [
               "assets/images/lobby/icons/bottom_nav_icon/lobby_icon.png",
               "assets/images/lobby/icons/bottom_nav_icon/inventory_icon.png",
               "assets/images/lobby/icons/bottom_nav_icon/workshop_icon.png",
@@ -151,4 +161,5 @@ class _Frame_View extends State<Frame_View> {
           body: screens[_selectedItem]),
     );
   }
+
 }

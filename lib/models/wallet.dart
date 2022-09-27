@@ -6,11 +6,11 @@ part 'wallet.g.dart';
 class Wallet {
   final int id;
   final int accountId;
-  final double balancePer;
-  final double balanceXPer;
-  final double balanceHavah;
+  late double balancePer;
+  late double balanceXPer;
+  late double balanceHavah;
   final DateTime createdAt;
-  final DateTime updatedAt;
+  late DateTime updatedAt;
 
   Wallet(
       this.id,

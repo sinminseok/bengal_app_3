@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../models/box.dart';
 import 'Inventory_CarBoxes_Card.dart';
+import 'Inventory_CarBoxes_Card2.dart';
 
-Widget Inventory_CarBoxes_View(Size size){
+Widget Inventory_CarBoxes_View(Size size, BoxNftList nftList){
   return Center(
     child:Container(
       width: 360.w,
@@ -17,7 +19,7 @@ Widget Inventory_CarBoxes_View(Size size){
             mainAxisSpacing: 1.h,
             childAspectRatio: 1.h / 1.h,
           ),
-          itemCount: 10,
+          itemCount: nftList.list.length,
           // shrinkWrap: true,
 
           itemBuilder: (BuildContext context, int index) {
@@ -32,8 +34,8 @@ Widget Inventory_CarBoxes_View(Size size){
               //     int Charge_value,
               //     int Repair_value,
               //     int distance)
-              child: Inventory_CarBoxes_Card(
-                  Colors.blue,context, "rare", 12345),
+              child: Inventory_CarBoxes_Card2(
+                  Colors.blue, context, nftList.list[index]),
             );
           }
       ),

@@ -4,6 +4,7 @@ import 'package:bengal_app/pages/inventory/widget/cars/Inventory_cars_View.dart'
 import 'package:bengal_app/pages/inventory/widget/dropdown_button/DropdownButton2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../Controller/storage_controller.dart';
 import '../../types/constants.dart';
 import '../game/popup/filter_popup.dart';
 
@@ -204,12 +205,12 @@ class _Inventory_ViewState extends State<Inventory_View> {
                 ],
               ),
             ),
-            Cars_selected == true ? Inventory_Cars_View(size) : Container(),
+            Cars_selected == true ? Inventory_Cars_View(size, StorageController().carNftList!) : Container(),
             Car_Boxes_selected == true
-                ? Inventory_CarBoxes_View(size)
+                ? Inventory_CarBoxes_View(size, StorageController().boxNftList!)
                 : Container(),
-            Gems_selected == true ? Inventory_Cars_View(size) : Container(),
-            Others_selected == true ? Inventory_Cars_View(size) : Container(),
+            Gems_selected == true ? Inventory_Cars_View(size, StorageController().carNftList!) : Container(),
+            Others_selected == true ? Inventory_Cars_View(size, StorageController().carNftList!) : Container(),
           ],
         ),
       ),
