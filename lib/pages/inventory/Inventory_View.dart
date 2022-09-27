@@ -38,14 +38,14 @@ class _Inventory_ViewState extends State<Inventory_View> {
             //Selected_Bar
             Container(
               width: 390.w,
-              height: 110.h,
+              height: 105.h,
               decoration: BoxDecoration(
                 border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
               ),
               child: Column(
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       InkWell(
                         onTap: () {
@@ -170,12 +170,14 @@ class _Inventory_ViewState extends State<Inventory_View> {
                     ],
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        margin: EdgeInsets.fromLTRB(1.w, 10.h, 15.w, 0.h),
-                        width: 125.w,
-                        height: 38.h,
+                        margin: EdgeInsets.fromLTRB(15.w, 16.h, 0.w, 0.h),
+                        width: 120.w,
+                        height: 30.h,
                         child: CustomDropdownButton2(
+
                           hint: 'Lowest Level',
                           dropdownItems: items,
                           value: selectedValue,
@@ -187,9 +189,9 @@ class _Inventory_ViewState extends State<Inventory_View> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.fromLTRB(175.w, 10.h, 15.w, 0.h),
-                        height: 37.h,
-                        width: 37.h,
+                        margin: EdgeInsets.fromLTRB(0.w, 10.h, 7.w, 0.h),
+                        height: 36.h,
+                        width: 36.h,
                         child: InkWell(
                             onTap: () {
                               Inventory_Filter_popup().showDialog(size, context);

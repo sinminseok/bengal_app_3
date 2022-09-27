@@ -7,7 +7,7 @@ import '../../../types/constants.dart';
 
 Widget Earned_Widget(double xper_value,double per_value,int special_box_lv,String special_box_value){
   return  Container(
-    width: 319.w,
+    width: 320.w,
     height: 160.h,
     decoration: BoxDecoration(
         border: Border.all(color: kPrimaryColor),
@@ -17,8 +17,7 @@ Widget Earned_Widget(double xper_value,double per_value,int special_box_lv,Strin
       children: [
         //xper
         Container(
-          margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 0.h),
-
+          margin: EdgeInsets.fromLTRB(0.w, 20.h, 0.w, 0.h),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -26,7 +25,7 @@ Widget Earned_Widget(double xper_value,double per_value,int special_box_lv,Strin
                 children: [
                   Container(
                       margin: EdgeInsets.fromLTRB(
-                          15.w, 10.h, 0.w, 0.h),
+                          15.w, 0.h, 0.w, 0.h),
                       child: Image.asset(
                         "assets/images/lobby/icons/appbar_icons/xper_icon.png",
                         width: 30.w,
@@ -34,7 +33,7 @@ Widget Earned_Widget(double xper_value,double per_value,int special_box_lv,Strin
                       )),
                   Container(
                       margin: EdgeInsets.fromLTRB(
-                          10.w, 10.h, 15.w, 0.h),
+                          10.w, 0.h, 0.w, 0.h),
                       child: Text(
                         "XPER",
                         style: TextStyle(
@@ -46,7 +45,7 @@ Widget Earned_Widget(double xper_value,double per_value,int special_box_lv,Strin
               ),
               Container(
                 margin:
-                EdgeInsets.fromLTRB(15.w, 10.h, 30.w, 0.h),
+                EdgeInsets.fromLTRB(0.w, 0.h, 20.w, 0.h),
                 child: Text(
                   "$xper_value",
                   style: TextStyle(
@@ -59,82 +58,90 @@ Widget Earned_Widget(double xper_value,double per_value,int special_box_lv,Strin
           ),
         ),
         //per
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Container(
-                    margin: EdgeInsets.fromLTRB(
-                        15.w, 10.h, 0.w, 0.h),
-                    child: Image.asset(
-                      "assets/images/lobby/icons/appbar_icons/per_icon.png",
-                      width: 30.w,
-                      height: 30.h,
-                    )),
-                Container(
-                    margin: EdgeInsets.fromLTRB(
-                        10.w, 10.h, 15.w, 0.h),
-                    child: Text(
-                      "PER",
-                      style: TextStyle(
-                          color: kPerColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
-                    )),
-              ],
-            ),
-            Container(
-              margin:
-              EdgeInsets.fromLTRB(15.w, 10.h, 30.w, 0.h),
-              child: Text(
-                "$per_value",
-                style: TextStyle(
-                    fontSize: 18,
-                    color: kPerColor,
-                    fontWeight: FontWeight.bold),
+        Container(
+          margin: EdgeInsets.fromLTRB(
+              0.w, 15.h, 0.w, 0.h),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                      margin: EdgeInsets.fromLTRB(
+                          15.w, 0.h, 0.w, 0.h),
+                      child: Image.asset(
+                        "assets/images/lobby/icons/appbar_icons/per_icon.png",
+                        width: 30.w,
+                        height: 30.h,
+                      )),
+                  Container(
+                      margin: EdgeInsets.fromLTRB(
+                          10.w, 0.h, 0.w, 0.h),
+                      child: Text(
+                        "PER",
+                        style: TextStyle(
+                            color: kPerColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      )),
+                ],
               ),
-            )
-          ],
+              Container(
+                margin:
+                EdgeInsets.fromLTRB(15.w, 0.h, 20.w, 0.h),
+                child: Text(
+                  "$per_value",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: kPerColor,
+                      fontWeight: FontWeight.bold),
+                ),
+              )
+            ],
+          ),
         ),
         //special box
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Container(
-                    margin: EdgeInsets.fromLTRB(
-                        15.w, 10.h, 0.w, 0.h),
-                    child: Image.asset(
-                      "assets/images/game/special_box.png",
-                      width: 30.w,
-                      height: 30.h,
-                    )),
-                Container(
-                    margin: EdgeInsets.fromLTRB(
-                        10.w, 10.h, 15.w, 0.h),
-                    child: Text(
-                      "Lv $special_box_lv Special Box",
-                      style: TextStyle(
-                          color: Colors.grey.shade600,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
-                    )),
-              ],
-            ),
-            Container(
-              margin:
-              EdgeInsets.fromLTRB(15.w, 10.h, 30.w, 0.h),
-              child: Text(
-                "$special_box_value",
-                style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.grey.shade600,
-                    fontWeight: FontWeight.bold),
+        Container(
+          margin: EdgeInsets.fromLTRB(
+              0.w, 15.h, 0.w, 0.h),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                      margin: EdgeInsets.fromLTRB(
+                          15.w, 0.h, 0.w, 0.h),
+                      child: Image.asset(
+                        "assets/images/game/special_box.png",
+                        width: 30.w,
+                        height: 30.h,
+                      )),
+                  Container(
+                      margin: EdgeInsets.fromLTRB(
+                          10.w, 0.h, 15.w, 0.h),
+                      child: Text(
+                        "Lv $special_box_lv Special Box",
+                        style: TextStyle(
+                            color: Colors.grey.shade600,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      )),
+                ],
               ),
-            )
-          ],
+              Container(
+                margin:
+                EdgeInsets.fromLTRB(15.w, 0.h, 20.w, 0.h),
+                child: Text(
+                  "$special_box_value",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.grey.shade600,
+                      fontWeight: FontWeight.bold),
+                ),
+              )
+            ],
+          ),
         ),
       ],
     ),

@@ -61,8 +61,8 @@ class _Value_ContainerState extends State<Value_Container> {
             Row(
               children: [
                 InkWell(
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(15.w, 11.h, 0.w, 0.h),
+                  child: Container(
+                    margin: EdgeInsets.fromLTRB(15.w, 12.h, 0.w, 0.h),
                     child: InkWell(
                       onTap: () {
                         setState(() {
@@ -85,8 +85,8 @@ class _Value_ContainerState extends State<Value_Container> {
                   ),
                 ),
                 InkWell(
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(20.w, 11.h, 0.w, 0.h),
+                  child: Container(
+                    margin: EdgeInsets.fromLTRB(20.w, 12.h, 0.w, 0.h),
                     child: InkWell(
                         onTap: () {
                           setState(() {
@@ -109,7 +109,7 @@ class _Value_ContainerState extends State<Value_Container> {
                 ),
                 InkWell(
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(20.w, 11.h, 0.w, 0.h),
+                    padding: EdgeInsets.fromLTRB(20.w, 12.h, 0.w, 0.h),
                     child: InkWell(
                         onTap: () {
                           setState(() {
@@ -154,26 +154,30 @@ class _Value_ContainerState extends State<Value_Container> {
                                   width: 200.w,
                                   child: Column(
                                     children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            StringConfiguration().uiString(
-                                                UiStringType.TOKEN_NAME_01),
-                                            style: Font.lato(
-                                                const Color(0xFF8E8E8E),
-                                                FontWeight.w700,
-                                                12.sp),
-                                          ),
-                                          Text(
-                                            "${widget.XPER_Value}/${StorageController().commonData.initialInfo.dailyLimitXPer}",
-                                            style: Font.lato(
-                                                const Color(0xFF8E8E8E),
-                                                FontWeight.w700,
-                                                12.sp),
-                                          ),
-                                        ],
+                                      Container(
+                                        margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 3.h),
+
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              StringConfiguration().uiString(
+                                                  UiStringType.TOKEN_NAME_01),
+                                              style: Font.lato(
+                                                  const Color(0xFF8E8E8E),
+                                                  FontWeight.w700,
+                                                  12.sp),
+                                            ),
+                                            Text(
+                                              "${widget.XPER_Value}/${StorageController().commonData.initialInfo.dailyLimitXPer}",
+                                              style: Font.lato(
+                                                  const Color(0xFF8E8E8E),
+                                                  FontWeight.w700,
+                                                  12.sp),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                       LinearPercentIndicator(
                                         barRadius: const Radius.circular(10),
@@ -204,26 +208,29 @@ class _Value_ContainerState extends State<Value_Container> {
                                   width: 200.w,
                                   child: Column(
                                     children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            StringConfiguration().uiString(
-                                                UiStringType.TOKEN_NAME_02),
-                                            style: Font.lato(
-                                                const Color(0xFFECB133),
-                                                FontWeight.w700,
-                                                12.sp),
-                                          ),
-                                          Text(
-                                            "${widget.PER_Value}/${StorageController().commonData.initialInfo.dailyLimitPer}",
-                                            style: Font.lato(
-                                                const Color(0xFFECB133),
-                                                FontWeight.w700,
-                                                12.sp),
-                                          ),
-                                        ],
+                                      Container(
+                                        margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 3.h),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              StringConfiguration().uiString(
+                                                  UiStringType.TOKEN_NAME_02),
+                                              style: Font.lato(
+                                                  const Color(0xFFECB133),
+                                                  FontWeight.w700,
+                                                  12.sp),
+                                            ),
+                                            Text(
+                                              "${widget.PER_Value}/${StorageController().commonData.initialInfo.dailyLimitPer}",
+                                              style: Font.lato(
+                                                  const Color(0xFFECB133),
+                                                  FontWeight.w700,
+                                                  12.sp),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                       LinearPercentIndicator(
                                         barRadius: const Radius.circular(10),
@@ -244,9 +251,9 @@ class _Value_ContainerState extends State<Value_Container> {
                           children: [
                             Stack(
                               children: [
-                                Padding(
-                                  padding:
-                                      EdgeInsets.fromLTRB(20.w, 0.h, 0.w, 0.h),
+                                Container(
+                                  margin:
+                                      EdgeInsets.fromLTRB(26.w, 0.h, 0.w, 0.h),
                                   child: FAProgressBar(
                                     backgroundColor: Colors.grey.shade300,
                                     maxValue: 100,
@@ -259,8 +266,8 @@ class _Value_ContainerState extends State<Value_Container> {
                                     size: 20.w,
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 22.w),
+                                Container(
+                                  margin: EdgeInsets.only(left: 27.w),
                                   child: Center(
                                       child: Image.asset(
                                     "assets/images/lobby/lightning.png",
@@ -271,37 +278,35 @@ class _Value_ContainerState extends State<Value_Container> {
                               ],
                             ),
                             Container(
-                              margin: EdgeInsets.fromLTRB(6.w, 0.h, 0.w, 0.h),
+                              margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 0.h),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(top: 2.w),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "${widget.Charge_Value}",
-                                          style: Font.lato(const Color(0xFF15BEA0),
-                                              FontWeight.w700, 12.sp),
-                                        ),
-                                        Text(
-                                          "/16.0",
-                                          style: Font.lato(const Color(0xFF15BEA0),
-                                              FontWeight.w700, 8.sp),
-                                        ),
-                                      ],
-                                    ),
+
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "${widget.Charge_Value}",
+                                        style: Font.lato(const Color(0xFF15BEA0),
+                                            FontWeight.w700, 12.sp),
+                                      ),
+                                      Text(
+                                        "/16.0",
+                                        style: Font.lato(const Color(0xFF15BEA0),
+                                            FontWeight.w700, 8.sp),
+                                      ),
+                                    ],
                                   ),
-                                  // Padding(
-                                  //   padding: EdgeInsets.only(top: 2.w),
-                                  //   child: Text(
-                                  //     "${widget.Charge_Value}/16.0",
-                                  //     style: Font.lato(const Color(0xFF15BEA0),
-                                  //         FontWeight.w700, 12.sp),
-                                  //   ),
-                                  // ),
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
+
+                                    width: 50.w,
+                                    height: 1.h,
+                                    color: Colors.grey.shade300,
+                                  ),
+
                                   Padding(
-                                    padding: EdgeInsets.only(top: 5.w),
+                                    padding: EdgeInsets.only(top: 6.w),
                                     child: Text(
                                       StringConfiguration()
                                           .uiString(UiStringType.LOBBY_TAB_05),

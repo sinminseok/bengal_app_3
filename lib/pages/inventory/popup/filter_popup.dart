@@ -132,7 +132,7 @@ class Inventory_Filter_popup {
                                         activeColor: kPrimaryColor,
                                         value: speed_bool,
                                         onChanged: (value){
-                                          setState(() => level_bool = value!);
+                                          setState(() => speed_bool = value!);
                                         },
                                       ),
                                       // Checkbox(value: level_bool)
@@ -157,7 +157,7 @@ class Inventory_Filter_popup {
                                           activeColor: kPrimaryColor,
                                           value: luck_bool,
                                           onChanged: (value){
-                                            setState(() => level_bool = value!);
+                                            setState(() => luck_bool = value!);
                                           },
                                         ),
                                         // Checkbox(value: level_bool)
@@ -182,7 +182,7 @@ class Inventory_Filter_popup {
                                           activeColor: kPrimaryColor,
                                           value: charge_bool,
                                           onChanged: (value){
-                                            setState(() => level_bool = value!);
+                                            setState(() => charge_bool = value!);
                                           },
                                         ),
                                         // Checkbox(value: level_bool)
@@ -207,7 +207,7 @@ class Inventory_Filter_popup {
                                           activeColor: kPrimaryColor,
                                           value: repair_bool,
                                           onChanged: (value){
-                                            setState(() => level_bool = value!);
+                                            setState(() => repair_bool = value!);
                                           },
                                         ),
                                         // Checkbox(value: level_bool)
@@ -230,9 +230,9 @@ class Inventory_Filter_popup {
 
                                         Checkbox(
                                           activeColor: kPrimaryColor,
-                                          value: level_bool,
+                                          value: mint_bool,
                                           onChanged: (value){
-                                            setState(() => level_bool = value!);
+                                            setState(() => mint_bool = value!);
                                           },
                                         ),
                                         // Checkbox(value: level_bool)

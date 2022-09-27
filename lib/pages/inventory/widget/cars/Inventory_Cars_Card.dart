@@ -34,8 +34,8 @@ Widget Inventory_Car_Card(
                     )));
           },
           child: Container(
-            width: 170.w,
-            height: 310.h,
+            width: 175.w,
+            height: 280.h,
             decoration: BoxDecoration(
               border: Border.all(color: color),
               borderRadius: BorderRadius.all(
@@ -45,23 +45,31 @@ Widget Inventory_Car_Card(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  margin: EdgeInsets.fromLTRB(110.w, 10.h, 15.w, 10.h),
-                  child: Text(
-                    "Mint: $Mint_value",
-                    style: TextStyle(fontSize: 12,color: color),
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(0.w, 0.h, 10.w, 0.h),
+
+                      child: Text(
+                        "Mint: $Mint_value",
+                        style: TextStyle(fontSize: 10,color: color),
+                      ),
+                    ),
+                  ],
                 ),
                 //car img
                 Image.asset(
                   "assets/images/common/cars/car1.png",
                   width: 150.w,
+                  fit: BoxFit.fitWidth,
                 ),
                 //nftID
                 Container(
                   margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
-                  width: 79.w,
-                  height: 25.h,
+                  width: 76.w,
+                  height: 20.h,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey.shade400),
                     borderRadius: BorderRadius.all(
@@ -71,16 +79,16 @@ Widget Inventory_Car_Card(
                   child: Row(
                     children: [
                       Container(
-                        width: 16.w,
-                        height:16.h,
+                        width: 12.w,
+                        height:12.h,
                         decoration: BoxDecoration(
                             color: color, shape: BoxShape.circle),
                         child: Container(
-                          margin: EdgeInsets.fromLTRB(4.w, 1.h, 3.w, 3.h),
+                          margin: EdgeInsets.fromLTRB(3.w, 1.h, 3.w, 4.h),
 
                           child: Text(
                             "#",
-                            style: TextStyle(color: Colors.white,fontSize: 11),
+                            style: TextStyle(color: Colors.white,fontSize: 9),
                           ),
                         ),
                       ),
@@ -88,7 +96,7 @@ Widget Inventory_Car_Card(
                         margin: EdgeInsets.fromLTRB(3.w, 2.h, 2.w, 0.h),
                         child: Text(
                           "$nft_id",
-                          style: TextStyle(fontSize: 12,color: color),
+                          style: TextStyle(fontSize: 10,color: color),
                         ),
                       )
                     ],
@@ -101,7 +109,7 @@ Widget Inventory_Car_Card(
                     children: [
                       Text(
                         "Level",
-                        style: TextStyle(fontSize: 11, color: Colors.grey),
+                        style: TextStyle(fontSize: 10, color: Colors.grey),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 3.0, bottom: 6),
@@ -113,62 +121,65 @@ Widget Inventory_Car_Card(
                     ],
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Column(
-                      children: [
-                        Image.asset(
-                          "assets/images/inventory/card_icons/card_icon2.png",
-                          width: 24.w,
-                          height: 24.h,
-                        ),
-                        Text(
-                          "$Speed_value",
-                          style: TextStyle(fontSize: 12),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Image.asset(
-                          "assets/images/inventory/card_icons/card_icon3.png",
-                          width: 24.w,
-                          height: 24.h,
-                        ),
-                        Text(
-                          "$Luck_value",
-                          style: TextStyle(fontSize: 12),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Image.asset(
-                          "assets/images/inventory/card_icons/card_icon4.png",
-                          width: 24.w,
-                          height: 24.h,
-                        ),
-                        Text(
-                          "$Charge_value",
-                          style: TextStyle(fontSize: 12),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Image.asset(
-                          "assets/images/inventory/card_icons/card_icon1.png",
-                          width: 24.w,
-                          height: 24.h,
-                        ),
-                        Text(
-                          "$Repair_value",
-                          style: TextStyle(fontSize: 12),
-                        )
-                      ],
-                    ),
-                  ],
+                Container(
+                  width: 141.w,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Image.asset(
+                            "assets/images/inventory/card_icons/card_icon2.png",
+                            width: 24.w,
+                            height: 24.h,
+                          ),
+                          Text(
+                            "$Speed_value",
+                            style: TextStyle(fontSize: 12),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Image.asset(
+                            "assets/images/inventory/card_icons/card_icon3.png",
+                            width: 24.w,
+                            height: 24.h,
+                          ),
+                          Text(
+                            "$Luck_value",
+                            style: TextStyle(fontSize: 12),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Image.asset(
+                            "assets/images/inventory/card_icons/card_icon4.png",
+                            width: 24.w,
+                            height: 24.h,
+                          ),
+                          Text(
+                            "$Charge_value",
+                            style: TextStyle(fontSize: 12),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Image.asset(
+                            "assets/images/inventory/card_icons/card_icon1.png",
+                            width: 24.w,
+                            height: 24.h,
+                          ),
+                          Text(
+                            "$Repair_value",
+                            style: TextStyle(fontSize: 12),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.fromLTRB(15.w, 10.h, 0.w, 5.h),
@@ -202,7 +213,7 @@ Widget Inventory_Car_Card(
           ),
         ),
         Positioned(
-          right: 110.w,
+          right: 114.w,
           child: Image.asset(
             "assets/images/common/tags/tag_$grade.png",
             width: size.width * 0.17,

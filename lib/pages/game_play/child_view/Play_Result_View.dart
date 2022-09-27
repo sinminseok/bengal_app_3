@@ -31,181 +31,179 @@ class _Play_Result_View extends State<Play_Result_View> {
         toolbarHeight: 60.h,
         elevation: 0,
         backgroundColor: kAppbarColor,
-        title: Padding(
-          padding: const EdgeInsets.only(top: 18.0),
-          child: Row(
-            children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(150.w, 3.h, 5.w, 0.h),
-                child: Text("Result",
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold)),
-              ),
-            ],
-          ),
+        title: Row(
+          children: [
+            Container(
+              margin: EdgeInsets.fromLTRB(150.w, 3.h, 5.w, 0.h),
+              child: Text("Result",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18)),
+            ),
+          ],
         ),
       ),
       body: Column(
         children: [
           Column(
             children: [
-
               Container(
-                margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
-
-                width: 370.w,
-                height: 50.h,
-                decoration: BoxDecoration(
-                    color: kPrimaryColor,
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                child: Center(
-                  child: Text(
-                    "PLAY GAME",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
+                width: 390.w,
+                height: 1.h,
+                color: Colors.grey.shade300,
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 3.h),
-                width: 360.w,
-                height: 420.h,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(20),
-                      bottomLeft: Radius.circular(20),
-                    ),
-                    color: Colors.white),
-                child: Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 20.h),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
+              Stack(
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 3.h),
+                    width: 360.w,
+                    height: 435.h,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(20),
+                          bottomLeft: Radius.circular(20),
+                        ),
+                        color: Colors.white),
+                    child: Column(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.fromLTRB(0.w, 60.h, 0.w, 0.h),
+                          child: Row(
                             children: [
-                              Row(
+                              Container(
+                                width: 100.w,
+                                margin: EdgeInsets.fromLTRB(
+                                    23.5.w, 0.h, 0.w, 0.h),
+                                child: Column(
+                                  children: [
+                                    Row(children: [
+                                      Container(
+                                        margin: EdgeInsets.fromLTRB(
+                                            5.w, 0.h, 3.w, 0.h),
+                                        child: Icon(
+                                          Icons.timelapse_sharp,
+                                          color: Colors.grey.shade700,
+                                          size: 17,
+                                        ),
+                                      ),
+                                      Text("Play Time",style: TextStyle(color: Colors.grey.shade500,fontSize:12 ),)
+                                    ]),
+                                    Text("01:23:58",style: TextStyle(color: kPrimaryColor,fontWeight: FontWeight.bold,fontSize: 20),)
+                                  ],
+                                ),
+                              ),
+                              Column(
                                 children: [
-                                  Icon(
-                                    Icons.timelapse_sharp,
-                                    color: Colors.grey.shade700,
-                                    size: 17,
+                                  Image.asset(
+                                    "assets/images/game/game_img.png",
+                                    width: 80.w,
+                                    height: 90.h,
                                   ),
                                   Container(
-                                      margin: EdgeInsets.fromLTRB(5.w, 0.h, 4.w, 0.h),
-                                      child: Text("Play Time",style: TextStyle(fontSize: 12),))
+                                    margin:
+                                    EdgeInsets.fromLTRB(0.w, 6.h, 0.w, 0.h),
+                                    child: Text(
+                                      "Game Name",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  )
                                 ],
                               ),
+
                               Container(
-                                margin: EdgeInsets.fromLTRB(0.w,10.h, 0.w, 0.h),
-                                child: Text(
-                                  "01:23:59",
+                                width: 100.w,
+                                margin: EdgeInsets.fromLTRB(
+                                    0.w, 0.h, 0.w, 0.h),
+                                child: Column(
+                                  children: [
+                                    Row(children: [
+                                      Container(
+                                        margin: EdgeInsets.fromLTRB(
+                                            16.w, 0.h, 3.w, 0.h),
+                                        child: Icon(
+                                          Icons.offline_bolt,
+                                          color: Colors.grey.shade700,
+                                          size: 17,
+                                        ),
+                                      ),
+                                      Text("Power",style: TextStyle(color: Colors.grey.shade500,fontSize:12 ),)
+                                    ]),
+                                    Text("01:23:58",style: TextStyle(color: kPrimaryColor,fontWeight: FontWeight.bold,fontSize: 20),)
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                            margin: EdgeInsets.fromLTRB(
+                                20.5.w, 19.5.h, 20.5.w, 0.h),
+                            child: Image.asset("assets/images/game/line.png")),
+
+                        Container(
+                            margin: EdgeInsets.fromLTRB(20.w, 20.5.h, 0.w, 5.h),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Earned",
                                   style: TextStyle(
-                                      color: kPrimaryColor,
-                                      fontSize: 21,
+                                      color: Colors.grey.shade600,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.bold),
                                 ),
-                              )
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Image.asset(
-                                "assets/images/game/game_img.png",
-                                width: 80.w,
-                                height: 90.h,
-                              ),
-                              Container(
-                                margin: EdgeInsets.fromLTRB(0.w,10.h, 0.w, 0.h),
-                                child: Text(
-                                  "Game Name",
-                                  style: TextStyle(
-                                      fontSize: 19, fontWeight: FontWeight.bold),
-                                ),
-                              )
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.offline_bolt,
-                                    color: Colors.grey.shade700,
-                                    size: 17,
-                                  ),
-                                  Container(
-                                      margin: EdgeInsets.fromLTRB(5.w, 0.h, 15.w, 0.h),
-
-
-
-                                      child: Text(
-
-                                    "Power",style: TextStyle(fontSize: 12),))
-                                ],
-                              ),
-                              Container(
-                                margin: EdgeInsets.fromLTRB(0.w,7.h, 0.w, 0.h),
-                                child: Text(
-                                  "01:23:59",
-                                  style: TextStyle(
-                                      color: kPrimaryColor,
-                                      fontSize: 21,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
+                              ],
+                            )),
+                        //double xper_value,double per_value,int special_box_lv,int special_box_value
+                        Earned_Widget(20.0, 00.0, 1, "1EA"),
+                      ],
                     ),
-                    Image.asset("assets/images/game/line.png"),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 10.h, 270.w, 10.h),
-
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 0.h),
+                    width: 360.w,
+                    height: 40.h,
+                    decoration: BoxDecoration(
+                        color: kPrimaryColor,
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    child: Center(
                       child: Text(
-                        "Earned",
-                        style: TextStyle(color: Colors.grey.shade600,fontSize: 18,fontWeight: FontWeight.bold),
+                        "PLAY GAME",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
-                    //double xper_value,double per_value,int special_box_lv,int special_box_value
-                    Earned_Widget(20.0,00.0,1,"1EA"),
-
-                  ],
-                ),
+                  ),
+                ],
               ),
               FadeIn(
-                duration: Duration(milliseconds: 600),
-                curve: Curves.easeIn,
-                child: Result_Car_info_widget()
-              )
-
+                  duration: Duration(milliseconds: 600),
+                  curve: Curves.easeIn,
+                  child: Result_Car_info_widget())
             ],
           ),
           FadeIn(
             child: Container(
-              width: 176.w,
-              height: 50.h,
-              child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        PageTransition(
-                            type: PageTransitionType.fade,
-                            child: Frame_View(
-
-                            )));
-                  },
-                  child: Image.asset("assets/images/game/lobby_button.png")),
-            ),
+                margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
+                width: 175.w,
+                height: 46.h,
+                child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              type: PageTransitionType.fade,
+                              child: Frame_View()));
+                    },
+                    child: Image.asset("assets/images/game/lobby_button.png"))),
             // Optional paramaters
             duration: Duration(milliseconds: 3000),
             curve: Curves.easeIn,
           ),
-
 
           //Animation Widget
         ],

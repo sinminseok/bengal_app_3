@@ -68,7 +68,7 @@ class _Transfer_ViewState extends State<Transfer_View> {
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(107.w, 3.h, 45.w, 0.h),
+              margin: EdgeInsets.fromLTRB(107.w, 3.h, 0.w, 0.h),
               child: Text("Transfer",
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold,fontSize: 18)),
@@ -83,26 +83,29 @@ class _Transfer_ViewState extends State<Transfer_View> {
              
               //From to Widget
               Container(
-                margin: EdgeInsets.fromLTRB(30.w, 23.h, 0.w, 0.h),
+                margin: EdgeInsets.fromLTRB(0.w, 59.h, 0.w, 0.h),
 
                 child: Row(
                   children: [
 
                     Container(
-                      width: 360.w,
+                      width: 390.w,
+                      height: 80.h,
                       child: Stack(
                         children: [
                           Container(
+                            margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 0.h),
 
-                            width: 160.w,
-                            height: 100.h,
+                            width: 175.w,
+                            height: 80.h,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.grey.shade300),
                                 color: Colors.white,
                                 borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
                             child: Container(
-                              margin: EdgeInsets.fromLTRB(10.w, 10.h, 15.w, 0.h),
+                              margin: EdgeInsets.fromLTRB(15.w, 20.h, 0.w, 0.h),
+
 
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,40 +115,47 @@ class _Transfer_ViewState extends State<Transfer_View> {
                                     style: TextStyle(
                                         color: kPrimaryColor, fontSize: 12),
                                   ),
-                                  Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            right: 3.0, top: 9),
-                                        child: Image.asset(
-                                          "assets/images/wallet/icons/${change != true ? "wallet_card.png" : "spending_card.png"}",
-                                          width: size.width * 0.1,
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
+
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          width:24.w,
+                                          height: 24.h,
+
+                                          child: Image.asset(
+                                            "assets/images/wallet/icons/${change != true ? "wallet_card.png" : "spending_card.png"}",
+
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        "${change != true ? "Speding" : "Wallet"}",
-                                        style: TextStyle(
-                                            color: Colors.grey.shade700,
-                                            fontSize: 16),
-                                      )
-                                    ],
+                                        Text(
+                                          "${change != true ? "Speding" : "Wallet"}",
+                                          style: TextStyle(
+                                              color: Colors.grey.shade700,
+                                              fontSize: 20),
+                                        )
+                                      ],
+                                    ),
                                   )
                                 ],
                               ),
                             ),
                           ),
                           Positioned(
-                            left: 172.w,
+                            left: 200.w,
                             child: Container(
-                              width: 160.w,
-                              height: 100.h,
+                              width: 175.w,
+                              height: 80.h,
+                              margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
                               decoration: BoxDecoration(
                                   border: Border.all(color: Colors.grey.shade300),
                                   color: Colors.white,
                                   borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
                               child: Container(
-                                margin: EdgeInsets.fromLTRB(10.w, 10.h, 15.w, 0.h),
+                                margin: EdgeInsets.fromLTRB(15.w, 20.h, 0.w, 0.h),
+
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -156,19 +166,19 @@ class _Transfer_ViewState extends State<Transfer_View> {
                                     ),
                                     Row(
                                       children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              right: 3.0, top: 9),
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
+                                          width:24.w,
+                                          height: 24.h,
                                           child: Image.asset(
                                             "assets/images/wallet/icons/${change == true ? "wallet_card.png" : "spending_card.png"}",
-                                            width: size.width * 0.1,
                                           ),
                                         ),
                                         Text(
                                           "${change == true ? "Spending" : "Wallet"}",
                                           style: TextStyle(
                                               color: Colors.grey.shade700,
-                                              fontSize: 16),
+                                              fontSize: 20),
                                         )
                                       ],
                                     )
@@ -178,7 +188,7 @@ class _Transfer_ViewState extends State<Transfer_View> {
                             ),
                           ),
                           Positioned(
-                              left: size.width * 0.37,
+                              left: 180.w,
                               top: 26.h,
                               child: InkWell(
                                   onTap: () {
@@ -186,9 +196,12 @@ class _Transfer_ViewState extends State<Transfer_View> {
                                       change = !change;
                                     });
                                   },
-                                  child: Image.asset(
-                                    "assets/images/wallet/icons/btn_change.png",
-                                    width: size.width * 0.1,
+                                  child: Container(
+                                    width:30.w,
+                                    height: 30.h,
+                                    child: Image.asset(
+                                      "assets/images/wallet/icons/btn_change.png",
+                                    ),
                                   ))),
                         ],
                       ),
@@ -203,7 +216,7 @@ class _Transfer_ViewState extends State<Transfer_View> {
                 children: [
                  
                   Container(
-                    margin: EdgeInsets.fromLTRB(30.w, 10.h, 15.w, 0.h),
+                    margin: EdgeInsets.fromLTRB(15.w, 40.h, 0.w, 0.h),
                     child: Text(
                       "Token",
                       style: TextStyle(
@@ -217,7 +230,7 @@ class _Transfer_ViewState extends State<Transfer_View> {
               Container(
                 width: 360.w,
                 height: 80.h,
-                margin: EdgeInsets.fromLTRB(15.w, 16.h, 15.w, 0.h),
+                margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
 
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey.shade200),
@@ -225,27 +238,31 @@ class _Transfer_ViewState extends State<Transfer_View> {
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: Row(
                   children: [
-                    SizedBox(
-                      width: size.width * 0.05,
-                    ),
-                    Image.asset(
-                      "assets/images/lobby/icons/appbar_icons/xper_icon.png",
-                      width: 20.w,
+                    Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.fromLTRB(15.w, 0.h, 10.w, 0.h),
 
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "XPER",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Colors.grey.shade700),
-                      ),
+                          width: 30.w,
+                          height: 30.h,
+                          child: Image.asset(
+                            "assets/images/lobby/icons/appbar_icons/xper_icon.png",
+
+
+                          ),
+                        ),
+                        Text(
+                          "XPER",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.grey.shade700),
+                        ),
+                      ],
                     ),
 
                     Container(
-                      margin: EdgeInsets.fromLTRB(190.w, 3.h, 15.w, 0.h),
+                      margin: EdgeInsets.fromLTRB(194.w, 3.h, 0.w, 0.h),
 
                       child: Builder(
                         builder: (context) {
@@ -271,13 +288,13 @@ class _Transfer_ViewState extends State<Transfer_View> {
                 children: [
 
                   Container(
-                    margin: EdgeInsets.fromLTRB(30.w, 23.h, 15.w, 0.h),
+                    margin: EdgeInsets.fromLTRB(15.w, 30.h, 0.w, 0.h),
 
                     child: Text(
                       "Amount",
                       style: TextStyle(
                           color: Colors.grey.shade700,
-                          fontSize: 19,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold),
                     ),
                   ),

@@ -18,7 +18,7 @@ Widget Spending_View(
         child: ListView(
           children: [
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+              margin: EdgeInsets.fromLTRB(15.w, 5.h, 15.w, 0.h),
 
               height: 56.h,
               width: 360.w,
@@ -63,7 +63,7 @@ Widget Spending_View(
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+              margin: EdgeInsets.fromLTRB(15.w, 5.h, 15.w, 0.h),
 
               height: 56.h,
               width: 360.w,
@@ -108,7 +108,7 @@ Widget Spending_View(
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+              margin: EdgeInsets.fromLTRB(15.w, 5.h, 15.w, 0.h),
 
               height: 56.h,
               width: 360.w,

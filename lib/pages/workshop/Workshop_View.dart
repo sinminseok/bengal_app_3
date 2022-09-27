@@ -1,8 +1,10 @@
+import 'package:bengal_app/pages/workshop/child_view/enhance/Enhance_View.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../types/constants.dart';
-import 'child_view/Plus_Car_View.dart';
+import 'child_view/mint/Mint_View.dart';
+import 'child_view/mint/Plus_Car_View.dart';
 
 class Workshop_View extends StatefulWidget {
   const Workshop_View({Key? key}) : super(key: key);
@@ -132,45 +134,9 @@ class _Workshop_ViewState extends State<Workshop_View> {
               ),
             ),
           ),
-          plus_ontap == true
-              ? Plus_Car_View()
-              : Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(27.w, 150.h, 15.w, 0.h),
-                      child: Row(
-                        children: [
-                          InkWell(
-                              onTap: () {
-                                setState(() {
-                                  plus_ontap = !plus_ontap;
-                                });
-                              },
-                              child: Image.asset(
-                                "assets/images/workshop/empty_plus.png",
-                                width: 170.w,
-                                height: 152.h,
-                              )),
-                          InkWell(
-                              onTap: () {},
-                              child: Image.asset(
-                                "assets/images/workshop/empty_plus.png",
-                                width: 170.w,
-                                height: 152.h,
-                              )),
-                        ],
-                      ),
-                    ),
-                    Image.asset(
-                      "assets/images/workshop/sub_machine.png",
-                      width: 230.w,
-                      height: 80.h,
-                    ),
-                    Container(
-                        margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
-                        child: Text("Select a Car for Minting"))
-                  ],
-                )
+          Mint_selected == true ? Mint_View() : Container(),
+          Enhance_selected == true ? Enhance_View() : Container(),
+          GemUpgrade_selected == true ? Container() : Container()
         ],
       ),
     );

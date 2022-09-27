@@ -57,8 +57,8 @@ class MarketCarsViewWidgetState extends State<MarketCarsViewWidget> implements O
                   //     int Repair_value,
                   //     int distance)
                   child: Market_Car_Card2(
-                      widget.size, context,
-                      StorageController().carNftPool!.list[index]),
+                      size:widget.size,context: context,
+                      carNft:StorageController().carNftPool!.list[index]),
                   // child: Market_Car_Card(
                   //     size,context, "SPORTS","normal", 3, 12345, 10, 13, 14, 15, 16, 13),
                 );

@@ -7,8 +7,6 @@ import '../../../types/constants.dart';
 class Trade_popup{
   void change_popup(BuildContext context) {
     double _value = 0.5;
-
-
     bool test = false;
     showAnimatedDialog(
       context: context,

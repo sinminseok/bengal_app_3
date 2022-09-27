@@ -1,3 +1,4 @@
+import 'package:bengal_app/types/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../common/string_configuration.dart';
@@ -15,53 +16,74 @@ Widget BoxContainer_Detail_Widget(
           border: Border.all(color: Colors.grey.shade300),
           borderRadius: BorderRadius.circular(6),
         ),
-        child: Column(
+        child: Stack(
           children: [
-            SizedBox(height: 4.h,),
-            isempty != true
-                ? Container()
-                : Image.asset(
+            Column(
+              children: [
+                isempty != true
+                    ? Container()
+                    : Container(
+                  margin: EdgeInsets.fromLTRB(0.w, 4.h, 0.w, 0.h),
+
+                  child: Image.asset(
                     "assets/images/lobby/boxes/empty_box.png",
                     height: 30.h,
                     width: 30.w,
                   ),
-            ready != true
-                ? Container()
-                : Image.asset(
+                ),
+                ready != true
+                    ? Container()
+                    : Container(
+                  margin: EdgeInsets.fromLTRB(0.w, 4.h, 0.w, 0.h),
+                  child: Image.asset(
                     "assets/images/lobby/boxes/ready_box.png",
                     height: 30.h,
                     width: 30.w,
                   ),
-            during != true
-                ? Container()
-                : Image.asset(
+                ),
+                during != true
+                    ? Container()
+                    : Container(
+                  margin: EdgeInsets.fromLTRB(0.w, 4.h, 0.w, 0.h),
+                  child: Image.asset(
                     "assets/images/lobby/boxes/during_box.png",
                     height: 30.h,
                     width: 30.w,
                   ),
-            SizedBox(height: 1.h,),
-            isempty != true
-                ? Container()
-                : Text(
-                    StringConfiguration().uiString(UiStringType.CAR_INFO_03),
-                    style: Font.lato(
-                        const Color(0xFFC3C3C3), FontWeight.bold, 8.sp),
-                  ),
-            ready != true
-                ? Container()
-                : Text(
-                    StringConfiguration()
-                        .uiString(UiStringType.LOBBY_SPECIALBOX_02),
-                    style: Font.lato(
-                        const Color(0xFF8B80F8), FontWeight.bold, 8.sp),
-                  ),
-            during != true
-                ? Container()
-                : Text(
-                    "$during_value",
-                    style: Font.lato(
-                        const Color(0xFF746F7B), FontWeight.bold, 8.sp),
-                  ),
+                ),
+
+                isempty != true
+                    ? Container()
+                    : Text(
+                  StringConfiguration().uiString(UiStringType.CAR_INFO_03),
+                  style: Font.lato(
+                      const Color(0xFFC3C3C3), FontWeight.bold, 8.sp),
+                ),
+                ready != true
+                    ? Container()
+                    : Text(
+                  StringConfiguration()
+                      .uiString(UiStringType.LOBBY_SPECIALBOX_02),
+                  style: Font.lato(
+                      const Color(0xFF8B80F8), FontWeight.bold, 8.sp),
+                ),
+                during != true
+                    ? Container()
+                    : Text(
+                  "$during_value",
+                  style: Font.lato(
+                      const Color(0xFF746F7B), FontWeight.bold, 8.sp),
+                ),
+              ],
+            ),
+            ready!=true?Container():Container(
+                margin: EdgeInsets.fromLTRB(6.w, 5.h, 0.w, 0.h),
+
+                child: Text("Lv2",style: TextStyle(color: kPrimaryColor,fontSize: 8),)),
+            during!=true?Container():Container(
+                margin: EdgeInsets.fromLTRB(6.w, 5.h, 0.w, 0.h),
+
+                child: Text("Lv2",style: TextStyle(color: Colors.grey.shade500,fontSize: 8),)),
           ],
         )),
   );

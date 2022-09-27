@@ -37,10 +37,11 @@ class _BoxContainer_WidgetState extends State<BoxContainer_Widget> {
                 onTap: () {
                   Selected_box_popup().showDialog(size, context);
                 },
-                child: BoxContainer_Detail_Widget(size, true, false, false, "")),
-            BoxContainer_Detail_Widget(size, false, true, false, ""),
-            BoxContainer_Detail_Widget(size, false, false, true, ""),
-            BoxContainer_Detail_Widget(size, true, false, false, "2h55m")
+                child:  BoxContainer_Detail_Widget(size, false, true, false, ""),),
+            BoxContainer_Detail_Widget(size, false, false, true, "2h55m"),
+            BoxContainer_Detail_Widget(size, true, false, false, ""),
+
+            BoxContainer_Detail_Widget(size, true, false, false, "")
           ],
         ),
       ),
