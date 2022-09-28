@@ -23,7 +23,7 @@ class Repair_popup {
             return AlertDialog(
               contentPadding: EdgeInsets.zero,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15)),
+                  borderRadius: BorderRadius.circular(14)),
               content: DefaultTextStyle(
                   style: TextStyle(fontSize: 16, color: Colors.black),
                   child: Stack(
