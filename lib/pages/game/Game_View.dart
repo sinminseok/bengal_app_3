@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import '../../Controller/storage_controller.dart';
 import '../../types/constants.dart';
 import '../inventory/widget/dropdown_button/DropdownButton2.dart';
 import 'normal/Game_Normal_View.dart';
@@ -53,7 +54,6 @@ class _Game_ViewState extends State<Game_View> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-
       backgroundColor: Colors.grey.shade100,
       body: SingleChildScrollView(
         child: Column(
@@ -88,7 +88,8 @@ class _Game_ViewState extends State<Game_View> {
                               width: 116.w,
                               height: 35.h,
                               decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey.shade300),
+                                  border:
+                                      Border.all(color: Colors.grey.shade300),
                                   color: Special_selected != true
                                       ? Colors.white
                                       : kPrimaryColor,
@@ -98,7 +99,7 @@ class _Game_ViewState extends State<Game_View> {
                                 child: Text(
                                   "Special",
                                   style: TextStyle(
-                                    fontSize: 12,
+                                      fontSize: 12,
                                       color: Special_selected != true
                                           ? Colors.grey
                                           : Colors.white),
@@ -118,7 +119,8 @@ class _Game_ViewState extends State<Game_View> {
                               width: 116.w,
                               height: 35.h,
                               decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey.shade300),
+                                  border:
+                                      Border.all(color: Colors.grey.shade300),
                                   color: Recommended_selected != true
                                       ? Colors.white
                                       : kPrimaryColor,
@@ -148,7 +150,8 @@ class _Game_ViewState extends State<Game_View> {
                               width: 116.w,
                               height: 35.h,
                               decoration: BoxDecoration(
-                               border: Border.all(color: Colors.grey.shade300),
+                                  border:
+                                      Border.all(color: Colors.grey.shade300),
                                   color: Normal_selected != true
                                       ? Colors.white
                                       : kPrimaryColor,
@@ -156,7 +159,6 @@ class _Game_ViewState extends State<Game_View> {
                                       BorderRadius.all(Radius.circular(10))),
                               child: Center(
                                 child: Text(
-
                                   "Normal",
                                   style: TextStyle(
                                       fontSize: 12,
@@ -195,6 +197,7 @@ class _Game_ViewState extends State<Game_View> {
                               },
                               child: Image.asset(
                                 "assets/images/inventory/filter.png",
+                                width: 36.w,
                                 height: 36.h,
                               )),
                         ),
@@ -206,6 +209,7 @@ class _Game_ViewState extends State<Game_View> {
                               },
                               child: Image.asset(
                                 "assets/images/game/icons/search_icon.png",
+                                width: 36.w,
                                 height: 36.h,
                               )),
                         ),
@@ -221,20 +225,16 @@ class _Game_ViewState extends State<Game_View> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
                             child: TextField(
-
                               decoration: InputDecoration(
-
-                                border: InputBorder.none,
-                                  prefixIcon:  IconTheme(data: IconThemeData(
-                                      color: Colors.grey
-                                  ), child: Icon(Icons.search,)),
+                                  border: InputBorder.none,
+                                  prefixIcon: IconTheme(
+                                      data: IconThemeData(color: Colors.grey),
+                                      child: Icon(
+                                        Icons.search,
+                                      )),
                                   contentPadding: EdgeInsets.all(14.0),
                                   hintText: 'Please enter game name.',
-                                hintStyle: TextStyle(fontSize: 13)
-
-                              ),
-
-
+                                  hintStyle: TextStyle(fontSize: 13)),
                               style: TextStyle(color: Colors.black),
                               controller: _searchController,
                             ),
@@ -245,11 +245,18 @@ class _Game_ViewState extends State<Game_View> {
               ),
             ),
 
-            Special_selected == true ? Game_Special_View(size) : Container(),
-            Recommended_selected == true
-                ? Game_Recommended_View(size)
+            Special_selected == true
+                ? Game_Special_View(
+                    StorageController().gameList.getCategoryGameList(1))
                 : Container(),
-            Normal_selected == true ? Game_Normal_View(size) : Container(),
+            Recommended_selected == true
+                ? Game_Recommended_View(
+                    StorageController().gameList.getCategoryGameList(2))
+                : Container(),
+            Normal_selected == true
+                ? Game_Normal_View(
+                    StorageController().gameList.getCategoryGameList(3))
+                : Container(),
           ],
         ),
       ),

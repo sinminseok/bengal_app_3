@@ -7,6 +7,7 @@ import '../../../common/string_configuration.dart';
 import '../../../types/constants.dart';
 import '../../../types/string_type.dart';
 import '../../../utils/font.dart';
+//import 'package:lottie/lottie.dart';
 
 Widget Game_Play_Widget(Size size,BuildContext context, String title, String xper_value,
     String per_value, String ultimate_value) {
@@ -149,6 +150,10 @@ Widget Game_Play_Widget(Size size,BuildContext context, String title, String xpe
           InkWell(
             onTap: (){
               GameLauncher().openApp('com.kakaogames.umamusume');
+              // Lottie.asset('assets/LottieLogo1.json',
+              //   width: 200,
+              //   height: 200,
+              //   fit: BoxFit.fill,);
             },
             child: Container(
               width: 60.w,

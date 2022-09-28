@@ -59,6 +59,7 @@ dependencies:
   group_button: ^5.2.2
   external_app_launcher: ^3.1.0
   device_apps: ^2.2.0
+  lottie: ^1.4.3
 
 dev_dependencies:
   flutter_test:
@@ -88,9 +89,11 @@ flutter:
     - assets/images/common/
     - assets/images/common/cars/
     - assets/images/common/cars/icons/
+    - assets/images/common/cars/grey_icons/
     - assets/images/common/tags/
     - assets/images/game/
     - assets/images/game/icons/
+    - assets/images/game/empty_car/
     - assets/images/inventory/
     - assets/images/inventory/car_boxes/
     - assets/images/inventory/card_icons/
@@ -106,14 +109,7 @@ flutter:
     - assets/images/workshop/
     - assets/strings/
     - assets/back_data/
-    - assets/images/common/cars/grey_icons/grey_speed.png
-    - assets/images/common/cars/grey_icons/grey_dice.png
-    - assets/images/common/cars/grey_icons/grey_repair.png
-    - assets/images/common/cars/grey_icons/grey_charge.png
-    - assets/images/game/empty_car/empty_car1.png
-    - assets/images/game/empty_car/empty_car2.png
-    - assets/images/game/empty_car/empty_car3.png
-    - assets/images/game/empty_car/empty_car4.png
+    - assets/lottie/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
