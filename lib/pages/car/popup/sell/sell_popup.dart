@@ -70,7 +70,7 @@ class Sell_popup {
                                 height: 180.h,
                                 child: Image.asset(
                                   "assets/images/common/cars/car1.png",
-                                  fit: BoxFit.fitWidth,
+                                  fit: BoxFit.fill,
                                 ),
                               ),
                               Row(
@@ -171,7 +171,7 @@ class Sell_popup {
                                       "Confirm",
                                       style: TextStyle(
                                           color: Colors.white,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.w700,fontSize: 14.sp),
                                     ),
                                   ),
                                 ),

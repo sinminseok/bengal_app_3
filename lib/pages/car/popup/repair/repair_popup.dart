@@ -12,6 +12,7 @@ import '../../../../types/constants.dart';
 
 class Repair_popup {
   void repair_popup(BuildContext context) {
+
     double _value = 0.5;
     showAnimatedDialog(
       context: context,
@@ -68,7 +69,7 @@ class Repair_popup {
                                 height: 180.h,
                                 child: Image.asset(
                                   "assets/images/common/cars/car1.png",
-                                  fit: BoxFit.fitWidth,
+                                  fit: BoxFit.fill,
                                 ),
                               ),
                               Row(
@@ -142,36 +143,39 @@ class Repair_popup {
                                     border: Border.all(
                                         color: Colors.grey.shade200)),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
-                                      margin: EdgeInsets.fromLTRB(
-                                          3.w, 0.h, 15.w, 0.h),
+
                                       child: Row(
                                         children: [
-                                          Image.asset(
-                                            "assets/images/lobby/icons/appbar_icons/xper_icon.png",
-                                            width: 20.w,
-                                            height: 20.h,
+                                          Container(
+                                            margin: EdgeInsets.fromLTRB(
+                                                3.w, 0.h, 2.w, 0.h),
+                                            child: Image.asset(
+                                              "assets/images/lobby/icons/appbar_icons/xper_icon.png",
+                                              width: 20.w,
+                                              height: 20.h,
+                                            ),
                                           ),
                                           Text(
                                             "XPER",
                                             style: TextStyle(
                                                 color: Colors.grey.shade400,
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: 12),
+                                                fontSize: 10.sp),
                                           )
                                         ],
                                       ),
                                     ),
                                     Container(
                                       margin: EdgeInsets.fromLTRB(
-                                          0.w, 0.h, 10.w, 0.h),
+                                          3.w, 0.h, 0.w, 0.h),
                                       child: Text(
                                           "Move the slide to set the target Durability",style: TextStyle(
                                           color: Colors.grey.shade400,
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 8),),
+                                          fontSize: 8.sp),),
                                     )
                                   ],
                                 ),

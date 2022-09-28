@@ -62,7 +62,7 @@ class Levelup2_popup {
                             height: 180.h,
                             child: Image.asset(
                               "assets/images/common/cars/car1.png",
-                              fit: BoxFit.fitWidth,
+                              fit: BoxFit.fill,
                             ),
                           ),
                           Row(
@@ -138,7 +138,7 @@ class Levelup2_popup {
                           GestureDetector(
                             onTap: () {
                               Navigator.pop(context);
-                              Levelup3_popup().levelup3_popup(context);
+                             // Levelup3_popup().levelup3_popup(context);
                             },
                             child: Container(
                               width: 120.w,

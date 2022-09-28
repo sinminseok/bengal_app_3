@@ -1,7 +1,8 @@
+import 'package:bengal_app/models/car.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget Car_Status_Widget(Size size){
+Widget Car_Status_Widget(Size size,CarNft? carNft){
   return Container(
     margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 0.h),
 
@@ -29,7 +30,7 @@ Widget Car_Status_Widget(Size size){
                   height: 24.h,
                 ),
               ),
-              Text("21.8",style: TextStyle(fontSize: 16),),
+              Text("${carNft!.speed}",style: TextStyle(fontSize: 16),),
               Text(
                 "Speed",
                 style: TextStyle(fontSize: 10, color: Colors.grey),
@@ -55,7 +56,7 @@ Widget Car_Status_Widget(Size size){
                   height: 24.h,
                 ),
               ),
-              Text("21.8",style: TextStyle(fontSize: 16),),
+              Text("${carNft!.lucky}",style: TextStyle(fontSize: 16),),
               Text(
                 "Luck",
                 style: TextStyle(fontSize: 10, color: Colors.grey),
@@ -81,7 +82,7 @@ Widget Car_Status_Widget(Size size){
                   height: 24.h,
                 ),
               ),
-              Text("21.8",style: TextStyle(fontSize: 16),),
+              Text("${carNft!.charge}",style: TextStyle(fontSize: 16),),
               Text(
                 "Charge",
                 style: TextStyle(fontSize: 10, color: Colors.grey),
@@ -107,7 +108,7 @@ Widget Car_Status_Widget(Size size){
                   height: 24.h,
                 ),
               ),
-              Text("21.8",style: TextStyle(fontSize: 16),),
+              Text("${carNft!.repair}",style: TextStyle(fontSize: 16),),
               Text(
                 "Repair",
                 style: TextStyle(fontSize: 10, color: Colors.grey),

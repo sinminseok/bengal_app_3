@@ -371,8 +371,8 @@ Widget Wallet_Account_View(
                 },
                 child: Image.asset(
                     "assets/images/wallet/ToSpending_button.png",
-                    width: 100.w,
-                    height: 50.h,
+                    width: 115.w,
+                    height: 40.h,
                   ),
 
               ),
@@ -388,8 +388,8 @@ Widget Wallet_Account_View(
                 },
                 child: Image.asset(
                   "assets/images/wallet/Trade_button.png",
-                  width: 100.w,
-                  height: 50.h,
+                  width: 115.w,
+                  height: 40.h,
                 ),
               ),
             ),
@@ -397,8 +397,8 @@ Widget Wallet_Account_View(
 
               child: Image.asset(
                 "assets/images/wallet/ToExternal_button.png",
-                width: 100.w,
-                height: 50.h,
+                width: 115.w,
+                height: 40.h,
               ),
             ),
           ],

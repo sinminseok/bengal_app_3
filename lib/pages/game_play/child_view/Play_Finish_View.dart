@@ -29,28 +29,27 @@ class _Play_Finish_View extends State<Play_Finish_View> {
       backgroundColor: kAppbarColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        toolbarHeight: 60.h,
+        toolbarHeight: 50.h,
         elevation: 0,
         backgroundColor: kAppbarColor,
-        title: Padding(
-          padding: const EdgeInsets.only(top: 18.0),
-          child: Row(
-            children: [
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
 
-              Container(
-                margin: EdgeInsets.fromLTRB(110.w, 3.h, 55.w, 0.h),
-                child: Text("Play information",
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold)),
-              ),
-            ],
-          ),
+            Container(
+              margin: EdgeInsets.fromLTRB(0.w, 3.h, 0.w, 0.h),
+              child: Text("Play information",
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold,fontSize: 18.sp)),
+            ),
+          ],
         ),
       ),
       body: Column(
         children: [
+          Container(width: 390.w,height: 1.h,color: Colors.grey.shade300,),
           Container(
-            margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 10.h),
+            margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 0.h),
             width: 360.w,
             height: 76.h,
             decoration: BoxDecoration(
@@ -104,7 +103,7 @@ class _Play_Finish_View extends State<Play_Finish_View> {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
+            margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
             width: 360.w,
             height: 92.h,
             decoration: BoxDecoration(
@@ -112,6 +111,7 @@ class _Play_Finish_View extends State<Play_Finish_View> {
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 border: Border.all(color: Colors.grey.shade300)),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
               children: [
                 Container(
@@ -125,7 +125,7 @@ class _Play_Finish_View extends State<Play_Finish_View> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.fromLTRB(27.w, 20.h, 0.w, 0.h),
+                  margin: EdgeInsets.fromLTRB(0.w, 15.h, 20.w, 0.h),
                   child:  Column(
                     children: [
                       Container(
@@ -163,13 +163,16 @@ class _Play_Finish_View extends State<Play_Finish_View> {
                                       ),
                                     ],
                                   ),
-                                  LinearPercentIndicator(
-                                    barRadius: const Radius.circular(10),
-                                    width: 200.w,
-                                    lineHeight: 2.h,
-                                    percent: 0.4,
-                                    progressColor: const Color(0xFFECB133),
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(0.w, 2.h, 0.w, 0.h),
+                                    child: LinearPercentIndicator(
+                                      barRadius: const Radius.circular(10),
+                                      width: 200.w,
+                                      lineHeight: 2.h,
+                                      percent: 0.4,
+                                      progressColor: Colors.grey
 
+                                    ),
                                   )
                                 ],
                               ),
@@ -212,13 +215,16 @@ class _Play_Finish_View extends State<Play_Finish_View> {
                                       ),
                                     ],
                                   ),
-                                  LinearPercentIndicator(
-                                    barRadius: const Radius.circular(10),
-                                    width: 200.w,
-                                    lineHeight: 2.h,
-                                    percent: 0.4,
-                                    progressColor: const Color(0xFFECB133),
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(0.w, 2.h, 0.w, 0.h),
+                                    child: LinearPercentIndicator(
+                                      barRadius: const Radius.circular(10),
+                                      width: 200.w,
+                                      lineHeight: 2.h,
+                                      percent: 0.4,
+                                      progressColor: const Color(0xFFECB133),
 
+                                    ),
                                   )
                                 ],
                               ),
@@ -240,14 +246,14 @@ class _Play_Finish_View extends State<Play_Finish_View> {
             height: 150.h,
             decoration: BoxDecoration(
                 color: kPrimaryColor,
-                borderRadius: BorderRadius.all(Radius.circular(10))
+                borderRadius: BorderRadius.all(Radius.circular(15))
             ),
             child: Row(
               children: [
                 Container(
                     margin: EdgeInsets.fromLTRB(20.w, 25.h, 15.w, 25.h),
 
-                    child: Image.asset("assets/images/game/game_img.png",width: 100.w,)),
+                    child: Image.asset("assets/images/game/game_img.png",width: 100.w,height: 100.h,fit: BoxFit.fill,)),
                 Container(
                   margin: EdgeInsets.fromLTRB(1.w, 44.h, 0.w, 0.h),
 
@@ -285,6 +291,7 @@ class _Play_Finish_View extends State<Play_Finish_View> {
                 borderRadius: BorderRadius.all(Radius.circular(10))
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
               children: [
                 Container(
@@ -297,7 +304,7 @@ class _Play_Finish_View extends State<Play_Finish_View> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                              margin: EdgeInsets.fromLTRB(10.w, 20.h, 15.w, 0.h),
+                              margin: EdgeInsets.fromLTRB(10.w, 15.h, 15.w, 0.h),
 
                               child: Text("+20.13",style: TextStyle(fontSize: 17,color: Colors.grey.shade500),)),
                           Container(
@@ -311,7 +318,7 @@ class _Play_Finish_View extends State<Play_Finish_View> {
                 ),
 
                 Container(
-                  margin: EdgeInsets.fromLTRB(60.w, 0.h, 0.w, 0.h),
+                  margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
 
                   height: 50.h,
                   width: 0.1,
@@ -320,17 +327,18 @@ class _Play_Finish_View extends State<Play_Finish_View> {
 
 
                 Container(
+                  margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
                   child: Row(
                     children: [
                       Container(
-                          margin: EdgeInsets.fromLTRB(15.w, 3.h, 0.w, 0.h),
+                          margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
 
                           child: Image.asset("assets/images/lobby/icons/appbar_icons/per_icon.png",width: 36.w,height: 36.h,)),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                              margin: EdgeInsets.fromLTRB(10.w, 20.h, 15.w, 0.h),
+                              margin: EdgeInsets.fromLTRB(10.w, 15.h, 15.w, 0.h),
 
                               child: Text("+20.13",style: TextStyle(fontSize: 17,color: kPerColor),)),
                           Container(
@@ -353,20 +361,14 @@ class _Play_Finish_View extends State<Play_Finish_View> {
            children: [
              InkWell(
                onTap: (){
-                 Navigator.push(
-                     context,
-                     PageTransition(
-                         type: PageTransitionType.fade,
-                         child: Play_Finish_View(
-
-                         )));
+                 Navigator.pop(context);
                },
                child: Container(
                  margin: EdgeInsets.fromLTRB(0.w, 92.h, 0.w, 0.h),
 
                  width: 175.w,
                  height: 46.h,
-                 child: Image.asset("assets/images/game/game_play_button.png"),
+                 child: Image.asset("assets/images/game/back_to_game_button.png"),
                ),
              ),
              InkWell(
@@ -382,7 +384,7 @@ class _Play_Finish_View extends State<Play_Finish_View> {
                child: Container(
                  margin: EdgeInsets.fromLTRB(10.w, 92.h, 0.w, 0.h),
 
-                 child: Image.asset("assets/images/game/game_play_button.png",width: 175.w,
+                 child: Image.asset("assets/images/game/finish_button.png",width: 175.w,
                    height: 46.h,),
                ),
              )

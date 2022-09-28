@@ -29,15 +29,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
           children: [
             //Buy a car Widget
             current_car == false
-                ? InkWell(
-                    onTap: () {
-                      // setState(() {
-                      //   current_car = !current_car;
-                      // });
-                    },
-                    child: Car_Main_Widget(
-                        context, size, 10, 123123, 45.4, 5000, "Fine"),
-                  )
+                ?Car_Main_StatefulWidget()
                 : InkWell(
                     onTap: () {
                       setState(() {

@@ -353,7 +353,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView> {
                 ),
               ),
 
-              Car_Status_Widget(size),
+              Car_Status_Widget(size,null),
               Container(
                 width: 330.w,
                 height: 50.h,
@@ -460,7 +460,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView> {
                         children: [
                           InkWell(
                             onTap: () {
-                              Levelup1_popup().Levelup_popup(context);
+                              // Levelup1_popup().Levelup_popup(context);
                             },
                             child: Container(
                               child: Image.asset(
@@ -484,7 +484,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView> {
                           ),
                           InkWell(
                             onTap: () {
-                              Recovery_popup().recovery_popup(context);
+                             // Recovery_popup().recovery_popup(context);
                             },
                             child: Container(
                               child: Image.asset(

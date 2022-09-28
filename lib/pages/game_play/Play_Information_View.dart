@@ -26,30 +26,30 @@ class _Play_information_ViewState extends State<Play_information_View> {
       backgroundColor: kAppbarColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        toolbarHeight: 60.h,
+        toolbarHeight: 50.h,
         elevation: 0,
         backgroundColor: kAppbarColor,
-        title: Padding(
-          padding: const EdgeInsets.only(top: 18.0),
-          child: Row(
-            children: [
-              InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Image.asset(
-                  "assets/images/common/back_button.png",
-                  width: 40.w,
-                ),
+        title: Row(
+
+          children: [
+            InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Image.asset(
+                "assets/images/common/back_button.png",
+                height: 40.h,
+                width: 40.w,
+                fit: BoxFit.fill,
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(70.w, 3.h, 55.w, 0.h),
-                child: Text("Play information",
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold)),
-              ),
-            ],
-          ),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(54.w, 3.h, 0.w, 0.h),
+              child: Text("Play information",
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold,fontSize: 18.sp)),
+            ),
+          ],
         ),
       ),
       body: Column(
@@ -117,6 +117,7 @@ class _Play_information_ViewState extends State<Play_information_View> {
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 border: Border.all(color: Colors.grey.shade300)),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
               children: [
                 Container(
@@ -124,13 +125,13 @@ class _Play_information_ViewState extends State<Play_information_View> {
                   child: Text(
                     "Today's Earn",
                     style: TextStyle(
-                      fontSize: 12,
+                        fontSize: 12,
                         color: Colors.grey.shade600,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.fromLTRB(27.w, 20.h, 0.w, 0.h),
+                  margin: EdgeInsets.fromLTRB(0.w, 15.h, 20.w, 0.h),
                   child:  Column(
                     children: [
                       Container(
@@ -168,13 +169,16 @@ class _Play_information_ViewState extends State<Play_information_View> {
                                       ),
                                     ],
                                   ),
-                                  LinearPercentIndicator(
-                                    barRadius: const Radius.circular(10),
-                                    width: 200.w,
-                                    lineHeight: 2.h,
-                                    percent: 0.4,
-                                    progressColor: const Color(0xFFECB133),
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(0.w, 2.h, 0.w, 0.h),
+                                    child: LinearPercentIndicator(
+                                        barRadius: const Radius.circular(10),
+                                        width: 200.w,
+                                        lineHeight: 2.h,
+                                        percent: 0.4,
+                                        progressColor: Colors.grey
 
+                                    ),
                                   )
                                 ],
                               ),
@@ -217,13 +221,16 @@ class _Play_information_ViewState extends State<Play_information_View> {
                                       ),
                                     ],
                                   ),
-                                  LinearPercentIndicator(
-                                    barRadius: const Radius.circular(10),
-                                    width: 200.w,
-                                    lineHeight: 2.h,
-                                    percent: 0.4,
-                                    progressColor: const Color(0xFFECB133),
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(0.w, 2.h, 0.w, 0.h),
+                                    child: LinearPercentIndicator(
+                                      barRadius: const Radius.circular(10),
+                                      width: 200.w,
+                                      lineHeight: 2.h,
+                                      percent: 0.4,
+                                      progressColor: const Color(0xFFECB133),
 
+                                    ),
                                   )
                                 ],
                               ),
@@ -285,11 +292,12 @@ class _Play_information_ViewState extends State<Play_information_View> {
             width: 360.w,
             height: 70.h,
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey.shade300),
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(10))
+                border: Border.all(color: Colors.grey.shade300),
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(10))
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
               children: [
                 Container(
@@ -302,7 +310,7 @@ class _Play_information_ViewState extends State<Play_information_View> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                              margin: EdgeInsets.fromLTRB(10.w, 20.h, 15.w, 0.h),
+                              margin: EdgeInsets.fromLTRB(10.w, 15.h, 15.w, 0.h),
 
                               child: Text("+20.13",style: TextStyle(fontSize: 17,color: Colors.grey.shade500),)),
                           Container(
@@ -316,7 +324,7 @@ class _Play_information_ViewState extends State<Play_information_View> {
                 ),
 
                 Container(
-                  margin: EdgeInsets.fromLTRB(60.w, 0.h, 0.w, 0.h),
+                  margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
 
                   height: 50.h,
                   width: 0.1,
@@ -325,17 +333,18 @@ class _Play_information_ViewState extends State<Play_information_View> {
 
 
                 Container(
+                  margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
                   child: Row(
                     children: [
                       Container(
-                          margin: EdgeInsets.fromLTRB(15.w, 3.h, 0.w, 0.h),
+                          margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
 
                           child: Image.asset("assets/images/lobby/icons/appbar_icons/per_icon.png",width: 36.w,height: 36.h,)),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                              margin: EdgeInsets.fromLTRB(10.w, 20.h, 15.w, 0.h),
+                              margin: EdgeInsets.fromLTRB(10.w, 15.h, 15.w, 0.h),
 
                               child: Text("+20.13",style: TextStyle(fontSize: 17,color: kPerColor),)),
                           Container(
