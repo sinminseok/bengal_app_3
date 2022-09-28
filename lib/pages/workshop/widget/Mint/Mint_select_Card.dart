@@ -16,13 +16,19 @@ Widget Mint_Select_Card(String url) {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(86.w, 9.h, 10.w, 0.h),
-                child: Text(
-                  "Lv999 /Mint:9",
-                  style: TextStyle(color: Colors.grey.shade600, fontSize: 10),
-                ),
-              ),
+             Row(
+               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+               children: [
+                 Container(),
+                 Container(
+                   margin: EdgeInsets.fromLTRB(0.w, 9.h, 10.w, 0.h),
+                   child: Text(
+                     "Lv999 /Mint:9",
+                     style: TextStyle(color: Colors.grey.shade600, fontSize: 10),
+                   ),
+                 ),
+               ],
+             ),
               Container(
                 margin: EdgeInsets.fromLTRB(10.w, 9.h, 5.w, 0.h),
                 width: 150.w,
@@ -34,10 +40,9 @@ Widget Mint_Select_Card(String url) {
                       fit: BoxFit.fitWidth,
                     )),
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(47.w, 6.h, 0.w, 0.h),
+              Center(
                 child: Container(
-                  width: 76.w,
+                  width: 110.w,
                   height: 20.h,
                   margin: EdgeInsets.fromLTRB(0.w, 2.4.h, 0.w, 0.h),
                   decoration: BoxDecoration(
@@ -68,7 +73,7 @@ Widget Mint_Select_Card(String url) {
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           )),
       Positioned(

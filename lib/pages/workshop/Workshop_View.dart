@@ -25,119 +25,121 @@ class _Workshop_ViewState extends State<Workshop_View> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      body: Column(
-        children: [
-          Container(
-            width: 390.w,
-            height: 65.h,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
-            ),
-            child: Container(
-              margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            Mint_selected = true;
-                            Enhance_selected = false;
-                            GemUpgrade_selected = false;
-                          });
-                        },
-                        child: Container(
-                          width: 116.w,
-                          height: 37.h,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade300),
-                              color: Mint_selected != true
-                                  ? Colors.white
-                                  : kPrimaryColor,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                          child: Center(
-                            child: Text(
-                              "Mint",
-                              style: TextStyle(
-                                  color: Mint_selected != true
-                                      ? Colors.grey
-                                      : Colors.white),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              width: 390.w,
+              height: 64.h,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
+              ),
+              child: Container(
+                margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              Mint_selected = true;
+                              Enhance_selected = false;
+                              GemUpgrade_selected = false;
+                            });
+                          },
+                          child: Container(
+                            width: 116.w,
+                            height: 37.h,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                color: Mint_selected != true
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: Center(
+                              child: Text(
+                                "Mint",
+                                style: TextStyle(
+                                    color: Mint_selected != true
+                                        ? Colors.grey
+                                        : Colors.white),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            Mint_selected = false;
-                            Enhance_selected = true;
-                            GemUpgrade_selected = false;
-                          });
-                        },
-                        child: Container(
-                          width: 116.w,
-                          height: 37.h,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade300),
-                              color: Enhance_selected != true
-                                  ? Colors.white
-                                  : kPrimaryColor,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                          child: Center(
-                            child: Text(
-                              "Enhance",
-                              style: TextStyle(
-                                  color: Enhance_selected != true
-                                      ? Colors.grey
-                                      : Colors.white),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              Mint_selected = false;
+                              Enhance_selected = true;
+                              GemUpgrade_selected = false;
+                            });
+                          },
+                          child: Container(
+                            width: 116.w,
+                            height: 37.h,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                color: Enhance_selected != true
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: Center(
+                              child: Text(
+                                "Enhance",
+                                style: TextStyle(
+                                    color: Enhance_selected != true
+                                        ? Colors.grey
+                                        : Colors.white),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            Mint_selected = false;
-                            Enhance_selected = false;
-                            GemUpgrade_selected = true;
-                          });
-                        },
-                        child: Container(
-                          width: 116.w,
-                          height: 37.h,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade300),
-                              color: GemUpgrade_selected != true
-                                  ? Colors.white
-                                  : kPrimaryColor,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                          child: Center(
-                            child: Text(
-                              "Gem Upgrade",
-                              style: TextStyle(
-                                  color: GemUpgrade_selected != true
-                                      ? Colors.grey
-                                      : Colors.white),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              Mint_selected = false;
+                              Enhance_selected = false;
+                              GemUpgrade_selected = true;
+                            });
+                          },
+                          child: Container(
+                            width: 116.w,
+                            height: 37.h,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                color: GemUpgrade_selected != true
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: Center(
+                              child: Text(
+                                "Gem Upgrade",
+                                style: TextStyle(
+                                    color: GemUpgrade_selected != true
+                                        ? Colors.grey
+                                        : Colors.white),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Mint_selected == true ? Mint_View() : Container(),
-          Enhance_selected == true ? Enhance_View() : Container(),
-          GemUpgrade_selected == true ? Container() : Container()
-        ],
+            Mint_selected == true ? Mint_View() : Container(),
+            Enhance_selected == true ? Enhance_View() : Container(),
+            GemUpgrade_selected == true ? Container() : Container()
+          ],
+        ),
       ),
     );
   }
