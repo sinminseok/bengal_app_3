@@ -1,3 +1,4 @@
+import 'package:bengal_app/models/car.dart';
 import 'package:bengal_app/types/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,22 +14,14 @@ class Mint_Car_Card extends StatefulWidget {
   Size size;
   Function? fun;
   BuildContext context;
-  String badge_title;
-  String grade;
-  int Mint_value;
-  int nft_id;
-  int Level;
+  CarNft carNft;
 
   Mint_Car_Card(
       {Key? key,
       required this.size,
         required this.fun,
       required this.context,
-      required this.badge_title,
-      required this.grade,
-      required this.Mint_value,
-      required this.nft_id,
-      required this.Level})
+      required this.carNft})
       : super(key: key);
 
   @override
@@ -43,7 +36,7 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
       children: [
         Container(
           width: 170.w,
-          height: 230.h,
+          height: 195.h,
           decoration: BoxDecoration(
             border: Border.all(color: Colors.grey),
             borderRadius: BorderRadius.all(
@@ -51,14 +44,22 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
             ),
           ),
           child: Column(
+
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(80.w, 6.h, 0.w, 6.h),
-                child: Text(
-                  "Lv ${widget.Level} / Mint: ${widget.Mint_value}",
-                  style: TextStyle(fontSize: 11,color: Colors.grey.shade600),
-                ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0.w, 6.h, 10.w, 9.h),
+                    child: Text(
+                      "Lv ${widget.carNft.level} / Mint: ${widget.carNft.mintingCount}",
+                      style: TextStyle(fontSize: 11,color: Colors.grey.shade600),
+                    ),
+                  ),
+                ],
               ),
 
               //car img
@@ -68,14 +69,15 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
 
                   "assets/images/common/cars/car1.png",
                   width: 150.w,
+                  height: 86.h,
                   fit: BoxFit.fitWidth,
                 ),
               ),
               //nftID
               Container(
-                margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+                margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
 
-                width: 76.w,
+                width: 120.w,
                 height: 23.h,
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey),
@@ -88,23 +90,26 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
                     Container(
                       width: 15.w,
                       height: 15.h,
-                      margin: EdgeInsets.fromLTRB(1.w, 1.h, 7.w, 1.h),
+                      margin: EdgeInsets.fromLTRB(1.w, 1.h, 0.w, 1.h),
 
                       decoration: BoxDecoration(
                           color: Colors.grey, shape: BoxShape.circle),
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(4.w, 0.h, 1.w, 2.h),
+                        margin: EdgeInsets.fromLTRB(4.3.w, 1.3.h, 0.w, 0.h),
 
                         child: Text(
                           "#",
-                          style: TextStyle(color: Colors.white,fontSize: 11),
+                          style: TextStyle(color: Colors.white,fontSize: 10.sp),
                         ),
                       ),
                     ),
 
-                    Text(
-                      "${widget.nft_id}",
-                      style: TextStyle(fontSize: 12,color: Colors.grey.shade500,fontWeight: FontWeight.bold),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(3.w, 1.h, 0.w, 0.h),
+                      child: Text(
+                        "${widget.carNft.id}",
+                        style: TextStyle(fontSize: 12,color: Colors.grey.shade500,fontWeight: FontWeight.bold),
+                      ),
                     )
                   ],
                 ),
@@ -115,10 +120,10 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
                   widget.fun!();
                 },
                 child: Container(
-                  margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+                  margin: EdgeInsets.fromLTRB(0.w, 9.h, 0.w, 0.h),
 
                   width: 100.w,
-                  height: 27.h,
+                  height: 26.h,
                   decoration: BoxDecoration(
                       color: kPrimaryColor,
                       borderRadius: BorderRadius.all(Radius.circular(29))
@@ -133,18 +138,21 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
           ),
         ),
         Positioned(
-          right: 110.w,
+          top: 5.h,
+          left: -5.w,
           child: Image.asset(
-            "assets/images/common/tags/tag_${widget.grade}.png",
-            width: widget.size.width * 0.17,
+            "assets/images/common/tags/tag_${widget.carNft.getCarGradeString()}.png",
+            width: 60.w,
+            height: 20.h,
+            fit: BoxFit.fill,
           ),
         ),
         Positioned(
-            right: widget.size.width * 0.33,
-            top: widget.size.height * 0.005,
+            left: 5.3.w,
+            top: 8.5.h,
             child: Text(
-              "${widget.badge_title}",
-              style: TextStyle(fontSize: 12, color: Colors.white),
+              "${widget.carNft.getCarTypeString()}",
+              style: TextStyle(fontSize: 8.sp, color: Colors.white),
             )),
       ],
 
