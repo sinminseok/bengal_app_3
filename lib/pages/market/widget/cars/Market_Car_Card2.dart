@@ -473,7 +473,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
             ),
           ),
           Positioned(
-            right: 60.w,
+            right: 63.w,
             top: -10.h,
             child: Container(
               width: 44.w,
@@ -486,16 +486,17 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
 
           ),
           Positioned(
-            right: 110.w,
+            left: -5.w,
             top: 10.h,
             child: Image.asset(
               "assets/images/common/tags/tag_${widget.carNft.getCarGradeString()}.png",
               fit: BoxFit.fill,
-              width: 65.w,
+              width: 60.w,
+              height: 20.h,
             ),
           ),
           Positioned(
-              left: 2.w,
+              left: 3.w,
               top: 13.h,
               child: Text(
                 widget.carNft.getCarTypeString().toUpperCase(),

@@ -36,7 +36,7 @@ class _MyPage_Edit_View extends State<MyPage_Edit_View> {
         toolbarHeight: 50.h,
         elevation: 0,
         backgroundColor: kAppbarColor,
-        title: Row(
+        title: Stack(
 
           children: [
             InkWell(
@@ -50,13 +50,15 @@ class _MyPage_Edit_View extends State<MyPage_Edit_View> {
             ),
 
 
-            Container(
-              margin: EdgeInsets.fromLTRB(70.w, 0.h, 0.w, 0.h),
+            Center(
+              child: Container(
+                margin: EdgeInsets.fromLTRB(0.w, 9.h, 0.w, 0.h),
 
-              child: Text(
-                "Edit Account",
-                style: TextStyle(
-                    color: Colors.black, fontWeight: FontWeight.bold,fontSize: 18),
+                child: Text(
+                  "Edit Account",
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold,fontSize: 18),
+                ),
               ),
             ),
 

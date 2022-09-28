@@ -28,7 +28,8 @@ class _MyPage_ViewState extends State<MyPage_View> {
         toolbarHeight: 50.h,
         elevation: 0,
         backgroundColor: kAppbarColor,
-        title: Row(
+        title: Stack(
+          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
           children: [
             InkWell(
@@ -37,20 +38,23 @@ class _MyPage_ViewState extends State<MyPage_View> {
               },
               child: Container(
                   margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
-                width: 40.h,height: 40.h,
+                  width: 40.h,height: 40.h,
                   child: Image.asset("assets/images/common/back_button.png",)),
             ),
 
 
-            Container(
-              margin: EdgeInsets.fromLTRB(70.w, 0.h, 0.w, 0.h),
+            Center(
+              child: Container(
+                margin: EdgeInsets.fromLTRB(0.w, 9.h, 0.w, 0.h),
 
-              child: Text(
-                "PROFILEE",
-                style: TextStyle(
-                    color: Colors.black, fontWeight: FontWeight.bold,fontSize: 18),
+                child: Text(
+                  "PROFILEE",
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold,fontSize: 18),
+                ),
               ),
             ),
+
 
 
 
