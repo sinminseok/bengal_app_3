@@ -97,6 +97,8 @@ Widget Game_Special_Container() {
           color: Colors.grey.shade300,
         ),
         Container(
+          margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
+
           child: Column(
             children: [
               Container(
@@ -117,7 +119,7 @@ Widget Game_Special_Container() {
                       )),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
+                      margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
                       child: Row(
                         children: [
                           Image.asset(
@@ -143,7 +145,7 @@ Widget Game_Special_Container() {
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(0.w, 20.8.h, 0.w, 0.h),
+                margin: EdgeInsets.fromLTRB(0.w, 7.h, 0.w, 0.h),
                 width: 360.w,
                 height: 46.h,
                 decoration: BoxDecoration(

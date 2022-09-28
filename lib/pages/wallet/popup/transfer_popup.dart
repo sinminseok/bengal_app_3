@@ -71,20 +71,20 @@ class Transfer_popup {
                             child: Column(
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
                                         margin: EdgeInsets.fromLTRB(
-                                            15.w, 10.h, 15.w, 0.h),
+                                            15.w, 10.h, 0.w, 0.h),
                                         child: Text(
                                           "Spending",
                                           style: TextStyle(
                                               color: kPrimaryColor,
-                                              fontSize: 16),
+                                              fontSize: 16.sp),
                                         )),
                                     Container(
                                         margin: EdgeInsets.fromLTRB(
-                                            15.w, 4.h, 15.w, 0.h),
+                                            0.w, 4.h, 0.w, 0.h),
                                         width: 28.w,
                                         height: 16.h,
                                         child: Center(
@@ -94,12 +94,12 @@ class Transfer_popup {
                                         ))),
                                     Container(
                                         margin: EdgeInsets.fromLTRB(
-                                            15.w, 10.h, 15.w, 0.h),
+                                            0.w, 10.h, 15.w, 0.h),
                                         child: Text(
-                                          "Spending",
+                                          "Wallet",
                                           style: TextStyle(
                                               color: kPrimaryColor,
-                                              fontSize: 16),
+                                              fontSize: 16.sp),
                                         )),
                                   ],
                                 ),
@@ -108,20 +108,22 @@ class Transfer_popup {
                           ),
 
                           Container(
+                            margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 0.h),
                             width: 260.w,
-                            height: 50.h,
+                            height: 20.h,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
 
-                                Text("Your Request",style: TextStyle(fontSize: 12,color: Colors.grey.shade500),),
-                                Text("12.81",style: TextStyle(fontSize: 16,color: kPrimaryColor),),
+                                Text("Your Request",style: TextStyle(fontSize: 12.sp,color: Colors.grey.shade500),),
+                                Text("12.81",style: TextStyle(fontSize: 16.sp,color: kPrimaryColor),),
                               ],
                             ),
                           ),
                           Container(
+                            margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 15.h),
                             width: 260.w,
-                            height: 50.h,
+                            height: 20.h,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -144,7 +146,7 @@ class Transfer_popup {
                               width: 120.w,
                               height: 34.h,
                               margin:
-                                  EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 0.h),
+                                  EdgeInsets.fromLTRB(0.w, 25.h, 0.w, 0.h),
                               decoration: BoxDecoration(
                                   color: kPrimaryColor,
                                   borderRadius:
@@ -154,7 +156,7 @@ class Transfer_popup {
                                   "Confirm",
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontWeight: FontWeight.bold),
+                                      fontWeight: FontWeight.w700,fontSize: 14.sp),
                                 ),
                               ),
                             ),

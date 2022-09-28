@@ -73,8 +73,8 @@ class _Play_Result_View extends State<Play_Result_View> {
                             children: [
                               Container(
                                 width: 100.w,
-                                margin: EdgeInsets.fromLTRB(
-                                    23.5.w, 0.h, 0.w, 0.h),
+                                margin:
+                                    EdgeInsets.fromLTRB(23.5.w, 0.h, 0.w, 0.h),
                                 child: Column(
                                   children: [
                                     Row(children: [
@@ -87,9 +87,20 @@ class _Play_Result_View extends State<Play_Result_View> {
                                           size: 17,
                                         ),
                                       ),
-                                      Text("Play Time",style: TextStyle(color: Colors.grey.shade500,fontSize:12 ),)
+                                      Text(
+                                        "Play Time",
+                                        style: TextStyle(
+                                            color: Colors.grey.shade500,
+                                            fontSize: 12),
+                                      )
                                     ]),
-                                    Text("01:23:58",style: TextStyle(color: kPrimaryColor,fontWeight: FontWeight.bold,fontSize: 20),)
+                                    Text(
+                                      "01:23:58",
+                                      style: TextStyle(
+                                          color: kPrimaryColor,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20),
+                                    )
                                   ],
                                 ),
                               ),
@@ -102,7 +113,7 @@ class _Play_Result_View extends State<Play_Result_View> {
                                   ),
                                   Container(
                                     margin:
-                                    EdgeInsets.fromLTRB(0.w, 6.h, 0.w, 0.h),
+                                        EdgeInsets.fromLTRB(0.w, 6.h, 0.w, 0.h),
                                     child: Text(
                                       "Game Name",
                                       style: TextStyle(
@@ -112,11 +123,9 @@ class _Play_Result_View extends State<Play_Result_View> {
                                   )
                                 ],
                               ),
-
                               Container(
                                 width: 100.w,
-                                margin: EdgeInsets.fromLTRB(
-                                    0.w, 0.h, 0.w, 0.h),
+                                margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
                                 child: Column(
                                   children: [
                                     Row(children: [
@@ -129,9 +138,20 @@ class _Play_Result_View extends State<Play_Result_View> {
                                           size: 17,
                                         ),
                                       ),
-                                      Text("Power",style: TextStyle(color: Colors.grey.shade500,fontSize:12 ),)
+                                      Text(
+                                        "Power",
+                                        style: TextStyle(
+                                            color: Colors.grey.shade500,
+                                            fontSize: 12),
+                                      )
                                     ]),
-                                    Text("01:23:58",style: TextStyle(color: kPrimaryColor,fontWeight: FontWeight.bold,fontSize: 20),)
+                                    Text(
+                                      "01:23:58",
+                                      style: TextStyle(
+                                          color: kPrimaryColor,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20),
+                                    )
                                   ],
                                 ),
                               )

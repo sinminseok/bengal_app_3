@@ -9,31 +9,22 @@ import 'Market_Car_Card2.dart';
 Widget Market_Cars_View(Size size, CarNftList nftList){
   return Center(
     child: Container(
+      margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
       width: 360.w,
       height: 600.h,
       child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing:3.w,
-            mainAxisSpacing: 10.h,
-            childAspectRatio: 1.h / 1.5.h,
+            crossAxisSpacing:10.w,
+            mainAxisSpacing: 1.w,
+            childAspectRatio: 1.h / 1.6.h,
           ),
           itemCount: nftList.list.length,
           // shrinkWrap: true,
 
           itemBuilder: (BuildContext context, int index) {
             return Center(
-              //Inventory_Card(Size size,
-              //     String badge_title,
-              //     String grade
-              //     int Mint_value,
-              //     int nft_id,
-              //     int Level,
-              //     int Speed_value,
-              //     int Luck_value,
-              //     int Charge_value,
-              //     int Repair_value,
-              //     int distance)
+
               child: Market_Car_Card2(
                   size: size,context: context,carNft: nftList.list[index]),
               // child: Market_Car_Card(

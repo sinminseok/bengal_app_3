@@ -14,14 +14,14 @@ Widget Spending_View(
       Container(
         margin: EdgeInsets.fromLTRB(15.w, 23.h, 15.w, 0.h),
 
-        width: 360.w,
+        width: 390.w,
         height: 230.h,
         child: ListView(
           children: [
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 5.h, 15.w, 0.h),
+              margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
 
-              height: 56.h,
+              height: 54.h,
               width: 360.w,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -64,9 +64,9 @@ Widget Spending_View(
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 5.h, 15.w, 0.h),
+              margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
 
-              height: 56.h,
+              height: 54.h,
               width: 360.w,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -109,9 +109,9 @@ Widget Spending_View(
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 5.h, 15.w, 0.h),
+              margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
 
-              height: 56.h,
+              height: 54.h,
               width: 360.w,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -168,7 +168,7 @@ Widget Spending_View(
                   )));
         },
         child: Container(
-          margin: EdgeInsets.only(bottom: 60.h),
+          margin: EdgeInsets.fromLTRB(0.w, 25.h, 0.w, 46.h),
           child: Image.asset(
             "assets/images/wallet/icons/transfer_button.png",
             width: 175.w,

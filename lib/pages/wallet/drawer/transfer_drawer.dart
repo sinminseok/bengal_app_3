@@ -52,7 +52,7 @@ class _Transfer_DrawerState extends State<Transfer_Drawer> {
               ),
               Center(
                 child: Container(
-                  margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+                  margin: EdgeInsets.fromLTRB(15.w, 35.h, 15.w, 0.h),
 
                   child: InkWell(
                     onTap: () {
@@ -70,23 +70,29 @@ class _Transfer_DrawerState extends State<Transfer_Drawer> {
                               borderRadius:
                               BorderRadius.all(Radius.circular(10))),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Image.asset(
-                                  "assets/images/wallet/icons/car_icon.png",
-                                  width: size.width * 0.1,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                              Text(
-                                "Cars",
-                                style: TextStyle(
-                                    color: Colors.grey.shade700, fontSize: 17),
-                              ),
+                              Row(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(15.w, 0.h, 5.w, 0.h),
+                                    child: Image.asset(
+                                      "assets/images/wallet/icons/car_icon.png",
+                                      width: size.width * 0.1,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Cars",
+                                    style: TextStyle(
+                                        color: Colors.grey.shade700, fontSize: 17),
+                                  ),
+                                ],
+                              )
+                             ,
 
                               Container(
-                                margin: EdgeInsets.fromLTRB(160.w, 0.h, 15.w, 0.h),
+                                margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
                                 child: Icon(
                                   cars_ontap == true
                                       ? Icons.keyboard_arrow_up_sharp
@@ -139,23 +145,29 @@ class _Transfer_DrawerState extends State<Transfer_Drawer> {
                               borderRadius:
                               BorderRadius.all(Radius.circular(10))),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Image.asset(
-                                  "assets/images/wallet/icons/box_icon.png",
-                                  width: size.width * 0.1,
-                                  color: Colors.grey,
-                                ),
+                              Row(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(15.w, 0.h, 5.w, 0.h),
+                                    child: Image.asset(
+                                      "assets/images/wallet/icons/box_icon.png",
+                                      width: size.width * 0.1,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Car Boxes",
+                                    style: TextStyle(
+                                        color: Colors.grey.shade700, fontSize: 17),
+                                  ),
+                                ],
                               ),
-                              Text(
-                                "Car Boxes",
-                                style: TextStyle(
-                                    color: Colors.grey.shade700, fontSize: 17),
-                              ),
+
                               
                               Container(
-                                margin: EdgeInsets.fromLTRB(120.w, 0.h, 15.w, 0.h),
+                                margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
                                 child: Icon(
                                   boxs_ontap == true
                                       ? Icons.keyboard_arrow_up_sharp

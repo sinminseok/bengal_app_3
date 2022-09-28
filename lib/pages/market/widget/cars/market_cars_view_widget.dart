@@ -31,13 +31,13 @@ class MarketCarsViewWidgetState extends State<MarketCarsViewWidget> implements O
       child: Padding(
         padding: const EdgeInsets.all(0.0),
         child: Container(
-          width: 360.w,
-          height: 600.h,
+          width: 390.w,
+          height: 570.h,
           child: GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                crossAxisSpacing: 3.w,
-                mainAxisSpacing: 10.h,
+                crossAxisSpacing: 1.w,
+                mainAxisSpacing: 3.h,
                 childAspectRatio: 1.h / 1.5.h,
               ),
               itemCount: StorageController().carNftPool!.list.length,

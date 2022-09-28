@@ -49,7 +49,7 @@ class _Trade_ViewState extends State<Trade_View> {
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(120.w, 3.h, 45.w, 0.h),
+              margin: EdgeInsets.fromLTRB(110.w, 3.h, 45.w, 0.h),
               child: Text("Trade",
                   style: TextStyle(
                       color: Colors.black,
@@ -80,26 +80,29 @@ class _Trade_ViewState extends State<Trade_View> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+                    margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
                     child: Row(
                       children: [
-                        Image.asset(
-                          "assets/images/wallet/icons/usdc_icon.png",
-                          width: 30.w,
-                          height: 30.h,
+                        Container(
+                          margin: EdgeInsets.fromLTRB(0.w, 0.h, 10.w, 0.h),
+                          child: Image.asset(
+                            "assets/images/wallet/icons/usdc_icon.png",
+                            width: 30.w,
+                            height: 30.h,
+                          ),
                         ),
                         Text(
                           "USDC",
                           style: TextStyle(
                               color: Colors.blue,
                               fontWeight: FontWeight.bold,
-                              fontSize: 16),
+                              fontSize: 16.sp),
                         )
                       ],
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(1.w, 3.h, 15.w, 0.h),
+                    margin: EdgeInsets.fromLTRB(1.w, 0.h, 15.w, 0.h),
                     child: Builder(
                       builder: (context) {
                         return InkWell(
@@ -119,7 +122,7 @@ class _Trade_ViewState extends State<Trade_View> {
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 18.h, 15.w, 20.h),
+              margin: EdgeInsets.fromLTRB(15.w, 18.h, 15.w, 8.h),
               width: 360.w,
               height: 60.h,
               decoration: BoxDecoration(
@@ -129,7 +132,7 @@ class _Trade_ViewState extends State<Trade_View> {
               child: Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.fromLTRB(15.w, 3.h, 15.w, 0.h),
+                    margin: EdgeInsets.fromLTRB(15.w, 0.h, 30.w, 0.h),
                     width: size.width * 0.7,
                     child: TextField(
                       keyboardType: TextInputType.number,
@@ -160,13 +163,16 @@ class _Trade_ViewState extends State<Trade_View> {
               style: TextStyle(color: kPrimaryColor),
             ),
             Container(
-                margin: EdgeInsets.fromLTRB(15.w, 10.h, 300.w, 0.h),
+                margin: EdgeInsets.fromLTRB(0.w, 23.h, 0.w, 0.h),
+                child: Icon(Icons.keyboard_arrow_down_sharp,color: kPrimaryColor,)),
+            Container(
+                margin: EdgeInsets.fromLTRB(15.w, 0.h, 320.w, 0.h),
                 child: Text(
                   "To",
                   style: TextStyle(color: Colors.grey.shade600, fontSize: 18),
                 )),
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+              margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
               width: 360.w,
               height: 70.h,
               decoration: BoxDecoration(
@@ -177,7 +183,7 @@ class _Trade_ViewState extends State<Trade_View> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+                    margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
                     child: Row(
                       children: [
                         Image.asset(
@@ -185,12 +191,15 @@ class _Trade_ViewState extends State<Trade_View> {
                           width: 30.w,
                           height: 30.h,
                         ),
-                        Text(
-                          "PER",
-                          style: TextStyle(
-                              color: kPerColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 0.h),
+                          child: Text(
+                            "PER",
+                            style: TextStyle(
+                                color: kPerColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
+                          ),
                         )
                       ],
                     ),
@@ -216,7 +225,7 @@ class _Trade_ViewState extends State<Trade_View> {
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 18.h, 15.w, 20.h),
+              margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 20.h),
               width: 360.w,
               height: 60.h,
               decoration: BoxDecoration(
@@ -233,7 +242,7 @@ class _Trade_ViewState extends State<Trade_View> {
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 18.h, 15.w, 20.h),
+              margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
               width: 360.w,
               height: 40.h,
               decoration: BoxDecoration(
@@ -244,11 +253,11 @@ class _Trade_ViewState extends State<Trade_View> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
+                      margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
                       child: Text(
-                        value==null?"Silppage Tolerance":value,
+                        value == null ? "Silppage Tolerance" : value,
                         style: TextStyle(
-                            color: Colors.grey.shade500, fontSize: 15),
+                            color: Colors.grey.shade500, fontSize: 14.sp),
                       )),
                   Container(
                     margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
@@ -262,13 +271,11 @@ class _Trade_ViewState extends State<Trade_View> {
                                   color: Colors.grey.shade600,
                                   fontWeight: FontWeight.bold),
                             )),
-
                         InkWell(
-                          onTap: ()  {
-                            setState(() async{
-                              value =  await Traded_popup().openDialog(context);
+                          onTap: () {
+                            setState(() async {
+                              value = await Traded_popup().openDialog(context);
                             });
-
                           },
                           child: Text(
                             "Change >",
@@ -282,19 +289,18 @@ class _Trade_ViewState extends State<Trade_View> {
                 ],
               ),
             ),
-
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 65.h, 15.w, 0.h),
-
+              margin: EdgeInsets.fromLTRB(0.w, 83.h, 0.w, 0.h),
               width: 175.w,
               height: 46.h,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(30)),
-                color: kPrimaryColor
-              ),
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  color: kPrimaryColor),
               child: Center(
-                child: Text("TRADE",style: TextStyle(color: Colors.white,fontSize: 14),),
-
+                child: Text(
+                  "TRADE",
+                  style: TextStyle(color: Colors.white, fontSize: 14),
+                ),
               ),
             )
           ],
@@ -302,5 +308,4 @@ class _Trade_ViewState extends State<Trade_View> {
       ),
     );
   }
-
 }

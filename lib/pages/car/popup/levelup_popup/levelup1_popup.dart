@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:bengal_app/models/car.dart';
 import 'package:bengal_app/pages/car/popup/levelup_popup/levelup2_popup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ import '../../../../types/constants.dart';
 
 class Levelup1_popup {
 
-  void Levelup_popup(BuildContext context) {
+  void Levelup_popup(BuildContext context,CarNft carNft) {
     showAnimatedDialog(
       context: context,
       barrierDismissible: true,
@@ -25,7 +26,7 @@ class Levelup1_popup {
                 clipBehavior: Clip.none,
                 children: [
                   Positioned(
-                      bottom: 640.h,
+                      bottom: 460.h,
                       left: 265.w,
                       child: GestureDetector(
                           onTap: (){
@@ -35,7 +36,7 @@ class Levelup1_popup {
 
                   Container(
                       width: 300.w,
-                      height: 640.h,
+                      height: 445.h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white,
@@ -62,7 +63,7 @@ class Levelup1_popup {
                             height: 180.h,
                             child: Image.asset(
                               "assets/images/common/cars/car1.png",
-                              fit: BoxFit.fitWidth,
+                              fit: BoxFit.fill,
                             ),
                           ),
                           Row(
@@ -72,14 +73,14 @@ class Levelup1_popup {
                                   margin:
                                   EdgeInsets.fromLTRB(15.w, 10.h, 0.w, 0.h),
                                   child: Text(
-                                    "Lv 4",
+                                    "Lv ${carNft.level}",
                                     style: TextStyle(
                                         color: Colors.grey.shade600,
                                         fontSize: 16),
                                   )),
                               Container(
                                   margin:
-                                  EdgeInsets.fromLTRB(3.w, 10.h, 3.w, 0.h),
+                                  EdgeInsets.fromLTRB(10.w, 10.h, 10.w, 0.h),
                                   child: Image.asset(
                                     "assets/images/common/play_button.png",
                                     width: 20.w,
@@ -89,7 +90,8 @@ class Levelup1_popup {
                                   margin:
                                   EdgeInsets.fromLTRB(0.w, 10.h, 15.w, 0.h),
                                   child: Text(
-                                    "Lv 4",
+                                    "Lv ${carNft.level+1}",
+
                                     style: TextStyle(
                                         color: kPrimaryColor, fontSize: 16),
                                   )),
@@ -113,7 +115,7 @@ class Levelup1_popup {
                           ),
                           Container(
                             width: 260.w,
-                            height: 110.h,
+                            height: 46.h,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.grey.shade300),
                                 borderRadius:
@@ -133,152 +135,27 @@ class Levelup1_popup {
                                             "assets/images/lobby/icons/appbar_icons/xper_icon.png",
                                             width: 20.w,
                                             height: 20.h,
+                                            fit: BoxFit.fill,
                                           ),
-                                          Text("XPER")
+                                          Text("xper",style: TextStyle(
+                                            color: Colors.grey.shade600,fontSize: 12
+                                          ),)
                                         ],
                                       ),
                                     ),
                                     Container(
                                         margin: EdgeInsets.fromLTRB(
                                             15.w, 10.h, 15.w, 0.h),
-                                        child: Text("20.0"))
+                                        child: Text("${carNft.price}",style: TextStyle(
+                                            color: Colors.grey.shade600,fontSize: 12
+                                        ),))
                                   ],
                                 ),
-                                Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(
-                                          15.w, 10.h, 15.w, 0.h),
-                                      child: Row(
-                                        children: [
-                                          Image.asset(
-                                            "assets/images/lobby/icons/appbar_icons/per_icon.png",
-                                            width: 20.w,
-                                            height: 20.h,
-                                          ),
-                                          Text("PER")
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                        margin: EdgeInsets.fromLTRB(
-                                            15.w, 10.h, 15.w, 0.h),
-                                        child: Text("20.0"))
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(
-                                          15.w, 10.h, 15.w, 0.h),
-                                      child: Row(
-                                        children: [
-                                          Image.asset(
-                                            "assets/images/lobby/icons/appbar_icons/xper_icon.png",
-                                            width: 20.w,
-                                            height: 20.h,
-                                          ),
-                                          Text("XPER")
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                        margin: EdgeInsets.fromLTRB(
-                                            15.w, 10.h, 15.w, 0.h),
-                                        child: Text("20.0"))
-                                  ],
-                                ),
+
                               ],
                             ),
                           ),
-                          Container(
-                            margin:
-                            EdgeInsets.fromLTRB(15.w, 30.h, 170.w, 10.h),
-                            child: Text(
-                              "Level 5 Unlock",
-                              style: TextStyle(
-                                  color: Colors.grey.shade500, fontSize: 15),
-                            ),
-                          ),
-                          Container(
-                            width: 260.w,
-                            height: 80.h,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey.shade300),
-                                borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                        margin: EdgeInsets.fromLTRB(
-                                            15.w, 10.h, 15.w, 0.h),
-                                        child: Text(
-                                          "Acquire status",
-                                          style: TextStyle(
-                                              color: Colors.grey.shade500,
-                                              fontSize: 15),
-                                        )),
-                                    Container(
-                                        margin: EdgeInsets.fromLTRB(
-                                            15.w, 10.h, 15.w, 0.h),
-                                        width: 32.w,
-                                        height: 20.h,
-                                        decoration: BoxDecoration(
-                                            color: Colors.deepPurple.shade50,
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(30))),
-                                        child: Center(
-                                            child: Text(
-                                              "+4",
-                                              style: TextStyle(
-                                                  color: kPrimaryColor,
-                                                  fontSize: 10),
-                                            )))
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                        margin: EdgeInsets.fromLTRB(
-                                            15.w, 10.h, 15.w, 0.h),
-                                        child: Text(
-                                          "1st Gem scoket",
-                                          style: TextStyle(
-                                              color: Colors.grey.shade500,
-                                              fontSize: 15),
-                                        )),
-                                    Container(
-                                        margin: EdgeInsets.fromLTRB(
-                                            15.w, 10.h, 15.w, 0.h),
-                                        width: 48.w,
-                                        height: 20.h,
-                                        decoration: BoxDecoration(
-                                            color: Colors.deepPurple.shade50,
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(30))),
-                                        child: Center(
-                                            child: Text(
-                                              "OPEN",
-                                              style: TextStyle(
-                                                  color: kPrimaryColor,
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.bold),
-                                            )))
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
+
                           GestureDetector(
                             onTap: () {
                               Navigator.pop(context);

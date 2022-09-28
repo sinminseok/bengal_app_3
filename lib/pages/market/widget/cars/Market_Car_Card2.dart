@@ -266,14 +266,21 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
     return InkWell(
       onTap: (){
         print("${StorageController().carNftPool!.list[0].id}");
-
+        Navigator.push(
+            context,
+            PageTransition(
+                type: PageTransitionType.fade,
+                child: Car_Detail_FrameView2(
+                  carNft:widget.carNft,
+                  carBuy: true,
+                )));
       },
       child: Stack(
         clipBehavior: Clip.none,
         children: [
           Container(
             width: 170.w,
-            height: 290.h,
+            height: 252.h,
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.all(
@@ -287,19 +294,23 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                   margin: EdgeInsets.fromLTRB(110.w, 3.h, 0.w, 3.h),
                   child: Text(
                     "Mint: ${widget.carNft.mintingCount}",
-                    style: Font.lato(Colors.white, FontWeight.w400, 10.sp),
+                    style: Font.lato(Colors.black, FontWeight.w400, 10.sp),
                   ),
                 ),
 
                 //car img
-                Image.asset(
-                  "assets/images/common/cars/car1.png",
-                  width: 150.w,
-                  fit: BoxFit.fitWidth,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.asset(
+                    "assets/images/common/cars/car1.png",
+                    width: 150.w,
+                    height: 86.72,
+                    fit: BoxFit.fill,
+                  ),
                 ),
                 //nftID
                 Container(
-                  margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+                  margin: EdgeInsets.fromLTRB(15.w, 5.h, 15.w, 0.h),
 
                   width: 76.w,
                   height: 20.h,
@@ -359,7 +370,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      margin: EdgeInsets.fromLTRB(8.w, 1.h, 10.w, 5.h),
+                      margin: EdgeInsets.fromLTRB(8.w, 0.h, 10.w, 5.h),
 
                       child: Column(
                         children: [
@@ -428,9 +439,12 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(
-                      "${widget.carNft.price} HVH",
-                      style: Font.lato(kPrimaryColor, FontWeight.bold, 12.sp),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 3.h),
+                      child: Text(
+                        "${widget.carNft.price} HVH",
+                        style: Font.lato(kPrimaryColor, FontWeight.bold, 12.sp),
+                      ),
                     ),
                     InkWell(
                       onTap: () async{
@@ -439,7 +453,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                       child: Container(
                         width: 70.w,
                         height: 26.h,
-                        margin: EdgeInsets.fromLTRB(10.w, 7.h, 1.w, 5.h),
+                        margin: EdgeInsets.fromLTRB(10.w, 3.h, 1.w, 0.h),
                         decoration: BoxDecoration(
                           border: Border.all(color: kPrimaryColor),
                           borderRadius: BorderRadius.all(Radius.circular(
@@ -459,7 +473,21 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
             ),
           ),
           Positioned(
+            right: 60.w,
+            top: -10.h,
+            child: Container(
+              width: 44.w,
+              height: 18.h,
+              decoration: BoxDecoration(
+                  color: kPrimaryColor,
+                  borderRadius: BorderRadius.all(Radius.circular(30))),
+              child: Center(child: Text("Selling",style: TextStyle(color: Colors.white,fontSize: 8.sp),)),
+            ),
+
+          ),
+          Positioned(
             right: 110.w,
+            top: 10.h,
             child: Image.asset(
               "assets/images/common/tags/tag_${widget.carNft.getCarGradeString()}.png",
               fit: BoxFit.fill,
@@ -467,8 +495,8 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
             ),
           ),
           Positioned(
-              right: 140.w,
-              top: 6.h,
+              left: 2.w,
+              top: 13.h,
               child: Text(
                 widget.carNft.getCarTypeString().toUpperCase(),
                 style: Font.lato(Colors.white, FontWeight.bold, 8.sp),
