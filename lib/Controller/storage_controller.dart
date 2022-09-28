@@ -12,6 +12,7 @@ import '../models/game.dart';
 import '../models/transfer.dart';
 import '../models/wallet.dart';
 import '../types/common.dart';
+import '../types/constants.dart';
 
 enum StorageKey {
   baseId,
@@ -19,6 +20,7 @@ enum StorageKey {
   rememberEmail,
   account,
   wallet,
+  onChainWallet,
   carNft,
   boxNft,
   transferHistory,
@@ -45,9 +47,11 @@ class StorageController implements Subject {
 
   late bool isRemember = false;
   late String rememberEmail = '';
+  late bool isCertified = false;
 
   late Account? account;
   late Wallet? wallet;
+  late OnChainWallet? onChainWallet;
   late CarNftList? carNftList;
   late BoxNftList? boxNftList;
   late TransferHistoryList? transferHistory;
@@ -155,6 +159,21 @@ class StorageController implements Subject {
     var value = _prefs.getString(_genAutoKey(StorageKey.wallet)) ?? "";
     if (value.isEmpty) return false;
     wallet = Wallet.fromJson(json.decode(value));
+    return true;
+  }
+
+  // OnChainWallet
+  Future<bool> saveOnChainWallet() async {
+    if (null == account || null == onChainWallet) return false;
+    return await _prefs.setString(
+        _genAutoKey(StorageKey.onChainWallet), jsonEncode(onChainWallet!.toJson()));
+  }
+
+  bool loadOnChainWallet() {
+    if (null == account) return false;
+    var value = _prefs.getString(_genAutoKey(StorageKey.onChainWallet)) ?? "";
+    if (value.isEmpty) return false;
+    onChainWallet = OnChainWallet.fromJson(json.decode(value));
     return true;
   }
 
@@ -320,6 +339,17 @@ class StorageController implements Subject {
       DateTime.now(),
     );
 
+    onChainWallet = OnChainWallet(
+      ++_baseId,
+      account!.id,
+      commonData.initialInfo.defaultOnChainPerAmount,
+      commonData.initialInfo.defaultOnChainXPerAmount,
+      commonData.initialInfo.defaultOnChainHavahAmount,
+      commonData.initialInfo.defaultOnChainUsdcAmount,
+      DateTime.now(),
+      DateTime.now(),
+    );
+
     carNftList = CarNftList([]);
     boxNftList = BoxNftList([]);
     transferHistory = TransferHistoryList([]);
@@ -331,6 +361,7 @@ class StorageController implements Subject {
     if (!(await saveTransferHistory())) return false;
     account = null;
     wallet = null;
+    onChainWallet = null;
     carNftList = null;
     boxNftList = null;
     transferHistory = null;
@@ -404,17 +435,10 @@ class StorageController implements Subject {
   }
 
   bool debit(CoinType coinType, double amount) {
-    switch (coinType) {
-      case CoinType.XPer:
-        wallet!.balanceXPer += amount;
-        break;
-      case CoinType.Per:
-        wallet!.balancePer += amount;
-        break;
-      case CoinType.Havah:
-        wallet!.balanceHavah += amount;
-        break;
-      default: return false;
+    if (!onChainWallet!.credit(coinType, amount)) return false;
+    if (!wallet!.debit(coinType, amount)) {
+      onChainWallet!.debit(coinType, amount + constTransferFee);
+      return false;
     }
 
     transferHistory!.debit(coinType, amount);
@@ -422,20 +446,10 @@ class StorageController implements Subject {
   }
 
   bool credit(CoinType coinType, double amount) {
-    switch (coinType) {
-      case CoinType.XPer:
-        if (amount > wallet!.balanceXPer) return false;
-        wallet!.balanceXPer -= amount;
-        break;
-      case CoinType.Per:
-        if (amount > wallet!.balancePer) return false;
-        wallet!.balancePer -= amount;
-        break;
-      case CoinType.Havah:
-        if (amount > wallet!.balanceHavah) return false;
-        wallet!.balanceHavah -= amount;
-        break;
-      default: return false;
+    if (!wallet!.credit(coinType, amount)) return false;
+    if (!onChainWallet!.debit(coinType, amount)) {
+      wallet!.debit(coinType, amount + constTransferFee);
+      return false;
     }
 
     transferHistory!.credit(coinType, amount);

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget Game_Recommended_Container(Size size) {
+import '../../../models/game.dart';
+import '../../../utils/font.dart';
+
+Widget Game_Recommended_Container(GameInfo game) {
   return Padding(
     padding: const EdgeInsets.only(top: 8.0),
     child: Container(
@@ -32,8 +35,8 @@ Widget Game_Recommended_Container(Size size) {
                     margin: EdgeInsets.fromLTRB(1.w, 10.h, 15.w, 0.h),
 
                     child: Text(
-                      "Jewel Match",
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      game.titleString(),
+                      style: Font.lato(const Color(0xFF342B35), FontWeight.bold, 18.sp),
                     ),
                   ),
                   Padding(
@@ -48,8 +51,8 @@ Widget Game_Recommended_Container(Size size) {
                           margin: EdgeInsets.fromLTRB(1.w, 1.h, 0.w, 0.h),
 
                           child: Text(
-                            "+0.03 XPER For 1 Power",
-                            style: TextStyle(color: Colors.grey, fontSize: 12),
+                            game.xPerPerPowerString(),
+                            style: Font.lato(const Color(0xFF8E8E8E), FontWeight.bold, 12.sp),
                           ),
                         )
                       ],
@@ -69,8 +72,8 @@ Widget Game_Recommended_Container(Size size) {
                             BorderRadius.all(Radius.circular(10))),
                         child: Center(
                             child: Text(
-                              "Normal  lv10",
-                              style: TextStyle(color: Colors.grey, fontSize: 12),
+                              game.categoryNCarLevelString(),
+                              style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                             )),
                       ),
 
@@ -78,21 +81,25 @@ Widget Game_Recommended_Container(Size size) {
                         children: [
                           Image.asset(
                             "assets/images/game/icons/car1.png",
+                            color: game.isPassableCarColor(1),
                             width: 25.w,
                             height: 15.h,
                           ),
                           Image.asset(
                             "assets/images/game/icons/car2.png",
+                            color: game.isPassableCarColor(2),
                             width: 25.w,
                             height: 15.h,
                           ),
                           Image.asset(
                             "assets/images/game/icons/car3.png",
+                            color: game.isPassableCarColor(3),
                             width: 25.w,
                             height: 15.h,
                           ),
                           Image.asset(
                             "assets/images/game/icons/car4.png",
+                            color: game.isPassableCarColor(4),
                             width: 25.w,
                             height: 15.h,
                           )

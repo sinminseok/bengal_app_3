@@ -1,5 +1,8 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../utils/font.dart';
 
 class CustomDropdownButton2 extends StatelessWidget {
   final String hint;
@@ -71,10 +74,7 @@ class CustomDropdownButton2 extends StatelessWidget {
             hint,
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
-            style: TextStyle(
-              fontSize: 14,
-              color: Theme.of(context).hintColor,
-            ),
+            style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
           ),
         ),
         value: value,
@@ -87,9 +87,7 @@ class CustomDropdownButton2 extends StatelessWidget {
               item,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
-              style: const TextStyle(
-                fontSize: 14,
-              ),
+              style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
             ),
           ),
         ))

@@ -17,6 +17,8 @@ GameInfo _$GameInfoFromJson(Map<String, dynamic> json) => GameInfo(
       json['needCarGrade'] as int,
       json['needCarType'] as int,
       json['minCarLevel'] as int,
+      (json['depositPer'] as num).toDouble(),
+      DateTime.parse(json['limitAt'] as String),
       json['packageName'] as String,
     );
 
@@ -31,6 +33,8 @@ Map<String, dynamic> _$GameInfoToJson(GameInfo instance) => <String, dynamic>{
       'needCarGrade': instance.needCarGrade,
       'needCarType': instance.needCarType,
       'minCarLevel': instance.minCarLevel,
+      'depositPer': instance.depositPer,
+      'limitAt': instance.limitAt.toIso8601String(),
       'packageName': instance.packageName,
     };
 
