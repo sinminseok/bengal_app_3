@@ -7,10 +7,10 @@ Widget Mypage_info_Widget(Size size){
     children: [
       Center(
         child: Container(
-          margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 5.h),
+          margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
 
           width: 360.w,
-          height: 60.h,
+          height: 50.h,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(10))
@@ -34,21 +34,22 @@ Widget Mypage_info_Widget(Size size){
 
                       child: Text("USER NAME",style: TextStyle(color: Colors.grey,fontSize: 10),)),
                   Container(
-                      margin: EdgeInsets.fromLTRB(13.w, 1.h, 15.w, 0.h),
+                      margin: EdgeInsets.fromLTRB(15.w, 3.h, 0.w, 0.h),
 
-                      child: Text("GUEST"))
+                      child: Text("GUEST",style: TextStyle(fontSize: 14),))
                 ],
               )
             ],
           ),
         ),
       ),
+
       Center(
         child: Container(
-          margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 5.h),
+          margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
 
           width: 360.w,
-          height: 60.h,
+          height: 50.h,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(10))
@@ -72,7 +73,7 @@ Widget Mypage_info_Widget(Size size){
 
                       child: Text("EMAIL",style: TextStyle(color: Colors.grey,fontSize: 10),)),
                   Container(
-                      margin: EdgeInsets.fromLTRB(13.w, 1.h, 15.w, 0.h),
+                      margin: EdgeInsets.fromLTRB(15.w, 3.h, 0.w, 0.h),
 
                       child: Text("sinminseok12@naber.com"))
                 ],
@@ -83,10 +84,10 @@ Widget Mypage_info_Widget(Size size){
       ),
       Center(
         child: Container(
-          margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 5.h),
+          margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
 
           width: 360.w,
-          height: 60.h,
+          height: 50.h,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(10))
@@ -110,7 +111,7 @@ Widget Mypage_info_Widget(Size size){
 
                       child: Text("PASSWORD",style: TextStyle(color: Colors.grey,fontSize: 10),)),
                   Container(
-                      margin: EdgeInsets.fromLTRB(13.w, 1.h, 15.w, 0.h),
+                      margin: EdgeInsets.fromLTRB(15.w, 3.h, 0.w, 0.h),
 
                       child: Text("****"))
                 ],

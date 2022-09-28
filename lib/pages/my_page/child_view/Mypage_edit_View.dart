@@ -32,35 +32,37 @@ class _MyPage_Edit_View extends State<MyPage_Edit_View> {
       backgroundColor: kAppbarColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        toolbarHeight: 100.h,
+
+        toolbarHeight: 50.h,
         elevation: 0,
         backgroundColor: kAppbarColor,
-        title: Padding(
-          padding: const EdgeInsets.only(top: 18.0),
-          child: Row(
-            children: [
-              InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Container(
-                    margin: EdgeInsets.fromLTRB(4.w, 1.h, 1.w, 20.h),
-                    child: Image.asset(
-                      "assets/images/common/back_button.png",
-                      width: 50.h,
-                      height: 50.h,
-                    )),
+        title: Row(
+
+          children: [
+            InkWell(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Container(
+                  margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
+                  width: 40.h,height: 40.h,
+                  child: Image.asset("assets/images/common/back_button.png",)),
+            ),
+
+
+            Container(
+              margin: EdgeInsets.fromLTRB(70.w, 0.h, 0.w, 0.h),
+
+              child: Text(
+                "Edit Account",
+                style: TextStyle(
+                    color: Colors.black, fontWeight: FontWeight.bold,fontSize: 18),
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(95.w, 1.h, 15.w, 20.h),
-                child: Text(
-                  "Edit Account",
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ],
-          ),
+            ),
+
+
+
+          ],
         ),
       ),
       body: SingleChildScrollView(
@@ -68,17 +70,18 @@ class _MyPage_Edit_View extends State<MyPage_Edit_View> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-                margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+                margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 10.h),
                 child: Text(
                   "USER NAME",
-                  style: TextStyle(color: Colors.grey.shade700, fontSize: 17),
+                  style: TextStyle(color: Colors.grey.shade700, fontSize: 14),
                 )),
+
             Input_Widget(hint_text: "Guest", controller: _username_controller, keyboad_type: TextInputType.text, hide_input: false, sendcode: false)
             ,Container(
-                margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 5.h),
+                margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 10.h),
                 child: Text(
                   "EMAIL",
-                  style: TextStyle(color: Colors.grey.shade700, fontSize: 17),
+                  style: TextStyle(color: Colors.grey.shade700, fontSize: 14),
                 )),
             Input_Widget(hint_text: "Email@email.com", controller: _emial_controller, keyboad_type: TextInputType.text, hide_input: false, sendcode: true),
             Input_Widget(hint_text: "Enter Code", controller: _email_confirm_controller, keyboad_type: TextInputType.text, hide_input: false, sendcode: false),

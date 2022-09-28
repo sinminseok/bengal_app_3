@@ -13,7 +13,8 @@ class MyPage_View extends StatefulWidget {
 }
 
 class _MyPage_ViewState extends State<MyPage_View> {
-  bool ischeck = false;
+  bool app_ischeck = false;
+  bool email_ischeck = false;
 
   @override
   Widget build(BuildContext context) {
@@ -24,49 +25,44 @@ class _MyPage_ViewState extends State<MyPage_View> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
 
-        toolbarHeight: 100.h,
+        toolbarHeight: 50.h,
         elevation: 0,
         backgroundColor: kAppbarColor,
-        title: Padding(
-          padding: const EdgeInsets.only(top: 18.0),
-          child: Row(
-            children: [
-              InkWell(
-                onTap: (){
-                  Navigator.pop(context);
-                },
-                child: Container(
-                    margin: EdgeInsets.fromLTRB(4.w, 1.h, 1.w, 20.h),
+        title: Row(
 
-                    child: Image.asset("assets/images/common/back_button.png",width: 50.h,height: 50.h,)),
+          children: [
+            InkWell(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Container(
+                  margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
+                width: 40.h,height: 40.h,
+                  child: Image.asset("assets/images/common/back_button.png",)),
+            ),
+
+
+            Container(
+              margin: EdgeInsets.fromLTRB(70.w, 0.h, 0.w, 0.h),
+
+              child: Text(
+                "PROFILEE",
+                style: TextStyle(
+                    color: Colors.black, fontWeight: FontWeight.bold,fontSize: 18),
               ),
+            ),
 
 
-              Container(
-                margin: EdgeInsets.fromLTRB(95.w, 1.h, 15.w, 20.h),
 
-                child: Text(
-                  "PROFILEE",
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-              ),
-
-
-              // Image.asset(
-              //   "assets/Wallet/icons/setting_button.png",
-              //   width: size.width * 0.09,
-              // )
-            ],
-          ),
+          ],
         ),
       ),
       body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: EdgeInsets.fromLTRB(20.w, 10.h, 15.w, 20.h),
+              margin: EdgeInsets.fromLTRB(15.w, 30.h, 0.w, 10.h),
 
               child: Text(
                 "ACCOUNT",
@@ -81,102 +77,137 @@ class _MyPage_ViewState extends State<MyPage_View> {
 
 
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 15.h),
+              margin: EdgeInsets.fromLTRB(15.w, 40.h, 15.w, 10.h),
               child: Text(
                 "NOTICATION",
                 style: TextStyle(color: Colors.grey),
               ),
             ),
-            Center(
+            Container(
+              margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 0.h),
+              width: 360.w,
+              height: 101.h,
               child: Column(
                 children: [
+                  Column(
+                    children: [
+                      Container(
+                        width: 360.w,
+                        height: 50.h,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(10),
+                                topRight: Radius.circular(10))),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.fromLTRB(10.w, 10.h, 15.w, 0.h),
+
+                                  child: Icon(
+                                    Icons.notifications_none,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.fromLTRB(1.w, 4.h, 0.w, 0.h),
+
+                                  child: Text(
+                                    "App Notification",
+                                    style: TextStyle(color: Colors.grey.shade600),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              width: 40.67,
+                              height: 20.h,
+                              margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
+
+                              child: Switch(
+                                activeColor: kPrimaryColor,
+                                value: app_ischeck,
+                                onChanged: (bool value) {
+                                  setState(() {
+                                    app_ischeck = value;
+                                  });
+                                },
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                   Container(
-                    width: 360.w,
-                    height: 50.h,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10))),
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.fromLTRB(10.w, 10.h, 15.w, 0.h),
 
-                          child: Icon(
-                            Icons.notifications_none,
-                            color: Colors.grey,
-                          ),
+                    width: 330.w,height: 1.h,color: Colors.grey.shade300,),
+                  Column(
+                    children: [
+                      Container(
+                        width: 360.w,
+                        height: 50.h,
+                        decoration: BoxDecoration(
+
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(10),
+                                bottomLeft: Radius.circular(10))),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.fromLTRB(10.w, 10.h, 15.w, 0.h),
+
+                                  child: Icon(
+                                    Icons.email_outlined,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.fromLTRB(1.w, 4.h, 0.w, 0.h),
+
+                                  child: Text(
+                                    "Email Notification",
+                                    style: TextStyle(color: Colors.grey.shade600),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              width: 40.67,
+                              height: 20.h,
+                              margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
+
+                              child: Switch(
+                                activeColor: kPrimaryColor,
+                                value: email_ischeck,
+                                onChanged: (bool value) {
+                                  setState(() {
+                                    email_ischeck = value;
+                                  });
+                                },
+                              ),
+                            )
+                          ],
                         ),
-                        Container(
-                          margin: EdgeInsets.fromLTRB(1.w, 4.h, 150.w, 0.h),
+                      )
+                    ],
+                  ),
 
-                          child: Text(
-                            "App Notification",
-                            style: TextStyle(color: Colors.grey.shade600),
-                          ),
-                        ),
-
-                        Switch(
-                          activeColor: kPrimaryColor,
-                          value: ischeck,
-                          onChanged: (bool value) {
-                            setState(() {
-                              ischeck = value;
-                            });
-                          },
-                        )
-                      ],
-                    ),
-                  )
                 ],
               ),
             ),
-            Center(
-              child: Column(
-                children: [
-                  Container(
-                    width: 360.w,
-                    height: 50.h,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10))),
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.fromLTRB(10.w, 10.h, 15.w, 0.h),
 
-                          child: Icon(
-                            Icons.email_outlined,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.fromLTRB(1.w, 4.h, 140.w, 0.h),
 
-                          child: Text(
-                            "Email Notification",
-                            style: TextStyle(color: Colors.grey.shade600),
-                          ),
-                        ),
 
-                        Switch(
-                          activeColor: kPrimaryColor,
-                          value: ischeck,
-                          onChanged: (bool value) {
-                            setState(() {
-                              ischeck = value;
-                            });
-                          },
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
             Container(
                 margin: EdgeInsets.fromLTRB(15.w, 100.h, 15.w, 0.h),
 

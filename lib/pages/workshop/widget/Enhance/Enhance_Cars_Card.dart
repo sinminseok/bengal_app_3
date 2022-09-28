@@ -2,13 +2,9 @@ import 'package:bengal_app/types/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../Controller/Inventory_controller/enhance_controller.dart';
-import '../../../car/Car_Detail_FrameView.dart';
-import '../../child_view/enhance/Enhance_synthesize_View.dart';
+
 
 class Enhance_Car_Card extends StatefulWidget {
    Function? fun;
@@ -147,7 +143,7 @@ class _Enhance_Car_CardState extends State<Enhance_Car_Card> {
           ),
         ),
         Positioned(
-          right: 129.w,
+          right: 126.w,
           child: Container(
             width: 60.w,
             height: 20.h,
@@ -157,8 +153,8 @@ class _Enhance_Car_CardState extends State<Enhance_Car_Card> {
           ),
         ),
         Positioned(
-            right: 157,
-            top: 3.h,
+            right: 145.w,
+            top: 2.5.h,
             child: Text(
               "${widget.badge_title}",
               style: TextStyle(fontSize: 8, color: Colors.white),

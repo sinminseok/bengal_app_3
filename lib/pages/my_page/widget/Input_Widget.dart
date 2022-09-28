@@ -39,10 +39,11 @@ class _Input_WidgetState extends State<Input_Widget> {
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(10))),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
 
                   Container(
-                    margin: EdgeInsets.fromLTRB(15.w, 3.h, 15.w, 0.h),
+                    margin: EdgeInsets.fromLTRB(15.w, 3.h, 0.w, 0.h),
 
                     width: 250.w,
                     child:widget.hide_input==true? TextField(
@@ -88,7 +89,10 @@ class _Input_WidgetState extends State<Input_Widget> {
                         onTap: (){
                           print("send code to email");
                         },
-                        child: Text("Send code",style: TextStyle(color: kPrimaryColor),)),
+                        child: Container(
+                            margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
+
+                            child: Text("Send code",style: TextStyle(color: kPrimaryColor,fontSize: 12),))),
                   ):Container(),
 
                   widget.hide_input == true?Container(

@@ -36,68 +36,102 @@ class _Enhance_View extends State<Enhance_View> {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  Container(
-                      width: 200.w,
-                      height: 200.h,
-                      child: Image.asset("assets/images/workshop/enhance_circle.png")),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(50.w, 50.h, 15.w, 0.h),
+                  Center(
+                    child: Container(
+                        width: 200.w,
+                        height: 200.h,
+                        child: Image.asset("assets/images/workshop/enhance_circle.png")),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(0.w, 50.h, 0.w, 0.h),
 
-                    width: 100.w,
-                    height: 100.h,
-                    child: Image.asset("assets/images/workshop/enhance_button.png"),
+                      width: 100.w,
+                      height: 100.h,
+                      child: Image.asset("assets/images/workshop/enhance_button.png"),
+                    ),
                   ),
 
                   Positioned(
-                    left: 50.w,
-                    top: -50.h,
+                    left: 145.w,
+                    top: -40.h,
                     child: Container(
 
                       width: 100.w,
                       height: 74.h,
-                      child: Image.asset("assets/images/workshop/enhance_emptybox.png"),
+                      child: Image.asset("assets/images/workshop/enhance_emptybox.png",fit: BoxFit.fill,),
                     ),
                   ),
                   Positioned(
-                    left: -35.w,
-                    top: 35.h,
+                    left: 38.w,
+                    top: 45.h,
                     child: Container(
 
                       width: 100.w,
                       height: 74.h,
-                      child: Image.asset("assets/images/workshop/enhance_emptybox.png"),
+                      child: Image.asset("assets/images/workshop/enhance_emptybox.png",fit: BoxFit.fill,),
                     ),
                   ),
                   Positioned(
-                    right: -35.w,
-                    top: 35.h,
+                    right: 38.w,
+                    top: 45.h,
                     child: Container(
 
                       width: 100.w,
                       height: 74.h,
-                      child: Image.asset("assets/images/workshop/enhance_emptybox.png"),
+                      child: Image.asset("assets/images/workshop/enhance_emptybox.png",fit: BoxFit.fill,),
                     ),
                   ),
                   Positioned(
-                    right: -15.w,
-                    bottom: -25.h,
+                    right: 64.w,
+                    top: 150.h,
                     child: Container(
 
                       width: 100.w,
                       height: 74.h,
-                      child: Image.asset("assets/images/workshop/enhance_emptybox.png"),
+                      child: Image.asset("assets/images/workshop/enhance_emptybox.png",fit: BoxFit.fill,),
                     ),
                   ),
                   Positioned(
-                    left: -15.w,
-                    bottom: -25.h,
+                    left: 64.w,
+                    top: 150.h,
                     child: Container(
 
                       width: 100.w,
                       height: 74.h,
-                      child: Image.asset("assets/images/workshop/enhance_emptybox.png"),
+                      child: Image.asset("assets/images/workshop/enhance_emptybox.png",fit: BoxFit.fill,),
                     ),
                   ),
+                  // Positioned(
+                  //   right: -35.w,
+                  //   top: 35.h,
+                  //   child: Container(
+                  //
+                  //     width: 100.w,
+                  //     height: 74.h,
+                  //     child: Image.asset("assets/images/workshop/enhance_emptybox.png"),
+                  //   ),
+                  // ),
+                  // Positioned(
+                  //   right: -15.w,
+                  //   bottom: -25.h,
+                  //   child: Container(
+                  //
+                  //     width: 100.w,
+                  //     height: 74.h,
+                  //     child: Image.asset("assets/images/workshop/enhance_emptybox.png"),
+                  //   ),
+                  // ),
+                  // Positioned(
+                  //   left: -15.w,
+                  //   bottom: -25.h,
+                  //   child: Container(
+                  //
+                  //     width: 100.w,
+                  //     height: 74.h,
+                  //     child: Image.asset("assets/images/workshop/enhance_emptybox.png"),
+                  //   ),
+                  // ),
 
 
                 ],

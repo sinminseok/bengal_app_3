@@ -12,11 +12,12 @@ Widget Game_Special_Container() {
         border: Border.all(color: Colors.grey.shade300),
         borderRadius: BorderRadius.all(Radius.circular(20))),
     child: Column(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Row(
           children: [
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 18.h, 0.w, 0.h),
+              margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 8.h),
               width: 70.w,
               height: 70.h,
               child: Image.asset(
@@ -25,8 +26,9 @@ Widget Game_Special_Container() {
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(10.w, 18.h, 0.w, 0.h),
+              margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 8.h),
               child: Column(
+
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
@@ -35,7 +37,7 @@ Widget Game_Special_Container() {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Jewel Match",
+                          "Game name",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
@@ -51,7 +53,7 @@ Widget Game_Special_Container() {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
+                    margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 3.h),
                     child: Row(
                       children: [
                         Image.asset(
@@ -69,7 +71,7 @@ Widget Game_Special_Container() {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 4.h),
+                    margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 12.h),
                     child: Row(
                       children: [
                         Image.asset(
@@ -89,7 +91,7 @@ Widget Game_Special_Container() {
           ],
         ),
         Container(
-          margin: EdgeInsets.fromLTRB(0.w, 8.h, 0.w, 0.h),
+          margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 8.h),
           width: 330.w,
           height: 1.h,
           color: Colors.grey.shade300,
@@ -102,7 +104,7 @@ Widget Game_Special_Container() {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 11.h, 0.w, 0.h),
+                      margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 0.h),
                       width: 93.w,
                       height: 18.h,
                       decoration: BoxDecoration(
@@ -115,7 +117,7 @@ Widget Game_Special_Container() {
                       )),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 3.h, 15.w, 0.h),
+                      margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
                       child: Row(
                         children: [
                           Image.asset(
