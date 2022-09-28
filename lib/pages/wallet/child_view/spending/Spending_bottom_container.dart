@@ -39,74 +39,79 @@ class _Spending_bottom_containerState extends State<Spending_bottom_container> {
         children: [
           Container(
             margin: EdgeInsets.fromLTRB(15.w, 16.h, 15.w, 0.h),
-
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      pending_selected = true;
-                      history_selected = false;
-                    });
-                  },
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.fromLTRB(15.w, 3.h, 0.w, 0.h),
+                Row(
 
-                        child: Text(
-                          "Pending",
-                          style: pending_selected != true
-                              ? TextStyle(color: Colors.grey)
-                              : TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      pending_selected != true
-                          ? SizedBox(
-                              height: 3.w,
-                            )
-                          : Container(
-                        margin: EdgeInsets.fromLTRB(15.w, 10.h, 0.w, 0.h),
-
-                        width: 50.w,
-                        color: kPrimaryColor,
-                        height: 4.h,
-                      ),
-                    ],
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      pending_selected = false;
-                      history_selected = true;
-                    });
-                  },
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.fromLTRB(29.w, 3.h, 0.w, 0.h),
-                        child: Text(
-                          "History",
-                          style: history_selected != true
-                              ? TextStyle(color: Colors.grey)
-                              : TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      history_selected != true
-                          ? SizedBox(
-                              height: 1.h,
-                            )
-                          : Container(
-                        margin: EdgeInsets.fromLTRB(29.w, 10.h, 0.w, 0.h),
-
-                        width: 50.w,
-                              color: kPrimaryColor,
-                              height: 4.h,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          pending_selected = true;
+                          history_selected = false;
+                        });
+                      },
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.fromLTRB(15.w, 3.h, 0.w, 0.h),
+                            child: Text(
+                              "Pending",
+                              style: pending_selected != true
+                                  ? TextStyle(color: Colors.grey)
+                                  : TextStyle(fontWeight: FontWeight.bold),
                             ),
-                    ],
-                  ),
+                          ),
+                          pending_selected != true
+                              ? SizedBox(
+                                  height: 10.h,
+                                )
+                              : Container(
+                                  margin:
+                                      EdgeInsets.fromLTRB(15.w, 10.h, 0.w, 0.h),
+                                  width: 50.w,
+                                  color: kPrimaryColor,
+                                  height: 2.h,
+                                ),
+                        ],
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          pending_selected = false;
+                          history_selected = true;
+                        });
+                      },
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.fromLTRB(35.w, 3.h, 0.w, 0.h),
+                            child: Text(
+                              "History",
+                              style: history_selected != true
+                                  ? TextStyle(color: Colors.grey)
+                                  : TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          history_selected != true
+                              ? SizedBox(
+                                  height: 10.h,
+                                )
+                              : Container(
+                                  margin:
+                                      EdgeInsets.fromLTRB(29.w, 10.h, 0.w, 0.h),
+                                  width: 50.w,
+                                  color: kPrimaryColor,
+                                  height: 2.h,
+                                ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
+                Text("Show past 30 days",style: TextStyle(color: kPrimaryColor,fontSize: 12),)
               ],
             ),
           ),

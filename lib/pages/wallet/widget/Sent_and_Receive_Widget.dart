@@ -5,6 +5,8 @@ import '../../../types/constants.dart';
 Widget Sent_and_Receive_Widget(
     Size size, String status, String datetime, double value, String coin_name) {
   return Container(
+    margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
+
     height: 80.h,
     decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade300),
@@ -34,7 +36,7 @@ Widget Sent_and_Receive_Widget(
         ),
         status == "Received"
             ? Container(
-                margin: EdgeInsets.fromLTRB(150.w, 10.h, 15.w, 0.h),
+                margin: EdgeInsets.fromLTRB(3.w, 10.h, 15.w, 0.h),
                 child: Text("-$value $coin_name",
                     style: TextStyle(color: Colors.red)))
             : Container(

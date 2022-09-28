@@ -25,16 +25,6 @@ Widget Inventory_Cars_View(Size size, CarNftList nftList){
 
             itemBuilder: (BuildContext context, int index) {
               return Center(
-                //Inventory_Card(Size size,
-                //     String badge_title,
-                //     int Mint_value,
-                //     int nft_id,
-                //     int Level,
-                //     int Speed_value,
-                //     int Luck_value,
-                //     int Charge_value,
-                //     int Repair_value,
-                //     int distance)
                 child: Inventory_Car_Card2(
                     size, Colors.red, context, nftList.list[index]),
               );

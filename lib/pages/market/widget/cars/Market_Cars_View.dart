@@ -1,10 +1,11 @@
+import 'package:bengal_app/models/car.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../Controller/storage_controller.dart';
 import 'Market_Car_Card.dart';
 import 'Market_Car_Card2.dart';
 
-Widget Market_Cars_View(Size size){
+Widget Market_Cars_View(Size size, CarNftList nftList){
   return Center(
     child: Container(
       width: 360.w,
@@ -16,7 +17,7 @@ Widget Market_Cars_View(Size size){
             mainAxisSpacing: 10.h,
             childAspectRatio: 1.h / 1.5.h,
           ),
-          itemCount: StorageController().carNftPool!.list.length,
+          itemCount: nftList.list.length,
           // shrinkWrap: true,
 
           itemBuilder: (BuildContext context, int index) {
@@ -33,7 +34,7 @@ Widget Market_Cars_View(Size size){
               //     int Repair_value,
               //     int distance)
               child: Market_Car_Card2(
-                  size: size,context: context,carNft: StorageController().carNftPool!.list[index]),
+                  size: size,context: context,carNft: nftList.list[index]),
               // child: Market_Car_Card(
               //     size,context, "SPORTS","normal", 3, 12345, 10, 13, 14, 15, 16, 13),
             );

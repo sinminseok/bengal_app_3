@@ -15,46 +15,55 @@ Widget Mypage_Account_Widget(Size size,BuildContext context){
           borderRadius: BorderRadius.all(Radius.circular(10))
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            width: 76.w,
-            height: 76.h,
-            child: Stack(
-              children: [
-                Container(
-                  width: 76.w,
+          Row(
+            children: [
+              Container(
+                margin: EdgeInsets.fromLTRB(17.w, 10.h, 0.w, 0.h),
 
-                  decoration: BoxDecoration(
-                    color: Colors.grey,
-                    shape: BoxShape.circle,
-                  ),
+                width: 76.w,
+                height: 76.h,
+                child: Stack(
+                  children: [
+                    Container(
+                      width: 76.w,
+
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    Positioned(
+                        left: 54.06.w,
+                        top: 54.h,
+
+                        child: InkWell(
+                            onTap: (){
+
+                            },
+                            child: Image.asset("assets/images/my_page/edit_icon.png",width: 24.w,)))
+                  ],
                 ),
-                Positioned(
-                    left: 50.w,
-                    top: 42.h,
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(17.w, 31.h, 0.w, 0.h),
 
-                    child: InkWell(
-                        onTap: (){
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
 
-                        },
-                        child: Image.asset("assets/images/my_page/edit_icon.png",width: 24.w,)))
-              ],
-            ),
+                    Text("Guest",style: TextStyle(color: kPrimaryColor,fontWeight: FontWeight.bold,fontSize: 20),),
+                    Text("boss@google.com",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                  ],
+                ),
+              ),
+            ],
           ),
-          Container(
-            margin: EdgeInsets.fromLTRB(10.w, 30.h, 80.w, 0.h),
 
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-
-                Text("Guest",style: TextStyle(color: kPrimaryColor,fontWeight: FontWeight.bold,fontSize: 20),),
-                Text("boss@google.com",style: TextStyle(color: Colors.grey,fontSize: 12),),
-              ],
-            ),
-          ),
 
           Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
 
               InkWell(
@@ -68,7 +77,9 @@ Widget Mypage_Account_Widget(Size size,BuildContext context){
                           )));
                 },
                 child: Container(
-                    margin: EdgeInsets.fromLTRB(30.w, 10.h, 1.w, 34.h),
+                    margin: EdgeInsets.fromLTRB(0.w, 16.h, 15.w, 0.h),
+
+
 
                     child: Icon(Icons.settings,color: kPrimaryColor,)),
               ),
@@ -78,8 +89,12 @@ Widget Mypage_Account_Widget(Size size,BuildContext context){
                   Mypage_popup().showDialog(size, context);
                 },
                 child: Container(
+                  margin: EdgeInsets.fromLTRB(0.w, 36.h, 15.w, 0.h),
+
+
+
                   width: 75.w,
-                  height: 25.h,
+                  height: 24.h,
                   decoration: BoxDecoration(
                       color: Colors.grey.shade300,
                       borderRadius: BorderRadius.all(Radius.circular(30))

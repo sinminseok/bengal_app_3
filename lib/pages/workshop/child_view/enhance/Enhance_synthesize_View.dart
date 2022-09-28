@@ -9,8 +9,6 @@ import '../../widget/Enhance/Enhance_Cars_Card.dart';
 import '../../widget/Enhance/Enhance_Cars_View.dart';
 import '../../widget/Enhance/enhance_select_card.dart';
 
-
-
 //se_Enhance_synthesize_ViewState mainState = new se_Enhance_synthesize_ViewState();
 
 class Enhance_synthesize_View extends StatefulWidget {
@@ -29,23 +27,18 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
   bool epic_ontap = false;
   var car_provider;
 
-
-  void select_car(){
+  void select_car() {
     if (car_provider.list.length < 5) {
       setState(() {
-        car_provider
-            .addItem("assets/images/common/cars/car1.png");
+        car_provider.addItem("assets/images/common/cars/car1.png");
       });
     } else {
       return;
     }
   }
 
-
-
   @override
   void dispose() {
-
     // TODO: implement dispose
     Future.delayed(Duration.zero, () {
       //your code goes here
@@ -57,12 +50,11 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
 
   @override
   Widget build(BuildContext context) {
-
-
     car_provider = Provider.of<Enhance_Controller>(context, listen: false);
     Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Column(
+
         children: [
           Container(
             margin: EdgeInsets.fromLTRB(15.w, 70.h, 15.w, 0.h),
@@ -75,15 +67,13 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
                     child: Image.asset(
                         "assets/images/workshop/enhance_circle.png")),
                 InkWell(
-                  onTap: (){
-
-                  },
+                  onTap: () {},
                   child: Container(
                     margin: EdgeInsets.fromLTRB(50.w, 50.h, 15.w, 0.h),
                     width: 100.w,
                     height: 100.h,
-                    child:
-                        Image.asset("assets/images/workshop/enhance_button.png"),
+                    child: Image.asset(
+                        "assets/images/workshop/enhance_button.png"),
                   ),
                 ),
                 Positioned(
@@ -108,7 +98,7 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
                     height: 74.h,
                     child: car_provider.list.length > 1 &&
                             car_provider.list.length <= 5
-                        ?Enhance_select_Card(car_provider.list[1])
+                        ? Enhance_select_Card(car_provider.list[1])
                         : Image.asset(
                             "assets/images/workshop/enhance_emptybox.png",
                             fit: BoxFit.fill,
@@ -164,7 +154,7 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(15.w, 35.h, 0.w, 0.h),
+            margin: EdgeInsets.fromLTRB(15.w, 40.h, 0.w, 0.h),
             width: 360,
             height: 34.h,
             decoration: BoxDecoration(
@@ -175,10 +165,10 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                    margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 0.h),
+                    margin: EdgeInsets.fromLTRB(20.w, 0.h, 0.w, 0.h),
                     child: Text(
                       "Enhance Cost:",
-                      style: TextStyle(color: Colors.grey.shade600),
+                      style: TextStyle(color: Colors.grey.shade600,fontSize: 10),
                     )),
                 Row(
                   children: [
@@ -187,10 +177,14 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
                         height: 22.h,
                         child: Image.asset(
                             "assets/images/lobby/icons/appbar_icons/xper_icon.png")),
-                    Text(
-                      "0.03 xper",
-                      style:
-                          TextStyle(color: Colors.grey.shade600, fontSize: 10),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 0.h),
+
+                      child: Text(
+                        "0.03 xper",
+                        style:
+                            TextStyle(color: Colors.grey.shade600, fontSize: 10),
+                      ),
                     )
                   ],
                 ),
@@ -201,9 +195,14 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
                         height: 22.h,
                         child: Image.asset(
                             "assets/images/lobby/icons/appbar_icons/per_icon.png")),
-                    Text(
-                      "0.03 per",
-                      style: TextStyle(color: kPerColor, fontSize: 10),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 0.h),
+
+                      child: Text(
+                        "0.03 per",
+                        style:
+                        TextStyle(color:kPerColor , fontSize: 10),
+                      ),
                     )
                   ],
                 ),
@@ -212,12 +211,13 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
                   child: Row(
                     children: [
                       Container(
+                          margin: EdgeInsets.fromLTRB(0.w, 0.h, 4.w, 0.h),
                           width: 22.w,
                           height: 22.h,
                           child: Image.asset(
                               "assets/images/workshop/enhance_icon.png")),
                       Text(
-                        "0.03 xper",
+                        "30%",
                         style: TextStyle(
                             color: Colors.grey.shade600, fontSize: 10),
                       )
@@ -228,9 +228,8 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(0.w, 16.h, 0.w, 0.h),
             width: 390.w,
-            height: 245.h,
+            height: 250.h,
             color: Colors.white,
             child: Column(
               children: [
@@ -249,10 +248,9 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
                                 ? Colors.white
                                 : Colors.grey.shade300,
                             borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
+                            BorderRadius.all(Radius.circular(20))),
                         child: InkWell(
                           onTap: () {
-                            print(normal_ontp);
                             setState(() {
                               normal_ontp = true;
                               rare_ontap = false;
@@ -278,7 +276,7 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
                                 ? Colors.white
                                 : Colors.grey.shade300,
                             borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
+                            BorderRadius.all(Radius.circular(20))),
                         child: InkWell(
                           onTap: () {
                             setState(() {
@@ -306,7 +304,7 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
                                 ? Colors.white
                                 : Colors.grey.shade300,
                             borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
+                            BorderRadius.all(Radius.circular(20))),
                         child: InkWell(
                           onTap: () {
                             print(normal_ontp);
@@ -335,7 +333,7 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
                                 ? Colors.white
                                 : Colors.grey.shade300,
                             borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
+                            BorderRadius.all(Radius.circular(20))),
                         child: InkWell(
                           onTap: () {
                             print(normal_ontp);
@@ -372,7 +370,7 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
                       height: 700.h,
                       child: GridView.builder(
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                          SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             crossAxisSpacing: 0.w,
                             mainAxisSpacing: 0.h,
@@ -384,15 +382,16 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
                           itemBuilder: (BuildContext context, int index) {
                             return Center(
                               child: InkWell(
-                                onTap: () {
-
-
-                                },
+                                onTap: () {},
                                 child: Enhance_Car_Card(
                                   fun: select_car,
-                                  size:size,
-                                  context:context,
-                                 badge_title:   "SEDAN", grade: "epic", Mint_value: 3, nft_id: 12345, Level: 3,
+                                  size: size,
+                                  context: context,
+                                  badge_title: "SEDAN",
+                                  grade: "epic",
+                                  Mint_value: 3,
+                                  nft_id: 12345,
+                                  Level: 3,
                                 ),
                               ),
                             );
@@ -401,6 +400,7 @@ class se_Enhance_synthesize_ViewState extends State<Enhance_synthesize_View> {
               ],
             ),
           ),
+
         ],
       ),
     );
