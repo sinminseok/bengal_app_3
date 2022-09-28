@@ -9,7 +9,9 @@ import '../models/box.dart';
 import '../models/car.dart';
 import '../models/common_data.dart';
 import '../models/game.dart';
+import '../models/transfer.dart';
 import '../models/wallet.dart';
+import '../types/common.dart';
 
 enum StorageKey {
   baseId,
@@ -19,6 +21,7 @@ enum StorageKey {
   wallet,
   carNft,
   boxNft,
+  transferHistory,
   carNftPool,
   boxNftPool,
   boxCarNftPool,
@@ -47,6 +50,7 @@ class StorageController implements Subject {
   late Wallet? wallet;
   late CarNftList? carNftList;
   late BoxNftList? boxNftList;
+  late TransferHistoryList? transferHistory;
 
   late CommonData commonData;
   late CarNftList? carNftPool;
@@ -184,6 +188,22 @@ class StorageController implements Subject {
     return true;
   }
 
+  // Box Nft
+  Future<bool> saveTransferHistory() async {
+    if (null == account || null == transferHistory) return false;
+    return await _prefs.setString(
+        _genAutoKey(StorageKey.transferHistory), jsonEncode(transferHistory!.toJson()));
+  }
+
+  // Transfer History
+  bool loadTransferHistory() {
+    if (null == account) return false;
+    var value = _prefs.getString(_genAutoKey(StorageKey.transferHistory)) ?? "";
+    if (value.isEmpty) return false;
+    transferHistory = TransferHistoryList.fromJson(json.decode(value));
+    return true;
+  }
+
   // Car Nft Market Pool
   Future<bool> saveCarNftPool() async {
     if (null == carNftPool) return false;
@@ -302,15 +322,18 @@ class StorageController implements Subject {
 
     carNftList = CarNftList([]);
     boxNftList = BoxNftList([]);
+    transferHistory = TransferHistoryList([]);
 
     if (!(await saveAccount())) return false;
     if (!(await saveWallet())) return false;
     if (!(await saveCarNftList())) return false;
     if (!(await saveBoxNftList())) return false;
+    if (!(await saveTransferHistory())) return false;
     account = null;
     wallet = null;
     carNftList = null;
     boxNftList = null;
+    transferHistory = null;
 
     return await _prefs.setInt(describeEnum(StorageKey.baseId), ++_baseId);
   }
@@ -378,6 +401,45 @@ class StorageController implements Subject {
     ret &= await saveBoxCarNftPool();
     ret &= await saveCarNftList();
     return ret;
+  }
+
+  bool debit(CoinType coinType, double amount) {
+    switch (coinType) {
+      case CoinType.XPer:
+        wallet!.balanceXPer += amount;
+        break;
+      case CoinType.Per:
+        wallet!.balancePer += amount;
+        break;
+      case CoinType.Havah:
+        wallet!.balanceHavah += amount;
+        break;
+      default: return false;
+    }
+
+    transferHistory!.debit(coinType, amount);
+    return true;
+  }
+
+  bool credit(CoinType coinType, double amount) {
+    switch (coinType) {
+      case CoinType.XPer:
+        if (amount > wallet!.balanceXPer) return false;
+        wallet!.balanceXPer -= amount;
+        break;
+      case CoinType.Per:
+        if (amount > wallet!.balancePer) return false;
+        wallet!.balancePer -= amount;
+        break;
+      case CoinType.Havah:
+        if (amount > wallet!.balanceHavah) return false;
+        wallet!.balanceHavah -= amount;
+        break;
+      default: return false;
+    }
+
+    transferHistory!.credit(coinType, amount);
+    return true;
   }
 
   Future<bool> mining() async {

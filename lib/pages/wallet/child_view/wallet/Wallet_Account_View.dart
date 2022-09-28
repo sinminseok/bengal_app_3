@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
+import '../../../../models/wallet.dart';
 import '../../../../types/constants.dart';
 import '../../popup/address_popup.dart';
 import '../trade/Trade_View.dart';
@@ -10,9 +11,7 @@ Widget Wallet_Account_View(
     BuildContext context,
     Size size,
     String address,
-    double xper_value,
-    double per_value,
-    double hvh_value,
+    Wallet wallet,
     double usdc_value,
     int car_count,
     int car_boxes_count) {
@@ -116,7 +115,7 @@ Widget Wallet_Account_View(
                     margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 10.h),
 
                     child: Text(
-                      "$xper_value",
+                      "${wallet.balanceXPer}",
                       style: TextStyle(fontSize: 16, color: Colors.grey),
                     ),
                   )
@@ -162,7 +161,7 @@ Widget Wallet_Account_View(
                     margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 10.h),
 
                     child: Text(
-                      "$per_value",
+                      "${wallet.balancePer}",
                       style: TextStyle(fontSize: 16, color: kPerColor),
                     ),
                   )
@@ -208,7 +207,7 @@ Widget Wallet_Account_View(
                     margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 10.h),
 
                     child: Text(
-                      "$hvh_value",
+                      "${wallet.balanceHavah}",
                       style: TextStyle(fontSize: 16, color: kCharColor),
                     ),
                   )

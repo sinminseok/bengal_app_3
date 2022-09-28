@@ -57,6 +57,8 @@ dependencies:
   random_string: ^2.3.1
   shared_preferences: ^2.0.15
   group_button: ^5.2.2
+  external_app_launcher: ^3.1.0
+  device_apps: ^2.2.0
 
 dev_dependencies:
   flutter_test:

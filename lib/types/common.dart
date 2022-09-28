@@ -3,3 +3,8 @@ enum CoinType {
   Per,
   XPer,
 }
+
+enum TransferType {
+  Sent,
+  Received,
+}

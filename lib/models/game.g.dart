@@ -17,6 +17,7 @@ GameInfo _$GameInfoFromJson(Map<String, dynamic> json) => GameInfo(
       json['needCarGrade'] as int,
       json['needCarType'] as int,
       json['minCarLevel'] as int,
+      json['packageName'] as String,
     );
 
 Map<String, dynamic> _$GameInfoToJson(GameInfo instance) => <String, dynamic>{
@@ -30,6 +31,7 @@ Map<String, dynamic> _$GameInfoToJson(GameInfo instance) => <String, dynamic>{
       'needCarGrade': instance.needCarGrade,
       'needCarType': instance.needCarType,
       'minCarLevel': instance.minCarLevel,
+      'packageName': instance.packageName,
     };
 
 GameInfoList _$GameInfoListFromJson(Map<String, dynamic> json) => GameInfoList(

@@ -13,7 +13,7 @@ class GameInfo {
   final int needCarGrade;
   final int needCarType;
   final int minCarLevel;
-
+  final String packageName;
 
   GameInfo(
       this.id,
@@ -26,6 +26,7 @@ class GameInfo {
       this.needCarGrade,
       this.needCarType,
       this.minCarLevel,
+      this.packageName,
       );
 
   factory GameInfo.fromJson(Map<String, dynamic> json) => _$GameInfoFromJson(json);

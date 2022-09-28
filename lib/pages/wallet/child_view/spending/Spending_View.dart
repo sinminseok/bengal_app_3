@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
+import '../../../../models/wallet.dart';
 import '../../../../types/constants.dart';
 import 'Spending_bottom_container.dart';
 import '../transfer/Transfer_Password_View.dart';
 
 Widget Spending_View(
-    Size size,BuildContext context, double xper_value, double per_value, double hvh_value) {
+    Size size,BuildContext context, Wallet wallet) {
   return Column(
 
     children: [
@@ -55,7 +56,7 @@ Widget Spending_View(
                     margin: EdgeInsets.fromLTRB(15.w, 3.h, 15.w, 0.h),
 
                     child: Text(
-                      "$xper_value",
+                      "${wallet.balanceXPer}",
                       style: TextStyle(fontSize: 16, color: Colors.grey),
                     ),
                   )
@@ -100,7 +101,7 @@ Widget Spending_View(
                     margin: EdgeInsets.fromLTRB(15.w, 3.h, 15.w, 0.h),
 
                     child: Text(
-                      "$per_value",
+                      "${wallet.balancePer}",
                       style: TextStyle(fontSize: 16, color: kPerColor),
                     ),
                   )
@@ -145,7 +146,7 @@ Widget Spending_View(
                     margin: EdgeInsets.fromLTRB(15.w, 3.h, 15.w, 0.h),
 
                     child: Text(
-                      "$hvh_value",
+                      "${wallet.balanceHavah}",
                       style: TextStyle(fontSize: 16, color: kCharColor),
                     ),
                   )
