@@ -228,7 +228,7 @@ Widget Inventory_Car_Card2(
           ),
         ),
         Positioned(
-            right: 60.w,
+            right: 65.w,
             top: -10.h,
             child: Container(
               width: 44.w,
@@ -241,17 +241,18 @@ Widget Inventory_Car_Card2(
 
         ),
         Positioned(
-          right: 115.w,
+          left: -5.w,
           top: 5.h,
           child: Image.asset(
             "assets/images/common/tags/tag_${carNft.getCarGradeString()}.png",
             fit: BoxFit.fill,
-            width: 65.w,
+            width: 60.w,
+            height: 20.h,
           ),
         ),
         Positioned(
-            right: 140.w,
-            top: 10.h,
+            left: 5.w,
+            top: 7.h,
             child: Text(
               carNft.getCarTypeString().toUpperCase(),
               style: Font.lato(Colors.white, FontWeight.bold, 8.sp),
