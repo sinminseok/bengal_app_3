@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../Controller/storage_controller.dart';
 import '../../types/constants.dart';
 import 'child_view/spending/Spending_View.dart';
 import 'child_view/wallet/Wallet_Account_View.dart';
@@ -42,11 +43,10 @@ class _Wallet_ViewState extends State<Wallet_View> {
               ),
             ),
             Container(
+
               child: Text("Token Management",
                   style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18)),
+                      color: Colors.black, fontWeight: FontWeight.bold,fontSize: 18)),
             ),
             Image.asset(
               "assets/images/wallet/icons/setting_button.png",
@@ -65,6 +65,7 @@ class _Wallet_ViewState extends State<Wallet_View> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+
                   InkWell(
                     onTap: () {
                       setState(() {
@@ -74,6 +75,7 @@ class _Wallet_ViewState extends State<Wallet_View> {
                     },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 0.h),
+
                       width: 177.w,
                       height: 34.h,
                       decoration: BoxDecoration(
@@ -110,6 +112,7 @@ class _Wallet_ViewState extends State<Wallet_View> {
                     },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(6.w, 0.h, 15.w, 0.h),
+
                       width: 177.w,
                       height: 34.h,
                       decoration: BoxDecoration(
@@ -143,12 +146,16 @@ class _Wallet_ViewState extends State<Wallet_View> {
             spending_selected != true
                 ? Container()
                 : Container(
-                    margin: EdgeInsets.fromLTRB(0.w, 30.h, 0.w, 0.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              margin: EdgeInsets.fromLTRB(0.w, 30.h, 0.w, 0.h),
+
+              child: Row(
+
+
                       children: [
+
                         Container(
                           margin: EdgeInsets.fromLTRB(108.w, 0.h, 0.w, 0.h),
+
                           child: Text(
                             "Spending Account",
                             style: TextStyle(
@@ -158,45 +165,12 @@ class _Wallet_ViewState extends State<Wallet_View> {
                           ),
                         ),
                         InkWell(
-                          onTap: () {
-                            Wallet_popup()
-                                .show_spending_question(size, context);
+                          onTap: (){
+                            Wallet_popup().show_spending_question(size,context);
                           },
                           child: Container(
-                            margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
-                            width: 18.92.w,
-                            height: 18.92.h,
-                            child: Image.asset(
-                              "assets/images/wallet/icons/question_icon.png",
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-            wallet_selected != true
-                ? Container()
-                : Container(
-                    margin: EdgeInsets.fromLTRB(0.w, 30.h, 0.w, 0.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.fromLTRB(134.w, 0.h, 0.w, 0.h),
-                          child: Text(
-                            "Wallet Account",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: kPrimaryColor,
-                                fontSize: 18),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Wallet_popup().show_wallet_question(size, context);
-                          },
-                          child: Container(
-                            margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
+                            margin: EdgeInsets.fromLTRB(85.w, 0.h, 0.w, 0.h),
+
                             child: Image.asset(
                               "assets/images/wallet/icons/question_icon.png",
                               width: size.width * 0.06,
@@ -206,14 +180,49 @@ class _Wallet_ViewState extends State<Wallet_View> {
                       ],
                     ),
                   ),
+            wallet_selected != true
+                ? Container()
+                : Container(
+              margin: EdgeInsets.fromLTRB(0.w, 30.h, 0.w, 0.h),
+
+              child: Row(
+
+                children: [
+
+                  Container(
+                    margin: EdgeInsets.fromLTRB(134.w, 0.h, 0.w, 0.h),
+                    child: Text(
+                      "Wallet Account",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: kPrimaryColor,
+                          fontSize: 18),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: (){
+                      Wallet_popup().show_wallet_question(size,context);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(85.w, 0.h, 0.w, 0.h),
+
+                      child: Image.asset(
+                        "assets/images/wallet/icons/question_icon.png",
+                        width: size.width * 0.06,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
             //Coin_Container_Widget(size,xper_value,per_value,HVH_value)
             spending_selected != true
                 ? Container()
-                : Spending_View(size, context, 20.32, 20.0, 2.32),
+                : Spending_View(size,context, StorageController().wallet!),
             wallet_selected != true
                 ? Container()
                 : Wallet_Account_View(
-                    context, size, "GASDASDASD", 20.0, 20.0, 20.0, 20.0, 10, 10)
+                    context, size, "GASDASDASD", StorageController().wallet!, 20.0, 10, 10)
           ],
         ),
       ),

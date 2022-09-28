@@ -2,6 +2,7 @@ import 'package:bengal_app/pages/game_play/Play_Information_View.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
+import '../../../Controller/game_launcher.dart';
 import '../../../common/string_configuration.dart';
 import '../../../types/constants.dart';
 import '../../../types/string_type.dart';
@@ -145,14 +146,19 @@ Widget Game_Play_Widget(Size size,BuildContext context, String title, String xpe
           ),
 
 
-          Container(
-            width: 60.w,
-            height: 60.h,
-            margin: EdgeInsets.fromLTRB(0.w, 5.h, 15.w, 0.h),
+          InkWell(
+            onTap: (){
+              GameLauncher().openApp('com.kakaogames.umamusume');
+            },
+            child: Container(
+              width: 60.w,
+              height: 60.h,
+              margin: EdgeInsets.fromLTRB(0.w, 5.h, 15.w, 0.h),
 
-            child: Image.asset(
-              "assets/images/lobby/game_play_button.png",
+              child: Image.asset(
+                "assets/images/lobby/game_play_button.png",
 
+              ),
             ),
           ),
         ],

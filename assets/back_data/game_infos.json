@@ -10,7 +10,8 @@
       "xPerPerPower": 0.3,
       "needCarGrade": 1,
       "needCarType": 0,
-      "minCarLevel": 1
+      "minCarLevel": 1,
+      "packageName": "com.kakaogames.umamusume"
     },
     {
       "id": 2,
@@ -22,7 +23,8 @@
       "xPerPerPower": 0.3,
       "needCarGrade": 1,
       "needCarType": 0,
-      "minCarLevel": 1
+      "minCarLevel": 1,
+      "packageName": "com.kakaogames.umamusume"
     },
     {
       "id": 3,
@@ -34,7 +36,8 @@
       "xPerPerPower": 0.3,
       "needCarGrade": 1,
       "needCarType": 0,
-      "minCarLevel": 1
+      "minCarLevel": 1,
+      "packageName": "com.kakaogames.umamusume"
     },
     {
       "id": 4,
@@ -46,7 +49,8 @@
       "xPerPerPower": 0.3,
       "needCarGrade": 1,
       "needCarType": 0,
-      "minCarLevel": 1
+      "minCarLevel": 1,
+      "packageName": "com.kakaogames.umamusume"
     },
     {
       "id": 5,
@@ -58,7 +62,8 @@
       "xPerPerPower": 0.3,
       "needCarGrade": 3,
       "needCarType": 0,
-      "minCarLevel": 1
+      "minCarLevel": 1,
+      "packageName": "com.kakaogames.umamusume"
     },
     {
       "id": 6,
@@ -70,7 +75,8 @@
       "xPerPerPower": 0.3,
       "needCarGrade": 5,
       "needCarType": 4,
-      "minCarLevel": 1
+      "minCarLevel": 1,
+      "packageName": "com.kakaogames.umamusume"
     },
     {
       "id": 7,
@@ -82,7 +88,8 @@
       "xPerPerPower": 0.3,
       "needCarGrade": 1,
       "needCarType": 0,
-      "minCarLevel": 1
+      "minCarLevel": 1,
+      "packageName": "com.kakaogames.umamusume"
     },
     {
       "id": 8,
@@ -94,7 +101,8 @@
       "xPerPerPower": 0.3,
       "needCarGrade": 1,
       "needCarType": 0,
-      "minCarLevel": 1
+      "minCarLevel": 1,
+      "packageName": "com.kakaogames.umamusume"
     },
     {
       "id": 9,
@@ -106,7 +114,8 @@
       "xPerPerPower": 0.3,
       "needCarGrade": 1,
       "needCarType": 0,
-      "minCarLevel": 1
+      "minCarLevel": 1,
+      "packageName": "com.kakaogames.umamusume"
     },
     {
       "id": 10,
@@ -118,7 +127,8 @@
       "xPerPerPower": 0.3,
       "needCarGrade": 1,
       "needCarType": 0,
-      "minCarLevel": 1
+      "minCarLevel": 1,
+      "packageName": "com.kakaogames.umamusume"
     }
   ]
 }
