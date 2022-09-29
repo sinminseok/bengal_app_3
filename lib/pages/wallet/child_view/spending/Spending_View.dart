@@ -11,6 +11,7 @@ Widget Spending_View(
   return Column(
 
     children: [
+
       Container(
         margin: EdgeInsets.fromLTRB(15.w, 23.h, 15.w, 0.h),
 

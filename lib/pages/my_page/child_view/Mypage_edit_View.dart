@@ -72,6 +72,12 @@ class _MyPage_Edit_View extends State<MyPage_Edit_View> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
+              margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
+              width: 390.w,
+              height: 1.h,
+              color: Colors.grey.shade300,
+            ),
+            Container(
                 margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 10.h),
                 child: Text(
                   "USER NAME",

@@ -8,6 +8,7 @@ import '../../../../Controller/storage_controller.dart';
 import '../../../../models/car.dart';
 import '../../../../types/constants.dart';
 import '../../../inventory/widget/dropdown_button/DropdownButton2.dart';
+import '../../popup/car_detail_popup.dart';
 import '../../popup/filter_popup.dart';
 import '../../popup/mint_carbox_popup.dart';
 import '../../widget/Mint/Mint_select_Card.dart';
@@ -359,7 +360,7 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                     ),
                     Container(
                       width: 390.w,
-                      height: 347.h,
+                      height: 380.h,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           border: Border(
@@ -375,18 +376,24 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 1.w,
                                 mainAxisSpacing: 2.h,
-                                childAspectRatio: 1.h / 1.2.h,
+                                childAspectRatio: 0.85,
                               ),
                               itemCount: carnftlist!.list.length,
                               // shrinkWrap: true,
 
                               itemBuilder: (BuildContext context, int index) {
-                                return Center(
-                                  child: Mint_Car_Card(
-                                    size: size,
-                                    context: context,
-                                    fun: select_car,
-                                    carNft: carnftlist!.list[index],
+                                return InkWell(
+                                  onTap: (){
+                                    Car_detail_popup().showDialog(size, context);
+
+                                  },
+                                  child: Center(
+                                    child: Mint_Car_Card(
+                                      size: size,
+                                      context: context,
+                                      fun: select_car,
+                                      carNft: carnftlist!.list[index],
+                                    ),
                                   ),
                                 );
                               }),

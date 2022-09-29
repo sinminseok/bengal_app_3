@@ -60,6 +60,12 @@ class _Wallet_ViewState extends State<Wallet_View> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Container(
+              margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
+              width: 390.w,
+              height: 1.h,
+              color: Colors.grey.shade300,
+            ),
             //selected buttons
             Container(
               margin: EdgeInsets.only(top: 15.h),

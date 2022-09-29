@@ -47,6 +47,7 @@ class Mint_Carbox_Popup {
                       Container(
                         width: 188,
                           height: 170,
+                          margin: EdgeInsets.fromLTRB(0.w, 20.h, 0.w, 0.h),
 
                           child: Image.asset("assets/images/inventory/car_boxes/box_ultimate.png")),
                       Text("Ultimate Car Box",style: TextStyle(color: Color(0xffDE4460)),),
@@ -85,7 +86,7 @@ class Mint_Carbox_Popup {
                                   child: Center(
                                     child: Text(
                                       "Later",
-                                      style: TextStyle(color: kPrimaryColor,fontSize:14.sp ),
+                                      style: TextStyle(color: kPrimaryColor,fontSize:12.sp ),
                                     ),
                                   ),
                                 ),
@@ -114,7 +115,7 @@ class Mint_Carbox_Popup {
                                   child: Center(
                                     child: Text(
                                       "Open Now",
-                                      style: TextStyle(color: Colors.white,fontSize:14.sp ),
+                                      style: TextStyle(color: Colors.white,fontSize:10.sp ),
                                     ),
                                   ),
                                 ),
@@ -144,7 +145,7 @@ class Mint_Carbox_Popup {
           return Stack(
             children: [
               Positioned(
-                  bottom: 635.h,
+                  bottom: 650.h,
                   left: 290.w,
                   child: GestureDetector(
                       onTap: () {
@@ -193,65 +194,51 @@ class Mint_Carbox_Popup {
 
                               child: Image.asset("assets/images/common/cars/car1.png",fit: BoxFit.fill,)),
                           Container(
+                            width: 170.w,
                             margin: EdgeInsets.fromLTRB(10.w, 7.h, 0.w, 0.h),
 
-                            child: Stack(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                               children: [
                                 Container(
-                                  width: 140.w,
-
-                                  height:20.h,
+                                  // margin: EdgeInsets.fromLTRB(1.w, 1.h, 1.w, 1.h),
+                                  margin: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 0.h),
+                                  width:16.w,
+                                  height: 16.h,
                                   decoration: BoxDecoration(
+                                      color: Colors.black, shape: BoxShape.circle),
+                                  child:
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(4.3.w, 1.3.h, 0.w, 0.h),
 
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(30.0) //         <--- border radius here
+                                    child: Text(
+                                      "#",
+                                      style: TextStyle(color: Colors.white,fontSize: 9.sp),
                                     ),
                                   ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        // margin: EdgeInsets.fromLTRB(1.w, 1.h, 1.w, 1.h),
-                                        margin: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 0.h),
-                                        width:16.w,
-                                        height: 16.h,
-                                        decoration: BoxDecoration(
-                                            color: Colors.black, shape: BoxShape.circle),
-                                        child: Row(
-                                          children: [
 
-                                            Container(
-                                              margin: EdgeInsets.fromLTRB(5.w, 1.3.h, 0.w, 0.h),
 
-                                              child: Text(
-                                                "#",
-                                                style: TextStyle(color: Colors.white,fontSize: 10),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
+                                ),
 
-                                      Container(
-                                        margin: EdgeInsets.fromLTRB(3.w, 0.h, 0.w, 0.h),
-                                        child: Text(
-                                          "123432578",
-                                          style: TextStyle(fontSize: 14),
-                                        ),
-                                      )
-                                    ],
+                                Container(
+                                  margin: EdgeInsets.fromLTRB(3.w, 0.h, 0.w, 0.h),
+                                  child: Text(
+                                    "123432578",
+                                    style: TextStyle(fontSize: 12.sp),
                                   ),
                                 ),
                                 Container(
                                     width: 53.w,height: 16.h,
-                                    margin: EdgeInsets.fromLTRB(98.w, 2.h, 0.w, 0.h),
-                                    child: Image.asset("assets/images/lobby/icons/limited_button.png",fit: BoxFit.fill,))
+                                    margin: EdgeInsets.fromLTRB(0.w, 2.h, 0.w, 0.h),
+                                    child: Image.asset("assets/images/lobby/icons/limited_button.png",fit: BoxFit.fill,)),
+
                               ],
                             ),
                           ),
 
                           Container(
-                            margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 15.h),
+                            margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 10.h),
 
                             width: 260.w,
                             height: 70.h,
@@ -407,7 +394,7 @@ class Mint_Carbox_Popup {
                               child: Center(
                                 child: Text(
                                   "Next Box",
-                                  style: TextStyle(color: Colors.white,fontSize: 14.sp),
+                                  style: TextStyle(color: Colors.white,fontSize: 12.sp),
                                 ),
                               ),
                             ),

@@ -17,15 +17,18 @@ Widget Inventory_Cars_View(Size size, CarNftList nftList){
             crossAxisCount: 2,
             crossAxisSpacing:1.w,
             mainAxisSpacing: 3.w,
-            childAspectRatio: 1.h / 1.5.h,
+            childAspectRatio: 0.68,
           ),
           itemCount: nftList.list.length,
           // shrinkWrap: true,
 
           itemBuilder: (BuildContext context, int index) {
-            return Center(
-              child: Inventory_Car_Card2(
-                  size, Colors.red, context, nftList.list[index]),
+            return Container(
+              margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
+              child: Center(
+                child: Inventory_Car_Card2(
+                    size, Colors.red, context, nftList.list[index]),
+              ),
             );
           }
       ),
