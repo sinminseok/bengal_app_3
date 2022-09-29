@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
@@ -22,6 +23,27 @@ class Play_Result_View extends StatefulWidget {
 }
 
 class _Play_Result_View extends State<Play_Result_View> {
+  double _height_parent =395.h;
+  double _height_child =110.h;
+  //435
+  //160
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    setState(() {
+      Timer(Duration(seconds: 1), () {
+        setState(() {
+          _height_parent = 435.h;
+          _height_child = 160.h;
+        });
+      });
+
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,130 +77,278 @@ class _Play_Result_View extends State<Play_Result_View> {
               ),
               Stack(
                 children: [
-                  Container(
+                  AnimatedContainer(
+                    duration: const Duration(seconds: 1),
+                    curve: Curves.fastOutSlowIn,
                     margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 3.h),
                     width: 360.w,
-                    height: 435.h,
+                    height: _height_parent,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                           bottomRight: Radius.circular(20),
                           bottomLeft: Radius.circular(20),
                         ),
                         color: Colors.white),
-                    child: Column(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.fromLTRB(0.w, 60.h, 0.w, 0.h),
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 100.w,
-                                margin:
-                                    EdgeInsets.fromLTRB(23.5.w, 0.h, 0.w, 0.h),
-                                child: Column(
-                                  children: [
-                                    Row(children: [
-                                      Container(
-                                        margin: EdgeInsets.fromLTRB(
-                                            5.w, 0.h, 3.w, 0.h),
-                                        child: Icon(
-                                          Icons.timelapse_sharp,
-                                          color: Colors.grey.shade700,
-                                          size: 17,
-                                        ),
-                                      ),
-                                      Text(
-                                        "Play Time",
-                                        style: TextStyle(
-                                            color: Colors.grey.shade500,
-                                            fontSize: 12),
-                                      )
-                                    ]),
-                                    Text(
-                                      "01:23:58",
-                                      style: TextStyle(
-                                          color: kPrimaryColor,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Column(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/game/game_img.png",
-                                    width: 80.w,
-                                    height: 90.h,
-                                  ),
-                                  Container(
-                                    margin:
-                                        EdgeInsets.fromLTRB(0.w, 6.h, 0.w, 0.h),
-                                    child: Text(
-                                      "Game Name",
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Container(
-                                width: 100.w,
-                                margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
-                                child: Column(
-                                  children: [
-                                    Row(children: [
-                                      Container(
-                                        margin: EdgeInsets.fromLTRB(
-                                            16.w, 0.h, 3.w, 0.h),
-                                        child: Icon(
-                                          Icons.offline_bolt,
-                                          color: Colors.grey.shade700,
-                                          size: 17,
-                                        ),
-                                      ),
-                                      Text(
-                                        "Power",
-                                        style: TextStyle(
-                                            color: Colors.grey.shade500,
-                                            fontSize: 12),
-                                      )
-                                    ]),
-                                    Text(
-                                      "01:23:58",
-                                      style: TextStyle(
-                                          color: kPrimaryColor,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20),
-                                    )
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Container(
-                            margin: EdgeInsets.fromLTRB(
-                                20.5.w, 19.5.h, 20.5.w, 0.h),
-                            child: Image.asset("assets/images/game/line.png")),
-
-                        Container(
-                            margin: EdgeInsets.fromLTRB(20.w, 20.5.h, 0.w, 5.h),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0.w, 60.h, 0.w, 0.h),
                             child: Row(
                               children: [
-                                Text(
-                                  "Earned",
-                                  style: TextStyle(
-                                      color: Colors.grey.shade600,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold),
+                                Container(
+                                  width: 100.w,
+                                  margin:
+                                      EdgeInsets.fromLTRB(23.5.w, 0.h, 0.w, 0.h),
+                                  child: Column(
+                                    children: [
+                                      Row(children: [
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(
+                                              5.w, 0.h, 3.w, 0.h),
+                                          child: Icon(
+                                            Icons.timelapse_sharp,
+                                            color: Colors.grey.shade700,
+                                            size: 17,
+                                          ),
+                                        ),
+                                        Text(
+                                          "Play Time",
+                                          style: TextStyle(
+                                              color: Colors.grey.shade500,
+                                              fontSize: 12),
+                                        )
+                                      ]),
+                                      Text(
+                                        "01:23:58",
+                                        style: TextStyle(
+                                            color: kPrimaryColor,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20),
+                                      )
+                                    ],
+                                  ),
                                 ),
+                                Column(
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/game/game_img.png",
+                                      width: 80.w,
+                                      height: 90.h,
+                                    ),
+                                    Container(
+                                      margin:
+                                          EdgeInsets.fromLTRB(0.w, 6.h, 0.w, 0.h),
+                                      child: Text(
+                                        "Game Name",
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Container(
+                                  width: 100.w,
+                                  margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
+                                  child: Column(
+                                    children: [
+                                      Row(children: [
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(
+                                              16.w, 0.h, 3.w, 0.h),
+                                          child: Icon(
+                                            Icons.offline_bolt,
+                                            color: Colors.grey.shade700,
+                                            size: 17,
+                                          ),
+                                        ),
+                                        Text(
+                                          "Power",
+                                          style: TextStyle(
+                                              color: Colors.grey.shade500,
+                                              fontSize: 12),
+                                        )
+                                      ]),
+                                      Text(
+                                        "01:23:58",
+                                        style: TextStyle(
+                                            color: kPrimaryColor,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20),
+                                      )
+                                    ],
+                                  ),
+                                )
                               ],
-                            )),
-                        //double xper_value,double per_value,int special_box_lv,int special_box_value
-                        Earned_Widget(20.0, 00.0, 1, "1EA"),
-                      ],
+                            ),
+                          ),
+                          Container(
+                              margin: EdgeInsets.fromLTRB(
+                                  20.5.w, 19.5.h, 20.5.w, 0.h),
+                              child: Image.asset("assets/images/game/line.png")),
+
+                          Container(
+                              margin: EdgeInsets.fromLTRB(20.w, 20.5.h, 0.w, 5.h),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "Earned",
+                                    style: TextStyle(
+                                        color: Colors.grey.shade600,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              )),
+
+                          //double xper_value,double per_value,int special_box_lv,int special_box_value
+                          AnimatedContainer(
+                            duration: const Duration(seconds: 1),
+                            curve: Curves.fastOutSlowIn,
+                            width: 320.w,
+                            height: _height_child,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: kPrimaryColor),
+                                borderRadius: BorderRadius.all(Radius.circular(15))),
+                            child: SingleChildScrollView(
+                              child: Column(
+
+                                children: [
+                                  //xper
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(0.w, 20.h, 0.w, 0.h),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    15.w, 0.h, 0.w, 0.h),
+                                                child: Image.asset(
+                                                  "assets/images/lobby/icons/appbar_icons/xper_icon.png",
+                                                  width: 30.w,
+                                                  height: 30.h,
+                                                )),
+                                            Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    10.w, 0.h, 0.w, 0.h),
+                                                child: Text(
+                                                  "XPER",
+                                                  style: TextStyle(
+                                                      color: Colors.grey.shade600,
+                                                      fontSize: 16,
+                                                      fontWeight: FontWeight.bold),
+                                                )),
+                                          ],
+                                        ),
+                                        Container(
+                                          margin:
+                                          EdgeInsets.fromLTRB(0.w, 0.h, 20.w, 0.h),
+                                          child: Text(
+                                            "12",
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                color: Colors.grey.shade600,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  //per
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0.w, 15.h, 0.w, 0.h),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    15.w, 0.h, 0.w, 0.h),
+                                                child: Image.asset(
+                                                  "assets/images/lobby/icons/appbar_icons/per_icon.png",
+                                                  width: 30.w,
+                                                  height: 30.h,
+                                                )),
+                                            Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    10.w, 0.h, 0.w, 0.h),
+                                                child: Text(
+                                                  "PER",
+                                                  style: TextStyle(
+                                                      color: kPerColor,
+                                                      fontSize: 16,
+                                                      fontWeight: FontWeight.bold),
+                                                )),
+                                          ],
+                                        ),
+                                        Container(
+                                          margin:
+                                          EdgeInsets.fromLTRB(15.w, 0.h, 20.w, 0.h),
+                                          child: Text(
+                                            "3",
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                color: kPerColor,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  //special box
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0.w, 15.h, 0.w, 0.h),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    15.w, 0.h, 0.w, 0.h),
+                                                child: Image.asset(
+                                                  "assets/images/game/special_box.png",
+                                                  width: 30.w,
+                                                  height: 30.h,
+                                                )),
+                                            Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    10.w, 0.h, 15.w, 0.h),
+                                                child: Text(
+                                                  "Lv 1 Special Box",
+                                                  style: TextStyle(
+                                                      color: Colors.grey.shade600,
+                                                      fontSize: 16,
+                                                      fontWeight: FontWeight.bold),
+                                                )),
+                                          ],
+                                        ),
+                                        Container(
+                                          margin:
+                                          EdgeInsets.fromLTRB(15.w, 0.h, 20.w, 0.h),
+                                          child: Text(
+                                            "1EA",
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                color: Colors.grey.shade600,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Container(
@@ -221,7 +391,7 @@ class _Play_Result_View extends State<Play_Result_View> {
                     },
                     child: Image.asset("assets/images/game/lobby_button.png"))),
             // Optional paramaters
-            duration: Duration(milliseconds: 3000),
+            duration: Duration(milliseconds: 1200),
             curve: Curves.easeIn,
           ),
 

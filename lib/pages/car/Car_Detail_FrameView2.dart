@@ -30,7 +30,8 @@ class Car_Detail_FrameView2 extends StatefulWidget {
   final bool carBuy;
   final CarNft carNft;
 
-  Car_Detail_FrameView2({Key? key, required this.carNft, required this.carBuy}) : super(key: key);
+  Car_Detail_FrameView2({Key? key, required this.carNft, required this.carBuy})
+      : super(key: key);
 
   @override
   _Car_Detail_FrameView createState() => _Car_Detail_FrameView();
@@ -68,7 +69,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                 SizedBox(
                   height: 40.h,
                   child: Row(
-                    //mainAxisAlignment: MainAxisAlignment.center,
+                      //mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Coin_Widget("xper_icon", "0.00"),
@@ -98,13 +99,8 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
         body: SingleChildScrollView(
           child: Container(
             width: 390.w,
-
-
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
-
-
-
               children: [
                 Container(
                   width: 390.w,
@@ -129,10 +125,10 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                           ),
                           Container(
                             margin: EdgeInsets.fromLTRB(4.w, 13.h, 0.w, 13.h),
-
                             child: Text(
                               "SPORTS/EPIC+",
-                              style: TextStyle(color: Colors.white, fontSize: 12),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 12),
                             ),
                           ),
                         ],
@@ -143,26 +139,28 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                             margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
                             child: Text(
                               "Lv 12",
-                              style: TextStyle(color: Colors.white, fontSize: 14),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 14),
                             ),
                           ),
                           Container(
                             margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
                             child: Text(
                               " / 30",
-                              style: TextStyle(color: Colors.white, fontSize: 10),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 10),
                             ),
                           ),
                           Container(
                             margin: EdgeInsets.fromLTRB(0.w, 5.h, 15.w, 0.h),
                             child: Text(
                               " ·  Mint:0",
-                              style: TextStyle(color: Colors.white, fontSize: 10),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 10),
                             ),
                           )
                         ],
                       ),
-
                     ],
                   ),
                 ),
@@ -192,11 +190,13 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                                   height: 16.h,
                                 ),
                                 Container(
-                                  margin: EdgeInsets.fromLTRB(5.w, 0.h, 5.w, 0.h),
-
+                                  margin:
+                                  EdgeInsets.fromLTRB(5.w, 0.h, 5.w, 0.h),
                                   child: Text(
                                     "${widget.carNft.id}",
-                                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14),
                                   ),
                                 ),
                                 Container(
@@ -214,6 +214,8 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                     )
                   ],
                 ),
+
+
 
                 Car_Items_Widget(size),
 
@@ -247,7 +249,10 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                         margin: EdgeInsets.fromLTRB(0.w, 0.h, 20.w, 0.h),
                         child: Text(
                           "1333 km (31)",
-                          style: TextStyle(color: kCharColor, fontSize: 9,fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: kCharColor,
+                              fontSize: 9,
+                              fontWeight: FontWeight.bold),
                         ),
                       )
                     ],
@@ -277,13 +282,15 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                               width: 34.w,
                               height: 22.h,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(30)),
                                   color: Colors.greenAccent.shade100),
                               child: Center(
                                   child: Text(
-                                      "3",
-                                    style: TextStyle(color: Colors.green, fontSize: 12),
-                                  )),
+                                "3",
+                                style: TextStyle(
+                                    color: Colors.green, fontSize: 12),
+                              )),
                             ),
                           ),
                         ],
@@ -302,7 +309,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                               height: 24.h,
                               decoration: BoxDecoration(
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(30)),
+                                      BorderRadius.all(Radius.circular(30)),
                                   color: currently_status != true
                                       ? Colors.grey.shade300
                                       : kPrimaryColor),
@@ -332,7 +339,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                                 height: 24.h,
                                 decoration: BoxDecoration(
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(30)),
+                                        BorderRadius.all(Radius.circular(30)),
                                     color: base_statue == true
                                         ? kPrimaryColor
                                         : Colors.grey.shade300),
@@ -363,11 +370,11 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                   ),
                 ),
 
-                Car_Status_Widget(size,widget.carNft),
+                Car_Status_Widget(size, widget.carNft),
                 Container(
                   width: 330.w,
                   height: 50.h,
-                  margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
+                  margin: EdgeInsets.fromLTRB(15.w, 35.h, 15.w, 0.h),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       color: Colors.grey.shade200),
@@ -405,13 +412,14 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                           width: 100.w,
                           height: 30.h,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
                               color: kPrimaryColor),
                           child: Center(
                               child: Text(
-                                "View",
-                                style: TextStyle(color: Colors.white),
-                              )),
+                            "View",
+                            style: TextStyle(color: Colors.white),
+                          )),
                         ),
                       )
                     ],
@@ -419,116 +427,118 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                 ),
                 widget.carBuy == true
                     ? Column(
-                  children: [
-                    Container(
-                        margin: EdgeInsets.fromLTRB(0.w, 30.h, 0.w, 10.h),
-                        width: size.width,
-                        height: size.height * 0.001,
-                        decoration:
-                        BoxDecoration(color: Colors.grey, boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.08),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset:
-                            Offset(0, 13), // changes position of shadow
+                        children: [
+                          Container(
+                              margin: EdgeInsets.fromLTRB(0.w, 30.h, 0.w, 10.h),
+                              width: size.width,
+                              height: size.height * 0.001,
+                              decoration:
+                                  BoxDecoration(color: Colors.grey, boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.08),
+                                  spreadRadius: 5,
+                                  blurRadius: 7,
+                                  offset: Offset(
+                                      0, 13), // changes position of shadow
+                                ),
+                              ])),
+                          InkWell(
+                            onTap: () {
+                              Market_popup().showDialog(size, context);
+                            },
+                            child: Container(
+                              margin:
+                                  EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+                              width: 360.w,
+                              height: 60.h,
+                              decoration: BoxDecoration(
+                                color: kPrimaryColor,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Cost BUY",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
                           ),
-                        ])),
-                    InkWell(
-                      onTap: () {
-                        Market_popup().showDialog(size, context);
-                      },
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
-                        width: 360.w,
-                        height: 60.h,
-                        decoration: BoxDecoration(
-                          color: kPrimaryColor,
-                          borderRadius:
-                          BorderRadius.all(Radius.circular(20)),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Cost BUY",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )
+                        ],
+                      )
                     : Container(
-                  margin: EdgeInsets.fromLTRB(0.w, 50.h, 0.w, 0.h),
-                  width: 390.w,
-                  height: 55.h,
-                  color: kPrimaryColor,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Levelup1_popup().Levelup_popup(context,widget.carNft);
-                        },
-                        child: Container(
-                          child: Image.asset(
-                            "assets/images/common/cars/icons/Level_Up.png",
-                            width: 42.w,
-                            height: 43.h,
-                          ),
+                        margin: EdgeInsets.fromLTRB(0.w, 50.h, 0.w, 0.h),
+                        width: 390.w,
+                        height: 55.h,
+                        color: kPrimaryColor,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Levelup1_popup()
+                                    .Levelup_popup(context, widget.carNft);
+                              },
+                              child: Container(
+                                child: Image.asset(
+                                  "assets/images/common/cars/icons/Level_Up.png",
+                                  width: 42.w,
+                                  height: 43.h,
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Repair_popup().repair_popup(context);
+                              },
+                              child: Container(
+                                child: Image.asset(
+                                  "assets/images/common/cars/icons/Repair.png",
+                                  width: 42.w,
+                                  height: 43.h,
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Recovery_popup().recovery_popup(context);
+                              },
+                              child: Container(
+                                child: Image.asset(
+                                  "assets/images/common/cars/icons/Recovery.png",
+                                  width: 42.w,
+                                  height: 43.h,
+                                ),
+                              ),
+                            ),
+                            Image.asset(
+                              "assets/images/common/cars/icons/Lease.png",
+                              width: 42.w,
+                              height: 43.h,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Sell_popup().sell_popup(context);
+                              },
+                              child: Container(
+                                child: Image.asset(
+                                  "assets/images/common/cars/icons/Sell.png",
+                                  width: 42.w,
+                                  height: 43.h,
+                                ),
+                              ),
+                            ),
+                            Image.asset(
+                              "assets/images/common/cars/icons/Transfer.png",
+                              width: 42.w,
+                              height: 43.h,
+                            ),
+                          ],
                         ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Repair_popup().repair_popup(context);
-                        },
-                        child: Container(
-                          child: Image.asset(
-                            "assets/images/common/cars/icons/Repair.png",
-                            width: 42.w,
-                            height: 43.h,
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Recovery_popup().recovery_popup(context);
-                        },
-                        child: Container(
-                          child: Image.asset(
-                            "assets/images/common/cars/icons/Recovery.png",
-                            width: 42.w,
-                            height: 43.h,
-                          ),
-                        ),
-                      ),
-                      Image.asset(
-                        "assets/images/common/cars/icons/Lease.png",
-                        width: 42.w,
-                        height: 43.h,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Sell_popup().sell_popup(context);
-                        },
-                        child: Container(
-                          child: Image.asset(
-                            "assets/images/common/cars/icons/Sell.png",
-                            width: 42.w,
-                            height: 43.h,
-                          ),
-                        ),
-                      ),
-                      Image.asset(
-                        "assets/images/common/cars/icons/Transfer.png",
-                        width: 42.w,
-                        height: 43.h,
-                      ),
-                    ],
-                  ),
-                )
+                      )
               ],
             ),
           ),

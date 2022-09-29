@@ -63,10 +63,16 @@ class _Trade_ViewState extends State<Trade_View> {
         child: Column(
           children: [
             Container(
-                margin: EdgeInsets.fromLTRB(15.w, 40.h, 300.w, 0.h),
+              margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
+              width: 390.w,
+              height: 1.h,
+              color: Colors.grey.shade300,
+            ),
+            Container(
+                margin: EdgeInsets.fromLTRB(15.w, 30.h, 300.w, 0.h),
                 child: Text(
                   "From",
-                  style: TextStyle(color: Colors.grey.shade600, fontSize: 18),
+                  style: TextStyle(color: Colors.grey.shade600, fontSize: 18.sp),
                 )),
             Container(
               margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
@@ -169,7 +175,7 @@ class _Trade_ViewState extends State<Trade_View> {
                 margin: EdgeInsets.fromLTRB(15.w, 0.h, 320.w, 0.h),
                 child: Text(
                   "To",
-                  style: TextStyle(color: Colors.grey.shade600, fontSize: 18),
+                  style: TextStyle(color: Colors.grey.shade600, fontSize: 18.sp),
                 )),
             Container(
               margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),

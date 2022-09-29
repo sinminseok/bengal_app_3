@@ -46,6 +46,9 @@ class _MyPage_ViewState extends State<MyPage_View> {
             Center(
               child: Container(
                 margin: EdgeInsets.fromLTRB(0.w, 9.h, 0.w, 0.h),
+                decoration: BoxDecoration(
+
+                ),
 
                 child: Text(
                   "PROFILEE",
@@ -65,6 +68,12 @@ class _MyPage_ViewState extends State<MyPage_View> {
 
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Container(
+              margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
+              width: 390.w,
+              height: 1.h,
+              color: Colors.grey.shade300,
+            ),
             Container(
               margin: EdgeInsets.fromLTRB(15.w, 30.h, 0.w, 10.h),
 

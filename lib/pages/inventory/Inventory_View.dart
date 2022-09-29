@@ -38,7 +38,7 @@ class _Inventory_ViewState extends State<Inventory_View> {
             //Selected_Bar
             Container(
               width: 390.w,
-              height: 105,
+              height: 120.h,
               decoration: BoxDecoration(
                 border:
                 Border(bottom: BorderSide(color: Colors.grey.shade300)),

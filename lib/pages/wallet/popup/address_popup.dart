@@ -124,7 +124,7 @@ class Wallet_popup {
                         child: Center(
                             child: Text(
                               "SPENDING ACCOUNT",
-                              style: TextStyle(color: Colors.white, fontSize: 18),
+                              style: TextStyle(color: Colors.white, fontSize: 16.sp),
                             )),
                       ),
 
@@ -187,7 +187,7 @@ class Wallet_popup {
               style: TextStyle(fontSize: 16, color: Colors.black),
               child: Container(
                   width: 300.w,
-                  height: 290.h,
+                  height: 310.h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.white,
@@ -205,66 +205,54 @@ class Wallet_popup {
                         child: Center(
                             child: Text(
                               "WALLET ACCOUNT",
-                              style: TextStyle(color: Colors.white, fontSize: 18),
+                              style: TextStyle(color: Colors.white, fontSize: 16.sp),
                             )),
                       ),
 
 
                       Container(
-                        margin: EdgeInsets.fromLTRB(15.w, 40.h, 15.w, 30.h),
+                        margin: EdgeInsets.fromLTRB(15.w, 40.h, 15.w, 0.h),
 
-                        child: Text(
-                          " This account allows you to send and receive tokens \n outside of Perplay and to your Spending Account.",
-                          style: TextStyle(color: Colors.grey, fontSize: 11),
+                        child:  Text(
+                          " This account allows you to send and receive tokens utside of Perplay and to your Spending Account.",
+                          style: TextStyle(color: Colors.grey, fontSize: 12.sp),
                         ),
                       ),
 
-                      Column(
-                        children: [
-                          Text(
-                            "You can also exchange ",
-                            style: TextStyle(color: Colors.grey, fontSize: 11),
-                          ),
-                          Text(
-                            "XPER/PER/HVH/USDC tokens ",
-                            style: TextStyle(color: Colors.grey, fontSize: 11),
-                          ),
-                          Text(
-                            "with each other through the Trade function.",
-                            style: TextStyle(color: Colors.grey, fontSize: 11),
-                          ),
-                        ],
+                      Container(
+                        margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 10.h),
+                        child: Text(
+                          "You can also exchange XPER/PER/HVH/USDC tokens with each other through the Trade function.",
+                          style: TextStyle(color: Colors.grey, fontSize: 12.sp),
+                        ),
                       ),
 
 
 
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                            elevation: MaterialStateProperty.all(0),
-                            backgroundColor:
-                            MaterialStateProperty.all(Colors.white),
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Container(
-                            width: 120.w,
-                            height: 35.h,
-                            decoration: BoxDecoration(
-                                color: kPrimaryColor,
-                                borderRadius:
-                                BorderRadius.all(Radius.circular(35))),
-                            child: Center(
-                              child: Text(
-                                "Ok",
-                                style: TextStyle(color: Colors.white),
-                              ),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          elevation: MaterialStateProperty.all(0),
+                          backgroundColor:
+                          MaterialStateProperty.all(Colors.white),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Container(
+                          width: 120.w,
+                          height: 34.h,
+                          decoration: BoxDecoration(
+                              color: kPrimaryColor,
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(35))),
+                          child: Center(
+                            child: Text(
+                              "Ok",
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   )),
             ),

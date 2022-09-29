@@ -252,7 +252,7 @@ class _Play_information_ViewState extends State<Play_information_View> {
             height: 150.h,
             decoration: BoxDecoration(
               color: kPrimaryColor,
-              borderRadius: BorderRadius.all(Radius.circular(10))
+              borderRadius: BorderRadius.all(Radius.circular(15))
             ),
             child: Row(
               children: [

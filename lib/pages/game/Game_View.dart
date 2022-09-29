@@ -254,7 +254,7 @@ class _Game_ViewState extends State<Game_View> {
                     StorageController().gameList.getCategoryGameList(2))
                 : Container(),
             Normal_selected == true
-                ? Game_Normal_View(
+                ? Game_Normal_View(context,
                     StorageController().gameList.getCategoryGameList(3))
                 : Container(),
           ],
