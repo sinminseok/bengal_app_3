@@ -247,15 +247,15 @@ class _Game_ViewState extends State<Game_View> {
 
             Special_selected == true
                 ? Game_Special_View(
-                    StorageController().gameList.getCategoryGameList(1))
+                    StorageController().gameList!.getCategoryGameList(1))
                 : Container(),
             Recommended_selected == true
                 ? Game_Recommended_View(
-                    StorageController().gameList.getCategoryGameList(2))
+                    StorageController().gameList!.getCategoryGameList(2))
                 : Container(),
             Normal_selected == true
                 ? Game_Normal_View(context,
-                    StorageController().gameList.getCategoryGameList(3))
+                    StorageController().gameList!.getCategoryGameList(3))
                 : Container(),
           ],
         ),

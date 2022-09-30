@@ -1,0 +1,64 @@
+{
+  "list": [
+    {
+      "id": 7,
+      "title": "Rise of Kingdoms",
+      "category": 3,
+      "perPerDay": 0.0,
+      "perPerPower": 0.0,
+      "xPerPerDay": 0.0,
+      "xPerPerPower": 0.01,
+      "needCarGrade": 1,
+      "needCarType": 0,
+      "minCarLevel": 1,
+      "depositPer": 0,
+      "limitAt": "2000-09-02 03:04:05",
+      "packageName": "com.lilithgames.rok.gpkr"
+    },
+    {
+      "id": 8,
+      "title": "ROOMS! The Toymaker's Mansion",
+      "category": 3,
+      "perPerDay": 0.0,
+      "perPerPower": 0.0,
+      "xPerPerDay": 0.0,
+      "xPerPerPower": 0.01,
+      "needCarGrade": 1,
+      "needCarType": 0,
+      "minCarLevel": 1,
+      "depositPer": 0,
+      "limitAt": "2000-09-02 03:04:05",
+      "packageName": "roomsfree.handmadegame.net"
+    },
+    {
+      "id": 9,
+      "title": "Jewel Match 3 Laser Quest",
+      "category": 3,
+      "perPerDay": 0.0,
+      "perPerPower": 0.0,
+      "xPerPerDay": 0.0,
+      "xPerPerPower": 0.01,
+      "needCarGrade": 1,
+      "needCarType": 0,
+      "minCarLevel": 1,
+      "depositPer": 0,
+      "limitAt": "2000-09-02 03:04:05",
+      "packageName": "com.lunosoft.jewelmatch"
+    },
+    {
+      "id": 10,
+      "title": "League of Masters: Legend MOBA",
+      "category": 3,
+      "perPerDay": 0.0,
+      "perPerPower": 0.0,
+      "xPerPerDay": 0.0,
+      "xPerPerPower": 0.01,
+      "needCarGrade": 1,
+      "needCarType": 0,
+      "minCarLevel": 1,
+      "depositPer": 0,
+      "limitAt": "2000-09-02 03:04:05",
+      "packageName": "com.appcross.lom"
+    }
+  ]
+}

@@ -81,25 +81,25 @@ Widget Game_Recommended_Container(GameInfo game) {
                         children: [
                           Image.asset(
                             "assets/images/game/icons/car1.png",
-                            color: game.isPassableCarColor(1),
+                            color: game.carColorToType(1),
                             width: 25.w,
                             height: 15.h,
                           ),
                           Image.asset(
                             "assets/images/game/icons/car2.png",
-                            color: game.isPassableCarColor(2),
+                            color: game.carColorToType(2),
                             width: 25.w,
                             height: 15.h,
                           ),
                           Image.asset(
                             "assets/images/game/icons/car3.png",
-                            color: game.isPassableCarColor(3),
+                            color: game.carColorToType(3),
                             width: 25.w,
                             height: 15.h,
                           ),
                           Image.asset(
                             "assets/images/game/icons/car4.png",
-                            color: game.isPassableCarColor(4),
+                            color: game.carColorToType(4),
                             width: 25.w,
                             height: 15.h,
                           )

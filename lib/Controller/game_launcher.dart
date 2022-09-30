@@ -1,4 +1,4 @@
-
+import 'dart:async';
 import 'package:device_apps/device_apps.dart';
 import 'package:external_app_launcher/external_app_launcher.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,57 +15,39 @@ class GameLauncher {
 
   GameLauncher._internal();
 
-  // Future<int> openApp(GameInfo gameInfo) async {
-  //   //DeviceApps.openApp('com.frandroid.app');
-  //   DeviceApps.listenToAppsChanges().where(
-  //       (ApplicationEvent event) => event.packageName == gameInfo.packageName).listen((event) {
-  //         debugPrint('$event');
-  //   });
-  //
-  //   return await LaunchApp.openApp(
-  //       androidPackageName: gameInfo.packageName,
-  //       openStore: true);
-  // }
+  late Timer _timer;
 
-  Future<int> openApp(String gameInfo) async {
-    //DeviceApps.openApp('com.frandroid.app');
+  Future<bool> isAppInstalled(String gameInfo) async {
+    return await DeviceApps.isAppInstalled(gameInfo);
+  }
+
+  Future<bool> openApp(String packageName) async {
+    if (!await isAppInstalled(packageName)) {
+      Fluttertoast.showToast(
+          msg:
+              "The game is not installed.\r\nAfter installing the game, please run it again.\r\nGo to the game installation page.",
+          backgroundColor: Colors.grey,
+          textColor: Colors.black,
+          gravity: ToastGravity.CENTER,
+          toastLength: Toast.LENGTH_LONG);
+      await LaunchApp.openApp(androidPackageName: packageName, openStore: true);
+      return false;
+    }
+
+    // debugPrint('------------- event.event check start');
     // DeviceApps.listenToAppsChanges().where(
     //         (ApplicationEvent event) => event.packageName == gameInfo).listen((event) {
-    //     Fluttertoast.showToast(
-    //         msg: event.event.toString(),
-    //         backgroundColor: Colors.grey,
-    //         textColor: Colors.black,
-    //         gravity: ToastGravity.CENTER);
+    //   debugPrint('-------------${event.event}');
+    //   // Fluttertoast.showToast(
+    //   //     msg: event.event.toString(),
+    //   //     backgroundColor: Colors.grey,
+    //   //     textColor: Colors.black,
+    //   //     gravity: ToastGravity.CENTER);
     // });
+    // debugPrint('------------- event.event check end');
 
-    // var msg = "gameInfo not installed";
-    // if (await DeviceApps.isAppInstalled(gameInfo)) {
-    //   msg = "gameInfo installed";
-    // }
-    // Fluttertoast.showToast(
-    //     msg: 'gameInfo installed',
-    //     backgroundColor: Colors.grey,
-    //     textColor: Colors.black,
-    //     gravity: ToastGravity.CENTER);
+    await LaunchApp.openApp(androidPackageName: packageName, openStore: true);
 
-
-    debugPrint('------------- event.event check start');
-    DeviceApps.listenToAppsChanges().where(
-            (ApplicationEvent event) => event.packageName == gameInfo).listen((event) {
-      debugPrint('-------------${event.event}');
-      // Fluttertoast.showToast(
-      //     msg: event.event.toString(),
-      //     backgroundColor: Colors.grey,
-      //     textColor: Colors.black,
-      //     gravity: ToastGravity.CENTER);
-    });
-    debugPrint('------------- event.event check end');
-
-    await LaunchApp.openApp(
-        androidPackageName: gameInfo,
-        openStore: true);
-
-
-    return 1;
+    return true;
   }
 }

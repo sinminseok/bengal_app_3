@@ -191,8 +191,8 @@ class SignupPageState extends State<SignupPage> {
                       StorageController()
                           .signUp(nameController.text, emailController.text,
                               passwordController.text, repeatController.text)
-                          .then((value) => {
-                            if (value) {
+                          .then((ret) => {
+                            if (ret) {
                               Get.offAll(const LoginPage())
                             }
                             else {

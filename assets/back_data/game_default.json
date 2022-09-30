@@ -28,7 +28,7 @@
       "minCarLevel": 1,
       "depositPer": 100000,
       "limitAt": "2022-11-14 23:59:59",
-      "packageName": "com.kakaogames.umamusume"
+      "packageName": "com.axieinfinity.origin"
     },
     {
       "id": 3,
@@ -43,7 +43,7 @@
       "minCarLevel": 1,
       "depositPer": 150000,
       "limitAt": "2023-01-31 23:59:59",
-      "packageName": "com.kakaogames.umamusume"
+      "packageName": "com.lunosoft.bread"
     },
     {
       "id": 4,
@@ -58,7 +58,7 @@
       "minCarLevel": 1,
       "depositPer": 0,
       "limitAt": "2000-09-02 03:04:05",
-      "packageName": "com.kakaogames.umamusume"
+      "packageName": "com.supercell.clashroyale"
     },
     {
       "id": 5,
@@ -73,7 +73,7 @@
       "minCarLevel": 1,
       "depositPer": 0,
       "limitAt": "2000-09-02 03:04:05",
-      "packageName": "com.kakaogames.umamusume"
+      "packageName": "com.steemmonsters.splinterlands"
     },
     {
       "id": 6,
@@ -88,67 +88,7 @@
       "minCarLevel": 1,
       "depositPer": 0,
       "limitAt": "2000-09-02 03:04:05",
-      "packageName": "com.kakaogames.umamusume"
-    },
-    {
-      "id": 7,
-      "title": "Rise of Kingdoms",
-      "category": 3,
-      "perPerDay": 0.0,
-      "perPerPower": 0.0,
-      "xPerPerDay": 0.0,
-      "xPerPerPower": 0.01,
-      "needCarGrade": 1,
-      "needCarType": 0,
-      "minCarLevel": 1,
-      "depositPer": 0,
-      "limitAt": "2000-09-02 03:04:05",
-      "packageName": "com.kakaogames.umamusume"
-    },
-    {
-      "id": 8,
-      "title": "ROOMS! The Toymaker's Mansion",
-      "category": 3,
-      "perPerDay": 0.0,
-      "perPerPower": 0.0,
-      "xPerPerDay": 0.0,
-      "xPerPerPower": 0.01,
-      "needCarGrade": 1,
-      "needCarType": 0,
-      "minCarLevel": 1,
-      "depositPer": 0,
-      "limitAt": "2000-09-02 03:04:05",
-      "packageName": "com.kakaogames.umamusume"
-    },
-    {
-      "id": 9,
-      "title": "Jewel Match 3 Laser Quest",
-      "category": 3,
-      "perPerDay": 0.0,
-      "perPerPower": 0.0,
-      "xPerPerDay": 0.0,
-      "xPerPerPower": 0.01,
-      "needCarGrade": 1,
-      "needCarType": 0,
-      "minCarLevel": 1,
-      "depositPer": 0,
-      "limitAt": "2000-09-02 03:04:05",
-      "packageName": "com.kakaogames.umamusume"
-    },
-    {
-      "id": 10,
-      "title": "League of Masters: Legend MOBA",
-      "category": 3,
-      "perPerDay": 0.0,
-      "perPerPower": 0.0,
-      "xPerPerDay": 0.0,
-      "xPerPerPower": 0.01,
-      "needCarGrade": 1,
-      "needCarType": 0,
-      "minCarLevel": 1,
-      "depositPer": 0,
-      "limitAt": "2000-09-02 03:04:05",
-      "packageName": "com.kakaogames.umamusume"
+      "packageName": "com.lunosoft.puuung1"
     }
   ]
 }

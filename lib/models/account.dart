@@ -1,5 +1,6 @@
 import 'package:flinq/flinq.dart';
 import 'package:json_annotation/json_annotation.dart';
+
 part 'account.g.dart';
 
 @JsonSerializable()
@@ -8,34 +9,42 @@ class Account {
   final String password;
   final String email;
   final String name;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final bool enabled;
+  late final int power;
+  late double todayMiningPer = 0.0;
+  late double todayMiningXPer = 0.0;
 
-  Account(
-      this.id,
+  Account(this.id,
       this.password,
       this.email,
       this.name,
-      this.createdAt,
-      this.updatedAt,
-      [this.enabled = true]);
+      this.power,
+      [this.todayMiningPer = 0.0,
+        this.todayMiningXPer = 0.0]);
 
-  factory Account.fromJson(Map<String, dynamic> json) => _$AccountFromJson(json);
+  factory Account.fromJson(Map<String, dynamic> json) =>
+      _$AccountFromJson(json);
   Map<String, dynamic> toJson() => _$AccountToJson(this);
 
   bool isValidPassword(String password) => this.password == password;
+
+  bool mining(int output) {
+    if (output > power) return false;
+    power -= output;
+    return true;
+  }
+
+//todo: daily reset
+// charge
 }
 
 @JsonSerializable()
 class AccountList {
   final List<Account> list;
 
-  AccountList(
-      this.list
-      );
+  AccountList(this.list);
 
-  factory AccountList.fromJson(Map<String, dynamic> json) => _$AccountListFromJson(json);
+  factory AccountList.fromJson(Map<String, dynamic> json) =>
+      _$AccountListFromJson(json);
   Map<String, dynamic> toJson() => _$AccountListToJson(this);
 
   Account? getToId(int id) {
