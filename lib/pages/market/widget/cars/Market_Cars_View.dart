@@ -2,9 +2,6 @@ import 'package:bengal_app/models/car.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../Controller/storage_controller.dart';
-import '../../../../models/car.dart';
-import 'Market_Car_Card.dart';
 import 'Market_Car_Card2.dart';
 
 Widget Market_Cars_View(Size size, CarNftList nftList){

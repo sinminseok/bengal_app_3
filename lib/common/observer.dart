@@ -5,5 +5,5 @@ abstract class Subject {
 }
 
 abstract class Observer {
-  update();
+  updateObserver();
 }

@@ -4,7 +4,7 @@ import 'package:bengal_app/pages/lobby/widget/Game_play_Widget.dart';
 import 'package:bengal_app/pages/lobby/widget/Value_Container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../Controller/storage_controller.dart';
+import '../../controller/storage_controller.dart';
 import '../../common/string_configuration.dart';
 import '../../types/constants.dart';
 import '../../types/string_type.dart';

@@ -28,6 +28,10 @@ class Wallet {
   factory Wallet.fromJson(Map<String, dynamic> json) => _$WalletFromJson(json);
   Map<String, dynamic> toJson() => _$WalletToJson(this);
 
+  String balanceXPerString() => double.parse(balanceXPer.toStringAsFixed(2)).toString();
+  String balancePerString() => double.parse(balancePer.toStringAsFixed(2)).toString();
+  String balanceHavahString() => double.parse(balanceHavah.toStringAsFixed(2)).toString();
+
   bool isValidCredit(CoinType coinType, double amount) {
     switch (coinType) {
       case CoinType.XPer:
@@ -117,6 +121,11 @@ class OnChainWallet {
 
   factory OnChainWallet.fromJson(Map<String, dynamic> json) => _$OnChainWalletFromJson(json);
   Map<String, dynamic> toJson() => _$OnChainWalletToJson(this);
+
+  String balanceXPerString() => double.parse(balanceXPer.toStringAsFixed(2)).toString();
+  String balancePerString() => double.parse(balancePer.toStringAsFixed(2)).toString();
+  String balanceHavahString() => double.parse(balanceHavah.toStringAsFixed(2)).toString();
+  String balanceUsdcString() => double.parse(balanceUsdc.toStringAsFixed(2)).toString();
 
   bool isValidCredit(CoinType coinType, double amount) {
     switch (coinType) {

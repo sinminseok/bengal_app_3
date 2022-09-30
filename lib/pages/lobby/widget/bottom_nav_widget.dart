@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../../../Controller/Frame_controller/frame_controller.dart';
+import '../../../controller/Frame_controller/frame_controller.dart';
 import '../../../types/constants.dart';
 import '../../../utils/font.dart';
 

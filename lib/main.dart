@@ -1,14 +1,13 @@
 
-import 'package:bengal_app/Controller/Inventory_controller/enhance_controller.dart';
+import 'package:bengal_app/controller/Inventory_controller/enhance_controller.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:get/get_navigation/src/root/get_material_app.dart";
 import 'package:provider/provider.dart';
-import 'Controller/Frame_controller/frame_controller.dart';
-import 'Controller/Inventory_controller/mint_controller.dart';
-import 'Controller/storage_controller.dart';
+import 'controller/Frame_controller/frame_controller.dart';
+import 'controller/Inventory_controller/mint_controller.dart';
+import 'controller/storage_controller.dart';
 import "common/string_configuration.dart";
-
 import "pages/login/landing_page.dart";
 
 void main() {

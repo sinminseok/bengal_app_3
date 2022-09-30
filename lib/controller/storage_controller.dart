@@ -91,7 +91,7 @@ class StorageController implements Subject {
   @override
   notifyObserver() {
     _observers.map((observer) {
-      observer.update();
+      observer.updateObserver();
     }).toList();
   }
 
@@ -329,6 +329,7 @@ class StorageController implements Subject {
   // Account All Data Load
   Future<bool> loadPlayerData() async {
     var ret = loadWallet();
+    ret &= loadOnChainWallet();
     ret &= loadCarNftList();
     ret &= loadBoxNftList();
     ret &= await loadGameList();
@@ -397,24 +398,20 @@ class StorageController implements Subject {
     carNftList = CarNftList([]);
     boxNftList = BoxNftList([]);
     transferHistory = TransferHistoryList([]);
-    // gameList = GameInfoList([]);
-    // gameDemandList = GameInfoList([]);
 
     if (!(await saveAccount())) return false;
     if (!(await saveWallet())) return false;
+    if (!(await saveOnChainWallet())) return false;
     if (!(await saveCarNftList())) return false;
     if (!(await saveBoxNftList())) return false;
     if (!(await saveTransferHistory())) return false;
-    // if (!(await saveGameList())) return false;
-    // if (!(await saveGameDemandList())) return false;
+
     account = null;
     wallet = null;
     onChainWallet = null;
     carNftList = null;
     boxNftList = null;
     transferHistory = null;
-    // gameList = null;
-    // gameDemandList = null;
 
     return await _prefs.setInt(describeEnum(StorageKey.baseId), ++_baseId);
   }

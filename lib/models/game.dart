@@ -40,8 +40,8 @@ class GameInfo {
   Map<String, dynamic> toJson() => _$GameInfoToJson(this);
 
   String titleString() {
-    if (14 > title.length) return title;
-    return "${title.substring(0, 13)}...";
+    if (12 > title.length) return title;
+    return "${title.substring(0, 11)}...";
   }
 
   String limitAtString() {

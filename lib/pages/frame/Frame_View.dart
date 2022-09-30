@@ -1,10 +1,10 @@
-import 'package:bengal_app/Controller/Frame_controller/frame_controller.dart';
+import 'package:bengal_app/controller/Frame_controller/frame_controller.dart';
 import 'package:bengal_app/pages/frame/widget/Coin_Widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-import '../../Controller/storage_controller.dart';
+import '../../controller/storage_controller.dart';
 import '../../common/observer.dart';
 import '../../common/string_configuration.dart';
 import '../../types/constants.dart';
@@ -35,7 +35,6 @@ class _Frame_View extends State<Frame_View>  implements Observer {
     StorageController().registerObserver(this);
   }
 
-  @override
   update() {
     setState(() {
       // select.convert(3);
@@ -46,6 +45,11 @@ class _Frame_View extends State<Frame_View>  implements Observer {
     setState(() {
       select.convert(3);
     });
+  }
+
+  @override
+  updateObserver() {
+    setState(() {});
   }
 
   @override
@@ -115,29 +119,31 @@ class _Frame_View extends State<Frame_View>  implements Observer {
                   // SizedBox(
                   //   width: size.width * 0.1,
                   // ),
-                  Row(
-
-                    //mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Coin_Widget("xper_icon", StorageController().wallet!.balanceXPer.toString()),
-                        Coin_Widget("per_icon", StorageController().wallet!.balancePer.toString()),
-                        Coin_Widget("havah_icon", StorageController().wallet!.balanceHavah.toString()),
-                        InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  PageTransition(
-                                      type: PageTransitionType.rightToLeft,
-                                      child: Wallet_View()));
-                            },
-                            child: Image.asset(
-                              "assets/images/lobby/icons/appbar_icons/btn_wallet.png",
-                              width: 40.w,
-                              height: 40.h,
-                              fit: BoxFit.fill,
-                            ))
-                      ]),
+                  SizedBox(
+                    height: 40.h,
+                    child: Row(
+                        //mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Coin_Widget("xper_icon", StorageController().wallet!.balanceXPerString()),
+                          Coin_Widget("per_icon", StorageController().wallet!.balancePerString()),
+                          Coin_Widget("havah_icon", StorageController().wallet!.balanceHavahString()),
+                          InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    PageTransition(
+                                        type: PageTransitionType.rightToLeft,
+                                        child: Wallet_View()));
+                              },
+                              child: Image.asset(
+                                "assets/images/lobby/icons/appbar_icons/btn_wallet.png",
+                                width: 40.w,
+                                height: 40.h,
+                                fit: BoxFit.fill,
+                              ))
+                        ]),
+                  ),
                 ],
               ),
             ),
@@ -160,7 +166,7 @@ class _Frame_View extends State<Frame_View>  implements Observer {
             ],
             onChange: (val) {
               setState(() {
-                print("setstate$val");
+
                 select.convert(val);
 
               });

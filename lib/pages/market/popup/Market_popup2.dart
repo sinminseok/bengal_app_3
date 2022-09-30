@@ -2,7 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../Controller/storage_controller.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import '../../../controller/storage_controller.dart';
 import '../../../common/string_configuration.dart';
 import '../../../models/car.dart';
 import '../../../types/constants.dart';
@@ -114,161 +115,171 @@ class Market_popup2 {
                                 border: Border.all(color: Colors.grey.shade300),
                                 borderRadius:
                                 const BorderRadius.all(Radius.circular(5))),
-                            child: Column(
-                              children: [
-                                Container(
-                                  margin:
-                                  EdgeInsets.fromLTRB(20.w, 17.h, 20.w, 0.h),
-                                  width: 200.w,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        StringConfiguration().uiString(UiStringType
-                                            .MARKET_TAB_CARS_BUYPOPUP_02),
-                                        style: Font.lato(const Color(0xFF746F7B),
-                                            FontWeight.w400, 12.sp),
-                                      ),
-                                      Text(
-                                        carNft.getCarTypeString(),
-                                        style: Font.lato(const Color(0xFF8B80F8),
-                                            FontWeight.bold, 12.sp),
-                                      )
-                                    ],
-                                  ),
-                                ),
-
-                                Container(
-                                  margin:
-                                  EdgeInsets.fromLTRB(20.w, 10.h, 20.w, 0.h),
-                                  width: 200.w,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        StringConfiguration().uiString(UiStringType
-                                            .MARKET_TAB_CARS_BUYPOPUP_03),
-                                        style: Font.lato(const Color(0xFF746F7B),
-                                            FontWeight.w400, 12.sp),
-                                      ),
-                                      Text(
-                                        carNft.getCarGradeString().toUpperCase(),
-                                        style: Font.lato(const Color(0xFF8B80F8),
-                                            FontWeight.bold, 12.sp),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  margin:
-                                  EdgeInsets.fromLTRB(20.w, 10.h, 20.w, 0.h),
-                                  width: 200.w,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        StringConfiguration().uiString(UiStringType
-                                            .MARKET_TAB_CARS_BUYPOPUP_04),
-                                        style: Font.lato(const Color(0xFF746F7B),
-                                            FontWeight.w400, 12.sp),
-                                      ),
-                                      Text(
-                                        "${carNft.level}",
-                                        style: Font.lato(const Color(0xFF8B80F8),
-                                            FontWeight.bold, 12.sp),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  margin:
-                                  EdgeInsets.fromLTRB(20.w, 10.h, 20.w, 0.h),
-                                  width: 200.w,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        StringConfiguration().uiString(UiStringType
-                                            .MARKET_TAB_CARS_BUYPOPUP_05),
-                                        style: Font.lato(const Color(0xFF746F7B),
-                                            FontWeight.w400, 12.sp),
-                                      ),
-                                      Text(
-                                        "${carNft.mintingCount}",
-                                        style: Font.lato(const Color(0xFF8B80F8),
-                                            FontWeight.bold, 12.sp),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            width: 260.w,
-                            height: 36.h,
-                            margin: EdgeInsets.fromLTRB(20.w, 5.h, 20.w, 15.h),
-                            decoration: BoxDecoration(
-                                border: Border.all(color: kPrimaryColor),
-                                borderRadius:
-                                const BorderRadius.all(Radius.circular(5))),
-                            child: Container(
-                              margin: EdgeInsets.fromLTRB(20.w, 3.h, 20.w, 0.h),
+                        child: Column(
+                          children: [
+                            Container(
+                              margin:
+                                  EdgeInsets.fromLTRB(20.w, 20.h, 20.w, 0.h),
+                              width: 101.w,
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    StringConfiguration().uiString(
-                                        UiStringType.MARKET_TAB_CARS_BUYPOPUP_06),
-                                    style: Font.lato(
-                                        kPrimaryColor, FontWeight.bold, 14.sp),
+                                    StringConfiguration().uiString(UiStringType
+                                        .MARKET_TAB_CARS_BUYPOPUP_02),
+                                    style: Font.lato(const Color(0xFF746F7B),
+                                        FontWeight.w400, 12.sp),
                                   ),
                                   Text(
-                                    "${carNft.price} ${StringConfiguration().uiString(UiStringType.TOKEN_NAME_03)}",
-                                    style: Font.lato(
-                                        kPrimaryColor, FontWeight.bold, 14.sp),
+                                    carNft.getCarTypeString(),
+                                    style: Font.lato(const Color(0xFF8B80F8),
+                                        FontWeight.bold, 12.sp),
                                   )
                                 ],
                               ),
                             ),
-                          ),
-                          ElevatedButton(
-                            style: ButtonStyle(
-                              elevation: MaterialStateProperty.all(0),
-                              backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
-                            ),
-                            onPressed: () {
-                              StorageController().buyCar(carNft);
-                              Navigator.of(context).pop();
-                            },
-                            child: Container(
-                              width: 120.w,
-                              height: 34.h,
-                              decoration: const BoxDecoration(
-                                  color: kPrimaryColor,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(35))),
-                              child: Center(
-                                child: Text(
-                                  StringConfiguration().uiString(
-                                      UiStringType.MARKET_TAB_CARS_BUYPOPUP_07),
-                                  style: Font.lato(
-                                      Colors.white, FontWeight.bold, 14.sp),
-                                ),
+                            Container(
+                              margin:
+                                  EdgeInsets.fromLTRB(20.w, 15.h, 20.w, 0.h),
+                              width: 200.w,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    StringConfiguration().uiString(UiStringType
+                                        .MARKET_TAB_CARS_BUYPOPUP_03),
+                                    style: Font.lato(const Color(0xFF746F7B),
+                                        FontWeight.w400, 12.sp),
+                                  ),
+                                  Text(
+                                    carNft.getCarGradeString().toUpperCase(),
+                                    style: Font.lato(const Color(0xFF8B80F8),
+                                        FontWeight.bold, 12.sp),
+                                  )
+                                ],
                               ),
                             ),
-                          )
-                        ],
-                      )),
-                ],
-              )
-            ),
-          );
+                            Container(
+                              margin:
+                                  EdgeInsets.fromLTRB(20.w, 15.h, 20.w, 0.h),
+                              width: 200.w,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    StringConfiguration().uiString(UiStringType
+                                        .MARKET_TAB_CARS_BUYPOPUP_04),
+                                    style: Font.lato(const Color(0xFF746F7B),
+                                        FontWeight.w400, 12.sp),
+                                  ),
+                                  Text(
+                                    "${carNft.level}",
+                                    style: Font.lato(const Color(0xFF8B80F8),
+                                        FontWeight.bold, 12.sp),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin:
+                                  EdgeInsets.fromLTRB(20.w, 15.h, 20.w, 0.h),
+                              width: 200.w,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    StringConfiguration().uiString(UiStringType
+                                        .MARKET_TAB_CARS_BUYPOPUP_05),
+                                    style: Font.lato(const Color(0xFF746F7B),
+                                        FontWeight.w400, 12.sp),
+                                  ),
+                                  Text(
+                                    "${carNft.mintingCount}",
+                                    style: Font.lato(const Color(0xFF8B80F8),
+                                        FontWeight.bold, 12.sp),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 260.w,
+                        height: 36.h,
+                        margin: EdgeInsets.fromLTRB(20.w, 5.h, 20.w, 0.h),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: kPrimaryColor),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(5))),
+                        child: Container(
+                          margin: EdgeInsets.fromLTRB(20.w, 3.h, 20.w, 0.h),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                StringConfiguration().uiString(
+                                    UiStringType.MARKET_TAB_CARS_BUYPOPUP_06),
+                                style: Font.lato(
+                                    kPrimaryColor, FontWeight.bold, 14.sp),
+                              ),
+                              Text(
+                                "${carNft.price} ${StringConfiguration().uiString(UiStringType.TOKEN_NAME_03)}",
+                                style: Font.lato(
+                                    kPrimaryColor, FontWeight.bold, 14.sp),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          elevation: MaterialStateProperty.all(0),
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white),
+                        ),
+                        onPressed: () {
+                          StorageController().buyCar(carNft).then((ret) => {
+                            if (ret) {
+                              Fluttertoast.showToast(
+                                  msg: StringConfiguration().uiString(UiStringType.TOAST_MESSAGE_09),
+                                  backgroundColor: Colors.grey,
+                                  textColor: Colors.black,
+                                  gravity: ToastGravity.CENTER)
+                            } else {
+                              Fluttertoast.showToast(
+                                  msg: StringConfiguration().uiString(UiStringType.TOAST_MESSAGE_08),
+                                  backgroundColor: Colors.grey,
+                                  textColor: Colors.black,
+                                  gravity: ToastGravity.CENTER)
+                            }
+                          });
+                          Navigator.of(context).pop();
+                        },
+                        child: Container(
+                          width: 120.w,
+                          height: 34.h,
+                          decoration: const BoxDecoration(
+                              color: kPrimaryColor,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(35))),
+                          child: Center(
+                            child: Text(
+                              StringConfiguration().uiString(
+                                  UiStringType.MARKET_TAB_CARS_BUYPOPUP_07),
+                              style: Font.lato(
+                                  Colors.white, FontWeight.bold, 14.sp),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  )),
+            ])));
         });
   }
 }

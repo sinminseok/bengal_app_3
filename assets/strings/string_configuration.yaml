@@ -122,11 +122,11 @@
     },
     {
       "code": "TOAST_MESSAGE_02",
-      "msg": "Treansaction submitted (Can take a few minutes)"
+      "msg": "Confirm"
     },
     {
       "code": "TOAST_MESSAGE_03",
-      "msg": "Account creation complete"
+      "msg": "Confirm"
     },
     {
       "code": "TOAST_MESSAGE_04",
@@ -135,6 +135,50 @@
     {
       "code": "TOAST_MESSAGE_05",
       "msg": "Database Reset"
+    },
+    {
+      "code": "TOAST_MESSAGE_06",
+      "msg": "You can't play because the conditions are not met."
+    },
+    {
+      "code": "TOAST_MESSAGE_07",
+      "msg": "Stat points are used."
+    },
+    {
+      "code": "TOAST_MESSAGE_08",
+      "msg": "The cost is insufficient."
+    },
+    {
+      "code": "TOAST_MESSAGE_09",
+      "msg": "Your purchase has been completed."
+    },
+    {
+      "code": "TOAST_MESSAGE_10",
+      "msg": "Repair completed."
+    },
+    {
+      "code": "TOAST_MESSAGE_11",
+      "msg": "Leveling Start!"
+    },
+    {
+      "code": "TOAST_MESSAGE_12",
+      "msg": "Level up completed."
+    },
+    {
+      "code": "TOAST_MESSAGE_13",
+      "msg": "Market listing completed."
+    },
+    {
+      "code": "TOAST_MESSAGE_14",
+      "msg": "Copy completed."
+    },
+    {
+      "code": "TOAST_MESSAGE_15",
+      "msg": "Wrong Passcode"
+    },
+    {
+      "code": "TOAST_MESSAGE_16",
+      "msg": "Cancel Completed."
     },
     {
       "code": "LOGIN_01",

@@ -2,9 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-
-import '../../../../Controller/Inventory_controller/mint_controller.dart';
-import '../../../../Controller/storage_controller.dart';
+import '../../../../controller/Inventory_controller/mint_controller.dart';
+import '../../../../controller/storage_controller.dart';
 import '../../../../models/car.dart';
 import '../../../../types/constants.dart';
 import '../../../inventory/widget/dropdown_button/DropdownButton2.dart';
