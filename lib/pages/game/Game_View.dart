@@ -67,7 +67,7 @@ class _Game_ViewState extends State<Game_View> {
                 height: _hegith,
                 decoration: BoxDecoration(
                   border:
-                      Border(bottom: BorderSide(color: Colors.grey.shade300)),
+                      Border(top: BorderSide(color: Colors.grey.shade300), bottom: BorderSide(color: Colors.grey.shade300)),
                 ),
                 child: Column(
                   children: [

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import '../../../Controller/Frame_controller/frame_controller.dart';
 import '../../../types/constants.dart';
 import '../../../utils/font.dart';
 
@@ -21,6 +23,7 @@ class CustomBottomNavigationBar extends StatefulWidget {
 }
 
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
+  var select;
   int _selectedIndex = 0;
   List<String> _iconList = [];
   List<String> _titleList = [];
@@ -39,6 +42,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   Widget build(BuildContext context) {
     List<Widget> _navBarItemList = [];
     List<String> _navBarStringList = [];
+    select = Provider.of<Frame_Controller>(context, listen: false);
 
     for (var i = 0; i < _iconList.length; i++) {
       _navBarItemList.add(buildNavBarItem(_iconList[i], i, _titleList[i]));
@@ -58,14 +62,14 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       onTap: () {
         widget.onChange(index);
         setState(() {
-          _selectedIndex = index;
+          select.selectedItem = index;
         });
       },
       child: Container(
         height: 50.h,
         width: 60.w,
         margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 0.h),
-        decoration: index == _selectedIndex
+        decoration: index == select.selectedItem
             ? BoxDecoration(
                 border: Border(
                   top: BorderSide(
@@ -86,11 +90,11 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               ImageIcon(
                 size: 30,
                 AssetImage(icon),
-                color: index == _selectedIndex ? kPrimaryColor : Colors.grey,
+                color: index == select.selectedItem ? kPrimaryColor : Colors.grey,
               ),
               Text(
                 "$title",
-                style: index == _selectedIndex
+                style: index == select.selectedItem
                     ? Font.lato(kPrimaryColor, FontWeight.w400, 8.sp)
                     : Font.lato(
                         const Color(0xFFBAB8C4), FontWeight.w400, 8.sp),

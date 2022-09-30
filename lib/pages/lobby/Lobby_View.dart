@@ -4,13 +4,16 @@ import 'package:bengal_app/pages/lobby/widget/Game_play_Widget.dart';
 import 'package:bengal_app/pages/lobby/widget/Value_Container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import '../../Controller/Frame_controller/frame_controller.dart';
 import '../../common/string_configuration.dart';
 import '../../types/constants.dart';
 import '../../types/string_type.dart';
 import '../../utils/font.dart';
 
 class Lobby_View extends StatefulWidget {
-  const Lobby_View({Key? key}) : super(key: key);
+  Function see_all_fun;
+   Lobby_View({Key? key,required this.see_all_fun}) : super(key: key);
 
   @override
   _Lobby_ViewState createState() => _Lobby_ViewState();
@@ -18,9 +21,12 @@ class Lobby_View extends StatefulWidget {
 
 class _Lobby_ViewState extends State<Lobby_View> {
   bool current_car = true;
+  var select;
+
 
   @override
   Widget build(BuildContext context) {
+    select = Provider.of<Frame_Controller>(context, listen: false);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: kAppbarColor,
@@ -121,7 +127,12 @@ class _Lobby_ViewState extends State<Lobby_View> {
                   ),
                   InkWell(
                     onTap: () {
-                      print("movee");
+                      setState(() {
+                        widget.see_all_fun();
+
+                        //select.convert(3);
+
+                      });
                     },
                     child: Text(
                       StringConfiguration()

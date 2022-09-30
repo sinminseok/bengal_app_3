@@ -7,7 +7,7 @@ import '../../../../types/constants.dart';
 
 Widget CarBox_Info_Widget(){
   return  Container(
-    margin: EdgeInsets.fromLTRB(10.w, 0.h, 15.w, 0.h),
+    margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
 
     child: Column(
       children: [
@@ -15,9 +15,9 @@ Widget CarBox_Info_Widget(){
           children: [
 
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 10.h),
-              width: 80.w,
-              height: 80.h,
+              margin: EdgeInsets.fromLTRB(14.w, 0.h, 0.w, 0.h),
+              width: 65.w,
+              height: 65.h,
               child: Image.asset(
                 "assets/images/inventory/car_boxes/box_epic.png",
 
@@ -29,13 +29,13 @@ Widget CarBox_Info_Widget(){
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 6.h),
-                  child: Text("EPIC"),
+                  margin: EdgeInsets.fromLTRB(28.w, 0.h, 0.w, 6.h),
+                  child: Text("EPIC",style: TextStyle(color: Colors.grey.shade600,fontSize: 10.sp,fontWeight: FontWeight.bold),),
                 ),
                 Container(
-                  width: 63.8.w,
-                  height: 18.h,
-                  margin: EdgeInsets.fromLTRB(0.w, 7.h, 0.w, 20.h),
+                  width: 70.w,
+                  height: 15.h,
+                  margin: EdgeInsets.fromLTRB(28.w, 0.h, 0.w, 0.h),
 
                   decoration: BoxDecoration(
                     border: Border.all(
@@ -46,13 +46,13 @@ Widget CarBox_Info_Widget(){
                     ),
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                     children: [
                       Container(
                         width:
-                        12.w,
+                        11.w,
                         height:
-                        12.h,
+                        11.h,
                         decoration: BoxDecoration(
                             color:
                             kPrimaryColor,
@@ -62,13 +62,13 @@ Widget CarBox_Info_Widget(){
                           children: [
 
                             Container(
-                              margin: EdgeInsets.fromLTRB(3.2.w, 0.h, 0.w, 0.h),
+                              margin: EdgeInsets.fromLTRB(2.3.w, 0.6.h, 0.w, 0.h),
 
                               child: Text(
                                 "#",
                                 style: TextStyle(
                                     color: Colors
-                                        .white,fontSize: 9),
+                                        .white,fontSize: 7.sp),
                               ),
                             ),
                           ],
@@ -76,12 +76,12 @@ Widget CarBox_Info_Widget(){
                       ),
 
                       Container(
-                        margin: EdgeInsets.fromLTRB(1.w, 1.h, 5.w, 0.h),
+                        margin: EdgeInsets.fromLTRB(2.4.w, 0.h, 0.w, 0.h),
 
                         child: Text(
-                          "123151232",
+                          "324543478",
                           style: TextStyle(
-                              fontSize: 9),
+                              fontSize: 8.sp),
                         ),
                       )
                     ],
@@ -94,7 +94,7 @@ Widget CarBox_Info_Widget(){
         Container(
           width: 260.w,
           height: 1.h,
-          color: Colors.grey,
+          color: Colors.grey.shade300,
         ),
 
       ],

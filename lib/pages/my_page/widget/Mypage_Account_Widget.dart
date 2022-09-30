@@ -20,10 +20,10 @@ Widget Mypage_Account_Widget(Size size,BuildContext context){
           Row(
             children: [
               Container(
-                margin: EdgeInsets.fromLTRB(17.w, 10.h, 0.w, 0.h),
+                margin: EdgeInsets.fromLTRB(17.w, 0.h, 0.w, 0.h),
 
-                width: 76.w,
-                height: 76.h,
+                width: 80.w,
+                height: 80.h,
                 child: Stack(
                   children: [
                     Container(
@@ -35,8 +35,8 @@ Widget Mypage_Account_Widget(Size size,BuildContext context){
                       ),
                     ),
                     Positioned(
-                        left: 54.06.w,
-                        top: 54.h,
+                        left: 52.06.w,
+                        top: 53.h,
 
                         child: InkWell(
                             onTap: (){

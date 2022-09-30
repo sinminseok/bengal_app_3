@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../popup/selected_box.dart';
+import '../popup/selected_box_popup.dart';
 import 'box_container_detail_widget.dart';
 
 class BoxContainer_Widget extends StatefulWidget {

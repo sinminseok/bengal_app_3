@@ -29,14 +29,15 @@ class _Workshop_ViewState extends State<Workshop_View> {
         child: Column(
           children: [
             Container(
+
               width: 390.w,
-              height: 64.h,
+              height: 90.h,
               decoration: BoxDecoration(
                 color: Colors.white,
-                border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
+                border: Border(top: BorderSide(color: Colors.grey.shade300), bottom: BorderSide(color: Colors.grey.shade300)),
               ),
               child: Container(
-                margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+                margin: EdgeInsets.fromLTRB(15.w, 23.h, 15.w, 0.h),
                 child: Column(
                   children: [
                     Row(

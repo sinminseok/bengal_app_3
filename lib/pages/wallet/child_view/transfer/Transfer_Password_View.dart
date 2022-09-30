@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 import '../../../../types/constants.dart';
@@ -35,21 +36,35 @@ class _Transfer_Password_ViewState extends State<Transfer_Password_View> {
             Center(
                 child: Image.asset(
                   "assets/images/wallet/logo.png",
-                  width: size.width * 0.6,
+                  width: 191.w,
+                  height: 30.h,
                 )),
-            SizedBox(
-              height: size.height * 0.03,
+
+            Container(
+              width: 160.w,
+              height: 30.h,
+              margin: EdgeInsets.fromLTRB(0.w, 25.h, 0.w, 0.h),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                border: Border.all(
+                  color: Colors.white
+                )
+              ),
+
+              child: Center(
+                child: Text("Secured Wallet",
+                    style: TextStyle(color: Colors.white, fontSize: 16.sp,fontWeight: FontWeight.w700)),
+              ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+
+            Container(
+              margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
+
               child: Text("ENTER YOUR PASSWORD",
-                  style: TextStyle(color: Colors.white, fontSize: 12)),
+                  style: TextStyle(color: Colors.grey.shade200, fontSize: 10.sp)),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Wallet_Transfer_password_Widget(),
-            )
+            Wallet_Transfer_password_Widget(),
 
 
           ],

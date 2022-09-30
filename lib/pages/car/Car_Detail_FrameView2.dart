@@ -404,8 +404,9 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                       ),
                       InkWell(
                         onTap: () {
-                          Car_Detail_popup()
-                              .showDialog_view_button(size, context);
+                          //피그마 최신 자료에 빠져있길래 일단 뺌
+                          // Car_Detail_popup()
+                          //     .showDialog_view_button(size, context);
                         },
                         child: Container(
                           margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),

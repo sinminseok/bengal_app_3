@@ -211,7 +211,7 @@ class Repair_popup {
           },
         );
       },
-      animationType: DialogTransitionType.fade,
+      animationType: DialogTransitionType.slideFromBottom,
     );
   }
 }
