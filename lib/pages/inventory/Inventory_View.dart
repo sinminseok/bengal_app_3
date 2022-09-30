@@ -41,7 +41,7 @@ class _Inventory_ViewState extends State<Inventory_View> {
               height: 120.h,
               decoration: BoxDecoration(
                 border:
-                Border(bottom: BorderSide(color: Colors.grey.shade300)),
+                Border(top: BorderSide(color: Colors.grey.shade300), bottom: BorderSide(color: Colors.grey.shade300)),
               ),
               child: Column(
                 children: [

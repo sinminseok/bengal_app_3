@@ -20,7 +20,7 @@ class Car_detail_popup {
           return Stack(
             children: [
               Positioned(
-                  bottom: 660.h,
+                  bottom: 680.h,
                   left: 300.w,
                   child: GestureDetector(
                       onTap: () {
@@ -35,7 +35,7 @@ class Car_detail_popup {
                   style: TextStyle(fontSize: 16, color: Colors.black),
                   child: Container(
                       width: 300.w,
-                      height: 503.h,
+                      height: 540.h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.white,
@@ -358,5 +358,5 @@ class Car_detail_popup {
             ],
           );
         });
-  }
+      }
 }

@@ -113,11 +113,18 @@ class _Transfer_DrawerState extends State<Transfer_Drawer> {
                               border: Border.all(color: Colors.grey),
                               borderRadius:
                               BorderRadius.all(Radius.circular(10))),
-                          child: ListView(
-                            children: [
-                              Car_Info_Widet(),
-                              Car_Info_Widet()
-                            ],
+                          child: ListView.builder(
+                              padding: MediaQuery.of(context).padding.copyWith(
+                                left: 0,
+                                right: 0,
+                                bottom: 0,
+                                top: 10
+                              ),
+                              itemCount: 5,
+                              itemBuilder: (BuildContext ctx, int idx) {
+                                return Car_Info_Widet();
+                              }
+
                           ),
                         )
                             : Container()
@@ -188,13 +195,18 @@ class _Transfer_DrawerState extends State<Transfer_Drawer> {
                               BorderRadius.all(Radius.circular(10))),
                           child: Padding(
                             padding: const EdgeInsets.only(bottom: 8.0),
-                            child: ListView(
-                              children: [
-                                CarBox_Info_Widget(),
-                                CarBox_Info_Widget(),
-                                CarBox_Info_Widget(),
+                            child: ListView.builder(
+                                padding: MediaQuery.of(context).padding.copyWith(
+                                    left: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                    top: 10
+                                ),
+                                itemCount: 5,
+                                itemBuilder: (BuildContext ctx, int idx) {
+                                  return CarBox_Info_Widget();
+                                }
 
-                              ],
                             ),
                           ),
                         )

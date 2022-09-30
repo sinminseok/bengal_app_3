@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:get/get_navigation/src/root/get_material_app.dart";
 import 'package:provider/provider.dart';
+import 'Controller/Frame_controller/frame_controller.dart';
 import 'Controller/Inventory_controller/mint_controller.dart';
 import 'Controller/storage_controller.dart';
 import "common/string_configuration.dart";
@@ -14,7 +15,8 @@ void main() {
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (context) => Enhance_Controller()),
-      ChangeNotifierProvider(create: (contextn) => Mint_Controller(),)
+      ChangeNotifierProvider(create: (contextn) => Mint_Controller(),),
+      ChangeNotifierProvider(create: (context) => Frame_Controller())
 
     ], child: MainApp()),
   );

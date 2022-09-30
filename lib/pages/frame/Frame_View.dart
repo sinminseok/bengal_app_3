@@ -1,3 +1,4 @@
+import 'package:bengal_app/Controller/Frame_controller/frame_controller.dart';
 import 'package:bengal_app/pages/frame/widget/Coin_Widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,6 +27,7 @@ class Frame_View extends StatefulWidget {
 
 class _Frame_View extends State<Frame_View>  implements Observer {
   int _selectedItem = 0;
+  var select;
 
   @override
   void initState() {
@@ -35,13 +37,16 @@ class _Frame_View extends State<Frame_View>  implements Observer {
 
   @override
   update() {
-    setState(() {});
+    setState(() {
+      select.convert(3);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    select = Provider.of<Frame_Controller>(context, listen: false);
     final screens = [
-      Lobby_View(),
+      Lobby_View(see_all_fun: update),
       Inventory_View(),
       Workshop_View(),
       Game_View(
@@ -152,13 +157,14 @@ class _Frame_View extends State<Frame_View>  implements Observer {
             ],
             onChange: (val) {
               setState(() {
-                print(val);
-                _selectedItem = val;
+
+                select.convert(val);
+
               });
             },
             defaultSelectedIndex: 0,
           ),
-          body: screens[_selectedItem]),
+          body: screens[select.selectedItem]),
     );
   }
 
