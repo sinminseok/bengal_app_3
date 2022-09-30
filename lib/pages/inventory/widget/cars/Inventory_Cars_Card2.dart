@@ -29,8 +29,8 @@ Widget Inventory_Car_Card2(
           },
           child: Container(
 
-            width: 175.w,
-            height: 270.h,
+            width: 170.w,
+            height: 252.h,
             decoration: BoxDecoration(
               border: Border.all(color: color),
               borderRadius: BorderRadius.all(
@@ -53,15 +53,18 @@ Widget Inventory_Car_Card2(
                   ],
                 ),
                 //car img
-                Image.asset(
-                  "assets/images/common/cars/car1.png",
-                  width: 150.w,
-                  height: 86.h,
-                  fit: BoxFit.fill,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.asset(
+                    "assets/images/common/cars/car1.png",
+                    width: 150.w,
+                    height: 86.72,
+                    fit: BoxFit.fill,
+                  ),
                 ),
                 //nftID
                 Container(
-                  margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
+                  margin: EdgeInsets.fromLTRB(0.w, 6.h, 0.w, 0.h),
                   width: 140.w,
                   height: 20.h,
                   decoration: BoxDecoration(
@@ -102,7 +105,7 @@ Widget Inventory_Car_Card2(
                 ),
                 // Level
                 Container(
-                  margin: EdgeInsets.fromLTRB(63.w, 5.h, 3.w, 0.h),
+                  margin: EdgeInsets.fromLTRB(63.w, 3.h, 3.w, 0.h),
                   child: Row(
                     children: [
                       Text(
@@ -125,7 +128,7 @@ Widget Inventory_Car_Card2(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      margin: EdgeInsets.fromLTRB(8.w, 1.h, 10.w, 5.h),
+                      margin: EdgeInsets.fromLTRB(8.w, 1.h, 8.w, 5.h),
                       child: Column(
                         children: [
                           Image.asset(
@@ -201,7 +204,8 @@ Widget Inventory_Car_Card2(
                     width: 150.w,
                     lineHeight: 8.0,
                     percent: 0.9,
-                    progressColor: Colors.green.shade400,
+                    backgroundColor:Colors.grey.shade200,
+                    progressColor:Color(0xff15BEA0),
                   ),
                 ),
                 Container(
@@ -252,7 +256,7 @@ Widget Inventory_Car_Card2(
           ),
         ),
         Positioned(
-            left: 5.w,
+            left: -1.w,
             top: 7.h,
             child: Text(
               carNft.getCarTypeString().toUpperCase(),

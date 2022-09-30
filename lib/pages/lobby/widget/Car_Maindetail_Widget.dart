@@ -113,6 +113,8 @@ Widget Car_Maindetail_Widget(BuildContext context, CarNft carNft){
                   width: 330.w,
                   lineHeight: 15.h,
                   percent: 0.5,
+                  backgroundColor: Colors.grey.shade200,
+
                   progressColor: const Color(0xFFF4C84D),
                 ),
                 SizedBox(height: 5.h),
@@ -124,6 +126,7 @@ Widget Car_Maindetail_Widget(BuildContext context, CarNft carNft){
                       width: 239.w,
                       lineHeight: 4.h,
                       percent: 0.7,
+                      backgroundColor: Colors.grey.shade200,
                       progressColor: const Color(0xFFF4C84D),
                     ),
                     Text(

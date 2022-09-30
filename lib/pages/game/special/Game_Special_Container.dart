@@ -38,11 +38,17 @@ Widget Game_Special_Container(GameInfo game) {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                        Container(
+                          width:137.w,
+                          child: Text(
+                            overflow: TextOverflow.ellipsis,
                             game.titleString(),
                             style: Font.lato(const Color(0xFF342B35),
                                 FontWeight.bold, 20.sp),
                           ),
+                        ),
+
+
                           Text(
                             game.limitAtString(),
                             style: Font.lato(
@@ -168,7 +174,7 @@ Widget Game_Special_Container(GameInfo game) {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    margin: EdgeInsets.fromLTRB(15.w, 9.h, 0.w, 0.h),
+                    margin: EdgeInsets.fromLTRB(15.w, 3.h, 0.w, 0.h),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -186,7 +192,7 @@ Widget Game_Special_Container(GameInfo game) {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(0.w, 6.h, 15.w, 0.h),
+                    margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
                     child: Row(
                       children: [
                         Container(

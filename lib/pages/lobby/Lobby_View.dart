@@ -144,9 +144,10 @@ class _Lobby_ViewState extends State<Lobby_View> {
             Container(
               margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
               child: SizedBox(
-                //width: 360.w,
+                // width: 390.w,
                 height: 100.h,
-                child: ListView.builder(
+                child: PageView.builder(
+                    controller: PageController(viewportFraction: 0.9.w),
                     //사용할 게임수 builder
                     itemCount: StorageController().gameList!.list.length,
                     scrollDirection: Axis.horizontal,
