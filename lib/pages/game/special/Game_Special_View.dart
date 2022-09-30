@@ -7,7 +7,7 @@ import 'Game_Special_Container.dart';
 Widget Game_Special_View(List<GameInfo> gameList) {
   return Container(
     //width: 360.w,
-    height: 540.h,
+    height: 520.h,
     child: ListView.builder(
         itemCount: gameList.length,
         itemBuilder: (BuildContext ctx, int idx) {

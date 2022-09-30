@@ -13,9 +13,9 @@ import '../inventory/widget/dropdown_button/DropdownButton2.dart';
 import 'normal/Game_Normal_View.dart';
 
 class Game_View extends StatefulWidget {
-  BuildContext frame_context;
 
-  Game_View({Key? key, required this.frame_context}) : super(key: key);
+
+  Game_View({Key? key}) : super(key: key);
 
   @override
   _Game_ViewState createState() => _Game_ViewState();
@@ -66,6 +66,8 @@ class _Game_ViewState extends State<Game_View> {
                 width: 390.w,
                 height: _hegith,
                 decoration: BoxDecoration(
+                  color: Colors.white,
+
                   border:
                       Border(top: BorderSide(color: Colors.grey.shade300), bottom: BorderSide(color: Colors.grey.shade300)),
                 ),

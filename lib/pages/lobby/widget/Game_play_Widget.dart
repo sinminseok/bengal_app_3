@@ -20,7 +20,7 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
               child: const Play_information_View()));
     },
     child: Container(
-      margin: EdgeInsets.fromLTRB(5.w, 0.h, 0.w, 0.h),
+      margin: EdgeInsets.fromLTRB(5.w, 0.h, 5.w, 0.h),
       width: 360.w,
       //height: 100.h,
       decoration: BoxDecoration(
@@ -44,7 +44,7 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
           ),
           Container(
             margin: EdgeInsets.fromLTRB(0.w, 17.h, 0.w, 0.h),
-            width: 180.w,
+            width: 185.w,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -121,28 +121,28 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
                               Image.asset(
                                 "assets/images/game/empty_car/empty_car1.png",
                                 color: game.carColorToType(1),
-                                fit: BoxFit.cover,
+                                fit: BoxFit.fill,
                                 width: 25.67.w,
                                 height: 14.h,
                               ),
                               Image.asset(
                                 "assets/images/game/empty_car/empty_car2.png",
                                 color: game.carColorToType(2),
-                                fit: BoxFit.cover,
+                                fit: BoxFit.fill,
                                 width: 25.67.w,
                                 height: 14.h,
                               ),
                               Image.asset(
                                 "assets/images/game/empty_car/empty_car3.png",
                                 color: game.carColorToType(3),
-                                fit: BoxFit.cover,
+                                fit: BoxFit.fill,
                                 width: 25.67.w,
                                 height: 14.h,
                               ),
                               Image.asset(
                                 "assets/images/game/empty_car/empty_car4.png",
                                 color: game.carColorToType(4),
-                                fit: BoxFit.cover,
+                                fit: BoxFit.fill,
                                 width: 25.67.w,
                                 height: 14.h,
                               )

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../Controller/storage_controller.dart';
 import '../../../../common/observer.dart';
@@ -57,7 +58,7 @@ class MarketCarsViewWidgetState extends State<MarketCarsViewWidget> implements O
                   //     int Repair_value,
                   //     int distance)
                   child: Market_Car_Card2(
-                      size:widget.size,context: context,
+                      size:widget.size,color: Colors.blue,context: context,
                       carNft:StorageController().carNftPool!.list[index]),
                   // child: Market_Car_Card(
                   //     size,context, "SPORTS","normal", 3, 12345, 10, 13, 14, 15, 16, 13),

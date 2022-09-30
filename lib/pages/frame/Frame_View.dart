@@ -38,6 +38,12 @@ class _Frame_View extends State<Frame_View>  implements Observer {
   @override
   update() {
     setState(() {
+      // select.convert(3);
+    });
+  }
+
+  update_select() {
+    setState(() {
       select.convert(3);
     });
   }
@@ -46,11 +52,10 @@ class _Frame_View extends State<Frame_View>  implements Observer {
   Widget build(BuildContext context) {
     select = Provider.of<Frame_Controller>(context, listen: false);
     final screens = [
-      Lobby_View(see_all_fun: update),
+      Lobby_View(see_all_fun: update_select),
       Inventory_View(),
       Workshop_View(),
       Game_View(
-        frame_context: context,
       ),
       Market_View()
 
@@ -110,31 +115,29 @@ class _Frame_View extends State<Frame_View>  implements Observer {
                   // SizedBox(
                   //   width: size.width * 0.1,
                   // ),
-                  SizedBox(
-                    height: 40.h,
-                    child: Row(
-                        //mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Coin_Widget("xper_icon", StorageController().wallet!.balanceXPer.toString()),
-                          Coin_Widget("per_icon", StorageController().wallet!.balancePer.toString()),
-                          Coin_Widget("havah_icon", StorageController().wallet!.balanceHavah.toString()),
-                          InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    PageTransition(
-                                        type: PageTransitionType.rightToLeft,
-                                        child: Wallet_View()));
-                              },
-                              child: Image.asset(
-                                "assets/images/lobby/icons/appbar_icons/btn_wallet.png",
-                                width: 40.w,
-                                height: 40.h,
-                                fit: BoxFit.fill,
-                              ))
-                        ]),
-                  ),
+                  Row(
+
+                    //mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Coin_Widget("xper_icon", StorageController().wallet!.balanceXPer.toString()),
+                        Coin_Widget("per_icon", StorageController().wallet!.balancePer.toString()),
+                        Coin_Widget("havah_icon", StorageController().wallet!.balanceHavah.toString()),
+                        InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.rightToLeft,
+                                      child: Wallet_View()));
+                            },
+                            child: Image.asset(
+                              "assets/images/lobby/icons/appbar_icons/btn_wallet.png",
+                              width: 40.w,
+                              height: 40.h,
+                              fit: BoxFit.fill,
+                            ))
+                      ]),
                 ],
               ),
             ),
@@ -157,7 +160,7 @@ class _Frame_View extends State<Frame_View>  implements Observer {
             ],
             onChange: (val) {
               setState(() {
-
+                print("setstate$val");
                 select.convert(val);
 
               });

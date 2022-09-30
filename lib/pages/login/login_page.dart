@@ -24,6 +24,10 @@ class LoginPageState extends State<LoginPage> {
   late ScrollController _scrollController;
   late var _isRemember = false;
   final GlobalKey _scrollKey = GlobalKey();
+  final GlobalKey _testkey = GlobalKey<FormState>();
+  FocusNode? myFocusNode;
+
+
 
   final FocusNode _focusNode = FocusNode();
 
@@ -56,8 +60,16 @@ class LoginPageState extends State<LoginPage> {
     //debugPrint("Focus: ${_focusNode.hasFocus.toString()}");
   }
 
+  final formKey = GlobalKey<FormState>();
+  void nextEditableTextFocus() {
+    do {
+      FocusScope.of(context).nextFocus();
+    } while (FocusScope.of(context).focusedChild?.context?.widget is! EditableText);
+  }
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       backgroundColor: const Color(0xFFF5F8FF),
       resizeToAvoidBottomInset: false,
@@ -82,6 +94,8 @@ class LoginPageState extends State<LoginPage> {
                 Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20.sp),
               ),
             ),
+
+
 
             Container(
               margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.h, 0.w),

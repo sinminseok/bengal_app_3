@@ -253,7 +253,7 @@ class _Value_ContainerState extends State<Value_Container> {
                               children: [
                                 Container(
                                   margin:
-                                      EdgeInsets.fromLTRB(26.w, 0.h, 0.w, 0.h),
+                                      EdgeInsets.fromLTRB(16.w, 0.h, 0.w, 0.h),
                                   child: FAProgressBar(
                                     backgroundColor: Colors.grey.shade300,
                                     maxValue: 100,
@@ -267,7 +267,7 @@ class _Value_ContainerState extends State<Value_Container> {
                                   ),
                                 ),
                                 Container(
-                                  margin: EdgeInsets.only(left: 27.w),
+                                  margin: EdgeInsets.only(left: 17.w),
                                   child: Center(
                                       child: Image.asset(
                                     "assets/images/lobby/lightning.png",

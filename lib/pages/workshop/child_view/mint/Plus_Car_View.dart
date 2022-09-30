@@ -266,7 +266,9 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
           ),
           car_provider.list.length == 2
               ? Container(
-                  width: 390.w,
+
+
+              width: 390.w,
                   height: 80.h,
                   color: Colors.grey.shade200,
                   child: Column(

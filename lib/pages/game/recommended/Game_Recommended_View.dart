@@ -8,7 +8,7 @@ Widget Game_Recommended_View(List<GameInfo> gameList){
     padding: const EdgeInsets.all(8.0),
     child: Container(
       width: 360.w,
-      height: 600.h,
+      height: 520.h,
       //추후 ListView Builder로 변경
       child: ListView.builder(
           itemCount: gameList.length,
