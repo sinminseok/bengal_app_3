@@ -26,7 +26,7 @@ class Frame_View extends StatefulWidget {
 }
 
 class _Frame_View extends State<Frame_View>  implements Observer {
-  int _selectedItem = 0;
+
   var select;
 
   @override
