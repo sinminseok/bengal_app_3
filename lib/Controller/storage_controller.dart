@@ -23,7 +23,10 @@ enum StorageKey {
   onChainWallet,
   carNft,
   boxNft,
+  miningBox,
   transferHistory,
+  gameList,
+  gameDemandList,
   carNftPool,
   boxNftPool,
   boxCarNftPool,
@@ -54,13 +57,15 @@ class StorageController implements Subject {
   late OnChainWallet? onChainWallet;
   late CarNftList? carNftList;
   late BoxNftList? boxNftList;
+  late MiningBoxList? miningBoxList;
   late TransferHistoryList? transferHistory;
+  late GameInfoList? gameList;
+  late GameInfoList? gameDemandList;
 
   late CommonData commonData;
-  late CarNftList? carNftPool;
-  late BoxNftList? boxNftPool;
-  late CarNftList? boxCarNftPool;
-  late GameInfoList gameList;
+  late CarNftList carNftPool;
+  late BoxNftList boxNftPool;
+  late CarNftList boxCarNftPool;
 
   String _genAutoKey(StorageKey key) =>
       "${account!.email}_${describeEnum(key)}";
@@ -78,7 +83,6 @@ class StorageController implements Subject {
 
     loadRemember();
     await loadCommonData();
-    await loadGameList();
     await loadCarNftPool();
     await loadBoxNftPool();
     await loadBoxCarNftPool();
@@ -86,7 +90,7 @@ class StorageController implements Subject {
 
   @override
   notifyObserver() {
-    _observers.map((observer){
+    _observers.map((observer) {
       observer.update();
     }).toList();
   }
@@ -107,129 +111,12 @@ class StorageController implements Subject {
     return true;
   }
 
-  Future<bool> loadGameList() async {
-    gameList = GameInfoList.fromJson(await json.decode(
-        await rootBundle.loadString("assets/back_data/game_infos.json")));
-    return true;
-  }
-
-  Future<bool> saveRemember(bool isRemember) async {
-    if (null == account) return false;
-    var ret = await _prefs.setBool(describeEnum(StorageKey.isRemember), isRemember);
-    var email = "";
-    if (isRemember) {
-      email = account!.email;
-    }
-    ret &= await _prefs.setString(describeEnum(StorageKey.rememberEmail), email);
-    return ret;
-  }
-
-  bool loadRemember() {
-    var remember = _prefs.getBool(describeEnum(StorageKey.isRemember)) ?? false;
-    isRemember = remember;
-    var email = _prefs.getString(describeEnum(StorageKey.rememberEmail)) ?? "";
-    rememberEmail = email;
-    return true;
-  }
-
-  // Account
-  Future<bool> saveAccount() async {
-    if (null == account) return false;
-    return await _prefs.setString(
-        _genAutoKey(StorageKey.account), jsonEncode(account!.toJson()));
-  }
-
-  bool loadAccount(String email) {
-    if (email.isEmpty) return false;
-    var value = _prefs.getString(_genKey(StorageKey.account, email)) ?? "";
-    if (value.isEmpty) return false;
-    account = Account.fromJson(jsonDecode(value));
-    return true;
-  }
-
-  // Wallet
-  Future<bool> saveWallet() async {
-    if (null == account || null == wallet) return false;
-    return await _prefs.setString(
-        _genAutoKey(StorageKey.wallet), jsonEncode(wallet!.toJson()));
-  }
-
-  bool loadWallet() {
-    if (null == account) return false;
-    var value = _prefs.getString(_genAutoKey(StorageKey.wallet)) ?? "";
-    if (value.isEmpty) return false;
-    wallet = Wallet.fromJson(json.decode(value));
-    return true;
-  }
-
-  // OnChainWallet
-  Future<bool> saveOnChainWallet() async {
-    if (null == account || null == onChainWallet) return false;
-    return await _prefs.setString(
-        _genAutoKey(StorageKey.onChainWallet), jsonEncode(onChainWallet!.toJson()));
-  }
-
-  bool loadOnChainWallet() {
-    if (null == account) return false;
-    var value = _prefs.getString(_genAutoKey(StorageKey.onChainWallet)) ?? "";
-    if (value.isEmpty) return false;
-    onChainWallet = OnChainWallet.fromJson(json.decode(value));
-    return true;
-  }
-
-  // Car Nft
-  Future<bool> saveCarNftList() async {
-    if (null == account || null == carNftList) return false;
-    return await _prefs.setString(
-        _genAutoKey(StorageKey.carNft), jsonEncode(carNftList!.toJson()));
-  }
-
-  bool loadCarNftList() {
-    if (null == account) return false;
-    var value = _prefs.getString(_genAutoKey(StorageKey.carNft)) ?? "";
-    if (value.isEmpty) return false;
-    carNftList = CarNftList.fromJson(json.decode(value));
-    return true;
-  }
-
-  // Box Nft
-  Future<bool> saveBoxNftList() async {
-    if (null == account || null == boxNftList) return false;
-    return await _prefs.setString(
-        _genAutoKey(StorageKey.boxNft), jsonEncode(boxNftList!.toJson()));
-  }
-
-  bool loadBoxNftList() {
-    if (null == account) return false;
-    var value = _prefs.getString(_genAutoKey(StorageKey.boxNft)) ?? "";
-    if (value.isEmpty) return false;
-    boxNftList = BoxNftList.fromJson(json.decode(value));
-    return true;
-  }
-
-  // Box Nft
-  Future<bool> saveTransferHistory() async {
-    if (null == account || null == transferHistory) return false;
-    return await _prefs.setString(
-        _genAutoKey(StorageKey.transferHistory), jsonEncode(transferHistory!.toJson()));
-  }
-
-  // Transfer History
-  bool loadTransferHistory() {
-    if (null == account) return false;
-    var value = _prefs.getString(_genAutoKey(StorageKey.transferHistory)) ?? "";
-    if (value.isEmpty) return false;
-    transferHistory = TransferHistoryList.fromJson(json.decode(value));
-    return true;
-  }
-
   // Car Nft Market Pool
   Future<bool> saveCarNftPool() async {
     if (null == carNftPool) return false;
     return await _prefs.setString(
         describeEnum(StorageKey.carNftPool), jsonEncode(carNftPool!.toJson()));
   }
-
   Future<bool> loadCarNftPool() async {
     var value = _prefs.getString(describeEnum(StorageKey.carNftPool));
     if (null == value) {
@@ -247,7 +134,6 @@ class StorageController implements Subject {
     return await _prefs.setString(
         _genAutoKey(StorageKey.boxNft), jsonEncode(boxNftList!.toJson()));
   }
-
   Future<bool> loadBoxNftPool() async {
     var value = _prefs.getString(describeEnum(StorageKey.boxNftPool));
     if (null == value) {
@@ -259,13 +145,12 @@ class StorageController implements Subject {
     return true;
   }
 
-  // In Box Car Nft Market Pool
+  // InBox Car Nft Market Pool
   Future<bool> saveBoxCarNftPool() async {
     if (null == boxCarNftPool) return false;
-    return await _prefs.setString(
-        describeEnum(StorageKey.boxCarNftPool), jsonEncode(boxCarNftPool!.toJson()));
+    return await _prefs.setString(describeEnum(StorageKey.boxCarNftPool),
+        jsonEncode(boxCarNftPool!.toJson()));
   }
-
   Future<bool> loadBoxCarNftPool() async {
     var value = _prefs.getString(describeEnum(StorageKey.boxCarNftPool));
     if (null == value) {
@@ -273,6 +158,159 @@ class StorageController implements Subject {
           await rootBundle.loadString("assets/back_data/box_car_nfts.json")));
     } else {
       boxCarNftPool = CarNftList.fromJson(json.decode(value));
+    }
+    return true;
+  }
+
+  // Remember
+  Future<bool> saveRemember(bool isRemember) async {
+    if (null == account) return false;
+    var ret =
+        await _prefs.setBool(describeEnum(StorageKey.isRemember), isRemember);
+    var email = "";
+    if (isRemember) {
+      email = account!.email;
+    }
+    ret &=
+        await _prefs.setString(describeEnum(StorageKey.rememberEmail), email);
+    return ret;
+  }
+  bool loadRemember() {
+    var remember = _prefs.getBool(describeEnum(StorageKey.isRemember)) ?? false;
+    isRemember = remember;
+    var email = _prefs.getString(describeEnum(StorageKey.rememberEmail)) ?? "";
+    rememberEmail = email;
+    return true;
+  }
+
+  // Account
+  Future<bool> saveAccount() async {
+    if (null == account) return false;
+    return await _prefs.setString(
+        _genAutoKey(StorageKey.account), jsonEncode(account!.toJson()));
+  }
+  bool loadAccount(String email) {
+    if (email.isEmpty) return false;
+    var value = _prefs.getString(_genKey(StorageKey.account, email)) ?? "";
+    if (value.isEmpty) return false;
+    account = Account.fromJson(jsonDecode(value));
+    return true;
+  }
+
+  // Wallet
+  Future<bool> saveWallet() async {
+    if (null == account || null == wallet) return false;
+    return await _prefs.setString(
+        _genAutoKey(StorageKey.wallet), jsonEncode(wallet!.toJson()));
+  }
+  bool loadWallet() {
+    if (null == account) return false;
+    var value = _prefs.getString(_genAutoKey(StorageKey.wallet)) ?? "";
+    if (value.isEmpty) return false;
+    wallet = Wallet.fromJson(json.decode(value));
+    return true;
+  }
+
+  // OnChainWallet
+  Future<bool> saveOnChainWallet() async {
+    if (null == account || null == onChainWallet) return false;
+    return await _prefs.setString(_genAutoKey(StorageKey.onChainWallet),
+        jsonEncode(onChainWallet!.toJson()));
+  }
+  bool loadOnChainWallet() {
+    if (null == account) return false;
+    var value = _prefs.getString(_genAutoKey(StorageKey.onChainWallet)) ?? "";
+    if (value.isEmpty) return false;
+    onChainWallet = OnChainWallet.fromJson(json.decode(value));
+    return true;
+  }
+
+  // Car Nft
+  Future<bool> saveCarNftList() async {
+    if (null == account || null == carNftList) return false;
+    return await _prefs.setString(
+        _genAutoKey(StorageKey.carNft), jsonEncode(carNftList!.toJson()));
+  }
+  bool loadCarNftList() {
+    if (null == account) return false;
+    var value = _prefs.getString(_genAutoKey(StorageKey.carNft)) ?? "";
+    if (value.isEmpty) return false;
+    carNftList = CarNftList.fromJson(json.decode(value));
+    return true;
+  }
+
+  // Box Nft
+  Future<bool> saveBoxNftList() async {
+    if (null == account || null == boxNftList) return false;
+    return await _prefs.setString(
+        _genAutoKey(StorageKey.boxNft), jsonEncode(boxNftList!.toJson()));
+  }
+  bool loadBoxNftList() {
+    if (null == account) return false;
+    var value = _prefs.getString(_genAutoKey(StorageKey.boxNft)) ?? "";
+    if (value.isEmpty) return false;
+    boxNftList = BoxNftList.fromJson(json.decode(value));
+    return true;
+  }
+
+  // Mining Box
+  Future<bool> saveMiningBoxList() async {
+    if (null == account || null == miningBoxList) return false;
+    return await _prefs.setString(
+        _genAutoKey(StorageKey.miningBox), jsonEncode(boxNftList!.toJson()));
+  }
+  bool loadMiningBoxList() {
+    if (null == account) return false;
+    var value = _prefs.getString(_genAutoKey(StorageKey.miningBox)) ?? "";
+    if (value.isEmpty) return false;
+    miningBoxList = MiningBoxList.fromJson(json.decode(value));
+    return true;
+  }
+
+  // Transfer History
+  Future<bool> saveTransferHistory() async {
+    if (null == account || null == transferHistory) return false;
+    return await _prefs.setString(_genAutoKey(StorageKey.transferHistory),
+        jsonEncode(transferHistory!.toJson()));
+  }
+  bool loadTransferHistory() {
+    if (null == account) return false;
+    var value = _prefs.getString(_genAutoKey(StorageKey.transferHistory)) ?? "";
+    if (value.isEmpty) return false;
+    transferHistory = TransferHistoryList.fromJson(json.decode(value));
+    return true;
+  }
+
+  // Game List
+  Future<bool> saveGameList() async {
+    if (null == account || null == gameList) return false;
+    return await _prefs.setString(_genAutoKey(StorageKey.gameList),
+        jsonEncode(gameList!.toJson()));
+  }
+  Future<bool> loadGameList() async {
+    var value = _prefs.getString(_genAutoKey(StorageKey.gameList));
+    if (null == value) {
+      gameList = GameInfoList.fromJson(await json.decode(
+          await rootBundle.loadString("assets/back_data/game_default.json")));
+    } else {
+      gameList = GameInfoList.fromJson(json.decode(value));
+    }
+    return true;
+  }
+
+  // Demand Game List
+  Future<bool> saveGameDemandList() async {
+    if (null == account || null == gameList) return false;
+    return await _prefs.setString(_genAutoKey(StorageKey.gameDemandList),
+        jsonEncode(gameDemandList!.toJson()));
+  }
+  Future<bool> loadGameDemandList() async {
+    var value = _prefs.getString(_genAutoKey(StorageKey.gameDemandList));
+    if (null == value) {
+      gameDemandList = GameInfoList.fromJson(await json.decode(
+          await rootBundle.loadString("assets/back_data/game_demand.json")));
+    } else {
+      gameDemandList = GameInfoList.fromJson(json.decode(value));
     }
     return true;
   }
@@ -289,10 +327,12 @@ class StorageController implements Subject {
   }
 
   // Account All Data Load
-  bool loadPlayerData() {
+  Future<bool> loadPlayerData() async {
     var ret = loadWallet();
     ret &= loadCarNftList();
     ret &= loadBoxNftList();
+    ret &= await loadGameList();
+    ret &= await loadGameDemandList();
     return ret;
   }
 
@@ -301,20 +341,19 @@ class StorageController implements Subject {
     return await _prefs.clear();
   }
 
-  bool signIn(String email, String password, bool isRemember) {
+  Future<bool> signIn(String email, String password, bool isRemember) async {
     if (email.isEmpty || password.isEmpty) return false;
 
     if (!loadAccount(email)) return false;
     if (!account!.isValidPassword(password)) return false;
 
-    saveRemember(isRemember);
-    return loadPlayerData();
+    var ret = await saveRemember(isRemember);
+    return ret &= await loadPlayerData();
   }
 
   Future<bool> signOut() async {
     var ret = await saveAccount();
-    ret &= await savePlayerData();
-    return ret;
+    return ret &= await savePlayerData();
   }
 
   Future<bool> signUp(
@@ -327,7 +366,12 @@ class StorageController implements Subject {
     }
 
     account =
-        Account(_baseId, password, email, name, DateTime.now(), DateTime.now());
+        Account(
+            _baseId,
+            password,
+            email,
+            name,
+            commonData.initialInfo.maxPower);
 
     wallet = Wallet(
       ++_baseId,
@@ -353,18 +397,24 @@ class StorageController implements Subject {
     carNftList = CarNftList([]);
     boxNftList = BoxNftList([]);
     transferHistory = TransferHistoryList([]);
+    // gameList = GameInfoList([]);
+    // gameDemandList = GameInfoList([]);
 
     if (!(await saveAccount())) return false;
     if (!(await saveWallet())) return false;
     if (!(await saveCarNftList())) return false;
     if (!(await saveBoxNftList())) return false;
     if (!(await saveTransferHistory())) return false;
+    // if (!(await saveGameList())) return false;
+    // if (!(await saveGameDemandList())) return false;
     account = null;
     wallet = null;
     onChainWallet = null;
     carNftList = null;
     boxNftList = null;
     transferHistory = null;
+    // gameList = null;
+    // gameDemandList = null;
 
     return await _prefs.setInt(describeEnum(StorageKey.baseId), ++_baseId);
   }
@@ -399,8 +449,7 @@ class StorageController implements Subject {
     carNftPool!.list.removeWhere((o) => o.id == nft.id);
 
     var ret = await saveCarNftList();
-    ret &= await saveCarNftPool();
-    return ret;
+    return ret &= await saveCarNftPool();
   }
 
   Future<bool> buyBox(BoxNft nft) async {
@@ -413,8 +462,7 @@ class StorageController implements Subject {
     boxNftPool!.list.removeWhere((o) => o.id == nft.id);
 
     var ret = await saveBoxNftList();
-    ret &= await saveBoxNftPool();
-    return ret;
+    return ret &= await saveBoxNftPool();
   }
 
   Future<bool> openBox(BoxNft nft) async {
@@ -430,8 +478,7 @@ class StorageController implements Subject {
 
     var ret = await saveBoxNftList();
     ret &= await saveBoxCarNftPool();
-    ret &= await saveCarNftList();
-    return ret;
+    return ret &= await saveCarNftList();
   }
 
   bool debit(CoinType coinType, double amount) {
@@ -459,5 +506,4 @@ class StorageController implements Subject {
   Future<bool> mining() async {
     return false;
   }
-
 }
