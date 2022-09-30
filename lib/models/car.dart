@@ -77,9 +77,9 @@ class CarNft {
     }
   }
 
-  String getCarCardTitle() {
-    return "${getCarTypeString()}/${getCarGradeString().toUpperCase()}";
-  }
+  String getCarCardTitle() => "${getCarTypeString()}/${getCarGradeString().toUpperCase()}";
+
+  bool isValidBuy(double balance) => balance > price;
 }
 
 @JsonSerializable()

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
 import '../../../../models/wallet.dart';
 import '../../../../types/constants.dart';
+import '../../../../utils/font.dart';
 import 'Spending_bottom_container.dart';
 import '../transfer/Transfer_Password_View.dart';
 
@@ -42,12 +43,12 @@ Widget Spending_View(
                           width: 30.w,
                           height: 30.h,
                         ),
-                        Text(
-                          "XPER",
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(8.w, 0.h, 0.w, 0.h),
+                          child: Text(
+                            "XPER",
+                            style: Font.lato(Colors.grey, FontWeight.bold, 16.sp),
+                          ),
                         ),
                       ],
                     ),
@@ -57,8 +58,8 @@ Widget Spending_View(
                     margin: EdgeInsets.fromLTRB(15.w, 3.h, 15.w, 0.h),
 
                     child: Text(
-                      "${wallet.balanceXPer}",
-                      style: TextStyle(fontSize: 16, color: Colors.grey),
+                      wallet.balanceXPerString(),
+                      style: Font.lato(Colors.grey, FontWeight.w400, 16.sp),
                     ),
                   )
                 ],
@@ -87,12 +88,12 @@ Widget Spending_View(
                           width: 30.w,
                           height: 30.h,
                         ),
-                        Text(
-                          "PER",
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: kPerColor),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(8.w, 0.h, 0.w, 0.h),
+                          child: Text(
+                            "PER",
+                            style: Font.lato(kPerColor, FontWeight.bold, 16.sp),
+                          ),
                         ),
                       ],
                     ),
@@ -102,8 +103,8 @@ Widget Spending_View(
                     margin: EdgeInsets.fromLTRB(15.w, 3.h, 15.w, 0.h),
 
                     child: Text(
-                      "${wallet.balancePer}",
-                      style: TextStyle(fontSize: 16, color: kPerColor),
+                      wallet.balancePerString(),
+                      style: Font.lato(kPerColor, FontWeight.w400, 16.sp),
                     ),
                   )
                 ],
@@ -132,12 +133,12 @@ Widget Spending_View(
                           width: 30.w,
                           height: 30.h,
                         ),
-                        Text(
-                          "HVH",
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: kCharColor),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(8.w, 0.h, 0.w, 0.h),
+                          child: Text(
+                            "HVH",
+                            style: Font.lato(kCharColor, FontWeight.bold, 16.sp),
+                          ),
                         ),
                       ],
                     ),
@@ -147,8 +148,8 @@ Widget Spending_View(
                     margin: EdgeInsets.fromLTRB(15.w, 3.h, 15.w, 0.h),
 
                     child: Text(
-                      "${wallet.balanceHavah}",
-                      style: TextStyle(fontSize: 16, color: kCharColor),
+                      wallet.balanceHavahString(),
+                      style: Font.lato(kCharColor, FontWeight.w400, 16.sp),
                     ),
                   )
                 ],

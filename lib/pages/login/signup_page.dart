@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import '../../Controller/storage_controller.dart';
+import '../../controller/storage_controller.dart';
 import "../../common/string_configuration.dart";
 import 'login_page.dart';
 import 'widget/icon_input_box_widget.dart';

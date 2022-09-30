@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:bengal_app/pages/car/popup/Car_Detail_popup.dart';
 import 'package:bengal_app/pages/car/popup/Status_popup.dart';
 import 'package:bengal_app/pages/car/popup/levelup_popup/levelup1_popup.dart';
 import 'package:bengal_app/pages/car/popup/recovery/recovery_popup.dart';
@@ -8,22 +7,14 @@ import 'package:bengal_app/pages/car/popup/repair/repair_popup.dart';
 import 'package:bengal_app/pages/car/popup/sell/sell_popup.dart';
 import 'package:bengal_app/pages/car/widget/Car_Items_Widget.dart';
 import 'package:bengal_app/pages/car/widget/Car_Status_Widget.dart';
-import 'package:bengal_app/pages/car/widget/Car_Status_Widget2.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import '../../Controller/storage_controller.dart';
-import '../../common/string_configuration.dart';
 import '../../models/car.dart';
 import '../../types/constants.dart';
-import '../../types/string_type.dart';
-import '../../utils/font.dart';
 import '../frame/widget/Coin_Widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../market/popup/Market_popup.dart';
-import '../market/popup/Market_popup2.dart';
-import '../my_page/Mypage_View.dart';
 import '../wallet/Wallet_View.dart';
 
 class Car_Detail_FrameView2 extends StatefulWidget {

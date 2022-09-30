@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
-import '../../../Controller/storage_controller.dart';
+import '../../../controller/storage_controller.dart';
 import '../../../common/string_configuration.dart';
 import '../../../types/constants.dart';
 import '../../../types/string_type.dart';

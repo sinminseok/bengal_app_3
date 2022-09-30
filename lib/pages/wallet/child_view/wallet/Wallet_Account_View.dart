@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
 import '../../../../models/wallet.dart';
 import '../../../../types/constants.dart';
+import '../../../../utils/font.dart';
 import '../../popup/address_popup.dart';
 import '../trade/Trade_View.dart';
 import '../transfer/Transfer_View.dart';
@@ -10,11 +11,7 @@ import '../transfer/Transfer_View.dart';
 Widget Wallet_Account_View(
     BuildContext context,
     Size size,
-    String address,
-    Wallet wallet,
-    double usdc_value,
-    int car_count,
-    int car_boxes_count) {
+    OnChainWallet onChainWallet) {
   return Column(
     children: [
       Container(
@@ -43,14 +40,11 @@ Widget Wallet_Account_View(
 
                       Text(
                         "Address",
-                        style: TextStyle(fontSize: 13, color: Colors.grey),
+                        style: Font.lato(Colors.grey, FontWeight.bold, 13.sp),
                       ),
                       Text(
-                        "$address",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey),
+                        "GaL7sUm8f8A7",
+                        style: Font.lato(Colors.black, FontWeight.bold, 16.sp),
                       ),
                     ],
                   ),
@@ -61,13 +55,9 @@ Widget Wallet_Account_View(
 
                   child: Text(
                     "Detailed",
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: kPrimaryColor,
-                      decoration: TextDecoration.underline,
+                    style: Font.lato(kPrimaryColor, FontWeight.bold, 12.sp),
                     ),
                   ),
-                )
               ],
             ),
           ),
@@ -100,12 +90,12 @@ Widget Wallet_Account_View(
                           width: 30.w,
                           height: 30.h,
                         ),
-                        Text(
-                          "XPER",
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey),
+                        Container(
+                        margin: EdgeInsets.fromLTRB(8.w, 0.h, 0.w, 0.h),
+                          child: Text(
+                            "XPER",
+                            style: Font.lato(Colors.grey, FontWeight.bold, 16.sp),
+                          ),
                         ),
                       ],
                     ),
@@ -115,8 +105,8 @@ Widget Wallet_Account_View(
                     margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 10.h),
 
                     child: Text(
-                      "${wallet.balanceXPer}",
-                      style: TextStyle(fontSize: 16, color: Colors.grey),
+                      onChainWallet.balanceXPerString(),
+                      style: Font.lato(Colors.grey, FontWeight.w400, 16.sp),
                     ),
                   )
                 ],
@@ -144,14 +134,13 @@ Widget Wallet_Account_View(
                           width: 30.w,
                           height: 30.h,
                         ),
-                        Text(
+                        Container(
+                          margin: EdgeInsets.fromLTRB(8.w, 0.h, 0.w, 0.h),
+                          child: Text(
                             "PER",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: kPerColor),
+                            style: Font.lato(kPerColor, FontWeight.bold, 16.sp),
                           ),
-
+                        ),
                       ],
                     ),
                   ),
@@ -161,8 +150,8 @@ Widget Wallet_Account_View(
                     margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 10.h),
 
                     child: Text(
-                      "${wallet.balancePer}",
-                      style: TextStyle(fontSize: 16, color: kPerColor),
+                      onChainWallet.balancePerString(),
+                      style: Font.lato(kPerColor, FontWeight.w400, 16.sp),
                     ),
                   )
                 ],
@@ -190,14 +179,13 @@ Widget Wallet_Account_View(
                           width: 30.w,
                           height: 30.h,
                         ),
-                        Text(
-                          "HVH",
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: kCharColor),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(8.w, 0.h, 0.w, 0.h),
+                          child: Text(
+                            "HVH",
+                            style: Font.lato(kCharColor, FontWeight.bold, 16.sp),
+                          ),
                         ),
-
                       ],
                     ),
                   )
@@ -207,8 +195,8 @@ Widget Wallet_Account_View(
                     margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 10.h),
 
                     child: Text(
-                      "${wallet.balanceHavah}",
-                      style: TextStyle(fontSize: 16, color: kCharColor),
+                      onChainWallet.balanceHavahString(),
+                      style: Font.lato(kCharColor, FontWeight.w400, 16.sp),
                     ),
                   )
                 ],
@@ -235,12 +223,12 @@ Widget Wallet_Account_View(
                           width: 30.w,
                           height: 30.h,
                         ),
-                        Text(
-                          "USDC",
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(8.w, 0.h, 0.w, 0.h),
+                          child: Text(
+                            "USDC",
+                            style: Font.lato(const Color(0xFF2775CA), FontWeight.bold, 16.sp),
+                          ),
                         ),
                       ],
                     ),
@@ -251,8 +239,8 @@ Widget Wallet_Account_View(
                     margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 10.h),
 
                     child: Text(
-                      "$usdc_value",
-                      style: TextStyle(fontSize: 16, color: Colors.blue),
+                      onChainWallet.balanceUsdcString(),
+                      style: Font.lato(kCharColor, FontWeight.w400, 16.sp),
                     ),
                   )
                 ],
@@ -286,10 +274,7 @@ Widget Wallet_Account_View(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       "Cars",
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey),
+                      style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 16.sp),
                     ),
                   ),
                 ],
@@ -301,8 +286,8 @@ Widget Wallet_Account_View(
               margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
 
               child: Text(
-                "$car_count",
-                style: TextStyle(fontSize: 16, color: Colors.grey),
+                "0",
+                style: Font.lato(kPrimaryColor, FontWeight.w400, 16.sp),
               ),
             )
           ],
@@ -333,10 +318,7 @@ Widget Wallet_Account_View(
                     ),
                     Text(
                       "Car Boxes",
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey),
+                      style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 16.sp),
                     ),
                   ],
                 ),
@@ -347,8 +329,8 @@ Widget Wallet_Account_View(
                 margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
 
                 child: Text(
-                  "$car_boxes_count",
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                  "0",
+                  style: Font.lato(kPrimaryColor, FontWeight.w400, 16.sp),
                 ),
               )
             ],

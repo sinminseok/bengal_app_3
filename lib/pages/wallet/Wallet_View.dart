@@ -2,9 +2,9 @@ import 'package:bengal_app/pages/wallet/popup/address_popup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../Controller/storage_controller.dart';
+import '../../controller/storage_controller.dart';
 import '../../types/constants.dart';
+import '../../utils/font.dart';
 import 'child_view/spending/Spending_View.dart';
 import 'child_view/wallet/Wallet_Account_View.dart';
 
@@ -44,10 +44,7 @@ class _Wallet_ViewState extends State<Wallet_View> {
             ),
             Container(
               child: Text("Token Management",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18)),
+                  style: Font.lato(Colors.black, FontWeight.bold, 18.sp)),
             ),
             Image.asset(
               "assets/images/wallet/icons/setting_button.png",
@@ -100,10 +97,9 @@ class _Wallet_ViewState extends State<Wallet_View> {
                       child: Center(
                         child: Text(
                           "Spending",
-                          style: TextStyle(
-                              color: spending_selected != true
-                                  ? Colors.grey
-                                  : Colors.white),
+                          style: Font.lato(spending_selected != true
+                              ? Colors.grey
+                              : Colors.white, FontWeight.bold, 12.sp),
                         ),
                       ),
                     ),
@@ -158,10 +154,7 @@ class _Wallet_ViewState extends State<Wallet_View> {
                           margin: EdgeInsets.fromLTRB(108.w, 0.h, 0.w, 0.h),
                           child: Text(
                             "Spending Account",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: kPrimaryColor,
-                                fontSize: 18),
+                            style: Font.lato(kPrimaryColor, FontWeight.bold, 18.sp),
                           ),
                         ),
                         InkWell(
@@ -193,10 +186,7 @@ class _Wallet_ViewState extends State<Wallet_View> {
                           margin: EdgeInsets.fromLTRB(134.w, 0.h, 0.w, 0.h),
                           child: Text(
                             "Wallet Account",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: kPrimaryColor,
-                                fontSize: 18),
+                            style: Font.lato(kPrimaryColor, FontWeight.bold, 18.sp),
                           ),
                         ),
                         InkWell(
@@ -221,8 +211,7 @@ class _Wallet_ViewState extends State<Wallet_View> {
                 : Spending_View(size, context, StorageController().wallet!),
             wallet_selected != true
                 ? Container()
-                : Wallet_Account_View(context, size, "GASDASDASD",
-                    StorageController().wallet!, 20.0, 10, 10)
+                : Wallet_Account_View(context, size, StorageController().onChainWallet!)
           ],
         ),
       ),

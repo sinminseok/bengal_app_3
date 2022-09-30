@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:lottie/lottie.dart';
-import '../../../Controller/game_launcher.dart';
-import '../../../common/string_configuration.dart';
+import '../../../controller/game_launcher.dart';
 import '../../../models/game.dart';
 import '../../../types/constants.dart';
-import '../../../types/string_type.dart';
 import '../../../utils/font.dart';
 
 Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {

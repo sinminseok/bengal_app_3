@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../types/constants.dart';
+import '../../../utils/font.dart';
 
 class Wallet_popup {
   void show_wallet_address(Size size, BuildContext context) {
@@ -36,7 +37,7 @@ class Wallet_popup {
                         child: Center(
                             child: Text(
                           "WALLET ACCOUNT",
-                          style: TextStyle(color: Colors.white, fontSize: 18),
+                          style: Font.lato(Colors.white, FontWeight.bold, 18.sp),
                         )),
                       ),
 
@@ -50,8 +51,8 @@ class Wallet_popup {
                         ),
                       ),
                       Text(
-                        "ASDASDASFASFASFASFASFASFAS",
-                        style: TextStyle(color: Colors.grey, fontSize: 11),
+                        "GaL7sUm8f8A7",
+                        style: Font.lato(Colors.black, FontWeight.bold, 11.sp),
                       ),
                       Container(
                         margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
@@ -72,14 +73,14 @@ class Wallet_popup {
                         child: Container(
                           width: 120.w,
                           height: 36.h,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: kPrimaryColor,
                               borderRadius:
                               BorderRadius.all(Radius.circular(35))),
                           child: Center(
                             child: Text(
                               "Copy Address",
-                              style: TextStyle(color: Colors.white),
+                              style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
                             ),
                           ),
                         ),
