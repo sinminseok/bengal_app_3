@@ -82,6 +82,7 @@ class LoginPageState extends State<LoginPage> {
                 Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20.sp),
               ),
             ),
+
             Container(
               margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.h, 0.w),
               height: 50.h,
@@ -98,6 +99,7 @@ class LoginPageState extends State<LoginPage> {
                   boardFocusColor: const Color(0xFFC2BAFF),
                   borderRadius: 10,
                   onTap: () {
+                 //   FocusScope.of(context).unfocus();
                     // _scrollController.animateTo(90.h,
                     //     duration: const Duration(milliseconds: 500),
                     //     curve: Curves.ease);
