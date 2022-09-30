@@ -4,8 +4,7 @@ import 'package:bengal_app/pages/lobby/widget/Game_play_Widget.dart';
 import 'package:bengal_app/pages/lobby/widget/Value_Container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-import '../../Controller/Frame_controller/frame_controller.dart';
+import '../../Controller/storage_controller.dart';
 import '../../common/string_configuration.dart';
 import '../../types/constants.dart';
 import '../../types/string_type.dart';
@@ -13,7 +12,7 @@ import '../../utils/font.dart';
 
 class Lobby_View extends StatefulWidget {
   Function see_all_fun;
-   Lobby_View({Key? key,required this.see_all_fun}) : super(key: key);
+  Lobby_View({Key? key,required this.see_all_fun}) : super(key: key);
 
   @override
   _Lobby_ViewState createState() => _Lobby_ViewState();
@@ -21,12 +20,9 @@ class Lobby_View extends StatefulWidget {
 
 class _Lobby_ViewState extends State<Lobby_View> {
   bool current_car = true;
-  var select;
-
 
   @override
   Widget build(BuildContext context) {
-    select = Provider.of<Frame_Controller>(context, listen: false);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: kAppbarColor,
@@ -34,8 +30,8 @@ class _Lobby_ViewState extends State<Lobby_View> {
         child: Column(
           children: [
             //Buy a car Widget
-            current_car == false
-                ?Car_Main_StatefulWidget()
+            StorageController().carNftList!.list.isNotEmpty
+                ? Car_Main_StatefulWidget()
                 : InkWell(
                     onTap: () {
                       setState(() {
@@ -146,17 +142,17 @@ class _Lobby_ViewState extends State<Lobby_View> {
             ),
 
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
-              child: Container(
-                width: 360.w,
+              margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
+              child: SizedBox(
+                //width: 360.w,
                 height: 100.h,
                 child: ListView.builder(
                     //사용할 게임수 builder
-                    itemCount: 3,
+                    itemCount: StorageController().gameList!.list.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext ctx, int idx) {
                       return Game_Play_Widget(
-                          size, context, "Jewel Match", "0.08", "0.05", "10");
+                          size, context, StorageController().gameList!.list[idx]);
                     }),
               ),
             ),

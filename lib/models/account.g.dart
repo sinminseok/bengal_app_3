@@ -11,9 +11,9 @@ Account _$AccountFromJson(Map<String, dynamic> json) => Account(
       json['password'] as String,
       json['email'] as String,
       json['name'] as String,
-      DateTime.parse(json['createdAt'] as String),
-      DateTime.parse(json['updatedAt'] as String),
-      json['enabled'] as bool? ?? true,
+      json['power'] as int,
+      (json['todayMiningPer'] as num?)?.toDouble() ?? 0.0,
+      (json['todayMiningXPer'] as num?)?.toDouble() ?? 0.0,
     );
 
 Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
@@ -21,9 +21,9 @@ Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'password': instance.password,
       'email': instance.email,
       'name': instance.name,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt.toIso8601String(),
-      'enabled': instance.enabled,
+      'power': instance.power,
+      'todayMiningPer': instance.todayMiningPer,
+      'todayMiningXPer': instance.todayMiningXPer,
     };
 
 AccountList _$AccountListFromJson(Map<String, dynamic> json) => AccountList(

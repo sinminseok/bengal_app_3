@@ -36,7 +36,7 @@ class MainApp extends StatelessWidget {
     StorageController();
 
     return ScreenUtilInit(
-      designSize: const Size(390, 810),
+      designSize: const Size(390, 789),
       minTextAdapt: true,
       splitScreenMode: false,
       builder: (context, child) {

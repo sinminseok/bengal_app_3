@@ -208,18 +208,33 @@ class LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     onTap: () {
-                      if (!StorageController().signIn(
+                      StorageController().signIn(
                           emailController.text,
                           passwordController.text,
-                          _isRemember)) {
-                        Fluttertoast.showToast(
-                            msg: 'Login Fail',
-                            backgroundColor: Colors.grey,
-                            textColor: Colors.black,
-                            gravity: ToastGravity.CENTER);
-                      } else {
-                        Get.offAll(const Frame_View());
-                      }
+                          _isRemember).then((ret) => {
+                        if (ret) {
+                          Get.offAll(const Frame_View())
+                        }
+                        else {
+                          Fluttertoast.showToast(
+                              msg: 'Login Fail',
+                              backgroundColor: Colors.grey,
+                              textColor: Colors.black,
+                              gravity: ToastGravity.CENTER)
+                        }
+                      });
+                      // if (!StorageController().signIn(
+                      //     emailController.text,
+                      //     passwordController.text,
+                      //     _isRemember)) {
+                      //   Fluttertoast.showToast(
+                      //       msg: 'Login Fail',
+                      //       backgroundColor: Colors.grey,
+                      //       textColor: Colors.black,
+                      //       gravity: ToastGravity.CENTER);
+                      // } else {
+                      //   Get.offAll(const Frame_View());
+                      // }
                     })),
             Container(
               //color: Colors.red,
