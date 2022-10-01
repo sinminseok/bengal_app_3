@@ -45,6 +45,7 @@ class StorageController implements Subject {
 
   late SharedPreferences _prefs;
 
+  final double _fee = 1.0;
   late int _baseId = 1;
   late List<Observer> _observers = [];
 
@@ -332,6 +333,7 @@ class StorageController implements Subject {
     ret &= loadOnChainWallet();
     ret &= loadCarNftList();
     ret &= loadBoxNftList();
+    ret &= loadTransferHistory();
     ret &= await loadGameList();
     ret &= await loadGameDemandList();
     return ret;
@@ -480,23 +482,25 @@ class StorageController implements Subject {
 
   bool debit(CoinType coinType, double amount) {
     if (!onChainWallet!.credit(coinType, amount)) return false;
-    if (!wallet!.debit(coinType, amount)) {
+    if (!wallet!.debit(coinType, amount - _fee)) {
       onChainWallet!.debit(coinType, amount + constTransferFee);
       return false;
     }
 
     transferHistory!.debit(coinType, amount);
+    notifyObserver();
     return true;
   }
 
   bool credit(CoinType coinType, double amount) {
     if (!wallet!.credit(coinType, amount)) return false;
-    if (!onChainWallet!.debit(coinType, amount)) {
+    if (!onChainWallet!.debit(coinType, amount - _fee)) {
       wallet!.debit(coinType, amount + constTransferFee);
       return false;
     }
 
     transferHistory!.credit(coinType, amount);
+    notifyObserver();
     return true;
   }
 

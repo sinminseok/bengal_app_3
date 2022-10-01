@@ -1,5 +1,6 @@
 import 'package:bengal_app/controller/Frame_controller/frame_controller.dart';
 import 'package:bengal_app/pages/frame/widget/Coin_Widget.dart';
+import 'package:bengal_app/types/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
@@ -125,9 +126,9 @@ class _Frame_View extends State<Frame_View>  implements Observer {
                         //mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Coin_Widget("xper_icon", StorageController().wallet!.balanceXPerString()),
-                          Coin_Widget("per_icon", StorageController().wallet!.balancePerString()),
-                          Coin_Widget("havah_icon", StorageController().wallet!.balanceHavahString()),
+                          Coin_Widget("xper_icon", StorageController().wallet!.balanceString(CoinType.XPer)),
+                          Coin_Widget("per_icon", StorageController().wallet!.balanceString(CoinType.Per)),
+                          Coin_Widget("havah_icon", StorageController().wallet!.balanceString(CoinType.Havah)),
                           InkWell(
                               onTap: () {
                                 Navigator.push(

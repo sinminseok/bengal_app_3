@@ -1,9 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:page_transition/page_transition.dart';
 
+import '../../../common/string_configuration.dart';
+import '../../../controller/config_controller.dart';
 import '../../../types/constants.dart';
+import '../../../types/string_type.dart';
+import '../../../utils/font.dart';
 import '../child_view/transfer/Transfer_View.dart';
 
 class Wallet_Transfer_password_Widget extends StatefulWidget {
@@ -165,7 +170,7 @@ class _Wallet_Transfer_password_WidgetState
                 child: Container(
                   width: 65.w,
                   height: 65.h,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white, shape: BoxShape.circle),
                   child: InkWell(
                       onTap: () {
@@ -178,10 +183,7 @@ class _Wallet_Transfer_password_WidgetState
                       child: Center(
                           child: Text(
                         "1",
-                        style: TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: Font.lato(kPrimaryColor, FontWeight.bold, 20.sp),
                       ))),
                 ),
               ),
@@ -189,7 +191,7 @@ class _Wallet_Transfer_password_WidgetState
                 child: Container(
                   width: 65.w,
                   height: 65.h,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white, shape: BoxShape.circle),
                   child: InkWell(
                       onTap: () {
@@ -202,10 +204,7 @@ class _Wallet_Transfer_password_WidgetState
                       child: Center(
                           child: Text(
                         "2",
-                        style: TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: Font.lato(kPrimaryColor, FontWeight.bold, 20.sp),
                       ))),
                 ),
               ),
@@ -213,7 +212,7 @@ class _Wallet_Transfer_password_WidgetState
                 child: Container(
                   width: 65.w,
                   height: 65.h,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white, shape: BoxShape.circle),
                   child: InkWell(
                       onTap: () {
@@ -226,10 +225,7 @@ class _Wallet_Transfer_password_WidgetState
                       child: Center(
                           child: Text(
                         "3",
-                        style: TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: Font.lato(kPrimaryColor, FontWeight.bold, 20.sp),
                       ))),
                 ),
               ),
@@ -246,7 +242,7 @@ class _Wallet_Transfer_password_WidgetState
                 width: 65.w,
                 height: 65.h,
                 decoration:
-                    BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                    const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
                 child: InkWell(
                   onTap: () {
                     if (_password.text.length.toInt() < 6) {
@@ -258,10 +254,7 @@ class _Wallet_Transfer_password_WidgetState
                   child: Center(
                       child: Text(
                     "4",
-                    style: TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                    style: Font.lato(kPrimaryColor, FontWeight.bold, 20.sp),
                   )),
                 ),
               ),
@@ -269,7 +262,7 @@ class _Wallet_Transfer_password_WidgetState
                 width: 65.w,
                 height: 65.h,
                 decoration:
-                    BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                    const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
                 child: InkWell(
                   onTap: () {
                     if (_password.text.length.toInt() < 6) {
@@ -281,10 +274,7 @@ class _Wallet_Transfer_password_WidgetState
                   child: Center(
                       child: Text(
                     "5",
-                    style: TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                    style: Font.lato(kPrimaryColor, FontWeight.bold, 20.sp),
                   )),
                 ),
               ),
@@ -292,7 +282,7 @@ class _Wallet_Transfer_password_WidgetState
                 width: 65.w,
                 height: 65.h,
                 decoration:
-                    BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                    const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
                 child: InkWell(
                   onTap: () {
                     if (_password.text.length.toInt() < 6) {
@@ -304,10 +294,7 @@ class _Wallet_Transfer_password_WidgetState
                   child: Center(
                       child: Text(
                     "6",
-                    style: TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                    style: Font.lato(kPrimaryColor, FontWeight.bold, 20.sp),
                   )),
                 ),
               ),
@@ -324,7 +311,7 @@ class _Wallet_Transfer_password_WidgetState
                 width: 65.w,
                 height: 65.h,
                 decoration:
-                    BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                    const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
                 child: InkWell(
                   onTap: () {
                     if (_password.text.length.toInt() < 6) {
@@ -336,10 +323,7 @@ class _Wallet_Transfer_password_WidgetState
                   child: Center(
                       child: Text(
                     "7",
-                    style: TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                    style: Font.lato(kPrimaryColor, FontWeight.bold, 20.sp),
                   )),
                 ),
               ),
@@ -347,7 +331,7 @@ class _Wallet_Transfer_password_WidgetState
                 width: 65.w,
                 height: 65.h,
                 decoration:
-                    BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                    const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
                 child: InkWell(
                   onTap: () {
                     if (_password.text.length.toInt() < 6) {
@@ -359,10 +343,7 @@ class _Wallet_Transfer_password_WidgetState
                   child: Center(
                       child: Text(
                     "8",
-                    style: TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                    style: Font.lato(kPrimaryColor, FontWeight.bold, 20.sp),
                   )),
                 ),
               ),
@@ -370,7 +351,7 @@ class _Wallet_Transfer_password_WidgetState
                 width: 65.w,
                 height: 65.h,
                 decoration:
-                    BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                    const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
                 child: InkWell(
                   onTap: () {
                     if (_password.text.length.toInt() < 6) {
@@ -382,10 +363,7 @@ class _Wallet_Transfer_password_WidgetState
                   child: Center(
                       child: Text(
                     "9",
-                    style: TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                    style: Font.lato(kPrimaryColor, FontWeight.bold, 20.sp),
                   )),
                 ),
               ),
@@ -402,14 +380,11 @@ class _Wallet_Transfer_password_WidgetState
                 width: 65.w,
                 height: 65.h,
                 decoration:
-                    BoxDecoration(color: kPrimaryColor, shape: BoxShape.circle),
+                    const BoxDecoration(color: kPrimaryColor, shape: BoxShape.circle),
                 child: Center(
                     child: Text(
                   "0",
-                  style: TextStyle(
-                      color: kPrimaryColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                  style: Font.lato(kPrimaryColor, FontWeight.bold, 20.sp),
                 )),
               ),
               InkWell(
@@ -423,15 +398,12 @@ class _Wallet_Transfer_password_WidgetState
                 child: Container(
                   width: 65.w,
                   height: 65.h,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white, shape: BoxShape.circle),
                   child: Center(
                       child: Text(
                     "0",
-                    style: TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                    style: Font.lato(kPrimaryColor, FontWeight.bold, 20.sp),
                   )),
                 ),
               ),
@@ -439,7 +411,7 @@ class _Wallet_Transfer_password_WidgetState
                 width: 65.w,
                 height: 65.h,
                 decoration:
-                    BoxDecoration(color: kPrimaryColor, shape: BoxShape.circle),
+                    const BoxDecoration(color: kPrimaryColor, shape: BoxShape.circle),
                 child: InkWell(
                   onTap: () {
                     // print(_password.text.length.toInt());
@@ -454,7 +426,7 @@ class _Wallet_Transfer_password_WidgetState
                       }
                     });
                   },
-                  child: Center(
+                  child: const Center(
                     child: Icon(
                       Icons.backspace_outlined,
                       color: Colors.white,
@@ -475,10 +447,19 @@ class _Wallet_Transfer_password_WidgetState
         ),
         InkWell(
           onTap: () {
-            Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.fade, child: Transfer_View()));
+            if ("000000" == _password.text) {
+              ConfigController().certified = true;
+              Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.fade, child: const Transfer_View()));
+            } else {
+              Fluttertoast.showToast(
+                  msg: StringConfiguration().uiString(UiStringType.TOAST_MESSAGE_02),
+                  backgroundColor: Colors.grey,
+                  textColor: Colors.black,
+                  gravity: ToastGravity.CENTER);
+            }
           },
           child: Container(
             margin: EdgeInsets.fromLTRB(0.w, 30.h, 0.w, 0.h),
@@ -486,11 +467,11 @@ class _Wallet_Transfer_password_WidgetState
             height: 40.h,
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.white),
-                borderRadius: BorderRadius.all(Radius.circular(30))),
+                borderRadius: const BorderRadius.all(Radius.circular(30))),
             child: Center(
                 child: Text(
               "CONFIRM",
-              style: TextStyle(color: Colors.white),
+              style: Font.lato(Colors.white, FontWeight.w400, 16.sp),
             )),
           ),
         ),
