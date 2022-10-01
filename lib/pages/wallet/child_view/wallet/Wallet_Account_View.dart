@@ -1,3 +1,4 @@
+import 'package:bengal_app/types/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
@@ -105,7 +106,7 @@ Widget Wallet_Account_View(
                     margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 10.h),
 
                     child: Text(
-                      onChainWallet.balanceXPerString(),
+                      onChainWallet.balanceString(CoinType.XPer),
                       style: Font.lato(Colors.grey, FontWeight.w400, 16.sp),
                     ),
                   )
@@ -150,7 +151,7 @@ Widget Wallet_Account_View(
                     margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 10.h),
 
                     child: Text(
-                      onChainWallet.balancePerString(),
+                      onChainWallet.balanceString(CoinType.Per),
                       style: Font.lato(kPerColor, FontWeight.w400, 16.sp),
                     ),
                   )
@@ -195,7 +196,7 @@ Widget Wallet_Account_View(
                     margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 10.h),
 
                     child: Text(
-                      onChainWallet.balanceHavahString(),
+                      onChainWallet.balanceString(CoinType.Havah),
                       style: Font.lato(kCharColor, FontWeight.w400, 16.sp),
                     ),
                   )
@@ -239,7 +240,7 @@ Widget Wallet_Account_View(
                     margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 10.h),
 
                     child: Text(
-                      onChainWallet.balanceUsdcString(),
+                      onChainWallet.balanceString(CoinType.Usdc),
                       style: Font.lato(kCharColor, FontWeight.w400, 16.sp),
                     ),
                   )

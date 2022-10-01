@@ -36,7 +36,7 @@ class MainApp extends StatelessWidget {
 
     return ScreenUtilInit(
       designSize: const Size(390, 789),
-      minTextAdapt: true,
+      minTextAdapt: false,
       splitScreenMode: false,
       builder: (context, child) {
         return const GetMaterialApp(

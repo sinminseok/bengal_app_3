@@ -1,19 +1,28 @@
+import 'package:bengal_app/controller/storage_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
+import '../../../controller/assets_controller.dart';
+import '../../../types/common.dart';
 import '../../../types/constants.dart';
+import '../../../utils/font.dart';
 
 class Transfer_popup {
-  void transfer_popup(BuildContext context) {
+  void transfer_popup(
+      BuildContext context,
+      bool isLocalWallet,
+      CoinType coin,
+      String transAmount) {
     showAnimatedDialog(
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
         return Center(
           child: DefaultTextStyle(
-              style: TextStyle(fontSize: 16, color: Colors.black),
+              style: const TextStyle(fontSize: 16, color: Colors.black),
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
@@ -40,7 +49,7 @@ class Transfer_popup {
                           Container(
                             width: 300.w,
                             height: 50.h,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(10),
                                     topRight: Radius.circular(10)),
@@ -48,16 +57,14 @@ class Transfer_popup {
                             child: Center(
                                 child: Text(
                               "TRANSFER",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
+                              style: Font.lato(Colors.white, FontWeight.bold, 18.sp),
                             )),
                           ),
                           Container(
                             margin: EdgeInsets.fromLTRB(15.w, 30.h, 170.w, 0.h),
                             child: Text(
-                              "Transfer XPER",
-                              style: TextStyle(
-                                  color: Colors.grey.shade500, fontSize: 14),
+                              "Transfer ${AssetsController().getCoinUpperCaseName(coin)}",
+                              style: Font.lato(Colors.grey.shade500, FontWeight.w400, 14.sp),
                             ),
                           ),
                           Container(
@@ -66,8 +73,7 @@ class Transfer_popup {
                             height: 50.h,
                             decoration: BoxDecoration(
                                 border: Border.all(color: kPrimaryColor),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
+                                borderRadius: const BorderRadius.all(Radius.circular(10))),
                             child: Column(
                               children: [
                                 Row(
@@ -77,17 +83,15 @@ class Transfer_popup {
                                         margin: EdgeInsets.fromLTRB(
                                             15.w, 10.h, 0.w, 0.h),
                                         child: Text(
-                                          "Spending",
-                                          style: TextStyle(
-                                              color: kPrimaryColor,
-                                              fontSize: 16.sp),
+                                          isLocalWallet ? "Spending" : "Wallet",
+                                          style: Font.lato(kPrimaryColor, FontWeight.w400, 16.sp),
                                         )),
                                     Container(
                                         margin: EdgeInsets.fromLTRB(
                                             0.w, 4.h, 0.w, 0.h),
                                         width: 28.w,
                                         height: 16.h,
-                                        child: Center(
+                                        child: const Center(
                                             child: Icon(
                                           Icons.arrow_forward_ios_rounded,
                                           color: kPrimaryColor,
@@ -96,10 +100,8 @@ class Transfer_popup {
                                         margin: EdgeInsets.fromLTRB(
                                             0.w, 10.h, 15.w, 0.h),
                                         child: Text(
-                                          "Wallet",
-                                          style: TextStyle(
-                                              color: kPrimaryColor,
-                                              fontSize: 16.sp),
+                                          isLocalWallet ? "Wallet" : "Spending",
+                                          style: Font.lato(kPrimaryColor, FontWeight.bold, 16.sp),
                                         )),
                                   ],
                                 ),
@@ -115,8 +117,14 @@ class Transfer_popup {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
 
-                                Text("Your Request",style: TextStyle(fontSize: 12.sp,color: Colors.grey.shade500),),
-                                Text("12.81",style: TextStyle(fontSize: 16.sp,color: kPrimaryColor),),
+                                Text(
+                                  "Your Request",
+                                  style: Font.lato(Colors.grey.shade500, FontWeight.bold, 12.sp),
+                                ),
+                                Text(
+                                  transAmount,
+                                  style: Font.lato(kPrimaryColor, FontWeight.bold, 16.sp),
+                                ),
                               ],
                             ),
                           ),
@@ -128,8 +136,14 @@ class Transfer_popup {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
 
-                                Text("Fee",style: TextStyle(fontSize: 12,color: Colors.grey.shade500),),
-                                Text("12.81",style: TextStyle(fontSize: 16,color: kPrimaryColor),),
+                                Text(
+                                  "Fee",
+                                  style: Font.lato(Colors.grey.shade500, FontWeight.bold, 12.sp),
+                                ),
+                                Text(
+                                  "1",
+                                  style: Font.lato(kPrimaryColor, FontWeight.bold, 16.sp),
+                                ),
                               ],
                             ),
                           ),
@@ -141,22 +155,31 @@ class Transfer_popup {
                           GestureDetector(
                             onTap: () {
                               Navigator.pop(context);
+                              var ret = false;
+                              isLocalWallet ?
+                              ret = StorageController().credit(coin, double.parse(transAmount)) :
+                              ret = StorageController().debit(coin, double.parse(transAmount));
+                              var msg = "Transfer Success";
+                              if (!ret) msg = "Transfer Fail";
+                              Fluttertoast.showToast(
+                                  msg: msg,
+                                  backgroundColor: Colors.grey,
+                                  textColor: Colors.black,
+                                  gravity: ToastGravity.CENTER);
                             },
                             child: Container(
                               width: 120.w,
                               height: 34.h,
                               margin:
                                   EdgeInsets.fromLTRB(0.w, 25.h, 0.w, 0.h),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   color: kPrimaryColor,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(30))),
                               child: Center(
                                 child: Text(
                                   "Confirm",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w700,fontSize: 14.sp),
+                                  style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
                                 ),
                               ),
                             ),

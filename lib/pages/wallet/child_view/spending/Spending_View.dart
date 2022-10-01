@@ -1,9 +1,12 @@
+import 'package:bengal_app/types/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
+import '../../../../controller/config_controller.dart';
 import '../../../../models/wallet.dart';
 import '../../../../types/constants.dart';
 import '../../../../utils/font.dart';
+import '../transfer/Transfer_View.dart';
 import 'Spending_bottom_container.dart';
 import '../transfer/Transfer_Password_View.dart';
 
@@ -58,7 +61,7 @@ Widget Spending_View(
                     margin: EdgeInsets.fromLTRB(15.w, 3.h, 15.w, 0.h),
 
                     child: Text(
-                      wallet.balanceXPerString(),
+                      wallet.balanceString(CoinType.XPer),
                       style: Font.lato(Colors.grey, FontWeight.w400, 16.sp),
                     ),
                   )
@@ -103,7 +106,7 @@ Widget Spending_View(
                     margin: EdgeInsets.fromLTRB(15.w, 3.h, 15.w, 0.h),
 
                     child: Text(
-                      wallet.balancePerString(),
+                      wallet.balanceString(CoinType.Per),
                       style: Font.lato(kPerColor, FontWeight.w400, 16.sp),
                     ),
                   )
@@ -148,7 +151,7 @@ Widget Spending_View(
                     margin: EdgeInsets.fromLTRB(15.w, 3.h, 15.w, 0.h),
 
                     child: Text(
-                      wallet.balanceHavahString(),
+                      wallet.balanceString(CoinType.Havah),
                       style: Font.lato(kCharColor, FontWeight.w400, 16.sp),
                     ),
                   )
@@ -161,13 +164,20 @@ Widget Spending_View(
 
       InkWell(
         onTap: (){
-          Navigator.push(
-              context,
-              PageTransition(
-                  type: PageTransitionType.fade,
-                  child: Transfer_Password_View(
+          if (!ConfigController().certified) {
+            Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade,
+                    child: const Transfer_Password_View(
 
-                  )));
+                    )));
+          } else {
+            Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade, child: const Transfer_View()));
+          }
         },
         child: Container(
           margin: EdgeInsets.fromLTRB(0.w, 25.h, 0.w, 46.h),
@@ -179,6 +189,7 @@ Widget Spending_View(
         ),
       ),
 
+      // History Widget
       Spending_bottom_container()
     ],
   );

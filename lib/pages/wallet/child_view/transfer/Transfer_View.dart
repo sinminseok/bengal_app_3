@@ -1,14 +1,14 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import '../../../../controller/storage_controller.dart';
+import '../../../../controller/assets_controller.dart';
+import '../../../../types/common.dart';
 import '../../../../types/constants.dart';
 import '../../../../utils/font.dart';
 import '../../drawer/transfer_drawer.dart';
 import '../../popup/transfer_popup.dart';
-import '../../widget/Drawer_widget.dart';
 
 class Transfer_View extends StatefulWidget {
   const Transfer_View({Key? key}) : super(key: key);
@@ -18,10 +18,19 @@ class Transfer_View extends StatefulWidget {
 }
 
 class _Transfer_ViewState extends State<Transfer_View> {
-  bool change = false;
-  bool cars_ontap = false;
-  bool boxs_ontap = false;
-  TextEditingController _amountcontroller = TextEditingController();
+  bool fromLocalWallet = true;
+  CoinType selectedCoin = CoinType.XPer;
+  bool carsOnTap = false;
+  bool boxsOnTap = false;
+  final TextEditingController _amountController = TextEditingController();
+
+
+  void changeCoin(CoinType type) {
+    setState(() {
+      selectedCoin = type;
+      _amountController.text = "";
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +52,12 @@ class _Transfer_ViewState extends State<Transfer_View> {
                     "assets/images/common/cancel_button.png",
                     width: 40.w,
                   ))),
-          Container(width: 330.w, child: Transfer_Drawer()),
+          SizedBox(
+              width: 330.w,
+              child: Transfer_Drawer(
+                  fromLocalWallet: fromLocalWallet,
+                  coinSelected: changeCoin)
+          ),
         ],
       ),
       appBar: AppBar(
@@ -66,10 +80,7 @@ class _Transfer_ViewState extends State<Transfer_View> {
             Container(
               margin: EdgeInsets.fromLTRB(107.w, 3.h, 0.w, 0.h),
               child: Text("Transfer",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18)),
+                  style: Font.lato(Colors.black, FontWeight.bold, 18.sp)),
             ),
           ],
         ),
@@ -100,7 +111,7 @@ class _Transfer_ViewState extends State<Transfer_View> {
                               border: Border.all(color: Colors.grey.shade300),
                               color: Colors.white,
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
+                                  const BorderRadius.all(Radius.circular(10))),
                           child: Container(
                             margin: EdgeInsets.fromLTRB(20.w, 10.h, 0.w, 0.h),
                             child: Column(
@@ -119,14 +130,14 @@ class _Transfer_ViewState extends State<Transfer_View> {
                                         width: 24.w,
                                         height: 24.h,
                                         child: Image.asset(
-                                          "assets/images/wallet/icons/${change != true ? "wallet_card.png" : "spending_card.png"}",
+                                          "assets/images/wallet/icons/${fromLocalWallet ? "spending_card.png" : "wallet_card.png"}",
                                         ),
                                       ),
                                       Container(
                                         margin:
                                         EdgeInsets.fromLTRB(3.w, 0.h, 0.w, 0.h),
                                         child: Text(
-                                          "${change != true ? "Speding" : "Wallet"}",
+                                          fromLocalWallet ? "Spending" : "Wallet",
                                           style: TextStyle(
                                               color: Colors.grey.shade700,
                                               fontSize: 20.sp),
@@ -167,13 +178,13 @@ class _Transfer_ViewState extends State<Transfer_View> {
                                         width: 24.w,
                                         height: 24.h,
                                         child: Image.asset(
-                                          "assets/images/wallet/icons/${change == true ? "wallet_card.png" : "spending_card.png"}",
+                                          "assets/images/wallet/icons/${fromLocalWallet ? "wallet_card.png" : "spending_card.png"}",
                                         ),
                                       ),
                                       Container(
                                         margin: EdgeInsets.fromLTRB(5.w, 0.h, 0.w, 0.h),
                                         child: Text(
-                                          "${change == true ? "Spending" : "Wallet"}",
+                                          fromLocalWallet ? "Wallet" : "Spending",
                                           style: TextStyle(
                                               color: Colors.grey.shade700,
                                               fontSize: 20),
@@ -192,7 +203,7 @@ class _Transfer_ViewState extends State<Transfer_View> {
                             child: InkWell(
                                 onTap: () {
                                   setState(() {
-                                    change = !change;
+                                    fromLocalWallet = !fromLocalWallet;
                                   });
                                 },
                                 child: Container(
@@ -242,11 +253,11 @@ class _Transfer_ViewState extends State<Transfer_View> {
                         width: 30.w,
                         height: 30.h,
                         child: Image.asset(
-                          "assets/images/lobby/icons/appbar_icons/xper_icon.png",
+                            AssetsController().getCoinIcon(selectedCoin)
                         ),
                       ),
                       Text(
-                        "XPER",
+                        AssetsController().getCoinUpperCaseName(selectedCoin),
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
@@ -260,12 +271,12 @@ class _Transfer_ViewState extends State<Transfer_View> {
                       builder: (context) {
                         return InkWell(
                           onTap: () {
+                            //Token Select ***
                             Scaffold.of(context).openEndDrawer();
                           },
                           child: Text(
                             "Change >",
-                            style:
-                                TextStyle(color: kPrimaryColor, fontSize: 13),
+                            style: Font.lato(kPrimaryColor, FontWeight.w400, 13.sp),
                           ),
                         );
                       },
@@ -296,48 +307,60 @@ class _Transfer_ViewState extends State<Transfer_View> {
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey.shade200),
                   color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
+                  borderRadius: const BorderRadius.all(Radius.circular(10))),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
-                    width: size.width * 0.7,
+                    margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 0.h),
+                    width: 250.w,
                     child: TextField(
                       keyboardType: TextInputType.number,
-                      controller: _amountcontroller,
-                      decoration: new InputDecoration(
+                      controller: _amountController,
+                      decoration: InputDecoration(
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           focusColor: kPrimaryColor,
                           hoverColor: kPrimaryColor,
                           fillColor: kPrimaryColor,
-                          labelStyle: TextStyle(color: kPrimaryColor),
+                          labelStyle: const TextStyle(color: kPrimaryColor),
                           hintStyle: TextStyle(
                               fontSize: 12, color: Colors.grey.shade500),
-                          contentPadding: EdgeInsets.only(
+                          contentPadding: const EdgeInsets.only(
                               left: 5, bottom: 5, top: 5, right: 5),
                           hintText: 'Please enter the selling price'),
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(0.w, 0.h, 20.w, 0.h),
-                    child: Text(
-                      "All",
-                      style: TextStyle(color: kPrimaryColor, fontSize: 13),
+                    margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
+                    child: TextButton(
+                      onPressed: () {
+                        setState(() {
+                          _amountController.text = fromLocalWallet ?
+                          StorageController().wallet!.balanceString(selectedCoin) :
+                          StorageController().onChainWallet!.balanceString(selectedCoin);
+                        });
+                      },
+                      child: Text("All",
+                        style: Font.lato(kPrimaryColor, FontWeight.w400, 13.sp),
+                      ),
                     ),
                   )
                 ],
               ),
             ),
             Text(
-              "Available : value XPER",
+              "Available : value ${AssetsController().getCoinUpperCaseName(selectedCoin)}",
               style: TextStyle(color: kPrimaryColor,fontSize: 14.sp),
             ),
 
             InkWell(
               onTap: () {
-                Transfer_popup().transfer_popup(context);
+                Transfer_popup().transfer_popup(
+                    context,
+                    fromLocalWallet,
+                    selectedCoin,
+                    _amountController.text);
               },
               child: Container(
                 margin: EdgeInsets.fromLTRB(15.w, 175.h, 15.w, 0.h),

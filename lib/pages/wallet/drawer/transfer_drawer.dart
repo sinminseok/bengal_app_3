@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../types/common.dart';
 import '../../../types/constants.dart';
 import '../widget/Drawer_widget.dart';
 import '../widget/drawer/CarBox_Info_Widget.dart';
@@ -11,7 +12,14 @@ import '../widget/drawer/Car_Info_Widget.dart';
 
 class Transfer_Drawer extends StatefulWidget {
 
-   Transfer_Drawer({Key? key}) : super(key: key);
+   Transfer_Drawer({
+     Key? key,
+     required this.fromLocalWallet,
+     required this.coinSelected
+   }) : super(key: key);
+
+   CoinSelected coinSelected;
+   bool fromLocalWallet;
 
   @override
   _Transfer_DrawerState createState() => _Transfer_DrawerState();
@@ -48,7 +56,10 @@ class _Transfer_DrawerState extends State<Transfer_Drawer> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Drawer_Coin_Widet(size,20,30,20),
+                child: Drawer_Coin_Widet(context,
+                    size,
+                    widget.fromLocalWallet,
+                    widget.coinSelected),
               ),
               Center(
                 child: Container(
@@ -67,8 +78,7 @@ class _Transfer_DrawerState extends State<Transfer_Drawer> {
                           height: 46.h,
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.grey.shade400),
-                              borderRadius:
-                              BorderRadius.all(Radius.circular(10))),
+                              borderRadius: const BorderRadius.all(Radius.circular(10))),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -172,7 +182,7 @@ class _Transfer_DrawerState extends State<Transfer_Drawer> {
                                 ],
                               ),
 
-                              
+
                               Container(
                                 margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
                                 child: Icon(

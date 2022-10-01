@@ -28,12 +28,20 @@ class Wallet {
   factory Wallet.fromJson(Map<String, dynamic> json) => _$WalletFromJson(json);
   Map<String, dynamic> toJson() => _$WalletToJson(this);
 
-  String balanceXPerString() => double.parse(balanceXPer.toStringAsFixed(2)).toString();
-  String balancePerString() => double.parse(balancePer.toStringAsFixed(2)).toString();
-  String balanceHavahString() => double.parse(balanceHavah.toStringAsFixed(2)).toString();
+  String balanceString(CoinType type) {
+    switch (type) {
+      case CoinType.XPer:
+        return double.parse(balanceXPer.toStringAsFixed(2)).toString();
+      case CoinType.Per:
+        return double.parse(balancePer.toStringAsFixed(2)).toString();
+      case CoinType.Havah:
+        return double.parse(balanceHavah.toStringAsFixed(2)).toString();
+      default: return "";
+    }
+  }
 
-  bool isValidCredit(CoinType coinType, double amount) {
-    switch (coinType) {
+  bool isValidCredit(CoinType type, double amount) {
+    switch (type) {
       case CoinType.XPer:
         if (amount > balanceXPer - constTransferFee) return false;
         break;
@@ -46,6 +54,18 @@ class Wallet {
       default: return false;
     }
     return true;
+  }
+
+  double getBalance(CoinType coinType) {
+    switch (coinType) {
+      case CoinType.XPer:
+        return balanceXPer;
+      case CoinType.Per:
+        return balancePer;
+      case CoinType.Havah:
+        return balanceHavah;
+      default: return 0;
+    }
   }
 
   bool debit(CoinType coinType, double amount) {
@@ -122,13 +142,22 @@ class OnChainWallet {
   factory OnChainWallet.fromJson(Map<String, dynamic> json) => _$OnChainWalletFromJson(json);
   Map<String, dynamic> toJson() => _$OnChainWalletToJson(this);
 
-  String balanceXPerString() => double.parse(balanceXPer.toStringAsFixed(2)).toString();
-  String balancePerString() => double.parse(balancePer.toStringAsFixed(2)).toString();
-  String balanceHavahString() => double.parse(balanceHavah.toStringAsFixed(2)).toString();
-  String balanceUsdcString() => double.parse(balanceUsdc.toStringAsFixed(2)).toString();
+  String balanceString(CoinType type) {
+    switch (type) {
+      case CoinType.XPer:
+        return double.parse(balanceXPer.toStringAsFixed(2)).toString();
+      case CoinType.Per:
+        return double.parse(balancePer.toStringAsFixed(2)).toString();
+      case CoinType.Havah:
+        return double.parse(balanceHavah.toStringAsFixed(2)).toString();
+      case CoinType.Usdc:
+        return double.parse(balanceUsdc.toStringAsFixed(2)).toString();
+      default: return "";
+    }
+  }
 
-  bool isValidCredit(CoinType coinType, double amount) {
-    switch (coinType) {
+  bool isValidCredit(CoinType type, double amount) {
+    switch (type) {
       case CoinType.XPer:
         if (amount > balanceXPer - constTransferFee) return false;
         break;
@@ -141,6 +170,20 @@ class OnChainWallet {
       default: return false;
     }
     return true;
+  }
+
+  double getBalance(CoinType coinType) {
+    switch (coinType) {
+      case CoinType.XPer:
+        return balanceXPer;
+      case CoinType.Per:
+        return balancePer;
+      case CoinType.Havah:
+        return balanceHavah;
+      case CoinType.Usdc:
+        return balanceUsdc;
+      default: return 0;
+    }
   }
 
   bool debit(CoinType coinType, double amount) {
