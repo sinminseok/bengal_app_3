@@ -172,333 +172,319 @@ Widget Drawer_Coin_Widet(BuildContext context, Size size, bool isLocalWallet,
 }
 
 class Token_Bar extends StatefulWidget {
-  const Token_Bar({Key? key}) : super(key: key);
+  const Token_Bar({
+    Key? key,
+    required this.exceptCoin,
+    required this.coinSelected
+  }) : super(key: key);
 
   @override
   _Token_BarState createState() => _Token_BarState();
+
+  final CoinType exceptCoin;
+  final CoinSelected coinSelected;
 }
 
 class _Token_BarState extends State<Token_Bar> {
-  bool xper_ontap = false;
-  bool per_ontap = false;
-  bool hvh_ontap = false;
-  bool usdc_ontap = false;
-
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        InkWell(
-          onTap: () {
-            setState(() {
-              xper_ontap = true;
-              per_ontap = false;
-              hvh_ontap = false;
-              usdc_ontap = false;
-            });
-          },
-          child: Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Center(
-              child: Container(
-                width: 290.w,
-                height: 46.h,
-                decoration: BoxDecoration(
-                    border: Border.all(
-                        color: xper_ontap != true
-                            ? Colors.grey.shade300
-                            : Colors.grey),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
-                      child: Row(
-                        children: [
-                          xper_ontap != true
-                              ? Container(
-                                  width: 20.w,
-                                  height: 20.h,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/images/lobby/icons/appbar_icons/xper_icon.png'),
-                                          colorFilter: ColorFilter.mode(
-                                            Colors.white.withOpacity(0.5),
-                                            BlendMode.modulate,
-                                          ))),
-                                )
-                              : Image.asset(
-                                  "assets/images/lobby/icons/appbar_icons/xper_icon.png",
-                                  width: 20.w,
-                                  height: 20.h,
-                                ),
-                          Padding(
-                            padding: const EdgeInsets.all(6.0),
-                            child: Text(
-                              "XPER",
-                              style: TextStyle(
-                                  color: xper_ontap != true
-                                      ? Colors.grey.shade300
-                                      : Colors.grey,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14),
+        AbsorbPointer(
+          absorbing: widget.exceptCoin == CoinType.XPer,
+          child: InkWell(
+            onTap: () {
+              setState(() {
+                widget.coinSelected(CoinType.XPer);
+                Navigator.pop(context);
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Center(
+                child: Container(
+                  width: 290.w,
+                  height: 46.h,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: widget.exceptCoin == CoinType.XPer
+                              ? Colors.grey.shade300
+                              : Colors.grey),
+                      borderRadius: const BorderRadius.all(Radius.circular(10))),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
+                        child: Row(
+                          children: [
+                            widget.exceptCoin == CoinType.XPer
+                                ? Container(
+                                    width: 20.w,
+                                    height: 20.h,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(AssetsController().getCoinIcon(CoinType.XPer)),
+                                            colorFilter: ColorFilter.mode(
+                                              Colors.white.withOpacity(0.5),
+                                              BlendMode.modulate,
+                                            ))),
+                                  )
+                                : Image.asset(AssetsController().getCoinIcon(CoinType.XPer),
+                                    width: 20.w,
+                                    height: 20.h,
+                                  ),
+                            Padding(
+                              padding: const EdgeInsets.all(6.0),
+                              child: Text(
+                                AssetsController().getCoinUpperCaseName(CoinType.XPer),
+                                style: TextStyle(
+                                    color: widget.exceptCoin == CoinType.XPer
+                                        ? Colors.grey.shade300
+                                        : Colors.grey,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
-                      child: Text(
-                        "1",
-                        style: TextStyle(
-                            color: xper_ontap != true
-                                ? Colors.grey.shade300
-                                : Colors.grey,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14),
-                      ),
-                    )
-                  ],
+                      Container(
+                        margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
+                        child: Text(
+                          StorageController().onChainWallet!.balanceString(CoinType.XPer),
+                          style: Font.lato(widget.exceptCoin == CoinType.XPer
+                              ? Colors.grey.shade300
+                              : Colors.grey, FontWeight.bold, 14.sp),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
         ),
-        InkWell(
-          onTap: () {
-            setState(() {
-              xper_ontap = false;
-              per_ontap = true;
-              hvh_ontap = false;
-              usdc_ontap = false;
-            });
-          },
-          child: Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Center(
-              child: Container(
-                width: 290.w,
-                height: 46.h,
-                decoration: BoxDecoration(
-                    border: Border.all(
-                        color: per_ontap != true
-                            ? Colors.grey.shade300
-                            : kPerColor),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
-                      child: Row(
-                        children: [
-                          per_ontap != true
-                              ? Container(
-                                  width: 20.w,
-                                  height: 20.h,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/images/lobby/icons/appbar_icons/per_icon.png'),
-                                          colorFilter: ColorFilter.mode(
-                                            Colors.white.withOpacity(0.5),
-                                            BlendMode.modulate,
-                                          ))),
-                                )
-                              : Image.asset(
-                                  "assets/images/lobby/icons/appbar_icons/per_icon.png",
-                                  width: 20.w,
-                                  height: 20.h,
-                                ),
-                          Padding(
-                            padding: const EdgeInsets.all(6.0),
-                            child: Text(
-                              "PER",
-                              style: TextStyle(
-                                  color: per_ontap != true
-                                      ? Colors.grey.shade300
-                                      : kPerColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14),
+        AbsorbPointer(
+          absorbing: widget.exceptCoin == CoinType.Per,
+          child: InkWell(
+            onTap: () {
+              setState(() {
+                widget.coinSelected(CoinType.Per);
+                Navigator.pop(context);
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Center(
+                child: Container(
+                  width: 290.w,
+                  height: 46.h,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: widget.exceptCoin == CoinType.Per
+                              ? Colors.grey.shade300
+                              : kPerColor),
+                      borderRadius: const BorderRadius.all(Radius.circular(10))),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
+                        child: Row(
+                          children: [
+                            widget.exceptCoin == CoinType.Per
+                                ? Container(
+                                    width: 20.w,
+                                    height: 20.h,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(AssetsController().getCoinIcon(CoinType.Per)),
+                                            colorFilter: ColorFilter.mode(
+                                              Colors.white.withOpacity(0.5),
+                                              BlendMode.modulate,
+                                            ))),
+                                  )
+                                : Image.asset(AssetsController().getCoinIcon(CoinType.Per),
+                                    width: 20.w,
+                                    height: 20.h,
+                                  ),
+                            Padding(
+                              padding: const EdgeInsets.all(6.0),
+                              child: Text(
+                                AssetsController().getCoinUpperCaseName(CoinType.Per),
+                                style: TextStyle(
+                                    color: widget.exceptCoin == CoinType.Per
+                                        ? Colors.grey.shade300
+                                        : kPerColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
-                      child: Text(
-                        "1",
-                        style: TextStyle(
-                            color: per_ontap != true
-                                ? Colors.grey.shade300
-                                : kPerColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14),
-                      ),
-                    )
-                  ],
+                      Container(
+                        margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
+                        child: Text(
+                          StorageController().onChainWallet!.balanceString(CoinType.Per),
+                          style: Font.lato(widget.exceptCoin == CoinType.Per
+                              ? Colors.grey.shade300
+                              : kPerColor, FontWeight.bold, 14.sp),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
         ),
-        InkWell(
-          onTap: () {
-            setState(() {
-              xper_ontap = false;
-              per_ontap = false;
-              hvh_ontap = true;
-              usdc_ontap = false;
-            });
-          },
-          child: Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Center(
-              child: Container(
-                width: 290.w,
-                height: 46.h,
-                decoration: BoxDecoration(
-                    border: Border.all(
-                        color: hvh_ontap != true
-                            ? Colors.grey.shade300
-                            : kCharColor),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
-                      child: Row(
-                        children: [
-                          hvh_ontap != true
-                              ? Container(
-                                  width: 20.w,
-                                  height: 20.h,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/images/lobby/icons/appbar_icons/havah_icon.png'),
-                                          colorFilter: ColorFilter.mode(
-                                            Colors.white.withOpacity(0.5),
-                                            BlendMode.modulate,
-                                          ))),
-                                )
-                              : Image.asset(
-                                  "assets/images/lobby/icons/appbar_icons/havah_icon.png",
-                                  width: 20.w,
-                                  height: 20.h,
-                                ),
-                          Padding(
-                            padding: const EdgeInsets.all(6.0),
-                            child: Text(
-                              "HVH",
-                              style: TextStyle(
-                                  color: hvh_ontap != true
-                                      ? Colors.grey.shade300
-                                      : kCharColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14),
+        AbsorbPointer(
+          absorbing: widget.exceptCoin == CoinType.Havah,
+          child: InkWell(
+            onTap: () {
+              setState(() {
+                widget.coinSelected(CoinType.Havah);
+                Navigator.pop(context);
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Center(
+                child: Container(
+                  width: 290.w,
+                  height: 46.h,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: widget.exceptCoin == CoinType.Havah
+                              ? Colors.grey.shade300
+                              : kCharColor),
+                      borderRadius: const BorderRadius.all(Radius.circular(10))),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
+                        child: Row(
+                          children: [
+                            widget.exceptCoin == CoinType.Havah
+                                ? Container(
+                                    width: 20.w,
+                                    height: 20.h,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(AssetsController().getCoinIcon(CoinType.Havah)),
+                                            colorFilter: ColorFilter.mode(
+                                              Colors.white.withOpacity(0.5),
+                                              BlendMode.modulate,
+                                            ))),
+                                  )
+                                : Image.asset(AssetsController().getCoinIcon(CoinType.Havah),
+                                    width: 20.w,
+                                    height: 20.h,
+                                  ),
+                            Padding(
+                              padding: const EdgeInsets.all(6.0),
+                              child: Text(
+                                AssetsController().getCoinUpperCaseName(CoinType.Havah),
+                                style: TextStyle(
+                                    color: widget.exceptCoin == CoinType.Havah
+                                        ? Colors.grey.shade300
+                                        : kCharColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
-                      child: Text(
-                        "1",
-                        style: TextStyle(
-                            color: hvh_ontap != true
-                                ? Colors.grey.shade300
-                                : kCharColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14),
-                      ),
-                    )
-                  ],
+                      Container(
+                        margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
+                        child: Text(
+                          StorageController().onChainWallet!.balanceString(CoinType.Havah),
+                          style: Font.lato(widget.exceptCoin == CoinType.Havah
+                              ? Colors.grey.shade300
+                              : kCharColor, FontWeight.bold, 14.sp),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
         ),
-        InkWell(
-          onTap: () {
-            setState(() {
-              xper_ontap = false;
-              per_ontap = false;
-              hvh_ontap = false;
-              usdc_ontap = true;
-            });
-          },
-          child: Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Center(
-              child: Container(
-                width: 290.w,
-                height: 46.h,
-                decoration: BoxDecoration(
-                    border: Border.all(
-                        color: usdc_ontap != true
-                            ? Colors.grey.shade300
-                            : Colors.grey),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
-                      child: Row(
-                        children: [
-                          usdc_ontap != true
-                              ? Container(
-                                  width: 20.w,
-                                  height: 20.h,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/images/wallet/icons/usdc_icon.png'),
-                                          colorFilter: ColorFilter.mode(
-                                            Colors.white.withOpacity(0.5),
-                                            BlendMode.modulate,
-                                          ))),
-                                )
-                              : Image.asset(
-                                  "assets/images/wallet/icons/usdc_icon.png",
-                                  width: 20.w,
-                                  height: 20.h,
-                                ),
-                          Padding(
-                            padding: const EdgeInsets.all(6.0),
-                            child: Text(
-                              "USDC",
-                              style: TextStyle(
-                                  color: usdc_ontap != true
-                                      ? Colors.grey.shade300
-                                      : Colors.grey,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14),
+        AbsorbPointer(
+          absorbing: widget.exceptCoin == CoinType.Usdc,
+          child: InkWell(
+            onTap: () {
+              setState(() {
+                widget.coinSelected(CoinType.Usdc);
+                Navigator.pop(context);
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Center(
+                child: Container(
+                  width: 290.w,
+                  height: 46.h,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: widget.exceptCoin == CoinType.Usdc
+                              ? Colors.grey.shade300
+                              : Colors.grey),
+                      borderRadius: const BorderRadius.all(Radius.circular(10))),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
+                        child: Row(
+                          children: [
+                            widget.exceptCoin == CoinType.Usdc
+                                ? Container(
+                                    width: 20.w,
+                                    height: 20.h,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(AssetsController().getCoinIcon(CoinType.Usdc)),
+                                            colorFilter: ColorFilter.mode(
+                                              Colors.white.withOpacity(0.5),
+                                              BlendMode.modulate,
+                                            ))),
+                                  )
+                                : Image.asset(AssetsController().getCoinIcon(CoinType.Usdc),
+                                    width: 20.w,
+                                    height: 20.h,
+                                  ),
+                            Padding(
+                              padding: const EdgeInsets.all(6.0),
+                              child: Text(
+                                AssetsController().getCoinUpperCaseName(CoinType.Usdc),
+                                style: TextStyle(
+                                    color: widget.exceptCoin == CoinType.Usdc
+                                        ? Colors.grey.shade300
+                                        : Colors.grey,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
-                      child: Text(
-                        "1",
-                        style: TextStyle(
-                            color: usdc_ontap != true
-                                ? Colors.grey.shade300
-                                : Colors.grey,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14),
-                      ),
-                    )
-                  ],
+                      Container(
+                        margin: EdgeInsets.fromLTRB(15.w, 1.h, 15.w, 0.h),
+                        child: Text(
+                          StorageController().onChainWallet!.balanceString(CoinType.Usdc),
+                          style: Font.lato(widget.exceptCoin == CoinType.Usdc
+                              ? Colors.grey.shade300
+                              : Colors.grey, FontWeight.bold, 14.sp),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
