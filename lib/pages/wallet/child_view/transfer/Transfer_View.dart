@@ -25,7 +25,7 @@ class _Transfer_ViewState extends State<Transfer_View> {
   final TextEditingController _amountController = TextEditingController();
 
 
-  void changeCoin(CoinType type) {
+  void changedCoin(CoinType type) {
     setState(() {
       selectedCoin = type;
       _amountController.text = "";
@@ -56,7 +56,7 @@ class _Transfer_ViewState extends State<Transfer_View> {
               width: 330.w,
               child: Transfer_Drawer(
                   fromLocalWallet: fromLocalWallet,
-                  coinSelected: changeCoin)
+                  coinSelected: changedCoin)
           ),
         ],
       ),
@@ -98,7 +98,7 @@ class _Transfer_ViewState extends State<Transfer_View> {
               margin: EdgeInsets.fromLTRB(0.w, 59.h, 0.w, 0.h),
               child: Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 390.w,
                     height: 80.h,
                     child: Stack(
@@ -126,7 +126,7 @@ class _Transfer_ViewState extends State<Transfer_View> {
                                       EdgeInsets.fromLTRB(0.w, 3.h, 3.w, 0.h),
                                   child: Row(
                                     children: [
-                                      Container(
+                                      SizedBox(
                                         width: 24.w,
                                         height: 24.h,
                                         child: Image.asset(
@@ -159,8 +159,7 @@ class _Transfer_ViewState extends State<Transfer_View> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.grey.shade300),
                                 color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
+                                borderRadius: const BorderRadius.all(Radius.circular(10))),
                             child: Container(
                               margin: EdgeInsets.fromLTRB(15.w, 10.h, 0.w, 0.h),
                               child: Column(
@@ -206,12 +205,10 @@ class _Transfer_ViewState extends State<Transfer_View> {
                                     fromLocalWallet = !fromLocalWallet;
                                   });
                                 },
-                                child: Container(
+                                child: SizedBox(
                                   width: 30.w,
                                   height: 30.h,
-                                  child: Image.asset(
-                                    "assets/images/wallet/icons/btn_change.png",
-                                  ),
+                                  child: Image.asset("assets/images/wallet/icons/btn_change.png"),
                                 ))),
                       ],
                     ),
@@ -242,7 +239,7 @@ class _Transfer_ViewState extends State<Transfer_View> {
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey.shade200),
                   color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
+                  borderRadius: const BorderRadius.all(Radius.circular(10))),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -324,8 +321,7 @@ class _Transfer_ViewState extends State<Transfer_View> {
                           hoverColor: kPrimaryColor,
                           fillColor: kPrimaryColor,
                           labelStyle: const TextStyle(color: kPrimaryColor),
-                          hintStyle: TextStyle(
-                              fontSize: 12, color: Colors.grey.shade500),
+                          hintStyle: Font.lato(Colors.grey.shade500, FontWeight.w400, 12.sp),
                           contentPadding: const EdgeInsets.only(
                               left: 5, bottom: 5, top: 5, right: 5),
                           hintText: 'Please enter the selling price'),

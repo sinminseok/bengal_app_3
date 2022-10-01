@@ -2,16 +2,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../types/common.dart';
 import '../../../types/constants.dart';
 import '../../../utils/font.dart';
 import '../widget/Drawer_widget.dart';
 import '../widget/drawer/Car_Info_Widget.dart';
 
 class Trade_Drawer extends StatefulWidget {
-  Trade_Drawer({Key? key}) : super(key: key);
+  Trade_Drawer({
+    Key? key,
+    required this.exceptCoin,
+    required this.coinSelected
+  }) : super(key: key);
 
   @override
   _Trade_Drawer createState() => _Trade_Drawer();
+
+  final CoinType exceptCoin;
+  final CoinSelected coinSelected;
 }
 
 class _Trade_Drawer extends State<Trade_Drawer> {
@@ -51,9 +59,12 @@ class _Trade_Drawer extends State<Trade_Drawer> {
               height: size.height * 0.002,
               color: Colors.grey.shade300,
             ),
-            const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Token_Bar()),
+            Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Token_Bar(
+                    exceptCoin: widget.exceptCoin,
+                    coinSelected: widget.coinSelected),
+            ),
           ],
         ),
       ],

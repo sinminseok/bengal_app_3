@@ -377,7 +377,6 @@ Widget Wallet_Account_View(
               ),
             ),
             Container(
-
               child: Image.asset(
                 "assets/images/wallet/ToExternal_button.png",
                 width: 115.w,
