@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../controller/assets_controller.dart';
+import '../../../types/common.dart';
 import '../../../utils/font.dart';
 import '../../../models/game.dart';
 
@@ -17,11 +19,14 @@ Widget Game_Normal_Container(GameInfo game) {
         Row(
           children: [
             Container(
-              margin: EdgeInsets.fromLTRB(4.w, 10.h, 3.w, 0.h),
-              child: Image.asset(
-                "assets/images/game/game_img.png",
-                width: 50.w,
-                height: 50.h,
+              width: 50.w,
+              height: 50.h,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    alignment:Alignment.topLeft,
+                    fit: BoxFit.fill,
+                    image: AssetImage(game.gameIconAsset())),
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
               ),
             ),
 
@@ -41,7 +46,7 @@ Widget Game_Normal_Container(GameInfo game) {
                     child: Row(
                       children: [
                         Image.asset(
-                          "assets/images/lobby/icons/appbar_icons/xper_icon.png",
+                          AssetsController().getCoinIcon(CoinType.XPer),
                           width: 12.w,
                           height: 12.h,
                         ),
@@ -59,10 +64,10 @@ Widget Game_Normal_Container(GameInfo game) {
                         color: Colors.grey.shade200,
                         borderRadius:
                         const BorderRadius.all(Radius.circular(10))),
-                    child: const Center(
+                    child: Center(
                         child: Text(
                           "x1",
-                          style: TextStyle(color: Colors.grey, fontSize: 10),
+                          style: Font.lato(Colors.grey, FontWeight.w400, 10.sp),
                         )),
                   ),
                 ],

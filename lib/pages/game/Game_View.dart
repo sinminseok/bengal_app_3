@@ -7,7 +7,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../controller/storage_controller.dart';
+import '../../models/game.dart';
 import '../../types/constants.dart';
+import '../../utils/font.dart';
 import '../inventory/widget/dropdown_button/DropdownButton2.dart';
 import 'normal/Game_Normal_View.dart';
 
@@ -20,20 +22,71 @@ class Game_View extends StatefulWidget {
   _Game_ViewState createState() => _Game_ViewState();
 }
 
+enum GameListTabItem {
+  special,
+  recommended,
+  normal,
+}
+
 class _Game_ViewState extends State<Game_View> {
-  bool Special_selected = true;
-  bool Recommended_selected = false;
-  bool Normal_selected = false;
+  // bool Special_selected = true;
+  // bool Recommended_selected = false;
+  // bool Normal_selected = false;
+
   bool animation = false;
+
+  GameListTabItem selectedTab = GameListTabItem.special;
+
+  Map<GameListTabItem, String> selectedSortValues = {
+    GameListTabItem.special : GameInfoList.getSpecialGameSortItems()[0],
+    GameListTabItem.recommended : GameInfoList.getRecommendedSortItems()[0],
+    GameListTabItem.normal : GameInfoList.getNormalSortItems()[0],
+  };
+
+  List<String> getSortItems() {
+    switch (selectedTab) {
+      case GameListTabItem.special:
+        return GameInfoList.getSpecialGameSortItems();
+      case GameListTabItem.recommended:
+        return GameInfoList.getRecommendedSortItems();
+      case GameListTabItem.normal:
+        return GameInfoList.getNormalSortItems();
+      default:
+        return [];
+    }
+  }
 
   TextEditingController _searchController = TextEditingController();
 
-  final List<String> items = [
-    'Lowest Level',
-    'Highest Level',
-    'Lastest',
-  ];
-  String? selectedValue = "Lowest Level";
+  void onChangeSortDropdownBox(String? value) {
+    if (null == value || value.isEmpty) return;
+
+    setState(() {
+      selectedSortValues[selectedTab] = value;
+      switch (selectedTab) {
+        case GameListTabItem.special:
+          StorageController().gameSpecialList.sortSpecialGame(value.getSpecialGameSortType);
+          break;
+        case GameListTabItem.recommended:
+          StorageController().gameRecommendList.sortRecommendedGame(value.getRecommendGameSortType);
+          break;
+        case GameListTabItem.normal:
+          StorageController().gameMyDemandList!.sortRecommendedGame(value.getRecommendGameSortType);
+          break;
+      }
+    });
+  }
+
+  void onChangeFilter() {
+
+  }
+
+  // final List<String> items = [
+  //   'Lowest Level',
+  //   'Highest Level',
+  //   'Lastest',
+  // ];
+  // String? selectedValue = "Lowest Level";
   double _height_animtaion = 200;
 
   updateState() {
@@ -80,9 +133,7 @@ class _Game_ViewState extends State<Game_View> {
                           InkWell(
                             onTap: () {
                               setState(() {
-                                Special_selected = true;
-                                Recommended_selected = false;
-                                Normal_selected = false;
+                                selectedTab = GameListTabItem.special;
                               });
                             },
                             child: Container(
@@ -91,19 +142,17 @@ class _Game_ViewState extends State<Game_View> {
                               decoration: BoxDecoration(
                                   border:
                                       Border.all(color: Colors.grey.shade300),
-                                  color: Special_selected != true
+                                  color: selectedTab != GameListTabItem.special
                                       ? Colors.white
                                       : kPrimaryColor,
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
+                                      const BorderRadius.all(Radius.circular(10))),
                               child: Center(
                                 child: Text(
                                   "Special",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      color: Special_selected != true
-                                          ? Colors.grey
-                                          : Colors.white),
+                                  style: Font.lato(selectedTab != GameListTabItem.special
+                                      ? Colors.grey
+                                      : Colors.white, FontWeight.bold, 12.sp),
                                 ),
                               ),
                             ),
@@ -111,9 +160,7 @@ class _Game_ViewState extends State<Game_View> {
                           InkWell(
                             onTap: () {
                               setState(() {
-                                Special_selected = false;
-                                Recommended_selected = true;
-                                Normal_selected = false;
+                                selectedTab = GameListTabItem.recommended;
                               });
                             },
                             child: Container(
@@ -122,19 +169,17 @@ class _Game_ViewState extends State<Game_View> {
                               decoration: BoxDecoration(
                                   border:
                                       Border.all(color: Colors.grey.shade300),
-                                  color: Recommended_selected != true
+                                  color: selectedTab != GameListTabItem.recommended
                                       ? Colors.white
                                       : kPrimaryColor,
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
+                                      const BorderRadius.all(Radius.circular(10))),
                               child: Center(
                                 child: Text(
                                   "Recommended",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      color: Recommended_selected != true
-                                          ? Colors.grey
-                                          : Colors.white),
+                                  style: Font.lato(selectedTab != GameListTabItem.recommended
+                                      ? Colors.grey
+                                      : Colors.white, FontWeight.bold, 12.sp),
                                 ),
                               ),
                             ),
@@ -142,9 +187,7 @@ class _Game_ViewState extends State<Game_View> {
                           InkWell(
                             onTap: () {
                               setState(() {
-                                Special_selected = false;
-                                Recommended_selected = false;
-                                Normal_selected = true;
+                                selectedTab = GameListTabItem.normal;
                               });
                             },
                             child: Container(
@@ -153,19 +196,17 @@ class _Game_ViewState extends State<Game_View> {
                               decoration: BoxDecoration(
                                   border:
                                       Border.all(color: Colors.grey.shade300),
-                                  color: Normal_selected != true
+                                  color: selectedTab != GameListTabItem.normal
                                       ? Colors.white
                                       : kPrimaryColor,
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
+                                      const BorderRadius.all(Radius.circular(10))),
                               child: Center(
                                 child: Text(
                                   "Normal",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      color: Normal_selected != true
-                                          ? Colors.grey
-                                          : Colors.white),
+                                  style: Font.lato(selectedTab != GameListTabItem.normal
+                                      ? Colors.grey
+                                      : Colors.white, FontWeight.bold, 12.sp),
                                 ),
                               ),
                             ),
@@ -181,11 +222,13 @@ class _Game_ViewState extends State<Game_View> {
                           height: 30.h,
                           child: CustomDropdownButton2(
                             hint: 'Lowest Level',
-                            dropdownItems: items,
-                            value: selectedValue,
+                            dropdownItems: getSortItems(),
+                            value: selectedSortValues[selectedTab]!.isEmpty
+                                ? getSortItems()[0]
+                                : selectedSortValues[selectedTab],
                             onChanged: (value) {
                               setState(() {
-                                selectedValue = value;
+                                onChangeSortDropdownBox(value);
                               });
                             },
                           ),
@@ -224,9 +267,9 @@ class _Game_ViewState extends State<Game_View> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.grey.shade300),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
+                                    const BorderRadius.all(Radius.circular(10))),
                             child: TextField(
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                   border: InputBorder.none,
                                   prefixIcon: IconTheme(
                                       data: IconThemeData(color: Colors.grey),
@@ -236,7 +279,7 @@ class _Game_ViewState extends State<Game_View> {
                                   contentPadding: EdgeInsets.all(14.0),
                                   hintText: 'Please enter game name.',
                                   hintStyle: TextStyle(fontSize: 13)),
-                              style: TextStyle(color: Colors.black),
+                              style: Font.lato(const Color(0xFFBAB8C4), FontWeight.w400, 8.sp),
                               controller: _searchController,
                             ),
                           )
@@ -246,17 +289,17 @@ class _Game_ViewState extends State<Game_View> {
               ),
             ),
 
-            Special_selected == true
+            selectedTab == GameListTabItem.special
                 ? Game_Special_View(
-                    StorageController().gameList!.getCategoryGameList(1))
+                    StorageController().getCategoryGameList(1).list)
                 : Container(),
-            Recommended_selected == true
+            selectedTab == GameListTabItem.recommended
                 ? Game_Recommended_View(
-                    StorageController().gameList!.getCategoryGameList(2))
+                StorageController().getCategoryGameList(2).list)
                 : Container(),
-            Normal_selected == true
+            selectedTab == GameListTabItem.normal
                 ? Game_Normal_View(context,
-                    StorageController().gameList!.getCategoryGameList(3))
+                StorageController().getCategoryGameList(3).list)
                 : Container(),
           ],
         ),
