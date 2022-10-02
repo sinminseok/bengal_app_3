@@ -1,3 +1,4 @@
+import 'package:bengal_app/controller/assets_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,7 +6,9 @@ import 'package:provider/provider.dart';
 import '../../../../controller/Inventory_controller/mint_controller.dart';
 import '../../../../controller/storage_controller.dart';
 import '../../../../models/car.dart';
+import '../../../../types/common.dart';
 import '../../../../types/constants.dart';
+import '../../../../utils/font.dart';
 import '../../../inventory/widget/dropdown_button/DropdownButton2.dart';
 import '../../popup/car_detail_popup.dart';
 import '../../popup/filter_popup.dart';
@@ -33,7 +36,6 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
 
   void select_car() {
     if (car_provider.list.length < 2) {
-      print("add");
       setState(() {
         car_provider.addItem("assets/images/common/cars/car1.png");
       });
@@ -51,14 +53,12 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
 
   @override
   void initState() {
-    // TODO: implement initState
     carnftlist = StorageController().carNftList!;
     super.initState();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     Future.delayed(Duration.zero, () {
       //your code goes here
       car_provider.delete_all();
@@ -136,7 +136,7 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                     top: 202.h,
                     child: Column(
                       children: [
-                        Container(
+                        SizedBox(
                             width: 230.w,
                             height: 90.h,
                             child: Image.asset(
@@ -157,7 +157,7 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                             color: Colors.white,
                             border: Border.all(color: Colors.grey.shade300),
                             borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
+                                const BorderRadius.all(Radius.circular(10))),
                         child: Column(
                           children: [
                             Container(
@@ -173,55 +173,21 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                                           width: 23.w,
                                           height: 23.h,
                                           child: Image.asset(
-                                            "assets/images/lobby/icons/appbar_icons/xper_icon.png",
+                                              AssetsController().getCoinIcon(CoinType.XPer)
                                           )),
                                       Container(
                                           margin: EdgeInsets.fromLTRB(
                                               5.w, 0.h, 0.w, 0.h),
                                           child: Text(
-                                            "XPER",
-                                            style: TextStyle(
-                                                color: Colors.grey.shade600,
-                                                fontSize: 14.sp,
-                                                fontWeight: FontWeight.w700),
-                                          ))
-                                    ],
-                                  ),
-                                  Text("20.0")
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin:
-                                  EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Container(
-                                          width: 23.w,
-                                          height: 23.h,
-                                          child: Image.asset(
-                                            "assets/images/lobby/icons/appbar_icons/per_icon.png",
-                                          )),
-                                      Container(
-                                          margin: EdgeInsets.fromLTRB(
-                                              5.w, 0.h, 0.w, 0.h),
-                                          child: Text(
-                                            "PER",
-                                            style: TextStyle(
-                                                color: kPerColor,
-                                                fontSize: 14.sp,
-                                                fontWeight: FontWeight.w700),
+                                            AssetsController().getCoinUpperCaseName(CoinType.XPer),
+                                            style: Font.lato(Colors.grey.shade600, FontWeight.bold, 14.sp),
                                           ))
                                     ],
                                   ),
                                   Text(
                                     "20.0",
-                                    style: TextStyle(color: kPerColor),
-                                  )
+                                    style: Font.lato(Colors.grey.shade600, FontWeight.bold, 14.sp),
+                                  ),
                                 ],
                               ),
                             ),
@@ -238,21 +204,52 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                                           width: 23.w,
                                           height: 23.h,
                                           child: Image.asset(
-                                            "assets/images/lobby/icons/appbar_icons/xper_icon.png",
+                                              AssetsController().getCoinIcon(CoinType.Per)
+                                          )),
+                                      Container(
+                                          margin: EdgeInsets.fromLTRB(
+                                              5.w, 0.h, 0.w, 0.h),
+                                          child: Text(
+                                            AssetsController().getCoinUpperCaseName(CoinType.Per),
+                                            style: Font.lato(kPerColor, FontWeight.bold, 14.sp),
+                                          ))
+                                    ],
+                                  ),
+                                  Text(
+                                    "20.0",
+                                    style: Font.lato(kPerColor, FontWeight.bold, 14.sp),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin:
+                                  EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                          width: 23.w,
+                                          height: 23.h,
+                                          child: Image.asset(
+                                            "assets/images/workshop/mint_icon.png",
                                           )),
                                       Container(
                                           margin: EdgeInsets.fromLTRB(
                                               5.w, 0.h, 0.w, 0.h),
                                           child: Text(
                                             "Lv5 Minting Scroll",
-                                            style: TextStyle(
-                                                color: Colors.grey.shade600,
-                                                fontSize: 14.sp,
-                                                fontWeight: FontWeight.w700),
+                                            style: Font.lato(Colors.grey.shade600, FontWeight.bold, 14.sp),
                                           ))
                                     ],
                                   ),
-                                  Text("1/200")
+                                  Text(
+                                    "1/200",
+                                    style: Font.lato(Colors.grey.shade600, FontWeight.bold, 14.sp),
+                                  )
                                 ],
                               ),
                             )
@@ -265,8 +262,6 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
           ),
           car_provider.list.length == 2
               ? Container(
-
-
               width: 390.w,
                   height: 80.h,
                   color: Colors.grey.shade200,
@@ -275,7 +270,7 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                       Container(
                         width: 175.w,
                         height: 46.h,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             color: kPrimaryColor,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20))),
@@ -296,13 +291,13 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                           child: Center(
                             child: Text(
                               next_ontap ? "MINTING" : "NEXT",
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 14.sp),
+                              style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
                             ),
                           ),
                         ),
                       ),
-                      next_ontap?Container(
+                      next_ontap
+                          ?Container(
                           margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
 
                           child: InkWell(
@@ -313,7 +308,11 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                                   _height = 191.h;
                                 });
                               },
-                              child: Text("Parsent Reset",style: TextStyle(decoration: TextDecoration.underline,color: Colors.grey.shade600,fontWeight: FontWeight.w700,fontSize: 12.sp),))):Container()
+                              child: Text(
+                                "Parentes Reset",
+                                style: Font.lato(Colors.grey.shade600, FontWeight.bold, 12.sp, true),
+                              )))
+                          :Container()
                     ],
                   ))
               : Container(),
@@ -368,7 +367,7 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                               top: BorderSide(
                                   width: 1.w, color: Colors.grey.shade300))),
                       child: Center(
-                        child: Container(
+                        child: SizedBox(
                           width: 360.w,
                           height: 700.h,
                           child: GridView.builder(

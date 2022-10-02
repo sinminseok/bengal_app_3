@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../types/constants.dart';
+import '../../../../utils/font.dart';
 import '../../widget/History_listview_Widget.dart';
 import '../../widget/Pending_listview_Widget.dart';
 
@@ -32,7 +33,7 @@ class _Spending_bottom_containerState extends State<Spending_bottom_container> {
               offset: Offset(5, 0), // changes position of shadow
             ),
           ],
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(10), topRight: Radius.circular(10)),
           color: Colors.grey.shade100),
       child: Column(
@@ -59,8 +60,8 @@ class _Spending_bottom_containerState extends State<Spending_bottom_container> {
                             child: Text(
                               "Pending",
                               style: pending_selected != true
-                                  ? TextStyle(color: Colors.grey)
-                                  : TextStyle(fontWeight: FontWeight.bold),
+                                  ? Font.lato(const Color(0xFFBAB8C4), FontWeight.w400, 14.sp)
+                                  : Font.lato(const Color(0xFF746F7B), FontWeight.bold, 14.sp),
                             ),
                           ),
                           pending_selected != true
@@ -91,8 +92,8 @@ class _Spending_bottom_containerState extends State<Spending_bottom_container> {
                             child: Text(
                               "History",
                               style: history_selected != true
-                                  ? TextStyle(color: Colors.grey)
-                                  : TextStyle(fontWeight: FontWeight.bold),
+                                  ? Font.lato(const Color(0xFFBAB8C4), FontWeight.w400, 14.sp)
+                                  : Font.lato(const Color(0xFF746F7B), FontWeight.bold, 14.sp),
                             ),
                           ),
                           history_selected != true
@@ -111,7 +112,10 @@ class _Spending_bottom_containerState extends State<Spending_bottom_container> {
                     ),
                   ],
                 ),
-                Text("Show past 30 days",style: TextStyle(color: kPrimaryColor,fontSize: 12),)
+                Text(
+                  "Show past 30 days",
+                  style: Font.lato(kPrimaryColor, FontWeight.w400, 12.sp),
+                ),
               ],
             ),
           ),

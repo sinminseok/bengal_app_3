@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../types/constants.dart';
+import '../../utils/font.dart';
 import 'child_view/mint/Mint_View.dart';
 import 'child_view/mint/Plus_Car_View.dart';
 
@@ -60,14 +61,13 @@ class _Workshop_ViewState extends State<Workshop_View> {
                                     ? Colors.white
                                     : kPrimaryColor,
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
+                                    const BorderRadius.all(Radius.circular(10))),
                             child: Center(
                               child: Text(
                                 "Mint",
-                                style: TextStyle(
-                                    color: Mint_selected != true
-                                        ? Colors.grey
-                                        : Colors.white),
+                                style: Font.lato(Mint_selected != true
+                                    ? Colors.grey
+                                    : Colors.white, FontWeight.bold, 12.sp),
                               ),
                             ),
                           ),
@@ -89,14 +89,13 @@ class _Workshop_ViewState extends State<Workshop_View> {
                                     ? Colors.white
                                     : kPrimaryColor,
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
+                                    const BorderRadius.all(Radius.circular(10))),
                             child: Center(
                               child: Text(
                                 "Enhance",
-                                style: TextStyle(
-                                    color: Enhance_selected != true
-                                        ? Colors.grey
-                                        : Colors.white),
+                                style: Font.lato(Enhance_selected != true
+                                    ? Colors.grey
+                                    : Colors.white, FontWeight.bold, 12.sp),
                               ),
                             ),
                           ),
@@ -118,14 +117,13 @@ class _Workshop_ViewState extends State<Workshop_View> {
                                     ? Colors.white
                                     : kPrimaryColor,
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
+                                    const BorderRadius.all(Radius.circular(10))),
                             child: Center(
                               child: Text(
                                 "Gem Upgrade",
-                                style: TextStyle(
-                                    color: GemUpgrade_selected != true
-                                        ? Colors.grey
-                                        : Colors.white),
+                                style: Font.lato(GemUpgrade_selected != true
+                                    ? Colors.grey
+                                    : Colors.white, FontWeight.bold, 12.sp),
                               ),
                             ),
                           ),

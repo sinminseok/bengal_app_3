@@ -92,9 +92,6 @@ class LoginPageState extends State<LoginPage> {
                 Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20.sp),
               ),
             ),
-
-
-
             Container(
               margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.h, 0.w),
               height: 50.h,
