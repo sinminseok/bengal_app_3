@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'package:flinq/flinq.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -451,17 +452,18 @@ class StorageController implements Subject {
     return ret &= await saveCarNftPool();
   }
 
-  Future<bool> buyBox(BoxNft nft) async {
-    if (0 > boxNftPool!.list.indexWhere((o) => o.id == nft.id)) return false;
-    if (0 <= boxNftList!.list.indexWhere((o) => o.id == nft.id)) return false;
+  Future<int> buyBox(BoxNft nft) async {
+    if (0 > boxNftPool!.list.indexWhere((o) => o.id == nft.id)) return 0;
+    if (0 <= boxNftList!.list.indexWhere((o) => o.id == nft.id)) return 0;
 
-    if (!_buyNft(havah: nft.price)) return false;
+    if (!_buyNft(havah: nft.price)) return 0;
 
     boxNftList!.list.add(nft);
     boxNftPool!.list.removeWhere((o) => o.id == nft.id);
 
     var ret = await saveBoxNftList();
-    return ret &= await saveBoxNftPool();
+    ret &= await saveBoxNftPool();
+    return ret ? nft.id : 0;
   }
 
   Future<bool> openBox(BoxNft nft) async {
@@ -504,7 +506,7 @@ class StorageController implements Subject {
     return true;
   }
 
-  Future<bool> mining() async {
-    return false;
+  Future<int> mining(CarNft src, CarNft dst) async {
+    return await buyBox(boxNftPool.list[Random().nextInt(boxNftPool.list.length)]);
   }
 }
