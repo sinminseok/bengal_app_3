@@ -3,7 +3,10 @@ import 'package:bengal_app/pages/inventory/widget/cars/Inventory_cars_View.dart'
 import 'package:bengal_app/pages/inventory/widget/dropdown_button/DropdownButton2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import '../../controller/storage_controller.dart';
+import '../../models/box.dart';
+import '../../models/car.dart';
 import '../../types/constants.dart';
 import '../game/popup/filter_popup.dart';
 
@@ -14,18 +17,64 @@ class Inventory_View extends StatefulWidget {
   _Inventory_ViewState createState() => _Inventory_ViewState();
 }
 
-class _Inventory_ViewState extends State<Inventory_View> {
-  bool Cars_selected = true;
-  bool Car_Boxes_selected = false;
-  bool Gems_selected = false;
-  bool Others_selected = false;
+enum InventoryTabItem {
+  cars,
+  boxes,
+  gems,
+  others
+}
 
-  final List<String> items = [
-    'Lowest Level',
-    'Highest Level',
-    'Lastest',
-  ];
-  String? selectedValue = "Lowest Level";
+class _Inventory_ViewState extends State<Inventory_View> {
+
+  InventoryTabItem selectedTab = InventoryTabItem.cars;
+
+  Map<InventoryTabItem, String> selectedSortValues = {
+    InventoryTabItem.cars : CarNftList.getSortItems()[0],
+    InventoryTabItem.boxes : BoxNftList.getSortItems()[0],
+    InventoryTabItem.gems : BoxNftList.getSortItems()[0],
+    InventoryTabItem.others : BoxNftList.getSortItems()[0],
+  };
+
+  List<String> getSortItems() {
+    switch (selectedTab) {
+      case InventoryTabItem.cars:
+        return CarNftList.getSortItems();
+      case InventoryTabItem.boxes:
+        return BoxNftList.getSortItems();
+      case InventoryTabItem.gems:
+        return BoxNftList.getSortItems();
+      case InventoryTabItem.others:
+        return BoxNftList.getSortItems();
+      default:
+        return [];
+    }
+  }
+
+  void onChangeSortDropdownBox(String? value) {
+    if (null == value || value.isEmpty) return;
+
+    setState(() {
+      selectedSortValues[selectedTab] = value;
+      switch (selectedTab) {
+        case InventoryTabItem.cars:
+          StorageController().carNftList!.sort(value.getCarSortType);
+          break;
+        case InventoryTabItem.boxes:
+          StorageController().boxNftList!.sort(value.getBoxSortType);
+          break;
+        case InventoryTabItem.gems:
+          StorageController().boxNftList!.sort(value.getBoxSortType);
+          break;
+        case InventoryTabItem.others:
+          StorageController().boxNftList!.sort(value.getBoxSortType);
+          break;
+      }
+    });
+  }
+
+  void onChangeFilter() {
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,134 +99,106 @@ class _Inventory_ViewState extends State<Inventory_View> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                Cars_selected = true;
-                                Car_Boxes_selected = false;
-                                Gems_selected = false;
-                                Others_selected = false;
-                              });
-                            },
-                            child: Container(
-                              width: 86.w,
-                              height: 34.h,
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey.shade300),
-                                  color: Cars_selected != true
-                                      ? Colors.white
-                                      : kPrimaryColor,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                              child: Center(
-                                child: Text(
-                                  "Cars",
-                                  style: TextStyle(
-                                      color: Cars_selected != true
-                                          ? Colors.grey
-                                          : Colors.white),
-                                ),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              selectedTab = InventoryTabItem.cars;
+                            });
+                          },
+                          child: Container(
+                            width: 86.w,
+                            height: 34.h,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                color: selectedTab != InventoryTabItem.cars
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                                borderRadius: const BorderRadius.all(Radius.circular(10))),
+                            child: Center(
+                              child: Text(
+                                "Cars",
+                                style: TextStyle(
+                                    color: selectedTab != InventoryTabItem.cars
+                                        ? Colors.grey
+                                        : Colors.white),
                               ),
                             ),
                           ),
                         ),
-                        Container(
-
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                Cars_selected = false;
-                                Car_Boxes_selected = true;
-                                Gems_selected = false;
-                                Others_selected = false;
-                              });
-                            },
-                            child: Container(
-                              width: 86.w,
-                              height: 34.h,
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey.shade300),
-                                  color: Car_Boxes_selected != true
-                                      ? Colors.white
-                                      : kPrimaryColor,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                              child: Center(
-                                child: Text(
-                                  "Car Boxes",
-                                  style: TextStyle(
-                                      color: Car_Boxes_selected != true
-                                          ? Colors.grey
-                                          : Colors.white),
-                                ),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              selectedTab = InventoryTabItem.boxes;
+                            });
+                          },
+                          child: Container(
+                            width: 86.w,
+                            height: 34.h,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                color: selectedTab != InventoryTabItem.boxes
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                                borderRadius: const BorderRadius.all(Radius.circular(10))),
+                            child: Center(
+                              child: Text(
+                                "Car Boxes",
+                                style: TextStyle(
+                                    color: selectedTab != InventoryTabItem.boxes
+                                        ? Colors.grey
+                                        : Colors.white),
                               ),
                             ),
                           ),
                         ),
-                        Container(
-
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                Cars_selected = false;
-                                Car_Boxes_selected = false;
-                                Gems_selected = true;
-                                Others_selected = false;
-                              });
-                            },
-                            child: Container(
-                              width: 86.w,
-                              height: 34.h,
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey.shade300),
-                                  color: Gems_selected != true
-                                      ? Colors.white
-                                      : kPrimaryColor,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                              child: Center(
-                                child: Text(
-                                  "Gems",
-                                  style: TextStyle(
-                                      color: Gems_selected != true
-                                          ? Colors.grey
-                                          : Colors.white),
-                                ),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              selectedTab = InventoryTabItem.gems;
+                            });
+                          },
+                          child: Container(
+                            width: 86.w,
+                            height: 34.h,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                color: selectedTab != InventoryTabItem.gems
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                                borderRadius: const BorderRadius.all(Radius.circular(10))),
+                            child: Center(
+                              child: Text(
+                                "Gems",
+                                style: TextStyle(
+                                    color: selectedTab != InventoryTabItem.gems
+                                        ? Colors.grey
+                                        : Colors.white),
                               ),
                             ),
                           ),
                         ),
-                        Container(
-
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                Cars_selected = false;
-                                Car_Boxes_selected = false;
-                                Gems_selected = false;
-                                Others_selected = true;
-                              });
-                            },
-                            child: Container(
-                              width: 86.w,
-                              height: 34.h,
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey.shade300),
-                                  color: Others_selected != true
-                                      ? Colors.white
-                                      : kPrimaryColor,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                              child: Center(
-                                child: Text(
-                                  "Others",
-                                  style: TextStyle(
-                                      color: Others_selected != true
-                                          ? Colors.grey
-                                          : Colors.white),
-                                ),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              selectedTab = InventoryTabItem.others;
+                            });
+                          },
+                          child: Container(
+                            width: 86.w,
+                            height: 34.h,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                color: selectedTab != InventoryTabItem.others
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                                borderRadius: const BorderRadius.all(Radius.circular(10))),
+                            child: Center(
+                              child: Text(
+                                "Others",
+                                style: TextStyle(
+                                    color: selectedTab != InventoryTabItem.others
+                                        ? Colors.grey
+                                        : Colors.white),
                               ),
                             ),
                           ),
@@ -193,13 +214,13 @@ class _Inventory_ViewState extends State<Inventory_View> {
                         width: 120.w,
                         height: 30.h,
                         child: CustomDropdownButton2(
-                          hint: 'Lowest Level',
-                          dropdownItems: items,
-                          value: selectedValue,
+                          hint: getSortItems()[0],
+                          dropdownItems: getSortItems(),
+                          value: selectedSortValues[selectedTab]!.isEmpty
+                              ? getSortItems()[0]
+                              : selectedSortValues[selectedTab],
                           onChanged: (value) {
-                            setState(() {
-                              selectedValue = value;
-                            });
+                            onChangeSortDropdownBox(value);
                           },
                         ),
                       ),
@@ -222,12 +243,18 @@ class _Inventory_ViewState extends State<Inventory_View> {
                 ],
               ),
             ),
-            Cars_selected == true ? Inventory_Cars_View(size, StorageController().carNftList!) : Container(),
-            Car_Boxes_selected == true
+            selectedTab == InventoryTabItem.cars
+                ? Inventory_Cars_View(size, StorageController().carNftList!)
+                : Container(),
+            selectedTab == InventoryTabItem.boxes
                 ? Inventory_CarBoxes_View(size, StorageController().boxNftList!)
                 : Container(),
-            Gems_selected == true ? Inventory_Cars_View(size, StorageController().carNftList!) : Container(),
-            Others_selected == true ? Inventory_Cars_View(size, StorageController().carNftList!) : Container(),
+            selectedTab == InventoryTabItem.gems
+                ? Inventory_Cars_View(size, StorageController().carNftList!)
+                : Container(),
+            selectedTab == InventoryTabItem.others
+                ? Inventory_Cars_View(size, StorageController().carNftList!)
+                : Container(),
           ],
         ),
       ),

@@ -338,10 +338,13 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                           onTap: () {
                             next_ontap
                                 ? setState(() {
-                                    //minting ontap
+
+
                               //var boxId = StorageController().mining(src, dst);
                               Mint_Carbox_Popup().showDialog(size, context, 0);
-                                  })
+
+                            })
+
                                 : setState(() {
                                     next_ontap = !next_ontap;
                                     _height = 500.h;
