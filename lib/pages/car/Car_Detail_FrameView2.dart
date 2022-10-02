@@ -163,7 +163,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                         "assets/images/common/cars/car1.png",
                         height: 225.33.h,
                         width: 390.w,
-                        fit: BoxFit.fitWidth,
+                        fit: BoxFit.fill,
                       ),
                     ),
                     Container(
@@ -365,7 +365,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                 Container(
                   width: 330.w,
                   height: 50.h,
-                  margin: EdgeInsets.fromLTRB(15.w, 35.h, 15.w, 0.h),
+                  margin: EdgeInsets.fromLTRB(15.w, 15.h, 15.w, 0.h),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       color: Colors.grey.shade200),
@@ -421,7 +421,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                     ? Column(
                         children: [
                           Container(
-                              margin: EdgeInsets.fromLTRB(0.w, 30.h, 0.w, 10.h),
+                              margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 10.h),
                               width: size.width,
                               height: size.height * 0.001,
                               decoration:
@@ -442,8 +442,16 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                               margin:
                                   EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
                               width: 360.w,
-                              height: 60.h,
+                              height: 50.h,
                               decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Color(0xff8B80F8).withOpacity(0.7),
+                                    kPrimaryColor,
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ),
                                 color: kPrimaryColor,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
@@ -453,7 +461,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                                   "Cost BUY",
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 17,
+                                      fontSize: 16.sp,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),

@@ -3,6 +3,7 @@ import 'package:bengal_app/pages/my_page/widget/Mypage_info_Widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../types/constants.dart';
+import '../../utils/button_frame.dart';
 import '../lobby/widget/Button_Widget.dart';
 
 class MyPage_View extends StatefulWidget {
@@ -221,10 +222,7 @@ class _MyPage_ViewState extends State<MyPage_View> {
 
 
 
-            Container(
-                margin: EdgeInsets.fromLTRB(15.w, 100.h, 15.w, 0.h),
-
-                child: Center(child: Button_Widget(size,"CONFIRM")))
+            Button_Frame("confirm")
 
           ],
         ),

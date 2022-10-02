@@ -13,9 +13,9 @@ Widget Market_Cars_View(Size size, CarNftList nftList){
       child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing:10.w,
+            crossAxisSpacing:1.w,
             mainAxisSpacing: 1.w,
-            childAspectRatio: 1.h / 1.6.h,
+            childAspectRatio: 1.h / 1.55.h,
           ),
           itemCount: nftList.list.length,
           // shrinkWrap: true,

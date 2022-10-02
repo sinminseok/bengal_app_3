@@ -48,7 +48,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
         children: [
           Container(
             width: 170.w,
-            height: 252.h,
+            height: 265.h,
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.all(
