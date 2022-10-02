@@ -120,29 +120,39 @@ class _Frame_View extends State<Frame_View>  implements Observer {
                   // SizedBox(
                   //   width: size.width * 0.1,
                   // ),
-                  SizedBox(
+                  Container(
+
                     height: 40.h,
                     child: Row(
-                        //mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Coin_Widget("xper_icon", StorageController().wallet!.balanceString(CoinType.XPer)),
-                          Coin_Widget("per_icon", StorageController().wallet!.balanceString(CoinType.Per)),
-                          Coin_Widget("havah_icon", StorageController().wallet!.balanceString(CoinType.Havah)),
-                          InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    PageTransition(
-                                        type: PageTransitionType.rightToLeft,
-                                        child: Wallet_View()));
-                              },
-                              child: Image.asset(
-                                "assets/images/lobby/icons/appbar_icons/btn_wallet.png",
-                                width: 40.w,
-                                height: 40.h,
-                                fit: BoxFit.fill,
-                              ))
+                          Row(
+                            children: [
+                              Coin_Widget("xper_icon", StorageController().wallet!.balanceString(CoinType.XPer)),
+                              Coin_Widget("per_icon", StorageController().wallet!.balanceString(CoinType.Per)),
+                              Coin_Widget("havah_icon", StorageController().wallet!.balanceString(CoinType.Havah)),
+                            ],
+                          ),
+
+                          Container(
+                            margin: EdgeInsets.fromLTRB(5.w, 0.h, 0.w, 0.h),
+
+                            child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      PageTransition(
+                                          type: PageTransitionType.rightToLeft,
+                                          child: Wallet_View()));
+                                },
+                                child: Image.asset(
+                                  "assets/images/lobby/icons/appbar_icons/btn_wallet.png",
+                                  width: 40.w,
+                                  height: 40.h,
+                                  fit: BoxFit.fill,
+                                )),
+                          )
                         ]),
                   ),
                 ],

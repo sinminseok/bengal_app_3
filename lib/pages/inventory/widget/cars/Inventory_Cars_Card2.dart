@@ -30,7 +30,7 @@ Widget Inventory_Car_Card2(
           child: Container(
 
             width: 170.w,
-            height: 252.h,
+            height: 265.h,
             decoration: BoxDecoration(
               border: Border.all(color: color),
               borderRadius: BorderRadius.all(

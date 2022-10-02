@@ -119,8 +119,8 @@ class Market_popup2 {
                           children: [
                             Container(
                               margin:
-                                  EdgeInsets.fromLTRB(20.w, 20.h, 20.w, 0.h),
-                              width: 101.w,
+                                  EdgeInsets.fromLTRB(20.w,10.h, 20.w, 0.h),
+                              width: 200.w,
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -141,7 +141,7 @@ class Market_popup2 {
                             ),
                             Container(
                               margin:
-                                  EdgeInsets.fromLTRB(20.w, 15.h, 20.w, 0.h),
+                                  EdgeInsets.fromLTRB(20.w, 10.h, 20.w, 0.h),
                               width: 200.w,
                               child: Row(
                                 mainAxisAlignment:

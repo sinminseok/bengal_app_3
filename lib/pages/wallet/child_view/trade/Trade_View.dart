@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:bengal_app/pages/wallet/popup/trade_popup.dart';
+import 'package:bengal_app/utils/button_frame.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
@@ -159,9 +160,10 @@ class _Trade_ViewState extends State<Trade_View> {
                   color: Colors.white,
                   borderRadius: const BorderRadius.all(Radius.circular(10))),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    margin: EdgeInsets.fromLTRB(15.w, 0.h, 30.w, 0.h),
+                    margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 0.h),
                     width: size.width * 0.7,
                     child: TextField(
                       keyboardType: TextInputType.number,
@@ -319,20 +321,8 @@ class _Trade_ViewState extends State<Trade_View> {
                 ],
               ),
             ),
-            Container(
-              margin: EdgeInsets.fromLTRB(0.w, 83.h, 0.w, 0.h),
-              width: 175.w,
-              height: 46.h,
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
-                  color: kPrimaryColor),
-              child: Center(
-                child: Text(
-                  "TRADE",
-                  style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
-                ),
-              ),
-            )
+            Button_Frame("TRADE"),
+
           ],
         ),
       ),
