@@ -36,7 +36,8 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
             decoration: BoxDecoration(
               image: DecorationImage(
                   alignment:Alignment.topLeft,
-                  fit: BoxFit.fill, image: AssetImage(game.gameIconAsset())),
+                  fit: BoxFit.fill,
+                  image: AssetImage(game.gameIconAsset())),
               borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
           ),

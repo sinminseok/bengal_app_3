@@ -149,11 +149,11 @@ class _Lobby_ViewState extends State<Lobby_View> {
                 child: PageView.builder(
                     controller: PageController(viewportFraction: 0.9.w),
                     //사용할 게임수 builder
-                    itemCount: StorageController().gameList!.list.length,
+                    itemCount: StorageController().getCategoryGameList(0).list.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext ctx, int idx) {
                       return Game_Play_Widget(
-                          size, context, StorageController().gameList!.list[idx]);
+                          size, context, StorageController().getCategoryGameList(0).list[idx]);
                     }),
               ),
             ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../controller/assets_controller.dart';
 import '../../../models/game.dart';
+import '../../../types/common.dart';
 import '../../../utils/font.dart';
 
 Widget Game_Recommended_Container(GameInfo game) {
@@ -13,7 +15,7 @@ Widget Game_Recommended_Container(GameInfo game) {
       decoration: BoxDecoration(
           border: Border.all(color: Colors.grey.shade300),
           color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(10))),
+          borderRadius: const BorderRadius.all(Radius.circular(10))),
       child: Column(
         children: [
 
@@ -22,10 +24,16 @@ Widget Game_Recommended_Container(GameInfo game) {
               Container(
                 margin: EdgeInsets.fromLTRB(15.w, 15.h, 0.w, 0.h),
 
-                child: Image.asset(
-                  "assets/images/game/game_img.png",
+                child: Container(
                   width: 70.w,
                   height: 70.h,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        alignment:Alignment.topLeft,
+                        fit: BoxFit.fill,
+                        image: AssetImage(game.gameIconAsset())),
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  ),
                 ),
               ),
 
@@ -35,34 +43,28 @@ Widget Game_Recommended_Container(GameInfo game) {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-
-
                       child: Text(
                         game.titleString(),
                         style: Font.lato(const Color(0xFF342B35), FontWeight.bold, 18.sp),
                       ),
                     ),
-                    Container(
+                    Row(
+                      children: [
+                        Image.asset(
+                          AssetsController().getCoinIcon(CoinType.XPer),
+                          width: 16.w,
+                        ),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(3.88.w, 3.h, 0.w, 0.h),
 
-                      child: Row(
-                        children: [
-                          Image.asset(
-                            "assets/images/lobby/icons/appbar_icons/xper_icon.png",
-                            width: 16.w,
+                          child: Text(
+                            game.xPerPerPowerString(),
+                            style: Font.lato(const Color(0xFF8E8E8E), FontWeight.bold, 12.sp),
                           ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(3.88.w, 3.h, 0.w, 0.h),
-
-                            child: Text(
-                              game.xPerPerPowerString(),
-                              style: Font.lato(const Color(0xFF8E8E8E), FontWeight.bold, 12.sp),
-                            ),
-                          )
-                        ],
-                      ),
+                        )
+                      ],
                     ),
-                    Container(
-
+                    SizedBox(
                       width: 250.w,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -74,8 +76,7 @@ Widget Game_Recommended_Container(GameInfo game) {
                             height: 18.h,
                             decoration: BoxDecoration(
                                 color: Colors.grey.shade200,
-                                borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
+                                borderRadius: const BorderRadius.all(Radius.circular(10))),
                             child: Center(
                                 child: Text(
                                   game.categoryNCarLevelString(),

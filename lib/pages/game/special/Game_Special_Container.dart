@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../controller/assets_controller.dart';
 import '../../../models/game.dart';
+import '../../../types/common.dart';
 import '../../../types/constants.dart';
 import '../../../utils/font.dart';
 
@@ -12,7 +14,7 @@ Widget Game_Special_Container(GameInfo game) {
     //height: 175.h,
     decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade300),
-        borderRadius: BorderRadius.all(Radius.circular(20))),
+        borderRadius: const BorderRadius.all(Radius.circular(20))),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -21,11 +23,16 @@ Widget Game_Special_Container(GameInfo game) {
           //height: 70.w,
           child: Row(
             children: [
-              Image.asset(
-                "assets/images/game/game_img.png",
+              Container(
                 width: 70.w,
                 height: 70.h,
-                fit: BoxFit.fill,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      alignment:Alignment.topLeft,
+                      fit: BoxFit.fill,
+                      image: AssetImage(game.gameIconAsset())),
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                ),
               ),
               Container(
                 margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 0.h),
@@ -38,17 +45,15 @@ Widget Game_Special_Container(GameInfo game) {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                        Container(
-                          width:137.w,
-                          child: Text(
-                            overflow: TextOverflow.ellipsis,
-                            game.titleString(),
-                            style: Font.lato(const Color(0xFF342B35),
-                                FontWeight.bold, 20.sp),
+                          SizedBox(
+                            width: 137.w,
+                            child: Text(
+                              overflow: TextOverflow.ellipsis,
+                              game.titleString(),
+                              style: Font.lato(const Color(0xFF342B35),
+                                  FontWeight.bold, 20.sp),
+                            ),
                           ),
-                        ),
-
-
                           Text(
                             game.limitAtString(),
                             style: Font.lato(
@@ -62,7 +67,7 @@ Widget Game_Special_Container(GameInfo game) {
                       child: Row(
                         children: [
                           Image.asset(
-                            "assets/images/lobby/icons/appbar_icons/xper_icon.png",
+                            AssetsController().getCoinIcon(CoinType.XPer),
                             width: 16.w,
                             height: 16.h,
                           ),
@@ -82,7 +87,7 @@ Widget Game_Special_Container(GameInfo game) {
                       child: Row(
                         children: [
                           Image.asset(
-                            "assets/images/lobby/icons/appbar_icons/per_icon.png",
+                            AssetsController().getCoinIcon(CoinType.Per),
                             width: 16.w,
                             height: 16.h,
                           ),
@@ -122,7 +127,7 @@ Widget Game_Special_Container(GameInfo game) {
                     height: 18.h,
                     decoration: BoxDecoration(
                         color: Colors.grey.shade200,
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                        borderRadius: const BorderRadius.all(Radius.circular(10))),
                     child: Center(
                         child: Text(
                       game.categoryNCarLevelString(),
@@ -198,7 +203,7 @@ Widget Game_Special_Container(GameInfo game) {
                         Container(
                           margin: EdgeInsets.fromLTRB(1.w, 1.h, 10.w, 0.h),
                           child: Image.asset(
-                            "assets/images/lobby/icons/appbar_icons/per_icon.png",
+                            AssetsController().getCoinIcon(CoinType.Per),
                             width: 20.w,
                             height: 20.h,
                           ),

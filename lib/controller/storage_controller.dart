@@ -61,10 +61,12 @@ class StorageController implements Subject {
   late BoxNftList? boxNftList;
   late MiningBoxList? miningBoxList;
   late TransferHistoryList? transferHistory;
-  late GameInfoList? gameList;
-  late GameInfoList? gameDemandList;
+  late GameInfoList? gameMyDemandList;
 
   late CommonData commonData;
+  late GameInfoList gameSpecialList;
+  late GameInfoList gameRecommendList;
+  late GameInfoList gameDemandList;
   late CarNftList carNftPool;
   late BoxNftList boxNftPool;
   late CarNftList boxCarNftPool;
@@ -85,6 +87,9 @@ class StorageController implements Subject {
 
     loadRemember();
     await loadCommonData();
+    await loadGameSpecialList();
+    await loadGameRecommendList();
+    await loadGameDemandList();
     await loadCarNftPool();
     await loadBoxNftPool();
     await loadBoxCarNftPool();
@@ -110,6 +115,24 @@ class StorageController implements Subject {
   Future<bool> loadCommonData() async {
     commonData = CommonData.fromJson(await json.decode(
         await rootBundle.loadString("assets/back_data/common_data.json")));
+    return true;
+  }
+
+  Future<bool> loadGameSpecialList() async {
+    gameSpecialList = GameInfoList.fromJson(await json.decode(
+        await rootBundle.loadString("assets/back_data/game_special.json")));
+    return true;
+  }
+
+  Future<bool> loadGameRecommendList() async {
+    gameRecommendList = GameInfoList.fromJson(await json.decode(
+        await rootBundle.loadString("assets/back_data/game_recommend.json")));
+    return true;
+  }
+
+  Future<bool> loadGameDemandList() async {
+    gameDemandList = GameInfoList.fromJson(await json.decode(
+        await rootBundle.loadString("assets/back_data/game_demand.json")));
     return true;
   }
 
@@ -283,37 +306,16 @@ class StorageController implements Subject {
     return true;
   }
 
-  // Game List
-  Future<bool> saveGameList() async {
-    if (null == account || null == gameList) return false;
-    return await _prefs.setString(_genAutoKey(StorageKey.gameList),
-        jsonEncode(gameList!.toJson()));
-  }
-  Future<bool> loadGameList() async {
-    var value = _prefs.getString(_genAutoKey(StorageKey.gameList));
-    if (null == value) {
-      gameList = GameInfoList.fromJson(await json.decode(
-          await rootBundle.loadString("assets/back_data/game_default.json")));
-    } else {
-      gameList = GameInfoList.fromJson(json.decode(value));
-    }
-    return true;
-  }
-
   // Demand Game List
-  Future<bool> saveGameDemandList() async {
-    if (null == account || null == gameList) return false;
+  Future<bool> saveGameMyDemandList() async {
+    if (null == account || null == gameMyDemandList) return false;
     return await _prefs.setString(_genAutoKey(StorageKey.gameDemandList),
-        jsonEncode(gameDemandList!.toJson()));
+        jsonEncode(gameMyDemandList!.toJson()));
   }
-  Future<bool> loadGameDemandList() async {
-    var value = _prefs.getString(_genAutoKey(StorageKey.gameDemandList));
-    if (null == value) {
-      gameDemandList = GameInfoList.fromJson(await json.decode(
-          await rootBundle.loadString("assets/back_data/game_demand.json")));
-    } else {
-      gameDemandList = GameInfoList.fromJson(json.decode(value));
-    }
+  bool loadGameMyDemandList() {
+    var value = _prefs.getString(_genAutoKey(StorageKey.gameDemandList)) ?? "";
+    if (value.isEmpty) return false;
+    gameMyDemandList = GameInfoList.fromJson(json.decode(value));
     return true;
   }
 
@@ -325,18 +327,24 @@ class StorageController implements Subject {
     ret &= await saveWallet();
     ret &= await saveCarNftList();
     ret &= await saveBoxNftList();
+    ret &= await saveTransferHistory();
+    ret &= await saveGameMyDemandList();
     return ret;
   }
 
   // Account All Data Load
-  Future<bool> loadPlayerData() async {
+  bool loadPlayerData() {
     var ret = loadWallet();
     ret &= loadOnChainWallet();
     ret &= loadCarNftList();
     ret &= loadBoxNftList();
     ret &= loadTransferHistory();
-    ret &= await loadGameList();
-    ret &= await loadGameDemandList();
+    ret &= loadGameMyDemandList();
+    if (ret) {
+      for (var o in gameMyDemandList?.list ?? []) {
+        gameDemandList.removeGame(o.id);
+      }
+    }
     return ret;
   }
 
@@ -352,7 +360,7 @@ class StorageController implements Subject {
     if (!account!.isValidPassword(password)) return false;
 
     var ret = await saveRemember(isRemember);
-    return ret &= await loadPlayerData();
+    return ret &= loadPlayerData();
   }
 
   Future<bool> signOut() async {
@@ -401,6 +409,7 @@ class StorageController implements Subject {
     carNftList = CarNftList([]);
     boxNftList = BoxNftList([]);
     transferHistory = TransferHistoryList([]);
+    gameMyDemandList = GameInfoList([]);
 
     if (!(await saveAccount())) return false;
     if (!(await saveWallet())) return false;
@@ -408,6 +417,7 @@ class StorageController implements Subject {
     if (!(await saveCarNftList())) return false;
     if (!(await saveBoxNftList())) return false;
     if (!(await saveTransferHistory())) return false;
+    if (!(await saveGameMyDemandList())) return false;
 
     account = null;
     wallet = null;
@@ -415,6 +425,7 @@ class StorageController implements Subject {
     carNftList = null;
     boxNftList = null;
     transferHistory = null;
+    gameMyDemandList = null;
 
     return await _prefs.setInt(describeEnum(StorageKey.baseId), ++_baseId);
   }
@@ -508,5 +519,24 @@ class StorageController implements Subject {
 
   Future<int> mining(CarNft src, CarNft dst) async {
     return await buyBox(boxNftPool.list[Random().nextInt(boxNftPool.list.length)]);
+  }
+
+  GameInfoList getCategoryGameList(int category) {
+    switch (category) {
+      case 0:
+        return GameInfoList(gameSpecialList.list + gameRecommendList.list + (gameMyDemandList?.list ?? []));
+      case 1:
+        return gameSpecialList;
+      case 2:
+        return gameRecommendList;
+      case 3:
+        return gameMyDemandList ?? GameInfoList([]);
+      default:
+        return GameInfoList([]);
+    }
+  }
+
+  Future<int> demandGame(GameInfo game) async {
+    return 0;
   }
 }

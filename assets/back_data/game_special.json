@@ -44,51 +44,6 @@
       "depositPer": 150000,
       "limitAt": "2023-01-31 23:59:59",
       "packageName": "com.lunosoft.bread"
-    },
-    {
-      "id": 4,
-      "title": "Clash Royale",
-      "category": 2,
-      "perPerDay": 0.0,
-      "perPerPower": 0.0,
-      "xPerPerDay": 0.0,
-      "xPerPerPower": 0.03,
-      "needCarGrade": 1,
-      "needCarType": 0,
-      "minCarLevel": 1,
-      "depositPer": 0,
-      "limitAt": "2000-09-02 03:04:05",
-      "packageName": "com.supercell.clashroyale"
-    },
-    {
-      "id": 5,
-      "title": "Splinterlands",
-      "category": 2,
-      "perPerDay": 0.0,
-      "perPerPower": 0.0,
-      "xPerPerDay": 0.0,
-      "xPerPerPower": 0.03,
-      "needCarGrade": 3,
-      "needCarType": 0,
-      "minCarLevel": 1,
-      "depositPer": 0,
-      "limitAt": "2000-09-02 03:04:05",
-      "packageName": "com.steemmonsters.splinterlands"
-    },
-    {
-      "id": 6,
-      "title": "Love is... in small things",
-      "category": 2,
-      "perPerDay": 0.0,
-      "perPerPower": 0.0,
-      "xPerPerDay": 0.0,
-      "xPerPerPower": 0.03,
-      "needCarGrade": 5,
-      "needCarType": 4,
-      "minCarLevel": 1,
-      "depositPer": 0,
-      "limitAt": "2000-09-02 03:04:05",
-      "packageName": "com.lunosoft.puuung1"
     }
   ]
 }

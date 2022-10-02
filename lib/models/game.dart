@@ -98,6 +98,78 @@ class GameInfo {
   }
 }
 
+enum SpecialGameSortType {
+  highestXPer,
+  lowestXPer,
+  highestPer,
+  lowestPer,
+}
+
+extension SpecialGameSortTypeExtension on SpecialGameSortType {
+  String get getString {
+    switch (this) {
+      case SpecialGameSortType.highestXPer:
+        return "Highest XPer";
+      case SpecialGameSortType.lowestXPer:
+        return "Lowest XPer";
+      case SpecialGameSortType.highestPer:
+        return "Highest Per";
+      case SpecialGameSortType.lowestPer:
+        return "Lowest Per";
+      default:
+        return "";
+    }
+  }
+}
+
+extension SpecialGameSortStringExtension on String {
+  SpecialGameSortType get getSpecialGameSortType {
+    switch (this) {
+      case "Highest XPer":
+        return SpecialGameSortType.highestXPer;
+      case "Lowest XPer":
+        return SpecialGameSortType.lowestXPer;
+      case "Highest Per":
+        return SpecialGameSortType.highestPer;
+      case "Lowest Per":
+        return SpecialGameSortType.lowestPer;
+      default:
+        return SpecialGameSortType.highestXPer;
+    }
+  }
+}
+
+enum RecommendGameSortType {
+  highestXPer,
+  lowestXPer,
+}
+
+extension RecommendGameSortTypeExtension on RecommendGameSortType {
+  String get getString {
+    switch (this) {
+      case RecommendGameSortType.highestXPer:
+        return "Highest XPer";
+      case RecommendGameSortType.lowestXPer:
+        return "Lowest XPer";
+      default:
+        return "";
+    }
+  }
+}
+
+extension RecommendGameSortStringExtension on String {
+  RecommendGameSortType get getRecommendGameSortType {
+    switch (this) {
+      case "Highest XPer":
+        return RecommendGameSortType.highestXPer;
+      case "Lowest XPer":
+        return RecommendGameSortType.lowestXPer;
+      default:
+        return RecommendGameSortType.highestXPer;
+    }
+  }
+}
+
 @JsonSerializable()
 class GameInfoList {
   final List<GameInfo> list;
@@ -107,8 +179,56 @@ class GameInfoList {
   factory GameInfoList.fromJson(Map<String, dynamic> json) => _$GameInfoListFromJson(json);
   Map<String, dynamic> toJson() => _$GameInfoListToJson(this);
 
+  void removeGame(int gameId) {
+    list.removeWhere((o) => o.id == gameId);
+  }
+
   List<GameInfo> getCategoryGameList(int category) {
     return list.whereList((o) => o.category == category);
+  }
+
+  void sortSpecialGame(SpecialGameSortType sortType) {
+    switch (sortType) {
+      case SpecialGameSortType.highestXPer:
+        list.sort((a, b) => b.xPerPerPower.compareTo(a.xPerPerPower));
+        break;
+      case SpecialGameSortType.lowestXPer:
+        list.sort((a, b) => a.xPerPerPower.compareTo(b.xPerPerPower));
+        break;
+      case SpecialGameSortType.highestPer:
+        list.sort((a, b) => b.perPerPower.compareTo(a.perPerPower));
+        break;
+      case SpecialGameSortType.lowestPer:
+        list.sort((a, b) => a.perPerPower.compareTo(b.perPerPower));
+        break;
+      default:
+        break;
+    }
+  }
+
+  void sortRecommendedGame(RecommendGameSortType sortType) {
+    switch (sortType) {
+      case RecommendGameSortType.highestXPer:
+        list.sort((a, b) => b.xPerPerPower.compareTo(a.xPerPerPower));
+        break;
+      case RecommendGameSortType.lowestXPer:
+        list.sort((a, b) => a.xPerPerPower.compareTo(b.xPerPerPower));
+        break;
+      default:
+        break;
+    }
+  }
+
+  static List<String> getSpecialGameSortItems() {
+    return SpecialGameSortType.values.map((e) => e.getString).toList();
+  }
+
+  static List<String> getRecommendedSortItems() {
+    return RecommendGameSortType.values.map((e) => e.getString).toList();
+  }
+
+  static List<String> getNormalSortItems() {
+    return RecommendGameSortType.values.map((e) => e.getString).toList();
   }
 }
 

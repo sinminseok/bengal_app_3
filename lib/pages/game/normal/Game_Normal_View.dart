@@ -19,7 +19,7 @@ Widget Game_Normal_View(BuildContext context, List<GameInfo> gameList) {
 
                   )));
         },
-        child: Container(
+        child: SizedBox(
             width: 360.w,
             height: 100.h,
             child: Image.asset("assets/images/game/Add_game_img.png")),
