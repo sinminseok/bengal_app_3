@@ -6,8 +6,7 @@ import '../../../types/constants.dart';
 
 class Mint_Carbox_Popup {
 
-
-  void showDialog(Size size, BuildContext context) {
+  void showDialog(Size size, BuildContext context,int id) {
     showGeneralDialog(
         context: context,
         barrierDismissible: true,
