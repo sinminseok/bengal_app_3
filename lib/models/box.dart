@@ -45,6 +45,37 @@ class BoxNft {
   }
 }
 
+enum BoxSortType {
+  highestGrade,
+  lowestGrade,
+}
+
+extension BoxSortTypeExtension on BoxSortType {
+  String get getString {
+    switch (this) {
+      case BoxSortType.highestGrade:
+        return "Highest Grade";
+      case BoxSortType.lowestGrade:
+        return "Lowest Grade";
+      default:
+        return "";
+    }
+  }
+}
+
+extension BoxSortStringExtension on String {
+  BoxSortType get getBoxSortType {
+    switch (this) {
+      case "Highest Grade":
+        return BoxSortType.highestGrade;
+      case "Lowest Grade":
+        return BoxSortType.lowestGrade;
+      default:
+        return BoxSortType.highestGrade;
+    }
+  }
+}
+
 @JsonSerializable()
 class BoxNftList {
   final List<BoxNft> list;
@@ -53,4 +84,21 @@ class BoxNftList {
 
   factory BoxNftList.fromJson(Map<String, dynamic> json) => _$BoxNftListFromJson(json);
   Map<String, dynamic> toJson() => _$BoxNftListToJson(this);
+
+  void sort(BoxSortType sortType) {
+    switch (sortType) {
+      case BoxSortType.highestGrade:
+        list.sort((a, b) => b.grade.compareTo(a.grade));
+        break;
+      case BoxSortType.lowestGrade:
+        list.sort((a, b) => a.grade.compareTo(b.grade));
+        break;
+      default:
+        break;
+    }
+  }
+
+  static List<String> getSortItems() {
+    return BoxSortType.values.map((e) => e.getString).toList();
+  }
 }
