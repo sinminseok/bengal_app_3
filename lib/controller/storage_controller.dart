@@ -446,7 +446,6 @@ class StorageController implements Subject {
       wallet!.balanceXPer -= havah;
     }
 
-    notifyObserver();
     return true;
   }
 
@@ -460,27 +459,32 @@ class StorageController implements Subject {
     carNftPool!.list.removeWhere((o) => o.id == nft.id);
 
     var ret = await saveCarNftList();
-    return ret &= await saveCarNftPool();
+    ret &= await saveCarNftPool();
+
+    notifyObserver();
+    return ret;
   }
 
-  Future<int> buyBox(BoxNft nft) async {
-    if (0 > boxNftPool!.list.indexWhere((o) => o.id == nft.id)) return 0;
-    if (0 <= boxNftList!.list.indexWhere((o) => o.id == nft.id)) return 0;
+  Future<BoxNft?> buyBox(BoxNft nft) async {
+    if (0 > boxNftPool!.list.indexWhere((o) => o.id == nft.id)) return null;
+    if (0 <= boxNftList!.list.indexWhere((o) => o.id == nft.id)) return null;
 
-    if (!_buyNft(havah: nft.price)) return 0;
+    if (!_buyNft(havah: nft.price)) return null;
 
     boxNftList!.list.add(nft);
     boxNftPool!.list.removeWhere((o) => o.id == nft.id);
 
     var ret = await saveBoxNftList();
     ret &= await saveBoxNftPool();
-    return ret ? nft.id : 0;
+
+    notifyObserver();
+    return ret ? nft : null;
   }
 
-  Future<bool> openBox(BoxNft nft) async {
-    if (0 > boxNftList!.list.indexWhere((o) => o.id == nft.id)) return false;
+  Future<CarNft?> openBox(BoxNft nft) async {
+    if (0 > boxNftList!.list.indexWhere((o) => o.id == nft.id)) return null;
     var car = boxCarNftPool!.list.firstOrNullWhere((o) => o.id == nft.carNftId);
-    if (null == car) return false;
+    if (null == car) return null;
 
     // todo: cost calculate
 
@@ -490,7 +494,9 @@ class StorageController implements Subject {
 
     var ret = await saveBoxNftList();
     ret &= await saveBoxCarNftPool();
-    return ret &= await saveCarNftList();
+    ret &= await saveCarNftList();
+    notifyObserver();
+    return ret ? car : null;
   }
 
   bool debit(CoinType coinType, double amount) {
@@ -517,8 +523,9 @@ class StorageController implements Subject {
     return true;
   }
 
-  Future<int> mining(CarNft src, CarNft dst) async {
-    return await buyBox(boxNftPool.list[Random().nextInt(boxNftPool.list.length)]);
+  Future<BoxNft?> mining(CarNft src, CarNft dst) async {
+    var box = await buyBox(boxNftPool.list[Random().nextInt(boxNftPool.list.length)]);
+    return box;
   }
 
   GameInfoList getCategoryGameList(int category) {

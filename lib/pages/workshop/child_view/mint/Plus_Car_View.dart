@@ -4,9 +4,11 @@ import 'package:bengal_app/controller/assets_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import '../../../../controller/Inventory_controller/mint_controller.dart';
 import '../../../../controller/storage_controller.dart';
+import '../../../../models/box.dart';
 import '../../../../models/car.dart';
 import '../../../../types/common.dart';
 import '../../../../types/constants.dart';
@@ -37,12 +39,12 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
 
   var car_provider;
 
-  void select_car() {
+  void select_car(CarNft carNft) {
     if (car_provider.list.length < 2) {
       setState(() {
         left_box = !left_box;
         right_bool = !right_bool;
-        car_provider.addItem("assets/images/common/cars/car1.png");
+        car_provider.addItem(carNft);
       });
       // if(car_provider.list.length == 2){
       //   setState(() {
@@ -86,6 +88,10 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
   bool selected = false;
   double _height = 191.h;
 
+  void _mintingResultProc(Size size, BuildContext context, BoxNft box) {
+    Mint_Carbox_Popup().showDialog(size, context, box);
+  }
+
   @override
   Widget build(BuildContext context) {
     car_provider = Provider.of<Mint_Controller>(context, listen: false);
@@ -116,16 +122,15 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                               decoration: BoxDecoration(
                                 border: Border.all(color: kPrimaryColor),
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(15))),
+                                  borderRadius: const BorderRadius.all(Radius.circular(15))),
                               width: 170.w,
                               height: 152.h,
-                              child: Center(
+                              child: const Center(
                                 child: Icon(Icons.add_circle,color: kPrimaryColor,),
                               )
                             )
                                 : Container(
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(15))),
@@ -134,8 +139,8 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                                     child: DottedBorder(
 
                                         borderType: BorderType.RRect,
-                                        radius: Radius.circular(15),
-                                        child: Center(child: Icon(Icons.add_circle,color: Colors.grey,))),
+                                        radius: const Radius.circular(15),
+                                        child: const Center(child: Icon(Icons.add_circle,color: Colors.grey,))),
                                   ))),
                   ),
                   AnimatedPositioned(
@@ -154,16 +159,15 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: kPrimaryColor),
                                 color: Colors.white,
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(15))),
+                                borderRadius: const BorderRadius.all(Radius.circular(15))),
                             width: 170.w,
                             height: 152.h,
-                            child: Center(
+                            child: const Center(
                               child: Icon(Icons.add_circle,color: kPrimaryColor,),
                             )
                         )
                             : Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.all(
                                   Radius.circular(15))),
@@ -172,8 +176,8 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                           child: DottedBorder(
 
                               borderType: BorderType.RRect,
-                              radius: Radius.circular(15),
-                              child: Center(child: Icon(Icons.add_circle,color: Colors.grey,))),
+                              radius: const Radius.circular(15),
+                              child: const Center(child: Icon(Icons.add_circle,color: Colors.grey,))),
                         )
                       ),
                     ),
@@ -253,7 +257,7 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                                 children: [
                                   Row(
                                     children: [
-                                      Container(
+                                      SizedBox(
                                           width: 23.w,
                                           height: 23.h,
                                           child: Image.asset(AssetsController()
@@ -336,20 +340,27 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                                 BorderRadius.all(Radius.circular(20))),
                         child: InkWell(
                           onTap: () {
-                            next_ontap
-                                ? setState(() {
+                            if (next_ontap) {
+                              StorageController().mining(car_provider.list[0], car_provider.list[1]).then((box) =>
+                              {
+                                if (null == box) {
+                                  Fluttertoast.showToast(
+                                      msg: 'Minting Fail',
+                                      backgroundColor: Colors.grey,
+                                      textColor: Colors.black,
+                                      gravity: ToastGravity.CENTER)
+                                } else {
+                                  // todo: animation
+                                  _mintingResultProc(size, context, box)
+                                }
+                              });
 
-
-                              //var boxId = StorageController().mining(src, dst);
-                              Mint_Carbox_Popup().showDialog(size, context, 0);
-
-                            })
-
-                                : setState(() {
-                                    next_ontap = !next_ontap;
-                                    _height = 500.h;
-                                  });
-                            print("d");
+                            } else {
+                              setState(() {
+                                next_ontap = !next_ontap;
+                                _height = 500.h;
+                              });
+                            }
                           },
                           child: Center(
                             child: Text(
@@ -449,7 +460,7 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                                 return InkWell(
                                   onTap: () {
                                     Car_detail_popup()
-                                        .showDialog(size, context);
+                                        .showDialog(size, context, carnftlist!.list[index]);
                                   },
                                   child: Center(
                                     child: Mint_Car_Card(

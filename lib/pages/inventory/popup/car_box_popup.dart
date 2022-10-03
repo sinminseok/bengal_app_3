@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:bengal_app/controller/storage_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
@@ -10,9 +11,18 @@ import 'package:vs_scrollbar/vs_scrollbar.dart';
 
 import '../../../../types/constants.dart';
 import '../../../models/box.dart';
+import '../../../models/car.dart';
 
 class Car_Box_popup {
 
+  void _boxOpenProc(BuildContext context, BoxNft box) {
+    Navigator.pop(context);
+    StorageController().openBox(box).then((car) => {
+      if (null != car) {
+        carbox_popup3(context, car)
+      }
+    });
+  }
 
   void carbox_popup1(BuildContext context , BoxNft nft) {
 
@@ -27,7 +37,7 @@ class Car_Box_popup {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)),
               content: DefaultTextStyle(
-                  style: TextStyle(fontSize: 16, color: Colors.black),
+                  style: const TextStyle(fontSize: 16, color: Colors.black),
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
@@ -54,7 +64,7 @@ class Car_Box_popup {
                               Container(
                                 width: 300.w,
                                 height: 50.h,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(10),
                                         topRight: Radius.circular(10)),
@@ -95,7 +105,7 @@ class Car_Box_popup {
                                 height:24.h,
                                 decoration: BoxDecoration(
                                   border: Border.all(color: Colors.grey),
-                                  borderRadius: BorderRadius.all(
+                                  borderRadius: const BorderRadius.all(
                                       Radius.circular(30.0) //         <--- border radius here
                                   ),
                                 ),
@@ -177,7 +187,7 @@ class Car_Box_popup {
                                               height:16.h,
                                               decoration: BoxDecoration(
                                                 border: Border.all(color: Colors.grey),
-                                                borderRadius: BorderRadius.all(
+                                                borderRadius: const BorderRadius.all(
                                                     Radius.circular(30.0) //         <--- border radius here
                                                 ),
                                               ),
@@ -238,7 +248,7 @@ class Car_Box_popup {
                                         height: 112.h,
                                         decoration: BoxDecoration(
                                             border: Border.all(color: kPrimaryColor),
-                                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                                            borderRadius: const BorderRadius.all(Radius.circular(10))),
 
                                         child: Column(
                                           children: [
@@ -256,7 +266,7 @@ class Car_Box_popup {
                                               height:16.h,
                                               decoration: BoxDecoration(
                                                 border: Border.all(color: Colors.grey),
-                                                borderRadius: BorderRadius.all(
+                                                borderRadius: const BorderRadius.all(
                                                     Radius.circular(30.0) //         <--- border radius here
                                                 ),
                                               ),
@@ -321,7 +331,7 @@ class Car_Box_popup {
                                   height: 34.h,
                                   margin: EdgeInsets.fromLTRB(
                                       15.w, 23.h, 15.w, 0.h),
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       color: kPrimaryColor,
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(30))),
@@ -347,7 +357,7 @@ class Car_Box_popup {
     );
   }
 
-  void carbox_popup2(BuildContext context , BoxNft nft) {
+  void carbox_popup2(BuildContext context , BoxNft box) {
 
     showAnimatedDialog(
       context: context,
@@ -360,7 +370,7 @@ class Car_Box_popup {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)),
               content: DefaultTextStyle(
-                  style: TextStyle(fontSize: 16, color: Colors.black),
+                  style: const TextStyle(fontSize: 16, color: Colors.black),
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
@@ -404,7 +414,7 @@ class Car_Box_popup {
                                   height: 150.h,
                                   margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
 
-                                  child: Image.asset("assets/images/inventory/car_boxes/box_${nft.getBoxGradeString()}.png")),
+                                  child: Image.asset("assets/images/inventory/car_boxes/box_${box.getBoxGradeString()}.png")),
                               Container(
                                 width: 76.w,
                                 height:24.h,
@@ -422,7 +432,7 @@ class Car_Box_popup {
                                       width:13.w,
                                       height: 13.h,
                                       decoration: BoxDecoration(
-                                          color: nft.getBoxGradeColor(), shape: BoxShape.circle),
+                                          color: box.getBoxGradeColor(), shape: BoxShape.circle),
                                       child: Row(
                                         children: [
 
@@ -439,7 +449,7 @@ class Car_Box_popup {
                                     ),
 
                                     Text(
-                                      "${nft.id}",
+                                      "${box.id}",
                                       style: TextStyle(fontSize: 10),
                                     )
                                   ],
@@ -469,7 +479,7 @@ class Car_Box_popup {
                                           24.w, 13.h, 0.w, 0.h),
                                       decoration: BoxDecoration(
                                           border: Border.all(color: kPrimaryColor),
-                                          borderRadius: BorderRadius.all(
+                                          borderRadius: const BorderRadius.all(
                                               Radius.circular(30))),
                                       child: Center(
                                         child: Text(
@@ -483,8 +493,7 @@ class Car_Box_popup {
                                   ),
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.pop(context);
-                                      carbox_popup3(context,"SEDAN","Normal");
+                                      _boxOpenProc(context, box);
                                     },
                                     child: Container(
                                       width: 120.w,
@@ -519,7 +528,7 @@ class Car_Box_popup {
     );
   }
 
-  void carbox_popup3(BuildContext context,String car_type,String grade) {
+  void carbox_popup3(BuildContext context, CarNft car) {
 
     showAnimatedDialog(
       context: context,
@@ -532,7 +541,7 @@ class Car_Box_popup {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)),
               content: DefaultTextStyle(
-                  style: TextStyle(fontSize: 16, color: Colors.black),
+                  style: const TextStyle(fontSize: 16, color: Colors.black),
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
@@ -561,7 +570,7 @@ class Car_Box_popup {
                                 height: 40.h,
 
 
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(10),
                                         topRight: Radius.circular(10)),
@@ -574,16 +583,20 @@ class Car_Box_popup {
                                       height: 25.h,
                                       child: Image.asset("assets/images/common/cars/car_appbar_icon.png"),
                                     ),
-                                    Text(" $car_type ",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),),
-                                    Text("/ $grade",style: TextStyle(color: Colors.white,fontSize: 12),),
+                                    Text(
+                                      " ${car.type} ",
+                                      style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),
+                                    ),
+                                    Text(
+                                      "/ ${car.grade}",
+                                      style: TextStyle(color: Colors.white,fontSize: 12),
+                                    ),
                                   ],
                                 )
                               ),
-                              Container(
+                              SizedBox(
                                 width: 300.w,
                                 height: 177.h,
-
-
                                 child: Image.asset("assets/images/common/cars/car1.png",fit: BoxFit.fitWidth,),
                               ),
                               Container(
@@ -592,7 +605,6 @@ class Car_Box_popup {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-
                                     Image.asset(
                                       "assets/images/lobby/icons/circle_icon.png",
                                       width: 16.w,
@@ -602,7 +614,7 @@ class Car_Box_popup {
                                       margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
 
                                       child: Text(
-                                        "13121233",
+                                        "${car.id}",
                                         style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
                                       ),
                                     ),
@@ -644,7 +656,9 @@ class Car_Box_popup {
                                               height: 20.h,
                                             ),
                                           ),
-                                          Text("21.8",style: TextStyle(fontSize: 12),),
+                                          Text(
+                                            "${car.speed}",
+                                            style: TextStyle(fontSize: 12),),
                                           Text(
                                             "Speed",
                                             style: TextStyle(fontSize: 8, color: Colors.grey),
@@ -670,7 +684,9 @@ class Car_Box_popup {
                                               height: 20.h,
                                             ),
                                           ),
-                                          Text("21.8",style: TextStyle(fontSize: 12),),
+                                          Text(
+                                            "${car.lucky}",
+                                            style: TextStyle(fontSize: 12),),
                                           Text(
                                             "Luck",
                                             style: TextStyle(fontSize: 8, color: Colors.grey),
@@ -696,7 +712,9 @@ class Car_Box_popup {
                                               height: 20.h,
                                             ),
                                           ),
-                                          Text("21.8",style: TextStyle(fontSize: 12),),
+                                          Text(
+                                            "${car.charge}",
+                                            style: TextStyle(fontSize: 12),),
                                           Text(
                                             "Charge",
                                             style: TextStyle(fontSize: 8, color: Colors.grey),
@@ -722,7 +740,9 @@ class Car_Box_popup {
                                               height: 20.h,
                                             ),
                                           ),
-                                          Text("21.8",style: TextStyle(fontSize: 12),),
+                                          Text(
+                                            "${car.repair}",
+                                            style: TextStyle(fontSize: 12),),
                                           Text(
                                             "Repair",
                                             style: TextStyle(fontSize: 8, color: Colors.grey),

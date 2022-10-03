@@ -3,11 +3,13 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import '../../../models/car.dart';
 import '../../../types/constants.dart';
+import '../../../utils/font.dart';
 
 class Car_detail_popup {
 
-  void showDialog(Size size, BuildContext context) {
+  void showDialog(Size size, BuildContext context, CarNft nft) {
     showGeneralDialog(
         context: context,
         barrierDismissible: true,
@@ -32,7 +34,7 @@ class Car_detail_popup {
                       ))),
               Center(
                 child: DefaultTextStyle(
-                  style: TextStyle(fontSize: 16, color: Colors.black),
+                  style: const TextStyle(fontSize: 16, color: Colors.black),
                   child: Container(
                       width: 300.w,
                       height: 540.h,
@@ -46,7 +48,7 @@ class Car_detail_popup {
                           Container(
                               width: 320.w,
                               height: 40.h,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(20),
                                       topRight: Radius.circular(20)),
@@ -58,34 +60,46 @@ class Car_detail_popup {
                                     margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 0.h),
                                     child: Row(
                                       children: [
-                                        Container(
+                                        SizedBox(
                                           width: 38,
                                           height: 15,
                                           child: Image.asset("assets/images/game/empty_car/empty_car1.png",color: Colors.white,),
                                         ),
-                                        Text("SEDAN ",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 10.sp),),
-                                        Text("/ ULTIMATE",style: TextStyle(color: Colors.white,fontSize: 10.sp),),
+                                        Text(
+                                          nft.getCarTypeString().toUpperCase(),
+                                          style: Font.lato(Colors.white, FontWeight.bold, 12.sp),
+                                        ),
+                                        Text(
+                                          "/ ${nft.getCarGradeString().toString()}",
+                                          style: Font.lato(Colors.white, FontWeight.bold, 12.sp),
+                                        ),
                                       ],
                                     ),
                                   ),
-                                  
+
                                   Container(
                                     margin: EdgeInsets.fromLTRB(0.w, 0.h, 10.w, 0.h),
                                     child: Row(
                                       children: [
-                                        Text("Lv 12  ·",style: TextStyle(color: Colors.white,fontSize: 12.sp,fontWeight: FontWeight.bold),),
-                                        Text("  Mint:9",style: TextStyle(color: Colors.white,fontSize: 10.sp),),
+                                        Text(
+                                          "Lv ${nft.level}  ·",
+                                          style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
+                                        ),
+                                        Text(
+                                          "  Mint:${nft.mintingCount}",
+                                          style: Font.lato(Colors.white, FontWeight.w400, 10.sp),
+                                        ),
                                       ],
                                     ),
                                   )
                                 ],
                               )
                           ),
-                          Container(
+                          SizedBox(
                               width: 300.w,
                               height: 176.46,
-
-                              child: Image.asset("assets/images/common/cars/car1.png",fit: BoxFit.fill,)),
+                              child: Image.asset("assets/images/common/cars/car1.png",
+                                fit: BoxFit.fill,)),
 
                           Container(
                             width: 170.w,
@@ -93,14 +107,13 @@ class Car_detail_popup {
 
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                               children: [
                                 Container(
                                   // margin: EdgeInsets.fromLTRB(1.w, 1.h, 1.w, 1.h),
                                   margin: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 0.h),
                                   width:16.w,
                                   height: 16.h,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       color: Colors.black, shape: BoxShape.circle),
                                   child:
                                   Container(
@@ -108,7 +121,7 @@ class Car_detail_popup {
 
                                     child: Text(
                                       "#",
-                                      style: TextStyle(color: Colors.white,fontSize: 9.sp),
+                                      style: Font.lato(Colors.white, FontWeight.w400, 9.sp),
                                     ),
                                   ),
 
@@ -118,50 +131,47 @@ class Car_detail_popup {
                                 Container(
                                   margin: EdgeInsets.fromLTRB(3.w, 0.h, 0.w, 0.h),
                                   child: Text(
-                                    "123432578",
-                                    style: TextStyle(fontSize: 12.sp),
+                                    "${nft.id}",
+                                    style: Font.lato(Colors.black, FontWeight.bold, 14.sp),
                                   ),
                                 ),
                                 Container(
                                     width: 53.w,height: 16.h,
                                     margin: EdgeInsets.fromLTRB(0.w, 2.h, 0.w, 0.h),
-                                    child: Image.asset("assets/images/lobby/icons/limited_button.png",fit: BoxFit.fill,)),
-
+                                    child: Image.asset("assets/images/lobby/icons/limited_button.png",
+                                      fit: BoxFit.fill,)),
                               ],
                             ),
                           ),
 
                           Container(
                             margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 15.h),
-
                             width: 230.w,
                             height: 40.h,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 //Speed Box
-                                Container(
+                                SizedBox(
                                   width: 40.w,
                                   height: 40.h,
                                   child: Image.asset("assets/images/workshop/onchangebox_open.png"),
                                 ),
-                                Container(
+                                SizedBox(
                                   width: 40.w,
                                   height: 40.h,
                                   child: Image.asset("assets/images/workshop/onchangebox_lock.png"),
-                                ),Container(
+                                ),SizedBox(
                                   width: 40.w,
                                   height: 40.h,
                                   child: Image.asset("assets/images/workshop/onchangebox_lock.png"),
                                 ),
-                                Container(
+                                SizedBox(
                                   width: 40.w,
                                   height: 40.h,
                                   child: Image.asset("assets/images/workshop/onchangebox_lock.png"),
                                 )
-
                                 //Luck box
-
                               ],
                             ),
                           ),
@@ -172,10 +182,10 @@ class Car_detail_popup {
                               margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
                               child: LinearPercentIndicator(
                                 center: Text(
-                                  "Durability 45.50%",
-                                  style: TextStyle(color: Colors.white, fontSize: 11),
+                                  "Durability ${nft.durability}%",
+                                  style: Font.lato(Colors.white, FontWeight.w400, 9.sp),
                                 ),
-                                barRadius: Radius.circular(10),
+                                barRadius: const Radius.circular(10),
                                 width: 250.w,
                                 lineHeight: 15.h,
                                 percent: 0.9,
@@ -190,7 +200,7 @@ class Car_detail_popup {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 LinearPercentIndicator(
-                                  barRadius: Radius.circular(10),
+                                  barRadius: const Radius.circular(10),
                                   width: 145.w,
                                   lineHeight: 10.h,
                                   percent: 0.9,
@@ -199,8 +209,8 @@ class Car_detail_popup {
                                 Container(
                                   margin: EdgeInsets.fromLTRB(0.w, 0.h, 10.w, 0.h),
                                   child: Text(
-                                    "1333 km (FINE)",
-                                    style: TextStyle(color: kCharColor, fontSize: 9.sp,fontWeight: FontWeight.bold),
+                                    "${nft.driven} km (FINE)",
+                                    style: Font.lato(kCharColor, FontWeight.bold, 9.sp),
                                   ),
                                 )
                               ],
@@ -209,20 +219,25 @@ class Car_detail_popup {
                           Column(
                             children: [
                               Container(
-                                margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 10.h),
-
+                                margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 0.h),
+                                child: Text(
+                                  "Status",
+                                  style: Font.lato(Colors.grey.shade600, FontWeight.bold, 16.sp),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 0.h),
                                 width: 260.w,
-                                height: 70.h,
+                                height: 80.h,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     //Speed Box
                                     Container(
-
                                       width: 55.w,
-                                      height: 70.h,
+                                      //height: 70.h,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                          borderRadius: const BorderRadius.all(Radius.circular(10)),
                                           color: Colors.grey.shade200),
                                       child: Column(
                                         children: [
@@ -239,24 +254,25 @@ class Car_detail_popup {
                                           Container(
                                               margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 1.h),
 
-                                              child: Text("21",style: TextStyle(fontSize: 12.sp),)),
+                                              child: Text(
+                                                "${nft.speed}",
+                                                style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 16.sp),
+                                              )),
                                           Text(
                                             "Speed",
-                                            style: TextStyle(fontSize: 8.sp, color: Colors.grey),
+                                            style: Font.lato(const Color(0xFFBAB8C4), FontWeight.bold, 10.sp),
                                           )
                                         ],
                                       ),
                                     ),
                                     Container(
-
                                       width: 55.w,
-                                      height: 70.h,
+                                      //height: 70.h,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                          borderRadius: const BorderRadius.all(Radius.circular(10)),
                                           color: Colors.grey.shade200),
                                       child: Column(
                                         children: [
-
                                           Container(
                                             margin: EdgeInsets.only(top:10.h),
                                             child: Image.asset(
@@ -269,24 +285,25 @@ class Car_detail_popup {
                                           Container(
                                               margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 1.h),
 
-                                              child: Text("21",style: TextStyle(fontSize: 12.sp),)),
+                                              child: Text(
+                                                "${nft.lucky}",
+                                                style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 16.sp),
+                                              )),
                                           Text(
                                             "Luck",
-                                            style: TextStyle(fontSize: 8.sp, color: Colors.grey),
+                                            style: Font.lato(const Color(0xFFBAB8C4), FontWeight.bold, 10.sp),
                                           )
                                         ],
                                       ),
                                     ),
                                     Container(
-
                                       width: 55.w,
-                                      height: 70.h,
+                                      //height: 70.h,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                          borderRadius: const BorderRadius.all(Radius.circular(10)),
                                           color: Colors.grey.shade200),
                                       child: Column(
                                         children: [
-
                                           Container(
                                             margin: EdgeInsets.only(top:10.h),
                                             child: Image.asset(
@@ -299,24 +316,25 @@ class Car_detail_popup {
                                           Container(
                                               margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 1.h),
 
-                                              child: Text("21",style: TextStyle(fontSize: 12.sp),)),
+                                              child: Text(
+                                                "${nft.charge}",
+                                                style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 16.sp),
+                                              )),
                                           Text(
                                             "Charge",
-                                            style: TextStyle(fontSize: 8.sp, color: Colors.grey),
+                                            style: Font.lato(const Color(0xFFBAB8C4), FontWeight.bold, 10.sp),
                                           )
                                         ],
                                       ),
                                     ),
                                     Container(
-
                                       width: 55.w,
-                                      height: 70.h,
+                                      //height: 70.h,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                          borderRadius: const BorderRadius.all(Radius.circular(10)),
                                           color: Colors.grey.shade200),
                                       child: Column(
                                         children: [
-
                                           Container(
                                             margin: EdgeInsets.only(top:10.h),
                                             child: Image.asset(
@@ -329,28 +347,22 @@ class Car_detail_popup {
                                           Container(
                                               margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 1.h),
 
-                                              child: Text("21",style: TextStyle(fontSize: 12.sp),)),
+                                              child: Text(
+                                                "${nft.repair}",
+                                                style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 16.sp),
+                                              )),
                                           Text(
                                             "Repair",
-                                            style: TextStyle(fontSize: 8.sp, color: Colors.grey),
+                                            style: Font.lato(const Color(0xFFBAB8C4), FontWeight.bold, 10.sp),
                                           )
                                         ],
                                       ),
                                     ),
-
-                                    //Luck box
-
                                   ],
                                 ),
                               ),
-
-                              Text("Status",style: TextStyle(color: Colors.grey.shade600,fontWeight: FontWeight.w700),),
-
-
                             ],
                           )
-
-
                         ],
                       )),
                 ),

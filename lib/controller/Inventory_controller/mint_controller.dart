@@ -2,11 +2,13 @@
 
 import 'package:flutter/cupertino.dart';
 
+import '../../models/car.dart';
+
 class Mint_Controller with ChangeNotifier {
 
-  List<String> list = [];
+  List<CarNft> list = [];
 
-  void addItem(String item) {
+  void addItem(CarNft item) {
     list.add(item);
     notifyListeners();
   }
