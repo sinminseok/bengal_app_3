@@ -48,7 +48,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
         children: [
           Container(
             width: 170.w,
-            height: 265.h,
+            height: 270.h,
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.all(
@@ -89,7 +89,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                   height: 20.h,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.all(
+                    borderRadius: const BorderRadius.all(
                         Radius.circular(30.0) //         <--- border radius here
                         ),
                   ),
@@ -99,7 +99,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                         width: 12.w,
                         height: 12.h,
                         margin: EdgeInsets.fromLTRB(1.w, 1.h, 3.w, 1.h),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             color: Colors.grey, shape: BoxShape.circle),
                         child: Container(
                           margin: EdgeInsets.fromLTRB(4.w, 0.h, 1.w, 2.h),

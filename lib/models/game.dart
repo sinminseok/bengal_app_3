@@ -314,9 +314,9 @@ class MiningResult {
   factory MiningResult.fromJson(Map<String, dynamic> json) => _$MiningResultFromJson(json);
   Map<String, dynamic> toJson() => _$MiningResultToJson(this);
 
-  Duration getPlayTime() {
-    return updatedAt.difference(createdAt);
-  }
+  Duration getPlayTime() => updatedAt.difference(createdAt);
+
+  void miningEnd() => updatedAt = DateTime.now();
 }
 
 @JsonSerializable()
@@ -330,5 +330,14 @@ class MiningResultList {
 
   MiningResult lastMiningResult() => list.last;
 
-  MiningResult? getMiningResult(int gameId) => list.firstOrNullWhere((o) => o.gameId == gameId);
+  MiningResult? getMiningResultToId(int id) => list.firstOrNullWhere((o) => o.id == id);
+
+  // double getTodayMiningAmount(int gameId) {
+  //   var sum = list.reduce((value, element) => value + element);
+  //   var sum = list.sumsumBy((number) => number);
+  //   list.
+  //   var todayList = list.where((o) => o.gameId == gameId).toList();
+  //   todayList[0].
+  //   return 0.0;
+  // }
 }

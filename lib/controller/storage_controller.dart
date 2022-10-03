@@ -73,6 +73,8 @@ class StorageController implements Subject {
   late BoxNftList boxNftPool;
   late CarNftList boxCarNftPool;
 
+  late CarNft selectedCar;
+
   String _genAutoKey(StorageKey key) =>
       "${account!.email}_${describeEnum(key)}";
 
@@ -568,10 +570,10 @@ class StorageController implements Subject {
     return 0;
   }
 
-  MiningResult miningStart(int gameId) {
+  MiningResult miningStart(GameInfo game) {
     var miningResult = MiningResult(
         ++_baseId,
-        gameId,
+        game.id,
         0.0,
         0.0,
         0,
@@ -582,25 +584,40 @@ class StorageController implements Subject {
     return miningResult;
   }
 
-  void miningBox(int gameId) {
+  bool isPossibleMining(GameInfo game) {
+    if (selectedCar.grade < game.needCarGrade) return false;
+    if (0 != game.needCarType && selectedCar.type != game.needCarType) return false;
+    if (0 >= account!.power) return false;
+
+    return true;
+  }
+  MiningResult? miningToken(int gameId) {
+    var miningResult = miningResultList!.getMiningResultToId(gameId);
+    if (null == miningResult) return null;
+
+    miningResult.updatedAt = DateTime.now();
+
+    return miningResult;
+  }
+
+  void miningSpecialBox(GameInfo game, MiningResult mining) {
+    var playDuration = mining.getPlayTime();
+    if (commonData.initialInfo.getRateSpecialBoxMining(playDuration.inSeconds)
+        < Random().nextDouble()) return;
+
     var miningBox = miningBoxList!.mining(
         ++_baseId,
         Duration(seconds: commonData.initialInfo.specialBoxInitialLifeTime),
         commonData.initialInfo.specialBoxOpenBaseCost,
         commonData.initialInfo.specialBoxOpenCostPerSec);
 
-    var miningResult = miningResultList!.getMiningResult(gameId);
-    if (null == miningResult) return;
-    miningResult.miningBoxId = miningBox.id;
+    mining.miningBoxId = miningBox.id;
   }
 
-  MiningResult? miningEnd(int gameId) {
-    var miningResult = miningResultList!.getMiningResult(gameId);
-    if (null == miningResult) return null;
+  void miningEnd(GameInfo game, MiningResult mining) {
+    mining.miningEnd();
 
-    miningResult.updatedAt = DateTime.now();
-
-    return miningResult;
+    miningSpecialBox(game, mining);
   }
 
 }
