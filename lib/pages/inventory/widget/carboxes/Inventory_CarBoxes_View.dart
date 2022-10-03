@@ -15,9 +15,9 @@ Widget Inventory_CarBoxes_View(Size size, BoxNftList nftList){
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
 
             crossAxisCount: 2,
-            crossAxisSpacing:10.w,
-            mainAxisSpacing: 1.h,
-            childAspectRatio: 1.h / 1.h,
+            crossAxisSpacing: 0.w,
+            mainAxisSpacing: 0.h,
+            childAspectRatio: 1.4.h//1.h / 1.h,
           ),
           itemCount: nftList.list.length,
           // shrinkWrap: true,
