@@ -5,7 +5,7 @@ import '../../../types/constants.dart';
 class Selected_box_popup {
 
 
-  void showDialog(Size size, BuildContext context) {
+  void showDialog( BuildContext context) {
     showGeneralDialog(
         context: context,
         barrierDismissible: true,
@@ -177,7 +177,7 @@ class Selected_box_popup {
                               ),
                               onPressed: () {
                                 Navigator.of(context).pop();
-                                showDialog2(size, context);
+                                showDialog2( context);
                               },
                               child: Container(
                                 width: 120.w,
@@ -204,7 +204,7 @@ class Selected_box_popup {
         });
   }
 
-  void showDialog2(Size size, BuildContext context) {
+  void showDialog2(BuildContext context) {
     showGeneralDialog(
         context: context,
         barrierDismissible: true,
@@ -363,7 +363,7 @@ class Selected_box_popup {
                                   ),
                                   onPressed: () {
                                     Navigator.of(context).pop();
-                                    showDialog3(size,context);
+                                    showDialog3(context);
                                   },
                                   child: Container(
                                     width: 120.w,
@@ -393,7 +393,7 @@ class Selected_box_popup {
         });
   }
 
-  void showDialog3(Size size, BuildContext context) {
+  void showDialog3( BuildContext context) {
     showGeneralDialog(
         context: context,
         barrierDismissible: true,
