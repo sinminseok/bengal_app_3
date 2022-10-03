@@ -159,7 +159,7 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
             margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
             child: InkWell(
               onTap: () {
-                GameLauncher().openApp(game.packageName);
+                GameLauncher().openApp(game);
                 // Lottie.asset('assets/LottieLogo1.json',
                 //   width: 200,
                 //   height: 200,

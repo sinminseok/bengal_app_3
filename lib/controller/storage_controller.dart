@@ -25,6 +25,7 @@ enum StorageKey {
   carNft,
   boxNft,
   miningBox,
+  miningResult,
   transferHistory,
   gameList,
   gameDemandList,
@@ -60,6 +61,7 @@ class StorageController implements Subject {
   late CarNftList? carNftList;
   late BoxNftList? boxNftList;
   late MiningBoxList? miningBoxList;
+  late MiningResultList? miningResultList;
   late TransferHistoryList? transferHistory;
   late GameInfoList? gameMyDemandList;
 
@@ -282,13 +284,27 @@ class StorageController implements Subject {
   Future<bool> saveMiningBoxList() async {
     if (null == account || null == miningBoxList) return false;
     return await _prefs.setString(
-        _genAutoKey(StorageKey.miningBox), jsonEncode(boxNftList!.toJson()));
+        _genAutoKey(StorageKey.miningBox), jsonEncode(miningBoxList!.toJson()));
   }
   bool loadMiningBoxList() {
     if (null == account) return false;
     var value = _prefs.getString(_genAutoKey(StorageKey.miningBox)) ?? "";
     if (value.isEmpty) return false;
     miningBoxList = MiningBoxList.fromJson(json.decode(value));
+    return true;
+  }
+
+  // Mining Result
+  Future<bool> saveMiningResultList() async {
+    if (null == account || null == miningResultList) return false;
+    return await _prefs.setString(
+        _genAutoKey(StorageKey.miningResult), jsonEncode(miningResultList!.toJson()));
+  }
+  bool loadMiningResultList() {
+    if (null == account) return false;
+    var value = _prefs.getString(_genAutoKey(StorageKey.miningResult)) ?? "";
+    if (value.isEmpty) return false;
+    miningResultList = MiningResultList.fromJson(json.decode(value));
     return true;
   }
 
@@ -408,6 +424,8 @@ class StorageController implements Subject {
 
     carNftList = CarNftList([]);
     boxNftList = BoxNftList([]);
+    miningBoxList = MiningBoxList([]);
+    miningResultList = MiningResultList([]);
     transferHistory = TransferHistoryList([]);
     gameMyDemandList = GameInfoList([]);
 
@@ -416,6 +434,8 @@ class StorageController implements Subject {
     if (!(await saveOnChainWallet())) return false;
     if (!(await saveCarNftList())) return false;
     if (!(await saveBoxNftList())) return false;
+    if (!(await saveMiningBoxList())) return false;
+    if (!(await saveMiningResultList())) return false;
     if (!(await saveTransferHistory())) return false;
     if (!(await saveGameMyDemandList())) return false;
 
@@ -424,6 +444,8 @@ class StorageController implements Subject {
     onChainWallet = null;
     carNftList = null;
     boxNftList = null;
+    miningBoxList = null;
+    miningResultList = null;
     transferHistory = null;
     gameMyDemandList = null;
 
@@ -523,9 +545,8 @@ class StorageController implements Subject {
     return true;
   }
 
-  Future<BoxNft?> mining(CarNft src, CarNft dst) async {
-    var box = await buyBox(boxNftPool.list[Random().nextInt(boxNftPool.list.length)]);
-    return box;
+  Future<BoxNft?> minting(CarNft src, CarNft dst) async {
+    return await buyBox(boxNftPool.list[Random().nextInt(boxNftPool.list.length)]);
   }
 
   GameInfoList getCategoryGameList(int category) {
@@ -546,4 +567,40 @@ class StorageController implements Subject {
   Future<int> demandGame(GameInfo game) async {
     return 0;
   }
+
+  MiningResult miningStart(int gameId) {
+    var miningResult = MiningResult(
+        ++_baseId,
+        gameId,
+        0.0,
+        0.0,
+        0,
+        DateTime.now(),
+        DateTime.now()
+    );
+    miningResultList!.list.add(miningResult);
+    return miningResult;
+  }
+
+  void miningBox(int gameId) {
+    var miningBox = miningBoxList!.mining(
+        ++_baseId,
+        Duration(seconds: commonData.initialInfo.specialBoxInitialLifeTime),
+        commonData.initialInfo.specialBoxOpenBaseCost,
+        commonData.initialInfo.specialBoxOpenCostPerSec);
+
+    var miningResult = miningResultList!.getMiningResult(gameId);
+    if (null == miningResult) return;
+    miningResult.miningBoxId = miningBox.id;
+  }
+
+  MiningResult? miningEnd(int gameId) {
+    var miningResult = miningResultList!.getMiningResult(gameId);
+    if (null == miningResult) return null;
+
+    miningResult.updatedAt = DateTime.now();
+
+    return miningResult;
+  }
+
 }

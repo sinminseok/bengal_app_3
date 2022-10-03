@@ -125,9 +125,6 @@ class _Lobby_ViewState extends State<Lobby_View> {
                     onTap: () {
                       setState(() {
                         widget.see_all_fun();
-
-                        //select.convert(3);
-
                       });
                     },
                     child: Text(

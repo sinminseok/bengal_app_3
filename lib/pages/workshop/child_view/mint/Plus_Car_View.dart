@@ -341,7 +341,7 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                         child: InkWell(
                           onTap: () {
                             if (next_ontap) {
-                              StorageController().mining(car_provider.list[0], car_provider.list[1]).then((box) =>
+                              StorageController().minting(car_provider.list[0], car_provider.list[1]).then((box) =>
                               {
                                 if (null == box) {
                                   Fluttertoast.showToast(
