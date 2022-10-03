@@ -4,11 +4,12 @@ import '../../../controller/assets_controller.dart';
 import '../../../types/common.dart';
 import '../../../utils/font.dart';
 import '../../../models/game.dart';
+import '../../../controller/game_launcher.dart';
 
 Widget Game_Normal_Container(GameInfo game) {
   return InkWell(
     onTap: (){
-      print("event");
+      GameLauncher().openApp(game);
     },
     child: Container(
       width: 175.w,
