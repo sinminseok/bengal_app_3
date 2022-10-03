@@ -1,3 +1,4 @@
+import 'package:bengal_app/controller/storage_controller.dart';
 import 'package:bengal_app/pages/car/Car_Detail_FrameView2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,13 +21,9 @@ class Car_Maindetail_Widget extends StatefulWidget {
 }
 
 class _Car_Maindetail_WidgetState extends State<Car_Maindetail_Widget> {
-
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
-
-
       onTap: () {
         Navigator.push(
             context,
@@ -47,75 +44,65 @@ class _Car_Maindetail_WidgetState extends State<Car_Maindetail_Widget> {
           ),
           Container(
             margin: EdgeInsets.fromLTRB(0.w, 200.h, 0.w, 0.h),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 200.w,
-                    height: 18.h,
-                    decoration: const BoxDecoration(
-                      borderRadius:
-                      BorderRadius.all(Radius.circular(15)),
-                      color: Colors.white,
-                    ),
-                  ),
-                ]),
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Container(
+                width: 200.w,
+                height: 18.h,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  color: Colors.white,
+                ),
+              ),
+            ]),
           ),
           Container(
             margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(14.w, 200.h, 0.w, 0.h),
-                    width: 200.w,
-                    height: 18.h,
-                    decoration: const BoxDecoration(
-                      borderRadius:
-                      BorderRadius.all(Radius.circular(15)),
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Container(
+                margin: EdgeInsets.fromLTRB(14.w, 200.h, 0.w, 0.h),
+                width: 200.w,
+                height: 18.h,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      //color: Colors.white,
+                      margin: EdgeInsets.fromLTRB(7.w, 0.h, 0.w, 0.h),
+                      child: Text(
+                        "Lv ${widget.carNft.level}",
+                        style: Font.lato(
+                            const Color(0xFF342B35), FontWeight.bold, 12.sp),
+                      ),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Row(
                       children: [
-                        Container(
-                          //color: Colors.white,
-                          margin:
-                          EdgeInsets.fromLTRB(7.w, 0.h, 0.w, 0.h),
+                        Image.asset(
+                          "assets/images/lobby/icons/circle_icon.png",
+                          width: 12.w,
+                          height: 12.h,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(5.w, 0.h, 0.w, 0.h),
                           child: Text(
-                            "Lv ${widget.carNft.level}",
+                            "${widget.carNft.id}",
                             style: Font.lato(const Color(0xFF342B35),
                                 FontWeight.bold, 12.sp),
                           ),
                         ),
-                        Row(
-                          children: [
-                            Image.asset(
-                              "assets/images/lobby/icons/circle_icon.png",
-                              width: 12.w,
-                              height: 12.h,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(
-                                  5.w, 0.h, 0.w, 0.h),
-                              child: Text(
-                                "${widget.carNft.id}",
-                                style: Font.lato(
-                                    const Color(0xFF342B35),
-                                    FontWeight.bold,
-                                    12.sp),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Image.asset(
-                          "assets/images/lobby/icons/limited_button.png",
-                          width: 57.w,
-                          height: 18.h,
-                        ),
                       ],
                     ),
-                  ),
-                ]),
+                    Image.asset(
+                      "assets/images/lobby/icons/limited_button.png",
+                      width: 57.w,
+                      height: 18.h,
+                    ),
+                  ],
+                ),
+              ),
+            ]),
           ),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Container(
@@ -126,9 +113,9 @@ class _Car_Maindetail_WidgetState extends State<Car_Maindetail_Widget> {
                 children: [
                   LinearPercentIndicator(
                     center: Text(
-                      "Durability 45.50%",
-                      style: Font.lato(const Color(0xFF746F7B),
-                          FontWeight.w400, 9.sp),
+                      "Durability ${StorageController().getLobbySelectedCar()?.durability ?? 0}/${StorageController().commonData.initialInfo.carMaxDurability}(${StorageController().selectedCarDurabilityPercent()}%)",
+                      style: Font.lato(
+                          const Color(0xFF746F7B), FontWeight.w400, 9.sp),
                     ),
                     barRadius: const Radius.circular(10),
                     width: 330.w,
@@ -150,9 +137,9 @@ class _Car_Maindetail_WidgetState extends State<Car_Maindetail_Widget> {
                         progressColor: const Color(0xFFF4C84D),
                       ),
                       Text(
-                        "1000 km(Fine)",
-                        style: Font.lato(const Color(0xFFF4C84D),
-                            FontWeight.w700, 9.sp),
+                        "${StorageController().getLobbySelectedCar()!.driven} km(Fine)",
+                        style: Font.lato(
+                            const Color(0xFFF4C84D), FontWeight.w700, 9.sp),
                       ),
                     ],
                   ),

@@ -3,6 +3,7 @@ import "package:bengal_app/pages/login/login_page.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:get/get.dart";
+import 'package:video_player/video_player.dart';
 import "widget/landing_logo_widget.dart";
 
 class LandingPage extends StatefulWidget {
@@ -13,19 +14,31 @@ class LandingPage extends StatefulWidget {
 }
 
 class LandingPageState extends State<LandingPage> {
+  late VideoPlayerController controller;
+
   @override
   void initState() {
     Timer(const Duration(milliseconds: 2000), () {
       Get.offAll(const LoginPage());
     });
-    // Timer(const Duration(milliseconds: 2000), () {
-    //   Get.offAll(const Frame_View());
-    // });
+
     super.initState();
+
+    // controller = VideoPlayerController.asset('assets/mp4/Perplay_intro.mp4');
+    // controller.initialize().then((value){
+    //   setState(() {
+    //     controller.play();
+    //   });
+    // });
   }
 
   @override
   Widget build(BuildContext context) {
+    // return Scaffold(
+    //   body: Stack(children: [
+    //     VideoPlayer(controller),
+    //   ]),
+    // );
     return Scaffold(
       backgroundColor: const Color(0xFF8B80F8),
       body: Stack(children: [

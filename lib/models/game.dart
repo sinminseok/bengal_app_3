@@ -338,8 +338,25 @@ class MiningResultList {
   MiningResult? getMiningResultToId(int id) => list.firstOrNullWhere((o) => o.id == id);
 
   double getTodayMiningPerAmount(int gameId) {
+    if (list.isEmpty) return 0.0;
     var gameList = list.whereList((o) => o.gameId == gameId);
+    if (gameList.isEmpty) return 0.0;
     var todayList = gameList.whereList((o) => o.createdAt.isToday());
+    if (todayList.isEmpty) return 0.0;
     return todayList.sumBy((o) => o.miningPer);
+  }
+
+  double getTodayMiningTotalPerAmount() {
+    if (list.isEmpty) return 0.0;
+    var todayList = list.whereList((o) => o.createdAt.isToday());
+    if (todayList.isEmpty) return 0.0;
+    return todayList.sumBy((o) => o.miningPer);
+  }
+
+  double getTodayMiningTotalXPerAmount() {
+    if (list.isEmpty) return 0.0;
+    var todayList = list.whereList((o) => o.createdAt.isToday());
+    if (todayList.isEmpty) return 0.0;
+    return todayList.sumBy((o) => o.miningXPer);
   }
 }

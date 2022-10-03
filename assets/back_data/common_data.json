@@ -9,7 +9,7 @@
     "defaultOnChainUsdcAmount": 10.0,
     "dailyLimitXPer": 200.0,
     "dailyLimitPer": 20.0,
-    "maxPower": 16,
+    "maxPower": 16.0,
     "maxPowerChargeSec": 600,
     "specialBoxInitialLifeTime": 3600,
     "specialBoxOpenBaseCost": 30.0,

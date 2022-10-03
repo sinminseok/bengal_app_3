@@ -5,19 +5,13 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import '../../../controller/storage_controller.dart';
 import '../../../common/string_configuration.dart';
+import '../../../models/car.dart';
 import '../../../types/constants.dart';
 import '../../../types/string_type.dart';
 import '../../../utils/font.dart';
 
 class Value_Container extends StatefulWidget {
-  String XPER_Value;
-  String PER_Value;
-  String Charge_Value;
-
-  Value_Container(
-      {required this.XPER_Value,
-      required this.PER_Value,
-      required this.Charge_Value});
+  Value_Container();
 
   @override
   _Value_ContainerState createState() => _Value_ContainerState();
@@ -36,6 +30,8 @@ class _Value_ContainerState extends State<Value_Container> {
     selected_status_bool = false;
     super.initState();
   }
+
+  CarNft? selectedCar() => StorageController().getLobbySelectedCar();
 
   @override
   Widget build(BuildContext context) {
@@ -170,7 +166,7 @@ class _Value_ContainerState extends State<Value_Container> {
                                                   12.sp),
                                             ),
                                             Text(
-                                              "${widget.XPER_Value}/${StorageController().commonData.initialInfo.dailyLimitXPer}",
+                                              "${StorageController().miningResultList!.getTodayMiningTotalXPerAmount()}/${StorageController().commonData.initialInfo.dailyLimitXPer}",
                                               style: Font.lato(
                                                   const Color(0xFF8E8E8E),
                                                   FontWeight.w700,
@@ -223,7 +219,7 @@ class _Value_ContainerState extends State<Value_Container> {
                                                   12.sp),
                                             ),
                                             Text(
-                                              "${widget.PER_Value}/${StorageController().commonData.initialInfo.dailyLimitPer}",
+                                              "${StorageController().miningResultList!.getTodayMiningTotalPerAmount()}/${StorageController().commonData.initialInfo.dailyLimitPer}",
                                               style: Font.lato(
                                                   const Color(0xFFECB133),
                                                   FontWeight.w700,
@@ -256,12 +252,12 @@ class _Value_ContainerState extends State<Value_Container> {
                                       EdgeInsets.fromLTRB(16.w, 0.h, 0.w, 0.h),
                                   child: FAProgressBar(
                                     backgroundColor: Colors.grey.shade300,
-                                    maxValue: 100,
+                                    maxValue: StorageController().commonData.initialInfo.maxPower,
                                     borderRadius: BorderRadius.circular(30),
                                     verticalDirection: VerticalDirection.up,
                                     progressColor: kCharColor,
                                     direction: Axis.vertical,
-                                    currentValue: 50,
+                                    currentValue: StorageController().account!.power,
                                     displayText: null,
                                     size: 20.w,
                                   ),
@@ -286,12 +282,12 @@ class _Value_ContainerState extends State<Value_Container> {
                                   Row(
                                     children: [
                                       Text(
-                                        "${widget.Charge_Value}",
+                                        "${StorageController().account!.power}",
                                         style: Font.lato(const Color(0xFF15BEA0),
                                             FontWeight.w700, 12.sp),
                                       ),
                                       Text(
-                                        "/16.0",
+                                        "/${StorageController().commonData.initialInfo.maxPower}",
                                         style: Font.lato(const Color(0xFF15BEA0),
                                             FontWeight.w700, 8.sp),
                                       ),
@@ -338,11 +334,11 @@ class _Value_ContainerState extends State<Value_Container> {
                         Row(
                           children: [
                             Value_Detail_Widget(
-                                "gauge_icon", "Speed", "21.8", "10.0", size),
+                                "gauge_icon", "Speed", StorageController().carNftList!.getTotalSpeed(), 10.0, size),
                             Container(
                               margin: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 0.h),
                               child: Value_Detail_Widget(
-                                  "dice_icon", "Luck", "21.8", "10.0", size),
+                                  "dice_icon", "Luck", StorageController().carNftList!.getTotalLuck(), 10.0, size),
                             )
                           ],
                         ),
@@ -351,12 +347,12 @@ class _Value_ContainerState extends State<Value_Container> {
                             Container(
                               margin: EdgeInsets.fromLTRB(0.w, 4.h, 0.w, 0.h),
                               child: Value_Detail_Widget("charge_icon",
-                                  "Charge", "21.8", "10.0", size),
+                                  "Charge", StorageController().carNftList!.getTotalCharge(), 10.0, size),
                             ),
                             Container(
                               margin: EdgeInsets.fromLTRB(4.w, 4.h, 0.w, 0.h),
                               child: Value_Detail_Widget("repair_icon",
-                                  "Repair", "21.8", "10.0", size),
+                                  "Repair", StorageController().carNftList!.getTotalRepair(), 10.0, size),
                             )
                           ],
                         ),
@@ -374,11 +370,11 @@ class _Value_ContainerState extends State<Value_Container> {
                         Row(
                           children: [
                             Value_Detail_Widget(
-                                "gauge_icon", "Speed", "21.8", "10.0", size),
+                                "gauge_icon", "Speed", selectedCar()?.speed ?? 0, 10.0, size),
                             Container(
                               margin: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 0.h),
                               child: Value_Detail_Widget(
-                                  "dice_icon", "Luck", "21.8", "10.0", size),
+                                  "dice_icon", "Luck", selectedCar()?.lucky ?? 0, 10.0, size),
                             ),
                           ],
                         ),
@@ -387,12 +383,12 @@ class _Value_ContainerState extends State<Value_Container> {
                             Container(
                               margin: EdgeInsets.fromLTRB(0.w, 4.h, 0.w, 0.h),
                               child: Value_Detail_Widget("charge_icon",
-                                  "Charge", "21.8", "10.0", size),
+                                  "Charge", selectedCar()?.charge ?? 0.0, 10.0, size),
                             ),
                             Container(
                               margin: EdgeInsets.fromLTRB(4.w, 4.h, 0.w, 0.h),
                               child: Value_Detail_Widget("repair_icon",
-                                  "Repair", "21.8", "10.0", size),
+                                  "Repair", selectedCar()?.repair ?? 0.0, 10.0, size),
                             )
                           ],
                         ),

@@ -22,7 +22,7 @@ class InitialInfo {
   final double defaultOnChainUsdcAmount;
   final double dailyLimitXPer;
   final double dailyLimitPer;
-  final int maxPower;
+  final double maxPower;
   final int maxPowerChargeSec;
   final int specialBoxInitialLifeTime;
   final double specialBoxOpenBaseCost;

@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../utils/font.dart';
 
-Widget Value_Detail_Widget(String icon_url, String title, String main_value,
-    String? suv_value, Size size) {
+Widget Value_Detail_Widget(String iconUrl, String title, double mainValue,
+    double suvValue, Size size) {
   return Container(
     width: 163.w,
     height: 28.h,
@@ -17,7 +17,7 @@ Widget Value_Detail_Widget(String icon_url, String title, String main_value,
         Padding(
           padding: EdgeInsets.fromLTRB(4.w, 4.h, 0.w, 0.h),
           child: Image.asset(
-            "assets/images/lobby/icons/$icon_url.png",
+            "assets/images/lobby/icons/$iconUrl.png",
             width: 20.w,
             height: 20.h,
           ),
@@ -29,19 +29,19 @@ Widget Value_Detail_Widget(String icon_url, String title, String main_value,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "$title",
+                title,
                 style: Font.lato(const Color(0xFF676D7C),
                     FontWeight.w400, 10.sp),
               ),
               Row(
                 children: [
                   Text(
-                    "$main_value",
+                    "$mainValue",
                     style: Font.lato(const Color(0xFF342B35),
                         FontWeight.w700, 10.sp),
                   ),
                   Text(
-                    "(+$suv_value)",
+                    "(+$suvValue)",
                     style: Font.lato(const Color(0xFF766D84),
                         FontWeight.w700, 10.sp),
                   )
