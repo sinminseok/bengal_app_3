@@ -55,7 +55,7 @@ MiningBox _$MiningBoxFromJson(Map<String, dynamic> json) => MiningBox(
       DateTime.parse(json['createdAt'] as String),
       Duration(microseconds: json['limitDuration'] as int),
       (json['baseCost'] as num).toDouble(),
-      (json['boostCost'] as num).toDouble(),
+      (json['boostCostPerSec'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$MiningBoxToJson(MiningBox instance) => <String, dynamic>{
@@ -64,7 +64,7 @@ Map<String, dynamic> _$MiningBoxToJson(MiningBox instance) => <String, dynamic>{
       'createdAt': instance.createdAt.toIso8601String(),
       'limitDuration': instance.limitDuration.inMicroseconds,
       'baseCost': instance.baseCost,
-      'boostCost': instance.boostCost,
+      'boostCostPerSec': instance.boostCostPerSec,
     };
 
 MiningBoxList _$MiningBoxListFromJson(Map<String, dynamic> json) =>
@@ -77,4 +77,36 @@ MiningBoxList _$MiningBoxListFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$MiningBoxListToJson(MiningBoxList instance) =>
     <String, dynamic>{
       'list': instance.list,
+    };
+
+MiningResult _$MiningResultFromJson(Map<String, dynamic> json) => MiningResult(
+      json['id'] as int,
+      json['gameId'] as int,
+      (json['miningXPer'] as num).toDouble(),
+      (json['miningPer'] as num).toDouble(),
+      json['miningBoxId'] as int,
+      DateTime.parse(json['createdAt'] as String),
+      DateTime.parse(json['updatedAt'] as String),
+);
+
+Map<String, dynamic> _$MiningResultToJson(MiningResult instance) => <String, dynamic>{
+      'id': instance.id,
+      'gameId': instance.gameId,
+      'miningXPer': instance.miningXPer,
+      'miningPer': instance.miningPer,
+      'miningBoxId': instance.miningBoxId,
+      'createdAt': instance.createdAt.toIso8601String(),
+      'updatedAt': instance.updatedAt.toIso8601String(),
+};
+
+MiningResultList _$MiningResultListFromJson(Map<String, dynamic> json) =>
+    MiningResultList(
+          (json['list'] as List<dynamic>)
+              .map((e) => MiningResult.fromJson(e as Map<String, dynamic>))
+              .toList(),
+    );
+
+Map<String, dynamic> _$MiningResultListToJson(MiningResultList instance) =>
+    <String, dynamic>{
+          'list': instance.list,
     };

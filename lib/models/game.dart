@@ -239,7 +239,7 @@ class MiningBox {
   final DateTime createdAt;
   late Duration limitDuration;
   late double baseCost = 0.0;
-  late double boostCost = 0.0;
+  late double boostCostPerSec = 0.0;
 
   MiningBox(
       this.id,
@@ -247,7 +247,7 @@ class MiningBox {
       this.createdAt,
       this.limitDuration,
       this.baseCost,
-      this.boostCost,
+      this.boostCostPerSec,
       );
 
   factory MiningBox.fromJson(Map<String, dynamic> json) => _$MiningBoxFromJson(json);
@@ -267,4 +267,68 @@ class MiningBoxList {
   factory MiningBoxList.fromJson(Map<String, dynamic> json) => _$MiningBoxListFromJson(json);
   Map<String, dynamic> toJson() => _$MiningBoxListToJson(this);
 
+  MiningBox mining(
+      int id,
+      Duration limitDuration,
+      double baseCost,
+      double boostCostPerSec) {
+    if (4 <= list.length) {
+      list.removeLast();
+    }
+
+    var miningBox = MiningBox(
+        id,
+        0,
+        DateTime.now(),
+        limitDuration,
+        baseCost,
+        boostCostPerSec
+    );
+    list.add(miningBox);
+
+    return miningBox;
+  }
+
+}
+
+@JsonSerializable()
+class MiningResult {
+  final int id;
+  final int gameId;
+  late double miningXPer;
+  late double miningPer;
+  late int miningBoxId;
+  final DateTime createdAt;
+  late DateTime updatedAt;
+
+  MiningResult(
+      this.id,
+      this.gameId,
+      this.miningXPer,
+      this.miningPer,
+      this.miningBoxId,
+      this.createdAt,
+      this.updatedAt,
+      );
+
+  factory MiningResult.fromJson(Map<String, dynamic> json) => _$MiningResultFromJson(json);
+  Map<String, dynamic> toJson() => _$MiningResultToJson(this);
+
+  Duration getPlayTime() {
+    return updatedAt.difference(createdAt);
+  }
+}
+
+@JsonSerializable()
+class MiningResultList {
+  final List<MiningResult> list;
+
+  MiningResultList(this.list);
+
+  factory MiningResultList.fromJson(Map<String, dynamic> json) => _$MiningResultListFromJson(json);
+  Map<String, dynamic> toJson() => _$MiningResultListToJson(this);
+
+  MiningResult lastMiningResult() => list.last;
+
+  MiningResult? getMiningResult(int gameId) => list.firstOrNullWhere((o) => o.gameId == gameId);
 }
