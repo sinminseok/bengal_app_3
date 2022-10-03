@@ -11,6 +11,9 @@ class BoxContainer_Widget extends StatefulWidget {
 }
 
 class _BoxContainer_WidgetState extends State<BoxContainer_Widget> {
+
+  //Futurebuilder 또는 init으로 Box 4개 정보를 가져오고
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -30,18 +33,31 @@ class _BoxContainer_WidgetState extends State<BoxContainer_Widget> {
           ],
           color: Colors.white),
       child: Container(
-        margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
+        margin: EdgeInsets.fromLTRB(10.w, 10.h, 10.w, 0.h),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             InkWell(
                 onTap: () {
                   Selected_box_popup().showDialog(size, context);
                 },
                 child:  BoxContainer_Detail_Widget(size, false, true, false, ""),),
-            BoxContainer_Detail_Widget(size, false, false, true, "2h55m"),
-            BoxContainer_Detail_Widget(size, true, false, false, ""),
+            InkWell(
+                onTap: (){
+                  Selected_box_popup().showDialog(size, context);
+                },
+                child: BoxContainer_Detail_Widget(size, false, false, true, "2h55m")),
+            InkWell(
+                onTap: (){
+                  Selected_box_popup().showDialog(size, context);
+                },
+                child: BoxContainer_Detail_Widget(size, true, false, false, "")),
 
-            BoxContainer_Detail_Widget(size, true, false, false, "")
+            InkWell(
+                onTap: (){
+                  Selected_box_popup().showDialog(size, context);
+                },
+                child: BoxContainer_Detail_Widget(size, true, false, false, ""))
           ],
         ),
       ),
