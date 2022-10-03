@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../controller/assets_controller.dart';
+import '../../../controller/game_launcher.dart';
 import '../../../models/game.dart';
 import '../../../types/common.dart';
 import '../../../types/constants.dart';
@@ -12,8 +13,7 @@ Widget Game_Special_Container(GameInfo game) {
   return InkWell(
 
     onTap: (){
-      print("event");
-      //발생시킬 EVENT 삽입
+      GameLauncher().openApp(game);
     },
     child: Container(
       margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),

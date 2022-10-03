@@ -25,7 +25,7 @@ InitialInfo _$InitialInfoFromJson(Map<String, dynamic> json) => InitialInfo(
       (json['defaultOnChainUsdcAmount'] as num).toDouble(),
       (json['dailyLimitXPer'] as num).toDouble(),
       (json['dailyLimitPer'] as num).toDouble(),
-      json['maxPower'] as int,
+      (json['maxPower'] as num).toDouble(),
       json['maxPowerChargeSec'] as int,
       json['specialBoxInitialLifeTime'] as int,
       (json['specialBoxOpenBaseCost'] as num).toDouble(),

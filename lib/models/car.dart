@@ -1,3 +1,4 @@
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'car.g.dart';
 
@@ -155,4 +156,9 @@ class CarNftList {
   static List<String> getSortItems() {
     return CarSortType.values.map((e) => e.getString).toList();
   }
+
+  double getTotalSpeed() => list.fold(0.0, (previous, current) => previous + current.speed);//list.sumBy((o) => o.speed);
+  double getTotalLuck() => list.fold(0.0, (previous, current) => previous + current.lucky);
+  double getTotalCharge() => list.fold(0.0, (previous, current) => previous + current.charge);
+  double getTotalRepair() => list.fold(0.0, (previous, current) => previous + current.speed);
 }

@@ -83,6 +83,12 @@ class StorageController implements Subject {
     return carNftList!.list[selectedCarIndex];
   }
 
+  int selectedCarDurabilityPercent() {
+    var car = getLobbySelectedCar();
+    if (null == car) return 0;
+    return ((car.durability / commonData.initialInfo.carMaxDurability) * 100).round();
+  }
+
   String _genAutoKey(StorageKey key) =>
       "${account!.email}_${describeEnum(key)}";
 
@@ -365,6 +371,7 @@ class StorageController implements Subject {
     ret &= loadCarNftList();
     ret &= loadBoxNftList();
     ret &= loadTransferHistory();
+    ret &= loadMiningResultList();
     ret &= loadGameMyDemandList();
     if (ret) {
       for (var o in gameMyDemandList?.list ?? []) {
@@ -619,11 +626,12 @@ class StorageController implements Subject {
     if (car!.grade < game.needCarGrade) return false;
     if (0 != game.needCarType && car!.type != game.needCarType) return false;
     if (0 >= account!.power) return false;
-    if (!checkMiningAmount(game)) return false;
+    if (!checkMiningPerAmount(game)) return false;
 
     return true;
   }
-  bool checkMiningAmount(GameInfo game) {
+
+  bool checkMiningPerAmount(GameInfo game) {
     // 게임 일일 채굴량 확인
     var dayMiningPer = miningResultList!.getTodayMiningPerAmount(game.id);
     if (game.perPerDay <= dayMiningPer) return false;
@@ -634,7 +642,7 @@ class StorageController implements Subject {
   }
 
   bool miningToken(GameInfo game, MiningResult mining) {
-    if (!checkMiningAmount(game)) return false;
+    if (!checkMiningPerAmount(game)) return false;
 
     account!.power -= 1;
     game.perPerPower;

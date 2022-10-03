@@ -5,11 +5,12 @@ import '../../../controller/assets_controller.dart';
 import '../../../models/game.dart';
 import '../../../types/common.dart';
 import '../../../utils/font.dart';
+import '../../../controller/game_launcher.dart';
 
 Widget Game_Recommended_Container(GameInfo game) {
   return  InkWell(
     onTap: (){
-      print("${game.id}");
+      GameLauncher().openApp(game);
     },
     child: Container(
         margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),

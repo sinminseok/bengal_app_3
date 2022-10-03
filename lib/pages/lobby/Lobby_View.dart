@@ -111,11 +111,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
                   ),
 
             //XPER Value,Per Value,Charge Value
-            Value_Container(
-              XPER_Value: '70',
-              PER_Value: '0.32',
-              Charge_Value: '12.0',
-            ),
+            Value_Container(),
 
             BoxContainer_Widget(),
 

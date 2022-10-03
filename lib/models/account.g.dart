@@ -11,7 +11,7 @@ Account _$AccountFromJson(Map<String, dynamic> json) => Account(
       json['password'] as String,
       json['email'] as String,
       json['name'] as String,
-      json['power'] as int,
+      (json['power'] as num).toDouble(),
       (json['todayMiningPer'] as num?)?.toDouble() ?? 0.0,
       (json['todayMiningXPer'] as num?)?.toDouble() ?? 0.0,
     );
