@@ -450,8 +450,8 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 1.w,
-                                mainAxisSpacing: 2.h,
-                                childAspectRatio: 0.85,
+                                mainAxisSpacing: 0.h,
+                                childAspectRatio: 1.w,
                               ),
                               itemCount: carnftlist!.list.length,
                               // shrinkWrap: true,
