@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:bengal_app/utils/datetime.dart';
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flinq/flinq.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'game.g.dart';
@@ -238,8 +240,8 @@ class MiningBox {
   late int nftId = 0;
   final DateTime createdAt;
   late Duration limitDuration;
-  late double baseCost = 0.0;
-  late double boostCostPerSec = 0.0;
+  late double baseCost = 30.0;
+  late double boostCostPerSec = 0.01;
 
   MiningBox(
       this.id,
@@ -256,6 +258,9 @@ class MiningBox {
   Duration getRemainDuration() {
     return createdAt.add(limitDuration).difference(DateTime.now());
   }
+
+  double getBoostCost() => getRemainDuration().inSeconds * boostCostPerSec;
+  double getTotalOpenCost() => getBoostCost() + baseCost;
 }
 
 @JsonSerializable()
@@ -332,12 +337,9 @@ class MiningResultList {
 
   MiningResult? getMiningResultToId(int id) => list.firstOrNullWhere((o) => o.id == id);
 
-  // double getTodayMiningAmount(int gameId) {
-  //   var sum = list.reduce((value, element) => value + element);
-  //   var sum = list.sumsumBy((number) => number);
-  //   list.
-  //   var todayList = list.where((o) => o.gameId == gameId).toList();
-  //   todayList[0].
-  //   return 0.0;
-  // }
+  double getTodayMiningPerAmount(int gameId) {
+    var gameList = list.whereList((o) => o.gameId == gameId);
+    var todayList = gameList.whereList((o) => o.createdAt.isToday());
+    return todayList.sumBy((o) => o.miningPer);
+  }
 }

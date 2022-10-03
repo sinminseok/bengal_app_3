@@ -33,8 +33,6 @@ class GameLauncher {
   }
 
   Future<bool> openApp(GameInfo game) async {
-
-
     if (!await isAppInstalled(game.packageName)) {
       Fluttertoast.showToast(
           msg:
@@ -47,14 +45,16 @@ class GameLauncher {
       return false;
     }
 
-    if (0 == await LaunchApp.openApp(androidPackageName: game.packageName, openStore: true)) return false;
-
     _game = game;
     _miningResult = StorageController().miningStart(_game!);
+    if (null == _miningResult) return false;
 
     _heartBeatChecker = Timer.periodic(const Duration(seconds: 1), (timer) {
       _callBackHeartBeatChecker();
     });
+
+    if (0 == await LaunchApp.openApp(androidPackageName: game.packageName, openStore: true)) return false;
+
     return true;
   }
 
@@ -77,9 +77,6 @@ class GameLauncher {
       }
     }
 
-    // todo: 하루 채굴량 확인
-    // todo: 게임별 전체 채굴량
-
     for (var e in events) {
       if (e.packageName == _game!.packageName){
         if (MOVE_TO_BACKGROUND == e.eventType ||
@@ -87,6 +84,7 @@ class GameLauncher {
           gameStopped();
         } else {
           // todo: mining
+          StorageController().miningToken(_game!, _miningResult!);
         }
       }
     }

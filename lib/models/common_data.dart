@@ -29,8 +29,8 @@ class InitialInfo {
   final double specialBoxOpenCostPerSec;
   final int carMaxDurability;
   final int levelUpStatusPoint;
-  final int breedXPerCost;
-  final int breedPerCost;
+  final double breedXPerCost;
+  final double breedPerCost;
 
   final double repairCost;
   final int levelUpTime;

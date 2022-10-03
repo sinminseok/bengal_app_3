@@ -73,7 +73,15 @@ class StorageController implements Subject {
   late BoxNftList boxNftPool;
   late CarNftList boxCarNftPool;
 
-  late CarNft selectedCar;
+  late int selectedCarIndex = 0;
+  void setSelectCarToIndex(int index) {
+    selectedCarIndex = index;
+  }
+  CarNft? getLobbySelectedCar() {
+    if (null == carNftList) return null;
+    if (carNftList!.list.length <= selectedCarIndex) return null;
+    return carNftList!.list[selectedCarIndex];
+  }
 
   String _genAutoKey(StorageKey key) =>
       "${account!.email}_${describeEnum(key)}";
@@ -505,14 +513,14 @@ class StorageController implements Subject {
     return ret ? nft : null;
   }
 
-  Future<CarNft?> openBox(BoxNft nft) async {
-    if (0 > boxNftList!.list.indexWhere((o) => o.id == nft.id)) return null;
-    var car = boxCarNftPool!.list.firstOrNullWhere((o) => o.id == nft.carNftId);
+  Future<CarNft?> openBox(BoxNft box) async {
+    if (0 > boxNftList!.list.indexWhere((o) => o.id == box.id)) return null;
+    var car = boxCarNftPool!.list.firstOrNullWhere((o) => o.id == box.carNftId);
     if (null == car) return null;
 
     // todo: cost calculate
 
-    boxNftList!.list.removeWhere((o) => o.id == nft.id);
+    boxNftList!.list.removeWhere((o) => o.id == box.id);
     boxCarNftPool!.list.removeWhere((o) => o.id == car.id);
     carNftList!.list.add(car);
 
@@ -521,6 +529,20 @@ class StorageController implements Subject {
     ret &= await saveCarNftList();
     notifyObserver();
     return ret ? car : null;
+  }
+
+  Future<CarNft?> openMiningBox(MiningBox box) async {
+    if (0 > miningBoxList!.list.indexWhere((o) => o.id == box.id)) return null;
+
+    if (!wallet!.credit(CoinType.XPer, box.getTotalOpenCost())) return null;
+
+    miningBoxList!.list.removeWhere((o) => o.id == box.id);
+
+    var ret = await saveMiningBoxList();
+    notifyObserver();
+
+    // dumy car
+    return ret ? carNftList!.list[0] : null;
   }
 
   bool debit(CoinType coinType, double amount) {
@@ -548,6 +570,11 @@ class StorageController implements Subject {
   }
 
   Future<BoxNft?> minting(CarNft src, CarNft dst) async {
+    if (!wallet!.credit(CoinType.Per, commonData.initialInfo.breedPerCost)) return null;
+    if (!wallet!.credit(CoinType.XPer, commonData.initialInfo.breedXPerCost)) {
+      wallet!.debit(CoinType.Per, commonData.initialInfo.breedPerCost);
+      return null;
+    }
     return await buyBox(boxNftPool.list[Random().nextInt(boxNftPool.list.length)]);
   }
 
@@ -570,7 +597,9 @@ class StorageController implements Subject {
     return 0;
   }
 
-  MiningResult miningStart(GameInfo game) {
+  MiningResult? miningStart(GameInfo game) {
+    if (!isPossibleMining(game)) return null;
+
     var miningResult = MiningResult(
         ++_baseId,
         game.id,
@@ -585,19 +614,36 @@ class StorageController implements Subject {
   }
 
   bool isPossibleMining(GameInfo game) {
-    if (selectedCar.grade < game.needCarGrade) return false;
-    if (0 != game.needCarType && selectedCar.type != game.needCarType) return false;
+    var car = getLobbySelectedCar();
+    if (null == car) false;
+    if (car!.grade < game.needCarGrade) return false;
+    if (0 != game.needCarType && car!.type != game.needCarType) return false;
     if (0 >= account!.power) return false;
+    if (!checkMiningAmount(game)) return false;
 
     return true;
   }
-  MiningResult? miningToken(int gameId) {
-    var miningResult = miningResultList!.getMiningResultToId(gameId);
-    if (null == miningResult) return null;
+  bool checkMiningAmount(GameInfo game) {
+    // 게임 일일 채굴량 확인
+    var dayMiningPer = miningResultList!.getTodayMiningPerAmount(game.id);
+    if (game.perPerDay <= dayMiningPer) return false;
 
-    miningResult.updatedAt = DateTime.now();
+    // todo: 게임 전체 채굴량
 
-    return miningResult;
+    return true;
+  }
+
+  bool miningToken(GameInfo game, MiningResult mining) {
+    if (!checkMiningAmount(game)) return false;
+
+    account!.power -= 1;
+    game.perPerPower;
+    game.xPerPerPower;
+    wallet!.balancePer += game.perPerPower;
+    wallet!.balanceXPer += game.xPerPerPower;
+
+    mining.updatedAt = DateTime.now();
+    return true;
   }
 
   void miningSpecialBox(GameInfo game, MiningResult mining) {
