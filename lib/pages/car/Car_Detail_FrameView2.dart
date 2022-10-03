@@ -12,6 +12,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import '../../models/car.dart';
 import '../../types/constants.dart';
+import '../../utils/font.dart';
 import '../frame/widget/Coin_Widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../market/popup/Market_popup.dart';
@@ -96,7 +97,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                 Container(
                   width: 390.w,
                   height: 40.h,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(13),
                           topRight: Radius.circular(13)),
@@ -117,9 +118,8 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                           Container(
                             margin: EdgeInsets.fromLTRB(4.w, 13.h, 0.w, 13.h),
                             child: Text(
-                              "SPORTS/EPIC+",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 12),
+                              "${widget.carNft.getCarTypeString().toUpperCase()}/${widget.carNft.getCarGradeString().toString()}",
+                              style: Font.lato(Colors.white, FontWeight.bold, 12.sp),
                             ),
                           ),
                         ],
@@ -129,25 +129,22 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                           Container(
                             margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
                             child: Text(
-                              "Lv 12",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 14),
+                              "Lv ${widget.carNft.level}",
+                              style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
                             ),
                           ),
                           Container(
                             margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
                             child: Text(
                               " / 30",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 10),
+                              style: Font.lato(Colors.white, FontWeight.w400, 10.sp),
                             ),
                           ),
                           Container(
                             margin: EdgeInsets.fromLTRB(0.w, 5.h, 15.w, 0.h),
                             child: Text(
-                              " ·  Mint:0",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 10),
+                              " ·  Mint:${widget.carNft.mintingCount}",
+                              style: Font.lato(Colors.white, FontWeight.w400, 10.sp),
                             ),
                           )
                         ],
@@ -185,12 +182,10 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                                   EdgeInsets.fromLTRB(5.w, 0.h, 5.w, 0.h),
                                   child: Text(
                                     "${widget.carNft.id}",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14),
+                                    style: Font.lato(Colors.black, FontWeight.bold, 14.sp),
                                   ),
                                 ),
-                                Container(
+                                SizedBox(
                                   width: 57.w,
                                   height: 18.h,
                                   child: Image.asset(
@@ -214,10 +209,10 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                   margin: EdgeInsets.fromLTRB(30.w, 10.h, 0.w, 0.h),
                   child: LinearPercentIndicator(
                     center: Text(
-                      "Durability 45.50%",
-                      style: TextStyle(color: Colors.white, fontSize: 11),
+                      "Durability ${widget.carNft.durability}",
+                      style: Font.lato(Colors.white, FontWeight.w400, 11.sp),
                     ),
-                    barRadius: Radius.circular(10),
+                    barRadius: const Radius.circular(10),
                     width: 330.w,
                     lineHeight: 15.h,
                     percent: 0.9,
@@ -230,7 +225,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       LinearPercentIndicator(
-                        barRadius: Radius.circular(10),
+                        barRadius: const Radius.circular(10),
                         width: 230.w,
                         lineHeight: 10.h,
                         percent: 0.9,
@@ -239,11 +234,8 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                       Container(
                         margin: EdgeInsets.fromLTRB(0.w, 0.h, 20.w, 0.h),
                         child: Text(
-                          "1333 km (31)",
-                          style: TextStyle(
-                              color: kCharColor,
-                              fontSize: 9,
-                              fontWeight: FontWeight.bold),
+                          "${widget.carNft.driven} km (31)",
+                          style: Font.lato(kCharColor, FontWeight.bold, 9.sp),
                         ),
                       )
                     ],
@@ -274,13 +266,12 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                               height: 22.h,
                               decoration: BoxDecoration(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(30)),
+                                      const BorderRadius.all(Radius.circular(30)),
                                   color: Colors.greenAccent.shade100),
                               child: Center(
                                   child: Text(
                                 "3",
-                                style: TextStyle(
-                                    color: Colors.green, fontSize: 12),
+                                style: Font.lato(Colors.green, FontWeight.w400, 12.sp),
                               )),
                             ),
                           ),
@@ -291,7 +282,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                         width: 160.w,
                         height: 24.h,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                            borderRadius: const BorderRadius.all(Radius.circular(30)),
                             color: Colors.grey.shade300),
                         child: Stack(
                           children: [
@@ -300,7 +291,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                               height: 24.h,
                               decoration: BoxDecoration(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(30)),
+                                      const BorderRadius.all(Radius.circular(30)),
                                   color: currently_status != true
                                       ? Colors.grey.shade300
                                       : kPrimaryColor),
@@ -314,11 +305,9 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                                 child: Center(
                                   child: Text(
                                     "Currently",
-                                    style: TextStyle(
-                                        color: currently_status != true
-                                            ? Colors.grey
-                                            : Colors.white,
-                                        fontSize: 10),
+                                    style: Font.lato(currently_status != true
+                                        ? Colors.grey
+                                        : Colors.white, FontWeight.bold, 10.sp),
                                   ),
                                 ),
                               ),
@@ -330,7 +319,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                                 height: 24.h,
                                 decoration: BoxDecoration(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(30)),
+                                        const BorderRadius.all(Radius.circular(30)),
                                     color: base_statue == true
                                         ? kPrimaryColor
                                         : Colors.grey.shade300),
@@ -344,11 +333,9 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                                   child: Center(
                                     child: Text(
                                       "Base",
-                                      style: TextStyle(
-                                          color: base_statue == true
-                                              ? Colors.white
-                                              : Colors.grey,
-                                          fontSize: 10),
+                                      style: Font.lato(base_statue == true
+                                          ? Colors.white
+                                          : Colors.grey, FontWeight.bold, 10.sp),
                                     ),
                                   ),
                                 ),
@@ -367,7 +354,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                   height: 50.h,
                   margin: EdgeInsets.fromLTRB(15.w, 15.h, 15.w, 0.h),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
                       color: Colors.grey.shade200),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -385,10 +372,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                             margin: EdgeInsets.fromLTRB(5.w, 0.h, 0.w, 0.h),
                             child: Text(
                               "Mint Information",
-                              style: TextStyle(
-                                  color: kPrimaryColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14),
+                              style: Font.lato(kPrimaryColor, FontWeight.bold, 14.sp),
                             ),
                           ),
                         ],
@@ -403,14 +387,14 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                           margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
                           width: 100.w,
                           height: 30.h,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               color: kPrimaryColor),
                           child: Center(
                               child: Text(
-                            "View",
-                            style: TextStyle(color: Colors.white),
+                                "View",
+                                style: Font.lato(Colors.white, FontWeight.bold, 10.sp),
                           )),
                         ),
                       )
@@ -430,8 +414,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                                   color: Colors.grey.withOpacity(0.08),
                                   spreadRadius: 5,
                                   blurRadius: 7,
-                                  offset: Offset(
-                                      0, 13), // changes position of shadow
+                                  offset: const Offset(0, 13), // changes position of shadow
                                 ),
                               ])),
                           InkWell(
@@ -446,7 +429,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
-                                    Color(0xff8B80F8).withOpacity(0.7),
+                                    const Color(0xff8B80F8).withOpacity(0.7),
                                     kPrimaryColor,
                                   ],
                                   begin: Alignment.topCenter,
@@ -454,11 +437,11 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                                 ),
                                 color: kPrimaryColor,
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
+                                    const BorderRadius.all(Radius.circular(20)),
                               ),
                               child: Center(
                                 child: Text(
-                                  "Cost BUY",
+                                  "${widget.carNft.price}Hvh BUY",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16.sp,
@@ -523,12 +506,10 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                               onTap: () {
                                 Sell_popup().sell_popup(context);
                               },
-                              child: Container(
-                                child: Image.asset(
-                                  "assets/images/common/cars/icons/Sell.png",
-                                  width: 42.w,
-                                  height: 43.h,
-                                ),
+                              child: Image.asset(
+                                "assets/images/common/cars/icons/Sell.png",
+                                width: 42.w,
+                                height: 43.h,
                               ),
                             ),
                             Image.asset(

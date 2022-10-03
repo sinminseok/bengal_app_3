@@ -1,14 +1,24 @@
 import 'dart:ui';
 
+import 'package:bengal_app/controller/storage_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import '../../../models/box.dart';
+import '../../../models/car.dart';
 import '../../../types/constants.dart';
 import '../../../utils/font.dart';
 
 class Mint_Carbox_Popup {
 
+  void _boxOpenResultProc(BuildContext context, CarNft car) {
+    Navigator.pop(context);
+    carbox_popup3(context, car);
+    //Mint_Carbox_Popup().showDialog(size, context, car);
+  }
 
-  void showDialog(Size size, BuildContext context, int boxId) {
+  void showDialog(Size size, BuildContext context, BoxNft box) {
 
     showGeneralDialog(
         context: context,
@@ -114,10 +124,26 @@ class Mint_Carbox_Popup {
                                       color: kPrimaryColor,
                                       borderRadius:
                                       BorderRadius.all(Radius.circular(35))),
-                                  child: Center(
-                                    child: Text(
-                                      "Open Now",
-                                      style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
+                                  child: InkWell(
+                                    onTap: () {
+                                      StorageController().openBox(box).then((car) => {
+                                        if (null == car) {
+                                          Fluttertoast.showToast(
+                                              msg: 'Box Open Fail',
+                                              backgroundColor: Colors.grey,
+                                              textColor: Colors.black,
+                                              gravity: ToastGravity.CENTER)
+                                        } else {
+                                          // todo: animation
+                                          _boxOpenResultProc(context, car)
+                                        }
+                                      });
+                                    },
+                                    child: Center(
+                                      child: Text(
+                                        "Open Now",
+                                        style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -417,5 +443,246 @@ class Mint_Carbox_Popup {
             ],
           );
         });
+  }
+
+  void carbox_popup3(BuildContext context, CarNft car) {
+
+    showAnimatedDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return AlertDialog(
+              contentPadding: EdgeInsets.zero,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              content: DefaultTextStyle(
+                  style: const TextStyle(fontSize: 16, color: Colors.black),
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Positioned(
+                          bottom: 350.h,
+                          left: 265.w,
+                          child: GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Image.asset(
+                                "assets/images/common/cancel_button.png",
+                                width: 40.w,
+                              ))),
+                      Container(
+                          width: 300.w,
+                          height: 346.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                          ),
+                          child: Column(
+                            children: [
+                              Container(
+                                  width: 300.w,
+                                  height: 40.h,
+
+
+                                  decoration: const BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(10),
+                                          topRight: Radius.circular(10)),
+                                      color: Colors.grey),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        width:46.w,
+                                        height: 25.h,
+                                        child: Image.asset("assets/images/common/cars/car_appbar_icon.png"),
+                                      ),
+                                      Text(
+                                        " ${car.type} ",
+                                        style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 14),
+                                      ),
+                                      Text(
+                                        "/ ${car.grade}",
+                                        style: TextStyle(color: Colors.white,fontSize: 12),
+                                      ),
+                                    ],
+                                  )
+                              ),
+                              SizedBox(
+                                width: 300.w,
+                                height: 177.h,
+                                child: Image.asset("assets/images/common/cars/car1.png",fit: BoxFit.fitWidth,),
+                              ),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(20.w, 9.h, 15.w, 0.h),
+
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/lobby/icons/circle_icon.png",
+                                      width: 16.w,
+                                      height: 16.h,
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
+
+                                      child: Text(
+                                        "${car.id}",
+                                        style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 57.w,
+                                      height: 18.h,
+                                      child: Image.asset(
+                                        "assets/images/lobby/icons/limited_button.png",
+
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(13.w, 17.h, 15.w, 0.h),
+
+                                width: 280.w,
+                                height: 70.h,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    //Speed Box
+                                    Container(
+
+                                      width: 55.w,
+                                      height: 70.h,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                          color: Colors.grey.shade200),
+                                      child: Column(
+                                        children: [
+
+                                          Container(
+                                            margin: EdgeInsets.only(top:6.h),
+                                            child: Image.asset(
+                                              "assets/images/common/cars/icons/speed_icon.png",
+                                              width: 20.w,
+                                              height: 20.h,
+                                            ),
+                                          ),
+                                          Text(
+                                            "${car.speed}",
+                                            style: TextStyle(fontSize: 12),),
+                                          Text(
+                                            "Speed",
+                                            style: TextStyle(fontSize: 8, color: Colors.grey),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+
+                                      width: 55.w,
+                                      height: 70.h,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                          color: Colors.grey.shade200),
+                                      child: Column(
+                                        children: [
+
+                                          Container(
+                                            margin: EdgeInsets.only(top:6.h),
+                                            child: Image.asset(
+                                              "assets/images/common/cars/icons/dice_icon.png",
+                                              width: 20.w,
+                                              height: 20.h,
+                                            ),
+                                          ),
+                                          Text(
+                                            "${car.lucky}",
+                                            style: TextStyle(fontSize: 12),),
+                                          Text(
+                                            "Luck",
+                                            style: TextStyle(fontSize: 8, color: Colors.grey),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+
+                                      width: 55.w,
+                                      height: 70.h,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                          color: Colors.grey.shade200),
+                                      child: Column(
+                                        children: [
+
+                                          Container(
+                                            margin: EdgeInsets.only(top:6.h),
+                                            child: Image.asset(
+                                              "assets/images/common/cars/icons/charge_icon.png",
+                                              width: 20.w,
+                                              height: 20.h,
+                                            ),
+                                          ),
+                                          Text(
+                                            "${car.charge}",
+                                            style: TextStyle(fontSize: 12),),
+                                          Text(
+                                            "Charge",
+                                            style: TextStyle(fontSize: 8, color: Colors.grey),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+
+                                      width: 55.w,
+                                      height: 70.h,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                          color: Colors.grey.shade200),
+                                      child: Column(
+                                        children: [
+
+                                          Container(
+                                            margin: EdgeInsets.only(top:6.h),
+                                            child: Image.asset(
+                                              "assets/images/common/cars/icons/repair_icon.png",
+                                              width: 20.w,
+                                              height: 20.h,
+                                            ),
+                                          ),
+                                          Text(
+                                            "${car.repair}",
+                                            style: TextStyle(fontSize: 12),),
+                                          Text(
+                                            "Repair",
+                                            style: TextStyle(fontSize: 8, color: Colors.grey),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+
+                                    //Luck box
+
+                                  ],
+                                ),
+                              ),
+
+                            ],
+                          )),
+                    ],
+                  )),
+            );
+          },
+        );
+      },
+      animationType: DialogTransitionType.slideFromBottom,
+    );
   }
 }

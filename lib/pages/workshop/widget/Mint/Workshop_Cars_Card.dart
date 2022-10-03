@@ -117,7 +117,7 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
               //Level
               InkWell(
                 onTap: (){
-                  widget.fun!();
+                  widget.fun!(widget.carNft);
                 },
                 child: Container(
                   margin: EdgeInsets.fromLTRB(0.w, 9.h, 0.w, 0.h),

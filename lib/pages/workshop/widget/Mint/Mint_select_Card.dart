@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget Mint_Select_Card(String url) {
+import '../../../../models/car.dart';
+
+Widget Mint_Select_Card(CarNft carNft) {
   return Stack(
     clipBehavior: Clip.none,
     children: [
@@ -36,7 +38,7 @@ Widget Mint_Select_Card(String url) {
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.asset(
-                      url,
+                      "assets/images/common/cars/car1.png",
                       fit: BoxFit.fitWidth,
                     )),
               ),
