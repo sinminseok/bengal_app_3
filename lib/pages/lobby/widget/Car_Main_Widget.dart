@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/CarsNft_controller/carnft_controller.dart';
 import 'Car_Maindetail_Widget.dart';
+
 class Car_Main_StatefulWidget extends StatefulWidget {
   const Car_Main_StatefulWidget({Key? key}) : super(key: key);
 
@@ -16,8 +17,8 @@ class _Car_Main_StatefulWidgetState extends State<Car_Main_StatefulWidget> {
   var selected_car;
 
   // initialPage 값에 시작할 페이지 설정삽입
-  final PageController pageController = PageController(
-      initialPage: 1, keepPage: false
+  PageController pageController = PageController(
+      initialPage: StorageController().selectedCarIndex, keepPage: false
   );
 
   @override
@@ -30,7 +31,7 @@ class _Car_Main_StatefulWidgetState extends State<Car_Main_StatefulWidget> {
 
 
   void changedPage(int page){
-    print("------$page");
+    StorageController().setSelectCarToIndex(page);
   }
 
 
@@ -46,17 +47,17 @@ class _Car_Main_StatefulWidgetState extends State<Car_Main_StatefulWidget> {
           color: Colors.white,
           boxShadow: [],
         ),
-        child: PageView.builder(
-            controller: pageController,
-              allowImplicitScrolling: false,
+      child: PageView.builder(
+          controller: pageController,
+          allowImplicitScrolling: false,
 
-              onPageChanged: changedPage,
-              scrollDirection: Axis.horizontal,
-              itemCount: carlist.length,
-              itemBuilder: (BuildContext ctx, int idx) {
-                return Car_Maindetail_Widget(carNft: carlist[idx],);
-              }),
-        );
+          onPageChanged: changedPage,
+          scrollDirection: Axis.horizontal,
+          itemCount: carlist.length,
+          itemBuilder: (BuildContext ctx, int idx) {
+            return Car_Maindetail_Widget(carNft: carlist[idx],);
+          }),
+    );
   }
 }
 
