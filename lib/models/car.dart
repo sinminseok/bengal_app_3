@@ -80,6 +80,7 @@ class CarNft {
   String getCarCardTitle() => "${getCarTypeString()}/${getCarGradeString().toUpperCase()}";
 
   bool isValidBuy(double balance) => balance > price;
+
 }
 
 enum CarSortType {

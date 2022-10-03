@@ -29,8 +29,8 @@ class _BoxContainer_WidgetState extends State<BoxContainer_Widget> {
             ),
           ],
           color: Colors.white),
-      child: Padding(
-        padding: EdgeInsets.only(left: 17.w),
+      child: Container(
+        margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
         child: Row(
           children: [
             InkWell(

@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:get/get_navigation/src/root/get_material_app.dart";
 import 'package:provider/provider.dart';
+import 'controller/CarsNft_controller/carnft_controller.dart';
 import 'controller/Frame_controller/frame_controller.dart';
 import 'controller/Inventory_controller/mint_controller.dart';
 import 'controller/storage_controller.dart';
@@ -15,7 +16,8 @@ void main() {
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (context) => Enhance_Controller()),
       ChangeNotifierProvider(create: (contextn) => Mint_Controller(),),
-      ChangeNotifierProvider(create: (context) => Frame_Controller())
+      ChangeNotifierProvider(create: (context) => Frame_Controller()),
+      ChangeNotifierProvider(create: (context) => Carnft_Controller())
 
     ], child: MainApp()),
   );

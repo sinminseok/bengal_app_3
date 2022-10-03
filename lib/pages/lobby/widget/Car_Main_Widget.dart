@@ -1,8 +1,9 @@
 import 'package:bengal_app/controller/storage_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import '../../../controller/CarsNft_controller/carnft_controller.dart';
 import 'Car_Maindetail_Widget.dart';
-
 class Car_Main_StatefulWidget extends StatefulWidget {
   const Car_Main_StatefulWidget({Key? key}) : super(key: key);
 
@@ -12,17 +13,31 @@ class Car_Main_StatefulWidget extends StatefulWidget {
 
 class _Car_Main_StatefulWidgetState extends State<Car_Main_StatefulWidget> {
   var carlist;
+  var selected_car;
+
+  final PageController pageController = PageController(
+      initialPage: 0, keepPage: false
+  );
+
   @override
   void initState() {
     carlist = StorageController().carNftList!.list;
     // TODO: implement initState
+
     super.initState();
+  }
+
+
+   onPageViewChange(){
+    print("onchangeview");
   }
 
 
   @override
   Widget build(BuildContext context) {
+
     return  Container(
+
       //margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
         width: 390.w,
         height: 277.h,
@@ -31,11 +46,15 @@ class _Car_Main_StatefulWidgetState extends State<Car_Main_StatefulWidget> {
           boxShadow: [],
         ),
         child: PageView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: carlist.length,
-            itemBuilder: (BuildContext ctx, int idx) {
-              return Car_Maindetail_Widget(context,carlist[idx]);
-            }));
+            controller: pageController,
+              allowImplicitScrolling: false,
+              onPageChanged: onPageViewChange(),
+              scrollDirection: Axis.horizontal,
+              itemCount: carlist.length,
+              itemBuilder: (BuildContext ctx, int idx) {
+                return Car_Maindetail_Widget(carNft: carlist[idx],);
+              }),
+        );
   }
 }
 
