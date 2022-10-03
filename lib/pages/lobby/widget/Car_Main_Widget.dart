@@ -15,8 +15,9 @@ class _Car_Main_StatefulWidgetState extends State<Car_Main_StatefulWidget> {
   var carlist;
   var selected_car;
 
+  // initialPage 값에 시작할 페이지 설정삽입
   final PageController pageController = PageController(
-      initialPage: 0, keepPage: false
+      initialPage: 1, keepPage: false
   );
 
   @override
@@ -28,8 +29,8 @@ class _Car_Main_StatefulWidgetState extends State<Car_Main_StatefulWidget> {
   }
 
 
-   onPageViewChange(){
-    print("onchangeview");
+  void changedPage(int page){
+    print("------$page");
   }
 
 
@@ -48,7 +49,8 @@ class _Car_Main_StatefulWidgetState extends State<Car_Main_StatefulWidget> {
         child: PageView.builder(
             controller: pageController,
               allowImplicitScrolling: false,
-              onPageChanged: onPageViewChange(),
+
+              onPageChanged: changedPage,
               scrollDirection: Axis.horizontal,
               itemCount: carlist.length,
               itemBuilder: (BuildContext ctx, int idx) {
