@@ -27,9 +27,23 @@ class InitialInfo {
   final int specialBoxInitialLifeTime;
   final double specialBoxOpenBaseCost;
   final double specialBoxOpenCostPerSec;
+  final int carMaxDurability;
   final int levelUpStatusPoint;
   final int breedXPerCost;
   final int breedPerCost;
+
+  final double repairCost;
+  final int levelUpTime;
+  final int levelUpCost;
+  final int specialBoxEarnRate;
+  final int decreaseDurability;
+
+  final int increaseMileage;
+  final int pendingDelayTime;
+  final int tokenValue01;
+  final int tokenValue02;
+  final int tokenValue03;
+  final int tokenValue04;
 
   InitialInfo(
       this.defaultXPerAmount,
@@ -46,11 +60,28 @@ class InitialInfo {
       this.specialBoxInitialLifeTime,
       this.specialBoxOpenBaseCost,
       this.specialBoxOpenCostPerSec,
+      this.carMaxDurability,
       this.levelUpStatusPoint,
       this.breedXPerCost,
       this.breedPerCost,
+      this.repairCost,
+      this.levelUpTime,
+      this.levelUpCost,
+      this.specialBoxEarnRate,
+      this.decreaseDurability,
+      this.increaseMileage,
+      this.pendingDelayTime,
+      this.tokenValue01,
+      this.tokenValue02,
+      this.tokenValue03,
+      this.tokenValue04
       );
 
   factory InitialInfo.fromJson(Map<String, dynamic> json) => _$InitialInfoFromJson(json);
   Map<String, dynamic> toJson() => _$InitialInfoToJson(this);
+
+  double getRateSpecialBoxMining(int seconds) {
+    //스페셜박스 획득 확률 = 플레이타임(초) / SPECIALBOX_EARN_RATE
+    return seconds / (specialBoxEarnRate as double);
+  }
 }

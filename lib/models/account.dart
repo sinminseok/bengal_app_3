@@ -9,7 +9,7 @@ class Account {
   final String password;
   final String email;
   final String name;
-  late final int power;
+  late int power;
   late double todayMiningPer = 0.0;
   late double todayMiningXPer = 0.0;
 

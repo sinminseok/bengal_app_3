@@ -26,12 +26,15 @@ class GameLauncher {
 
   late Timer? _heartBeatChecker;
   late GameInfo? _game;
+  late MiningResult? _miningResult;
 
   Future<bool> isAppInstalled(String gameInfo) async {
     return await DeviceApps.isAppInstalled(gameInfo);
   }
 
   Future<bool> openApp(GameInfo game) async {
+
+
     if (!await isAppInstalled(game.packageName)) {
       Fluttertoast.showToast(
           msg:
@@ -47,7 +50,7 @@ class GameLauncher {
     if (0 == await LaunchApp.openApp(androidPackageName: game.packageName, openStore: true)) return false;
 
     _game = game;
-    var miningResult = StorageController().miningStart(game.id);
+    _miningResult = StorageController().miningStart(_game!);
 
     _heartBeatChecker = Timer.periodic(const Duration(seconds: 1), (timer) {
       _callBackHeartBeatChecker();
@@ -74,24 +77,30 @@ class GameLauncher {
       }
     }
 
+    // todo: 하루 채굴량 확인
+    // todo: 게임별 전체 채굴량
+
     for (var e in events) {
       if (e.packageName == _game!.packageName){
         if (MOVE_TO_BACKGROUND == e.eventType ||
             ACTIVITY_STOPPED == e.eventType) {
           gameStopped();
+        } else {
+          // todo: mining
         }
       }
     }
   }
 
   void gameStopped() {
-    if (null == _game) return;
-    var miningResult = StorageController().miningEnd(_game!.id);
-    if (null == miningResult) return;
-    var playDuration = miningResult.getPlayTime();
-    if (1 <= playDuration.inHours && 50 <= Random().nextInt(100)) {
-      StorageController().miningBox(_game!.id);
-    }
+    _heartBeatChecker?.cancel();
+
+    if (null == _game || null == _miningResult) return;
+
+    StorageController().miningEnd(_game!, _miningResult!);
+
+    _game = null;
+    _miningResult = null;
   }
 
 }

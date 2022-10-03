@@ -14,8 +14,20 @@
     "specialBoxInitialLifeTime": 3600,
     "specialBoxOpenBaseCost": 30.0,
     "specialBoxOpenCostPerSec": 0.01,
+    "carMaxDurability": 100,
     "levelUpStatusPoint": 4,
     "breedXPerCost": 100,
-    "breedPerCost": 10
+    "breedPerCost": 10,
+    "repairCost": 0.3,
+    "levelUpTime": 600,
+    "levelUpCost": 600,
+    "specialBoxEarnRate": 10000,
+    "decreaseDurability": 2,
+    "increaseMileage": 100,
+    "pendingDelayTime": 10,
+    "tokenValue01": 30,
+    "tokenValue02": 10,
+    "tokenValue03": 1,
+    "tokenValue04": 5
   }
 }

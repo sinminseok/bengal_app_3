@@ -30,7 +30,7 @@ Widget Inventory_Car_Card2(
           child: Container(
 
             width: 170.w,
-            height: 265.h,
+            height: 270.h,
             decoration: BoxDecoration(
               border: Border.all(color: color),
               borderRadius: BorderRadius.all(
@@ -64,8 +64,8 @@ Widget Inventory_Car_Card2(
                 ),
                 //nftID
                 Container(
-                  margin: EdgeInsets.fromLTRB(0.w, 6.h, 0.w, 0.h),
-                  width: 140.w,
+                  margin: EdgeInsets.fromLTRB(15.w, 5.h, 15.w, 0.h),
+                  width: 85.w,
                   height: 20.h,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),

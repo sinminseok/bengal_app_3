@@ -34,6 +34,7 @@ const _$CoinTypeEnumMap = {
   CoinType.Havah: 'Havah',
   CoinType.Per: 'Per',
   CoinType.XPer: 'XPer',
+  CoinType.Usdc: 'Usdc',
 };
 
 TransferHistoryList _$TransferHistoryListFromJson(Map<String, dynamic> json) =>

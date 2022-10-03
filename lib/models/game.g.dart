@@ -87,9 +87,10 @@ MiningResult _$MiningResultFromJson(Map<String, dynamic> json) => MiningResult(
       json['miningBoxId'] as int,
       DateTime.parse(json['createdAt'] as String),
       DateTime.parse(json['updatedAt'] as String),
-);
+    );
 
-Map<String, dynamic> _$MiningResultToJson(MiningResult instance) => <String, dynamic>{
+Map<String, dynamic> _$MiningResultToJson(MiningResult instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'gameId': instance.gameId,
       'miningXPer': instance.miningXPer,
@@ -97,16 +98,16 @@ Map<String, dynamic> _$MiningResultToJson(MiningResult instance) => <String, dyn
       'miningBoxId': instance.miningBoxId,
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
-};
+    };
 
 MiningResultList _$MiningResultListFromJson(Map<String, dynamic> json) =>
     MiningResultList(
-          (json['list'] as List<dynamic>)
-              .map((e) => MiningResult.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      (json['list'] as List<dynamic>)
+          .map((e) => MiningResult.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$MiningResultListToJson(MiningResultList instance) =>
     <String, dynamic>{
-          'list': instance.list,
+      'list': instance.list,
     };
