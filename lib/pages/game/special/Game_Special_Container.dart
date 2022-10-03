@@ -8,6 +8,7 @@ import '../../../types/constants.dart';
 import '../../../utils/font.dart';
 
 Widget Game_Special_Container(GameInfo game) {
+  //event 처리
   return Container(
     margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
     //width: 360.w,

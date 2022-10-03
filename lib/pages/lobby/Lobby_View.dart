@@ -22,6 +22,15 @@ class _Lobby_ViewState extends State<Lobby_View> {
   bool current_car = true;
 
   @override
+  void initState() {
+    // TODO: implement initState
+
+    super.initState();
+  }
+
+
+
+  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
