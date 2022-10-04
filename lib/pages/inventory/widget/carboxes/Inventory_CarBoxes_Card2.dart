@@ -16,7 +16,7 @@ Widget Inventory_CarBoxes_Card2(Color color, BuildContext context, BoxNft nft) {
       children: [
         Container(
           width: 170.w,
-          height: 160.h,
+          height: 270.h,
           decoration: BoxDecoration(
             border: Border.all(color: color),
             borderRadius: const BorderRadius.all(

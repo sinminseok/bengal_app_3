@@ -117,31 +117,39 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                             margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 0.h),
                             child: 0 < car_provider.list.length
                                 ? Mint_Select_Card(car_provider.list[0])
-                                : left_box?
-                            Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(color: kPrimaryColor),
-                                  color: Colors.white,
-                                  borderRadius: const BorderRadius.all(Radius.circular(15))),
-                              width: 170.w,
-                              height: 152.h,
-                              child: const Center(
-                                child: Icon(Icons.add_circle,color: kPrimaryColor,),
-                              )
-                            )
-                                : Container(
-                                    decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(15))),
-                                    width: 170.w,
-                                    height: 152.h,
-                                    child: DottedBorder(
-
-                                        borderType: BorderType.RRect,
-                                        radius: const Radius.circular(15),
-                                        child: const Center(child: Icon(Icons.add_circle,color: Colors.grey,))),
-                                  ))),
+                                : left_box
+                                    ? Container(
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: kPrimaryColor),
+                                            color: Colors.white,
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(15))),
+                                        width: 170.w,
+                                        height: 152.h,
+                                        child: const Center(
+                                          child: Icon(
+                                            Icons.add_circle,
+                                            color: kPrimaryColor,
+                                          ),
+                                        ))
+                                    : Container(
+                                        decoration: const BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(15))),
+                                        width: 170.w,
+                                        height: 152.h,
+                                        child: DottedBorder(
+                                            borderType: BorderType.RRect,
+                                            radius: const Radius.circular(15),
+                                            child: const Center(
+                                                child: Icon(
+                                              Icons.add_circle,
+                                              color: Colors.grey,
+                                            ))),
+                                      ))),
                   ),
                   AnimatedPositioned(
                     right: 15.w,
@@ -150,36 +158,42 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                     curve: Curves.fastOutSlowIn,
                     child: GestureDetector(
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 0.h),
-                        child: 0 < car_provider.list.length &&
-                                car_provider.list.length == 2
-                            ? Mint_Select_Card(car_provider.list[1])
-                            :right_bool?
-                        Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(color: kPrimaryColor),
-                                color: Colors.white,
-                                borderRadius: const BorderRadius.all(Radius.circular(15))),
-                            width: 170.w,
-                            height: 152.h,
-                            child: const Center(
-                              child: Icon(Icons.add_circle,color: kPrimaryColor,),
-                            )
-                        )
-                            : Container(
-                          decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(15))),
-                          width: 170.w,
-                          height: 152.h,
-                          child: DottedBorder(
-
-                              borderType: BorderType.RRect,
-                              radius: const Radius.circular(15),
-                              child: const Center(child: Icon(Icons.add_circle,color: Colors.grey,))),
-                        )
-                      ),
+                          margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 0.h),
+                          child: 0 < car_provider.list.length &&
+                                  car_provider.list.length == 2
+                              ? Mint_Select_Card(car_provider.list[1])
+                              : right_bool
+                                  ? Container(
+                                      decoration: BoxDecoration(
+                                          border:
+                                              Border.all(color: kPrimaryColor),
+                                          color: Colors.white,
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(15))),
+                                      width: 170.w,
+                                      height: 152.h,
+                                      child: const Center(
+                                        child: Icon(
+                                          Icons.add_circle,
+                                          color: kPrimaryColor,
+                                        ),
+                                      ))
+                                  : Container(
+                                      decoration: const BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(15))),
+                                      width: 170.w,
+                                      height: 152.h,
+                                      child: DottedBorder(
+                                          borderType: BorderType.RRect,
+                                          radius: const Radius.circular(15),
+                                          child: const Center(
+                                              child: Icon(
+                                            Icons.add_circle,
+                                            color: Colors.grey,
+                                          ))),
+                                    )),
                     ),
                   ),
                   //sub img
@@ -341,20 +355,25 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                         child: InkWell(
                           onTap: () {
                             if (next_ontap) {
-                              StorageController().minting(car_provider.list[0], car_provider.list[1]).then((box) =>
-                              {
-                                if (null == box) {
-                                  Fluttertoast.showToast(
-                                      msg: 'Minting Fail',
-                                      backgroundColor: Colors.grey,
-                                      textColor: Colors.black,
-                                      gravity: ToastGravity.CENTER)
-                                } else {
-                                  // todo: animation
-                                  _mintingResultProc(size, context, box)
-                                }
-                              });
-
+                              StorageController()
+                                  .minting(car_provider.list[0],
+                                      car_provider.list[1])
+                                  .then((box) => {
+                                        if (null == box)
+                                          {
+                                            Fluttertoast.showToast(
+                                                msg: 'Minting Fail',
+                                                backgroundColor: Colors.grey,
+                                                textColor: Colors.black,
+                                                gravity: ToastGravity.CENTER)
+                                          }
+                                        else
+                                          {
+                                            // todo: animation
+                                            _mintingResultProc(
+                                                size, context, box)
+                                          }
+                                      });
                             } else {
                               setState(() {
                                 next_ontap = !next_ontap;
@@ -393,89 +412,91 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
               : Container(),
           next_ontap == true
               ? Container()
-              : Column(
-                  children: [
-                    Container(
-                      width: 390.w,
-                      height: 62.h,
+              : Container(
+                  decoration: BoxDecoration(
                       color: Colors.white,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.fromLTRB(10.w, 7.h, 15.w, 0.h),
-                            width: 120.w,
-                            height: 30.h,
-                            child: CustomDropdownButton2(
-                              hint: 'Lowest Level',
-                              dropdownItems: items,
-                              value: selectedValue,
-                              onChanged: (value) {
-                                setState(() {
-                                  selectedValue = value;
-                                });
-                              },
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0.w, 7.h, 15.w, 0.h),
-                            height: 36.h,
-                            width: 36.h,
-                            child: InkWell(
-                                onTap: () {
-                                  Workshop_Filter_popup()
-                                      .showDialog(size, context);
+                      border: Border(
+                          top: BorderSide(
+                              width: 1.w, color: Colors.grey.shade300))),
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 390.w,
+                        height: 62.h,
+                        color: Colors.white,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.fromLTRB(10.w, 7.h, 15.w, 0.h),
+                              width: 120.w,
+                              height: 30.h,
+                              child: CustomDropdownButton2(
+                                hint: 'Lowest Level',
+                                dropdownItems: items,
+                                value: selectedValue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedValue = value;
+                                  });
                                 },
-                                child: Image.asset(
-                                  "assets/images/inventory/filter.png",
-                                )),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 390.w,
-                      height: 380.h,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border(
-                              top: BorderSide(
-                                  width: 1.w, color: Colors.grey.shade300))),
-                      child: Center(
-                        child: SizedBox(
-                          width: 360.w,
-                          height: 700.h,
-                          child: GridView.builder(
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 1.w,
-                                mainAxisSpacing: 0.h,
-                                childAspectRatio: 1.w,
                               ),
-                              itemCount: carnftlist!.list.length,
-                              // shrinkWrap: true,
-
-                              itemBuilder: (BuildContext context, int index) {
-                                return InkWell(
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(0.w, 7.h, 15.w, 0.h),
+                              height: 36.h,
+                              width: 36.h,
+                              child: InkWell(
                                   onTap: () {
-                                    Car_detail_popup()
-                                        .showDialog(size, context, carnftlist!.list[index]);
+                                    Workshop_Filter_popup()
+                                        .showDialog(size, context);
                                   },
-                                  child: Center(
-                                    child: Mint_Car_Card(
-                                      size: size,
-                                      context: context,
-                                      fun: select_car,
-                                      carNft: carnftlist!.list[index],
-                                    ),
-                                  ),
-                                );
-                              }),
+                                  child: Image.asset(
+                                    "assets/images/inventory/filter.png",
+                                  )),
+                            )
+                          ],
                         ),
                       ),
-                    ),
-                  ],
+                      Container(
+                        //margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
+                        width: 390.w,
+                        height: 313.h,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border(
+                                top: BorderSide(
+                                    width: 1.w, color: Colors.grey.shade300))),
+                        child: GridView.builder(
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 0.w,
+                              mainAxisSpacing: 10.h,
+                              childAspectRatio: 1 / 1.07,
+                            ),
+                            itemCount: carnftlist!.list.length,
+                            // shrinkWrap: true,
+
+                            itemBuilder: (BuildContext context, int index) {
+                              return InkWell(
+                                onTap: () {
+                                  Car_detail_popup().showDialog(
+                                      size, context, carnftlist!.list[index]);
+                                },
+                                child: Center(
+                                  child: Mint_Car_Card(
+                                    size: size,
+                                    context: context,
+                                    fun: select_car,
+                                    carNft: carnftlist!.list[index],
+                                  ),
+                                ),
+                              );
+                            }),
+                      ),
+                    ],
+                  ),
                 )
         ],
       ),
