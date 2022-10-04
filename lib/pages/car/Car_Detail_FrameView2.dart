@@ -419,7 +419,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                               ])),
                           InkWell(
                             onTap: () {
-                              Market_popup().showDialog(size, context);
+                              Market_popup().showDialog(size, context, widget.carNft);
                             },
                             child: Container(
                               margin:

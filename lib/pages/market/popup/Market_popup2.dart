@@ -27,7 +27,7 @@ class Market_popup2 {
             Animation secondaryAnimation) {
           return Center(
             child: DefaultTextStyle(
-              style: TextStyle(fontSize: 16, color: Colors.black),
+              style: const TextStyle(fontSize: 16, color: Colors.black),
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
@@ -54,7 +54,7 @@ class Market_popup2 {
                           Container(
                             width: 300.w,
                             height: 50.25.h,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(20),
                                     topRight: Radius.circular(20)),
