@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:page_transition/page_transition.dart';
 import '../../../controller/assets_controller.dart';
 import '../../../types/common.dart';
 import '../../../utils/font.dart';
 import '../../../models/game.dart';
 import '../../../controller/game_launcher.dart';
+import '../../game_play/Play_Information_View.dart';
 
-Widget Game_Normal_Container(GameInfo game) {
+Widget Game_Normal_Container(BuildContext context, GameInfo game) {
   return InkWell(
     onTap: (){
+      Navigator.push(
+          context,
+          PageTransition(
+              type: PageTransitionType.fade,
+              child: Play_information_View(game: game)));
       GameLauncher().openApp(game);
     },
     child: Container(
@@ -17,7 +24,7 @@ Widget Game_Normal_Container(GameInfo game) {
       decoration: BoxDecoration(
           border: Border.all(color: Colors.grey.shade300),
           color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(10))),
+          borderRadius: const BorderRadius.all(Radius.circular(10))),
       child: Column(
         children: [
 

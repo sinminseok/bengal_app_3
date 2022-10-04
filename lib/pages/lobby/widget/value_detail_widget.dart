@@ -1,3 +1,4 @@
+import 'package:bengal_app/utils/dataType.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -36,12 +37,12 @@ Widget Value_Detail_Widget(String iconUrl, String title, double mainValue,
               Row(
                 children: [
                   Text(
-                    "$mainValue",
+                    mainValue.asString(),
                     style: Font.lato(const Color(0xFF342B35),
                         FontWeight.w700, 10.sp),
                   ),
                   Text(
-                    "(+$suvValue)",
+                    "(+${suvValue.asString()})",
                     style: Font.lato(const Color(0xFF766D84),
                         FontWeight.w700, 10.sp),
                   )
