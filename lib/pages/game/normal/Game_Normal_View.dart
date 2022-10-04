@@ -41,7 +41,7 @@ Widget Game_Normal_View(BuildContext context, List<GameInfo> gameList) {
 
               itemBuilder: (BuildContext context, int idx) {
                 return Center(
-                  child: Game_Normal_Container(gameList[idx]),
+                  child: Game_Normal_Container(context, gameList[idx]),
                 );
               }),
         ),

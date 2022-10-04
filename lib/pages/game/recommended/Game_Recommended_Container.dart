@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../../../controller/assets_controller.dart';
 import '../../../models/game.dart';
 import '../../../types/common.dart';
 import '../../../utils/font.dart';
 import '../../../controller/game_launcher.dart';
+import '../../game_play/Play_Information_View.dart';
 
 Widget Game_Recommended_Container(BuildContext context, GameInfo game) {
   return  InkWell(
     onTap: (){
+      Navigator.push(
+          context,
+          PageTransition(
+              type: PageTransitionType.fade,
+              child: Play_information_View(game: game)));
       GameLauncher().openApp(game);
     },
     child: Container(
