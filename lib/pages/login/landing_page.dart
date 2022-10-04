@@ -14,43 +14,48 @@ class LandingPage extends StatefulWidget {
 }
 
 class LandingPageState extends State<LandingPage> {
-  late VideoPlayerController controller;
+  final VideoPlayerController controller = VideoPlayerController.asset('assets/mp4/Perplay_intro.mp4');
 
   @override
   void initState() {
-    Timer(const Duration(milliseconds: 2000), () {
-      Get.offAll(const LoginPage());
-    });
-
     super.initState();
 
-    // controller = VideoPlayerController.asset('assets/mp4/Perplay_intro.mp4');
-    // controller.initialize().then((value){
-    //   setState(() {
-    //     controller.play();
-    //   });
-    // });
+    controller.initialize().then((value){
+      setState(() {
+        controller.play();
+      });
+    });
+
+    Timer(const Duration(milliseconds: 2000), () {
+      controller.pause();
+      Get.offAll(const LoginPage());
+    });
+  }
+
+  @override
+  void dispose() {
+    controller.pause();
+    controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      body: VideoPlayer(controller),
+    );
     // return Scaffold(
+    //   backgroundColor: const Color(0xFF8B80F8),
     //   body: Stack(children: [
-    //     VideoPlayer(controller),
+    //     Image.asset(
+    //       "assets/images/login/bg_start_1.png",
+    //       width: 390.w,
+    //       height: 564.h,
+    //       alignment: Alignment.topCenter,
+    //       fit: BoxFit.fill,
+    //     ),
+    //     const LandingLogoWidget()
     //   ]),
     // );
-    return Scaffold(
-      backgroundColor: const Color(0xFF8B80F8),
-      body: Stack(children: [
-        Image.asset(
-          "assets/images/login/bg_start_1.png",
-          width: 390.w,
-          height: 564.h,
-          alignment: Alignment.topCenter,
-          fit: BoxFit.fill,
-        ),
-        const LandingLogoWidget()
-      ]),
-    );
   }
 }

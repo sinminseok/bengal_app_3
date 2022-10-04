@@ -28,12 +28,11 @@ Widget Inventory_Car_Card2(
                     )));
           },
           child: Container(
-
             width: 170.w,
             height: 270.h,
             decoration: BoxDecoration(
               border: Border.all(color: color),
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                   Radius.circular(6.0) //         <--- border radius here
                   ),
             ),

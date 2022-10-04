@@ -9,15 +9,14 @@ Widget Inventory_CarBoxes_View(Size size, BoxNftList nftList){
   return Center(
     child:Container(
       width: 360.w,
-      height: 600.h,
+      height: 520.h,
       child: GridView.builder(
           shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-
             crossAxisCount: 2,
             crossAxisSpacing: 0.w,
-            mainAxisSpacing: 0.h,
-            childAspectRatio: 1.4.h//1.h / 1.h,
+            mainAxisSpacing: 10.h,
+            childAspectRatio: 1.13 / 1,
           ),
           itemCount: nftList.list.length,
           // shrinkWrap: true,

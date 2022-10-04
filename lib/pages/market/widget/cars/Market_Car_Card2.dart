@@ -24,9 +24,6 @@ class Market_Car_Card2 extends StatefulWidget {
 class _Market_Car_Card2State extends State<Market_Car_Card2> {
   @override
   void initState() {
-    print("init start");
-    print("${widget.carNft.id}");
-    // TODO: implement initState
     super.initState();
   }
 
