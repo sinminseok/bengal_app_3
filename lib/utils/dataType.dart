@@ -13,3 +13,9 @@ extension DateHelpers on DateTime {
         yesterday.year == year;
   }
 }
+
+extension DoubleHelpers on double {
+  String asString() {
+    return double.parse(toStringAsFixed(2)).toString();
+  }
+}

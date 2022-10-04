@@ -11,11 +11,11 @@ import '../../../utils/font.dart';
 Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
   return InkWell(
     onTap: () {
-      Navigator.push(
-          context,
-          PageTransition(
-              type: PageTransitionType.fade,
-              child: const Play_information_View()));
+      // Navigator.push(
+      //     context,
+      //     PageTransition(
+      //         type: PageTransitionType.fade,
+      //         child: const Play_information_View()));
     },
     child: Container(
       margin: EdgeInsets.fromLTRB(5.w, 0.h, 5.w, 0.h),
@@ -159,7 +159,12 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
             margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
             child: InkWell(
               onTap: () {
-                GameLauncher().openApp(game);
+                Navigator.push(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.fade,
+                        child: Play_information_View(game: game)));
+                //GameLauncher().openApp(game);
                 // Lottie.asset('assets/LottieLogo1.json',
                 //   width: 200,
                 //   height: 200,

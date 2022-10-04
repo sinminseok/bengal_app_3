@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../models/game.dart';
 import 'Game_Recommended_Container.dart';
 
-Widget Game_Recommended_View(List<GameInfo> gameList){
+Widget Game_Recommended_View(BuildContext context, List<GameInfo> gameList){
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Container(
@@ -14,7 +14,7 @@ Widget Game_Recommended_View(List<GameInfo> gameList){
           itemCount: gameList.length,
           itemBuilder: (BuildContext ctx, int idx) {
             //게임 객체 전달
-            return Game_Recommended_Container(gameList[idx]);
+            return Game_Recommended_Container(context, gameList[idx]);
           }
       ),
     ),

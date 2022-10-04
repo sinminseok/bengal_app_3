@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../models/box.dart';
-import 'Inventory_CarBoxes_Card.dart';
 import 'Inventory_CarBoxes_Card2.dart';
 
 Widget Inventory_CarBoxes_View(Size size, BoxNftList nftList){

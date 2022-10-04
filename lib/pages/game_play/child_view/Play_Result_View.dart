@@ -8,6 +8,8 @@ import 'package:page_transition/page_transition.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:flutter_fadein/flutter_fadein.dart';
 import '../../../common/string_configuration.dart';
+import '../../../controller/storage_controller.dart';
+import '../../../models/game.dart';
 import '../../../types/constants.dart';
 import '../../../types/string_type.dart';
 import '../../../utils/font.dart';
@@ -16,7 +18,9 @@ import '../widget/Earned_widget.dart';
 import '../widget/Result_Car_info_widget.dart';
 
 class Play_Result_View extends StatefulWidget {
-  const Play_Result_View({Key? key}) : super(key: key);
+  Play_Result_View({Key? key, required this.game}) : super(key: key);
+
+  GameInfo game;
 
   @override
   _Play_Result_View createState() => _Play_Result_View();
@@ -131,8 +135,7 @@ class _Play_Result_View extends State<Play_Result_View> {
                                 ),
                                 Column(
                                   children: [
-                                    Image.asset(
-                                      "assets/images/game/game_img.png",
+                                    Image.asset(widget.game.gameIconAsset(),
                                       width: 80.w,
                                       height: 90.h,
                                     ),
@@ -140,7 +143,7 @@ class _Play_Result_View extends State<Play_Result_View> {
                                       margin:
                                           EdgeInsets.fromLTRB(0.w, 6.h, 0.w, 0.h),
                                       child: Text(
-                                        "Game Name",
+                                        widget.game.title,
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.bold),
@@ -171,7 +174,7 @@ class _Play_Result_View extends State<Play_Result_View> {
                                         )
                                       ]),
                                       Text(
-                                        "01:23:58",
+                                        "${StorageController().account!.power}",
                                         style: TextStyle(
                                             color: kPrimaryColor,
                                             fontWeight: FontWeight.bold,
@@ -210,7 +213,7 @@ class _Play_Result_View extends State<Play_Result_View> {
                             height: _height_child,
                             decoration: BoxDecoration(
                                 border: Border.all(color: kPrimaryColor),
-                                borderRadius: BorderRadius.all(Radius.circular(15))),
+                                borderRadius: const BorderRadius.all(Radius.circular(15))),
                             child: SingleChildScrollView(
                               child: Column(
 
@@ -247,6 +250,7 @@ class _Play_Result_View extends State<Play_Result_View> {
                                           margin:
                                           EdgeInsets.fromLTRB(0.w, 0.h, 20.w, 0.h),
                                           child: Text(
+                                            //todo: StorageController().miningResultList!.lastMiningResult(). 채굴량 누적 추가 해야 함
                                             "12",
                                             style: TextStyle(
                                                 fontSize: 18,
@@ -355,10 +359,10 @@ class _Play_Result_View extends State<Play_Result_View> {
                     margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 0.h),
                     width: 360.w,
                     height: 40.h,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         color: kPrimaryColor,
                         borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "PLAY GAME",
                         style: TextStyle(
@@ -371,12 +375,14 @@ class _Play_Result_View extends State<Play_Result_View> {
                 ],
               ),
               FadeIn(
-                  duration: Duration(milliseconds: 600),
+                  duration: const Duration(milliseconds: 600),
                   curve: Curves.easeIn,
                   child: Result_Car_info_widget())
             ],
           ),
           FadeIn(
+            duration: const Duration(milliseconds: 1200),
+            curve: Curves.easeIn,
             child: Container(
                 margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
                 width: 175.w,
@@ -387,15 +393,10 @@ class _Play_Result_View extends State<Play_Result_View> {
                           context,
                           PageTransition(
                               type: PageTransitionType.fade,
-                              child: Frame_View()));
+                              child: const Frame_View()));
                     },
                     child: Image.asset("assets/images/game/lobby_button.png"))),
-            // Optional paramaters
-            duration: Duration(milliseconds: 1200),
-            curve: Curves.easeIn,
           ),
-
-          //Animation Widget
         ],
       ),
     );

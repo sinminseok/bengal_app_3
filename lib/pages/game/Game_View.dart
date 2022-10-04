@@ -290,11 +290,11 @@ class _Game_ViewState extends State<Game_View> {
             ),
 
             selectedTab == GameListTabItem.special
-                ? Game_Special_View(
+                ? Game_Special_View(context,
                     StorageController().getCategoryGameList(1).list)
                 : Container(),
             selectedTab == GameListTabItem.recommended
-                ? Game_Recommended_View(
+                ? Game_Recommended_View(context,
                 StorageController().getCategoryGameList(2).list)
                 : Container(),
             selectedTab == GameListTabItem.normal

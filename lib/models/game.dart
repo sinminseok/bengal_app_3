@@ -1,7 +1,6 @@
 import 'dart:ui';
 
-import 'package:bengal_app/utils/datetime.dart';
-import 'package:fast_immutable_collections/fast_immutable_collections.dart';
+import 'package:bengal_app/utils/dataType.dart';
 import 'package:flinq/flinq.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'game.g.dart';
@@ -343,20 +342,29 @@ class MiningResultList {
     if (gameList.isEmpty) return 0.0;
     var todayList = gameList.whereList((o) => o.createdAt.isToday());
     if (todayList.isEmpty) return 0.0;
-    return todayList.sumBy((o) => o.miningPer);
+    return todayList.fold(0.0, (previous, current) => previous + current.miningPer);
+  }
+
+  double getTodayMiningXPerAmount(int gameId) {
+    if (list.isEmpty) return 0.0;
+    var gameList = list.whereList((o) => o.gameId == gameId);
+    if (gameList.isEmpty) return 0.0;
+    var todayList = gameList.whereList((o) => o.createdAt.isToday());
+    if (todayList.isEmpty) return 0.0;
+    return todayList.fold(0.0, (previous, current) => previous + current.miningXPer);
   }
 
   double getTodayMiningTotalPerAmount() {
     if (list.isEmpty) return 0.0;
     var todayList = list.whereList((o) => o.createdAt.isToday());
     if (todayList.isEmpty) return 0.0;
-    return todayList.sumBy((o) => o.miningPer);
+    return todayList.fold(0.0, (previous, current) => previous + current.miningPer);
   }
 
   double getTodayMiningTotalXPerAmount() {
     if (list.isEmpty) return 0.0;
     var todayList = list.whereList((o) => o.createdAt.isToday());
     if (todayList.isEmpty) return 0.0;
-    return todayList.sumBy((o) => o.miningXPer);
+    return todayList.fold(0.0, (previous, current) => previous + current.miningXPer);
   }
 }
