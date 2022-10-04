@@ -7,7 +7,7 @@ import '../../../types/common.dart';
 import '../../../utils/font.dart';
 import '../../../controller/game_launcher.dart';
 
-Widget Game_Recommended_Container(GameInfo game) {
+Widget Game_Recommended_Container(BuildContext context, GameInfo game) {
   return  InkWell(
     onTap: (){
       GameLauncher().openApp(game);

@@ -1,3 +1,4 @@
+import 'package:bengal_app/utils/dataType.dart';
 import 'package:flinq/flinq.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -31,11 +32,11 @@ class Wallet {
   String balanceString(CoinType type) {
     switch (type) {
       case CoinType.XPer:
-        return double.parse(balanceXPer.toStringAsFixed(2)).toString();
+        return balanceXPer.asString();
       case CoinType.Per:
-        return double.parse(balancePer.toStringAsFixed(2)).toString();
+        return balancePer.asString();
       case CoinType.Havah:
-        return double.parse(balanceHavah.toStringAsFixed(2)).toString();
+        return balanceHavah.asString();
       default: return "";
     }
   }

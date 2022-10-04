@@ -33,6 +33,8 @@ class Account {
     return true;
   }
 
+  double getPowerPercent(double max) => power / max;
+
 //todo: daily reset
 // charge
 }
