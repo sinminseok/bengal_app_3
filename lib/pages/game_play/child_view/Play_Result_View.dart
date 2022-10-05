@@ -95,10 +95,12 @@ class _Play_Result_View extends State<Play_Result_View> {
                         color: Colors.white),
                     child: SingleChildScrollView(
                       child: Column(
+
                         children: [
                           Container(
                             margin: EdgeInsets.fromLTRB(0.w, 60.h, 0.w, 0.h),
                             child: Row(
+                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
                                   width: 100.w,
@@ -139,21 +141,12 @@ class _Play_Result_View extends State<Play_Result_View> {
                                       width: 80.w,
                                       height: 90.h,
                                     ),
-                                    Container(
-                                      margin:
-                                          EdgeInsets.fromLTRB(0.w, 6.h, 0.w, 0.h),
-                                      child: Text(
-                                        widget.game.title,
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    )
+
                                   ],
                                 ),
                                 Container(
                                   width: 100.w,
-                                  margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
+                                  margin: EdgeInsets.fromLTRB(0.w, 0.h, 20.w, 0.h),
                                   child: Column(
                                     children: [
                                       Row(children: [
@@ -185,6 +178,25 @@ class _Play_Result_View extends State<Play_Result_View> {
                                 )
                               ],
                             ),
+                          ),
+                      Container(
+                              width: 300.w,
+                              height: 30.h,
+
+                              margin:
+                              EdgeInsets.fromLTRB(0.w, 6.h, 0.w, 0.h),
+                              child: Center(
+                                child: Text(
+                                  //widget.game.title
+                                  widget.game.title,
+                                  style: TextStyle(
+                                      overflow: TextOverflow.ellipsis,
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeight.bold),
+
+                                ),
+                              ),
+
                           ),
                           Container(
                               margin: EdgeInsets.fromLTRB(
