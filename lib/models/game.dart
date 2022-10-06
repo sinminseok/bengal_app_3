@@ -19,7 +19,7 @@ class GameInfo {
   final int minCarLevel;
   final double depositPer;
   final DateTime limitAt;
-  final String packageName;
+  late String packageName;
 
   GameInfo(
       this.id,
@@ -304,6 +304,11 @@ class MiningResult {
   late int miningBoxId;
   final DateTime createdAt;
   late DateTime updatedAt;
+  late int totalPlaySec = 0;
+  late int remainSec = 0;
+
+  late bool doMining = false;
+  late int timeStamp = 0;
 
   MiningResult(
       this.id,
@@ -318,9 +323,53 @@ class MiningResult {
   factory MiningResult.fromJson(Map<String, dynamic> json) => _$MiningResultFromJson(json);
   Map<String, dynamic> toJson() => _$MiningResultToJson(this);
 
-  Duration getPlayTime() => updatedAt.difference(createdAt);
+  void miningEnd() {
+    print(">>>>>>>>>> miningEnd");
+    updatedAt = DateTime.now();
+    doMining = false;
+  }
 
-  void miningEnd() => updatedAt = DateTime.now();
+  int mining(int timeStamp, double per, double xper) {
+    if (!doMining) return 0;
+    var curTime = DateTime.fromMillisecondsSinceEpoch(timeStamp);
+    var gap = curTime.difference(updatedAt);
+    totalPlaySec += gap.inSeconds;
+    var curSec = remainSec + gap.inSeconds;
+    if (60 > curSec) {
+      remainSec = curSec;
+      return 0;
+    }
+
+    int min = curSec ~/ 60;
+    remainSec = curSec % 60;
+    miningXPer += (xper * min);
+    miningPer += (per * min);
+    updatedAt = curTime;
+    print(">>>>>>>>>> mining totalPlaySec($totalPlaySec) / min($min) / remainSec($remainSec)");
+    return min;
+  }
+
+  void miningPlay(int timeStamp) {
+    print(">>>>>>>>>> miningPlay");
+    if (0 == timeStamp) return;
+    updatedAt = DateTime.fromMillisecondsSinceEpoch(timeStamp);
+    doMining = true;
+  }
+
+  void miningPause(int timeStamp) {
+    print(">>>>>>>>>> miningPause");
+    doMining = false;
+  }
+
+  Duration getPlayTime() => Duration(seconds: totalPlaySec);
+
+  String getPlayTimeString() {
+    var duration = Duration(seconds: totalPlaySec);
+    String hours = duration.inHours.toString().padLeft(2, '0');
+    String minutes = duration.inMinutes.remainder(60).toString().padLeft(2, '0');
+    String seconds = duration.inSeconds.remainder(60).toString().padLeft(2, '0');
+    return "$hours:$minutes:$seconds";
+  }
 }
 
 @JsonSerializable()

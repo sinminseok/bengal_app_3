@@ -9,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
+import '../../../common/observer.dart';
 import '../../../common/string_configuration.dart';
 import '../../../controller/game_launcher.dart';
 import '../../../controller/storage_controller.dart';
@@ -28,7 +29,17 @@ class Play_Finish_View extends StatefulWidget {
   _Play_Finish_View createState() => _Play_Finish_View();
 }
 
-class _Play_Finish_View extends State<Play_Finish_View> {
+class _Play_Finish_View extends State<Play_Finish_View>  implements Observer {
+  @override
+  void initState() {
+    super.initState();
+    StorageController().registerObserver(this);
+  }
+  @override
+  updateObserver() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -189,14 +200,14 @@ class _Play_Finish_View extends State<Play_Finish_View> {
                                         child: Row(
                                           children: [
                                             Text(
-                                              StorageController().miningResultList!.getTodayMiningTotalXPerAmount().asString(),
+                                              StorageController().miningResultList!.getTodayMiningXPerAmount(widget.game.id).asString(),
                                               style: Font.lato(
                                                   const Color(0xFF8E8E8E),
                                                   FontWeight.w700,
                                                   12.sp),
                                             ),
                                             Text(
-                                              "/${widget.game.xPerPerDay}",
+                                              "/${StorageController().commonData.initialInfo.dailyLimitXPer.asString()}",
                                               style: Font.lato(
                                                   kPrimaryColor,
                                                   FontWeight.w700,
@@ -256,14 +267,14 @@ class _Play_Finish_View extends State<Play_Finish_View> {
                                         child: Row(
                                           children: [
                                             Text(
-                                              StorageController().miningResultList!.getTodayMiningTotalPerAmount().asString(),
+                                              StorageController().miningResultList!.getTodayMiningPerAmount(widget.game.id).asString(),
                                               style: Font.lato(
                                                   const Color(0xFFECB133),
                                                   FontWeight.w700,
                                                   12.sp),
                                             ),
                                             Text(
-                                              "/${widget.game.perPerDay}",
+                                              "/${StorageController().commonData.initialInfo.dailyLimitPer.asString()}",
                                               style: Font.lato(
                                                   const Color(0xFFECB133),
                                                   FontWeight.w700,
@@ -325,7 +336,7 @@ class _Play_Finish_View extends State<Play_Finish_View> {
                               fontSize: 18),
                         ),
                         Text(
-                          "00:00:00",
+                          GameLauncher().miningResult!.getPlayTimeString(),
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -375,7 +386,7 @@ class _Play_Finish_View extends State<Play_Finish_View> {
                                 margin:
                                 EdgeInsets.fromLTRB(10.w, 15.h, 15.w, 0.h),
                                 child: Text(
-                                  "+${StorageController().miningResultList!.getTodayMiningXPerAmount(widget.game.id).asString()}",
+                                  "+${GameLauncher().miningResult!.miningXPer.asString()}",
                                   style: TextStyle(
                                       fontSize: 17, color: Colors.grey.shade500),
                                 )),
@@ -416,7 +427,7 @@ class _Play_Finish_View extends State<Play_Finish_View> {
                                 margin:
                                 EdgeInsets.fromLTRB(10.w, 15.h, 15.w, 0.h),
                                 child: Text(
-                                  "+${StorageController().miningResultList!.getTodayMiningPerAmount(widget.game.id).asString()}",
+                                  "+${GameLauncher().miningResult!.miningPer.asString()}",
                                   style: const TextStyle(fontSize: 17, color: kPerColor),
                                 )),
                             Container(
@@ -454,11 +465,14 @@ class _Play_Finish_View extends State<Play_Finish_View> {
                ),
                InkWell(
                  onTap: (){
+                   GameLauncher().gameStopped();
                    Navigator.push(
                        context,
                        PageTransition(
                            type: PageTransitionType.fade,
-                           child: Play_Result_View(game: widget.game)));
+                           child: Play_Result_View(
+                               game: widget.game,
+                               miningResult: StorageController().miningResultList!.lastMiningResult())));
                  },
                  child: Container(
                    margin: EdgeInsets.fromLTRB(10.w, 92.h, 0.w, 0.h),

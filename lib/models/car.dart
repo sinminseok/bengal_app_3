@@ -5,8 +5,8 @@ part 'car.g.dart';
 class CarNft {
   final int id;
   final String image;
-  final int location;
-  final double price;
+  late int location;
+  late double price;
   final int type;
   final int grade;
   final double speedBase;
@@ -22,10 +22,10 @@ class CarNft {
   final int socket2Color;
   final int socket3Color;
   final int socket4Color;
-  final int durability;
-  final int driven;
-  final int mintingCount;
-  final int level;
+  late int durability;
+  late int driven;
+  late int mintingCount;
+  late int level;
 
   CarNft(
       this.id,

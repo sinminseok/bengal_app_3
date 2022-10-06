@@ -1,6 +1,7 @@
 
 import 'package:bengal_app/controller/Inventory_controller/enhance_controller.dart';
 import "package:flutter/material.dart";
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:get/get_navigation/src/root/get_material_app.dart";
 import 'package:provider/provider.dart';
@@ -8,11 +9,13 @@ import 'package:video_player/video_player.dart';
 import 'controller/CarsNft_controller/carnft_controller.dart';
 import 'controller/Frame_controller/frame_controller.dart';
 import 'controller/Inventory_controller/mint_controller.dart';
+import 'controller/permission_controller.dart';
 import 'controller/storage_controller.dart';
 import "common/string_configuration.dart";
 import "pages/login/landing_page.dart";
 
 void main() {
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (context) => Enhance_Controller()),
@@ -28,12 +31,15 @@ void main() {
   // );
 }
 
+
+
 class MainApp extends StatelessWidget {
   const MainApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     StringConfiguration();
     StorageController();
 
