@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:bengal_app/utils/dataType.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,9 +19,10 @@ import '../widget/Earned_widget.dart';
 import '../widget/Result_Car_info_widget.dart';
 
 class Play_Result_View extends StatefulWidget {
-  Play_Result_View({Key? key, required this.game}) : super(key: key);
+  Play_Result_View({Key? key, required this.game, required this.miningResult}) : super(key: key);
 
   GameInfo game;
+  MiningResult miningResult;
 
   @override
   _Play_Result_View createState() => _Play_Result_View();
@@ -128,7 +130,7 @@ class _Play_Result_View extends State<Play_Result_View> {
                                           )
                                         ]),
                                         Text(
-                                          "01:23:58",
+                                          widget.miningResult.getPlayTimeString(),
                                           style: TextStyle(
                                               color: kPrimaryColor,
                                               fontWeight: FontWeight.bold,
@@ -264,8 +266,7 @@ class _Play_Result_View extends State<Play_Result_View> {
                                             margin:
                                             EdgeInsets.fromLTRB(0.w, 0.h, 20.w, 0.h),
                                             child: Text(
-                                              //todo: StorageController().miningResultList!.lastMiningResult(). 채굴량 누적 추가 해야 함
-                                              "12",
+                                              widget.miningResult.miningXPer.asString(),
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   color: Colors.grey.shade600,
@@ -308,7 +309,7 @@ class _Play_Result_View extends State<Play_Result_View> {
                                             margin:
                                             EdgeInsets.fromLTRB(15.w, 0.h, 20.w, 0.h),
                                             child: Text(
-                                              "3",
+                                              widget.miningResult.miningPer.asString(),
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   color: kPerColor,

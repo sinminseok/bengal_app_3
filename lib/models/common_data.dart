@@ -82,6 +82,6 @@ class InitialInfo {
 
   double getRateSpecialBoxMining(int seconds) {
     //스페셜박스 획득 확률 = 플레이타임(초) / SPECIALBOX_EARN_RATE
-    return seconds / (specialBoxEarnRate as double);
+    return seconds.toDouble() / specialBoxEarnRate.toDouble();
   }
 }

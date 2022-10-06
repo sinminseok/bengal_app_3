@@ -11,7 +11,7 @@ Widget Enhance_select_Card(String url){
           color: Colors.white,
           border: Border.all(color: Colors.grey),
           borderRadius:
-          BorderRadius.all(Radius.circular(10))),
+          const BorderRadius.all(Radius.circular(10))),
       child: Column(
         children: [
           Container(
@@ -39,7 +39,7 @@ Widget Enhance_select_Card(String url){
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius:
-                    BorderRadius.all(Radius.circular(20)),
+                    const BorderRadius.all(Radius.circular(20)),
                   ),
                   child: Row(
                     children: [
@@ -48,7 +48,7 @@ Widget Enhance_select_Card(String url){
                         height: 7.h,
                         margin: EdgeInsets.fromLTRB(
                             1.w, 0.h, 0.w, 0.h),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             color: Colors.grey,
                             shape: BoxShape.circle),
                         child: Center(
@@ -58,7 +58,8 @@ Widget Enhance_select_Card(String url){
                       Container(
                           margin: EdgeInsets.fromLTRB(3.w, 0.h, 0.w, 0.h),
 
-                          child: Text("nft number",style: TextStyle(fontSize: 6),))
+                          child: Text("nft number",
+                            style: TextStyle(fontSize: 6),))
                     ],
                   ),
                 ),

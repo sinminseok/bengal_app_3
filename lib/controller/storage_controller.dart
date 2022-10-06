@@ -508,8 +508,6 @@ class StorageController implements Subject {
     if (0 > boxNftPool!.list.indexWhere((o) => o.id == nft.id)) return null;
     if (0 <= boxNftList!.list.indexWhere((o) => o.id == nft.id)) return null;
 
-    if (!_buyNft(havah: nft.price)) return null;
-
     boxNftList!.list.add(nft);
     boxNftPool!.list.removeWhere((o) => o.id == nft.id);
 
@@ -577,12 +575,22 @@ class StorageController implements Subject {
   }
 
   Future<BoxNft?> minting(CarNft src, CarNft dst) async {
+    if (0 >= src.mintingCount || 0>= dst.mintingCount) return null;
     if (!wallet!.credit(CoinType.Per, commonData.initialInfo.breedPerCost)) return null;
     if (!wallet!.credit(CoinType.XPer, commonData.initialInfo.breedXPerCost)) {
       wallet!.debit(CoinType.Per, commonData.initialInfo.breedPerCost);
       return null;
     }
-    return await buyBox(boxNftPool.list[Random().nextInt(boxNftPool.list.length)]);
+
+    var box = await buyBox(boxNftPool.list[Random().nextInt(boxNftPool.list.length)]);
+    if (null == box) {
+      wallet!.debit(CoinType.Per, commonData.initialInfo.breedPerCost);
+      wallet!.debit(CoinType.XPer, commonData.initialInfo.breedXPerCost);
+      return null;
+    }
+    src.mintingCount -= 1;
+    dst.mintingCount -= 1;
+    return box;
   }
 
   GameInfoList getCategoryGameList(int category) {
@@ -617,6 +625,9 @@ class StorageController implements Subject {
         DateTime.now()
     );
     miningResultList!.list.add(miningResult);
+
+    notifyObserver();
+
     return miningResult;
   }
 
@@ -626,7 +637,7 @@ class StorageController implements Subject {
     if (car!.grade < game.needCarGrade) return false;
     if (0 != game.needCarType && car!.type != game.needCarType) return false;
     if (0 >= account!.power) return false;
-    if (!checkMiningPerAmount(game)) return false;
+    if (!checkMiningPerAmount(game) && !checkMiningXPerAmount(game)) return false;
 
     return true;
   }
@@ -634,23 +645,47 @@ class StorageController implements Subject {
   bool checkMiningPerAmount(GameInfo game) {
     // 게임 일일 채굴량 확인
     var dayMiningPer = miningResultList!.getTodayMiningPerAmount(game.id);
-    if (game.perPerDay <= dayMiningPer) return false;
+    if (commonData.initialInfo.dailyLimitPer < dayMiningPer) return false;
 
     // todo: 게임 전체 채굴량
 
     return true;
   }
 
-  bool miningToken(GameInfo game, MiningResult mining) {
-    if (!checkMiningPerAmount(game)) return false;
+  bool checkMiningXPerAmount(GameInfo game) {
+    // 게임 일일 채굴량 확인
+    var dayMiningXPer = miningResultList!.getTodayMiningXPerAmount(game.id);
+    if (commonData.initialInfo.dailyLimitXPer < dayMiningXPer) return false;
 
-    account!.power -= 1;
-    game.perPerPower;
-    game.xPerPerPower;
-    wallet!.balancePer += game.perPerPower;
-    wallet!.balanceXPer += game.xPerPerPower;
+    // todo: 게임 전체 채굴량
 
-    mining.updatedAt = DateTime.now();
+    return true;
+  }
+
+  bool miningToken(GameInfo game, MiningResult mining, int timeStamp) {
+    var bXPer = checkMiningXPerAmount(game);
+    var bPer = checkMiningPerAmount(game);
+    if (!bXPer && !bPer) return false;
+
+    var per = 0.0;
+    var xper = 0.0;
+    if (bPer) {
+      per = game.perPerPower;
+    }
+    if (bXPer) {
+      xper = game.xPerPerPower;
+    }
+
+    var multiple = mining.mining(timeStamp, per, xper);
+    if (0 >= multiple) return false;
+    account!.power -= (1 * multiple);
+    wallet!.balancePer += (per * multiple);
+    wallet!.balanceXPer += (xper * multiple);
+    print("---------- mining XPer(${xper * multiple}) Per(${per * multiple})");
+
+    notifyObserver();
+
+    saveWallet();
     return true;
   }
 
@@ -666,12 +701,21 @@ class StorageController implements Subject {
         commonData.initialInfo.specialBoxOpenCostPerSec);
 
     mining.miningBoxId = miningBox.id;
+
+    notifyObserver();
+
+    saveMiningBoxList();
   }
 
   void miningEnd(GameInfo game, MiningResult mining) {
     mining.miningEnd();
 
     miningSpecialBox(game, mining);
+
+    notifyObserver();
+
+    saveWallet();
+    saveMiningResultList();
   }
 
 }

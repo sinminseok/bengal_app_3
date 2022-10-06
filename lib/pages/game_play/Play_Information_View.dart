@@ -196,14 +196,14 @@ class _Play_information_ViewState extends State<Play_information_View> {
                                       child: Row(
                                         children: [
                                           Text(
-                                            "${StorageController().miningResultList!.getTodayMiningTotalXPerAmount().asString}",
+                                            StorageController().miningResultList!.getTodayMiningTotalXPerAmount().asString(),
                                             style: Font.lato(
                                                 const Color(0xFF8E8E8E),
                                                 FontWeight.w700,
                                                 12.sp),
                                           ),
                                           Text(
-                                            "/${widget.game.xPerPerDay}",
+                                            "/${StorageController().commonData.initialInfo.dailyLimitXPer.asString()}",
                                             style: Font.lato(
                                                 kPrimaryColor,
                                                 FontWeight.w700,
@@ -263,14 +263,14 @@ class _Play_information_ViewState extends State<Play_information_View> {
                                       child: Row(
                                         children: [
                                           Text(
-                                            "${StorageController().miningResultList!.getTodayMiningTotalPerAmount().asString}",
+                                            StorageController().miningResultList!.getTodayMiningTotalPerAmount().asString(),
                                             style: Font.lato(
                                                 const Color(0xFFECB133),
                                                 FontWeight.w700,
                                                 12.sp),
                                           ),
                                           Text(
-                                            "/${widget.game.perPerDay}",
+                                            "/${StorageController().commonData.initialInfo.dailyLimitXPer.asString()}",
                                             style: Font.lato(
                                                 const Color(0xFFECB133),
                                                 FontWeight.w700,
@@ -382,7 +382,8 @@ class _Play_information_ViewState extends State<Play_information_View> {
                               margin:
                                   EdgeInsets.fromLTRB(10.w, 15.h, 15.w, 0.h),
                               child: Text(
-                                "+${StorageController().miningResultList!.getTodayMiningXPerAmount(widget.game.id).asString()}",
+                                //"+${StorageController().miningResultList!.getTodayMiningXPerAmount(widget.game.id).asString()}",
+                                "0.0",
                                 style: TextStyle(
                                     fontSize: 17, color: Colors.grey.shade500),
                               )),
@@ -423,7 +424,8 @@ class _Play_information_ViewState extends State<Play_information_View> {
                               margin:
                                   EdgeInsets.fromLTRB(10.w, 15.h, 15.w, 0.h),
                               child: Text(
-                                "+${StorageController().miningResultList!.getTodayMiningPerAmount(widget.game.id).asString()}",
+                                //"+${StorageController().miningResultList!.getTodayMiningPerAmount(widget.game.id).asString()}",
+                                "0.0",
                                 style: const TextStyle(fontSize: 17, color: kPerColor),
                               )),
                           Container(
@@ -444,12 +446,17 @@ class _Play_information_ViewState extends State<Play_information_View> {
           ),
           InkWell(
             onTap: () {
-              GameLauncher().openApp(widget.game);
-              Navigator.push(
-                  context,
-                  PageTransition(
-                      type: PageTransitionType.fade,
-                      child: Play_Finish_View(game: widget.game)));
+              GameLauncher().openApp(widget.game).then((value) => {
+                if (value) {
+                  Navigator.push(
+                      context,
+                      PageTransition(
+                          type: PageTransitionType.fade,
+                          child: Play_Finish_View(game: widget.game)))
+                } else {
+                  // todo: popup
+                }
+              });
             },
             child: Container(
               margin: EdgeInsets.fromLTRB(0.w, 92.h, 0.w, 0.h),

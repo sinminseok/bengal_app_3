@@ -26,17 +26,17 @@ class GameLauncher {
 
   late Timer? _heartBeatChecker;
   late GameInfo? _game;
-  late MiningResult? _miningResult;
+  late MiningResult? miningResult;
 
-  Future<bool> isAppInstalled(String gameInfo) async {
-    return await DeviceApps.isAppInstalled(gameInfo);
+  Future<bool> isAppInstalled(String packageName) async {
+    return await DeviceApps.isAppInstalled(packageName);
   }
 
   Future<bool> openApp(GameInfo game) async {
     if (!await isAppInstalled(game.packageName)) {
       Fluttertoast.showToast(
           msg:
-              "The game is not installed.\r\nAfter installing the game, please run it again.\r\nGo to the game installation page.",
+          "The game is not installed.\r\nAfter installing the game, please run it again.\r\nGo to the game installation page.",
           backgroundColor: Colors.grey,
           textColor: Colors.black,
           gravity: ToastGravity.CENTER,
@@ -46,10 +46,10 @@ class GameLauncher {
     }
 
     _game = game;
-    _miningResult = StorageController().miningStart(_game!);
-    if (null == _miningResult) return false;
+    miningResult = StorageController().miningStart(_game!);
+    if (null == miningResult) return false;
 
-    _heartBeatChecker = Timer.periodic(const Duration(seconds: 1), (timer) {
+    _heartBeatChecker = Timer.periodic(const Duration(seconds: 30), (timer) {
       _callBackHeartBeatChecker();
     });
 
@@ -68,7 +68,7 @@ class GameLauncher {
     List<EventUsageInfo> events = [];
 
     DateTime endDate = DateTime.now();
-    DateTime startDate = endDate.subtract(const Duration(minutes: 1));
+    DateTime startDate = endDate.subtract(const Duration(seconds: 30));
 
     List<EventUsageInfo> queryEvents = await UsageStats.queryEvents(startDate, endDate);
     for (var qe in queryEvents) {
@@ -78,27 +78,35 @@ class GameLauncher {
     }
 
     for (var e in events) {
+      print("---------- ${e.packageName} - ${e.eventType} - ${e.timeStamp}");
       if (e.packageName == _game!.packageName){
         if (MOVE_TO_BACKGROUND == e.eventType ||
             ACTIVITY_STOPPED == e.eventType) {
-          gameStopped();
-        } else {
-          // todo: mining
-          StorageController().miningToken(_game!, _miningResult!);
+          if (null != e.timeStamp) {
+            miningResult!.miningPause(int.parse(e.timeStamp!));
+          }
+        } else if (MOVE_TO_FOREGROUND == e.eventType ||
+            ACTIVITY_RESUMED == e.eventType) {
+          if (null != e.timeStamp) {
+            miningResult!.miningPlay(int.parse(e.timeStamp!));
+          }
         }
       }
     }
+
+    StorageController().miningToken(_game!, miningResult!, DateTime.now().millisecondsSinceEpoch);
   }
 
   void gameStopped() {
+    print("---------- gameStopped");
     _heartBeatChecker?.cancel();
 
-    if (null == _game || null == _miningResult) return;
+    if (null == _game || null == miningResult) return;
 
-    StorageController().miningEnd(_game!, _miningResult!);
+    StorageController().miningEnd(_game!, miningResult!);
 
     _game = null;
-    _miningResult = null;
+    miningResult = null;
   }
 
 }

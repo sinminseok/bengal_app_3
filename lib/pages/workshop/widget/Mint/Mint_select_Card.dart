@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../models/car.dart';
+import '../../../../utils/font.dart';
 
 Widget Mint_Select_Card(CarNft carNft) {
   return Stack(
@@ -14,7 +15,7 @@ Widget Mint_Select_Card(CarNft carNft) {
           decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.all(Radius.circular(15))),
+              borderRadius: const BorderRadius.all(Radius.circular(15))),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -25,7 +26,7 @@ Widget Mint_Select_Card(CarNft carNft) {
                  Container(
                    margin: EdgeInsets.fromLTRB(0.w, 9.h, 10.w, 0.h),
                    child: Text(
-                     "Lv999 /Mint:9",
+                     "Lv${carNft.level} /Mint:${carNft.mintingCount}",
                      style: TextStyle(color: Colors.grey.shade600, fontSize: 10),
                    ),
                  ),
@@ -44,33 +45,37 @@ Widget Mint_Select_Card(CarNft carNft) {
               ),
               Center(
                 child: Container(
-                  width: 110.w,
+                  width: 85.w,
                   height: 20.h,
                   margin: EdgeInsets.fromLTRB(0.w, 2.4.h, 0.w, 0.h),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
                   ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
                         width: 12.w,
                         height: 12.h,
-                        margin: EdgeInsets.fromLTRB(4.w, 0.h, 3.w, 0.h),
-                        decoration: BoxDecoration(
+                        margin: EdgeInsets.fromLTRB(1.w, 1.h, 0.w, 1.h),
+                        decoration: const BoxDecoration(
                             color: Colors.grey, shape: BoxShape.circle),
-                        child: Center(
+                        child: Container(
+                          margin: EdgeInsets.fromLTRB(3.4.w, 1.5.h, 1.w, 0.h),
                           child: Text(
                             "#",
-                            style: TextStyle(fontSize: 8, color: Colors.white),
+                            style:
+                            Font.lato(Colors.white, FontWeight.w400, 6.sp),
                           ),
                         ),
                       ),
                       Container(
-                          margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
+                          margin: EdgeInsets.fromLTRB(3.w, 1.h, 8.w, 0.h),
                           child: Text(
-                            "nft number",
-                            style: TextStyle(fontSize: 10),
+                            "${carNft.id}",
+                            style: Font.lato(
+                                const Color(0xFF9196A5), FontWeight.bold, 10.sp),
                           ))
                     ],
                   ),
@@ -94,7 +99,8 @@ Widget Mint_Select_Card(CarNft carNft) {
           child: Container(
               width: 60.w,
               height: 20.h,
-              child: Text("tag",style: TextStyle(color: Colors.white,fontSize: 8),))),
+              child: Text(carNft.getCarTypeString(),
+                style: TextStyle(color: Colors.white,fontSize: 8),))),
 
     ],
   );
