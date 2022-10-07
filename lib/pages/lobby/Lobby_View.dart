@@ -9,6 +9,7 @@ import '../../common/string_configuration.dart';
 import '../../types/constants.dart';
 import '../../types/string_type.dart';
 import '../../utils/font.dart';
+import './popup/exit_app_popup.dart';
 
 class Lobby_View extends StatefulWidget {
   Function see_all_fun;
@@ -28,20 +29,28 @@ class _Lobby_ViewState extends State<Lobby_View> {
     super.initState();
   }
 
-
+  Future<bool?> _onWillPop() async {
+    final response = await ExitAppPopup().showDialog(context);
+    return response;
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      backgroundColor: kAppbarColor,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            //Buy a car Widget
-            StorageController().carNftList!.list.isNotEmpty
-                ? Car_Main_StatefulWidget()
-                : InkWell(
+    return WillPopScope(
+      onWillPop: () async {
+        bool? result = await _onWillPop();
+        return result ?? false;
+      },
+      child: Scaffold(
+        backgroundColor: kAppbarColor,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              //Buy a car Widget
+              StorageController().carNftList!.list.isNotEmpty
+                  ? Car_Main_StatefulWidget()
+                  : InkWell(
                     onTap: () {
                       setState(() {
                         current_car = !current_car;
@@ -108,60 +117,61 @@ class _Lobby_ViewState extends State<Lobby_View> {
                         ],
                       ),
                     ),
-                  ),
+              ),
 
-            //XPER Value,Per Value,Charge Value
-            Value_Container(),
+              //XPER Value,Per Value,Charge Value
+              Value_Container(),
 
-            BoxContainer_Widget(),
+              BoxContainer_Widget(),
 
-            Container(
-              margin: EdgeInsets.fromLTRB(15.w, 23.h, 15.w, 0.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    StringConfiguration()
-                        .uiString(UiStringType.LOBBY_SPECIALBOX_04),
-                    style: Font.lato(
-                        const Color(0xFF342B35), FontWeight.bold, 16.sp),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        widget.see_all_fun();
-                      });
-                    },
-                    child: Text(
+              Container(
+                margin: EdgeInsets.fromLTRB(15.w, 23.h, 15.w, 0.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
                       StringConfiguration()
-                          .uiString(UiStringType.LOBBY_SPECIALBOX_05),
+                          .uiString(UiStringType.LOBBY_SPECIALBOX_04),
                       style: Font.lato(
-                          const Color(0xFF8B80F8), FontWeight.w400, 10.sp),
+                          const Color(0xFF342B35), FontWeight.bold, 16.sp),
                     ),
-                  )
-                ],
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          widget.see_all_fun();
+                        });
+                      },
+                      child: Text(
+                        StringConfiguration()
+                            .uiString(UiStringType.LOBBY_SPECIALBOX_05),
+                        style: Font.lato(
+                            const Color(0xFF8B80F8), FontWeight.w400, 10.sp),
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
 
-            Container(
-              margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
-              child: SizedBox(
-                // width: 390.w,
-                height: 100.h,
-                child: PageView.builder(
-                    controller: PageController(viewportFraction: 0.95.w),
-                    //사용할 게임수 builder
-                    itemCount: StorageController().getCategoryGameList(0).list.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (BuildContext ctx, int idx) {
-                      return Game_Play_Widget(
-                          size, context, StorageController().getCategoryGameList(0).list[idx]);
-                    }),
+              Container(
+                margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
+                child: SizedBox(
+                  // width: 390.w,
+                  height: 100.h,
+                  child: PageView.builder(
+                      controller: PageController(viewportFraction: 0.9.w),
+                      //사용할 게임수 builder
+                      itemCount: StorageController().getCategoryGameList(0).list.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (BuildContext ctx, int idx) {
+                        return Game_Play_Widget(
+                            size, context, StorageController().getCategoryGameList(0).list[idx]);
+                      }),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 }

@@ -67,125 +67,122 @@ class _Frame_View extends State<Frame_View>  implements Observer {
       // Mypage_Screen()
     ];
     Size size = MediaQuery.of(context).size;
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: Scaffold(
-          resizeToAvoidBottomInset : false,
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            elevation: 0,
-            backgroundColor: kAppbarColor,
-            title: SizedBox(
-              height: 97.h,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          PageTransition(
-                              type: PageTransitionType.fade,
-                              child: MyPage_View()));
-                    },
-                    child: Row(
+    return Scaffold(
+        resizeToAvoidBottomInset : false,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          elevation: 0,
+          backgroundColor: kAppbarColor,
+          title: SizedBox(
+            height: 97.h,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.fade,
+                            child: MyPage_View()));
+                  },
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/lobby/icons/appbar_icons/ico_user.png",
+                        width: 40.w,
+                        height: 40.h, //size.height * 0.06,
+                      ),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(3.w, 34.h, 0.w, 0.h),
+                        child: Column(
+                          children: [
+                            Text(
+                              StringConfiguration()
+                                  .uiString(UiStringType.TOP_MENU_01),
+                              style: TextStyle(
+                                  fontSize: 12.sp, color: Colors.grey),
+                            ),
+                            Text(
+                              StorageController().account!.name,
+                              style: TextStyle(
+                                  fontSize: 14.sp, color: kPrimaryColor),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                // SizedBox(
+                //   width: size.width * 0.1,
+                // ),
+                Container(
+
+                  height: 40.h,
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Image.asset(
-                          "assets/images/lobby/icons/appbar_icons/ico_user.png",
-                          width: 40.w,
-                          height: 40.h, //size.height * 0.06,
+                        Row(
+                          children: [
+                            Coin_Widget("xper_icon", StorageController().wallet!.balanceString(CoinType.XPer)),
+                            Coin_Widget("per_icon", StorageController().wallet!.balanceString(CoinType.Per)),
+                            Coin_Widget("havah_icon", StorageController().wallet!.balanceString(CoinType.Havah)),
+                          ],
                         ),
+
                         Container(
-                          margin: EdgeInsets.fromLTRB(3.w, 34.h, 0.w, 0.h),
-                          child: Column(
-                            children: [
-                              Text(
-                                StringConfiguration()
-                                    .uiString(UiStringType.TOP_MENU_01),
-                                style: TextStyle(
-                                    fontSize: 12.sp, color: Colors.grey),
-                              ),
-                              Text(
-                                  StorageController().account!.name,
-                                style: TextStyle(
-                                    fontSize: 14.sp, color: kPrimaryColor),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // SizedBox(
-                  //   width: size.width * 0.1,
-                  // ),
-                  Container(
+                          margin: EdgeInsets.fromLTRB(5.w, 0.h, 0.w, 0.h),
 
-                    height: 40.h,
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            children: [
-                              Coin_Widget("xper_icon", StorageController().wallet!.balanceString(CoinType.XPer)),
-                              Coin_Widget("per_icon", StorageController().wallet!.balanceString(CoinType.Per)),
-                              Coin_Widget("havah_icon", StorageController().wallet!.balanceString(CoinType.Havah)),
-                            ],
-                          ),
-
-                          Container(
-                            margin: EdgeInsets.fromLTRB(5.w, 0.h, 0.w, 0.h),
-
-                            child: InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      PageTransition(
-                                          type: PageTransitionType.rightToLeft,
-                                          child: Wallet_View()));
-                                },
-                                child: Image.asset(
-                                  "assets/images/lobby/icons/appbar_icons/btn_wallet.png",
-                                  width: 40.w,
-                                  height: 40.h,
-                                  fit: BoxFit.fill,
-                                )),
-                          )
-                        ]),
-                  ),
-                ],
-              ),
+                          child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    PageTransition(
+                                        type: PageTransitionType.rightToLeft,
+                                        child: Wallet_View()));
+                              },
+                              child: Image.asset(
+                                "assets/images/lobby/icons/appbar_icons/btn_wallet.png",
+                                width: 40.w,
+                                height: 40.h,
+                                fit: BoxFit.fill,
+                              )),
+                        )
+                      ]),
+                ),
+              ],
             ),
           ),
+        ),
 
-          bottomNavigationBar: CustomBottomNavigationBar(
-            iconList: const [
-              "assets/images/lobby/icons/bottom_nav_icon/lobby_icon.png",
-              "assets/images/lobby/icons/bottom_nav_icon/inventory_icon.png",
-              "assets/images/lobby/icons/bottom_nav_icon/workshop_icon.png",
-              "assets/images/lobby/icons/bottom_nav_icon/game_icon.png",
-              "assets/images/lobby/icons/bottom_nav_icon/market_icon.png"
-            ],
-            titleList: [
-              StringConfiguration().uiString(UiStringType.BOTTOM_NAVIGATION_01),
-              StringConfiguration().uiString(UiStringType.BOTTOM_NAVIGATION_02),
-              StringConfiguration().uiString(UiStringType.BOTTOM_NAVIGATION_03),
-              StringConfiguration().uiString(UiStringType.BOTTOM_NAVIGATION_04),
-              StringConfiguration().uiString(UiStringType.BOTTOM_NAVIGATION_05),
-            ],
-            onChange: (val) {
-              setState(() {
+        bottomNavigationBar: CustomBottomNavigationBar(
+          iconList: const [
+            "assets/images/lobby/icons/bottom_nav_icon/lobby_icon.png",
+            "assets/images/lobby/icons/bottom_nav_icon/inventory_icon.png",
+            "assets/images/lobby/icons/bottom_nav_icon/workshop_icon.png",
+            "assets/images/lobby/icons/bottom_nav_icon/game_icon.png",
+            "assets/images/lobby/icons/bottom_nav_icon/market_icon.png"
+          ],
+          titleList: [
+            StringConfiguration().uiString(UiStringType.BOTTOM_NAVIGATION_01),
+            StringConfiguration().uiString(UiStringType.BOTTOM_NAVIGATION_02),
+            StringConfiguration().uiString(UiStringType.BOTTOM_NAVIGATION_03),
+            StringConfiguration().uiString(UiStringType.BOTTOM_NAVIGATION_04),
+            StringConfiguration().uiString(UiStringType.BOTTOM_NAVIGATION_05),
+          ],
+          onChange: (val) {
+            setState(() {
 
-                select.convert(val);
+              select.convert(val);
 
-              });
-            },
-            defaultSelectedIndex: 0,
-          ),
-          body: screens[select.selectedItem]),
-    );
+            });
+          },
+          defaultSelectedIndex: 0,
+        ),
+        body: screens[select.selectedItem]);
   }
 
 }
