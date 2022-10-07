@@ -677,13 +677,13 @@ class StorageController implements Subject {
     }
 
     var multiple = mining.mining(timeStamp, per, xper);
+    print("---------- mining XPer(${xper * multiple}) Per(${per * multiple})");
+    notifyObserver();
+
     if (0 >= multiple) return false;
     account!.power -= (1 * multiple);
     wallet!.balancePer += (per * multiple);
     wallet!.balanceXPer += (xper * multiple);
-    print("---------- mining XPer(${xper * multiple}) Per(${per * multiple})");
-
-    notifyObserver();
 
     saveWallet();
     return true;

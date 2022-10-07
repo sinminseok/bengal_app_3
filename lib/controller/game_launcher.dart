@@ -24,6 +24,7 @@ class GameLauncher {
 
   GameLauncher._internal();
 
+  static const int heartBeatCheckerPeriod = 5;
   late Timer? _heartBeatChecker;
   late GameInfo? _game;
   late MiningResult? miningResult;
@@ -49,11 +50,33 @@ class GameLauncher {
     miningResult = StorageController().miningStart(_game!);
     if (null == miningResult) return false;
 
-    _heartBeatChecker = Timer.periodic(const Duration(seconds: 30), (timer) {
+    _heartBeatChecker = Timer.periodic(const Duration(seconds: heartBeatCheckerPeriod), (timer) {
       _callBackHeartBeatChecker();
     });
 
     if (0 == await LaunchApp.openApp(androidPackageName: game.packageName, openStore: true)) return false;
+
+    return true;
+  }
+
+  Future<bool> resumeApp(GameInfo game) async {
+    if (null == _game || null == miningResult) return false;
+
+    if (!await isAppInstalled(game.packageName)) {
+      Fluttertoast.showToast(
+          msg:
+          "The game is not installed.\r\nAfter installing the game, please run it again.\r\nGo to the game installation page.",
+          backgroundColor: Colors.grey,
+          textColor: Colors.black,
+          gravity: ToastGravity.CENTER,
+          toastLength: Toast.LENGTH_LONG);
+      await LaunchApp.openApp(androidPackageName: game.packageName, openStore: true);
+      return false;
+    }
+
+    if (0 == await LaunchApp.openApp(androidPackageName: game.packageName, openStore: true)) return false;
+
+    miningResult!.miningPlay(DateTime.now().millisecondsSinceEpoch);
 
     return true;
   }
@@ -68,7 +91,7 @@ class GameLauncher {
     List<EventUsageInfo> events = [];
 
     DateTime endDate = DateTime.now();
-    DateTime startDate = endDate.subtract(const Duration(seconds: 30));
+    DateTime startDate = endDate.subtract(const Duration(seconds: heartBeatCheckerPeriod));
 
     List<EventUsageInfo> queryEvents = await UsageStats.queryEvents(startDate, endDate);
     for (var qe in queryEvents) {

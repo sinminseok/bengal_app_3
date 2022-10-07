@@ -1,4 +1,4 @@
-package com.example.bengal_app
+package com.example.PERPLAY
 
 import io.flutter.embedding.android.FlutterActivity
 
