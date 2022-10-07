@@ -15,7 +15,7 @@ import "common/string_configuration.dart";
 import "pages/login/landing_page.dart";
 
 void main() {
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  //SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (context) => Enhance_Controller()),

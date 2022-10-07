@@ -453,7 +453,7 @@ class _Play_Finish_View extends State<Play_Finish_View>  implements Observer {
                InkWell(
                  onTap: (){
                   // Navigator.pop(context);
-                   GameLauncher().openApp(widget.game);
+                   GameLauncher().resumeApp(widget.game);
                  },
                  child: Container(
                    margin: EdgeInsets.fromLTRB(0.w, 92.h, 0.w, 0.h),
