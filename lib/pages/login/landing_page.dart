@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:get/get.dart";
 import 'package:video_player/video_player.dart';
+import '../../utils/relative_coordinate.dart';
 import "widget/landing_logo_widget.dart";
 
 class LandingPage extends StatefulWidget {
@@ -41,6 +42,8 @@ class LandingPageState extends State<LandingPage> {
 
   @override
   Widget build(BuildContext context) {
+    //RelativeCoordinate().setSize(const Size(390, 810), context);
+
     return Scaffold(
       body: VideoPlayer(controller),
     );
