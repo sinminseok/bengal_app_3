@@ -158,7 +158,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
                   // width: 390.w,
                   height: 100.h,
                   child: PageView.builder(
-                      controller: PageController(viewportFraction: 0.9.w),
+                      controller: PageController(viewportFraction: 0.95.w),
                       //사용할 게임수 builder
                       itemCount: StorageController().getCategoryGameList(0).list.length,
                       scrollDirection: Axis.horizontal,
