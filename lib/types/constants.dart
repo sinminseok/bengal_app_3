@@ -8,5 +8,8 @@ const kAppbarColor = Color(0xffF5F8FF);
 const kProfileColor = Color(0xffebe1ed);
 const kIconColor = Color(0xffb138e0);
 const kButtonColor= Color(0xffbc67c9);
+const linearBrightnessColor = Color(0xffA799FF);
+const linearDarknessColor = Color(0xff6C61E1);
+const boxShadowColor = Color(0x33d1d4dd);
 
 const double constTransferFee = 1.0;

@@ -49,9 +49,20 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     }
 
     return Container(
-      margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 0.h),
-      color: Colors.white,
+      padding: EdgeInsets.fromLTRB(10.w, 0, 10.w, 0),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: boxShadowColor,
+            blurRadius: 2,
+            offset: Offset(0, -1),
+          )
+        ]
+      ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: _navBarItemList,
       ),
     );
@@ -67,40 +78,52 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       },
       child: Container(
         height: 50.h,
-        width: 60.w,
-        margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 0.h),
-        decoration: index == select.selectedItem
-            ? BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                    width: 1.w,
-                    color: kPrimaryColor,
+        width: 50.w,
+        margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 5.h),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Visibility(
+              visible: index == select.selectedItem,
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [0, 1],
+                      colors: [
+                        linearBrightnessColor,
+                        linearDarknessColor,
+                      ]
+                  ),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(5),
+                      bottomRight: Radius.circular(5)
                   ),
                 ),
-
-                // color: index == _selectedItemIndex ? Colors.green : Colors.white,
-              )
-            : const BoxDecoration(),
-        child: Container(
-          //padding: const EdgeInsets.only(bottom: 0.0),
-          color: Colors.white,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ImageIcon(
-                size: 30,
-                AssetImage(icon),
+                child: SizedBox(
+                  width: 18.w,
+                  height: 2.h,
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 30.w,
+              height: 30.h,
+              child: ImageIcon(
+                // size: 30,
+                AssetImage("assets/images/lobby/icons/bottom_nav_icon/${index == select.selectedItem ? "${icon}_on" : icon}.png"),
                 color: index == select.selectedItem ? kPrimaryColor : Colors.grey,
               ),
-              Text(
-                "$title",
-                style: index == select.selectedItem
-                    ? Font.lato(kPrimaryColor, FontWeight.w400, 8.sp)
-                    : Font.lato(
-                        const Color(0xFFBAB8C4), FontWeight.w400, 8.sp),
-              )
-            ],
-          ),
+            ),
+            Text(
+              title,
+              style: index == select.selectedItem
+                  ? Font.lato(kPrimaryColor, FontWeight.w400, 8.sp)
+                  : Font.lato(
+                  const Color(0xFFBAB8C4), FontWeight.w400, 8.sp),
+            )
+          ],
         ),
       ),
     );
