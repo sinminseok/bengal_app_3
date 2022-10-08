@@ -73,7 +73,7 @@ class _Frame_View extends State<Frame_View>  implements Observer {
           elevation: 0,
           backgroundColor: kAppbarColor,
           title: SizedBox(
-            height: 97.h,
+            height: 50.h,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -87,21 +87,24 @@ class _Frame_View extends State<Frame_View>  implements Observer {
                   },
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
                         "assets/images/lobby/icons/appbar_icons/ico_user.png",
-                        width: 40.w,
-                        height: 40.h, //size.height * 0.06,
+                        width: 36.w,
+                        height: 36.w, //size.height * 0.06,
                       ),
                       Container(
-                        margin: EdgeInsets.fromLTRB(3.w, 34.h, 0.w, 0.h),
+                        margin: EdgeInsets.fromLTRB(5.w, 0, 0, 0),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               StringConfiguration()
                                   .uiString(UiStringType.TOP_MENU_01),
                               style: TextStyle(
-                                  fontSize: 12.sp, color: Colors.grey),
+                                  fontSize: 10.sp, color: Colors.grey),
                             ),
                             Text(
                               StorageController().account!.name,
@@ -114,44 +117,37 @@ class _Frame_View extends State<Frame_View>  implements Observer {
                     ],
                   ),
                 ),
-                // SizedBox(
-                //   width: size.width * 0.1,
-                // ),
-                Container(
+                Row(
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Coin_Widget("xper_icon", StorageController().wallet!.balanceString(CoinType.XPer)),
+                          Coin_Widget("per_icon", StorageController().wallet!.balanceString(CoinType.Per)),
+                          Coin_Widget("havah_icon", StorageController().wallet!.balanceString(CoinType.Havah)),
+                        ],
+                      ),
 
-                  height: 40.h,
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            Coin_Widget("xper_icon", StorageController().wallet!.balanceString(CoinType.XPer)),
-                            Coin_Widget("per_icon", StorageController().wallet!.balanceString(CoinType.Per)),
-                            Coin_Widget("havah_icon", StorageController().wallet!.balanceString(CoinType.Havah)),
-                          ],
-                        ),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(5.w, 0.h, 0.w, 0.h),
 
-                        Container(
-                          margin: EdgeInsets.fromLTRB(5.w, 0.h, 0.w, 0.h),
-
-                          child: InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    PageTransition(
-                                        type: PageTransitionType.rightToLeft,
-                                        child: Wallet_View()));
-                              },
-                              child: Image.asset(
-                                "assets/images/lobby/icons/appbar_icons/btn_wallet.png",
-                                width: 40.w,
-                                height: 40.h,
-                                fit: BoxFit.fill,
-                              )),
-                        )
-                      ]),
-                ),
+                        child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.rightToLeft,
+                                      child: Wallet_View()));
+                            },
+                            child: Image.asset(
+                              "assets/images/lobby/icons/appbar_icons/btn_wallet.png",
+                              width: 36.w,
+                              height: 36.w,
+                              fit: BoxFit.contain,
+                            )),
+                      )
+                    ])
               ],
             ),
           ),
@@ -159,11 +155,11 @@ class _Frame_View extends State<Frame_View>  implements Observer {
 
         bottomNavigationBar: CustomBottomNavigationBar(
           iconList: const [
-            "assets/images/lobby/icons/bottom_nav_icon/lobby_icon.png",
-            "assets/images/lobby/icons/bottom_nav_icon/inventory_icon.png",
-            "assets/images/lobby/icons/bottom_nav_icon/workshop_icon.png",
-            "assets/images/lobby/icons/bottom_nav_icon/game_icon.png",
-            "assets/images/lobby/icons/bottom_nav_icon/market_icon.png"
+            "lobby_icon",
+            "inventory_icon",
+            "workshop_icon",
+            "game_icon",
+            "market_icon",
           ],
           titleList: [
             StringConfiguration().uiString(UiStringType.BOTTOM_NAVIGATION_01),

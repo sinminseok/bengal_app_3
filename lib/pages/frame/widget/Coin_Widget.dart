@@ -31,7 +31,7 @@ Widget Coin_Widget(String img_name, String value) {
 
           child: Text(
             value,
-            style: TextStyle(fontSize: 12.sp, color: Colors.black),
+            style: TextStyle(fontSize: 10.sp, color: Colors.black),
           ),
         )
       ],
