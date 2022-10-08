@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../types/constants.dart';
+import '../../types/constants.dart';
+import '../../utils/font.dart';
 
 class ExitAppPopup {
   showDialog(BuildContext context) async {
@@ -15,10 +16,10 @@ class ExitAppPopup {
             Animation secondaryAnimation) {
           return Center(
             child: DefaultTextStyle(
-              style: TextStyle(fontSize: 16, color: Colors.black),
+              style: const TextStyle(fontSize: 16, color: Colors.black),
               child: Container(
                 width: double.maxFinite,
-                margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
@@ -29,8 +30,8 @@ class ExitAppPopup {
                     children: [
                       Container(
                         width: double.maxFinite,
-                        padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
-                        decoration: BoxDecoration(
+                        padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
+                        decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(20),
                                 topRight: Radius.circular(20)),
@@ -38,7 +39,7 @@ class ExitAppPopup {
                         child: Center(
                             child: Text(
                               "EXIT APP",
-                              style: TextStyle(color: Colors.white, fontSize: 16.sp),
+                              style: Font.lato(Colors.white, FontWeight.bold, 16.sp),
                             )
                         ),
                       ),
@@ -47,9 +48,8 @@ class ExitAppPopup {
                       Container(
                         margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 0.h),
                         child: Text(
-
                           "Are you sure you want to exit the app?",
-                          style: TextStyle(fontSize: 14.sp, color: Colors.grey),
+                          style: Font.lato(Colors.grey, FontWeight.w400, 14.sp),
 
                         ),
                       ),
@@ -74,12 +74,12 @@ class ExitAppPopup {
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(35)),
+                                    const BorderRadius.all(Radius.circular(35)),
                                     border: Border.all(color: kPrimaryColor)),
                                 child: Center(
                                   child: Text(
                                     "No",
-                                    style: TextStyle(color: kPrimaryColor),
+                                    style: Font.lato(kPrimaryColor, FontWeight.bold, 16.sp),
                                   ),
                                 ),
                               ),
@@ -96,15 +96,14 @@ class ExitAppPopup {
                               child: Container(
                                 width: 120.w,
                                 height: 37.h,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: kPrimaryColor,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(35)),
+                                  borderRadius: BorderRadius.all(Radius.circular(35)),
                                 ),
                                 child: Center(
                                   child: Text(
                                     "Yes",
-                                    style: TextStyle(color: Colors.white),
+                                    style: Font.lato(Colors.white, FontWeight.bold, 16.sp),
                                   ),
                                 ),
                               ),
