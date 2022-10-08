@@ -38,7 +38,7 @@ class GameLauncher {
       Fluttertoast.showToast(
           msg:
           "The game is not installed.\r\nAfter installing the game, please run it again.\r\nGo to the game installation page.",
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.white,
           textColor: Colors.black,
           gravity: ToastGravity.CENTER,
           toastLength: Toast.LENGTH_LONG);
@@ -66,7 +66,7 @@ class GameLauncher {
       Fluttertoast.showToast(
           msg:
           "The game is not installed.\r\nAfter installing the game, please run it again.\r\nGo to the game installation page.",
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.white,
           textColor: Colors.black,
           gravity: ToastGravity.CENTER,
           toastLength: Toast.LENGTH_LONG);

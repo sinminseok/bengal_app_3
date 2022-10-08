@@ -40,6 +40,11 @@ class GameInfo {
   factory GameInfo.fromJson(Map<String, dynamic> json) => _$GameInfoFromJson(json);
   Map<String, dynamic> toJson() => _$GameInfoToJson(this);
 
+  bool acceptNoCarUser() {
+    if (1 >= needCarGrade && 1 >= minCarLevel && 0 == needCarType) return true;
+    return false;
+  }
+
   String titleString() {
     if (12 > title.length) return title;
     return "${title.substring(0, 11)}...";

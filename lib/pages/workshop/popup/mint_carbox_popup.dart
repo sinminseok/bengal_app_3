@@ -130,7 +130,7 @@ class Mint_Carbox_Popup {
                                         if (null == car) {
                                           Fluttertoast.showToast(
                                               msg: 'Box Open Fail',
-                                              backgroundColor: Colors.grey,
+                                              backgroundColor: Colors.white,
                                               textColor: Colors.black,
                                               gravity: ToastGravity.CENTER)
                                         } else {

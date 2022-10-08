@@ -198,7 +198,7 @@ class SignupPageState extends State<SignupPage> {
                             else {
                                 Fluttertoast.showToast(
                                     msg: 'SignUp Fail',
-                                    backgroundColor: Colors.grey,
+                                    backgroundColor: Colors.white,
                                     textColor: Colors.black,
                                     gravity: ToastGravity.CENTER)
                             }

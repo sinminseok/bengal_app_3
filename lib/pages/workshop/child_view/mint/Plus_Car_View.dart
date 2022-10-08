@@ -383,7 +383,7 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                                             {
                                               Fluttertoast.showToast(
                                                   msg: 'Minting Fail',
-                                                  backgroundColor: Colors.grey,
+                                                  backgroundColor: Colors.white,
                                                   textColor: Colors.black,
                                                   gravity: ToastGravity.CENTER)
                                             }

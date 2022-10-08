@@ -199,13 +199,13 @@ class Market_popup {
                             if (ret) {
                               Fluttertoast.showToast(
                                   msg: StringConfiguration().uiString(UiStringType.TOAST_MESSAGE_09),
-                                  backgroundColor: Colors.grey,
+                                  backgroundColor: Colors.white,
                                   textColor: Colors.black,
                                   gravity: ToastGravity.CENTER)
                             } else {
                               Fluttertoast.showToast(
                                   msg: StringConfiguration().uiString(UiStringType.TOAST_MESSAGE_08),
-                                  backgroundColor: Colors.grey,
+                                  backgroundColor: Colors.white,
                                   textColor: Colors.black,
                                   gravity: ToastGravity.CENTER)
                             }
