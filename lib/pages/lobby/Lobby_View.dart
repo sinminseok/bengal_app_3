@@ -12,8 +12,8 @@ import '../../utils/font.dart';
 import './popup/exit_app_popup.dart';
 
 class Lobby_View extends StatefulWidget {
-  Function see_all_fun;
-  Lobby_View({Key? key,required this.see_all_fun}) : super(key: key);
+  Function navigationSelect;
+  Lobby_View({Key? key,required this.navigationSelect}) : super(key: key);
 
   @override
   _Lobby_ViewState createState() => _Lobby_ViewState();
@@ -52,9 +52,10 @@ class _Lobby_ViewState extends State<Lobby_View> {
                   ? Car_Main_StatefulWidget()
                   : InkWell(
                     onTap: () {
-                      setState(() {
-                        current_car = !current_car;
-                      });
+                      widget.navigationSelect(4);
+                      // setState(() {
+                      //   current_car = !current_car;
+                      // });
                     },
                     child: Container(
                       width: 390.w,
@@ -138,7 +139,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
                     InkWell(
                       onTap: () {
                         setState(() {
-                          widget.see_all_fun();
+                          widget.navigationSelect(3);
                         });
                       },
                       child: Text(

@@ -42,9 +42,9 @@ class _Frame_View extends State<Frame_View>  implements Observer {
     });
   }
 
-  update_select() {
+  navigationSelect(int index) {
     setState(() {
-      select.convert(3);
+      select.convert(index);
     });
   }
 
@@ -57,11 +57,10 @@ class _Frame_View extends State<Frame_View>  implements Observer {
   Widget build(BuildContext context) {
     select = Provider.of<Frame_Controller>(context, listen: false);
     final screens = [
-      Lobby_View(see_all_fun: update_select),
+      Lobby_View(navigationSelect: navigationSelect),
       Inventory_View(),
       Workshop_View(),
-      Game_View(
-      ),
+      Game_View(),
       Market_View()
 
       // Mypage_Screen()
