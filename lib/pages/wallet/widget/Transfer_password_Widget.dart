@@ -456,7 +456,7 @@ class _Wallet_Transfer_password_WidgetState
             } else {
               Fluttertoast.showToast(
                   msg: StringConfiguration().uiString(UiStringType.TOAST_MESSAGE_02),
-                  backgroundColor: Colors.grey,
+                  backgroundColor: Colors.white,
                   textColor: Colors.black,
                   gravity: ToastGravity.CENTER);
             }

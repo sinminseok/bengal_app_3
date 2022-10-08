@@ -1,13 +1,17 @@
+import 'package:bengal_app/controller/storage_controller.dart';
 import 'package:bengal_app/pages/game_play/Play_Information_View.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:lottie/lottie.dart';
 import 'package:usage_stats/usage_stats.dart';
+import '../../../common/string_configuration.dart';
 import '../../../controller/game_launcher.dart';
 import '../../../controller/permission_controller.dart';
 import '../../../models/game.dart';
 import '../../../types/constants.dart';
+import '../../../types/string_type.dart';
 import '../../../utils/font.dart';
 
 Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
@@ -161,10 +165,17 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
             margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
             child: InkWell(
               onTap: () {
-                Navigator.push(context, PageTransition(
-                    type: PageTransitionType.fade,
-                    child: Play_information_View(game: game)));
-
+                if (!StorageController().isPossibleMining(game)) {
+                  Fluttertoast.showToast(
+                      msg: StringConfiguration().uiString(UiStringType.TOAST_MESSAGE_06),
+                      backgroundColor: Colors.white,
+                      textColor: Colors.black,
+                      gravity: ToastGravity.CENTER);
+                } else {
+                  Navigator.push(context, PageTransition(
+                      type: PageTransitionType.fade,
+                      child: Play_information_View(game: game)));
+                }
                 //GameLauncher().openApp(game);
                 // Lottie.asset('assets/LottieLogo1.json',
                 //   width: 200,

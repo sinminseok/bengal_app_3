@@ -227,7 +227,7 @@ class LoginPageState extends State<LoginPage> {
                         else {
                           Fluttertoast.showToast(
                               msg: 'Login Fail',
-                              backgroundColor: Colors.grey,
+                              backgroundColor: Colors.white,
                               textColor: Colors.black,
                               gravity: ToastGravity.CENTER)
                         }
@@ -238,7 +238,7 @@ class LoginPageState extends State<LoginPage> {
                       //     _isRemember)) {
                       //   Fluttertoast.showToast(
                       //       msg: 'Login Fail',
-                      //       backgroundColor: Colors.grey,
+                      //       backgroundColor: Colors.white,
                       //       textColor: Colors.black,
                       //       gravity: ToastGravity.CENTER);
                       // } else {
@@ -276,7 +276,7 @@ class LoginPageState extends State<LoginPage> {
                   {
                     Fluttertoast.showToast(
                         msg: 'Data Cleared',
-                        backgroundColor: Colors.grey,
+                        backgroundColor: Colors.white,
                         textColor: Colors.black,
                         gravity: ToastGravity.CENTER)
                   });

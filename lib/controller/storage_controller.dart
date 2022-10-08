@@ -632,13 +632,19 @@ class StorageController implements Subject {
   }
 
   bool isPossibleMining(GameInfo game) {
+    if (game.acceptNoCarUser()){
+      if (0 >= account!.power) return false;
+      if (!checkMiningPerAmount(game) && !checkMiningXPerAmount(game)) return false;
+      return true;
+    }
+
     var car = getLobbySelectedCar();
-    if (null == car) false;
+    if (null == car) return false;
     if (car!.grade < game.needCarGrade) return false;
+    if (car!.level < game.minCarLevel) return false;
     if (0 != game.needCarType && car!.type != game.needCarType) return false;
     if (0 >= account!.power) return false;
     if (!checkMiningPerAmount(game) && !checkMiningXPerAmount(game)) return false;
-
     return true;
   }
 

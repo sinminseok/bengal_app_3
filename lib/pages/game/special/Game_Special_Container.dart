@@ -1,12 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:page_transition/page_transition.dart';
+import '../../../common/string_configuration.dart';
 import '../../../controller/assets_controller.dart';
 import '../../../controller/game_launcher.dart';
+import '../../../controller/storage_controller.dart';
 import '../../../models/game.dart';
 import '../../../types/common.dart';
 import '../../../types/constants.dart';
+import '../../../types/string_type.dart';
 import '../../../utils/font.dart';
 import '../../game_play/Play_Information_View.dart';
 
@@ -15,12 +19,19 @@ Widget Game_Special_Container(BuildContext context, GameInfo game) {
   return InkWell(
 
     onTap: (){
-      Navigator.push(
-          context,
-          PageTransition(
-              type: PageTransitionType.fade,
-              child: Play_information_View(game: game)));
-      GameLauncher().openApp(game);
+      if (!StorageController().isPossibleMining(game)) {
+        Fluttertoast.showToast(
+            msg: StringConfiguration().uiString(UiStringType.TOAST_MESSAGE_06),
+            backgroundColor: Colors.white,
+            textColor: Colors.black,
+            gravity: ToastGravity.CENTER);
+      } else {
+        Navigator.push(
+            context,
+            PageTransition(
+                type: PageTransitionType.fade,
+                child: Play_information_View(game: game)));
+      }
     },
     child: Container(
       margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),

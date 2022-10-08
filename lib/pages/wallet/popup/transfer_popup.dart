@@ -163,7 +163,7 @@ class Transfer_popup {
                               if (!ret) msg = "Transfer Fail";
                               Fluttertoast.showToast(
                                   msg: msg,
-                                  backgroundColor: Colors.grey,
+                                  backgroundColor: Colors.white,
                                   textColor: Colors.black,
                                   gravity: ToastGravity.CENTER);
                             },

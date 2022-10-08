@@ -15,6 +15,7 @@ import '../../models/game.dart';
 import '../../types/constants.dart';
 import '../../types/string_type.dart';
 import '../../utils/font.dart';
+import '../game/popup/game_install_notice.dart';
 
 class Play_information_View extends StatefulWidget {
   Play_information_View({Key? key, required this.game}) : super(key: key);
@@ -27,7 +28,9 @@ class Play_information_View extends StatefulWidget {
 class _Play_information_ViewState extends State<Play_information_View> {
   @override
   Widget build(BuildContext context) {
-    double powerPercent() => StorageController().account!.getPowerPercent(StorageController().commonData.initialInfo.maxPower);
+    double powerPercent() => StorageController()
+        .account!
+        .getPowerPercent(StorageController().commonData.initialInfo.maxPower);
     return Scaffold(
       backgroundColor: kAppbarColor,
       appBar: AppBar(
@@ -113,11 +116,13 @@ class _Play_information_ViewState extends State<Play_information_View> {
                           children: [
                             Text(
                               "${StorageController().account!.power}",
-                              style: TextStyle(color: kCharColor,fontSize: 12.sp),
+                              style:
+                                  TextStyle(color: kCharColor, fontSize: 12.sp),
                             ),
                             Text(
                               " / ${StorageController().commonData.initialInfo.maxPower}",
-                              style: TextStyle(color: kCharColor,fontSize: 10.sp),
+                              style:
+                                  TextStyle(color: kCharColor, fontSize: 10.sp),
                             ),
                           ],
                         ))
@@ -141,7 +146,7 @@ class _Play_information_ViewState extends State<Play_information_View> {
             ),
           ),
           Container(
-           // margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
+            // margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
             width: 360.w,
             height: 92.h,
             decoration: BoxDecoration(
@@ -166,7 +171,7 @@ class _Play_information_ViewState extends State<Play_information_View> {
                   child: Column(
                     children: [
                       Row(
-                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Image.asset(
                             "assets/images/lobby/icons/appbar_icons/xper_icon.png",
@@ -184,19 +189,21 @@ class _Play_information_ViewState extends State<Play_information_View> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      StringConfiguration().uiString(
-                                          UiStringType.TOKEN_NAME_01),
-                                      style: Font.lato(
-                                          const Color(0xFF8E8E8E),
-                                          FontWeight.w700,
-                                          12.sp),
+                                      StringConfiguration()
+                                          .uiString(UiStringType.TOKEN_NAME_01),
+                                      style: Font.lato(const Color(0xFF8E8E8E),
+                                          FontWeight.w700, 12.sp),
                                     ),
                                     Container(
-                                      margin: EdgeInsets.fromLTRB(0.w, 0.h, 9.w, 0.h),
+                                      margin: EdgeInsets.fromLTRB(
+                                          0.w, 0.h, 9.w, 0.h),
                                       child: Row(
                                         children: [
                                           Text(
-                                            StorageController().miningResultList!.getTodayMiningTotalXPerAmount().asString(),
+                                            StorageController()
+                                                .miningResultList!
+                                                .getTodayMiningTotalXPerAmount()
+                                                .asString(),
                                             style: Font.lato(
                                                 const Color(0xFF8E8E8E),
                                                 FontWeight.w700,
@@ -204,10 +211,8 @@ class _Play_information_ViewState extends State<Play_information_View> {
                                           ),
                                           Text(
                                             "/${StorageController().commonData.initialInfo.dailyLimitXPer.asString()}",
-                                            style: Font.lato(
-                                                kPrimaryColor,
-                                                FontWeight.w700,
-                                                8.sp),
+                                            style: Font.lato(kPrimaryColor,
+                                                FontWeight.w700, 8.sp),
                                           ),
                                         ],
                                       ),
@@ -234,7 +239,6 @@ class _Play_information_ViewState extends State<Play_information_View> {
                         children: [
                           Container(
                             margin: EdgeInsets.fromLTRB(0.w, 9.h, 0.w, 0.h),
-
                             child: Image.asset(
                               "assets/images/lobby/icons/appbar_icons/per_icon.png",
                               width: 20.w,
@@ -251,19 +255,21 @@ class _Play_information_ViewState extends State<Play_information_View> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      StringConfiguration().uiString(
-                                          UiStringType.TOKEN_NAME_02),
-                                      style: Font.lato(
-                                          const Color(0xFFECB133),
-                                          FontWeight.w700,
-                                          12.sp),
+                                      StringConfiguration()
+                                          .uiString(UiStringType.TOKEN_NAME_02),
+                                      style: Font.lato(const Color(0xFFECB133),
+                                          FontWeight.w700, 12.sp),
                                     ),
                                     Container(
-                                      margin: EdgeInsets.fromLTRB(0.w, 0.h, 9.w, 0.h),
+                                      margin: EdgeInsets.fromLTRB(
+                                          0.w, 0.h, 9.w, 0.h),
                                       child: Row(
                                         children: [
                                           Text(
-                                            StorageController().miningResultList!.getTodayMiningTotalPerAmount().asString(),
+                                            StorageController()
+                                                .miningResultList!
+                                                .getTodayMiningTotalPerAmount()
+                                                .asString(),
                                             style: Font.lato(
                                                 const Color(0xFFECB133),
                                                 FontWeight.w700,
@@ -315,7 +321,8 @@ class _Play_information_ViewState extends State<Play_information_View> {
               children: [
                 Container(
                     margin: EdgeInsets.fromLTRB(10.w, 25.h, 15.w, 25.h),
-                    child: Image.asset(widget.game.gameIconAsset(),
+                    child: Image.asset(
+                      widget.game.gameIconAsset(),
                       width: 100.w,
                     )),
                 Container(
@@ -426,7 +433,8 @@ class _Play_information_ViewState extends State<Play_information_View> {
                               child: Text(
                                 //"+${StorageController().miningResultList!.getTodayMiningPerAmount(widget.game.id).asString()}",
                                 "0.0",
-                                style: const TextStyle(fontSize: 17, color: kPerColor),
+                                style: const TextStyle(
+                                    fontSize: 17, color: kPerColor),
                               )),
                           Container(
                             margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 0.h),
@@ -446,15 +454,17 @@ class _Play_information_ViewState extends State<Play_information_View> {
           ),
           InkWell(
             onTap: () {
-              GameLauncher().openApp(widget.game).then((value) => {
+              GameLauncher().isAppInstalled(widget.game.packageName).then((value) => {
                 if (value) {
-                  Navigator.push(
-                      context,
-                      PageTransition(
-                          type: PageTransitionType.fade,
-                          child: Play_Finish_View(game: widget.game)))
+                  GameLauncher().openApp(widget.game).then((value) => {
+                    if (value) {
+                      Navigator.push(context, PageTransition(type: PageTransitionType.fade,
+                              child: Play_Finish_View(game: widget.game)))
+                      } else {
+                    }
+                    })
                 } else {
-                  // todo: popup
+                  GameInstallNotice().popup(context, widget.game)
                 }
               });
             },
