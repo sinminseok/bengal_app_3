@@ -9,7 +9,7 @@ import '../../common/string_configuration.dart';
 import '../../types/constants.dart';
 import '../../types/string_type.dart';
 import '../../utils/font.dart';
-import './popup/exit_app_popup.dart';
+import '../common/exit_app_popup.dart';
 
 class Lobby_View extends StatefulWidget {
   Function navigationSelect;
@@ -20,7 +20,7 @@ class Lobby_View extends StatefulWidget {
 }
 
 class _Lobby_ViewState extends State<Lobby_View> {
-  bool current_car = true;
+  //bool current_car = true;
 
   @override
   void initState() {
@@ -29,18 +29,12 @@ class _Lobby_ViewState extends State<Lobby_View> {
     super.initState();
   }
 
-  Future<bool?> _onWillPop() async {
-    final response = await ExitAppPopup().showDialog(context);
-    return response;
-  }
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return WillPopScope(
       onWillPop: () async {
-        bool? result = await _onWillPop();
-        return result ?? false;
+        return await ExitAppPopup().showDialog(context) ?? false;
       },
       child: Scaffold(
         backgroundColor: kAppbarColor,
@@ -53,9 +47,6 @@ class _Lobby_ViewState extends State<Lobby_View> {
                   : InkWell(
                     onTap: () {
                       widget.navigationSelect(4);
-                      // setState(() {
-                      //   current_car = !current_car;
-                      // });
                     },
                     child: Container(
                       width: 390.w,
