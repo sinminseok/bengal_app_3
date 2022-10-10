@@ -13,7 +13,8 @@
       "minCarLevel": 1,
       "depositPer": 100000,
       "limitAt": "2022-12-25 23:59:59",
-      "packageName": " com.kakaogames.umamusume"
+      "packageName": " com.kakaogames.umamusume",
+      "added": false
     },
     {
       "id": 2,
@@ -28,7 +29,8 @@
       "minCarLevel": 1,
       "depositPer": 100000,
       "limitAt": "2022-11-14 23:59:59",
-      "packageName": "com.axieinfinity.origin"
+      "packageName": "com.axieinfinity.origin",
+      "added": false
     },
     {
       "id": 3,
@@ -43,7 +45,8 @@
       "minCarLevel": 1,
       "depositPer": 150000,
       "limitAt": "2023-01-31 23:59:59",
-      "packageName": "com.lunosoft.bread"
+      "packageName": "com.lunosoft.bread",
+      "added": false
     }
   ]
 }

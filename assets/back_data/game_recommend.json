@@ -13,7 +13,8 @@
       "minCarLevel": 1,
       "depositPer": 0,
       "limitAt": "2000-09-02 03:04:05",
-      "packageName": "com.supercell.clashroyale"
+      "packageName": "com.supercell.clashroyale",
+      "added": false
     },
     {
       "id": 5,
@@ -28,7 +29,8 @@
       "minCarLevel": 1,
       "depositPer": 0,
       "limitAt": "2000-09-02 03:04:05",
-      "packageName": "com.steemmonsters.splinterlands"
+      "packageName": "com.steemmonsters.splinterlands",
+      "added": false
     },
     {
       "id": 6,
@@ -43,7 +45,8 @@
       "minCarLevel": 1,
       "depositPer": 0,
       "limitAt": "2000-09-02 03:04:05",
-      "packageName": "com.lunosoft.puuung1"
+      "packageName": "com.lunosoft.puuung1",
+      "added": false
     }
   ]
 }

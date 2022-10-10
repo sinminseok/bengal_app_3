@@ -13,7 +13,8 @@
       "minCarLevel": 1,
       "depositPer": 0,
       "limitAt": "2000-09-02 03:04:05",
-      "packageName": "com.lilithgames.rok.gpkr"
+      "packageName": "com.lilithgames.rok.gpkr",
+      "added": false
     },
     {
       "id": 8,
@@ -28,7 +29,8 @@
       "minCarLevel": 1,
       "depositPer": 0,
       "limitAt": "2000-09-02 03:04:05",
-      "packageName": "roomsfree.handmadegame.net"
+      "packageName": "roomsfree.handmadegame.net",
+      "added": false
     },
     {
       "id": 9,
@@ -43,7 +45,8 @@
       "minCarLevel": 1,
       "depositPer": 0,
       "limitAt": "2000-09-02 03:04:05",
-      "packageName": "com.lunosoft.jewelmatch"
+      "packageName": "com.lunosoft.jewelmatch",
+      "added": false
     },
     {
       "id": 10,
@@ -58,7 +61,8 @@
       "minCarLevel": 1,
       "depositPer": 0,
       "limitAt": "2000-09-02 03:04:05",
-      "packageName": "com.appcross.lom"
+      "packageName": "com.appcross.lom",
+      "added": false
     }
   ]
 }

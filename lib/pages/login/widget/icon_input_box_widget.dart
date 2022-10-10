@@ -39,13 +39,10 @@ class IconTextInputBox extends StatefulWidget {
 
 class IconTextInputBoxState extends State<IconTextInputBox> {
   final FocusNode _focusNode = FocusNode();
-  //final controller = TextEditingController();
 
   @override
   void initState() {
-    _focusNode.addListener(() {
-      setState(() {});
-    });
+    _focusNode.addListener(_onFocusChange);
     super.initState();
   }
 
@@ -57,7 +54,7 @@ class IconTextInputBoxState extends State<IconTextInputBox> {
   }
 
   void _onFocusChange() {
-    //debugPrint("Focus: ${_focusNode.hasFocus.toString()}");
+    setState(() {});
   }
 
   @override

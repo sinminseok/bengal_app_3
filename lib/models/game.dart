@@ -21,8 +21,6 @@ class GameInfo {
   final DateTime limitAt;
   late String packageName;
   late bool added;
-  late double miningXPer;
-  late double miningPer;
 
   GameInfo(
       this.id,
@@ -39,8 +37,6 @@ class GameInfo {
       this.limitAt,
       this.packageName,
       this.added,
-      this.miningXPer,
-      this.miningPer,
       );
 
   factory GameInfo.fromJson(Map<String, dynamic> json) => _$GameInfoFromJson(json);
