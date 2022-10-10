@@ -1,14 +1,11 @@
-
-
 import 'dart:ui';
-
-import 'package:bengal_app/pages/my_page/widget/Mypage_Account_Widget.dart';
-import 'package:bengal_app/pages/my_page/widget/Mypage_info_Widget.dart';
+import 'package:bengal_app/controller/storage_controller.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import '../../../../common/observer.dart';
 import '../../../../types/constants.dart';
-import '../../../lobby/widget/Button_Widget.dart';
+import '../../../../utils/font.dart';
 import 'Status_Widget.dart';
 
 class Add_Game_View extends StatefulWidget {
@@ -18,29 +15,39 @@ class Add_Game_View extends StatefulWidget {
   _Add_Game_View createState() => _Add_Game_View();
 }
 
-class _Add_Game_View extends State<Add_Game_View> {
-  TextEditingController _searchController = TextEditingController();
+enum AddGameTabItem {
+  ALL,
+  ADD,
+  ALREADY,
+}
 
+class _Add_Game_View extends State<Add_Game_View> implements Observer {
+  @override
+  void initState() {
+    super.initState();
+    StorageController().registerObserver(this);
+  }
 
-  bool All_selected = true;
-  bool Add_selected = false;
-  bool Already_selected = false;
+  @override
+  updateObserver() {
+    setState(() {});
+  }
+
+  final TextEditingController _searchController = TextEditingController();
+
+  AddGameTabItem selectedTab = AddGameTabItem.ALL;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-
       backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-
         toolbarHeight: 50.h,
         elevation: 0,
         backgroundColor: kAppbarColor,
         title: Stack(
-          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
           children: [
             InkWell(
               onTap: (){
@@ -51,23 +58,16 @@ class _Add_Game_View extends State<Add_Game_View> {
                   width: 40.h,height: 40.h,
                   child: Image.asset("assets/images/common/back_button.png",)),
             ),
-
-
             Center(
               child: Container(
                 margin: EdgeInsets.fromLTRB(0.w, 9.h, 0.w, 0.h),
 
                 child: Text(
                   "ADD YOUR GAME",
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold,fontSize: 18),
+                  style: Font.lato(Colors.black, FontWeight.bold, 18.sp),
                 ),
               ),
             ),
-
-
-
-
           ],
         ),
       ),
@@ -81,7 +81,8 @@ class _Add_Game_View extends State<Add_Game_View> {
               height: 125.h,
               decoration: BoxDecoration(
                 border:
-                Border(bottom: BorderSide(color: Colors.grey.shade300,),top: BorderSide(color: Colors.grey.shade300,) ),
+                Border(bottom: BorderSide(color: Colors.grey.shade300,),
+                    top: BorderSide(color: Colors.grey.shade300,) ),
               ),
               child: Column(
                 children: [
@@ -93,9 +94,7 @@ class _Add_Game_View extends State<Add_Game_View> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              All_selected = true;
-                              Add_selected = false;
-                              Already_selected = false;
+                              selectedTab = AddGameTabItem.ALL;
                             });
                           },
                           child: Container(
@@ -104,19 +103,17 @@ class _Add_Game_View extends State<Add_Game_View> {
                             decoration: BoxDecoration(
                                 border:
                                 Border.all(color: Colors.grey.shade300),
-                                color: All_selected != true
+                                color: AddGameTabItem.ALL != selectedTab
                                     ? Colors.white
                                     : kPrimaryColor,
-                                borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
+                                borderRadius: const BorderRadius.all(Radius.circular(10))),
                             child: Center(
                               child: Text(
-                                "ALL",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: All_selected != true
-                                        ? Colors.grey
-                                        : Colors.white),
+                                describeEnum(AddGameTabItem.ALL),
+                                style: Font.lato(AddGameTabItem.ALL != selectedTab
+                                    ? Colors.grey
+                                    : Colors.white,
+                                    FontWeight.w400, 12.sp),
                               ),
                             ),
                           ),
@@ -124,9 +121,7 @@ class _Add_Game_View extends State<Add_Game_View> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              All_selected = false;
-                              Add_selected = true;
-                              Already_selected = false;
+                              selectedTab = AddGameTabItem.ADD;
                             });
                           },
                           child: Container(
@@ -135,19 +130,17 @@ class _Add_Game_View extends State<Add_Game_View> {
                             decoration: BoxDecoration(
                                 border:
                                 Border.all(color: Colors.grey.shade300),
-                                color: Add_selected != true
+                                color: AddGameTabItem.ADD != selectedTab
                                     ? Colors.white
                                     : kPrimaryColor,
-                                borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
+                                borderRadius: const BorderRadius.all(Radius.circular(10))),
                             child: Center(
                               child: Text(
-                                "ADD",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Add_selected != true
-                                        ? Colors.grey
-                                        : Colors.white),
+                                describeEnum(AddGameTabItem.ADD),
+                                style: Font.lato(AddGameTabItem.ADD != selectedTab
+                                    ? Colors.grey
+                                    : Colors.white,
+                                    FontWeight.w400, 12.sp),
                               ),
                             ),
                           ),
@@ -155,9 +148,7 @@ class _Add_Game_View extends State<Add_Game_View> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              All_selected = false;
-                              Add_selected = false;
-                              Already_selected = true;
+                              selectedTab = AddGameTabItem.ALREADY;
                             });
                           },
                           child: Container(
@@ -166,19 +157,17 @@ class _Add_Game_View extends State<Add_Game_View> {
                             decoration: BoxDecoration(
                                 border:
                                 Border.all(color: Colors.grey.shade300),
-                                color: Already_selected != true
+                                color: AddGameTabItem.ALREADY != selectedTab
                                     ? Colors.white
                                     : kPrimaryColor,
-                                borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
+                                borderRadius: const BorderRadius.all(Radius.circular(10))),
                             child: Center(
                               child: Text(
-                                "ALREADY",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Already_selected != true
-                                        ? Colors.grey
-                                        : Colors.white),
+                                describeEnum(AddGameTabItem.ALREADY),
+                                style: Font.lato(AddGameTabItem.ALREADY != selectedTab
+                                    ? Colors.grey
+                                    : Colors.white,
+                                    FontWeight.w400, 12.sp),
                               ),
                             ),
                           ),
@@ -192,30 +181,29 @@ class _Add_Game_View extends State<Add_Game_View> {
                     height: 37.h,
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey.shade300),
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(10))),
+                        borderRadius: const BorderRadius.all(Radius.circular(10))),
                     child: TextField(
                       decoration: InputDecoration(
                           border: InputBorder.none,
-                          prefixIcon: IconTheme(
+                          prefixIcon: const IconTheme(
                               data: IconThemeData(color: Colors.grey),
                               child: Icon(
                                 Icons.search,
                               )),
-                          contentPadding: EdgeInsets.all(14.0),
+                          contentPadding: const EdgeInsets.all(14.0),
                           hintText: 'Please enter game name.',
-                          hintStyle: TextStyle(fontSize: 13)),
-                      style: TextStyle(color: Colors.black),
+                          hintStyle: Font.lato(const Color(0xFFBAB8C4), FontWeight.w400, 13.sp),),
+                      style: Font.lato(Colors.black, FontWeight.w400, 13.sp),
                       controller: _searchController,
                     ),
                   )
-
                 ],
               ),
             ),
 
-            All_selected?Center(
-              child: Container(
+        AddGameTabItem.ALL == selectedTab
+            ? Center(
+              child: SizedBox(
                 width: 360.w,
                 height: 600.h,
                 child: ListView.builder(
@@ -223,14 +211,16 @@ class _Add_Game_View extends State<Add_Game_View> {
                     shrinkWrap: true,
                     itemCount: 10,
                     itemBuilder: (BuildContext ctx, int idx) {
-                      //인자가 ADD면 ADD위젯,아니면 ALREAY 위젯 보여짐
-                      return Status_Widget("ADD");
+                      return Status_Widget(StorageController().getAllDemandGameList().list[idx]);
                     }
                 ),
               ),
-            ):Container(),
-            Add_selected?Center(
-              child: Container(
+            )
+            :Container(),
+
+        AddGameTabItem.ADD == selectedTab ?
+            Center(
+              child: SizedBox(
                 width: 360.w,
                 height: 600.h,
                 child: ListView.builder(
@@ -238,14 +228,16 @@ class _Add_Game_View extends State<Add_Game_View> {
                     shrinkWrap: true,
                     itemCount: 10,
                     itemBuilder: (BuildContext ctx, int idx) {
-                      //인자가 ADD면 ADD위젯,아니면 ALREAY 위젯 보여짐
-                      return Status_Widget("ADD");
+                      return Status_Widget(StorageController().gameDemandList.list[idx]);
                     }
                 ),
               ),
-            ):Container(),
-            Already_selected?Center(
-              child: Container(
+            ) :
+            Container(),
+
+        AddGameTabItem.ALREADY == selectedTab ?
+            Center(
+              child: SizedBox(
                 width: 360.w,
                 height: 600.h,
                 child: ListView.builder(
@@ -253,17 +245,12 @@ class _Add_Game_View extends State<Add_Game_View> {
                     shrinkWrap: true,
                     itemCount: 10,
                     itemBuilder: (BuildContext ctx, int idx) {
-                      //인자가 ADD면 ADD위젯,아니면 ALREAY 위젯 보여짐
-                      return Status_Widget("ALREADY");
+                      return Status_Widget(StorageController().gameMyDemandList!.list[idx]);
                     }
                 ),
               ),
-            ):Container()
-
-
-
-
-
+            ):
+            Container()
           ],
         ),
       ),

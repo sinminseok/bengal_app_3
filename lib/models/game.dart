@@ -20,6 +20,9 @@ class GameInfo {
   final double depositPer;
   final DateTime limitAt;
   late String packageName;
+  late bool added;
+  late double miningXPer;
+  late double miningPer;
 
   GameInfo(
       this.id,
@@ -35,6 +38,9 @@ class GameInfo {
       this.depositPer,
       this.limitAt,
       this.packageName,
+      this.added,
+      this.miningXPer,
+      this.miningPer,
       );
 
   factory GameInfo.fromJson(Map<String, dynamic> json) => _$GameInfoFromJson(json);
@@ -185,13 +191,19 @@ class GameInfoList {
   factory GameInfoList.fromJson(Map<String, dynamic> json) => _$GameInfoListFromJson(json);
   Map<String, dynamic> toJson() => _$GameInfoListToJson(this);
 
-  void removeGame(int gameId) {
-    list.removeWhere((o) => o.id == gameId);
+  bool addGame(GameInfo game) {
+    var f = list.firstOrNullWhere((o) => o.packageName == game.packageName);
+    if (null != f) return false;
+
+    list.add(game);
+    return true;
   }
 
-  List<GameInfo> getCategoryGameList(int category) {
-    return list.whereList((o) => o.category == category);
-  }
+  void removeGame(GameInfo game) =>
+      list.removeWhere((o) => o.packageName == game.packageName);
+
+  List<GameInfo> getCategoryGameList(int category) =>
+      list.whereList((o) => o.category == category);
 
   void sortSpecialGame(SpecialGameSortType sortType) {
     switch (sortType) {
@@ -297,7 +309,6 @@ class MiningBoxList {
 
     return miningBox;
   }
-
 }
 
 @JsonSerializable()

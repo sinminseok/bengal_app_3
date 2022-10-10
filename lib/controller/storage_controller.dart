@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
+import 'package:bengal_app/controller/game_launcher.dart';
 import 'package:flinq/flinq.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -149,16 +150,20 @@ class StorageController implements Subject {
   }
 
   Future<bool> loadGameDemandList() async {
-    gameDemandList = GameInfoList.fromJson(await json.decode(
+    var demandList = GameInfoList.fromJson(await json.decode(
         await rootBundle.loadString("assets/back_data/game_demand.json")));
+    for (var game in demandList.list) {
+      if (await GameLauncher().isAppInstalled(game.packageName)) {
+        gameDemandList.addGame(game);
+      }
+    }
     return true;
   }
 
   // Car Nft Market Pool
   Future<bool> saveCarNftPool() async {
-    if (null == carNftPool) return false;
     return await _prefs.setString(
-        describeEnum(StorageKey.carNftPool), jsonEncode(carNftPool!.toJson()));
+        describeEnum(StorageKey.carNftPool), jsonEncode(carNftPool.toJson()));
   }
   Future<bool> loadCarNftPool() async {
     var value = _prefs.getString(describeEnum(StorageKey.carNftPool));
@@ -190,9 +195,8 @@ class StorageController implements Subject {
 
   // InBox Car Nft Market Pool
   Future<bool> saveBoxCarNftPool() async {
-    if (null == boxCarNftPool) return false;
     return await _prefs.setString(describeEnum(StorageKey.boxCarNftPool),
-        jsonEncode(boxCarNftPool!.toJson()));
+        jsonEncode(boxCarNftPool.toJson()));
   }
   Future<bool> loadBoxCarNftPool() async {
     var value = _prefs.getString(describeEnum(StorageKey.boxCarNftPool));
@@ -375,7 +379,7 @@ class StorageController implements Subject {
     ret &= loadGameMyDemandList();
     if (ret) {
       for (var o in gameMyDemandList?.list ?? []) {
-        gameDemandList.removeGame(o.id);
+        gameDemandList.removeGame(o);
       }
     }
     return ret;
@@ -724,4 +728,14 @@ class StorageController implements Subject {
     saveMiningResultList();
   }
 
+  GameInfoList getAllDemandGameList() {
+    return GameInfoList(gameDemandList.list + gameMyDemandList!.list);
+  }
+
+  bool addDemandGame(GameInfo game) {
+    gameDemandList.removeGame(game);
+    if (!gameMyDemandList!.addGame(game)) return false;
+    notifyObserver();
+    return true;
+  }
 }
