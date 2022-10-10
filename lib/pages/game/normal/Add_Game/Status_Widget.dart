@@ -1,12 +1,12 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../controller/storage_controller.dart';
+import '../../../../models/game.dart';
 import '../../../../types/constants.dart';
 
-Widget Status_Widget(String status){
+Widget Status_Widget(GameInfo game){
   return Container(
     margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
 
@@ -14,7 +14,7 @@ Widget Status_Widget(String status){
     height: 60.h,
     decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade300),
-        borderRadius: BorderRadius.all(Radius.circular(15))
+        borderRadius: const BorderRadius.all(Radius.circular(15))
     ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,19 +29,25 @@ Widget Status_Widget(String status){
             Text("Game Name",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w700),)
           ],
         ),
-        Container(
-          width:60.w,
-          height:30.h,
-          margin: EdgeInsets.fromLTRB(0.w, 0.h, 10.w, 0.h),
-          decoration: BoxDecoration(
+        InkWell(
+          onTap: () {
+            if (!game.added) StorageController().addDemandGame(game);
+          },
+          child: Container(
+            width:60.w,
+            height:30.h,
+            margin: EdgeInsets.fromLTRB(0.w, 0.h, 10.w, 0.h),
+            decoration: BoxDecoration(
+                color: game.added ? Colors.grey.shade400 : kPrimaryColor,
+                borderRadius: const BorderRadius.all(Radius.circular(15))
+            ),
+            child: Center(
+              child: Text(game.added ? "ALREADY" : "ADD",
+                style: TextStyle(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 8.sp),
+              ),
+            ),
 
-              color: status=="ADD"?kPrimaryColor:Colors.grey.shade400,
-              borderRadius: BorderRadius.all(Radius.circular(15))
           ),
-          child: Center(
-            child: Text(status=="ADD"?"ADD":"ALREADY",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 8.sp),),
-          ),
-
         )
       ],
     ),

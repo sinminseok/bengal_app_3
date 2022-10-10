@@ -6,6 +6,7 @@ import 'package:bengal_app/pages/game/special/Game_Special_View.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../common/observer.dart';
 import '../../controller/storage_controller.dart';
 import '../../models/game.dart';
 import '../../types/constants.dart';
@@ -28,10 +29,17 @@ enum GameListTabItem {
   normal,
 }
 
-class _Game_ViewState extends State<Game_View> {
-  // bool Special_selected = true;
-  // bool Recommended_selected = false;
-  // bool Normal_selected = false;
+class _Game_ViewState extends State<Game_View> implements Observer {
+  @override
+  void initState() {
+    super.initState();
+    StorageController().registerObserver(this);
+  }
+
+  @override
+  updateObserver() {
+    setState(() {});
+  }
 
   bool animation = false;
 
@@ -78,15 +86,8 @@ class _Game_ViewState extends State<Game_View> {
   }
 
   void onChangeFilter() {
-
   }
 
-  // final List<String> items = [
-  //   'Lowest Level',
-  //   'Highest Level',
-  //   'Lastest',
-  // ];
-  // String? selectedValue = "Lowest Level";
   double _height_animtaion = 200;
 
   updateState() {

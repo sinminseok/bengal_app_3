@@ -25,7 +25,6 @@ enum InventoryTabItem {
 }
 
 class _Inventory_ViewState extends State<Inventory_View> {
-
   InventoryTabItem selectedTab = InventoryTabItem.cars;
 
   Map<InventoryTabItem, String> selectedSortValues = {
