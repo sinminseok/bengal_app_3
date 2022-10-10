@@ -23,21 +23,12 @@ class LoginPageState extends State<LoginPage> {
   late ScrollController _scrollController;
   late var _isRemember = false;
   final GlobalKey _scrollKey = GlobalKey();
-  final GlobalKey _testkey = GlobalKey<FormState>();
-  FocusNode? myFocusNode;
-
-
-
-  final FocusNode _focusNode = FocusNode();
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   @override
   void initState() {
-    _focusNode.addListener(() {
-      setState(() {});
-    });
     super.initState();
     _scrollController = ScrollController();
 
@@ -50,21 +41,19 @@ class LoginPageState extends State<LoginPage> {
   @override
   void dispose() {
     super.dispose();
-    _focusNode.removeListener(_onFocusChange);
-    _focusNode.dispose();
     _scrollController.dispose();
   }
 
-  void _onFocusChange() {
-    //debugPrint("Focus: ${_focusNode.hasFocus.toString()}");
-  }
 
   final formKey = GlobalKey<FormState>();
+
   void nextEditableTextFocus() {
     do {
       FocusScope.of(context).nextFocus();
-    } while (FocusScope.of(context).focusedChild?.context?.widget is! EditableText);
+    } while (
+        FocusScope.of(context).focusedChild?.context?.widget is! EditableText);
   }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -75,13 +64,13 @@ class LoginPageState extends State<LoginPage> {
         backgroundColor: const Color(0xFFF5F8FF),
         resizeToAvoidBottomInset: false,
         body: GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onPanDown: (_) {
+          onTap: () {
             FocusScope.of(context).requestFocus(FocusNode());
           },
           child: SingleChildScrollView(
             reverse: true,
-            child: Column(children: [
+            child: Column(
+                children: [
               Container(
                 margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
                 child: LoginLogoWidget(scrollKey: _scrollKey),
@@ -91,8 +80,8 @@ class LoginPageState extends State<LoginPage> {
                 child: Text(
                   StringConfiguration().uiString(UiStringType.LOGIN_02),
                   textAlign: TextAlign.center,
-                  style:
-                  Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 20.sp),
+                  style: Font.lato(
+                      const Color(0xFF8B80F8), FontWeight.bold, 20.sp),
                 ),
               ),
               Container(
@@ -101,7 +90,7 @@ class LoginPageState extends State<LoginPage> {
                 child: IconTextInputBox(
                     assetImage: "assets/images/login/ico_mail.png",
                     hintText:
-                    StringConfiguration().uiString(UiStringType.LOGIN_03),
+                        StringConfiguration().uiString(UiStringType.LOGIN_03),
                     hintFontWeight: FontWeight.w400,
                     hintFontSize: 12.sp,
                     fillColor: Colors.white,
@@ -110,16 +99,7 @@ class LoginPageState extends State<LoginPage> {
                     boardDefaultColor: const Color(0x33D1D4DD),
                     boardFocusColor: const Color(0xFFC2BAFF),
                     borderRadius: 10,
-                    onTap: () {
-                   //   FocusScope.of(context).unfocus();
-                      // _scrollController.animateTo(90.h,
-                      //     duration: const Duration(milliseconds: 500),
-                      //     curve: Curves.ease);
-                      Scrollable.ensureVisible(
-                        _scrollKey.currentContext!,
-                        duration: const Duration(microseconds: 500),
-                      );
-                    },
+                    onTap: () {},
                     controller: emailController),
               ),
               Container(
@@ -127,7 +107,8 @@ class LoginPageState extends State<LoginPage> {
                 height: 50.h,
                 child: IconTextInputBox(
                   assetImage: "assets/images/login/ico_password.png",
-                  hintText: StringConfiguration().uiString(UiStringType.LOGIN_04),
+                  hintText:
+                      StringConfiguration().uiString(UiStringType.LOGIN_04),
                   hintFontWeight: FontWeight.w400,
                   hintFontSize: 12.sp,
                   fillColor: Colors.white,
@@ -136,15 +117,7 @@ class LoginPageState extends State<LoginPage> {
                   boardDefaultColor: const Color(0x33D1D4DD),
                   boardFocusColor: const Color(0xFFC2BAFF),
                   borderRadius: 10,
-                  onTap: () {
-                    // _scrollController.animateTo(90.h,
-                    //     duration: const Duration(milliseconds: 500),
-                    //     curve: Curves.ease);
-                    Scrollable.ensureVisible(
-                      _scrollKey.currentContext!,
-                      duration: const Duration(microseconds: 500),
-                    );
-                  },
+                  onTap: () {},
                   controller: passwordController,
                 ),
               ),
@@ -164,7 +137,7 @@ class LoginPageState extends State<LoginPage> {
                             child: Checkbox(
                               shape: const RoundedRectangleBorder(
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(5)),
+                                    BorderRadius.all(Radius.circular(5)),
                               ),
                               side: const BorderSide(
                                   color: Color(0xFFEBEBEB),
@@ -208,33 +181,34 @@ class LoginPageState extends State<LoginPage> {
                       child: Ink.image(
                         width: 175.w,
                         height: 46.h,
-                        image:
-                        const AssetImage("assets/images/login/btn_login.png"),
+                        image: const AssetImage(
+                            "assets/images/login/btn_login.png"),
                         fit: BoxFit.fill,
                         child: Center(
                           child: Text(
-                            StringConfiguration().uiString(UiStringType.LOGIN_02),
-                            style: Font.lato(
-                                const Color(0xFFFFFFFF), FontWeight.w700, 14.sp),
+                            StringConfiguration()
+                                .uiString(UiStringType.LOGIN_02),
+                            style: Font.lato(const Color(0xFFFFFFFF),
+                                FontWeight.w700, 14.sp),
                           ),
                         ),
                       ),
                       onTap: () {
-                        StorageController().signIn(
-                            emailController.text,
-                            passwordController.text,
-                            _isRemember).then((ret) => {
-                          if (ret) {
-                            Get.offAll(const Frame_View())
-                          }
-                          else {
-                            Fluttertoast.showToast(
-                                msg: 'Login Fail',
-                                backgroundColor: Colors.white,
-                                textColor: Colors.black,
-                                gravity: ToastGravity.CENTER)
-                          }
-                        });
+                        StorageController()
+                            .signIn(emailController.text,
+                                passwordController.text, _isRemember)
+                            .then((ret) => {
+                                  if (ret)
+                                    {Get.offAll(const Frame_View())}
+                                  else
+                                    {
+                                      Fluttertoast.showToast(
+                                          msg: 'Login Fail',
+                                          backgroundColor: Colors.white,
+                                          textColor: Colors.black,
+                                          gravity: ToastGravity.CENTER)
+                                    }
+                                });
                         // if (!StorageController().signIn(
                         //     emailController.text,
                         //     passwordController.text,
@@ -253,7 +227,7 @@ class LoginPageState extends State<LoginPage> {
                 height: 32.h,
                 margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
                 child:
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Text(
                     StringConfiguration().uiString(UiStringType.LOGIN_07),
                     style: Font.lato(
@@ -275,14 +249,13 @@ class LoginPageState extends State<LoginPage> {
                 margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 0.h),
                 child: TextButton(
                   onPressed: () {
-                    StorageController().clear().then((value) =>
-                    {
-                      Fluttertoast.showToast(
-                          msg: 'Data Cleared',
-                          backgroundColor: Colors.white,
-                          textColor: Colors.black,
-                          gravity: ToastGravity.CENTER)
-                    });
+                    StorageController().clear().then((value) => {
+                          Fluttertoast.showToast(
+                              msg: 'Data Cleared',
+                              backgroundColor: Colors.white,
+                              textColor: Colors.black,
+                              gravity: ToastGravity.CENTER)
+                        });
                   },
                   child: Text(
                     StringConfiguration().uiString(UiStringType.LOGIN_10),
@@ -293,10 +266,7 @@ class LoginPageState extends State<LoginPage> {
               ),
               Container(
                   margin: EdgeInsets.only(
-                      bottom: MediaQuery
-                          .of(context)
-                          .viewInsets
-                          .bottom))
+                      bottom: MediaQuery.of(context).viewInsets.bottom))
             ]),
           ),
         ),

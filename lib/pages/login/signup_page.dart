@@ -51,8 +51,7 @@ class SignupPageState extends State<SignupPage> {
         backgroundColor: const Color(0xFFF5F8FF),
         resizeToAvoidBottomInset: false,
         body: GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onPanDown: (_) {
+          onTap: () {
             FocusScope.of(context).requestFocus(FocusNode());
           },
           child: SingleChildScrollView(
@@ -85,15 +84,7 @@ class SignupPageState extends State<SignupPage> {
                   boardDefaultColor: const Color(0x33D1D4DD),
                   boardFocusColor: const Color(0xFFC2BAFF),
                   borderRadius: 10,
-                  onTap: () {
-                    // _scrollController.animateTo(90.h,
-                    //     duration: const Duration(milliseconds: 500),
-                    //     curve: Curves.ease);
-                    Scrollable.ensureVisible(
-                      _scrollKey.currentContext!,
-                      duration: const Duration(microseconds: 500),
-                    );
-                  },
+                  onTap: () {},
                   controller: nameController,
                 ),
               ),
@@ -111,15 +102,7 @@ class SignupPageState extends State<SignupPage> {
                   boardDefaultColor: const Color(0x33D1D4DD),
                   boardFocusColor: const Color(0xFFC2BAFF),
                   borderRadius: 10,
-                  onTap: () {
-                    // _scrollController.animateTo(90.h,
-                    //     duration: const Duration(milliseconds: 500),
-                    //     curve: Curves.ease);
-                    Scrollable.ensureVisible(
-                      _scrollKey.currentContext!,
-                      duration: const Duration(microseconds: 500),
-                    );
-                  },
+                  onTap: () {},
                   controller: emailController,
                 ),
               ),
@@ -137,15 +120,7 @@ class SignupPageState extends State<SignupPage> {
                   boardDefaultColor: const Color(0x33D1D4DD),
                   boardFocusColor: const Color(0xFFC2BAFF),
                   borderRadius: 10,
-                  onTap: () {
-                    // _scrollController.animateTo(90.h,
-                    //     duration: const Duration(milliseconds: 500),
-                    //     curve: Curves.ease);
-                    Scrollable.ensureVisible(
-                      _scrollKey.currentContext!,
-                      duration: const Duration(microseconds: 500),
-                    );
-                  },
+                  onTap: () {},
                   controller: passwordController,
                 ),
               ),
@@ -163,15 +138,7 @@ class SignupPageState extends State<SignupPage> {
                   boardDefaultColor: const Color(0x33D1D4DD),
                   boardFocusColor: const Color(0xFFC2BAFF),
                   borderRadius: 10,
-                  onTap: () {
-                    // _scrollController.animateTo(90.h,
-                    //     duration: const Duration(milliseconds: 500),
-                    //     curve: Curves.ease);
-                    Scrollable.ensureVisible(
-                      _scrollKey.currentContext!,
-                      duration: const Duration(microseconds: 500),
-                    );
-                  },
+                  onTap: () {},
                   controller: repeatController,
                 ),
               ),

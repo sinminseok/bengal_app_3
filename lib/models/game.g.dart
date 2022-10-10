@@ -21,8 +21,6 @@ GameInfo _$GameInfoFromJson(Map<String, dynamic> json) => GameInfo(
       DateTime.parse(json['limitAt'] as String),
       json['packageName'] as String,
       json['added'] as bool,
-      (json['miningXPer'] as num).toDouble(),
-      (json['miningPer'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$GameInfoToJson(GameInfo instance) => <String, dynamic>{
@@ -39,10 +37,7 @@ Map<String, dynamic> _$GameInfoToJson(GameInfo instance) => <String, dynamic>{
       'depositPer': instance.depositPer,
       'limitAt': instance.limitAt.toIso8601String(),
       'packageName': instance.packageName,
-      'added': instance.packageName,
-      'miningXPer': instance.packageName,
-      'miningPer': instance.packageName,
-
+      'added': instance.added,
     };
 
 GameInfoList _$GameInfoListFromJson(Map<String, dynamic> json) => GameInfoList(
