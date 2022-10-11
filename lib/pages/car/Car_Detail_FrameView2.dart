@@ -155,13 +155,11 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                 //Car main image
                 Stack(
                   children: [
-                    Container(
-                      child: Image.asset(
-                        "assets/images/common/cars/car1.png",
-                        height: 225.33.h,
-                        width: 390.w,
-                        fit: BoxFit.fill,
-                      ),
+                    Image.asset(
+                      widget.carNft.getAssetImage(),
+                      height: 225.33.h,
+                      width: 390.w,
+                      fit: BoxFit.fill,
                     ),
                     Container(
                       margin: EdgeInsets.fromLTRB(15.w, 194.h, 15.w, 0.h),

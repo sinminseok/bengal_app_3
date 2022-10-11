@@ -15,6 +15,7 @@ class IconTextInputBox extends StatefulWidget {
     required this.borderRadius,
     this.onTap,
     required this.controller,
+    required this.obscureText,
   }) : super(key: key);
 
   final TextEditingController controller;
@@ -32,6 +33,7 @@ class IconTextInputBox extends StatefulWidget {
   final Color boardDefaultColor;
   final Color boardFocusColor;
   final double borderRadius;
+  final bool obscureText;
 
   @override
   IconTextInputBoxState createState() => IconTextInputBoxState();
@@ -60,6 +62,7 @@ class IconTextInputBoxState extends State<IconTextInputBox> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: widget.obscureText,
       controller: widget.controller,
       onTap: () {
         widget.onTap!();

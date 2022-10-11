@@ -71,7 +71,7 @@ class _Enhance_Car_CardState extends State<Enhance_Car_Card> {
               ),
 
               //car img
-              Container(
+              SizedBox(
                 width: 150.w,
                 height: 86.h,
                 child: ClipRRect(
@@ -89,9 +89,7 @@ class _Enhance_Car_CardState extends State<Enhance_Car_Card> {
                 height: 20.h,
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.all(
-                      Radius.circular(30.0) //         <--- border radius here
-                      ),
+                  borderRadius: const BorderRadius.all(Radius.circular(30.0)),
                 ),
                 child: Row(
                   children: [
@@ -99,8 +97,7 @@ class _Enhance_Car_CardState extends State<Enhance_Car_Card> {
                       width: 15.w,
                       height: 15.h,
                       margin: EdgeInsets.fromLTRB(1.w, 1.h, 7.w, 0.h),
-                      decoration: BoxDecoration(
-                          color: Colors.grey, shape: BoxShape.circle),
+                      decoration: const BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
                       child: Container(
                         margin: EdgeInsets.fromLTRB(4.w, 0.h, 1.w, 2.h),
                         child: Text(

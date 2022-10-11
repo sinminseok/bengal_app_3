@@ -100,7 +100,9 @@ class LoginPageState extends State<LoginPage> {
                     boardFocusColor: const Color(0xFFC2BAFF),
                     borderRadius: 10,
                     onTap: () {},
-                    controller: emailController),
+                    controller: emailController,
+                    obscureText: false,
+                ),
               ),
               Container(
                 margin: EdgeInsets.fromLTRB(15.w, 15.h, 15.w, 0.h),
@@ -119,6 +121,7 @@ class LoginPageState extends State<LoginPage> {
                   borderRadius: 10,
                   onTap: () {},
                   controller: passwordController,
+                  obscureText: true,
                 ),
               ),
               Container(

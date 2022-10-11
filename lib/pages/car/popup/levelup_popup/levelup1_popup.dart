@@ -62,7 +62,7 @@ class Levelup1_popup {
                             width: 300.w,
                             height: 180.h,
                             child: Image.asset(
-                              "assets/images/common/cars/car1.png",
+                              carNft.getAssetImage(),
                               fit: BoxFit.fill,
                             ),
                           ),

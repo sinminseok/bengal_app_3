@@ -50,7 +50,7 @@ class Market_popup {
                         )),
                       ),
                       Image.asset(
-                        "assets/images/common/cars/car1.png",
+                        car.getAssetImage(),
                         width: 300.w,
                         height: 180.h,
                         fit: BoxFit.fitWidth,

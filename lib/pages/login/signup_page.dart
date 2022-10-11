@@ -86,6 +86,7 @@ class SignupPageState extends State<SignupPage> {
                   borderRadius: 10,
                   onTap: () {},
                   controller: nameController,
+                  obscureText: false,
                 ),
               ),
               Container(
@@ -104,6 +105,7 @@ class SignupPageState extends State<SignupPage> {
                   borderRadius: 10,
                   onTap: () {},
                   controller: emailController,
+                  obscureText: false,
                 ),
               ),
               Container(
@@ -122,6 +124,7 @@ class SignupPageState extends State<SignupPage> {
                   borderRadius: 10,
                   onTap: () {},
                   controller: passwordController,
+                  obscureText: true,
                 ),
               ),
               Container(
@@ -140,6 +143,7 @@ class SignupPageState extends State<SignupPage> {
                   borderRadius: 10,
                   onTap: () {},
                   controller: repeatController,
+                  obscureText: true,
                 ),
               ),
               Container(

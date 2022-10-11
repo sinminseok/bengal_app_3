@@ -16,7 +16,6 @@ Widget Game_Normal_View(BuildContext context, List<GameInfo> gameList) {
               PageTransition(
                   type: PageTransitionType.fade,
                   child: Add_Game_View(
-
                   )));
         },
         child: SizedBox(

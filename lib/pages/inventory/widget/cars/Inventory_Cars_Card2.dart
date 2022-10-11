@@ -1,4 +1,3 @@
-import 'package:bengal_app/pages/car/Car_Detail_FrameView.dart';
 import 'package:bengal_app/types/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -55,7 +54,7 @@ Widget Inventory_Car_Card2(
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.asset(
-                    "assets/images/common/cars/car1.png",
+                    carNft.getAssetImage(),
                     width: 150.w,
                     height: 86.72,
                     fit: BoxFit.fill,

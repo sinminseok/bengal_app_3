@@ -2,7 +2,7 @@
   "list": [
     {
       "id": 433313483,
-      "image": "car_1",
+      "image": "suv2",
       "location": 1,
       "price": 2.02,
       "type": 1,
@@ -27,7 +27,7 @@
     },
     {
       "id": 414907932,
-      "image": "car_2",
+      "image": "suv2",
       "location": 1,
       "price": 2.95,
       "type": 1,
@@ -52,7 +52,7 @@
     },
     {
       "id": 422700561,
-      "image": "car_3",
+      "image": "suv2",
       "location": 1,
       "price": 1.39,
       "type": 1,
@@ -77,7 +77,7 @@
     },
     {
       "id": 744614061,
-      "image": "car_4",
+      "image": "suv2",
       "location": 1,
       "price": 3.4,
       "type": 1,
@@ -102,7 +102,7 @@
     },
     {
       "id": 503968973,
-      "image": "car_5",
+      "image": "suv2",
       "location": 1,
       "price": 3.18,
       "type": 1,
@@ -127,7 +127,7 @@
     },
     {
       "id": 492425649,
-      "image": "car_6",
+      "image": "suv2",
       "location": 1,
       "price": 4,
       "type": 1,
@@ -152,7 +152,7 @@
     },
     {
       "id": 647610137,
-      "image": "car_7",
+      "image": "suv2",
       "location": 1,
       "price": 7.01,
       "type": 1,
@@ -177,7 +177,7 @@
     },
     {
       "id": 605314196,
-      "image": "car_8",
+      "image": "suv1",
       "location": 1,
       "price": 5.62,
       "type": 1,
@@ -202,7 +202,7 @@
     },
     {
       "id": 903421757,
-      "image": "car_9",
+      "image": "suv1",
       "location": 1,
       "price": 7.38,
       "type": 1,
@@ -227,7 +227,7 @@
     },
     {
       "id": 10569,
-      "image": "car_10",
+      "image": "suv1",
       "location": 1,
       "price": 5.76,
       "type": 1,
@@ -252,7 +252,7 @@
     },
     {
       "id": 696415068,
-      "image": "car_11",
+      "image": "offroad2",
       "location": 1,
       "price": 1.05,
       "type": 2,
@@ -277,7 +277,7 @@
     },
     {
       "id": 423345872,
-      "image": "car_12",
+      "image": "offroad2",
       "location": 1,
       "price": 1.74,
       "type": 2,
@@ -302,7 +302,7 @@
     },
     {
       "id": 186157677,
-      "image": "car_13",
+      "image": "offroad2",
       "location": 1,
       "price": 1.86,
       "type": 2,
@@ -327,7 +327,7 @@
     },
     {
       "id": 949009435,
-      "image": "car_14",
+      "image": "offroad2",
       "location": 1,
       "price": 2.53,
       "type": 2,
@@ -352,7 +352,7 @@
     },
     {
       "id": 541181737,
-      "image": "car_15",
+      "image": "offroad2",
       "location": 1,
       "price": 4.8,
       "type": 2,
@@ -377,7 +377,7 @@
     },
     {
       "id": 987611539,
-      "image": "car_16",
+      "image": "offroad2",
       "location": 1,
       "price": 7.87,
       "type": 2,
@@ -402,7 +402,7 @@
     },
     {
       "id": 199019574,
-      "image": "car_17",
+      "image": "offroad2",
       "location": 1,
       "price": 3.53,
       "type": 2,
@@ -427,7 +427,7 @@
     },
     {
       "id": 974973740,
-      "image": "car_18",
+      "image": "offroad1",
       "location": 1,
       "price": 8.4,
       "type": 2,
@@ -452,7 +452,7 @@
     },
     {
       "id": 566701738,
-      "image": "car_19",
+      "image": "offroad1",
       "location": 1,
       "price": 5.93,
       "type": 2,
@@ -477,7 +477,7 @@
     },
     {
       "id": 13594,
-      "image": "car_20",
+      "image": "offroad1",
       "location": 1,
       "price": 7.64,
       "type": 2,
@@ -502,7 +502,7 @@
     },
     {
       "id": 335008890,
-      "image": "car_21",
+      "image": "sedan2",
       "location": 1,
       "price": 1.49,
       "type": 3,
@@ -527,7 +527,7 @@
     },
     {
       "id": 240264420,
-      "image": "car_22",
+      "image": "sedan2",
       "location": 1,
       "price": 2.52,
       "type": 3,
@@ -552,7 +552,7 @@
     },
     {
       "id": 777823013,
-      "image": "car_23",
+      "image": "sedan2",
       "location": 1,
       "price": 2.41,
       "type": 3,
@@ -577,7 +577,7 @@
     },
     {
       "id": 498095871,
-      "image": "car_24",
+      "image": "sedan2",
       "location": 1,
       "price": 5.16,
       "type": 3,
@@ -602,7 +602,7 @@
     },
     {
       "id": 632544688,
-      "image": "car_25",
+      "image": "sedan2",
       "location": 1,
       "price": 5.87,
       "type": 3,
@@ -627,7 +627,7 @@
     },
     {
       "id": 651814617,
-      "image": "car_26",
+      "image": "sedan2",
       "location": 1,
       "price": 3.79,
       "type": 3,
@@ -652,7 +652,7 @@
     },
     {
       "id": 682269698,
-      "image": "car_27",
+      "image": "sedan2",
       "location": 1,
       "price": 5.43,
       "type": 3,
@@ -677,7 +677,7 @@
     },
     {
       "id": 506299693,
-      "image": "car_28",
+      "image": "sedan1",
       "location": 1,
       "price": 4.87,
       "type": 3,
@@ -702,7 +702,7 @@
     },
     {
       "id": 110344536,
-      "image": "car_29",
+      "image": "sedan1",
       "location": 1,
       "price": 10.01,
       "type": 3,
@@ -727,7 +727,7 @@
     },
     {
       "id": 13246,
-      "image": "car_30",
+      "image": "sedan1",
       "location": 1,
       "price": 11.69,
       "type": 3,
@@ -752,7 +752,7 @@
     },
     {
       "id": 10312,
-      "image": "car_31",
+      "image": "sports2",
       "location": 1,
       "price": 4.05,
       "type": 4,
@@ -777,7 +777,7 @@
     },
     {
       "id": 11486,
-      "image": "car_32",
+      "image": "sports2",
       "location": 1,
       "price": 3.94,
       "type": 4,
@@ -802,7 +802,7 @@
     },
     {
       "id": 11690,
-      "image": "car_33",
+      "image": "sports2",
       "location": 1,
       "price": 7.82,
       "type": 4,
@@ -827,7 +827,7 @@
     },
     {
       "id": 15062,
-      "image": "car_34",
+      "image": "sports1",
       "location": 1,
       "price": 6.6,
       "type": 4,
@@ -852,7 +852,7 @@
     },
     {
       "id": 28660,
-      "image": "car_35",
+      "image": "sports1",
       "location": 1,
       "price": 11.5,
       "type": 4,

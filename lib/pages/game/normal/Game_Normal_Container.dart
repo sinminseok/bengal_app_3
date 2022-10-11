@@ -38,7 +38,6 @@ Widget Game_Normal_Container(BuildContext context, GameInfo game) {
           borderRadius: const BorderRadius.all(Radius.circular(10))),
       child: Column(
         children: [
-
           Row(
             children: [
               Container(
@@ -54,15 +53,14 @@ Widget Game_Normal_Container(BuildContext context, GameInfo game) {
               ),
 
               Container(
-                margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
+                margin: EdgeInsets.fromLTRB(5.w, 10.h, 0.w, 0.h),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       game.titleString(),
-                      style: Font.lato(const Color(0xFF342B35),
-                          FontWeight.bold, 13.sp),
+                      style: Font.lato(const Color(0xFF342B35), FontWeight.bold, 13.sp),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(1.0),
@@ -74,7 +72,7 @@ Widget Game_Normal_Container(BuildContext context, GameInfo game) {
                             height: 12.h,
                           ),
                           Text(
-                            game.xPerPerPowerString(),
+                            game.xPerPerPowerCutString(),
                             style: Font.lato(Colors.grey, FontWeight.bold, 10.sp),
                           )
                         ],

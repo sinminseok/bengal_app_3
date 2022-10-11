@@ -38,7 +38,10 @@ class _Game_ViewState extends State<Game_View> implements Observer {
 
   @override
   updateObserver() {
-    setState(() {});
+    if (mounted) {
+      setState(() {
+      });
+    }
   }
 
   bool animation = false;

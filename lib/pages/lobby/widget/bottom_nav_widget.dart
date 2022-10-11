@@ -78,7 +78,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       },
       child: Container(
         height: 50.h,
-        width: 50.w,
+        width: 60.w,
         margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 5.h),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

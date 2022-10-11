@@ -55,7 +55,7 @@ class _Car_Main_StatefulWidgetState extends State<Car_Main_StatefulWidget> {
           scrollDirection: Axis.horizontal,
           itemCount: carlist.length,
           itemBuilder: (BuildContext ctx, int idx) {
-            return Car_Maindetail_Widget(carNft: carlist[idx],);
+            return Car_Maindetail_Widget(car: carlist[idx],);
           }),
     );
   }

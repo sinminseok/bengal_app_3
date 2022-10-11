@@ -1,8 +1,5 @@
-import 'package:bengal_app/pages/car/Car_Detail_FrameView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 
 Widget Car_info_Card(
     Size size,
@@ -59,9 +56,7 @@ Widget Car_info_Card(
                   height: 16.h,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey.shade400),
-                    borderRadius: BorderRadius.all(
-                        Radius.circular(30.0) //         <--- border radius here
-                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(30.0)),
                   ),
                   child: Row(
                     children: [

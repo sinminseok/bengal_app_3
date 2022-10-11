@@ -2,7 +2,7 @@
   "list": [
     {
       "id": 980459277,
-      "image": "car_36",
+      "image": "suv2",
       "location": 2,
       "price": 0,
       "type": 1,
@@ -27,7 +27,7 @@
     },
     {
       "id": 666904888,
-      "image": "car_37",
+      "image": "offroad2",
       "location": 2,
       "price": 0,
       "type": 1,
@@ -52,7 +52,7 @@
     },
     {
       "id": 925493086,
-      "image": "car_38",
+      "image": "sedan2",
       "location": 2,
       "price": 0,
       "type": 1,
@@ -77,7 +77,7 @@
     },
     {
       "id": 618498699,
-      "image": "car_39",
+      "image": "offroad2",
       "location": 2,
       "price": 0,
       "type": 1,
@@ -102,7 +102,7 @@
     },
     {
       "id": 258129669,
-      "image": "car_40",
+      "image": "sedan2",
       "location": 2,
       "price": 0,
       "type": 1,
@@ -127,7 +127,7 @@
     },
     {
       "id": 404723221,
-      "image": "car_41",
+      "image": "sedan2",
       "location": 2,
       "price": 0,
       "type": 1,
@@ -152,7 +152,7 @@
     },
     {
       "id": 748552228,
-      "image": "car_42",
+      "image": "sports2",
       "location": 2,
       "price": 0,
       "type": 1,
@@ -177,7 +177,7 @@
     },
     {
       "id": 533552249,
-      "image": "car_43",
+      "image": "sedan1",
       "location": 2,
       "price": 0,
       "type": 1,
@@ -202,7 +202,7 @@
     },
     {
       "id": 884782999,
-      "image": "car_44",
+      "image": "sports1",
       "location": 2,
       "price": 0,
       "type": 1,
@@ -227,7 +227,7 @@
     },
     {
       "id": 358194152,
-      "image": "car_45",
+      "image": "sports1",
       "location": 2,
       "price": 0,
       "type": 1,

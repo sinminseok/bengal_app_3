@@ -9,7 +9,7 @@ import '../../../utils/font.dart';
 
 class Car_detail_popup {
 
-  void showDialog(Size size, BuildContext context, CarNft nft) {
+  void showDialog(Size size, BuildContext context, CarNft car) {
     showGeneralDialog(
         context: context,
         barrierDismissible: true,
@@ -66,11 +66,11 @@ class Car_detail_popup {
                                           child: Image.asset("assets/images/game/empty_car/empty_car1.png",color: Colors.white,),
                                         ),
                                         Text(
-                                          nft.getCarTypeString().toUpperCase(),
+                                          car.getCarTypeString().toUpperCase(),
                                           style: Font.lato(Colors.white, FontWeight.bold, 12.sp),
                                         ),
                                         Text(
-                                          "/ ${nft.getCarGradeString().toString()}",
+                                          "/ ${car.getCarGradeString().toString()}",
                                           style: Font.lato(Colors.white, FontWeight.bold, 12.sp),
                                         ),
                                       ],
@@ -82,11 +82,11 @@ class Car_detail_popup {
                                     child: Row(
                                       children: [
                                         Text(
-                                          "Lv ${nft.level}  ·",
+                                          "Lv ${car.level}  ·",
                                           style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
                                         ),
                                         Text(
-                                          "  Mint:${nft.mintingCount}",
+                                          "  Mint:${car.mintingCount}",
                                           style: Font.lato(Colors.white, FontWeight.w400, 10.sp),
                                         ),
                                       ],
@@ -98,7 +98,8 @@ class Car_detail_popup {
                           SizedBox(
                               width: 300.w,
                               height: 176.46,
-                              child: Image.asset("assets/images/common/cars/car1.png",
+                              child: Image.asset(
+                                car.getAssetImage(),
                                 fit: BoxFit.fill,)),
 
                           Container(
@@ -131,7 +132,7 @@ class Car_detail_popup {
                                 Container(
                                   margin: EdgeInsets.fromLTRB(3.w, 0.h, 0.w, 0.h),
                                   child: Text(
-                                    "${nft.id}",
+                                    "${car.id}",
                                     style: Font.lato(Colors.black, FontWeight.bold, 14.sp),
                                   ),
                                 ),
@@ -182,7 +183,7 @@ class Car_detail_popup {
                               margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
                               child: LinearPercentIndicator(
                                 center: Text(
-                                  "Durability ${nft.durability}%",
+                                  "Durability ${car.durability}%",
                                   style: Font.lato(Colors.white, FontWeight.w400, 9.sp),
                                 ),
                                 barRadius: const Radius.circular(10),
@@ -209,7 +210,7 @@ class Car_detail_popup {
                                 Container(
                                   margin: EdgeInsets.fromLTRB(0.w, 0.h, 10.w, 0.h),
                                   child: Text(
-                                    "${nft.driven} km (FINE)",
+                                    "${car.driven} km (FINE)",
                                     style: Font.lato(kCharColor, FontWeight.bold, 9.sp),
                                   ),
                                 )
@@ -255,7 +256,7 @@ class Car_detail_popup {
                                               margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 1.h),
 
                                               child: Text(
-                                                "${nft.speed}",
+                                                "${car.speed}",
                                                 style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 16.sp),
                                               )),
                                           Text(
@@ -286,7 +287,7 @@ class Car_detail_popup {
                                               margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 1.h),
 
                                               child: Text(
-                                                "${nft.lucky}",
+                                                "${car.lucky}",
                                                 style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 16.sp),
                                               )),
                                           Text(
@@ -317,7 +318,7 @@ class Car_detail_popup {
                                               margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 1.h),
 
                                               child: Text(
-                                                "${nft.charge}",
+                                                "${car.charge}",
                                                 style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 16.sp),
                                               )),
                                           Text(
@@ -348,7 +349,7 @@ class Car_detail_popup {
                                               margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 1.h),
 
                                               child: Text(
-                                                "${nft.repair}",
+                                                "${car.repair}",
                                                 style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 16.sp),
                                               )),
                                           Text(
