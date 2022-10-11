@@ -24,7 +24,7 @@ Widget Market_Cars_View(Size size, CarNftList nftList){
             return Center(
 
               child: Market_Car_Card2(
-                  size: size,color: Colors.blue,context: context,carNft: nftList.list[index]),
+                  size: size,color: Colors.blue,context: context,car: nftList.list[index]),
               // child: Market_Car_Card(
               //     size,context, "SPORTS","normal", 3, 12345, 10, 13, 14, 15, 16, 13),
             );

@@ -3,26 +3,21 @@ import 'package:bengal_app/types/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../utils/font.dart';
-import '../../../car/Car_Detail_FrameView.dart';
-
-
 
 class Mint_Car_Card extends StatefulWidget {
   Size size;
   Function? fun;
   BuildContext context;
-  CarNft carNft;
+  CarNft car;
 
   Mint_Car_Card(
       {Key? key,
       required this.size,
         required this.fun,
       required this.context,
-      required this.carNft})
+      required this.car})
       : super(key: key);
 
   @override
@@ -56,7 +51,7 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
                   Container(
                     margin: EdgeInsets.fromLTRB(0.w, 6.h, 10.w, 9.h),
                     child: Text(
-                      "Lv ${widget.carNft.level} / Mint: ${widget.carNft.mintingCount}",
+                      "Lv ${widget.car.level} / Mint: ${widget.car.mintingCount}",
                       style: TextStyle(fontSize: 11,color: Colors.grey.shade600),
                     ),
                   ),
@@ -67,7 +62,7 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.asset(
-                  "assets/images/common/cars/car1.png",
+                  widget.car.getAssetImage(),
                   width: 150.w,
                   height: 86.h,
                   fit: BoxFit.fitWidth,
@@ -105,7 +100,7 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
                     Container(
                       margin: EdgeInsets.fromLTRB(3.w, 1.h, 8.w, 0.h),
                       child: Text(
-                        "${widget.carNft.id}",
+                        "${widget.car.id}",
                         style: Font.lato(
                             const Color(0xFF9196A5), FontWeight.bold, 10.sp),
                       ),
@@ -117,7 +112,7 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
               //Level
               InkWell(
                 onTap: (){
-                  widget.fun!(widget.carNft);
+                  widget.fun!(widget.car);
                 },
                 child: Container(
                   margin: EdgeInsets.fromLTRB(0.w, 9.h, 0.w, 0.h),
@@ -143,7 +138,7 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
           top: 5.h,
           left: -5.w,
           child: Image.asset(
-            "assets/images/common/tags/tag_${widget.carNft.getCarGradeString()}.png",
+            "assets/images/common/tags/tag_${widget.car.getCarGradeString()}.png",
             width: 60.w,
             height: 20.h,
             fit: BoxFit.fill,
@@ -153,7 +148,7 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
             left: 5.3.w,
             top: 8.5.h,
             child: Text(
-              "${widget.carNft.getCarTypeString()}",
+              "${widget.car.getCarTypeString()}",
               style: TextStyle(fontSize: 8.sp, color: Colors.white),
             )),
       ],

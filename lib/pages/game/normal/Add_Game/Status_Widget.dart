@@ -25,8 +25,10 @@ Widget Status_Widget(GameInfo game){
                 width:40.w,
                 height: 40.h,
                 margin: EdgeInsets.fromLTRB(10.w, 0.h, 5.w, 0.h),
-                child: Image.asset("assets/images/game/game_img.png")),
-            Text("Game Name",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w700),)
+                child: Image.asset(game.gameIconAsset())),
+            Text(game.titleString(),
+              style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w700),
+            )
           ],
         ),
         InkWell(

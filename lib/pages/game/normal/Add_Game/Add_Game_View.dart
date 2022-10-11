@@ -30,7 +30,10 @@ class _Add_Game_View extends State<Add_Game_View> implements Observer {
 
   @override
   updateObserver() {
-    setState(() {});
+    if (mounted) {
+      setState(() {
+      });
+    }
   }
 
   final TextEditingController _searchController = TextEditingController();
@@ -209,7 +212,7 @@ class _Add_Game_View extends State<Add_Game_View> implements Observer {
                 child: ListView.builder(
                     primary: false,
                     shrinkWrap: true,
-                    itemCount: 10,
+                    itemCount: StorageController().getAllDemandGameList().list.length,
                     itemBuilder: (BuildContext ctx, int idx) {
                       return Status_Widget(StorageController().getAllDemandGameList().list[idx]);
                     }
@@ -226,7 +229,7 @@ class _Add_Game_View extends State<Add_Game_View> implements Observer {
                 child: ListView.builder(
                     primary: false,
                     shrinkWrap: true,
-                    itemCount: 10,
+                    itemCount: StorageController().gameDemandList.list.length,
                     itemBuilder: (BuildContext ctx, int idx) {
                       return Status_Widget(StorageController().gameDemandList.list[idx]);
                     }
@@ -243,7 +246,7 @@ class _Add_Game_View extends State<Add_Game_View> implements Observer {
                 child: ListView.builder(
                     primary: false,
                     shrinkWrap: true,
-                    itemCount: 10,
+                    itemCount: StorageController().gameMyDemandList!.list.length,
                     itemBuilder: (BuildContext ctx, int idx) {
                       return Status_Widget(StorageController().gameMyDemandList!.list[idx]);
                     }

@@ -50,7 +50,10 @@ class _Frame_View extends State<Frame_View>  implements Observer {
 
   @override
   updateObserver() {
-    setState(() {});
+    if (mounted) {
+      setState(() {
+      });
+    }
   }
 
   @override

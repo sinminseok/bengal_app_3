@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +13,8 @@ Widget Car_Info_Widet(){
        Row(
          children: [
            Image.asset(
-             "assets/images/common/cars/car1.png",fit: BoxFit.fill,
+             "assets/images/common/cars/car1.png",
+             fit: BoxFit.fill,
              width: 104.w,
              height: 60.h,
            ),
@@ -47,15 +46,12 @@ Widget Car_Info_Widet(){
                        height:20.h,
                        decoration: BoxDecoration(
                          border: Border.all(color: Colors.grey),
-                         borderRadius: BorderRadius.all(
-                             Radius.circular(30.0) //         <--- border radius here
-                         ),
+                         borderRadius: const BorderRadius.all(Radius.circular(30.0)),
                        ),
                        child: Row(
                          mainAxisAlignment: MainAxisAlignment.start,
                          children: [
                            Container(
-                             // margin: EdgeInsets.fromLTRB(1.w, 1.h, 1.w, 1.h),
                              margin: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 0.h),
                              width:12.w,
                              height: 12.h,

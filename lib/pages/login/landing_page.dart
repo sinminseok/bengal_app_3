@@ -44,6 +44,44 @@ class LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     //RelativeCoordinate().setSize(const Size(390, 810), context);
 
+    // return Scaffold(
+    //   backgroundColor: const Color(0xFF8B80F8),
+    //   body: Stack(
+    //     children: [
+    //       Image.asset(
+    //         "assets/images/common/cars/offroad1.png",
+    //         width: 390.w,
+    //         height: 564.h,
+    //         alignment: Alignment.topCenter,
+    //         fit: BoxFit.cover,
+    //         // color: Colors.black87,
+    //         // colorBlendMode: BlendMode.darken,
+    //       ),
+    //       Container(
+    //         width: 390.w,
+    //         height: 400.h,
+    //         decoration: BoxDecoration(
+    //           image: DecorationImage(
+    //             fit: BoxFit.cover,
+    //             colorFilter: ColorFilter.mode(
+    //                 Colors.black.withOpacity(1.0),
+    //                 BlendMode.colorDodge),
+    //             image: const AssetImage("assets/mp4/colordodgetest.png"),
+    //           ),
+    //         ),
+    //         // child: Image.asset(
+    //         //   "assets/mp4/colordodgetest.png",
+    //         //   width: 390.w,
+    //         //   height: 400.h,
+    //         //   alignment: Alignment.center,
+    //         //   fit: BoxFit.fill,
+    //         //   color: Colors.black,
+    //         //   colorBlendMode: BlendMode.colorDodge,
+    //         // ),
+    //       ),
+    //     ],
+    //   ),
+    // );
     return Scaffold(
       body: VideoPlayer(controller),
     );

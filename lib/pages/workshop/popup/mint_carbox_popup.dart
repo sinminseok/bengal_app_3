@@ -208,7 +208,9 @@ class Mint_Carbox_Popup {
                                   SizedBox(
                                     width: 38,
                                     height: 15,
-                                    child: Image.asset("assets/images/game/empty_car/empty_car1.png",color: Colors.white,),
+                                    child: Image.asset(
+                                      "assets/images/game/empty_car/empty_car1.png",
+                                      color: Colors.white,),
                                   ),
                                   Text(
                                     "SEDAN",
@@ -225,7 +227,9 @@ class Mint_Carbox_Popup {
                               width: 300.w,
                               height: 176.46,
 
-                              child: Image.asset("assets/images/common/cars/car1.png",fit: BoxFit.fill,)),
+                              child: Image.asset(
+                                "assets/images/common/cars/car1.png",
+                                fit: BoxFit.fill,)),
                           Container(
                             width: 170.w,
                             margin: EdgeInsets.fromLTRB(10.w, 7.h, 0.w, 0.h),
@@ -514,7 +518,9 @@ class Mint_Carbox_Popup {
                               SizedBox(
                                 width: 300.w,
                                 height: 177.h,
-                                child: Image.asset("assets/images/common/cars/car1.png",fit: BoxFit.fitWidth,),
+                                child: Image.asset(
+                                  car.getAssetImage(),
+                                  fit: BoxFit.fitWidth,),
                               ),
                               Container(
                                 margin: EdgeInsets.fromLTRB(20.w, 9.h, 15.w, 0.h),

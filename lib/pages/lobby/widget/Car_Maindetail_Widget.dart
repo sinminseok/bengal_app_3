@@ -12,9 +12,9 @@ import '../../../models/car.dart';
 import '../../../utils/font.dart';
 
 class Car_Maindetail_Widget extends StatefulWidget {
-  CarNft carNft;
+  CarNft car;
 
-  Car_Maindetail_Widget({Key? key, required this.carNft}) : super(key: key);
+  Car_Maindetail_Widget({Key? key, required this.car}) : super(key: key);
 
   @override
   _Car_Maindetail_WidgetState createState() => _Car_Maindetail_WidgetState();
@@ -30,14 +30,14 @@ class _Car_Maindetail_WidgetState extends State<Car_Maindetail_Widget> {
             PageTransition(
                 type: PageTransitionType.fade,
                 child: Car_Detail_FrameView2(
-                  carNft: widget.carNft,
+                  carNft: widget.car,
                   carBuy: false,
                 )));
       },
       child: Stack(
         children: [
           Image.asset(
-            "assets/images/common/cars/car1.png",
+            widget.car.getAssetImage(),
             width: 390.w,
             height: 225.33.h,
             fit: BoxFit.fill,
@@ -72,7 +72,7 @@ class _Car_Maindetail_WidgetState extends State<Car_Maindetail_Widget> {
                       //color: Colors.white,
                       margin: EdgeInsets.fromLTRB(7.w, 0.h, 0.w, 0.h),
                       child: Text(
-                        "Lv ${widget.carNft.level}",
+                        "Lv ${widget.car.level}",
                         style: Font.lato(
                             const Color(0xFF342B35), FontWeight.bold, 12.sp),
                       ),
@@ -87,7 +87,7 @@ class _Car_Maindetail_WidgetState extends State<Car_Maindetail_Widget> {
                         Padding(
                           padding: EdgeInsets.fromLTRB(5.w, 0.h, 0.w, 0.h),
                           child: Text(
-                            "${widget.carNft.id}",
+                            "${widget.car.id}",
                             style: Font.lato(const Color(0xFF342B35),
                                 FontWeight.bold, 12.sp),
                           ),

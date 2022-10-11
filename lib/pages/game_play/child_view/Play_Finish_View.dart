@@ -37,7 +37,10 @@ class _Play_Finish_View extends State<Play_Finish_View>  implements Observer {
   }
   @override
   updateObserver() {
-    setState(() {});
+    if (mounted) {
+      setState(() {
+      });
+    }
   }
 
   @override

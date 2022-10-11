@@ -14,8 +14,8 @@ class Market_Car_Card2 extends StatefulWidget {
   Color color;
       BuildContext context;
 
-  CarNft carNft;
-   Market_Car_Card2({Key? key,required this.size,required this.color,required this.context,required this.carNft}) : super(key: key);
+  CarNft car;
+   Market_Car_Card2({Key? key,required this.size,required this.color,required this.context,required this.car}) : super(key: key);
 
   @override
   _Market_Car_Card2State createState() => _Market_Car_Card2State();
@@ -36,7 +36,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
             PageTransition(
                 type: PageTransitionType.fade,
                 child: Car_Detail_FrameView2(
-                  carNft: widget.carNft,
+                  carNft: widget.car,
                   carBuy: true,
                 )));
       },
@@ -48,9 +48,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
             height: 270.h,
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.all(
-                  Radius.circular(6.0) //         <--- border radius here
-                  ),
+              borderRadius: const BorderRadius.all(Radius.circular(6.0)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -62,7 +60,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                     Container(
                       margin: EdgeInsets.fromLTRB(0.w, 3.h, 10.w, 9.h),
                       child: Text(
-                        "Mint: ${widget.carNft.mintingCount}",
+                        "Mint: ${widget.car.mintingCount}",
                         style: Font.lato(Colors.black, FontWeight.w400, 10.sp),
                       ),
                     ),
@@ -73,7 +71,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.asset(
-                    "assets/images/common/cars/car1.png",
+                    widget.car.getAssetImage(),
                     width: 150.w,
                     height: 86.72,
                     fit: BoxFit.fill,
@@ -108,7 +106,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                         ),
                       ),
                       Text(
-                        "${widget.carNft.id}",
+                        "${widget.car.id}",
                         style: Font.lato(
                             const Color(0xFF9196A5), FontWeight.bold, 8.sp),
                       )
@@ -128,7 +126,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                       Padding(
                         padding: const EdgeInsets.only(left: 3.0, bottom: 6),
                         child: Text(
-                          "${widget.carNft.level}",
+                          "${widget.car.level}",
                           style: Font.lato(
                               const Color(0xFF342B35), FontWeight.bold, 14.sp),
                         ),
@@ -150,7 +148,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                             height: 24.h,
                           ),
                           Text(
-                            "${widget.carNft.speed}",
+                            "${widget.car.speed}",
                             style: Font.lato(const Color(0xFF746F7B),
                                 FontWeight.bold, 10.sp),
                           )
@@ -167,7 +165,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                             height: 24.h,
                           ),
                           Text(
-                            "${widget.carNft.lucky}",
+                            "${widget.car.lucky}",
                             style: Font.lato(const Color(0xFF746F7B),
                                 FontWeight.bold, 10.sp),
                           )
@@ -184,7 +182,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                             height: 24.h,
                           ),
                           Text(
-                            "${widget.carNft.charge}",
+                            "${widget.car.charge}",
                             style: Font.lato(const Color(0xFF746F7B),
                                 FontWeight.bold, 10.sp),
                           )
@@ -201,7 +199,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                             height: 24.h,
                           ),
                           Text(
-                            "${widget.carNft.repair}",
+                            "${widget.car.repair}",
                             style: Font.lato(const Color(0xFF746F7B),
                                 FontWeight.bold, 10.sp),
                           )
@@ -216,7 +214,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                     Container(
                       margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 3.h),
                       child: Text(
-                        "${widget.carNft.price} HVH",
+                        "${widget.car.price} HVH",
                         style: Font.lato(kPrimaryColor, FontWeight.bold, 12.sp),
                       ),
                     ),
@@ -225,7 +223,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                       child: InkWell(
                         onTap: () async{
                           // Market_popup().showDialog(size, context)
-                          Market_popup2().showDialog(widget.size, widget.context, widget.carNft);
+                          Market_popup2().showDialog(widget.size, widget.context, widget.car);
                         },
                         child: Container(
                           width: 70.w,
@@ -267,7 +265,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
             left: -5.w,
             top: 5.h,
             child: Image.asset(
-              "assets/images/common/tags/tag_${widget.carNft.getCarGradeString()}.png",
+              "assets/images/common/tags/tag_${widget.car.getCarGradeString()}.png",
               fit: BoxFit.fill,
               width: 60.w,
               height: 20.h,
@@ -277,7 +275,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
               left: -1.w,
               top: 7.h,
               child: Text(
-                widget.carNft.getCarTypeString().toUpperCase(),
+                widget.car.getCarTypeString().toUpperCase(),
                 style: Font.lato(Colors.white, FontWeight.bold, 8.sp),
               )),
         ],

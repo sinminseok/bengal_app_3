@@ -14,7 +14,7 @@ class Market_popup2 {
   void showDialog(
     Size size,
     BuildContext context,
-    CarNft carNft,
+    CarNft car,
   ) {
     showGeneralDialog(
         context: context,
@@ -68,7 +68,7 @@ class Market_popup2 {
                                 )),
                           ),
                           Image.asset(
-                            "assets/images/common/cars/car1.png",
+                            car.getAssetImage(),
                             width: 300.w,
                             height: 180.h,
                             fit: BoxFit.fill,
@@ -90,7 +90,7 @@ class Market_popup2 {
                                       Container(
                                         margin: EdgeInsets.only(left: 5.w),
                                         child: Text(
-                                          "${carNft.id}",
+                                          "${car.id}",
                                           style: Font.lato(const Color(0xFF342B35),
                                               FontWeight.w700, 14.sp),
                                         ),
@@ -132,7 +132,7 @@ class Market_popup2 {
                                         FontWeight.w400, 12.sp),
                                   ),
                                   Text(
-                                    carNft.getCarTypeString(),
+                                    car.getCarTypeString(),
                                     style: Font.lato(const Color(0xFF8B80F8),
                                         FontWeight.bold, 12.sp),
                                   )
@@ -154,7 +154,7 @@ class Market_popup2 {
                                         FontWeight.w400, 12.sp),
                                   ),
                                   Text(
-                                    carNft.getCarGradeString().toUpperCase(),
+                                    car.getCarGradeString().toUpperCase(),
                                     style: Font.lato(const Color(0xFF8B80F8),
                                         FontWeight.bold, 12.sp),
                                   )
@@ -176,7 +176,7 @@ class Market_popup2 {
                                         FontWeight.w400, 12.sp),
                                   ),
                                   Text(
-                                    "${carNft.level}",
+                                    "${car.level}",
                                     style: Font.lato(const Color(0xFF8B80F8),
                                         FontWeight.bold, 12.sp),
                                   )
@@ -198,7 +198,7 @@ class Market_popup2 {
                                         FontWeight.w400, 12.sp),
                                   ),
                                   Text(
-                                    "${carNft.mintingCount}",
+                                    "${car.mintingCount}",
                                     style: Font.lato(const Color(0xFF8B80F8),
                                         FontWeight.bold, 12.sp),
                                   )
@@ -228,7 +228,7 @@ class Market_popup2 {
                                     kPrimaryColor, FontWeight.bold, 14.sp),
                               ),
                               Text(
-                                "${carNft.price} ${StringConfiguration().uiString(UiStringType.TOKEN_NAME_03)}",
+                                "${car.price} ${StringConfiguration().uiString(UiStringType.TOKEN_NAME_03)}",
                                 style: Font.lato(
                                     kPrimaryColor, FontWeight.bold, 14.sp),
                               )
@@ -243,7 +243,7 @@ class Market_popup2 {
                               MaterialStateProperty.all(Colors.white),
                         ),
                         onPressed: () {
-                          StorageController().buyCar(carNft).then((ret) => {
+                          StorageController().buyCar(car).then((ret) => {
                             if (ret) {
                               Fluttertoast.showToast(
                                   msg: StringConfiguration().uiString(UiStringType.TOAST_MESSAGE_09),

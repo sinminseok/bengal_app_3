@@ -60,16 +60,17 @@ class GameInfo {
   String xPerPerPowerString() {
     return "+$xPerPerPower XPER For 1 Power";
   }
+  String xPerPerPowerCutString() {
+    return "+$xPerPerPower XPER For";
+  }
 
   String perPerPowerString() {
     if (1 != category) return "";
     return "+$perPerPower PER For 1 Power";
   }
 
-  String categoryNCarLevelString() {
-    if (1 != category) return "";
-    return "${categoryString()}  Lv$minCarLevel";
-  }
+  String categoryNCarLevelString() => "${categoryString()}  Lv$minCarLevel";
+  String gradeNCarLevelString() => "${carGradeString()}  Lv$minCarLevel";
 
   String categoryString() {
     switch (category) {

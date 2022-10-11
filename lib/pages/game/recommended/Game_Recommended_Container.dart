@@ -64,11 +64,9 @@ Widget Game_Recommended_Container(BuildContext context, GameInfo game) {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        child: Text(
-                          game.titleString(),
-                          style: Font.lato(const Color(0xFF342B35), FontWeight.bold, 18.sp),
-                        ),
+                      Text(
+                        game.titleString(),
+                        style: Font.lato(const Color(0xFF342B35), FontWeight.bold, 18.sp),
                       ),
                       Row(
                         children: [
@@ -101,7 +99,7 @@ Widget Game_Recommended_Container(BuildContext context, GameInfo game) {
                                   borderRadius: const BorderRadius.all(Radius.circular(10))),
                               child: Center(
                                   child: Text(
-                                    game.categoryNCarLevelString(),
+                                    game.gradeNCarLevelString(),
                                     style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                                   )),
                             ),

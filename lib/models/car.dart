@@ -81,6 +81,8 @@ class CarNft {
 
   bool isValidBuy(double balance) => balance > price;
 
+  String getAssetImage() => "assets/images/common/cars/$image.png";
+
 }
 
 enum CarSortType {

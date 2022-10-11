@@ -69,7 +69,7 @@ class StorageController implements Subject {
   late CommonData commonData;
   late GameInfoList gameSpecialList;
   late GameInfoList gameRecommendList;
-  late GameInfoList gameDemandList;
+  late GameInfoList gameDemandList = GameInfoList([]);
   late CarNftList carNftPool;
   late BoxNftList boxNftPool;
   late CarNftList boxCarNftPool;
@@ -612,10 +612,6 @@ class StorageController implements Subject {
     }
   }
 
-  Future<int> demandGame(GameInfo game) async {
-    return 0;
-  }
-
   MiningResult? miningStart(GameInfo game) {
     if (!isPossibleMining(game)) return null;
 
@@ -735,6 +731,10 @@ class StorageController implements Subject {
   bool addDemandGame(GameInfo game) {
     gameDemandList.removeGame(game);
     if (!gameMyDemandList!.addGame(game)) return false;
+
+    game.added = true;
+
+    saveGameMyDemandList();
     notifyObserver();
     return true;
   }

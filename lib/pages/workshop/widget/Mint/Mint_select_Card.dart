@@ -39,7 +39,7 @@ Widget Mint_Select_Card(CarNft carNft) {
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.asset(
-                      "assets/images/common/cars/car1.png",
+                      carNft.getAssetImage(),
                       fit: BoxFit.fitWidth,
                     )),
               ),
@@ -86,7 +86,7 @@ Widget Mint_Select_Card(CarNft carNft) {
       Positioned(
           left: -5.w,
           top: 6.h,
-          child: Container(
+          child: SizedBox(
               width: 60.w,
               height: 20.h,
               child: Image.asset(
@@ -96,7 +96,7 @@ Widget Mint_Select_Card(CarNft carNft) {
       Positioned(
           left: 5.w,
           top: 8.h,
-          child: Container(
+          child: SizedBox(
               width: 60.w,
               height: 20.h,
               child: Text(carNft.getCarTypeString(),

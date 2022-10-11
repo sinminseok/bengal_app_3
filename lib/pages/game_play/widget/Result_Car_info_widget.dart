@@ -1,6 +1,3 @@
-
-
-import 'package:bengal_app/types/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +25,9 @@ Widget Result_Car_info_widget(){
 
           child: ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(10)),
-              child: Image.asset("assets/images/common/cars/car1.png",fit: BoxFit.fitWidth,)),
+              child: Image.asset(
+                "assets/images/common/cars/car1.png",
+                fit: BoxFit.fitWidth,)),
         ),
         Column(
           children: [
@@ -43,9 +42,7 @@ Widget Result_Car_info_widget(){
                     height:20.h,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(30.0) //         <--- border radius here
-                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(30.0)),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -95,9 +92,7 @@ Widget Result_Car_info_widget(){
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                Container(
-
-                    child: Text("Duability",style: TextStyle(color: Colors.teal,fontSize: 10),)),
+                Text("Duability",style: TextStyle(color: Colors.teal,fontSize: 10),),
                 Text("(- 15.0)",style: TextStyle(color: Colors.red,fontSize: 10),)
               ],),
             ),

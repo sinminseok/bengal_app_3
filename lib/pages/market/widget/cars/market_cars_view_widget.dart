@@ -23,7 +23,10 @@ class MarketCarsViewWidgetState extends State<MarketCarsViewWidget> implements O
 
   @override
   updateObserver() {
-    setState(() {});
+    if (mounted) {
+      setState(() {
+      });
+    }
   }
 
   @override
@@ -59,7 +62,7 @@ class MarketCarsViewWidgetState extends State<MarketCarsViewWidget> implements O
                   //     int distance)
                   child: Market_Car_Card2(
                       size:widget.size,color: Colors.blue,context: context,
-                      carNft:StorageController().carNftPool!.list[index]),
+                      car:StorageController().carNftPool!.list[index]),
                   // child: Market_Car_Card(
                   //     size,context, "SPORTS","normal", 3, 12345, 10, 13, 14, 15, 16, 13),
                 );

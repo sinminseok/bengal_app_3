@@ -511,7 +511,7 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                                       size: size,
                                       context: context,
                                       fun: select_car,
-                                      carNft: carnftlist!.list[index],
+                                      car: carnftlist!.list[index],
                                     ),
                                   ),
                                 );
