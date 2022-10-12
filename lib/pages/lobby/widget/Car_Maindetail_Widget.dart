@@ -30,7 +30,7 @@ class _Car_Maindetail_WidgetState extends State<Car_Maindetail_Widget> {
             PageTransition(
                 type: PageTransitionType.fade,
                 child: Car_Detail_FrameView2(
-                  carNft: widget.car,
+                  car: widget.car,
                   carBuy: false,
                 )));
       },

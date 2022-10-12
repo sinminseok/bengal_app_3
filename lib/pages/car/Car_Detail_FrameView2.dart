@@ -1,15 +1,19 @@
 import 'dart:ui';
 
+import 'package:bengal_app/controller/storage_controller.dart';
 import 'package:bengal_app/pages/car/popup/Status_popup.dart';
 import 'package:bengal_app/pages/car/popup/levelup_popup/levelup1_popup.dart';
+import 'package:bengal_app/pages/car/popup/levelup_popup/levelup2_popup.dart';
 import 'package:bengal_app/pages/car/popup/recovery/recovery_popup.dart';
 import 'package:bengal_app/pages/car/popup/repair/repair_popup.dart';
 import 'package:bengal_app/pages/car/popup/sell/sell_popup.dart';
 import 'package:bengal_app/pages/car/widget/Car_Items_Widget.dart';
 import 'package:bengal_app/pages/car/widget/Car_Status_Widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import '../../common/observer.dart';
 import '../../models/car.dart';
 import '../../types/constants.dart';
 import '../../utils/font.dart';
@@ -20,18 +24,36 @@ import '../wallet/Wallet_View.dart';
 
 class Car_Detail_FrameView2 extends StatefulWidget {
   final bool carBuy;
-  final CarNft carNft;
+  final CarNft car;
 
-  Car_Detail_FrameView2({Key? key, required this.carNft, required this.carBuy})
+  Car_Detail_FrameView2({Key? key, required this.car, required this.carBuy})
       : super(key: key);
 
   @override
   _Car_Detail_FrameView createState() => _Car_Detail_FrameView();
 }
 
-class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
-  bool currently_status = true;
-  bool base_statue = false;
+enum StatusToggleItem {
+  Currently,
+  Base,
+}
+
+class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> implements Observer {
+  @override
+  void initState() {
+    super.initState();
+    StorageController().registerObserver(this);
+  }
+
+  @override
+  updateObserver() {
+    if (mounted) {
+      setState(() {
+      });
+    }
+  }
+
+  StatusToggleItem statusToggle = StatusToggleItem.Currently;
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +86,9 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                       //mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Coin_Widget("xper_icon", "0.00"),
-                        Coin_Widget("per_icon", "0.00"),
-                        Coin_Widget("havah_icon", "0.00"),
+                        Coin_Widget("xper_icon", StorageController().wallet!.balanceXPer.toString()),
+                        Coin_Widget("per_icon", StorageController().wallet!.balancePer.toString()),
+                        Coin_Widget("havah_icon", StorageController().wallet!.balanceHavah.toString()),
                         InkWell(
                             onTap: () {
                               Navigator.push(
@@ -118,7 +140,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                           Container(
                             margin: EdgeInsets.fromLTRB(4.w, 13.h, 0.w, 13.h),
                             child: Text(
-                              "${widget.carNft.getCarTypeString().toUpperCase()}/${widget.carNft.getCarGradeString().toString()}",
+                              "${widget.car.getCarTypeString().toUpperCase()}/${widget.car.getCarGradeString().toString()}",
                               style: Font.lato(Colors.white, FontWeight.bold, 12.sp),
                             ),
                           ),
@@ -129,21 +151,14 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                           Container(
                             margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
                             child: Text(
-                              "Lv ${widget.carNft.level}",
+                              "Lv ${widget.car.level}",
                               style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
-                            child: Text(
-                              " / 30",
-                              style: Font.lato(Colors.white, FontWeight.w400, 10.sp),
                             ),
                           ),
                           Container(
                             margin: EdgeInsets.fromLTRB(0.w, 5.h, 15.w, 0.h),
                             child: Text(
-                              " ·  Mint:${widget.carNft.mintingCount}",
+                              " ·  Mint:${widget.car.mintingCount}",
                               style: Font.lato(Colors.white, FontWeight.w400, 10.sp),
                             ),
                           )
@@ -156,7 +171,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                 Stack(
                   children: [
                     Image.asset(
-                      widget.carNft.getAssetImage(),
+                      widget.car.getAssetImage(),
                       height: 225.33.h,
                       width: 390.w,
                       fit: BoxFit.fill,
@@ -179,7 +194,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                                   margin:
                                   EdgeInsets.fromLTRB(5.w, 0.h, 5.w, 0.h),
                                   child: Text(
-                                    "${widget.carNft.id}",
+                                    "${widget.car.id}",
                                     style: Font.lato(Colors.black, FontWeight.bold, 14.sp),
                                   ),
                                 ),
@@ -199,22 +214,20 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                   ],
                 ),
 
-
-
                 Car_Items_Widget(size),
 
                 Container(
                   margin: EdgeInsets.fromLTRB(30.w, 10.h, 0.w, 0.h),
                   child: LinearPercentIndicator(
                     center: Text(
-                      "Durability ${widget.carNft.durability}",
+                      "Durability ${widget.car.durability}",
                       style: Font.lato(Colors.white, FontWeight.w400, 11.sp),
                     ),
                     barRadius: const Radius.circular(10),
                     width: 330.w,
                     lineHeight: 15.h,
                     percent: 0.9,
-                    progressColor: Colors.teal,
+                    progressColor: widget.car.getDurabilityColor(),
                   ),
                 ),
                 Container(
@@ -227,12 +240,12 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                         width: 230.w,
                         lineHeight: 10.h,
                         percent: 0.9,
-                        progressColor: Colors.teal,
+                        progressColor: widget.car.getDrivenColor(),
                       ),
                       Container(
                         margin: EdgeInsets.fromLTRB(0.w, 0.h, 20.w, 0.h),
                         child: Text(
-                          "${widget.carNft.driven} km (31)",
+                          "${widget.car.driven} km(${widget.car.getDrivenStatus()})",
                           style: Font.lato(kCharColor, FontWeight.bold, 9.sp),
                         ),
                       )
@@ -268,7 +281,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                                   color: Colors.greenAccent.shade100),
                               child: Center(
                                   child: Text(
-                                "3",
+                                    "${widget.car.status}",
                                 style: Font.lato(Colors.green, FontWeight.w400, 12.sp),
                               )),
                             ),
@@ -290,22 +303,21 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                               decoration: BoxDecoration(
                                   borderRadius:
                                       const BorderRadius.all(Radius.circular(30)),
-                                  color: currently_status != true
-                                      ? Colors.grey.shade300
-                                      : kPrimaryColor),
+                                  color: StatusToggleItem.Currently == statusToggle
+                                      ? kPrimaryColor
+                                      : Colors.grey.shade300),
                               child: InkWell(
                                 onTap: () {
                                   setState(() {
-                                    currently_status = true;
-                                    base_statue = false;
+                                    statusToggle = StatusToggleItem.Currently;
                                   });
                                 },
                                 child: Center(
                                   child: Text(
-                                    "Currently",
-                                    style: Font.lato(currently_status != true
-                                        ? Colors.grey
-                                        : Colors.white, FontWeight.bold, 10.sp),
+                                    describeEnum(StatusToggleItem.Currently),
+                                    style: Font.lato(StatusToggleItem.Currently == statusToggle
+                                        ? Colors.white
+                                        : Colors.grey, FontWeight.bold, 10.sp),
                                   ),
                                 ),
                               ),
@@ -318,20 +330,19 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                                 decoration: BoxDecoration(
                                     borderRadius:
                                         const BorderRadius.all(Radius.circular(30)),
-                                    color: base_statue == true
+                                    color: StatusToggleItem.Base == statusToggle
                                         ? kPrimaryColor
                                         : Colors.grey.shade300),
                                 child: InkWell(
                                   onTap: () {
                                     setState(() {
-                                      currently_status = false;
-                                      base_statue = true;
+                                      statusToggle = StatusToggleItem.Base;
                                     });
                                   },
                                   child: Center(
                                     child: Text(
-                                      "Base",
-                                      style: Font.lato(base_statue == true
+                                      describeEnum(StatusToggleItem.Base),
+                                      style: Font.lato(StatusToggleItem.Base == statusToggle
                                           ? Colors.white
                                           : Colors.grey, FontWeight.bold, 10.sp),
                                     ),
@@ -346,7 +357,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                   ),
                 ),
 
-                Car_Status_Widget(size, widget.carNft),
+                Car_Status_Widget(size, widget.car, StatusToggleItem.Currently == statusToggle),
                 Container(
                   width: 330.w,
                   height: 50.h,
@@ -417,7 +428,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                               ])),
                           InkWell(
                             onTap: () {
-                              Market_popup().showDialog(size, context, widget.carNft);
+                              Market_popup().showDialog(size, context, widget.car);
                             },
                             child: Container(
                               margin:
@@ -439,7 +450,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                               ),
                               child: Center(
                                 child: Text(
-                                  "${widget.carNft.price}Hvh BUY",
+                                  "${widget.car.price}Hvh BUY",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16.sp,
@@ -460,11 +471,14 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                           children: [
                             InkWell(
                               onTap: () {
-                                Levelup1_popup()
-                                    .Levelup_popup(context, widget.carNft);
+                                widget.car.startedLevelUp ?
+                                Levelup2_popup().levelup2_popup(context, widget.car) :
+                                Levelup1_popup().Levelup_popup(context, widget.car);
                               },
                               child: Container(
                                 child: Image.asset(
+                                  widget.car.startedLevelUp ?
+                                  "assets/images/common/cars/icons/boost.png" :
                                   "assets/images/common/cars/icons/Level_Up.png",
                                   width: 42.w,
                                   height: 43.h,
@@ -473,7 +487,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                             ),
                             InkWell(
                               onTap: () {
-                                Repair_popup().repair_popup(context);
+                                Repair_popup().repair_popup(context, widget.car);
                               },
                               child: Container(
                                 child: Image.asset(
@@ -485,7 +499,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                             ),
                             InkWell(
                               onTap: () {
-                                Recovery_popup().recovery_popup(context);
+                                Recovery_popup().recovery_popup(context, widget.car);
                               },
                               child: Container(
                                 child: Image.asset(
@@ -502,7 +516,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> {
                             ),
                             InkWell(
                               onTap: () {
-                                Sell_popup().sell_popup(context);
+                                Sell_popup().sell_popup(context, widget.car);
                               },
                               child: Image.asset(
                                 "assets/images/common/cars/icons/Sell.png",

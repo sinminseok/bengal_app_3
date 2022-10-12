@@ -35,6 +35,7 @@ class InitialInfo {
   final double repairCost;
   final int levelUpTime;
   final int levelUpCost;
+  final int levelUpBoostCost;
   final int specialBoxEarnRate;
   final int decreaseDurability;
 
@@ -44,6 +45,8 @@ class InitialInfo {
   final int tokenValue02;
   final int tokenValue03;
   final int tokenValue04;
+
+  final int carMaxMileage;
 
   InitialInfo(
       this.defaultXPerAmount,
@@ -67,6 +70,7 @@ class InitialInfo {
       this.repairCost,
       this.levelUpTime,
       this.levelUpCost,
+      this.levelUpBoostCost,
       this.specialBoxEarnRate,
       this.decreaseDurability,
       this.increaseMileage,
@@ -74,7 +78,8 @@ class InitialInfo {
       this.tokenValue01,
       this.tokenValue02,
       this.tokenValue03,
-      this.tokenValue04
+      this.tokenValue04,
+      this.carMaxMileage
       );
 
   factory InitialInfo.fromJson(Map<String, dynamic> json) => _$InitialInfoFromJson(json);

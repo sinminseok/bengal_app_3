@@ -339,7 +339,7 @@ class _Play_Finish_View extends State<Play_Finish_View>  implements Observer {
                               fontSize: 18),
                         ),
                         Text(
-                          GameLauncher().miningResult!.getPlayTimeString(),
+                          StorageController().miningResultList!.lastMiningResult().getPlayTimeString(),
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -389,7 +389,7 @@ class _Play_Finish_View extends State<Play_Finish_View>  implements Observer {
                                 margin:
                                 EdgeInsets.fromLTRB(10.w, 15.h, 15.w, 0.h),
                                 child: Text(
-                                  "+${GameLauncher().miningResult!.miningXPer.asString()}",
+                                  "+${StorageController().miningResultList!.lastMiningResult().miningXPer.asString()}",
                                   style: TextStyle(
                                       fontSize: 17, color: Colors.grey.shade500),
                                 )),
@@ -430,7 +430,7 @@ class _Play_Finish_View extends State<Play_Finish_View>  implements Observer {
                                 margin:
                                 EdgeInsets.fromLTRB(10.w, 15.h, 15.w, 0.h),
                                 child: Text(
-                                  "+${GameLauncher().miningResult!.miningPer.asString()}",
+                                  "+${StorageController().miningResultList!.lastMiningResult().miningPer.asString()}",
                                   style: const TextStyle(fontSize: 17, color: kPerColor),
                                 )),
                             Container(

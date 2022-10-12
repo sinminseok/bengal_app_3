@@ -10,6 +10,7 @@ import 'controller/CarsNft_controller/carnft_controller.dart';
 import 'controller/Frame_controller/frame_controller.dart';
 import 'controller/Inventory_controller/mint_controller.dart';
 import 'controller/permission_controller.dart';
+import 'controller/power_controller.dart';
 import 'controller/storage_controller.dart';
 import "common/string_configuration.dart";
 import "pages/login/landing_page.dart";
@@ -30,8 +31,6 @@ void main() {
   //     const MainApp()
   // );
 }
-
-
 
 class MainApp extends StatelessWidget {
   const MainApp({Key? key}) : super(key: key);

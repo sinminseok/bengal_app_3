@@ -10,6 +10,7 @@ class Account {
   final String email;
   final String name;
   late double power;
+  late DateTime updatedAt;
   late double todayMiningPer = 0.0;
   late double todayMiningXPer = 0.0;
 
@@ -18,6 +19,7 @@ class Account {
       this.email,
       this.name,
       this.power,
+      this.updatedAt,
       [this.todayMiningPer = 0.0,
         this.todayMiningXPer = 0.0]);
 

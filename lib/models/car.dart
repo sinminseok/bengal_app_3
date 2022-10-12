@@ -1,4 +1,11 @@
+import 'dart:ui';
+
+import 'package:bengal_app/controller/storage_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import 'common_data.dart';
+import 'game.dart';
 part 'car.g.dart';
 
 @JsonSerializable()
@@ -17,6 +24,7 @@ class CarNft {
   late double charge;
   final double repairBase;
   late double repair;
+  late int status;
   final String seal;
   final int socket1Color;
   final int socket2Color;
@@ -26,6 +34,8 @@ class CarNft {
   late int driven;
   late int mintingCount;
   late int level;
+  late bool startedLevelUp;
+  late DateTime levelUpAt;
 
   CarNft(
       this.id,
@@ -42,6 +52,7 @@ class CarNft {
       this.charge,
       this.repairBase,
       this.repair,
+      this.status,
       this.seal,
       this.socket1Color,
       this.socket2Color,
@@ -51,6 +62,8 @@ class CarNft {
       this.driven,
       this.mintingCount,
       this.level,
+      this.startedLevelUp,
+      this.levelUpAt,
       );
 
   factory CarNft.fromJson(Map<String, dynamic> json) => _$CarNftFromJson(json);
@@ -83,6 +96,122 @@ class CarNft {
 
   String getAssetImage() => "assets/images/common/cars/$image.png";
 
+  bool isPossibleMining(InitialInfo initialInfo, GameInfo game) {
+    if (initialInfo.decreaseDurability > durability) return false;
+    if (initialInfo.carMaxMileage - initialInfo.increaseMileage < driven) return false;
+    if (game.needCarGrade > grade) return false;
+    if (game.minCarLevel > level) return false;
+    if (0 != game.needCarType && type != game.needCarType) return false;
+    return true;
+  }
+
+  void mining(int playTime) {
+    durability -= StorageController().commonData.initialInfo.decreaseDurability;
+    driven += StorageController().commonData.initialInfo.increaseMileage;
+  }
+
+  void startLevelUp() {
+    var needSec = level * StorageController().commonData.initialInfo.levelUpTime;
+    levelUpAt = DateTime.now().add(Duration(seconds: needSec));
+    startedLevelUp = true;
+  }
+
+  void updateLevelUp([bool force = false]) {
+    if (!startedLevelUp) return;
+    if (force) {
+      levelUpAt = DateTime.now();
+    }
+    if (0 < levelUpAt.compareTo(DateTime.now())) return;
+    level += 1;
+    status += StorageController().commonData.initialInfo.levelUpStatusPoint;
+    startedLevelUp = false;
+  }
+
+  String getLevelUpDurationString() {
+    var needSec = level * StorageController().commonData.initialInfo.levelUpTime;
+    var next = Duration(seconds: needSec);
+    var ret = "";
+    if (0 < next.inHours){
+      ret = "${next.inHours.toString()}h";
+    }
+    var sec = next.inSeconds.remainder(60);
+    var min = next.inMinutes.remainder(60);
+    if (0 < sec) min++;
+
+    if (0 < min) {
+      if (ret.isNotEmpty) ret += " ";
+      ret += "${min.toString()}m";
+    }
+    return ret;
+  }
+
+  String getLevelUpRemainString() {
+    var duration = levelUpAt.difference(DateTime.now());
+    String hours = duration.inHours.toString().padLeft(2, '0');
+    String minutes = duration.inMinutes.remainder(60).toString().padLeft(2, '0');
+    String seconds = duration.inSeconds.remainder(60).toString().padLeft(2, '0');
+    return "$hours:$minutes:$seconds";
+  }
+
+  int levelUpPercent() {
+    var needSec = level * StorageController().commonData.initialInfo.levelUpTime;
+    var whole = Duration(seconds: needSec).inSeconds;
+    var remain = levelUpAt.difference(DateTime.now()).inSeconds;
+    var proceed = whole - remain;
+    return (proceed / whole * 100).toInt();
+  }
+
+  double levelUpCost() => level * StorageController().commonData.initialInfo.levelUpCost.toDouble();
+
+  double levelUpBoostCost() {
+    if (!startedLevelUp) return 0.0;
+    var duration = levelUpAt.difference(DateTime.now());
+    var totalMin = duration.inHours * 60 + duration.inMinutes;
+    return totalMin * StorageController().commonData.initialInfo.levelUpBoostCost.toDouble();
+  }
+
+  void doRepair() {
+    durability = StorageController().commonData.initialInfo.carMaxDurability;
+  }
+
+  double repairCost() {
+    if (StorageController().commonData.initialInfo.carMaxDurability == durability) return 0.0;
+    var gap = StorageController().commonData.initialInfo.carMaxDurability - durability;
+    return gap * StorageController().commonData.initialInfo.repairCost.toDouble();
+  }
+
+  String getDrivenStatus() {
+    var v = driven / StorageController().commonData.initialInfo.carMaxMileage;
+    var ret = "Fine";
+    if (0.8 < v) {
+      ret = "Danger";
+    } else if (0.5 < v) {
+      ret = "Warning";
+    }
+    return ret;
+  }
+
+  Color getDrivenColor() {
+    var v = driven / StorageController().commonData.initialInfo.carMaxMileage;
+    var ret = Colors.green;
+    if (0.8 < v) {
+      ret = Colors.red;
+    } else if (0.5 < v) {
+      ret = Colors.yellow;
+    }
+    return ret;
+  }
+
+  Color getDurabilityColor() {
+    var v = durability / StorageController().commonData.initialInfo.carMaxDurability;
+    var ret = Colors.red;
+    if (0.5 < v) {
+      ret = Colors.green;
+    } else if (0.2 < v) {
+      ret = Colors.yellow;
+    }
+    return ret;
+  }
 }
 
 enum CarSortType {

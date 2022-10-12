@@ -21,6 +21,7 @@ CarNft _$CarNftFromJson(Map<String, dynamic> json) => CarNft(
       (json['charge'] as num).toDouble(),
       (json['repairBase'] as num).toDouble(),
       (json['repair'] as num).toDouble(),
+      json['status'] as int,
       json['seal'] as String,
       json['socket1Color'] as int,
       json['socket2Color'] as int,
@@ -30,6 +31,8 @@ CarNft _$CarNftFromJson(Map<String, dynamic> json) => CarNft(
       json['driven'] as int,
       json['mintingCount'] as int,
       json['level'] as int,
+      json['startedLevelUp'] as bool,
+      DateTime.parse(json['levelUpAt'] as String),
     );
 
 Map<String, dynamic> _$CarNftToJson(CarNft instance) => <String, dynamic>{
@@ -47,6 +50,7 @@ Map<String, dynamic> _$CarNftToJson(CarNft instance) => <String, dynamic>{
       'charge': instance.charge,
       'repairBase': instance.repairBase,
       'repair': instance.repair,
+      'status': instance.status,
       'seal': instance.seal,
       'socket1Color': instance.socket1Color,
       'socket2Color': instance.socket2Color,
@@ -56,6 +60,8 @@ Map<String, dynamic> _$CarNftToJson(CarNft instance) => <String, dynamic>{
       'driven': instance.driven,
       'mintingCount': instance.mintingCount,
       'level': instance.level,
+      'startedLevelUp': instance.startedLevelUp,
+      'levelUpAt': instance.levelUpAt.toIso8601String(),
     };
 
 CarNftList _$CarNftListFromJson(Map<String, dynamic> json) => CarNftList(

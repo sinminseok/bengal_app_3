@@ -1,14 +1,10 @@
 import "package:flutter/material.dart";
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:page_transition/page_transition.dart';
-import "../../../common/string_configuration.dart";
 import '../../../controller/game_launcher.dart';
 import '../../../models/game.dart';
 import '../../../types/constants.dart';
-import "../../../types/string_type.dart";
 import "../../../utils/font.dart";
-import '../../game_play/child_view/Play_Finish_View.dart';
 
 class GameInstallNotice {
 

@@ -12,6 +12,7 @@ Account _$AccountFromJson(Map<String, dynamic> json) => Account(
       json['email'] as String,
       json['name'] as String,
       (json['power'] as num).toDouble(),
+      DateTime.parse(json['updatedAt'] as String),
       (json['todayMiningPer'] as num?)?.toDouble() ?? 0.0,
       (json['todayMiningXPer'] as num?)?.toDouble() ?? 0.0,
     );
@@ -22,6 +23,7 @@ Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'email': instance.email,
       'name': instance.name,
       'power': instance.power,
+      'updatedAt': instance.updatedAt.toIso8601String(),
       'todayMiningPer': instance.todayMiningPer,
       'todayMiningXPer': instance.todayMiningXPer,
     };

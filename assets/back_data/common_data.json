@@ -1,6 +1,6 @@
 {
   "initialInfo": {
-    "defaultXPerAmount": 1000.0,
+    "defaultXPerAmount": 100000.0,
     "defaultPerAmount": 100.0,
     "defaultHavahAmount": 200.0,
     "defaultOnChainXPerAmount": 200.0,
@@ -21,6 +21,7 @@
     "repairCost": 0.3,
     "levelUpTime": 600,
     "levelUpCost": 600,
+    "levelUpBoostCost": 3,
     "specialBoxEarnRate": 10000,
     "decreaseDurability": 2,
     "increaseMileage": 100,
@@ -28,6 +29,7 @@
     "tokenValue01": 30,
     "tokenValue02": 10,
     "tokenValue03": 1,
-    "tokenValue04": 5
+    "tokenValue04": 5,
+    "carMaxMileage": 100000
   }
 }

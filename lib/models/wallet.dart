@@ -1,9 +1,12 @@
 import 'package:bengal_app/utils/dataType.dart';
 import 'package:flinq/flinq.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import '../controller/storage_controller.dart';
 import '../types/common.dart';
 import '../types/constants.dart';
+import 'common_data.dart';
 part 'wallet.g.dart';
 
 @JsonSerializable()
@@ -99,6 +102,25 @@ class Wallet {
         break;
       default: return false;
     }
+    return true;
+  }
+
+  bool levelUp(double cost) {
+    debugPrint("levelUp cost $cost");
+    if (cost > balanceXPer) {
+      debugPrint("levelUp cost fail $balanceXPer");
+      return false;
+    }
+    balanceXPer -= cost;
+    return true;
+  }
+
+  bool repair(int durability) {
+    if (StorageController().commonData.initialInfo.carMaxDurability <= durability) return false;
+    var cost = (StorageController().commonData.initialInfo.carMaxDurability - durability)
+        * StorageController().commonData.initialInfo.repairCost;
+    if (cost > balanceXPer) return false;
+    balanceXPer -= cost;
     return true;
   }
 }

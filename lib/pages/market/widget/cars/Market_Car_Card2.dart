@@ -36,7 +36,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
             PageTransition(
                 type: PageTransitionType.fade,
                 child: Car_Detail_FrameView2(
-                  carNft: widget.car,
+                  car: widget.car,
                   carBuy: true,
                 )));
       },
