@@ -37,6 +37,7 @@ InitialInfo _$InitialInfoFromJson(Map<String, dynamic> json) => InitialInfo(
       (json['repairCost'] as num).toDouble(),
       json['levelUpTime'] as int,
       json['levelUpCost'] as int,
+      json['levelUpBoostCost'] as int,
       json['specialBoxEarnRate'] as int,
       json['decreaseDurability'] as int,
       json['increaseMileage'] as int,
@@ -45,6 +46,7 @@ InitialInfo _$InitialInfoFromJson(Map<String, dynamic> json) => InitialInfo(
       json['tokenValue02'] as int,
       json['tokenValue03'] as int,
       json['tokenValue04'] as int,
+      json['carMaxMileage'] as int,
     );
 
 Map<String, dynamic> _$InitialInfoToJson(InitialInfo instance) =>
@@ -70,6 +72,7 @@ Map<String, dynamic> _$InitialInfoToJson(InitialInfo instance) =>
       'repairCost': instance.repairCost,
       'levelUpTime': instance.levelUpTime,
       'levelUpCost': instance.levelUpCost,
+      'levelUpBoostCost': instance.levelUpBoostCost,
       'specialBoxEarnRate': instance.specialBoxEarnRate,
       'decreaseDurability': instance.decreaseDurability,
       'increaseMileage': instance.increaseMileage,
@@ -78,4 +81,5 @@ Map<String, dynamic> _$InitialInfoToJson(InitialInfo instance) =>
       'tokenValue02': instance.tokenValue02,
       'tokenValue03': instance.tokenValue03,
       'tokenValue04': instance.tokenValue04,
+      'carMaxMileage': instance.carMaxMileage,
     };

@@ -22,7 +22,7 @@ Widget Inventory_Car_Card2(
                 PageTransition(
                     type: PageTransitionType.fade,
                     child: Car_Detail_FrameView2(
-                      carNft: carNft,
+                      car: carNft,
                       carBuy: false,
                     )));
           },

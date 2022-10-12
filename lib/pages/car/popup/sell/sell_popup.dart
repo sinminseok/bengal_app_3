@@ -8,12 +8,16 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import 'package:vs_scrollbar/vs_scrollbar.dart';
 
+import '../../../../controller/storage_controller.dart';
+import '../../../../models/car.dart';
 import '../../../../types/constants.dart';
+import '../../../../utils/font.dart';
 
 class Sell_popup {
 
+  final TextEditingController _priceController = TextEditingController();
 
-  void sell_popup(BuildContext context) {
+  void sell_popup(BuildContext context, CarNft car) {
     double _value = 0.5;
     showAnimatedDialog(
       context: context,
@@ -26,7 +30,7 @@ class Sell_popup {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)),
               content: DefaultTextStyle(
-                  style: TextStyle(fontSize: 16, color: Colors.black),
+                  style: const TextStyle(fontSize: 16, color: Colors.black),
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
@@ -53,7 +57,7 @@ class Sell_popup {
                               Container(
                                 width: 300.w,
                                 height: 50.h,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(10),
                                         topRight: Radius.circular(10)),
@@ -61,8 +65,7 @@ class Sell_popup {
                                 child: Center(
                                     child: Text(
                                       "SELL",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 18),
+                                      style: Font.lato(Colors.white, FontWeight.bold, 18.sp),
                                     )),
                               ),
                               Container(
@@ -89,8 +92,8 @@ class Sell_popup {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
-                                      "13123",
-                                      style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),
+                                      "${car.id}",
+                                      style: Font.lato(Colors.black, FontWeight.bold, 11.sp),
                                     ),
                                   ),
                                   Padding(
@@ -103,8 +106,6 @@ class Sell_popup {
                                   ),
                                 ],
                               ),
-
-
                               Row(
                                 mainAxisAlignment:
                                 MainAxisAlignment.spaceBetween,
@@ -114,19 +115,16 @@ class Sell_popup {
                                           20.w, 0.h, 10.w, 0.h),
                                       child: Text(
                                         "Price",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.grey.shade600,
-                                            fontSize: 14),
+                                        style: Font.lato(Colors.grey.shade600, FontWeight.bold, 14.sp),
                                       )),
                                   Container(
                                       margin: EdgeInsets.fromLTRB(
                                           15.w, 10.h, 10.w, 0.h),
                                       child: Text(
                                         "",
-                                        style: TextStyle(
-                                            color: kPrimaryColor, fontSize: 10),
-                                      )),
+                                        style: Font.lato(kPrimaryColor, FontWeight.w400, 10.sp),
+                                      ),
+                                  ),
                                 ],
                               ),
                               Container(
@@ -134,7 +132,7 @@ class Sell_popup {
                                 height: 46.h,
                                 decoration: BoxDecoration(
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
+                                    const BorderRadius.all(Radius.circular(10)),
                                     border: Border.all(
                                         color: Colors.grey.shade200)),
                                 child:  Container(
@@ -142,12 +140,12 @@ class Sell_popup {
                                         3.w, 0.h, 15.w, 0.h),
                                     child: TextField(
                                       keyboardType: TextInputType.number,
-                                      decoration: new InputDecoration(
-
+                                      controller: _priceController,
+                                      decoration: InputDecoration(
                                           border: InputBorder.none,
-                                          hintStyle: TextStyle(color: Colors.grey.shade400,fontSize: 10),
+                                          hintStyle: Font.lato(Colors.grey.shade400, FontWeight.bold, 10.sp),
                                           focusedBorder: InputBorder.none,
-                                          contentPadding: EdgeInsets.only(left: 5, bottom: 15, top: 0, right: 5),
+                                          contentPadding: const EdgeInsets.only(left: 5, bottom: 15, top: 0, right: 5),
                                           hintText: 'Please enter the seling price'
                                       ),
                                     )
@@ -155,6 +153,7 @@ class Sell_popup {
                               ),
                               GestureDetector(
                                 onTap: () {
+                                  StorageController().sellCar(car, double.parse(_priceController.text));
                                   Navigator.pop(context);
                                 },
                                 child: Container(
@@ -162,16 +161,14 @@ class Sell_popup {
                                   height: 34.h,
                                   margin: EdgeInsets.fromLTRB(
                                       15.w, 13.h, 15.w, 0.h),
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       color: kPrimaryColor,
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(30))),
                                   child: Center(
                                     child: Text(
                                       "Confirm",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700,fontSize: 14.sp),
+                                      style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
                                     ),
                                   ),
                                 ),

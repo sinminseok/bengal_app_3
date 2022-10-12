@@ -1,9 +1,7 @@
 import 'dart:async';
-import 'dart:math';
 import 'package:bengal_app/controller/storage_controller.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:external_app_launcher/external_app_launcher.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:usage_stats/usage_stats.dart';
@@ -25,9 +23,9 @@ class GameLauncher {
   GameLauncher._internal();
 
   static const int heartBeatCheckerPeriod = 5;
-  late Timer? _heartBeatChecker;
-  late GameInfo? _game;
-  late MiningResult? miningResult;
+  Timer? _heartBeatChecker;
+  GameInfo? _game;
+  MiningResult? miningResult;
 
   Future<bool> isAppInstalled(String packageName) async {
     return await DeviceApps.isAppInstalled(packageName);
@@ -86,7 +84,7 @@ class GameLauncher {
   }
 
   Future<void> _callBackHeartBeatChecker() async {
-    if (null == _game) return;
+    if (null == _game || null == miningResult) return;
 
     List<EventUsageInfo> events = [];
 
@@ -118,6 +116,9 @@ class GameLauncher {
     }
 
     StorageController().miningToken(_game!, miningResult!, DateTime.now().millisecondsSinceEpoch);
+    // if (!StorageController().miningToken(_game!, miningResult!, DateTime.now().millisecondsSinceEpoch)) {
+    //   gameStopped();
+    // }
   }
 
   void gameStopped() {

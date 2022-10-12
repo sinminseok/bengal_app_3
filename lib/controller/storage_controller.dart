@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 import 'package:bengal_app/controller/game_launcher.dart';
+import 'package:bengal_app/controller/power_controller.dart';
 import 'package:flinq/flinq.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,7 @@ import '../models/transfer.dart';
 import '../models/wallet.dart';
 import '../types/common.dart';
 import '../types/constants.dart';
+import 'levelup_controller.dart';
 
 enum StorageKey {
   baseId,
@@ -397,7 +399,19 @@ class StorageController implements Subject {
     if (!account!.isValidPassword(password)) return false;
 
     var ret = await saveRemember(isRemember);
-    return ret &= loadPlayerData();
+    ret &= loadPlayerData();
+
+    if (ret) {
+      var diff = DateTime.now().difference(account!.updatedAt);
+      if (60 <= diff.inMinutes) {
+        account!.power = commonData.initialInfo.maxPower;
+      }
+      PowerController().start();
+
+      LevelUpController().start();
+    }
+
+    return ret;
   }
 
   Future<bool> signOut() async {
@@ -420,7 +434,8 @@ class StorageController implements Subject {
             password,
             email,
             name,
-            commonData.initialInfo.maxPower);
+            commonData.initialInfo.maxPower,
+            DateTime.now(),);
 
     wallet = Wallet(
       ++_baseId,
@@ -492,6 +507,22 @@ class StorageController implements Subject {
     return true;
   }
 
+  bool _sellNft({double havah = 0.0, double per = 0.0, double xPer = 0.0}) {
+    if (null == wallet) return false;
+
+    if (0.0 < havah) {
+      wallet!.balanceHavah += havah;
+    }
+    if (0.0 < per) {
+      wallet!.balancePer += havah;
+    }
+    if (0.0 < xPer) {
+      wallet!.balanceXPer += havah;
+    }
+
+    return true;
+  }
+
   Future<bool> buyCar(CarNft nft) async {
     if (0 > carNftPool!.list.indexWhere((o) => o.id == nft.id)) return false;
     if (0 <= carNftList!.list.indexWhere((o) => o.id == nft.id)) return false;
@@ -508,6 +539,25 @@ class StorageController implements Subject {
     return ret;
   }
 
+  Future<bool> sellCar(CarNft nft, double price) async {
+    if (0 > carNftList!.list.indexWhere((o) => o.id == nft.id)) return false;
+    if (0 <= carNftPool!.list.indexWhere((o) => o.id == nft.id)) return false;
+
+    if (!_sellNft(havah: price)) return false;
+
+    nft.price = price;
+    carNftPool!.list.add(nft);
+    carNftList!.list.removeWhere((o) => o.id == nft.id);
+
+    var ret = await saveCarNftList();
+    ret &= await saveCarNftPool();
+
+    notifyObserver();
+
+    saveWallet();
+    return ret;
+  }
+
   Future<BoxNft?> buyBox(BoxNft nft) async {
     if (0 > boxNftPool!.list.indexWhere((o) => o.id == nft.id)) return null;
     if (0 <= boxNftList!.list.indexWhere((o) => o.id == nft.id)) return null;
@@ -519,6 +569,8 @@ class StorageController implements Subject {
     ret &= await saveBoxNftPool();
 
     notifyObserver();
+
+    saveWallet();
     return ret ? nft : null;
   }
 
@@ -579,7 +631,6 @@ class StorageController implements Subject {
   }
 
   Future<BoxNft?> minting(CarNft src, CarNft dst) async {
-    if (0 >= src.mintingCount || 0>= dst.mintingCount) return null;
     if (!wallet!.credit(CoinType.Per, commonData.initialInfo.breedPerCost)) return null;
     if (!wallet!.credit(CoinType.XPer, commonData.initialInfo.breedXPerCost)) {
       wallet!.debit(CoinType.Per, commonData.initialInfo.breedPerCost);
@@ -592,8 +643,8 @@ class StorageController implements Subject {
       wallet!.debit(CoinType.XPer, commonData.initialInfo.breedXPerCost);
       return null;
     }
-    src.mintingCount -= 1;
-    dst.mintingCount -= 1;
+    src.mintingCount++;
+    dst.mintingCount++;
     return box;
   }
 
@@ -632,18 +683,16 @@ class StorageController implements Subject {
   }
 
   bool isPossibleMining(GameInfo game) {
+    if (0 >= account!.power) return false;
+
     if (game.acceptNoCarUser()){
-      if (0 >= account!.power) return false;
       if (!checkMiningPerAmount(game) && !checkMiningXPerAmount(game)) return false;
       return true;
     }
 
     var car = getLobbySelectedCar();
     if (null == car) return false;
-    if (car!.grade < game.needCarGrade) return false;
-    if (car!.level < game.minCarLevel) return false;
-    if (0 != game.needCarType && car!.type != game.needCarType) return false;
-    if (0 >= account!.power) return false;
+    if (!car.isPossibleMining(commonData.initialInfo, game)) return false;
     if (!checkMiningPerAmount(game) && !checkMiningXPerAmount(game)) return false;
     return true;
   }
@@ -669,6 +718,11 @@ class StorageController implements Subject {
   }
 
   bool miningToken(GameInfo game, MiningResult mining, int timeStamp) {
+    if (0 >= account!.power) return false;
+    var car = getLobbySelectedCar();
+    if (null != car &&
+        !car.isPossibleMining(commonData.initialInfo, game)) return false;
+
     var bXPer = checkMiningXPerAmount(game);
     var bPer = checkMiningPerAmount(game);
     if (!bXPer && !bPer) return false;
@@ -684,13 +738,17 @@ class StorageController implements Subject {
 
     var multiple = mining.mining(timeStamp, per, xper);
     print("---------- mining XPer(${xper * multiple}) Per(${per * multiple})");
-    notifyObserver();
 
-    if (0 >= multiple) return false;
+    if (0 >= multiple) {
+      notifyObserver();
+      return false;
+    }
     account!.power -= (1 * multiple);
     wallet!.balancePer += (per * multiple);
     wallet!.balanceXPer += (xper * multiple);
+    if (null != car) car.mining(mining.remainSec);
 
+    notifyObserver();
     saveWallet();
     return true;
   }
@@ -738,4 +796,37 @@ class StorageController implements Subject {
     notifyObserver();
     return true;
   }
+
+  bool startLevelUp(CarNft car) {
+    if (!wallet!.levelUp(car.levelUpCost())) return false;
+
+    car.startLevelUp();
+
+    notifyObserver();
+
+    saveWallet();
+    return true;
+  }
+
+  bool levelUpBoost(CarNft car) {
+    if (!wallet!.levelUp(car.levelUpBoostCost())) return false;
+
+    car.updateLevelUp(true);
+
+    notifyObserver();
+
+    saveWallet();
+    return true;
+  }
+
+  bool repair(CarNft car) {
+    if (!wallet!.repair(car.durability)) return false;
+    car.doRepair();
+
+    notifyObserver();
+
+    saveWallet();
+    return true;
+  }
+
 }

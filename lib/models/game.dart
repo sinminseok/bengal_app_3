@@ -346,10 +346,14 @@ class MiningResult {
     if (!doMining) return 0;
     var curTime = DateTime.fromMillisecondsSinceEpoch(timeStamp);
     var gap = curTime.difference(updatedAt);
+
+    updatedAt = curTime;
+
     totalPlaySec += gap.inSeconds;
     var curSec = remainSec + gap.inSeconds;
     if (60 > curSec) {
       remainSec = curSec;
+      print(">>>>>>>>>> mining $remainSec");
       return 0;
     }
 
@@ -357,16 +361,15 @@ class MiningResult {
     remainSec = curSec % 60;
     miningXPer += (xper * min);
     miningPer += (per * min);
-    updatedAt = curTime;
     print(">>>>>>>>>> mining totalPlaySec($totalPlaySec) / min($min) / remainSec($remainSec)");
     return min;
   }
 
   void miningPlay(int timeStamp) {
-    print(">>>>>>>>>> miningPlay");
     if (0 == timeStamp) return;
     updatedAt = DateTime.fromMillisecondsSinceEpoch(timeStamp);
     doMining = true;
+    print(">>>>>>>>>> miningPlay ${updatedAt.second}");
   }
 
   void miningPause(int timeStamp) {

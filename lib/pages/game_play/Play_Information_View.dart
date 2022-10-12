@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:bengal_app/controller/storage_controller.dart';
@@ -6,6 +7,8 @@ import 'package:bengal_app/utils/dataType.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
@@ -26,11 +29,45 @@ class Play_information_View extends StatefulWidget {
 }
 
 class _Play_information_ViewState extends State<Play_information_View> {
+
+  bool _startCountDown = false;
+
+  void _openAppProc() {
+    GameLauncher().openApp(widget.game).then((value) => {
+      if (value) {
+        Navigator.push(context, PageTransition(type: PageTransitionType.fade,
+            child: Play_Finish_View(game: widget.game)))
+      } else {
+      }
+    });
+  }
+
+  void countDown() {
+    setState(() {
+      _startCountDown = true;
+    });
+    Timer(const Duration(milliseconds: 3500), () {
+      setState(() {
+        _startCountDown = false;
+      });
+      _openAppProc();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double powerPercent() => StorageController()
         .account!
         .getPowerPercent(StorageController().commonData.initialInfo.maxPower);
+
+    if (StorageController().carNftList!.list.isEmpty) {
+      Fluttertoast.showToast(
+          msg: StringConfiguration().uiString(UiStringType.TOAST_MESSAGE_17),
+          backgroundColor: Colors.white,
+          textColor: Colors.black,
+          gravity: ToastGravity.CENTER);
+    }
+
     return Scaffold(
       backgroundColor: kAppbarColor,
       appBar: AppBar(
@@ -40,7 +77,6 @@ class _Play_information_ViewState extends State<Play_information_View> {
         backgroundColor: kAppbarColor,
         title: Stack(
           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
           children: [
             InkWell(
               onTap: () {
@@ -60,421 +96,424 @@ class _Play_information_ViewState extends State<Play_information_View> {
                 decoration: const BoxDecoration(),
                 child: Text(
                   "Play information",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18),
+                  style: Font.lato(Colors.black, FontWeight.bold, 18.sp),
                 ),
               ),
             ),
           ],
         ),
       ),
-      body: Column(
+      body: Stack(
         children: [
-          Container(
-            margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
-            width: 390.w,
-            height: 1.h,
-            color: Colors.grey.shade300,
-          ),
-          Container(
-            margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 10.h),
-            width: 360.w,
-            height: 76.h,
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
-                border: Border.all(color: Colors.grey.shade300)),
-            child: Column(
-              children: [
-                Row(
+          Column(
+            children: [
+              Container(
+                margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 0.h),
+                width: 390.w,
+                height: 1.h,
+                color: Colors.grey.shade300,
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 10.h),
+                width: 360.w,
+                height: 76.h,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    border: Border.all(color: Colors.grey.shade300)),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.fromLTRB(15.w, 15.h, 0.w, 0.h),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.bolt,
+                                color: kCharColor,
+                                size: 14.w,
+                              ),
+                              Text(
+                                "Power",
+                                style: TextStyle(
+                                    color: kCharColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12.sp),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                            margin: EdgeInsets.fromLTRB(0.w, 10.h, 20.w, 0.h),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "${StorageController().account!.power}",
+                                  style:
+                                      TextStyle(color: kCharColor, fontSize: 12.sp),
+                                ),
+                                Text(
+                                  " / ${StorageController().commonData.initialInfo.maxPower}",
+                                  style:
+                                      TextStyle(color: kCharColor, fontSize: 10.sp),
+                                ),
+                              ],
+                            ))
+                      ],
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 10.w, top: 6.h),
+                      child: LinearPercentIndicator(
+                        center: Text(
+                          "${(powerPercent() * 100).round()}%",
+                          style: TextStyle(color: Colors.black, fontSize: 10.sp),
+                        ),
+                        barRadius: const Radius.circular(10),
+                        width: 340.w,
+                        lineHeight: 15.h,
+                        percent: powerPercent(),
+                        progressColor: const Color(0xff15BEA0),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                // margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
+                width: 360.w,
+                height: 92.h,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    border: Border.all(color: Colors.grey.shade300)),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 15.h, 0.w, 0.h),
-                      child: Row(
+                      margin: EdgeInsets.fromLTRB(20.w, 0.h, 0.w, 0.h),
+                      child: Text(
+                        "Today's Earn",
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey.shade600,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(0.w, 20.h, 20.w, 0.h),
+                      child: Column(
                         children: [
-                          Icon(
-                            Icons.bolt,
-                            color: kCharColor,
-                            size: 14.w,
+                          Row(
+                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Image.asset(
+                                "assets/images/lobby/icons/appbar_icons/xper_icon.png",
+                                width: 20.w,
+                                height: 20.h,
+                              ),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(6.w, 0.h, 0.w, 0.h),
+                                width: 200.w,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          StringConfiguration()
+                                              .uiString(UiStringType.TOKEN_NAME_01),
+                                          style: Font.lato(const Color(0xFF8E8E8E),
+                                              FontWeight.w700, 12.sp),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(
+                                              0.w, 0.h, 9.w, 0.h),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                StorageController()
+                                                    .miningResultList!
+                                                    .getTodayMiningTotalXPerAmount()
+                                                    .asString(),
+                                                style: Font.lato(
+                                                    const Color(0xFF8E8E8E),
+                                                    FontWeight.w700,
+                                                    12.sp),
+                                              ),
+                                              Text(
+                                                "/${StorageController().commonData.initialInfo.dailyLimitXPer.asString()}",
+                                                style: Font.lato(kPrimaryColor,
+                                                    FontWeight.w700, 8.sp),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Container(
+                                      margin:
+                                          EdgeInsets.fromLTRB(0.w, 2.h, 0.w, 0.h),
+                                      child: LinearPercentIndicator(
+                                          barRadius: const Radius.circular(10),
+                                          width: 200.w,
+                                          padding: EdgeInsets.only(right: 4.w),
+                                          lineHeight: 2.h,
+                                          percent: 0.4,
+                                          progressColor: Colors.grey),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.fromLTRB(0.w, 9.h, 0.w, 0.h),
+                                child: Image.asset(
+                                  "assets/images/lobby/icons/appbar_icons/per_icon.png",
+                                  width: 20.w,
+                                  height: 20.h,
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(6.w, 12.h, 0.w, 0.h),
+                                width: 200.w,
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          StringConfiguration()
+                                              .uiString(UiStringType.TOKEN_NAME_02),
+                                          style: Font.lato(const Color(0xFFECB133),
+                                              FontWeight.w700, 12.sp),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(
+                                              0.w, 0.h, 9.w, 0.h),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                StorageController()
+                                                    .miningResultList!
+                                                    .getTodayMiningTotalPerAmount()
+                                                    .asString(),
+                                                style: Font.lato(
+                                                    const Color(0xFFECB133),
+                                                    FontWeight.w700,
+                                                    12.sp),
+                                              ),
+                                              Text(
+                                                "/${StorageController().commonData.initialInfo.dailyLimitXPer.asString()}",
+                                                style: Font.lato(
+                                                    const Color(0xFFECB133),
+                                                    FontWeight.w700,
+                                                    8.sp),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Container(
+                                      margin:
+                                          EdgeInsets.fromLTRB(0.w, 2.h, 0.w, 0.h),
+                                      child: LinearPercentIndicator(
+                                        barRadius: const Radius.circular(10),
+                                        width: 200.w,
+                                        lineHeight: 2.h,
+                                        padding: EdgeInsets.only(right: 4.w),
+                                        percent: 0.4,
+                                        progressColor: const Color(0xFFECB133),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(15.w, 40.h, 15.w, 0.h),
+                width: 360.w,
+                height: 150.h,
+                decoration: const BoxDecoration(
+                    color: kPrimaryColor,
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
+                child: Row(
+                  children: [
+                    Container(
+                        margin: EdgeInsets.fromLTRB(10.w, 25.h, 15.w, 25.h),
+                        child: Image.asset(
+                          widget.game.gameIconAsset(),
+                          width: 100.w,
+                        )),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(1.w, 44.h, 0.w, 0.h),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.game.titleString(),
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
                           ),
                           Text(
-                            "Power",
+                            "00:00:00",
                             style: TextStyle(
-                                color: kCharColor,
+                                color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 12.sp),
+                                fontSize: 30),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(15.w, 40.h, 0.w, 0.h),
+                    child: Text(
+                      "Earning Token",
+                      style: TextStyle(color: Colors.grey.shade600),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(15.w, 5.h, 15.w, 0.h),
+                width: 360.w,
+                height: 70.h,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey.shade300),
+                    color: Colors.white,
+                    borderRadius: const BorderRadius.all(Radius.circular(10))),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(17.w, 0.h, 0.w, 0.h),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            "assets/images/lobby/icons/appbar_icons/xper_icon.png",
+                            width: 36.w,
+                            height: 36.h,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                  margin:
+                                      EdgeInsets.fromLTRB(10.w, 15.h, 15.w, 0.h),
+                                  child: Text(
+                                    //"+${StorageController().miningResultList!.getTodayMiningXPerAmount(widget.game.id).asString()}",
+                                    "0.0",
+                                    style: TextStyle(
+                                        fontSize: 17, color: Colors.grey.shade500),
+                                  )),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(10.w, 0.h, 15.w, 0.h),
+                                child: const Text(
+                                  "XPER",
+                                  style:
+                                      TextStyle(color: Colors.grey, fontSize: 11),
+                                ),
+                              )
+                            ],
                           ),
                         ],
                       ),
                     ),
                     Container(
-                        margin: EdgeInsets.fromLTRB(0.w, 10.h, 20.w, 0.h),
-                        child: Row(
-                          children: [
-                            Text(
-                              "${StorageController().account!.power}",
-                              style:
-                                  TextStyle(color: kCharColor, fontSize: 12.sp),
-                            ),
-                            Text(
-                              " / ${StorageController().commonData.initialInfo.maxPower}",
-                              style:
-                                  TextStyle(color: kCharColor, fontSize: 10.sp),
-                            ),
-                          ],
-                        ))
+                      margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
+                      height: 50.h,
+                      width: 0.1,
+                      color: Colors.grey,
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
+                      child: Row(
+                        children: [
+                          Container(
+                              margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
+                              child: Image.asset(
+                                "assets/images/lobby/icons/appbar_icons/per_icon.png",
+                                width: 36.w,
+                                height: 36.h,
+                              )),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                  margin:
+                                      EdgeInsets.fromLTRB(10.w, 15.h, 15.w, 0.h),
+                                  child: Text(
+                                    //"+${StorageController().miningResultList!.getTodayMiningPerAmount(widget.game.id).asString()}",
+                                    "0.0",
+                                    style: const TextStyle(
+                                        fontSize: 17, color: kPerColor),
+                                  )),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 0.h),
+                                child: const Text(
+                                  "PER",
+                                  style:
+                                      TextStyle(color: Colors.grey, fontSize: 11),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-                Container(
-                  margin: EdgeInsets.only(left: 10.w, top: 6.h),
-                  child: LinearPercentIndicator(
-                    center: Text(
-                      "${(powerPercent() * 100).round()}%",
-                      style: TextStyle(color: Colors.black, fontSize: 10.sp),
-                    ),
-                    barRadius: const Radius.circular(10),
-                    width: 340.w,
-                    lineHeight: 15.h,
-                    percent: powerPercent(),
-                    progressColor: const Color(0xff15BEA0),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            // margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
-            width: 360.w,
-            height: 92.h,
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
-                border: Border.all(color: Colors.grey.shade300)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  margin: EdgeInsets.fromLTRB(20.w, 0.h, 0.w, 0.h),
-                  child: Text(
-                    "Today's Earn",
-                    style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey.shade600,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.fromLTRB(0.w, 20.h, 20.w, 0.h),
-                  child: Column(
-                    children: [
-                      Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset(
-                            "assets/images/lobby/icons/appbar_icons/xper_icon.png",
-                            width: 20.w,
-                            height: 20.h,
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(6.w, 0.h, 0.w, 0.h),
-                            width: 200.w,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      StringConfiguration()
-                                          .uiString(UiStringType.TOKEN_NAME_01),
-                                      style: Font.lato(const Color(0xFF8E8E8E),
-                                          FontWeight.w700, 12.sp),
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(
-                                          0.w, 0.h, 9.w, 0.h),
-                                      child: Row(
-                                        children: [
-                                          Text(
-                                            StorageController()
-                                                .miningResultList!
-                                                .getTodayMiningTotalXPerAmount()
-                                                .asString(),
-                                            style: Font.lato(
-                                                const Color(0xFF8E8E8E),
-                                                FontWeight.w700,
-                                                12.sp),
-                                          ),
-                                          Text(
-                                            "/${StorageController().commonData.initialInfo.dailyLimitXPer.asString()}",
-                                            style: Font.lato(kPrimaryColor,
-                                                FontWeight.w700, 8.sp),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Container(
-                                  margin:
-                                      EdgeInsets.fromLTRB(0.w, 2.h, 0.w, 0.h),
-                                  child: LinearPercentIndicator(
-                                      barRadius: const Radius.circular(10),
-                                      width: 200.w,
-                                      padding: EdgeInsets.only(right: 4.w),
-                                      lineHeight: 2.h,
-                                      percent: 0.4,
-                                      progressColor: Colors.grey),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0.w, 9.h, 0.w, 0.h),
-                            child: Image.asset(
-                              "assets/images/lobby/icons/appbar_icons/per_icon.png",
-                              width: 20.w,
-                              height: 20.h,
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(6.w, 12.h, 0.w, 0.h),
-                            width: 200.w,
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      StringConfiguration()
-                                          .uiString(UiStringType.TOKEN_NAME_02),
-                                      style: Font.lato(const Color(0xFFECB133),
-                                          FontWeight.w700, 12.sp),
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(
-                                          0.w, 0.h, 9.w, 0.h),
-                                      child: Row(
-                                        children: [
-                                          Text(
-                                            StorageController()
-                                                .miningResultList!
-                                                .getTodayMiningTotalPerAmount()
-                                                .asString(),
-                                            style: Font.lato(
-                                                const Color(0xFFECB133),
-                                                FontWeight.w700,
-                                                12.sp),
-                                          ),
-                                          Text(
-                                            "/${StorageController().commonData.initialInfo.dailyLimitXPer.asString()}",
-                                            style: Font.lato(
-                                                const Color(0xFFECB133),
-                                                FontWeight.w700,
-                                                8.sp),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Container(
-                                  margin:
-                                      EdgeInsets.fromLTRB(0.w, 2.h, 0.w, 0.h),
-                                  child: LinearPercentIndicator(
-                                    barRadius: const Radius.circular(10),
-                                    width: 200.w,
-                                    lineHeight: 2.h,
-                                    padding: EdgeInsets.only(right: 4.w),
-                                    percent: 0.4,
-                                    progressColor: const Color(0xFFECB133),
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.fromLTRB(15.w, 40.h, 15.w, 0.h),
-            width: 360.w,
-            height: 150.h,
-            decoration: const BoxDecoration(
-                color: kPrimaryColor,
-                borderRadius: BorderRadius.all(Radius.circular(15))),
-            child: Row(
-              children: [
-                Container(
-                    margin: EdgeInsets.fromLTRB(10.w, 25.h, 15.w, 25.h),
-                    child: Image.asset(
-                      widget.game.gameIconAsset(),
-                      width: 100.w,
-                    )),
-                Container(
-                  margin: EdgeInsets.fromLTRB(1.w, 44.h, 0.w, 0.h),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        widget.game.titleString(),
-                        style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
-                      Text(
-                        "00:00:00",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-          Row(
-            children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(15.w, 40.h, 0.w, 0.h),
-                child: Text(
-                  "Earning Token",
-                  style: TextStyle(color: Colors.grey.shade600),
-                ),
               ),
+              InkWell(
+                onTap: () {
+                  GameLauncher().isAppInstalled(widget.game.packageName).then((value) => {
+                    if (value) {
+                      countDown()
+                    } else {
+                      GameInstallNotice().popup(context, widget.game)
+                    }
+                  });
+                },
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(0.w, 92.h, 0.w, 0.h),
+                  width: 175.w,
+                  height: 46.h,
+                  child: Image.asset("assets/images/game/game_play_button.png"),
+                ),
+              )
             ],
           ),
-          Container(
-            margin: EdgeInsets.fromLTRB(15.w, 5.h, 15.w, 0.h),
-            width: 360.w,
-            height: 70.h,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey.shade300),
-                color: Colors.white,
-                borderRadius: const BorderRadius.all(Radius.circular(10))),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  margin: EdgeInsets.fromLTRB(17.w, 0.h, 0.w, 0.h),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        "assets/images/lobby/icons/appbar_icons/xper_icon.png",
-                        width: 36.w,
-                        height: 36.h,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                              margin:
-                                  EdgeInsets.fromLTRB(10.w, 15.h, 15.w, 0.h),
-                              child: Text(
-                                //"+${StorageController().miningResultList!.getTodayMiningXPerAmount(widget.game.id).asString()}",
-                                "0.0",
-                                style: TextStyle(
-                                    fontSize: 17, color: Colors.grey.shade500),
-                              )),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(10.w, 0.h, 15.w, 0.h),
-                            child: const Text(
-                              "XPER",
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 11),
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
-                  height: 50.h,
-                  width: 0.1,
-                  color: Colors.grey,
-                ),
-                Container(
-                  margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
-                  child: Row(
-                    children: [
-                      Container(
-                          margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
-                          child: Image.asset(
-                            "assets/images/lobby/icons/appbar_icons/per_icon.png",
-                            width: 36.w,
-                            height: 36.h,
-                          )),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                              margin:
-                                  EdgeInsets.fromLTRB(10.w, 15.h, 15.w, 0.h),
-                              child: Text(
-                                //"+${StorageController().miningResultList!.getTodayMiningPerAmount(widget.game.id).asString()}",
-                                "0.0",
-                                style: const TextStyle(
-                                    fontSize: 17, color: kPerColor),
-                              )),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 0.h),
-                            child: const Text(
-                              "PER",
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 11),
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              GameLauncher().isAppInstalled(widget.game.packageName).then((value) => {
-                if (value) {
-                  GameLauncher().openApp(widget.game).then((value) => {
-                    if (value) {
-                      Navigator.push(context, PageTransition(type: PageTransitionType.fade,
-                              child: Play_Finish_View(game: widget.game)))
-                      } else {
-                    }
-                    })
-                } else {
-                  GameInstallNotice().popup(context, widget.game)
-                }
-              });
-            },
-            child: Container(
-              margin: EdgeInsets.fromLTRB(0.w, 92.h, 0.w, 0.h),
-              width: 175.w,
-              height: 46.h,
-              child: Image.asset("assets/images/game/game_play_button.png"),
-            ),
+          _startCountDown
+              ? Center(child:
+              Lottie.asset('assets/lottie/count_clock.json',
+                width: 390,
+                height: 491,
+                fit: BoxFit.fill,)
           )
+              : Container()
         ],
       ),
     );

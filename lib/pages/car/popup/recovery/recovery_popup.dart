@@ -8,10 +8,11 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import 'package:vs_scrollbar/vs_scrollbar.dart';
 
+import '../../../../models/car.dart';
 import '../../../../types/constants.dart';
 
 class Recovery_popup {
-  void recovery_popup(BuildContext context) {
+  void recovery_popup(BuildContext context, CarNft car) {
     double _value = 0.5;
     showAnimatedDialog(
       context: context,
@@ -128,7 +129,7 @@ class Recovery_popup {
                                       margin: EdgeInsets.fromLTRB(10.w, 10.h, 3.w, 0.h),
 
                                       child: Image.asset("assets/images/common/cars/icons/yellow_scroll_icon.png")),
-                                  
+
                                   Container(
                                       margin: EdgeInsets.fromLTRB(3.w, 10.h, 3.w, 0.h),
 
@@ -140,7 +141,7 @@ class Recovery_popup {
                                     width: 80.w,
                                     height: 22.h,
                                     decoration: BoxDecoration(
-                                      
+
                                       color: Colors.grey.shade200,
                                       borderRadius: BorderRadius.all(Radius.circular(30))
                                     ),

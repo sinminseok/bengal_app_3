@@ -25,7 +25,7 @@ class _Trade_ViewState extends State<Trade_View> {
   bool change = false;
   bool cars_ontap = false;
   bool boxs_ontap = false;
-  TextEditingController _priceController = TextEditingController();
+  final TextEditingController _priceController = TextEditingController();
   var value;
 
   CoinType fromCoin = CoinType.Usdc;

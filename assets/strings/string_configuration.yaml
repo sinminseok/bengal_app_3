@@ -181,6 +181,10 @@
       "msg": "Cancel Completed."
     },
     {
+      "code": "TOAST_MESSAGE_17",
+      "msg": "You can earn more XPER by purchasing car NFT."
+    },
+    {
       "code": "LOGIN_01",
       "msg": "Your play is worth it!"
     },

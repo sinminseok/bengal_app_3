@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:bengal_app/controller/storage_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
@@ -8,10 +9,12 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import 'package:vs_scrollbar/vs_scrollbar.dart';
 
+import '../../../../models/car.dart';
 import '../../../../types/constants.dart';
+import '../../../../utils/font.dart';
 
 class Repair_popup {
-  void repair_popup(BuildContext context) {
+  void repair_popup(BuildContext context, CarNft car) {
 
     double _value = 0.5;
     showAnimatedDialog(
@@ -25,7 +28,7 @@ class Repair_popup {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.1)),
               content: DefaultTextStyle(
-                  style: TextStyle(fontSize: 16, color: Colors.black),
+                  style: const TextStyle(fontSize: 16, color: Colors.black),
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
@@ -52,7 +55,7 @@ class Repair_popup {
                               Container(
                                 width: 300.w,
                                 height: 50.h,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(10),
                                         topRight: Radius.circular(10)),
@@ -60,15 +63,14 @@ class Repair_popup {
                                 child: Center(
                                     child: Text(
                                   "REPAIR",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 18),
+                                  style: Font.lato(Colors.white, FontWeight.bold, 18.sp),
                                 )),
                               ),
                               Container(
                                 width: 300.w,
                                 height: 180.h,
                                 child: Image.asset(
-                                  "assets/images/common/cars/car1.png",
+                                  car.getAssetImage(),
                                   fit: BoxFit.fill,
                                 ),
                               ),
@@ -80,24 +82,20 @@ class Repair_popup {
                                           15.w, 10.h, 0.w, 0.h),
                                       child: Text(
                                         "Durability",
-                                        style: TextStyle(
-                                            color: Colors.grey.shade600,
-                                            fontSize: 14),
+                                        style: Font.lato(Colors.grey.shade600, FontWeight.bold, 14.sp),
                                       )),
                                   Container(
                                       margin: EdgeInsets.fromLTRB(
                                           15.w, 10.h, 0.w, 0.h),
                                       child: Text(
-                                        "60/100",
-                                        style: TextStyle(
-                                            color: Colors.grey.shade600,
-                                            fontSize: 14),
+                                        "${car.durability}/${StorageController().commonData.initialInfo.carMaxDurability}",
+                                        style: Font.lato(Colors.grey.shade600, FontWeight.bold, 14.sp),
                                       )),
                                 ],
                               ),
                               SliderTheme(
                                 data: SliderTheme.of(context).copyWith(
-                                    thumbShape: RoundSliderThumbShape()),
+                                    thumbShape: const RoundSliderThumbShape()),
                                 child: Slider(
                                   activeColor: kPrimaryColor,
                                   inactiveColor: Colors.grey.shade300,
@@ -119,18 +117,14 @@ class Repair_popup {
                                           20.w, 0.h, 10.w, 0.h),
                                       child: Text(
                                         "Cost",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                            color: Colors.grey.shade700,
-                                            fontSize: 14),
+                                        style: Font.lato(Colors.grey.shade700, FontWeight.bold, 14.sp),
                                       )),
                                   Container(
                                       margin: EdgeInsets.fromLTRB(
                                           15.w, 10.h, 10.w, 0.h),
                                       child: Text(
                                         "",
-                                        style: TextStyle(
-                                            color: kPrimaryColor, fontSize: 10),
+                                        style: Font.lato(kPrimaryColor, FontWeight.w400, 10.sp),
                                       )),
                                 ],
                               ),
@@ -138,67 +132,59 @@ class Repair_popup {
                                 width: 260.w,
                                 height: 46.h,
                                 decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
+                                    borderRadius: const BorderRadius.all(Radius.circular(10)),
                                     border: Border.all(
                                         color: Colors.grey.shade200)),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Container(
-
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.fromLTRB(
-                                                3.w, 0.h, 2.w, 0.h),
-                                            child: Image.asset(
-                                              "assets/images/lobby/icons/appbar_icons/xper_icon.png",
-                                              width: 20.w,
-                                              height: 20.h,
-                                            ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(
+                                              3.w, 0.h, 2.w, 0.h),
+                                          child: Image.asset(
+                                            "assets/images/lobby/icons/appbar_icons/xper_icon.png",
+                                            width: 20.w,
+                                            height: 20.h,
                                           ),
-                                          Text(
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(left: 5.w),
+                                          child: Text(
                                             "XPER",
-                                            style: TextStyle(
-                                                color: Colors.grey.shade400,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 10.sp),
-                                          )
-                                        ],
-                                      ),
+                                            style: Font.lato(Colors.grey.shade400, FontWeight.bold, 10.sp),
+                                          ),
+                                        )
+                                      ],
                                     ),
                                     Container(
-                                      margin: EdgeInsets.fromLTRB(
-                                          3.w, 0.h, 0.w, 0.h),
+                                      margin: EdgeInsets.fromLTRB(3.w, 0.h, 0.w, 0.h),
                                       child: Text(
-                                          "Move the slide to set the target Durability",style: TextStyle(
-                                          color: Colors.grey.shade400,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 8.sp),),
+                                          "${car.repairCost()}",//"Move the slide to set the target Durability",
+                                        style: Font.lato(Colors.grey.shade400, FontWeight.w400, 8.sp),
+                                      ),
                                     )
                                   ],
                                 ),
                               ),
                               GestureDetector(
                                 onTap: () {
+                                  StorageController().repair(car);
                                   Navigator.pop(context);
                                 },
                                 child: Container(
                                   width: 120.w,
                                   height: 34.h,
-                                  margin: EdgeInsets.fromLTRB(
-                                      15.w, 30.h, 15.w, 0.h),
-                                  decoration: BoxDecoration(
+                                  margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
+                                  decoration: const BoxDecoration(
                                       color: kPrimaryColor,
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(30))),
                                   child: Center(
                                     child: Text(
                                       "Repair",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
+                                      style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
                                     ),
                                   ),
                                 ),

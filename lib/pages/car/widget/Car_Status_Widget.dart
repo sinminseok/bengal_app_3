@@ -2,7 +2,9 @@ import 'package:bengal_app/models/car.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget Car_Status_Widget(Size size,CarNft? carNft){
+import '../../../utils/font.dart';
+
+Widget Car_Status_Widget(Size size,CarNft car, bool isCurrently){
   return Container(
     margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 0.h),
 
@@ -13,15 +15,13 @@ Widget Car_Status_Widget(Size size,CarNft? carNft){
       children: [
         //Speed Box
         Container(
-
           width: 75.w,
           height: 80.h,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
               color: Colors.grey.shade200),
           child: Column(
             children: [
-
               Container(
                 margin: EdgeInsets.only(top:6.h),
                 child: Image.asset(
@@ -30,20 +30,22 @@ Widget Car_Status_Widget(Size size,CarNft? carNft){
                   height: 24.h,
                 ),
               ),
-              Text("${carNft!.speed}",style: TextStyle(fontSize: 16),),
+              Text(
+                "${isCurrently ? car.speed : car.speedBase}",
+                style: Font.lato(Colors.black, FontWeight.bold, 16.sp),
+              ),
               Text(
                 "Speed",
-                style: TextStyle(fontSize: 10, color: Colors.grey),
+                style: Font.lato(Colors.grey, FontWeight.w400, 10.sp),
               )
             ],
           ),
         ),
         Container(
-
           width: 75.w,
           height: 80.h,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
               color: Colors.grey.shade200),
           child: Column(
             children: [
@@ -56,24 +58,25 @@ Widget Car_Status_Widget(Size size,CarNft? carNft){
                   height: 24.h,
                 ),
               ),
-              Text("${carNft!.lucky}",style: TextStyle(fontSize: 16),),
+              Text(
+                "${isCurrently ? car.lucky : car.luckyBase}",
+                style: Font.lato(Colors.black, FontWeight.bold, 16.sp),
+              ),
               Text(
                 "Luck",
-                style: TextStyle(fontSize: 10, color: Colors.grey),
+                style: Font.lato(Colors.grey, FontWeight.w400, 10.sp),
               )
             ],
           ),
         ),
         Container(
-
           width: 75.w,
           height: 80.h,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
               color: Colors.grey.shade200),
           child: Column(
             children: [
-
               Container(
                 margin: EdgeInsets.only(top:6.h),
                 child: Image.asset(
@@ -82,10 +85,13 @@ Widget Car_Status_Widget(Size size,CarNft? carNft){
                   height: 24.h,
                 ),
               ),
-              Text("${carNft!.charge}",style: TextStyle(fontSize: 16),),
+              Text(
+                "${isCurrently ? car.charge : car.chargeBase}",
+                style: Font.lato(Colors.black, FontWeight.bold, 16.sp),
+              ),
               Text(
                 "Charge",
-                style: TextStyle(fontSize: 10, color: Colors.grey),
+                style: Font.lato(Colors.grey, FontWeight.w400, 10.sp),
               )
             ],
           ),
@@ -95,11 +101,10 @@ Widget Car_Status_Widget(Size size,CarNft? carNft){
           width: 75.w,
           height: 80.h,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
               color: Colors.grey.shade200),
           child: Column(
             children: [
-
               Container(
                 margin: EdgeInsets.only(top:6.h),
                 child: Image.asset(
@@ -108,16 +113,17 @@ Widget Car_Status_Widget(Size size,CarNft? carNft){
                   height: 24.h,
                 ),
               ),
-              Text("${carNft!.repair}",style: TextStyle(fontSize: 16),),
+              Text(
+                "${isCurrently ? car.repair : car.repairBase}",
+                style: Font.lato(Colors.black, FontWeight.bold, 16.sp),
+              ),
               Text(
                 "Repair",
-                style: TextStyle(fontSize: 10, color: Colors.grey),
+                style: Font.lato(Colors.grey, FontWeight.w400, 10.sp),
               )
             ],
           ),
         ),
-        //Luck box
-
       ],
     ),
   );

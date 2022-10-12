@@ -8,19 +8,21 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import 'package:vs_scrollbar/vs_scrollbar.dart';
 
+import '../../../../models/car.dart';
 import '../../../../types/constants.dart';
+import '../../../../utils/font.dart';
 import 'levelup3_popup.dart';
 
 class Levelup2_popup {
 
-  void levelup2_popup(BuildContext context) {
+  void levelup2_popup(BuildContext context, CarNft car) {
     showAnimatedDialog(
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
         return Center(
           child: DefaultTextStyle(
-              style: TextStyle(fontSize: 16, color: Colors.black),
+              style: const TextStyle(fontSize: 16, color: Colors.black),
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
@@ -45,7 +47,7 @@ class Levelup2_popup {
                           Container(
                             width: 300.w,
                             height: 50.h,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(10),
                                     topRight: Radius.circular(10)),
@@ -53,15 +55,14 @@ class Levelup2_popup {
                             child: Center(
                                 child: Text(
                                   "LEVEL UP",
-                                  style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
+                                  style: Font.lato(Colors.white, FontWeight.bold, 18.sp),
                                 )),
                           ),
-                          Container(
+                          SizedBox(
                             width: 300.w,
                             height: 180.h,
                             child: Image.asset(
-                              "assets/images/common/cars/car1.png",
+                              car.getAssetImage(),
                               fit: BoxFit.fill,
                             ),
                           ),
@@ -72,10 +73,8 @@ class Levelup2_popup {
                                   margin:
                                   EdgeInsets.fromLTRB(15.w, 10.h, 0.w, 0.h),
                                   child: Text(
-                                    "Lv 4",
-                                    style: TextStyle(
-                                        color: Colors.grey.shade600,
-                                        fontSize: 16),
+                                    "Lv ${car.level}",
+                                    style: Font.lato(Colors.grey.shade600, FontWeight.w400, 16.sp),
                                   )),
                               Container(
                                   margin:
@@ -86,12 +85,10 @@ class Levelup2_popup {
                                     height: 20.h,
                                   )),
                               Container(
-                                  margin:
-                                  EdgeInsets.fromLTRB(0.w, 10.h, 15.w, 0.h),
+                                  margin: EdgeInsets.fromLTRB(0.w, 10.h, 15.w, 0.h),
                                   child: Text(
-                                    "Lv 4",
-                                    style: TextStyle(
-                                        color: kPrimaryColor, fontSize: 16),
+                                    "Lv ${car.level+1}",
+                                    style: Font.lato(kPrimaryColor, FontWeight.bold, 16.sp),
                                   )),
                             ],
                           ),
@@ -100,20 +97,20 @@ class Levelup2_popup {
                               EdgeInsets.fromLTRB(15.w, 10.h, 200.w, 0.h),
                               child: Text(
                                 "Leveling",
-                                style: TextStyle(color: Colors.grey.shade700),
+                                style: Font.lato(Colors.grey.shade700, FontWeight.w400, 16.sp),
                               )),
                           Container(
                             margin: EdgeInsets.fromLTRB(20.w, 10.h, 15.w, 0.h),
                             child: Center(
                               child: LinearPercentIndicator(
                                 //추후 퍼센트 데이터 가져오면 넣어줄 것
-                                center: Text("65.50%",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 13)),
+                                center: Text("${car.levelUpPercent()}%",
+                                    style: Font.lato(Colors.white, FontWeight.w400, 13.sp),
+                                ),
                                 barRadius: const Radius.circular(10),
                                 width: 260.w,
                                 lineHeight: 20.h,
-                                percent: 0.7,
+                                percent: car.levelUpPercent() / 100.toDouble(),
                                 progressColor: kPrimaryColor,
                                 padding: const EdgeInsets.only(top: 0),
                               ),
@@ -122,39 +119,35 @@ class Levelup2_popup {
                           Container(
                             margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
                             child: Text(
-                              "Reamaing Time",
-                              style: TextStyle(
-                                  color: Colors.grey.shade600, fontSize: 12),
+                              "Remaining Time",
+                              style: Font.lato(Colors.grey.shade600, FontWeight.w400, 12.sp),
                             ),
                           ),
                           Container(
                             margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
                             child: Text(
-                              "TIME",
-                              style:
-                              TextStyle(color: kPrimaryColor, fontSize: 20),
+                              car.getLevelUpRemainString(),
+                              style: Font.lato(kPrimaryColor, FontWeight.bold, 20.sp),
                             ),
                           ),
                           GestureDetector(
                             onTap: () {
                               Navigator.pop(context);
-                             // Levelup3_popup().levelup3_popup(context);
+                              Levelup3_popup().levelup3_popup(context, car);
                             },
                             child: Container(
                               width: 120.w,
                               height: 34.h,
                               margin:
                               EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   color: kPrimaryColor,
                                   borderRadius:
                                   BorderRadius.all(Radius.circular(30))),
                               child: Center(
                                 child: Text(
                                   "Boost",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
+                                  style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
                                 ),
                               ),
                             ),

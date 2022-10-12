@@ -4,22 +4,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-
-import 'package:vs_scrollbar/vs_scrollbar.dart';
-
+import '../../../../controller/storage_controller.dart';
+import '../../../../models/car.dart';
 import '../../../../types/constants.dart';
+import '../../../../utils/font.dart';
 
 class Levelup3_popup {
 
-  void levelup3_popup(BuildContext context) {
+  void levelup3_popup(BuildContext context, CarNft car) {
     showAnimatedDialog(
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
         return Center(
           child: DefaultTextStyle(
-              style: TextStyle(fontSize: 16, color: Colors.black),
+              style: const TextStyle(fontSize: 16, color: Colors.black),
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
@@ -44,23 +43,22 @@ class Levelup3_popup {
                           Container(
                             width: 300.w,
                             height: 50.h,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(10),
                                     topRight: Radius.circular(10)),
                                 color: kPrimaryColor),
                             child: Center(
                                 child: Text(
-                                  "LEVEL UP",
-                                  style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
+                                  "LEVEL UP BOOST",
+                                  style: Font.lato(Colors.white, FontWeight.bold, 18.sp),
                                 )),
                           ),
-                          Container(
+                          SizedBox(
                             width: 300.w,
                             height: 180.h,
                             child: Image.asset(
-                              "assets/images/common/cars/car1.png",
+                              car.getAssetImage(),
                               fit: BoxFit.fitWidth,
                             ),
                           ),
@@ -71,10 +69,8 @@ class Levelup3_popup {
                                   margin:
                                   EdgeInsets.fromLTRB(15.w, 10.h, 0.w, 0.h),
                                   child: Text(
-                                    "Lv 4",
-                                    style: TextStyle(
-                                        color: Colors.grey.shade600,
-                                        fontSize: 16),
+                                    "Lv ${car.level}",
+                                    style: Font.lato(Colors.grey.shade600, FontWeight.w400, 16.sp),
                                   )),
                               Container(
                                   margin:
@@ -88,9 +84,8 @@ class Levelup3_popup {
                                   margin:
                                   EdgeInsets.fromLTRB(0.w, 10.h, 15.w, 0.h),
                                   child: Text(
-                                    "Lv 4",
-                                    style: TextStyle(
-                                        color: kPrimaryColor, fontSize: 16),
+                                    "Lv ${car.level+1}",
+                                    style: Font.lato(kPrimaryColor, FontWeight.bold, 16.sp),
                                   )),
                             ],
                           ),
@@ -107,8 +102,7 @@ class Levelup3_popup {
                                 ),
                                 Text(
                                   "Needed for next level",
-                                  style: TextStyle(
-                                      color: kPrimaryColor, fontSize: 10),
+                                  style: Font.lato(kPrimaryColor, FontWeight.w400, 10.sp),
                                 )
                               ],
                             ),
@@ -120,14 +114,12 @@ class Levelup3_popup {
                             height: 47.h,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.grey.shade400),
-                                borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
+                                borderRadius: const BorderRadius.all(Radius.circular(10))),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
-                                    margin: EdgeInsets.fromLTRB(
-                                        10.w, 3.h, 15.w, 0.h),
+                                    margin: EdgeInsets.fromLTRB(10.w, 3.h, 15.w, 0.h),
                                     child: Row(
                                       children: [
                                         Image.asset(
@@ -135,24 +127,28 @@ class Levelup3_popup {
                                           width: 20.w,
                                           height: 20.h,
                                         ),
-                                        Text(
-                                          "XPER",
-                                          style: TextStyle(
-                                              color: Colors.grey.shade600,
-                                              fontSize: 12),
+                                        Container(
+                                          margin: EdgeInsets.only(left: 5.w),
+                                          child: Text(
+                                            "XPER",
+                                            style: Font.lato(Colors.grey.shade600, FontWeight.w400, 12.sp),
+                                          ),
                                         )
                                       ],
                                     )),
                                 Container(
                                   margin: EdgeInsets.fromLTRB(15.w, 3.h, 15.w, 0.h),
-
-                                  child: Text("20.0",style: TextStyle(color: Colors.grey.shade600,fontSize: 12,fontWeight: FontWeight.bold),),
+                                  child: Text(
+                                    "${car.levelUpBoostCost()}",
+                                    style: Font.lato(Colors.grey.shade600, FontWeight.bold, 12.sp),
+                                  ),
                                 )
                               ],
                             ),
                           ),
                           GestureDetector(
                             onTap: () {
+                              StorageController().levelUpBoost(car);
                               Navigator.pop(context);
                             },
                             child: Container(
@@ -160,16 +156,14 @@ class Levelup3_popup {
                               height: 34.h,
                               margin:
                               EdgeInsets.fromLTRB(1.w, 20.h, 15.w, 1.h),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   color: kPrimaryColor,
                                   borderRadius:
                                   BorderRadius.all(Radius.circular(30))),
                               child: Center(
                                 child: Text(
                                   "Boost",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
+                                  style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
                                 ),
                               ),
                             ),

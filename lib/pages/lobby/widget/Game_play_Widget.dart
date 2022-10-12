@@ -13,6 +13,7 @@ import '../../../models/game.dart';
 import '../../../types/constants.dart';
 import '../../../types/string_type.dart';
 import '../../../utils/font.dart';
+import '../../game/popup/game_install_notice.dart';
 
 Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
   return InkWell(
@@ -172,15 +173,20 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
                       textColor: Colors.black,
                       gravity: ToastGravity.CENTER);
                 } else {
-                  Navigator.push(context, PageTransition(
-                      type: PageTransitionType.fade,
-                      child: Play_information_View(game: game)));
+                  GameLauncher().isAppInstalled(game.packageName).then((value) => {
+                    if (value) {
+                      Navigator.push(context, PageTransition(
+                          type: PageTransitionType.fade,
+                          child: Play_information_View(game: game)))
+                    } else {
+                      GameInstallNotice().popup(context, game)
+                    }
+                  });
                 }
-                //GameLauncher().openApp(game);
-                // Lottie.asset('assets/LottieLogo1.json',
-                //   width: 200,
-                //   height: 200,
-                //   fit: BoxFit.fill,);
+                Lottie.asset('assets/LottieLogo1.json',
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.fill,);
               },
               child: Image.asset("assets/images/lobby/game_play_button.png"),
             ),
