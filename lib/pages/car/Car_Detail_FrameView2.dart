@@ -283,7 +283,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> implements Obse
                             ),
                             InkWell(
                               onTap: () {
-                                Status_popup().status_popup(context);
+                                StatusPopup().popUp(context, widget.car);
                               },
                               child: Container(
                                 width: 34.w,
