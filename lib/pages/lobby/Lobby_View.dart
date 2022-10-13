@@ -10,6 +10,7 @@ import '../../types/constants.dart';
 import '../../types/string_type.dart';
 import '../../utils/font.dart';
 import '../common/exit_app_popup.dart';
+import 'package:dotted_border/dotted_border.dart';
 
 class Lobby_View extends StatefulWidget {
   Function navigationSelect;
@@ -64,14 +65,23 @@ class _Lobby_ViewState extends State<Lobby_View> {
                       ),
                       child: Stack(
                         children: [
-                          Container(
-                              margin: EdgeInsets.fromLTRB(15.w, 15.h, 015.w, 0.h),
-
-                              width: 360.w,
-                              height: 247.h,
-                              decoration: BoxDecoration(
-                                  color: Colors.grey.shade200,
-                                  borderRadius: BorderRadius.circular(10))),
+                          Align(
+                            alignment: Alignment.center,
+                            child: DottedBorder(
+                              borderType: BorderType.RRect,
+                              radius: const Radius.circular(10),
+                              color: const Color(0xffEBEBEB),
+                              padding: const EdgeInsets.all(0),
+                              child: ClipRRect(
+                                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                child: Container(
+                                  height: 247.h,
+                                  width: 360.w,
+                                  color: EMPTY_F2F2F2,
+                                ),
+                              ),
+                            ),
+                          ),
                           Column(
                             children: [
                               Container(
@@ -147,17 +157,16 @@ class _Lobby_ViewState extends State<Lobby_View> {
               Container(
                 margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
                 child: SizedBox(
-                  // width: 390.w,
                   height: 100.h,
                   child: PageView.builder(
-                      controller: PageController(viewportFraction: 0.95),
-                      //사용할 게임수 builder
-                      itemCount: StorageController().getCategoryGameList(0).list.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (BuildContext ctx, int idx) {
-                        return Game_Play_Widget(
-                            size, context, StorageController().getCategoryGameList(0).list[idx]);
-                      }),
+                    itemCount: StorageController().getCategoryGameList(0).list.length,
+                    controller: PageController(viewportFraction: 0.92),
+                    itemBuilder: (BuildContext ctx, int idx) {
+                      return Game_Play_Widget(
+                          size, context, StorageController().getCategoryGameList(0).list[idx]
+                      );
+                    }
+                  ),
                 ),
               ),
             ],

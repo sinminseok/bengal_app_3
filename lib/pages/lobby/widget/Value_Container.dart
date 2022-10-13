@@ -42,24 +42,28 @@ class _Value_ContainerState extends State<Value_Container> {
         width: 360.w,
         height: 114.h,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(13),
+            borderRadius: BorderRadius.circular(15),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.3),
+                color: const Color(0xffD1D4DD).withOpacity(0.2),
                 spreadRadius: 0,
-                blurRadius: 5.0,
-                offset: Offset(0, 1), // changes position of shadow
+                blurRadius: 4.0,
+                offset: const Offset(0, 4), // changes position of shadow
               ),
             ],
             color: Colors.white),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                InkWell(
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(15.w, 12.h, 0.w, 0.h),
-                    child: InkWell(
+            SizedBox(
+              width: 241.w,
+              height: 29.h,
+              child: Container(
+                margin: EdgeInsets.fromLTRB(15.w, 0, 0, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
                       onTap: () {
                         setState(() {
                           today_status_bool = true;
@@ -67,66 +71,121 @@ class _Value_ContainerState extends State<Value_Container> {
                           selected_status_bool = false;
                         });
                       },
-                      child: Text(
-                        StringConfiguration()
-                            .uiString(UiStringType.LOBBY_TAB_01),
-                        style: Font.lato(
-                            today_status_bool == true
-                                ? Colors.black
-                                : Colors.grey,
-                            FontWeight.w700,
-                            12.sp),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Visibility(
+                            visible: today_status_bool == true,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                color: TXT_SUB_746F7B,
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(5),
+                                    bottomRight: Radius.circular(5)
+                                ),
+                              ),
+                              child: SizedBox(
+                                width: 18.w,
+                                height: 2.h,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            StringConfiguration()
+                                .uiString(UiStringType.LOBBY_TAB_01),
+                            style: Font.lato(
+                                today_status_bool == true
+                                    ? TXT_SUB_746F7B
+                                    : const Color(0xffE4E4E4),
+                                FontWeight.w700,
+                                12.sp),
+                          )
+                        ],
                       ),
                     ),
-                  ),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          today_status_bool = false;
+                          total_status_bool = true;
+                          selected_status_bool = false;
+                        });
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Visibility(
+                            visible: total_status_bool == true,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                color: TXT_SUB_746F7B,
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(5),
+                                    bottomRight: Radius.circular(5)
+                                ),
+                              ),
+                              child: SizedBox(
+                                width: 18.w,
+                                height: 2.h,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            StringConfiguration()
+                                .uiString(UiStringType.LOBBY_TAB_02),
+                            style: Font.lato(
+                                total_status_bool == true
+                                    ? TXT_SUB_746F7B
+                                    : const Color(0xffE4E4E4),
+                                FontWeight.w700,
+                                12.sp),
+                          )
+                        ],
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          today_status_bool = false;
+                          total_status_bool = false;
+                          selected_status_bool = true;
+                        });
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Visibility(
+                            visible: selected_status_bool == true,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                color: TXT_SUB_746F7B,
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(5),
+                                    bottomRight: Radius.circular(5)
+                                ),
+                              ),
+                              child: SizedBox(
+                                width: 18.w,
+                                height: 2.h,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            StringConfiguration()
+                                .uiString(UiStringType.LOBBY_TAB_03),
+                            style: Font.lato(
+                                selected_status_bool == true
+                                    ? TXT_SUB_746F7B
+                                    : const Color(0xffE4E4E4),
+                                FontWeight.w700,
+                                12.sp),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                InkWell(
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(20.w, 12.h, 0.w, 0.h),
-                    child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            today_status_bool = false;
-                            total_status_bool = true;
-                            selected_status_bool = false;
-                          });
-                        },
-                        child: Text(
-                          StringConfiguration()
-                              .uiString(UiStringType.LOBBY_TAB_02),
-                          style: Font.lato(
-                              total_status_bool == true
-                                  ? Colors.black
-                                  : Colors.grey,
-                              FontWeight.w700,
-                              12.sp),
-                        )),
-                  ),
-                ),
-                InkWell(
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(20.w, 12.h, 0.w, 0.h),
-                    child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            today_status_bool = false;
-                            total_status_bool = false;
-                            selected_status_bool = true;
-                          });
-                        },
-                        child: Text(
-                          StringConfiguration()
-                              .uiString(UiStringType.LOBBY_TAB_03),
-                          style: Font.lato(
-                              selected_status_bool == true
-                                  ? Colors.black
-                                  : Colors.grey,
-                              FontWeight.w700,
-                              12.sp),
-                        )),
-                  ),
-                ),
-              ],
+              ),
             ),
             today_status_bool != true
                 ? Container()

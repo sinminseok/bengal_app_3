@@ -27,7 +27,7 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
     child: Container(
       margin: EdgeInsets.fromLTRB(5.w, 0.h, 5.w, 0.h),
       width: 360.w,
-      //height: 100.h,
+      height: 100.h,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: kPrimaryColor),
@@ -37,9 +37,9 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            margin: EdgeInsets.fromLTRB(13.w, 0.h, 0.w, 0.h),
-            width: 70.w,
-            height: 70.h,
+            margin: EdgeInsets.fromLTRB(15.w, 0.h, 7.w, 0.h),
+            width: 64.w,
+            height: 64.w,
             decoration: BoxDecoration(
               image: DecorationImage(
                   alignment:Alignment.topLeft,
@@ -49,7 +49,7 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(0.w, 17.h, 0.w, 0.h),
+            margin: EdgeInsets.fromLTRB(0.w, 12.h, 0.w, 0.h),
             width: 185.w,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
