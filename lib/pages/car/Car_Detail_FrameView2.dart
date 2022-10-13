@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:bengal_app/controller/storage_controller.dart';
 import 'package:bengal_app/pages/car/popup/Status_popup.dart';
 import 'package:bengal_app/pages/car/popup/levelup_popup/levelup1_popup.dart';
@@ -21,6 +19,8 @@ import '../frame/widget/Coin_Widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../market/popup/Market_popup.dart';
 import '../wallet/Wallet_View.dart';
+import 'dart:math';
+import 'package:intl/intl.dart';
 
 class Car_Detail_FrameView2 extends StatefulWidget {
   final bool carBuy;
@@ -55,16 +55,19 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> implements Obse
 
   StatusToggleItem statusToggle = StatusToggleItem.Currently;
 
+  var formatter = NumberFormat('#,##,000');
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           automaticallyImplyLeading: false,
           elevation: 0,
           backgroundColor: kAppbarColor,
           title: SizedBox(
-            height: 97.h,
+            height: 50.h,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -74,22 +77,23 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> implements Obse
                   },
                   child: Image.asset(
                     "assets/images/common/back_button.png",
-                    width: 40.w,
+                    width: 36.w,
+                    fit: BoxFit.contain,
                   ),
                 ),
-                // SizedBox(
-                //   width: size.width * 0.1,
-                // ),
-                SizedBox(
-                  height: 40.h,
-                  child: Row(
-                      //mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Coin_Widget("xper_icon", StorageController().wallet!.balanceXPer.toString()),
-                        Coin_Widget("per_icon", StorageController().wallet!.balancePer.toString()),
-                        Coin_Widget("havah_icon", StorageController().wallet!.balanceHavah.toString()),
-                        InkWell(
+                Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Coin_Widget("xper_icon", StorageController().wallet!.balanceXPer.toString()),
+                          Coin_Widget("per_icon", StorageController().wallet!.balancePer.toString()),
+                          Coin_Widget("havah_icon", StorageController().wallet!.balanceHavah.toString()),
+                        ],
+                      ),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(5.w, 0.h, 0.w, 0.h),
+                        child: InkWell(
                             onTap: () {
                               Navigator.push(
                                   context,
@@ -99,442 +103,431 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> implements Obse
                             },
                             child: Image.asset(
                               "assets/images/lobby/icons/appbar_icons/btn_wallet.png",
-                              width: 40.w,
-                              height: 40.h,
-                              fit: BoxFit.fill,
-                            ))
-                      ]),
-                ),
+                              width: 36.w,
+                              fit: BoxFit.contain,
+                            )
+                        ),
+                      )
+                  ]
+                )
               ],
             ),
           ),
         ),
-//BorderRadius.only(topLeft:Radius.circular(10))
-        body: SingleChildScrollView(
-          child: Container(
-            width: 390.w,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  width: 390.w,
-                  height: 40.h,
-                  decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(13),
-                          topRight: Radius.circular(13)),
-                      color: kPrimaryColor),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        body: Column(
+          children: [
+            Container(
+              width: 390.w,
+              height: 40.h,
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: carInfoLabel_linearGradientColors,
+                    begin: Alignment(-1.0, -1.0),
+                    end: Alignment(1.0, 1.0),
+                    stops: [0, 0.50, 0.52, 0.52, 1.0],
+                    transform: GradientRotation(pi / 4),
+                  ),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15),
+                      topRight: Radius.circular(15)
+                  ),
+                  color: kPrimaryColor),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
                     children: [
-                      Row(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 0.h),
-                            width: 40.w,
-                            height: 21.h,
-                            child: Image.asset(
-                              "assets/images/common/cars/car_appbar_icon.png",
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(4.w, 13.h, 0.w, 13.h),
-                            child: Text(
-                              "${widget.car.getCarTypeString().toUpperCase()}/${widget.car.getCarGradeString().toString()}",
-                              style: Font.lato(Colors.white, FontWeight.bold, 12.sp),
-                            ),
-                          ),
-                        ],
+                      Container(
+                        margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 0.h),
+                        width: 40.w,
+                        height: 21.h,
+                        child: Image.asset(
+                          "assets/images/common/cars/car_appbar_icon.png",
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
-                            child: Text(
-                              "Lv ${widget.car.level}",
-                              style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0.w, 5.h, 15.w, 0.h),
-                            child: Text(
-                              " ·  Mint:${widget.car.mintingCount}",
-                              style: Font.lato(Colors.white, FontWeight.w400, 10.sp),
-                            ),
-                          )
-                        ],
+                      Container(
+                        margin: EdgeInsets.fromLTRB(4.w, 13.h, 0.w, 13.h),
+                        child: Text(
+                          "${widget.car.getCarTypeString().toUpperCase()} / ${widget.car.getCarGradeString().toString()}",
+                          style: Font.lato(Colors.white, FontWeight.bold, 12.sp),
+                        ),
                       ),
                     ],
                   ),
-                ),
-                //Car main image
-                Stack(
-                  children: [
-                    Image.asset(
-                      widget.car.getAssetImage(),
-                      height: 225.33.h,
-                      width: 390.w,
-                      fit: BoxFit.fill,
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 194.h, 15.w, 0.h),
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.fromLTRB(15.w, 3.h, 15.w, 0.h),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  "assets/images/lobby/icons/circle_icon.png",
-                                  width: 16.w,
-                                  height: 16.h,
-                                ),
-                                Container(
-                                  margin:
-                                  EdgeInsets.fromLTRB(5.w, 0.h, 5.w, 0.h),
-                                  child: Text(
-                                    "${widget.car.id}",
-                                    style: Font.lato(Colors.black, FontWeight.bold, 14.sp),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 57.w,
-                                  height: 18.h,
-                                  child: Image.asset(
-                                    "assets/images/lobby/icons/limited_button.png",
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-
-                Car_Items_Widget(size),
-
-                Container(
-                  margin: EdgeInsets.fromLTRB(30.w, 10.h, 0.w, 0.h),
-                  child: LinearPercentIndicator(
-                    center: Text(
-                      "Durability ${widget.car.durability}",
-                      style: Font.lato(Colors.white, FontWeight.w400, 11.sp),
-                    ),
-                    barRadius: const Radius.circular(10),
-                    width: 330.w,
-                    lineHeight: 15.h,
-                    percent: 0.9,
-                    progressColor: widget.car.getDurabilityColor(),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.fromLTRB(30.w, 10.h, 15.w, 0.h),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Row(
                     children: [
-                      LinearPercentIndicator(
-                        barRadius: const Radius.circular(10),
-                        width: 230.w,
-                        lineHeight: 10.h,
-                        percent: 0.9,
-                        progressColor: widget.car.getDrivenColor(),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
+                        child: Text(
+                          "Lv ${widget.car.level}",
+                          style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
+                        ),
                       ),
                       Container(
-                        margin: EdgeInsets.fromLTRB(0.w, 0.h, 20.w, 0.h),
+                        margin: EdgeInsets.fromLTRB(0.w, 5.h, 15.w, 0.h),
                         child: Text(
-                          "${widget.car.driven} km(${widget.car.getDrivenStatus()})",
-                          style: Font.lato(kCharColor, FontWeight.bold, 9.sp),
+                          "  ·   Mint : ${widget.car.mintingCount}",
+                          style: Font.lato(Colors.white, FontWeight.w400, 10.sp),
                         ),
                       )
                     ],
                   ),
+                ],
+              ),
+            ),
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Image.asset(
+                  widget.car.getAssetImage(),
+                  // height: 225.33.h,
+                  width: 390.w,
+                  fit: BoxFit.fill,
                 ),
-
-                Container(
-                  margin: EdgeInsets.fromLTRB(40.w, 31.h, 20.w, 0.h),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
-                            child: Text(
-                              "Status",
-                              style: TextStyle(
-                                  color: Colors.grey.shade600, fontSize: 18),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Status_popup().status_popup(context);
-                            },
-                            child: Container(
-                              width: 34.w,
-                              height: 22.h,
-                              decoration: BoxDecoration(
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(30)),
-                                  color: Colors.greenAccent.shade100),
-                              child: Center(
-                                  child: Text(
-                                    "${widget.car.status}",
-                                style: Font.lato(Colors.green, FontWeight.w400, 12.sp),
-                              )),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        margin: EdgeInsets.fromLTRB(40.w, 0.h, 15.w, 0.h),
-                        width: 160.w,
-                        height: 24.h,
-                        decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.all(Radius.circular(30)),
-                            color: Colors.grey.shade300),
-                        child: Stack(
+                Positioned(
+                  bottom: 15.0.h,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            Image.asset(
+                              "assets/images/lobby/icons/circle_icon.png",
+                              width: 16.w,
+                              height: 16.h,
+                            ),
                             Container(
-                              width: 80.w,
-                              height: 24.h,
-                              decoration: BoxDecoration(
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(30)),
-                                  color: StatusToggleItem.Currently == statusToggle
-                                      ? kPrimaryColor
-                                      : Colors.grey.shade300),
-                              child: InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    statusToggle = StatusToggleItem.Currently;
-                                  });
-                                },
-                                child: Center(
-                                  child: Text(
-                                    describeEnum(StatusToggleItem.Currently),
-                                    style: Font.lato(StatusToggleItem.Currently == statusToggle
-                                        ? Colors.white
-                                        : Colors.grey, FontWeight.bold, 10.sp),
-                                  ),
-                                ),
+                              margin:
+                              EdgeInsets.fromLTRB(5.w, 0.h, 5.w, 0.h),
+                              child: Text(
+                                "${widget.car.id}",
+                                style: Font.lato(Colors.black, FontWeight.bold, 14.sp),
                               ),
                             ),
-                            Positioned(
-                              left: 80.w,
+                            SizedBox(
+                              width: 57.w,
+                              height: 18.h,
+                              child: Image.asset(
+                                "assets/images/lobby/icons/limited_button.png",
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
+                ),
+              ],
+            ),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.fromLTRB(30.w, 0.h, 30.w, 0.h),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        Car_Items_Widget(size),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 10.h),
+                          child: LinearPercentIndicator(
+                            center: Text(
+                              "Durability ${widget.car.durability}/${StorageController().commonData.initialInfo.carMaxDurability} ("
+                                  "${(widget.car.durability / StorageController().commonData.initialInfo.carMaxDurability * 100).toStringAsFixed(0)}"
+                                  "%)",
+                              style: Font.lato(Colors.white, FontWeight.w400, 9.sp),
+                            ),
+                            backgroundColor: EMPTY_F9F9F9,
+                            barRadius: const Radius.circular(10),
+                            padding: EdgeInsets.zero,
+                            width: 330.w,
+                            lineHeight: 15.h,
+                            percent: widget.car.durability / StorageController().commonData.initialInfo.carMaxDurability,
+                            progressColor: widget.car.getDurabilityColor(),
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            LinearPercentIndicator(
+                              backgroundColor: EMPTY_F2F2F2,
+                              barRadius: const Radius.circular(10),
+                              padding: EdgeInsets.zero,
+                              width: 230.w,
+                              lineHeight: 4.h,
+                              percent: widget.car.driven / StorageController().commonData.initialInfo.carMaxMileage,
+                              progressColor: widget.car.getDrivenColor(),
+                            ),
+                            Text(
+                              "${formatter.format(widget.car.driven)} km (${widget.car.getDrivenStatus()})",
+                              style: Font.lato(widget.car.getDrivenColor(), FontWeight.bold, 9.sp),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
+                              child: Text(
+                                "Status",
+                                style: Font.lato(TXT_SUB_746F7B, FontWeight.bold, 18.sp),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Status_popup().status_popup(context);
+                              },
                               child: Container(
+                                width: 34.w,
+                                height: 24.h,
+                                decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                                    color: Color(0xffE8F9F6)),
+                                child: Center(
+                                    child: Text(
+                                      "${widget.car.status}",
+                                      style: Font.lato(kCharColor, FontWeight.w400, 12.sp),
+                                    )),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          // margin: EdgeInsets.fromLTRB(40.w, 0.h, 15.w, 0.h),
+                          width: 160.w,
+                          height: 24.h,
+                          decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(30)),
+                              color: EMPTY_F9F9F9),
+                          child: Stack(
+                            children: [
+                              Container(
                                 width: 80.w,
                                 height: 24.h,
                                 decoration: BoxDecoration(
                                     borderRadius:
-                                        const BorderRadius.all(Radius.circular(30)),
-                                    color: StatusToggleItem.Base == statusToggle
+                                    const BorderRadius.all(Radius.circular(30)),
+                                    color: StatusToggleItem.Currently == statusToggle
                                         ? kPrimaryColor
-                                        : Colors.grey.shade300),
+                                        : EMPTY_F9F9F9),
                                 child: InkWell(
                                   onTap: () {
                                     setState(() {
-                                      statusToggle = StatusToggleItem.Base;
+                                      statusToggle = StatusToggleItem.Currently;
                                     });
                                   },
                                   child: Center(
                                     child: Text(
-                                      describeEnum(StatusToggleItem.Base),
-                                      style: Font.lato(StatusToggleItem.Base == statusToggle
+                                      describeEnum(StatusToggleItem.Currently),
+                                      style: Font.lato(StatusToggleItem.Currently == statusToggle
                                           ? Colors.white
-                                          : Colors.grey, FontWeight.bold, 10.sp),
+                                          : Disabled_BAB8C4, FontWeight.bold, 10.sp),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-
-                Car_Status_Widget(size, widget.car, StatusToggleItem.Currently == statusToggle),
-                Container(
-                  width: 330.w,
-                  height: 50.h,
-                  margin: EdgeInsets.fromLTRB(15.w, 15.h, 15.w, 0.h),
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      color: Colors.grey.shade200),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 0.h),
-                            child: Image.asset(
-                              "assets/images/common/cars/icons/question_mark.png",
-                              width: 22.w,
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(5.w, 0.h, 0.w, 0.h),
-                            child: Text(
-                              "Mint Information",
-                              style: Font.lato(kPrimaryColor, FontWeight.bold, 14.sp),
-                            ),
-                          ),
-                        ],
-                      ),
-                      InkWell(
-                        onTap: () {
-                          //피그마 최신 자료에 빠져있길래 일단 뺌
-                          // Car_Detail_popup()
-                          //     .showDialog_view_button(size, context);
-                        },
-                        child: Container(
-                          margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
-                          width: 100.w,
-                          height: 30.h,
-                          decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              color: kPrimaryColor),
-                          child: Center(
-                              child: Text(
-                                "View",
-                                style: Font.lato(Colors.white, FontWeight.bold, 10.sp),
-                          )),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                widget.carBuy == true
-                    ? Column(
-                        children: [
-                          Container(
-                              margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 10.h),
-                              width: size.width,
-                              height: size.height * 0.001,
-                              decoration:
-                                  BoxDecoration(color: Colors.grey, boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.08),
-                                  spreadRadius: 5,
-                                  blurRadius: 7,
-                                  offset: const Offset(0, 13), // changes position of shadow
+                              Positioned(
+                                left: 80.w,
+                                child: Container(
+                                  width: 80.w,
+                                  height: 24.h,
+                                  decoration: BoxDecoration(
+                                      borderRadius:
+                                      const BorderRadius.all(Radius.circular(30)),
+                                      color: StatusToggleItem.Base == statusToggle
+                                          ? kPrimaryColor
+                                          : EMPTY_F9F9F9),
+                                  child: InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        statusToggle = StatusToggleItem.Base;
+                                      });
+                                    },
+                                    child: Center(
+                                      child: Text(
+                                        describeEnum(StatusToggleItem.Base),
+                                        style: Font.lato(StatusToggleItem.Base == statusToggle
+                                            ? Colors.white
+                                            : Disabled_BAB8C4, FontWeight.bold, 10.sp),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ])),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Car_Status_Widget(size, widget.car, StatusToggleItem.Currently == statusToggle),
+                    Container(
+                      width: 330.w,
+                      height: 50.h,
+                      // margin: EdgeInsets.fromLTRB(15.w, 15.h, 15.w, 0.h),
+                      decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: EMPTY_F9F9F9,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.fromLTRB(15.w, 0.h, 0.w, 0.h),
+                                child: Image.asset(
+                                  "assets/images/common/cars/icons/question_mark.png",
+                                  width: 22.w,
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(5.w, 0.h, 0.w, 0.h),
+                                child: Text(
+                                  "Mint Information",
+                                  style: Font.lato(kPrimaryColor, FontWeight.bold, 14.sp),
+                                ),
+                              ),
+                            ],
+                          ),
                           InkWell(
                             onTap: () {
-                              Market_popup().showDialog(size, context, widget.car);
+                              //피그마 최신 자료에 빠져있길래 일단 뺌
+                              // Car_Detail_popup()
+                              //     .showDialog_view_button(size, context);
                             },
                             child: Container(
-                              margin:
-                                  EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
-                              width: 360.w,
-                              height: 50.h,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    const Color(0xff8B80F8).withOpacity(0.7),
-                                    kPrimaryColor,
-                                  ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                ),
-                                color: kPrimaryColor,
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(20)),
-                              ),
+                              margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
+                              width: 100.w,
+                              height: 30.h,
+                              decoration: const BoxDecoration(
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                                  color: kPrimaryColor),
                               child: Center(
-                                child: Text(
-                                  "${widget.car.price}Hvh BUY",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16.sp,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
+                                  child: Text(
+                                    "View",
+                                    style: Font.lato(Colors.white, FontWeight.bold, 10.sp),
+                                  )),
                             ),
-                          ),
+                          )
                         ],
-                      )
-                    : Container(
-                        margin: EdgeInsets.fromLTRB(0.w, 50.h, 0.w, 0.h),
-                        width: 390.w,
-                        height: 55.h,
-                        color: kPrimaryColor,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                widget.car.startedLevelUp ?
-                                Levelup2_popup().levelup2_popup(context, widget.car) :
-                                Levelup1_popup().Levelup_popup(context, widget.car);
-                              },
-                              child: Container(
-                                child: Image.asset(
-                                  widget.car.startedLevelUp ?
-                                  "assets/images/common/cars/icons/boost.png" :
-                                  "assets/images/common/cars/icons/Level_Up.png",
-                                  width: 42.w,
-                                  height: 43.h,
-                                ),
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Repair_popup().repair_popup(context, widget.car);
-                              },
-                              child: Container(
-                                child: Image.asset(
-                                  "assets/images/common/cars/icons/Repair.png",
-                                  width: 42.w,
-                                  height: 43.h,
-                                ),
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Recovery_popup().recovery_popup(context, widget.car);
-                              },
-                              child: Container(
-                                child: Image.asset(
-                                  "assets/images/common/cars/icons/Recovery.png",
-                                  width: 42.w,
-                                  height: 43.h,
-                                ),
-                              ),
-                            ),
-                            Image.asset(
-                              "assets/images/common/cars/icons/Lease.png",
-                              width: 42.w,
-                              height: 43.h,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Sell_popup().sell_popup(context, widget.car);
-                              },
-                              child: Image.asset(
-                                "assets/images/common/cars/icons/Sell.png",
-                                width: 42.w,
-                                height: 43.h,
-                              ),
-                            ),
-                            Image.asset(
-                              "assets/images/common/cars/icons/Transfer.png",
-                              width: 42.w,
-                              height: 43.h,
-                            ),
-                          ],
-                        ),
-                      )
-              ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      bottomNavigationBar: BottomAppBar(
+        child: widget.carBuy == true
+        ?
+        Container(
+          width: 390.w,
+          height: 60.h,
+          margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 10.h),
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0, 1],
+                colors: [
+                  linearBrightnessColor,
+                  linearDarknessColor,
+                ]
+            ),
+            color: kPrimaryColor,
+            borderRadius:
+            BorderRadius.all(Radius.circular(20)),
+          ),
+          child: InkWell(
+            onTap: () {
+              Market_popup().showDialog(size, context, widget.car);
+            },
+            child: Center(
+              child: Text(
+                "${widget.car.price}Hvh BUY",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
           ),
-        ));
+        )
+        : Container(
+            width: 390.w,
+            height: 55.h,
+            color: kPrimaryColor,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                InkWell(
+                  onTap: () {
+                    widget.car.startedLevelUp ?
+                    Levelup2_popup().levelup2_popup(context, widget.car) :
+                    Levelup1_popup().Levelup_popup(context, widget.car);
+                  },
+                  child: Image.asset(
+                    widget.car.startedLevelUp ?
+                    "assets/images/common/cars/icons/boost.png" :
+                    "assets/images/common/cars/icons/Level_Up.png",
+                    width: 42.w,
+                    height: 43.h,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Repair_popup().repair_popup(context, widget.car);
+                  },
+                  child: Image.asset(
+                    "assets/images/common/cars/icons/Repair.png",
+                    width: 42.w,
+                    height: 43.h,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Recovery_popup().recovery_popup(context, widget.car);
+                  },
+                  child: Image.asset(
+                    "assets/images/common/cars/icons/Recovery.png",
+                    width: 42.w,
+                    height: 43.h,
+                  ),
+                ),
+                Image.asset(
+                  "assets/images/common/cars/icons/Lease.png",
+                  width: 42.w,
+                  height: 43.h,
+                ),
+                InkWell(
+                  onTap: () {
+                    Sell_popup().sell_popup(context, widget.car);
+                  },
+                  child: Image.asset(
+                    "assets/images/common/cars/icons/Sell.png",
+                    width: 42.w,
+                    height: 43.h,
+                  ),
+                ),
+                Image.asset(
+                  "assets/images/common/cars/icons/Transfer.png",
+                  width: 42.w,
+                  height: 43.h,
+                ),
+              ],
+            ),
+        )
+      ),
+    );
   }
 }

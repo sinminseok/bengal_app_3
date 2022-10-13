@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'common_data.dart';
 import 'game.dart';
+import '../../types/constants.dart';
 part 'car.g.dart';
 
 @JsonSerializable()
@@ -191,22 +192,22 @@ class CarNft {
 
   Color getDrivenColor() {
     var v = driven / StorageController().commonData.initialInfo.carMaxMileage;
-    var ret = Colors.green;
+    var ret = kCharColor;
     if (0.8 < v) {
-      ret = Colors.red;
+      ret = dangerColor;
     } else if (0.5 < v) {
-      ret = Colors.yellow;
+      ret = warningColor;
     }
     return ret;
   }
 
   Color getDurabilityColor() {
     var v = durability / StorageController().commonData.initialInfo.carMaxDurability;
-    var ret = Colors.red;
-    if (0.5 < v) {
-      ret = Colors.green;
-    } else if (0.2 < v) {
-      ret = Colors.yellow;
+    var ret = kCharColor;
+    if (0.2 > v) {
+      ret = dangerColor;
+    } else if (0.5 > v) {
+      ret = warningColor;
     }
     return ret;
   }
