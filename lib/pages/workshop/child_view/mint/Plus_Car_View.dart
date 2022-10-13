@@ -423,7 +423,7 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                                     child: Text(
                                       "Parentes Reset",
                                       style: Font.lato(Colors.grey.shade600,
-                                          FontWeight.bold, 12.sp, true),
+                                          FontWeight.bold, 12.sp, TextDecoration.underline),
                                     )))
                             : Container()
                       ],

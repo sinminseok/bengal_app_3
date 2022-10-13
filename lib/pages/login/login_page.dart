@@ -251,7 +251,7 @@ class LoginPageState extends State<LoginPage> {
                   child: Text(
                     StringConfiguration().uiString(UiStringType.LOGIN_10),
                     style: Font.lato(
-                        const Color(0xFF746F7B), FontWeight.w400, 14.sp, true),
+                        const Color(0xFF746F7B), FontWeight.w400, 14.sp, TextDecoration.underline),
                   ),
                 ),
               ),

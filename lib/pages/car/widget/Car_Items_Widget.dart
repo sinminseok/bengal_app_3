@@ -11,22 +11,22 @@ Widget Car_Items_Widget(Size size){
         Image.asset(
           "assets/images/common/cars/icons/lock_icon.png",
           width: 50.w,
-          height: 50.w,
+          height: 50.h,
         ),
         Image.asset(
           "assets/images/common/cars/icons/empty_icon.png",
           width: 50.w,
-          height: 50.w,
+          height: 50.h,
         ),
         Image.asset(
           "assets/images/common/cars/icons/ruby_icon.png",
           width: 50.w,
-          height: 50.w,
+          height: 50.h,
         ),
         Image.asset(
           "assets/images/common/cars/icons/lock2_icon.png",
           width: 50.w,
-          height: 50.w,
+          height: 50.h,
         ),
       ],
     ),
