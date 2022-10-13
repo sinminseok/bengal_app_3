@@ -840,6 +840,7 @@ class StorageController implements Subject {
 
     notifyObserver();
 
+    saveCarNftList();
     saveWallet();
     return true;
   }
@@ -851,6 +852,7 @@ class StorageController implements Subject {
 
     notifyObserver();
 
+    saveCarNftList();
     saveWallet();
     return true;
   }
@@ -861,7 +863,28 @@ class StorageController implements Subject {
 
     notifyObserver();
 
+    saveCarNftList();
     saveWallet();
+    return true;
+  }
+
+  bool assignCarStatus({
+    required CarNft car,
+    required int speed,
+    required int lucky,
+    required int charge,
+    required int repair}) {
+    var usedPoint = speed + lucky + charge + repair;
+    if (car.status < usedPoint) return false;
+    car.speed += speed;
+    car.lucky += lucky;
+    car.charge += charge;
+    car.repair += repair;
+    car.status -= usedPoint;
+
+    notifyObserver();
+
+    saveCarNftList();
     return true;
   }
 

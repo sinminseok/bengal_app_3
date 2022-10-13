@@ -1,31 +1,67 @@
 import 'dart:ui';
 
+import 'package:bengal_app/controller/storage_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
+import '../../../models/car.dart';
 import '../../../types/constants.dart';
 import '../../../utils/font.dart';
-import '../widget/Car_info_Card.dart';
-import 'package:vs_scrollbar/vs_scrollbar.dart';
 
-class Status_popup {
-  void status_popup(BuildContext context) {
-    double speed_value = 0.5;
-    double luck_value = 0.5;
-    double charge_value = 0.5;
-    double repair_value = 0.5;
+class StatusPopup {
+  int speedPoint = 0;
+  int luckyPoint = 0;
+  int chargePoint = 0;
+  int repairPoint = 0;
+  late CarNft car;
 
-    bool sizeBool = false;
+  int remainStatus() => car.status - speedPoint - luckyPoint - chargePoint - repairPoint;
 
+  void updateSpeed(bool up) {
+    if (up && 0 >= remainStatus()) {
+      return;
+    } else if (!up && 0 >= speedPoint) {
+      return;
+    }
+    up ? speedPoint++ : speedPoint--;
+  }
+
+  void updateLuck(bool up) {
+    if (up && 0 >= remainStatus()) {
+      return;
+    } else if (!up && 0 >= luckyPoint) {
+      return;
+    }
+    up ? luckyPoint++ : luckyPoint--;
+  }
+
+  void updateCharge(bool up) {
+    if (up && 0 >= remainStatus()) {
+      return;
+    } else if (!up && 0 >= chargePoint) {
+      return;
+    }
+    up ? chargePoint++ : chargePoint--;
+  }
+
+  void updateRepair(bool up) {
+    if (up && 0 >= remainStatus()) {
+      return;
+    } else if (!up && 0 >= repairPoint) {
+      return;
+    }
+    up ? repairPoint++ : repairPoint--;
+  }
+
+  void popUp(BuildContext context, CarNft nft) {
+    car = nft;
 
     showAnimatedDialog(
       context: context,
       barrierDismissible: true,
       builder: (context) {
         return StatefulBuilder(
-
           builder: (context, setState) {
             return StatefulBuilder(
               builder: (context, setState){
@@ -34,7 +70,7 @@ class Status_popup {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
                 content: DefaultTextStyle(
-                    style: TextStyle(fontSize: 16, color: Colors.black),
+                    style: const TextStyle(fontSize: 16, color: Colors.black),
                     child: Stack(
                       clipBehavior: Clip.none,
                       children: [
@@ -61,7 +97,7 @@ class Status_popup {
                                 Container(
                                   width: 300.w,
                                   height: 55.h,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(20),
                                           topRight: Radius.circular(20)),
@@ -69,8 +105,7 @@ class Status_popup {
                                   child: Center(
                                       child: Text(
                                         "ADD STATUS POINTS",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 16),
+                                        style: Font.lato(Colors.white, FontWeight.bold, 16.sp),
                                       )),
                                 ),
                                 Container(
@@ -78,126 +113,123 @@ class Status_popup {
                                     EdgeInsets.fromLTRB(15.w, 18.h, 15.w, 8.h),
                                     child: Text(
                                       "Available Points",
-                                      style: TextStyle(
-                                          color: kPrimaryColor, fontSize: 12),
+                                      style: Font.lato(kPrimaryColor, FontWeight.bold, 12.sp),
                                     )),
                                 Text(
-                                  "33",
-                                  style: TextStyle(
-                                      color: kPrimaryColor,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 24),
+                                  "${remainStatus()}",
+                                  style: Font.lato(kPrimaryColor, FontWeight.bold, 24.sp, TextDecoration.underline),
                                 ),
-
-
 
                                 Container(
                                   margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
-
                                   width: 260.w,
                                   height: 37.h,
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.grey),
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(20))),
-
+                                      borderRadius: const BorderRadius.all(Radius.circular(20))),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
-
+                                        margin: EdgeInsets.only(left: 15.w),
                                         child: Row(
                                           children: [
-                                            Container(
+                                            SizedBox(
                                                 width:26.w,
                                                 height: 26.h,
                                                 child: Image.asset("assets/images/common/cars/grey_icons/grey_speed.png",)),
-                                            Text("SPEED",style: TextStyle(color: Colors.grey.shade500,fontWeight: FontWeight.bold,fontSize: 12),),
+                                            Text(
+                                              "SPEED",
+                                              style: Font.lato(Colors.grey.shade500, FontWeight.bold, 12.sp),
+                                            ),
                                           ],
                                         ),
                                       ),
-
-
-
                                       Container(
-                                        margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
-
+                                        margin: EdgeInsets.only(right: 15.w),
+                                        width: 95.w,
                                         child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             InkWell(
-
                                                 onTap: (){
-                                                  setState(() => speed_value -= 1);
+                                                  updateSpeed(false);
+                                                  setState(() => {});
                                                 },
-
-                                                child: Icon(Icons.remove_circle_outline,color: sizeBool==true?kPrimaryColor:Colors.grey,size: 20.w,)),
-                                            Container(
-                                                margin: EdgeInsets.fromLTRB(6.w, 0.h, 6.w, 0.h),
-
-                                                child: Text("$speed_value",style: TextStyle(color: Colors.grey.shade500,fontSize: 12),)),
+                                                child: Icon(Icons.remove_circle_outline,
+                                                  color: 0 >= speedPoint ? Colors.grey : kPrimaryColor,
+                                                  size: 20.w,)
+                                            ),
+                                            Text(
+                                              "${car.speed + speedPoint}",
+                                              style: Font.lato(Colors.grey.shade500, FontWeight.bold, 12.sp),
+                                            ),
                                             InkWell(
                                                 onTap: (){
-                                                  setState(() => speed_value += 1);
+                                                  updateSpeed(true);
+                                                  setState(() => {});
                                                 },
-                                                child: Icon(Icons.add_circle_outline,color: Colors.grey,size: 20.w,))
-
-
+                                                child: Icon(Icons.add_circle_outline,
+                                                  color: 0 >= remainStatus() ? Colors.grey : kPrimaryColor,
+                                                  size: 20.w,))
                                           ],
                                         ),
                                       )
                                     ],
                                   ),
                                 ),
+
                                 Container(
                                   margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
                                   width: 260.w,
                                   height: 37.h,
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.grey),
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(20))),
-
+                                      borderRadius: const BorderRadius.all(Radius.circular(20))),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
-
+                                        margin: EdgeInsets.only(left: 15.w),
                                         child: Row(
                                           children: [
-                                            Container(
+                                            SizedBox(
                                                 width:26.w,
                                                 height: 26.h,
                                                 child: Image.asset("assets/images/common/cars/grey_icons/grey_dice.png",)),
-                                            Text("LUCK",style: TextStyle(color: Colors.grey.shade500,fontWeight: FontWeight.bold,fontSize: 12),),
+                                            Text(
+                                              "LUCK",
+                                              style: Font.lato(Colors.grey.shade500, FontWeight.bold, 12.sp),
+                                            ),
                                           ],
                                         ),
                                       ),
-
-
-
                                       Container(
-                                        margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
-
+                                        margin: EdgeInsets.only(right: 15.w),
+                                        width: 95.w,
                                         child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             InkWell(
                                                 onTap: (){
-                                                  setState(() => luck_value -= 1);
+                                                  updateLuck(false);
+                                                  setState(() => {});
                                                 },
-                                                child: Icon(Icons.remove_circle_outline,color: Colors.grey,size: 20.w,)),
-                                            Container(
-                                                margin: EdgeInsets.fromLTRB(6.w, 0.h, 6.w, 0.h),
-
-                                                child: Text("$luck_value",style: TextStyle(color: Colors.grey.shade500,fontSize: 12),)),
+                                                child: Icon(Icons.remove_circle_outline,
+                                                  color: 0 >= luckyPoint ? Colors.grey : kPrimaryColor,
+                                                  size: 20.w,)),
+                                            Text(
+                                              "${car.lucky + luckyPoint}",
+                                              style: Font.lato(Colors.grey.shade500, FontWeight.bold, 12.sp),
+                                            ),
                                             InkWell(
                                                 onTap: (){
-                                                  setState(() => luck_value += 1);
+                                                  updateLuck(true);
+                                                  setState(() => {});
                                                 },
-                                                child: Icon(Icons.add_circle_outline,color: Colors.grey,size: 20.w,))
-
-
+                                                child: Icon(Icons.add_circle_outline,
+                                                  color: 0 >= remainStatus() ? Colors.grey : kPrimaryColor,
+                                                  size: 20.w,))
                                           ],
                                         ),
                                       )
@@ -210,49 +242,51 @@ class Status_popup {
                                   height: 37.h,
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.grey),
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(20))),
-
+                                      borderRadius: const BorderRadius.all(Radius.circular(20))),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
-
+                                        margin: EdgeInsets.only(left: 15.w),
                                         child: Row(
                                           children: [
-                                            Container(
+                                            SizedBox(
                                                 width:26.w,
                                                 height: 26.h,
                                                 child: Image.asset("assets/images/common/cars/grey_icons/grey_charge.png",)),
-                                            Text("CHARGE",style: TextStyle(color: Colors.grey.shade500,fontWeight: FontWeight.bold,fontSize: 12),),
+                                            Text(
+                                              "CHARGE",
+                                              style: Font.lato(Colors.grey.shade500, FontWeight.bold, 12.sp),
+                                            ),
                                           ],
                                         ),
                                       ),
-
-
-
                                       Container(
-                                        margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
-
+                                        margin: EdgeInsets.only(right: 15.w),
+                                        width: 95.w,
                                         child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             InkWell(
                                                 onTap: (){
-                                                  setState(() => charge_value -= 1);
+                                                  updateCharge(false);
+                                                  setState(() => {});
                                                 },
-                                                child: Icon(Icons.remove_circle_outline,color: Colors.grey,size: 20.w,)),
-                                            Container(
-                                                margin: EdgeInsets.fromLTRB(6.w, 0.h, 6.w, 0.h),
-
-                                                child: Text("$charge_value",style: TextStyle(color: Colors.grey.shade500,fontSize: 12),)),
+                                                child: Icon(Icons.remove_circle_outline,
+                                                  color: 0 >= chargePoint ? Colors.grey : kPrimaryColor,
+                                                  size: 20.w,)),
+                                            Text(
+                                              "${car.charge + chargePoint}",
+                                              style: Font.lato(Colors.grey.shade500, FontWeight.bold, 12.sp),
+                                            ),
                                             InkWell(
                                                 onTap: (){
-                                                  setState(() => charge_value += 1);
+                                                  updateCharge(true);
+                                                  setState(() => {});
                                                 },
-                                                child: Icon(Icons.add_circle_outline,color: Colors.grey,size: 20.w,))
-
-
+                                                child: Icon(Icons.add_circle_outline,
+                                                  color: 0 >= remainStatus() ? Colors.grey : kPrimaryColor,
+                                                  size: 20.w,))
                                           ],
                                         ),
                                       )
@@ -265,49 +299,51 @@ class Status_popup {
                                   height: 37.h,
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.grey),
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(20))),
-
+                                      borderRadius: const BorderRadius.all(Radius.circular(20))),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
-
+                                        margin: EdgeInsets.only(left: 15.w),
                                         child: Row(
                                           children: [
-                                            Container(
+                                            SizedBox(
                                                 width:26.w,
                                                 height: 26.h,
                                                 child: Image.asset("assets/images/common/cars/grey_icons/grey_repair.png",)),
-                                            Text("REPAIR",style: TextStyle(color: Colors.grey.shade500,fontWeight: FontWeight.bold,fontSize: 12),),
+                                            Text(
+                                              "REPAIR",
+                                              style: Font.lato(Colors.grey.shade500, FontWeight.bold, 12.sp),
+                                            ),
                                           ],
                                         ),
                                       ),
-
-
-
                                       Container(
-                                        margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 0.h),
-
+                                        margin: EdgeInsets.only(right: 15.w),
+                                        width: 95.w,
                                         child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             InkWell(
                                                 onTap: (){
-                                                  setState(() => repair_value -= 1);
+                                                  updateRepair(false);
+                                                  setState(() => {});
                                                 },
-                                                child: Icon(Icons.remove_circle_outline,color: Colors.grey,size: 20.w,)),
-                                            Container(
-                                                margin: EdgeInsets.fromLTRB(6.w, 0.h, 6.w, 0.h),
-
-                                                child: Text("$repair_value",style: TextStyle(color: Colors.grey.shade500,fontSize: 12),)),
+                                                child: Icon(Icons.remove_circle_outline,
+                                                  color: 0 >= repairPoint ? Colors.grey : kPrimaryColor,
+                                                  size: 20.w,)),
+                                            Text(
+                                              "${car.repair + repairPoint}",
+                                              style: Font.lato(Colors.grey.shade500, FontWeight.bold, 12.sp),
+                                            ),
                                             InkWell(
                                                 onTap: (){
-                                                  setState(() => repair_value += 1);
+                                                  updateRepair(true);
+                                                  setState(() => {});
                                                 },
-                                                child: Icon(Icons.add_circle_outline,color: Colors.grey,size: 20.w,))
-
-
+                                                child: Icon(Icons.add_circle_outline,
+                                                  color: 0 >= remainStatus() ? Colors.grey : kPrimaryColor,
+                                                  size: 20.w,))
                                           ],
                                         ),
                                       )
@@ -316,6 +352,13 @@ class Status_popup {
                                 ),
                                 GestureDetector(
                                   onTap: () {
+                                    StorageController().assignCarStatus(
+                                        car: car,
+                                        speed: speedPoint,
+                                        lucky: luckyPoint,
+                                        charge: chargePoint,
+                                        repair: repairPoint);
+
                                     Navigator.pop(context);
                                   },
                                   child: Container(
@@ -323,16 +366,14 @@ class Status_popup {
                                     height: 34.h,
                                     margin:
                                     EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 0.h),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         color: kPrimaryColor,
                                         borderRadius:
                                         BorderRadius.all(Radius.circular(30))),
                                     child: Center(
                                       child: Text(
                                         "Confirm",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
+                                        style: Font.lato(Colors.white, FontWeight.bold, 16.sp),
                                       ),
                                     ),
                                   ),

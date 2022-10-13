@@ -264,13 +264,12 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> implements Obse
                             margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
                             child: Text(
                               "Status",
-                              style: TextStyle(
-                                  color: Colors.grey.shade600, fontSize: 18),
+                              style: Font.lato(Colors.grey.shade600, FontWeight.bold, 18.sp),
                             ),
                           ),
                           InkWell(
                             onTap: () {
-                              Status_popup().status_popup(context);
+                              StatusPopup().popUp(context, widget.car);
                             },
                             child: Container(
                               width: 34.w,
