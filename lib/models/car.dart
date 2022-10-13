@@ -35,6 +35,7 @@ class CarNft {
   late int mintingCount;
   late int level;
   late bool startedLevelUp;
+  late bool isSell;
   late DateTime levelUpAt;
 
   CarNft(
@@ -63,6 +64,7 @@ class CarNft {
       this.mintingCount,
       this.level,
       this.startedLevelUp,
+      this.isSell,
       this.levelUpAt,
       );
 

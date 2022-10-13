@@ -29,28 +29,24 @@ class _Car_Main_StatefulWidgetState extends State<Car_Main_StatefulWidget> {
     super.initState();
   }
 
-
   void changedPage(int page){
     StorageController().setSelectCarToIndex(page);
   }
-
 
   @override
   Widget build(BuildContext context) {
 
     return  Container(
-
       //margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
         width: 390.w,
         height: 277.h,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           boxShadow: [],
         ),
       child: PageView.builder(
           controller: pageController,
           allowImplicitScrolling: false,
-
           onPageChanged: changedPage,
           scrollDirection: Axis.horizontal,
           itemCount: carlist.length,

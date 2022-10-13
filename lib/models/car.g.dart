@@ -32,6 +32,7 @@ CarNft _$CarNftFromJson(Map<String, dynamic> json) => CarNft(
       json['mintingCount'] as int,
       json['level'] as int,
       json['startedLevelUp'] as bool,
+      json['isSell'] as bool,
       DateTime.parse(json['levelUpAt'] as String),
     );
 
@@ -61,6 +62,7 @@ Map<String, dynamic> _$CarNftToJson(CarNft instance) => <String, dynamic>{
       'mintingCount': instance.mintingCount,
       'level': instance.level,
       'startedLevelUp': instance.startedLevelUp,
+      'isSell': instance.isSell,
       'levelUpAt': instance.levelUpAt.toIso8601String(),
     };
 

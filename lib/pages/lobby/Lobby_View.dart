@@ -59,7 +59,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
                             color: Colors.grey.withOpacity(0.3),
                             spreadRadius: 0,
                             blurRadius: 5.0,
-                            offset: Offset(0, 1), // changes position of shadow
+                            offset: const Offset(0, 1), // changes position of shadow
                           ),
                         ],
                       ),
@@ -97,7 +97,6 @@ class _Lobby_ViewState extends State<Lobby_View> {
                                 children: [
                                   Container(
                                     margin: EdgeInsets.fromLTRB(105.w, 20.91.h, 0.w, 0.h),
-
                                     child: Image.asset(
                                       "assets/images/lobby/icons/plus_icon_3.png",
                                       width: 20.w,
@@ -105,11 +104,10 @@ class _Lobby_ViewState extends State<Lobby_View> {
                                     ),
                                   ),
                                   Container(
-                                    margin: EdgeInsets.fromLTRB(
-                                        5.w, 18.91.h, 0.w, 0.h),
+                                    margin: EdgeInsets.fromLTRB(5.w, 18.91.h, 0.w, 0.h),
                                     child: Text(
                                       "Buy a car and enjoy the game",
-                                      style: TextStyle(fontSize: 12),
+                                      style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 12.sp),
                                     ),
                                   )
                                 ],
@@ -134,8 +132,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
                     Text(
                       StringConfiguration()
                           .uiString(UiStringType.LOBBY_SPECIALBOX_04),
-                      style: Font.lato(
-                          const Color(0xFF342B35), FontWeight.bold, 16.sp),
+                      style: Font.lato(const Color(0xFF342B35), FontWeight.bold, 16.sp),
                     ),
                     InkWell(
                       onTap: () {
@@ -146,8 +143,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
                       child: Text(
                         StringConfiguration()
                             .uiString(UiStringType.LOBBY_SPECIALBOX_05),
-                        style: Font.lato(
-                            const Color(0xFF8B80F8), FontWeight.w400, 10.sp),
+                        style: Font.lato(const Color(0xFF8B80F8), FontWeight.w400, 10.sp),
                       ),
                     )
                   ],
