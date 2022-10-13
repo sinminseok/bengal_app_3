@@ -568,8 +568,9 @@ class StorageController implements Subject {
     if (0 > carNftList!.list.indexWhere((o) => o.id == nft.id)) return false;
     if (0 <= carNftPool!.list.indexWhere((o) => o.id == nft.id)) return false;
 
-    if (!_sellNft(havah: price)) return false;
+    //if (!_sellNft(havah: price)) return false;
 
+    nft.isSell = true;
     nft.price = price;
     carNftPool!.list.add(nft);
     carNftList!.list.removeWhere((o) => o.id == nft.id);

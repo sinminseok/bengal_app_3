@@ -208,7 +208,7 @@ class _MyPage_ViewState extends State<MyPage_View> {
           Container(
             margin: EdgeInsets.fromLTRB(15.w, 20.h, 0.w, 0.h),
             child: Text(
-              "Ver 1.0.0.1",
+              "Ver 1.0.0.2",
               style: TextStyle(color: Colors.grey.shade600),
             ),
           ),
