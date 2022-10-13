@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:bengal_app/controller/storage_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
-
 import 'common_data.dart';
 import 'game.dart';
 part 'car.g.dart';
@@ -146,10 +145,10 @@ class CarNft {
   }
 
   String getLevelUpRemainString() {
-    var duration = levelUpAt.difference(DateTime.now());
-    String hours = duration.inHours.toString().padLeft(2, '0');
-    String minutes = duration.inMinutes.remainder(60).toString().padLeft(2, '0');
-    String seconds = duration.inSeconds.remainder(60).toString().padLeft(2, '0');
+    var remain = levelUpAt.difference(DateTime.now());
+    String hours = remain.inHours.toString().padLeft(2, '0');
+    String minutes = remain.inMinutes.remainder(60).toString().padLeft(2, '0');
+    String seconds = remain.inSeconds.remainder(60).toString().padLeft(2, '0');
     return "$hours:$minutes:$seconds";
   }
 
@@ -166,8 +165,7 @@ class CarNft {
   double levelUpBoostCost() {
     if (!startedLevelUp) return 0.0;
     var duration = levelUpAt.difference(DateTime.now());
-    var totalMin = duration.inHours * 60 + duration.inMinutes;
-    return totalMin * StorageController().commonData.initialInfo.levelUpBoostCost.toDouble();
+    return duration.inMinutes * StorageController().commonData.initialInfo.levelUpBoostCost.toDouble();
   }
 
   void doRepair() {

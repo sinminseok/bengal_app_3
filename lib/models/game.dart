@@ -2,7 +2,15 @@ import 'dart:ui';
 
 import 'package:bengal_app/utils/dataType.dart';
 import 'package:flinq/flinq.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:bengal_app/controller/storage_controller.dart';
+import '../common/string_configuration.dart';
+import '../types/constants.dart';
+import '../types/string_type.dart';
+import '../utils/font.dart';
 part 'game.g.dart';
 
 @JsonSerializable()
@@ -251,16 +259,16 @@ class GameInfoList {
 class MiningBox {
   late int id = 0;
   late int nftId = 0;
-  final DateTime createdAt;
-  late Duration limitDuration;
+  final int level;
+  final DateTime openAt;
   late double baseCost = 30.0;
   late double boostCostPerSec = 0.01;
 
   MiningBox(
       this.id,
       this.nftId,
-      this.createdAt,
-      this.limitDuration,
+      this.level,
+      this.openAt,
       this.baseCost,
       this.boostCostPerSec,
       );
@@ -268,12 +276,93 @@ class MiningBox {
   factory MiningBox.fromJson(Map<String, dynamic> json) => _$MiningBoxFromJson(json);
   Map<String, dynamic> toJson() => _$MiningBoxToJson(this);
 
-  Duration getRemainDuration() {
-    return createdAt.add(limitDuration).difference(DateTime.now());
-  }
+  Duration getRemainDuration() => openAt.difference(DateTime.now());
 
   double getBoostCost() => getRemainDuration().inSeconds * boostCostPerSec;
   double getTotalOpenCost() => getBoostCost() + baseCost;
+
+  bool isEmpty() => id == 0;
+
+  // about special box
+  bool isAbleSpecialBoxOpen() => 0 >= openAt.compareTo(DateTime.now());
+
+  String getSpecialBoxAsset() {
+    if (isEmpty()) return "assets/images/lobby/boxes/empty_box.png";
+    if (isAbleSpecialBoxOpen()) return "assets/images/lobby/boxes/ready_box.png";
+    return "assets/images/lobby/boxes/during_box.png";
+  }
+
+  String getSpecialBoxOpenRemainString() {
+    if (isAbleSpecialBoxOpen()) return "";
+    var remain = openAt.difference(DateTime.now());
+    String hours = remain.inHours.toString().padLeft(2, '0');
+    String minutes = remain.inMinutes.remainder(60).toString().padLeft(2, '0');
+    String seconds = remain.inSeconds.remainder(60).toString().padLeft(2, '0');
+    return "$hours:$minutes:$seconds";
+  }
+
+  Widget getSpecialBoxLogoText() {
+    if (isEmpty()) {
+      return Text(
+        StringConfiguration().uiString(UiStringType.CAR_INFO_03),
+        style: Font.lato(const Color(0xFFC3C3C3), FontWeight.bold, 8.sp),
+      );
+    }
+
+    if (isAbleSpecialBoxOpen()) {
+      return Text(
+        StringConfiguration().uiString(UiStringType.LOBBY_SPECIALBOX_02),
+        style: Font.lato(const Color(0xFF8B80F8), FontWeight.bold, 8.sp),
+      );
+    }
+
+    var logo = "";
+    var remain = openAt.difference(DateTime.now());
+    if (0 < remain.inHours){
+      logo = "${remain.inHours.toString()}h";
+    }
+    var sec = remain.inSeconds.remainder(60);
+    var min = remain.inMinutes.remainder(60);
+    if (0 < sec) min++;
+
+    if (0 < min) {
+      if (logo.isNotEmpty) logo += " ";
+      logo += "${min.toString()}m";
+    }
+
+    return Text(
+        logo,
+        style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 8.sp));
+  }
+
+  Widget getSpecialBoxLevelText() {
+    if (isEmpty()) {
+      return Text(
+        "",
+        style: Font.lato(const Color(0xFFC3C3C3), FontWeight.bold, 8.sp),
+      );
+    }
+
+    if (isAbleSpecialBoxOpen()) {
+      return Text(
+        "Lv$level",
+        style: Font.lato(kPrimaryColor, FontWeight.bold, 8.sp),
+      );
+    }
+
+    return Text(
+      "Lv$level",
+      style: Font.lato(Colors.grey.shade500, FontWeight.bold, 8.sp),
+    );
+  }
+
+  double getSpecialBoxBoostCost() {
+    if (isAbleSpecialBoxOpen()) return 0.0;
+    var duration = openAt.difference(DateTime.now());
+    return duration.inSeconds * StorageController().commonData.initialInfo.specialBoxOpenCostPerSec.toDouble();
+  }
+
+  double getSpecialBoxTotalOpenCost() => baseCost + getSpecialBoxBoostCost();
 }
 
 @JsonSerializable()
@@ -297,8 +386,8 @@ class MiningBoxList {
     var miningBox = MiningBox(
         id,
         0,
-        DateTime.now(),
-        limitDuration,
+        5,
+        DateTime.now().add(limitDuration),
         baseCost,
         boostCostPerSec
     );
