@@ -1,5 +1,7 @@
+import 'package:bengal_app/controller/storage_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../models/game.dart';
 import '../popup/selected_box_popup.dart';
 import 'box_container_detail_widget.dart';
 
@@ -28,7 +30,7 @@ class _BoxContainer_WidgetState extends State<BoxContainer_Widget> {
                 color: Colors.grey.withOpacity(0.3),
                 spreadRadius: 0,
                 blurRadius: 5.0,
-                offset: Offset(0, 1), // changes position of shadow
+                offset: const Offset(0, 1), // changes position of shadow
               ),
             ],
             color: Colors.white),
@@ -39,9 +41,18 @@ class _BoxContainer_WidgetState extends State<BoxContainer_Widget> {
                 itemCount: 4,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext ctx, int idx) {
-                  //parameter 는 mingingbox로 변경
-                  return BoxContainer_Detail_Widget(
-                      context, false, true, false, "");
-                })));
+                  if (idx + 1 <= StorageController().specialBoxList!.list.length) {
+                    return BoxContainer_Detail_Widget(
+                        context,
+                        StorageController().specialBoxList!.list[idx]
+                    );
+                  } else {
+                    return BoxContainer_Detail_Widget(
+                        context,
+                        MiningBox(0, 0, 0, DateTime.now(), 0.0, 0.0)
+                    );
+                  }
+                })
+        ));
   }
 }

@@ -54,8 +54,8 @@ Map<String, dynamic> _$GameInfoListToJson(GameInfoList instance) =>
 MiningBox _$MiningBoxFromJson(Map<String, dynamic> json) => MiningBox(
       json['id'] as int,
       json['nftId'] as int,
-      DateTime.parse(json['createdAt'] as String),
-      Duration(microseconds: json['limitDuration'] as int),
+      json['level'] as int,
+      DateTime.parse(json['openAt'] as String),
       (json['baseCost'] as num).toDouble(),
       (json['boostCostPerSec'] as num).toDouble(),
     );
@@ -63,8 +63,8 @@ MiningBox _$MiningBoxFromJson(Map<String, dynamic> json) => MiningBox(
 Map<String, dynamic> _$MiningBoxToJson(MiningBox instance) => <String, dynamic>{
       'id': instance.id,
       'nftId': instance.nftId,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'limitDuration': instance.limitDuration.inMicroseconds,
+      'level': instance.level,
+      'openAt': instance.openAt.toIso8601String(),
       'baseCost': instance.baseCost,
       'boostCostPerSec': instance.boostCostPerSec,
     };

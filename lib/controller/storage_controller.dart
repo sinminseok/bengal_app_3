@@ -28,6 +28,7 @@ enum StorageKey {
   carNft,
   boxNft,
   miningBox,
+  specialBox,
   miningResult,
   transferHistory,
   gameList,
@@ -64,6 +65,7 @@ class StorageController implements Subject {
   late CarNftList? carNftList;
   late BoxNftList? boxNftList;
   late MiningBoxList? miningBoxList;
+  late MiningBoxList? specialBoxList;
   late MiningResultList? miningResultList;
   late TransferHistoryList? transferHistory;
   late GameInfoList? gameMyDemandList;
@@ -316,6 +318,20 @@ class StorageController implements Subject {
     return true;
   }
 
+  // Special Box
+  Future<bool> saveSpecialBoxList() async {
+    if (null == account || null == specialBoxList) return false;
+    return await _prefs.setString(
+        _genAutoKey(StorageKey.specialBox), jsonEncode(specialBoxList!.toJson()));
+  }
+  bool loadSpecialBoxList() {
+    if (null == account) return false;
+    var value = _prefs.getString(_genAutoKey(StorageKey.specialBox)) ?? "";
+    if (value.isEmpty) return false;
+    specialBoxList = MiningBoxList.fromJson(json.decode(value));
+    return true;
+  }
+
   // Mining Result
   Future<bool> saveMiningResultList() async {
     if (null == account || null == miningResultList) return false;
@@ -363,9 +379,13 @@ class StorageController implements Subject {
     if (null == account) return false;
     ret &= await saveAccount();
     ret &= await saveWallet();
+    ret &= await saveOnChainWallet();
     ret &= await saveCarNftList();
     ret &= await saveBoxNftList();
     ret &= await saveTransferHistory();
+    ret &= await saveMiningResultList();
+    ret &= await saveMiningBoxList();
+    ret &= await saveSpecialBoxList();
     ret &= await saveGameMyDemandList();
     return ret;
   }
@@ -378,6 +398,8 @@ class StorageController implements Subject {
     ret &= loadBoxNftList();
     ret &= loadTransferHistory();
     ret &= loadMiningResultList();
+    ret &= loadMiningBoxList();
+    ret &= loadSpecialBoxList();
     ret &= loadGameMyDemandList();
     if (ret) {
       for (var o in gameMyDemandList?.list ?? []) {
@@ -461,6 +483,7 @@ class StorageController implements Subject {
     carNftList = CarNftList([]);
     boxNftList = BoxNftList([]);
     miningBoxList = MiningBoxList([]);
+    specialBoxList = MiningBoxList([]);
     miningResultList = MiningResultList([]);
     transferHistory = TransferHistoryList([]);
     gameMyDemandList = GameInfoList([]);
@@ -471,6 +494,7 @@ class StorageController implements Subject {
     if (!(await saveCarNftList())) return false;
     if (!(await saveBoxNftList())) return false;
     if (!(await saveMiningBoxList())) return false;
+    if (!(await saveSpecialBoxList())) return false;
     if (!(await saveMiningResultList())) return false;
     if (!(await saveTransferHistory())) return false;
     if (!(await saveGameMyDemandList())) return false;
@@ -481,6 +505,7 @@ class StorageController implements Subject {
     carNftList = null;
     boxNftList = null;
     miningBoxList = null;
+    specialBoxList = null;
     miningResultList = null;
     transferHistory = null;
     gameMyDemandList = null;
@@ -753,24 +778,6 @@ class StorageController implements Subject {
     return true;
   }
 
-  void miningSpecialBox(GameInfo game, MiningResult mining) {
-    var playDuration = mining.getPlayTime();
-    if (commonData.initialInfo.getRateSpecialBoxMining(playDuration.inSeconds)
-        < Random().nextDouble()) return;
-
-    var miningBox = miningBoxList!.mining(
-        ++_baseId,
-        Duration(seconds: commonData.initialInfo.specialBoxInitialLifeTime),
-        commonData.initialInfo.specialBoxOpenBaseCost,
-        commonData.initialInfo.specialBoxOpenCostPerSec);
-
-    mining.miningBoxId = miningBox.id;
-
-    notifyObserver();
-
-    saveMiningBoxList();
-  }
-
   void miningEnd(GameInfo game, MiningResult mining) {
     mining.miningEnd();
 
@@ -780,6 +787,35 @@ class StorageController implements Subject {
 
     saveWallet();
     saveMiningResultList();
+  }
+
+  void miningSpecialBox(GameInfo game, MiningResult mining) {
+    // var playDuration = mining.getPlayTime();
+    // if (commonData.initialInfo.getRateSpecialBoxMining(playDuration.inSeconds)
+    //     < Random().nextDouble()) return;
+
+    var miningBox = specialBoxList!.mining(
+        ++_baseId,
+        Duration(seconds: commonData.initialInfo.specialBoxInitialLifeTime),
+        commonData.initialInfo.specialBoxOpenBaseCost,
+        commonData.initialInfo.specialBoxOpenCostPerSec);
+
+    mining.miningBoxId = miningBox.id;
+
+    notifyObserver();
+
+    saveSpecialBoxList();
+  }
+
+  Future<bool> openSpecialBox(MiningBox box) async {
+    if (0 > specialBoxList!.list.indexWhere((o) => o.id == box.id)) return false;
+
+    if (!wallet!.credit(CoinType.XPer, box.getSpecialBoxTotalOpenCost())) return false;
+
+    specialBoxList!.list.removeWhere((o) => o.id == box.id);
+
+    notifyObserver();
+    return await saveSpecialBoxList();
   }
 
   GameInfoList getAllDemandGameList() {

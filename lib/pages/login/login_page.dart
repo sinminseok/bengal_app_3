@@ -212,18 +212,6 @@ class LoginPageState extends State<LoginPage> {
                                           gravity: ToastGravity.CENTER)
                                     }
                                 });
-                        // if (!StorageController().signIn(
-                        //     emailController.text,
-                        //     passwordController.text,
-                        //     _isRemember)) {
-                        //   Fluttertoast.showToast(
-                        //       msg: 'Login Fail',
-                        //       backgroundColor: Colors.white,
-                        //       textColor: Colors.black,
-                        //       gravity: ToastGravity.CENTER);
-                        // } else {
-                        //   Get.offAll(const Frame_View());
-                        // }
                       })),
               Container(
                 //color: Colors.red,

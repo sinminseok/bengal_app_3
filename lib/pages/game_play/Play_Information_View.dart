@@ -46,7 +46,7 @@ class _Play_information_ViewState extends State<Play_information_View> {
     setState(() {
       _startCountDown = true;
     });
-    Timer(const Duration(milliseconds: 3500), () {
+    Timer(const Duration(milliseconds: 3300), () {
       setState(() {
         _startCountDown = false;
       });
@@ -513,7 +513,7 @@ class _Play_information_ViewState extends State<Play_information_View> {
                 height: 491,
                 fit: BoxFit.fill,)
           )
-              : Container()
+              : Container(),
         ],
       ),
     );
