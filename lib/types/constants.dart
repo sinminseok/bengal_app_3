@@ -17,6 +17,7 @@ const TXT_SUB_746F7B = Color(0xff746F7B);
 const Disabled_BAB8C4 = Color(0xffBAB8C4);
 const EMPTY_F9F9F9 = Color(0xffF9F9F9);
 const EMPTY_F2F2F2 = Color(0xffF2F2F2);
+const LINE_EBEBEB = Color(0xffEBEBEB);
 
 const carInfoLabel_linearGradientColors = [
   Color(0xff7564E5),
