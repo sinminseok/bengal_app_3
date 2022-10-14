@@ -156,7 +156,7 @@ class _Game_ViewState extends State<Game_View> implements Observer {
                                   "Special",
                                   style: Font.lato(selectedTab != GameListTabItem.special
                                       ? Colors.grey
-                                      : Colors.white, FontWeight.bold, 12.sp),
+                                      : Colors.white, FontWeight.normal, 12.sp),
                                 ),
                               ),
                             ),
@@ -183,7 +183,7 @@ class _Game_ViewState extends State<Game_View> implements Observer {
                                   "Recommended",
                                   style: Font.lato(selectedTab != GameListTabItem.recommended
                                       ? Colors.grey
-                                      : Colors.white, FontWeight.bold, 12.sp),
+                                      : Colors.white, FontWeight.normal, 12.sp),
                                 ),
                               ),
                             ),
@@ -210,7 +210,7 @@ class _Game_ViewState extends State<Game_View> implements Observer {
                                   "Normal",
                                   style: Font.lato(selectedTab != GameListTabItem.normal
                                       ? Colors.grey
-                                      : Colors.white, FontWeight.bold, 12.sp),
+                                      : Colors.white, FontWeight.normal, 12.sp),
                                 ),
                               ),
                             ),

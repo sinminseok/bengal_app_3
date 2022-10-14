@@ -83,6 +83,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
                             ),
                           ),
                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Container(
                                 margin:
@@ -93,24 +94,25 @@ class _Lobby_ViewState extends State<Lobby_View> {
                                   "assets/images/lobby/car_empty_img.png",
                                 ),
                               ),
-                              Row(
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(105.w, 20.91.h, 0.w, 0.h),
-                                    child: Image.asset(
-                                      "assets/images/lobby/icons/plus_icon_3.png",
-                                      width: 20.w,
-                                      height: 20.h,
+                             Row(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(105.w, 20.91.h, 0.w, 0.h),
+                                      child: Image.asset(
+                                        "assets/images/lobby/icons/plus_icon_3.png",
+                                        width: 20.w,
+                                        height: 20.h,
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(5.w, 18.91.h, 0.w, 0.h),
-                                    child: Text(
-                                      "Buy a car and enjoy the game",
-                                      style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 12.sp),
-                                    ),
-                                  )
-                                ],
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(5.w, 18.91.h, 0.w, 0.h),
+                                      child: Text(
+                                        "Buy a car and enjoy the game",
+                                        style: Font.lato(const Color(0xFF746F7B), FontWeight.normal, 12.sp),
+                                      ),
+                                    )
+                                  ],
+
                               ),
                             ],
                           )

@@ -42,7 +42,7 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
             height: 64.w,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  alignment:Alignment.topLeft,
+                  alignment: Alignment.topLeft,
                   fit: BoxFit.fill,
                   image: AssetImage(game.gameIconAsset())),
               borderRadius: const BorderRadius.all(Radius.circular(10)),
@@ -65,20 +65,20 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
                 ),
                 Row(
                   children: [
-                    Image.asset(
+                    game.xPerPerPower == 0.0?Container(): Image.asset(
                       "assets/images/lobby/icons/appbar_icons/xper_icon.png",
                       width: 14.w,
                       height: 14.h,
                     ),
-                    Container(
+                    game.xPerPerPower == 0.0?Container(): Container(
                       margin: EdgeInsets.fromLTRB(1.w, 0.h, 0.w, 0.h),
                       child: Text(
-                        "+ ${game.xPerPerPower} XPER",
+                        "+${game.xPerPerPower} XPER",
                         style: Font.lato(
                             const Color(0xFF302F85), FontWeight.bold, 10.sp),
                       ),
                     ),
-                    Container(
+                    game.perPerPower == 0.0?Container():Container(
                       margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 0.h),
                       child: Image.asset(
                         "assets/images/lobby/icons/appbar_icons/per_icon.png",
@@ -86,10 +86,10 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
                         height: 14.h,
                       ),
                     ),
-                    Container(
+                    game.perPerPower == 0.0?Container():Container(
                       margin: EdgeInsets.fromLTRB(1.w, 0.h, 0.w, 0.h),
                       child: Text(
-                        "+ ${game.perPerPower} PER",
+                        "+${game.perPerPower} PER",
                         style: Font.lato(
                             const Color(0xFFD8B66C), FontWeight.bold, 10.sp),
                       ),
@@ -125,21 +125,21 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Image.asset(
-                                "assets/images/game/empty_car/empty_car1.png",
+                                "assets/images/game/empty_car/empty_car2.png",
                                 color: game.carColorToType(1),
                                 fit: BoxFit.fill,
                                 width: 25.67.w,
                                 height: 14.h,
                               ),
                               Image.asset(
-                                "assets/images/game/empty_car/empty_car2.png",
+                                "assets/images/game/empty_car/empty_car3.png",
                                 color: game.carColorToType(2),
                                 fit: BoxFit.fill,
                                 width: 25.67.w,
                                 height: 14.h,
                               ),
                               Image.asset(
-                                "assets/images/game/empty_car/empty_car3.png",
+                                "assets/images/game/empty_car/empty_car1.png",
                                 color: game.carColorToType(3),
                                 fit: BoxFit.fill,
                                 width: 25.67.w,
@@ -163,30 +163,39 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
           Container(
             width: 60.w,
             height: 60.h,
-            margin: EdgeInsets.fromLTRB(0.w, 0.h, 15.w, 0.h),
+            margin: EdgeInsets.fromLTRB(0.w, 0.h, 1.w, 0.h),
             child: InkWell(
               onTap: () {
                 if (!StorageController().isPossibleMining(game)) {
                   Fluttertoast.showToast(
-                      msg: StringConfiguration().uiString(UiStringType.TOAST_MESSAGE_06),
+                      msg: StringConfiguration()
+                          .uiString(UiStringType.TOAST_MESSAGE_06),
                       backgroundColor: Colors.white,
                       textColor: Colors.black,
                       gravity: ToastGravity.CENTER);
                 } else {
-                  GameLauncher().isAppInstalled(game.packageName).then((value) => {
-                    if (value) {
-                      Navigator.push(context, PageTransition(
-                          type: PageTransitionType.fade,
-                          child: Play_information_View(game: game)))
-                    } else {
-                      GameInstallNotice().popup(context, game)
-                    }
-                  });
+                  GameLauncher()
+                      .isAppInstalled(game.packageName)
+                      .then((value) => {
+                            if (value)
+                              {
+                                Navigator.push(
+                                    context,
+                                    PageTransition(
+                                        type: PageTransitionType.fade,
+                                        child:
+                                            Play_information_View(game: game)))
+                              }
+                            else
+                              {GameInstallNotice().popup(context, game)}
+                          });
                 }
-                Lottie.asset('assets/LottieLogo1.json',
+                Lottie.asset(
+                  'assets/LottieLogo1.json',
                   width: 200,
                   height: 200,
-                  fit: BoxFit.fill,);
+                  fit: BoxFit.fill,
+                );
               },
               child: Image.asset("assets/images/lobby/game_play_button.png"),
             ),

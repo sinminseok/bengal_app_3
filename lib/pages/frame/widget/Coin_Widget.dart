@@ -9,16 +9,7 @@ Widget Coin_Widget(String img_name, String value) {
       children: [
         Stack(
           children: [
-            // Container(
-            //   width:20,
-            //
-            //   margin: EdgeInsets.all(1.0),
-            //   decoration: BoxDecoration(
-            //
-            //       color: Colors.black,
-            //       shape: BoxShape.circle
-            //   ),
-            // ),
+
             Image.asset(
               "assets/images/lobby/icons/appbar_icons/$img_name.png",
               height: 20.h,

@@ -284,7 +284,7 @@ class MiningBox {
   bool isEmpty() => id == 0;
 
   // about special box
-  bool isAbleSpecialBoxOpen() => 0 >= openAt.compareTo(DateTime.now());
+  bool isAbleSpecialBoxOpen() => !isEmpty() && 0 >= openAt.compareTo(DateTime.now());
 
   String getSpecialBoxAsset() {
     if (isEmpty()) return "assets/images/lobby/boxes/empty_box.png";
