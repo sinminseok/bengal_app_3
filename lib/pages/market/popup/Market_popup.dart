@@ -8,6 +8,7 @@ import '../../../controller/storage_controller.dart';
 import '../../../models/car.dart';
 import '../../../types/constants.dart';
 import '../../../types/string_type.dart';
+import '../../../utils/font.dart';
 
 class Market_popup {
   void showDialog(Size size, BuildContext context, CarNft car) {
@@ -42,12 +43,10 @@ class Market_popup {
                             color: kPrimaryColor),
                         child: Center(
                             child: Text(
-                          "BUY",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
-                        )),
+                              "BUY",
+                              style: Font.lato(Colors.white, FontWeight.bold, 18.sp),
+                            ),
+                        ),
                       ),
                       Image.asset(
                         car.getAssetImage(),
@@ -91,7 +90,6 @@ class Market_popup {
                         width: 260.w,
                         height: 152.h,
                         margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
-
                         decoration: BoxDecoration(
                           border: Border.all(color:Colors.grey.shade300),
                           borderRadius: const BorderRadius.all(Radius.circular(10))
@@ -100,16 +98,17 @@ class Market_popup {
                           children: [
                             Container(
                               margin: EdgeInsets.fromLTRB(0.w, 10.h, 15.w, 6.h),
-
                               width:200.w,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Type",
-                                    style: TextStyle(color: Colors.grey.shade700,fontSize: 14),
+                                  Text(
+                                    "Type",
+                                    style: Font.lato(Colors.grey, FontWeight.w400, 14.sp),
                                   ),
-                                  Text(car.getCarTypeString().toUpperCase(),
-                                    style: const TextStyle(color: kPrimaryColor,fontSize: 14),
+                                  Text(
+                                    car.getCarTypeString().toUpperCase(),
+                                    style: Font.lato(kPrimaryColor, FontWeight.w400, 14.sp),
                                   ),
                                 ],
                               ),
@@ -120,11 +119,13 @@ class Market_popup {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Grade",
-                                    style: TextStyle(color: Colors.grey.shade700,fontSize: 14),
+                                  Text(
+                                    "Grade",
+                                    style: Font.lato(Colors.grey.shade700, FontWeight.bold, 14.sp),
                                   ),
-                                  Text(car.getCarGradeString().toUpperCase(),
-                                    style: const TextStyle(color: kPrimaryColor,fontSize: 14),
+                                  Text(
+                                    car.getCarGradeString().toUpperCase(),
+                                    style: Font.lato(kPrimaryColor, FontWeight.w400, 14.sp),
                                   )
                                 ],
                               ),
@@ -135,11 +136,13 @@ class Market_popup {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Level",
-                                    style: TextStyle(color: Colors.grey.shade700,fontSize: 14),
+                                  Text(
+                                    "Level",
+                                    style: Font.lato(Colors.grey.shade700, FontWeight.bold, 14.sp),
                                   ),
-                                  Text("${car.level}",
-                                    style: const TextStyle(color: kPrimaryColor,fontSize: 14),
+                                  Text(
+                                    "${car.level}",
+                                    style: Font.lato(kPrimaryColor, FontWeight.w400, 14.sp),
                                   ),
                                 ],
                               ),
@@ -150,11 +153,13 @@ class Market_popup {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Mint",
-                                    style: TextStyle(color: Colors.grey.shade700,fontSize: 14),
+                                  Text(
+                                    "Mint",
+                                    style: Font.lato(Colors.grey.shade700, FontWeight.bold, 14.sp),
                                   ),
-                                  Text("${car.mintingCount}",
-                                    style: const TextStyle(color: kPrimaryColor,fontSize: 14),
+                                  Text(
+                                    "${car.mintingCount}",
+                                    style: Font.lato(kPrimaryColor, FontWeight.w400, 14.sp),
                                   ),
                                 ],
                               ),
@@ -167,32 +172,29 @@ class Market_popup {
                         width: 260.w,
                         height: 40.h,
                         margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 60.h),
-
                         decoration: BoxDecoration(
-
                           border: Border.all(color: kPrimaryColor),
-                          borderRadius: BorderRadius.all(Radius.circular(10))
+                          borderRadius: const BorderRadius.all(Radius.circular(10))
                         ),
-                        child: Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              const Text("Price",
-                                style: TextStyle(color: kPrimaryColor,fontSize: 14),
-                              ),
-                              SizedBox(width: size.width*0.1,),
-                              Text("${car.price}",
-                                style: const TextStyle(color: kPrimaryColor,fontSize: 14),
-                              ),
-                            ],
-                          ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                              "Price",
+                              style: Font.lato(Colors.grey.shade700, FontWeight.bold, 14.sp),
+                            ),
+                            SizedBox(width: size.width*0.1,),
+                            Text(
+                              "${car.price}",
+                              style: Font.lato(kPrimaryColor, FontWeight.w400, 14.sp),
+                            ),
+                          ],
                         ),
                       ),
                       ElevatedButton(
                         style: ButtonStyle(
                           elevation: MaterialStateProperty.all(0),
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
+                          backgroundColor: MaterialStateProperty.all(Colors.white),
                         ),
                         onPressed: () {
                           StorageController().buyCar(car).then((ret) => {
@@ -219,10 +221,10 @@ class Market_popup {
                               color: kPrimaryColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(35))),
-                          child: const Center(
+                          child: Center(
                             child: Text(
                               "Buy Now",
-                              style: TextStyle(color: Colors.white),
+                              style: Font.lato(Colors.white, FontWeight.bold, 14.sp),
                             ),
                           ),
                         ),

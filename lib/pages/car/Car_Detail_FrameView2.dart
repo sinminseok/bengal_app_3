@@ -450,11 +450,16 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> implements Obse
           ),
           child: InkWell(
             onTap: () {
-              Market_popup().showDialog(size, context, widget.car);
+              if (widget.car.isSell) {
+                StorageController().sellCarCancel(widget.car);
+                Navigator.of(context).pop();
+              } else {
+                Market_popup().showDialog(size, context, widget.car);
+              }
             },
             child: Center(
               child: Text(
-                "${widget.car.price}Hvh BUY",
+                widget.car.isSell ? "Sales Registration Cancel" : "${widget.car.price}Hvh BUY",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 16.sp,
