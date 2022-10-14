@@ -363,7 +363,7 @@ class _Play_Finish_View extends State<Play_Finish_View>  implements Observer {
               ],
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(15.w, 5.h, 15.w, 0.h),
+              margin: EdgeInsets.fromLTRB(15.w, 5.h, 15.w, 105.h),
               width: 360.w,
               height: 70.h,
               decoration: BoxDecoration(
@@ -459,7 +459,7 @@ class _Play_Finish_View extends State<Play_Finish_View>  implements Observer {
                    GameLauncher().resumeApp(widget.game);
                  },
                  child: Container(
-                   margin: EdgeInsets.fromLTRB(0.w, 92.h, 0.w, 0.h),
+                   margin: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 0.h),
 
                    width: 175.w,
                    height: 46.h,
@@ -478,7 +478,7 @@ class _Play_Finish_View extends State<Play_Finish_View>  implements Observer {
                                miningResult: StorageController().miningResultList!.lastMiningResult())));
                  },
                  child: Container(
-                   margin: EdgeInsets.fromLTRB(10.w, 92.h, 0.w, 0.h),
+                   margin: EdgeInsets.fromLTRB(10.w, 0.h, 0.w, 0.h),
 
                    child: Image.asset("assets/images/game/finish_button.png",width: 175.w,
                      height: 46.h,),

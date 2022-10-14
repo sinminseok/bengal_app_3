@@ -37,7 +37,7 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            margin: EdgeInsets.fromLTRB(15.w, 0.h, 7.w, 0.h),
+            margin: EdgeInsets.fromLTRB(10.w, 0.h, 7.w, 0.h),
             width: 64.w,
             height: 64.w,
             decoration: BoxDecoration(
@@ -163,7 +163,7 @@ Widget Game_Play_Widget(Size size, BuildContext context, GameInfo game) {
           Container(
             width: 60.w,
             height: 60.h,
-            margin: EdgeInsets.fromLTRB(0.w, 0.h, 1.w, 0.h),
+            margin: EdgeInsets.fromLTRB(0.w, 0.h, 9.w, 0.h),
             child: InkWell(
               onTap: () {
                 if (!StorageController().isPossibleMining(game)) {

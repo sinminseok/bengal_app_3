@@ -25,6 +25,7 @@ class Mint_Car_Card extends StatefulWidget {
 }
 
 class _Mint_Car_CardState extends State<Mint_Car_Card> {
+  bool selected_ontap = false;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -110,9 +111,29 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
                 ),
               ),
               //Level
-              InkWell(
+              selected_ontap==true?
+              Container(
+                margin: EdgeInsets.fromLTRB(0.w, 9.h, 0.w, 0.h),
+
+                width: 100.w,
+                height: 26.h,
+                decoration:  BoxDecoration(
+                  border: Border.all(color: Colors.grey.shade300),
+
+                    borderRadius: BorderRadius.all(Radius.circular(29))
+                ),
+                child: Center(
+                  child: Text("Already Selected",
+                    style: Font.lato(Colors.grey, FontWeight.bold, 10.sp),
+                  ),
+                ),
+              )
+                  :InkWell(
                 onTap: (){
                   widget.fun!(widget.car);
+                  setState(() {
+                    selected_ontap = !selected_ontap;
+                  });
                 },
                 child: Container(
                   margin: EdgeInsets.fromLTRB(0.w, 9.h, 0.w, 0.h),

@@ -5,6 +5,7 @@ import 'package:page_transition/page_transition.dart';
 import '../../../../models/wallet.dart';
 import '../../../../types/constants.dart';
 import '../../../../utils/font.dart';
+import '../../../../utils/toast.dart';
 import '../../popup/address_popup.dart';
 import '../trade/Trade_View.dart';
 import '../transfer/Transfer_View.dart';
@@ -376,11 +377,16 @@ Widget Wallet_Account_View(
                 ),
               ),
             ),
-            Container(
-              child: Image.asset(
-                "assets/images/wallet/ToExternal_button.png",
-                width: 115.w,
-                height: 40.h,
+            InkWell(
+              onTap: (){
+                showtoast("Coming soon");
+              },
+              child: Container(
+                child: Image.asset(
+                  "assets/images/wallet/ToExternal_button.png",
+                  width: 115.w,
+                  height: 40.h,
+                ),
               ),
             ),
           ],

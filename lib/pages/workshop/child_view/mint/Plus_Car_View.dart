@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:bengal_app/controller/assets_controller.dart';
 import 'package:bengal_app/utils/dataType.dart';
+import 'package:bengal_app/utils/toast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -469,8 +470,9 @@ class _Plus_Car_ViewState extends State<Plus_Car_View> {
                                 width: 36.h,
                                 child: InkWell(
                                     onTap: () {
-                                      Workshop_Filter_popup()
-                                          .showDialog(size, context);
+                                      showtoast("Coming soon");
+                                      // Workshop_Filter_popup()
+                                      //     .showDialog(size, context);
                                     },
                                     child: Image.asset(
                                       "assets/images/inventory/filter.png",

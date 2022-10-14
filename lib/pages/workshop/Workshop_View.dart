@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../types/constants.dart';
 import '../../utils/font.dart';
+import '../../utils/toast.dart';
 import 'child_view/mint/Mint_View.dart';
 import 'child_view/mint/Plus_Car_View.dart';
 
@@ -74,11 +75,12 @@ class _Workshop_ViewState extends State<Workshop_View> {
                         ),
                         InkWell(
                           onTap: () {
-                            setState(() {
-                              Mint_selected = false;
-                              Enhance_selected = true;
-                              GemUpgrade_selected = false;
-                            });
+                            showtoast("Coming soon");
+                            // setState(() {
+                            //   Mint_selected = false;
+                            //   Enhance_selected = true;
+                            //   GemUpgrade_selected = false;
+                            // });
                           },
                           child: Container(
                             width: 116.w,
@@ -102,11 +104,12 @@ class _Workshop_ViewState extends State<Workshop_View> {
                         ),
                         InkWell(
                           onTap: () {
-                            setState(() {
-                              Mint_selected = false;
-                              Enhance_selected = false;
-                              GemUpgrade_selected = true;
-                            });
+                            showtoast("Coming soon");
+                            // setState(() {
+                            //   Mint_selected = false;
+                            //   Enhance_selected = false;
+                            //   GemUpgrade_selected = true;
+                            // });
                           },
                           child: Container(
                             width: 116.w,

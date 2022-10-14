@@ -108,7 +108,7 @@ class _Lobby_ViewState extends State<Lobby_View> {
                                       margin: EdgeInsets.fromLTRB(5.w, 18.91.h, 0.w, 0.h),
                                       child: Text(
                                         "Buy a car and enjoy the game",
-                                        style: Font.lato(const Color(0xFF746F7B), FontWeight.normal, 12.sp),
+                                        style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 12.sp),
                                       ),
                                     )
                                   ],

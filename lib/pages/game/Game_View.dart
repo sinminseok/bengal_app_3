@@ -11,6 +11,7 @@ import '../../controller/storage_controller.dart';
 import '../../models/game.dart';
 import '../../types/constants.dart';
 import '../../utils/font.dart';
+import '../../utils/toast.dart';
 import '../inventory/widget/dropdown_button/DropdownButton2.dart';
 import 'normal/Game_Normal_View.dart';
 
@@ -241,7 +242,8 @@ class _Game_ViewState extends State<Game_View> implements Observer {
                           margin: EdgeInsets.fromLTRB(15.w, 7.h, 1.w, 0.h),
                           child: InkWell(
                               onTap: () {
-                                Game_Filter_popup().showDialog(size, context);
+                                showtoast("Coming soon");
+                                //Game_Filter_popup().showDialog(size, context);
                               },
                               child: Image.asset(
                                 "assets/images/inventory/filter.png",
@@ -253,7 +255,8 @@ class _Game_ViewState extends State<Game_View> implements Observer {
                           margin: EdgeInsets.fromLTRB(5.w, 7.h, 1.w, 0.h),
                           child: InkWell(
                               onTap: () {
-                                updateState();
+                                showtoast("Coming soon");
+                                // updateState();
                               },
                               child: Image.asset(
                                 "assets/images/game/icons/search_icon.png",

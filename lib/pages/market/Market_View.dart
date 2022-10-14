@@ -1,6 +1,7 @@
 import 'package:bengal_app/pages/market/popup/filter_popup.dart';
 import 'package:bengal_app/pages/market/widget/cars/Market_Car_Card2.dart';
 import 'package:bengal_app/pages/market/widget/cars/Market_Cars_View.dart';
+import 'package:bengal_app/utils/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../controller/storage_controller.dart';
@@ -108,12 +109,13 @@ class _Market_ViewState extends State<Market_View> {
                           ),
                           InkWell(
                             onTap: () {
-                              setState(() {
-                                Cars_selected = false;
-                                Car_Boxes_selected = true;
-                                Gems_selected = false;
-                                Others_selected = false;
-                              });
+                              showtoast("Coming soon");
+                              // setState(() {
+                              //   Cars_selected = false;
+                              //   Car_Boxes_selected = true;
+                              //   Gems_selected = false;
+                              //   Others_selected = false;
+                              // });
                             },
                             child: Container(
                               width: 86.w,
@@ -154,12 +156,13 @@ class _Market_ViewState extends State<Market_View> {
                           ),
                           InkWell(
                             onTap: () {
-                              setState(() {
-                                Cars_selected = false;
-                                Car_Boxes_selected = false;
-                                Gems_selected = true;
-                                Others_selected = false;
-                              });
+                              showtoast("Coming soon");
+                              // setState(() {
+                              //   Cars_selected = false;
+                              //   Car_Boxes_selected = false;
+                              //   Gems_selected = true;
+                              //   Others_selected = false;
+                              // });
                             },
                             child: Container(
                               width: 86.w,
@@ -200,12 +203,13 @@ class _Market_ViewState extends State<Market_View> {
                           ),
                           InkWell(
                             onTap: () {
-                              setState(() {
-                                Cars_selected = false;
-                                Car_Boxes_selected = false;
-                                Gems_selected = false;
-                                Others_selected = true;
-                              });
+                              showtoast("Coming soon");
+                              // setState(() {
+                              //   Cars_selected = false;
+                              //   Car_Boxes_selected = false;
+                              //   Gems_selected = false;
+                              //   Others_selected = true;
+                              // });
                             },
                             child: Container(
                               width: 86.w,

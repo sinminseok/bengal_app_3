@@ -8,6 +8,7 @@ import '../../controller/storage_controller.dart';
 import '../../models/box.dart';
 import '../../models/car.dart';
 import '../../types/constants.dart';
+import '../../utils/toast.dart';
 import '../game/popup/filter_popup.dart';
 
 class Inventory_View extends StatefulWidget {
@@ -194,9 +195,10 @@ class _Inventory_ViewState extends State<Inventory_View> {
                           ),
                           InkWell(
                             onTap: () {
-                              setState(() {
-                                selectedTab = InventoryTabItem.gems;
-                              });
+                              showtoast("Coming soon");
+                              // setState(() {
+                              //   selectedTab = InventoryTabItem.gems;
+                              // });
                             },
                             child: Container(
                               width: 86.w,
@@ -237,9 +239,10 @@ class _Inventory_ViewState extends State<Inventory_View> {
                           ),
                           InkWell(
                             onTap: () {
-                              setState(() {
-                                selectedTab = InventoryTabItem.others;
-                              });
+                              showtoast("Coming soon");
+                              // setState(() {
+                              //   selectedTab = InventoryTabItem.others;
+                              // });
                             },
                             child: Container(
                               width: 86.w,
@@ -299,7 +302,8 @@ class _Inventory_ViewState extends State<Inventory_View> {
                           ),
                           InkWell(
                               onTap: () {
-                                Game_Filter_popup().showDialog(size, context);
+                                selectedTab == InventoryTabItem.boxes?showtoast("Coming soon"):
+                                 Game_Filter_popup().showDialog(size, context);
                               },
                               child: Image.asset(
                                 "assets/images/inventory/filter.png",

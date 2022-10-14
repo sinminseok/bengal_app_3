@@ -15,6 +15,7 @@ import '../../common/observer.dart';
 import '../../models/car.dart';
 import '../../types/constants.dart';
 import '../../utils/font.dart';
+import '../../utils/toast.dart';
 import '../frame/widget/Coin_Widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../market/popup/Market_popup.dart';
@@ -394,6 +395,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> implements Obse
                           ),
                           InkWell(
                             onTap: () {
+                              showtoast("Coming soon");
                               //피그마 최신 자료에 빠져있길래 일단 뺌
                               // Car_Detail_popup()
                               //     .showDialog_view_button(size, context);
@@ -496,7 +498,8 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> implements Obse
                 ),
                 InkWell(
                   onTap: () {
-                    Recovery_popup().recovery_popup(context, widget.car);
+                    showtoast("Coming soon");
+                    // Recovery_popup().recovery_popup(context, widget.car);
                   },
                   child: Image.asset(
                     "assets/images/common/cars/icons/Recovery.png",
@@ -504,10 +507,15 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> implements Obse
                     height: 43.h,
                   ),
                 ),
-                Image.asset(
-                  "assets/images/common/cars/icons/Lease.png",
-                  width: 42.w,
-                  height: 43.h,
+                InkWell(
+                  onTap: (){
+                    showtoast("Coming soon");
+                  },
+                  child: Image.asset(
+                    "assets/images/common/cars/icons/Lease.png",
+                    width: 42.w,
+                    height: 43.h,
+                  ),
                 ),
                 InkWell(
                   onTap: () {
@@ -519,10 +527,15 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> implements Obse
                     height: 43.h,
                   ),
                 ),
-                Image.asset(
-                  "assets/images/common/cars/icons/Transfer.png",
-                  width: 42.w,
-                  height: 43.h,
+                InkWell(
+                  onTap: (){
+                    showtoast("Coming soon");
+                  },
+                  child: Image.asset(
+                    "assets/images/common/cars/icons/Transfer.png",
+                    width: 42.w,
+                    height: 43.h,
+                  ),
                 ),
               ],
             ),

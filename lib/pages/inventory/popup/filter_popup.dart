@@ -54,59 +54,76 @@ class Inventory_Filter_popup {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                                   children: [
-
                                     Container(
-                                        margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
-
+                                        margin: EdgeInsets.fromLTRB(
+                                            15.w, 30.h, 15.w, 0.h),
                                         child: Row(
                                           children: [
                                             Container(
-                                              margin: EdgeInsets.fromLTRB(3.w, 0.h, 6.w, 0.h),
-
-                                              width: 24.w,height: 24.h,
-                                              child: Image.asset("assets/images/common/filter_icon.png"),
+                                              margin: EdgeInsets.fromLTRB(
+                                                  3.w, 0.h, 6.w, 0.h),
+                                              width: 24.w,
+                                              height: 24.h,
+                                              child: Image.asset(
+                                                  "assets/images/common/filter_icon.png"),
                                             ),
-                                            Text("Filter",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 14),),
+                                            Text(
+                                              "Filter",
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14),
+                                            ),
                                           ],
                                         )),
                                     Container(
-                                        margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
-
-                                        child: Text("Clear Filter",style: TextStyle(color: kPrimaryColor,fontSize: 12),)),
-
+                                        margin: EdgeInsets.fromLTRB(
+                                            15.w, 30.h, 15.w, 0.h),
+                                        child: Text(
+                                          "Clear Filter",
+                                          style: TextStyle(
+                                              color: kPrimaryColor,
+                                              fontSize: 12),
+                                        )),
                                   ],
                                 ),
                                 Container(
-                                  margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 20.h),
-
-                                  width: 350.w,height: 1.h,color: Colors.grey.shade400,),
-                                Container(margin: EdgeInsets.fromLTRB(0.w, 5.h, 0.w, 20.h),child: Inventory_popup_Type_Widget()),
+                                  margin:
+                                  EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 20.h),
+                                  width: 350.w,
+                                  height: 1.h,
+                                  color: Colors.grey.shade400,
+                                ),
                                 Container(
-                                    margin: EdgeInsets.fromLTRB(0.w, 20.h, 0.w, 20.h),
-
-
-
+                                    margin: EdgeInsets.fromLTRB(
+                                        0.w, 5.h, 0.w, 20.h),
+                                    child: Inventory_popup_Type_Widget()),
+                                Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0.w, 20.h, 0.w, 20.h),
                                     child: Inventory_popup_Grade_Widget()),
-
                                 Container(
-                                    margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
-
-
-
+                                    margin: EdgeInsets.fromLTRB(
+                                        15.w, 30.h, 15.w, 0.h),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("Level",style: TextStyle(color: Colors.grey.shade500,),),
+                                        Text(
+                                          "Level",
+                                          style: TextStyle(
+                                            color: Colors.grey.shade500,
+                                          ),
+                                        ),
 
                                         Checkbox(
                                           activeColor: kPrimaryColor,
                                           value: level_bool,
-                                          onChanged: (value){
+                                          onChanged: (value) {
                                             setState(() => level_bool = value!);
                                           },
                                         ),
@@ -114,49 +131,66 @@ class Inventory_Filter_popup {
                                       ],
                                     )),
                                 Container(
-                                    margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 10.h),
-
-                                    child: Inventory_Thumb_Widget(start_value: 10, end_value: 20, min_value: 1, max_value: 30,)),
-
+                                    margin: EdgeInsets.fromLTRB(
+                                        0.w, 10.h, 0.w, 10.h),
+                                    child: Inventory_Thumb_Widget(
+                                      start_value: 10,
+                                      end_value: 20,
+                                      min_value: 1,
+                                      max_value: 30,
+                                    )),
                                 Container(
-                                  margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
-
-
-
+                                  margin: EdgeInsets.fromLTRB(
+                                      15.w, 30.h, 15.w, 0.h),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text("Speed",style: TextStyle(color: Colors.grey.shade500,),),
+                                      Text(
+                                        "Speed",
+                                        style: TextStyle(
+                                          color: Colors.grey.shade500,
+                                        ),
+                                      ),
 
                                       Checkbox(
                                         activeColor: kPrimaryColor,
                                         value: speed_bool,
-                                        onChanged: (value){
+                                        onChanged: (value) {
                                           setState(() => speed_bool = value!);
                                         },
                                       ),
                                       // Checkbox(value: level_bool)
                                     ],
-                                  ),),
+                                  ),
+                                ),
                                 Container(
-                                    margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 10.h),
-
-                                    child: Inventory_Thumb_Widget(start_value: 10, end_value: 20, min_value: 1, max_value: 30,)),
-
+                                    margin: EdgeInsets.fromLTRB(
+                                        0.w, 10.h, 0.w, 10.h),
+                                    child: Inventory_Thumb_Widget(
+                                      start_value: 10,
+                                      end_value: 20,
+                                      min_value: 1,
+                                      max_value: 30,
+                                    )),
                                 Container(
-                                    margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
-
-
-
+                                    margin: EdgeInsets.fromLTRB(
+                                        15.w, 30.h, 15.w, 0.h),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("Luck",style: TextStyle(color: Colors.grey.shade500,),),
+                                        Text(
+                                          "Luck",
+                                          style: TextStyle(
+                                            color: Colors.grey.shade500,
+                                          ),
+                                        ),
 
                                         Checkbox(
                                           activeColor: kPrimaryColor,
                                           value: luck_bool,
-                                          onChanged: (value){
+                                          onChanged: (value) {
                                             setState(() => luck_bool = value!);
                                           },
                                         ),
@@ -164,74 +198,100 @@ class Inventory_Filter_popup {
                                       ],
                                     )),
                                 Container(
-                                    margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 10.h),
-
-                                    child: Inventory_Thumb_Widget(start_value: 10, end_value: 20, min_value: 1, max_value: 30,)),
-
+                                    margin: EdgeInsets.fromLTRB(
+                                        0.w, 10.h, 0.w, 10.h),
+                                    child: Inventory_Thumb_Widget(
+                                      start_value: 10,
+                                      end_value: 20,
+                                      min_value: 1,
+                                      max_value: 30,
+                                    )),
                                 Container(
-                                    margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
-
-
-
+                                    margin: EdgeInsets.fromLTRB(
+                                        15.w, 30.h, 15.w, 0.h),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("Charge",style: TextStyle(color: Colors.grey.shade500,),),
+                                        Text(
+                                          "Charge",
+                                          style: TextStyle(
+                                            color: Colors.grey.shade500,
+                                          ),
+                                        ),
 
                                         Checkbox(
                                           activeColor: kPrimaryColor,
                                           value: charge_bool,
-                                          onChanged: (value){
-                                            setState(() => charge_bool = value!);
+                                          onChanged: (value) {
+                                            setState(
+                                                    () => charge_bool = value!);
                                           },
                                         ),
                                         // Checkbox(value: level_bool)
                                       ],
                                     )),
                                 Container(
-                                    margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 10.h),
-
-                                    child: Inventory_Thumb_Widget(start_value: 10, end_value: 20, min_value: 1, max_value: 30,)),
-
+                                    margin: EdgeInsets.fromLTRB(
+                                        0.w, 10.h, 0.w, 10.h),
+                                    child: Inventory_Thumb_Widget(
+                                      start_value: 10,
+                                      end_value: 20,
+                                      min_value: 1,
+                                      max_value: 30,
+                                    )),
                                 Container(
-                                    margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
-
-
-
+                                    margin: EdgeInsets.fromLTRB(
+                                        15.w, 30.h, 15.w, 0.h),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("Repair",style: TextStyle(color: Colors.grey.shade500,),),
+                                        Text(
+                                          "Repair",
+                                          style: TextStyle(
+                                            color: Colors.grey.shade500,
+                                          ),
+                                        ),
 
                                         Checkbox(
                                           activeColor: kPrimaryColor,
                                           value: repair_bool,
-                                          onChanged: (value){
-                                            setState(() => repair_bool = value!);
+                                          onChanged: (value) {
+                                            setState(
+                                                    () => repair_bool = value!);
                                           },
                                         ),
                                         // Checkbox(value: level_bool)
                                       ],
                                     )),
                                 Container(
-                                    margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 10.h),
-
-                                    child: Inventory_Thumb_Widget(start_value: 10, end_value: 20, min_value: 1, max_value: 30,)),
-
+                                    margin: EdgeInsets.fromLTRB(
+                                        0.w, 10.h, 0.w, 10.h),
+                                    child: Inventory_Thumb_Widget(
+                                      start_value: 10,
+                                      end_value: 20,
+                                      min_value: 1,
+                                      max_value: 30,
+                                    )),
                                 Container(
-                                    margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
-
-
-
+                                    margin: EdgeInsets.fromLTRB(
+                                        15.w, 30.h, 15.w, 0.h),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("Mint",style: TextStyle(color: Colors.grey.shade500,),),
+                                        Text(
+                                          "Mint",
+                                          style: TextStyle(
+                                            color: Colors.grey.shade500,
+                                          ),
+                                        ),
 
                                         Checkbox(
                                           activeColor: kPrimaryColor,
                                           value: mint_bool,
-                                          onChanged: (value){
+                                          onChanged: (value) {
                                             setState(() => mint_bool = value!);
                                           },
                                         ),
@@ -239,20 +299,23 @@ class Inventory_Filter_popup {
                                       ],
                                     )),
                                 Container(
-                                    margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 10.h),
-
-                                    child: Inventory_Thumb_Widget(start_value: 10, end_value: 20, min_value: 1, max_value: 30,)),
-
+                                    margin: EdgeInsets.fromLTRB(
+                                        0.w, 10.h, 0.w, 10.h),
+                                    child: Inventory_Thumb_Widget(
+                                      start_value: 10,
+                                      end_value: 20,
+                                      min_value: 1,
+                                      max_value: 30,
+                                    )),
                                 Container(
-                                  margin: EdgeInsets.fromLTRB(63.w, 15.h, 15.w, 0.h),
-
-
-
+                                  margin: EdgeInsets.fromLTRB(
+                                      63.w, 15.h, 15.w, 0.h),
                                   child: ElevatedButton(
                                     style: ButtonStyle(
                                       elevation: MaterialStateProperty.all(0),
                                       backgroundColor:
-                                      MaterialStateProperty.all(Colors.white),
+                                      MaterialStateProperty.all(
+                                          Colors.white),
                                     ),
                                     onPressed: () {
                                       Navigator.of(context).pop();
@@ -263,8 +326,8 @@ class Inventory_Filter_popup {
                                       height: size.height * 0.055,
                                       decoration: BoxDecoration(
                                           color: kPrimaryColor,
-                                          borderRadius:
-                                          BorderRadius.all(Radius.circular(35))),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(35))),
                                       child: Center(
                                         child: Text(
                                           "Confirm",
@@ -278,8 +341,7 @@ class Inventory_Filter_popup {
                             ),
                           )),
                     ],
-                  )
-              ),
+                  )),
             );
           });
         });

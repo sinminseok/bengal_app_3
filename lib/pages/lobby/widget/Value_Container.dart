@@ -221,13 +221,25 @@ class _Value_ContainerState extends State<Value_Container> {
                                                   FontWeight.w700,
                                                   12.sp),
                                             ),
-                                            Text(
-                                              "${StorageController().miningResultList!.getTodayMiningTotalXPerAmount()}/${StorageController().commonData.initialInfo.dailyLimitXPer}",
-                                              style: Font.lato(
-                                                  const Color(0xFF8E8E8E),
-                                                  FontWeight.w700,
-                                                  12.sp),
-                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  "${StorageController().miningResultList!.getTodayMiningTotalXPerAmount()}/",
+                                                  style: Font.lato(
+                                                      const Color(0xFF8E8E8E),
+                                                      FontWeight.w700,
+                                                      12.sp),
+                                                ),
+                                                Text(
+                                                  "${StorageController().commonData.initialInfo.dailyLimitXPer}",
+                                                  style: Font.lato(
+                                                      const Color(0xFF8E8E8E),
+                                                      FontWeight.normal,
+                                                      8.sp),
+                                                ),
+                                              ],
+                                            )
+
                                           ],
                                         ),
                                       ),
@@ -276,13 +288,25 @@ class _Value_ContainerState extends State<Value_Container> {
                                                   FontWeight.w700,
                                                   12.sp),
                                             ),
-                                            Text(
-                                              "${StorageController().miningResultList!.getTodayMiningTotalPerAmount()}/${StorageController().commonData.initialInfo.dailyLimitPer}",
-                                              style: Font.lato(
-                                                  const Color(0xFFECB133),
-                                                  FontWeight.w700,
-                                                  12.sp),
-                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  "${StorageController().miningResultList!.getTodayMiningTotalPerAmount()}/",
+                                                  style: Font.lato(
+                                                      const Color(0xFFECB133),
+                                                      FontWeight.w700,
+                                                      12.sp),
+                                                ),
+                                                Text(
+                                                  "${StorageController().commonData.initialInfo.dailyLimitPer}",
+                                                  style: Font.lato(
+                                                      const Color(0xFFECB133),
+                                                      FontWeight.normal,
+                                                      8.sp),
+                                                ),
+                                              ],
+                                            )
+
                                           ],
                                         ),
                                       ),
