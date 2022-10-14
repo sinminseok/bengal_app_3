@@ -404,11 +404,8 @@ class _Play_Result_View extends State<Play_Result_View> {
                   height: 46.h,
                   child: InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                child: const Frame_View()));
+                        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                            Frame_View()), (Route<dynamic> route) => false);
                       },
                       child: Image.asset("assets/images/game/lobby_button.png"))),
             ),

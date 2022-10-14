@@ -119,19 +119,13 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> implements Obse
             Container(
               width: 390.w,
               height: 40.h,
-              decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: carInfoLabel_linearGradientColors,
-                    begin: Alignment(-1.0, -1.0),
-                    end: Alignment(1.0, 1.0),
-                    stops: [0, 0.50, 0.52, 0.52, 1.0],
-                    transform: GradientRotation(pi / 4),
-                  ),
+              decoration:  BoxDecoration(
+
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(15),
                       topRight: Radius.circular(15)
                   ),
-                  color: kPrimaryColor),
+                  color: widget.car.getCarGradeColor()),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -184,6 +178,7 @@ class _Car_Detail_FrameView extends State<Car_Detail_FrameView2> implements Obse
                   width: 390.w,
                   fit: BoxFit.fill,
                 ),
+
                 Positioned(
                   bottom: 15.0.h,
                   child: Align(

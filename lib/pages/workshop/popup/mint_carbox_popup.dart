@@ -209,7 +209,7 @@ class Mint_Carbox_Popup {
                                     width: 38,
                                     height: 15,
                                     child: Image.asset(
-                                      "assets/images/game/empty_car/empty_car1.png",
+                                      "assets/images/game/empty_car/sedan.png",
                                       color: Colors.white,),
                                   ),
                                   Text(

@@ -34,7 +34,7 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
           width: 170.w,
           height: 195.h,
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
+            border: Border.all(color: widget.car.getCarGradeColor()),
             borderRadius: BorderRadius.all(
                 Radius.circular(6.0) //         <--- border radius here
             ),
@@ -52,7 +52,7 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
                     margin: EdgeInsets.fromLTRB(0.w, 6.h, 10.w, 9.h),
                     child: Text(
                       "Lv ${widget.car.level} / Mint: ${widget.car.mintingCount}",
-                      style: TextStyle(fontSize: 11,color: Colors.grey.shade600),
+                      style: TextStyle(fontSize: 11,color: widget.car.getCarGradeColor()),
                     ),
                   ),
                 ],
@@ -74,7 +74,7 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
                 width: 85.w,
                 height: 20.h,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
+                  border: Border.all(color: widget.car.getCarGradeColor()),
                   borderRadius: const BorderRadius.all(
                       Radius.circular(30.0) //         <--- border radius here
                   ),
@@ -87,7 +87,7 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
                       height: 12.h,
                       margin: EdgeInsets.fromLTRB(1.w, 1.h, 0.w, 1.h),
                       decoration:
-                      const BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
+                       BoxDecoration(color: widget.car.getCarGradeColor() , shape: BoxShape.circle),
                       child: Container(
                         margin: EdgeInsets.fromLTRB(3.4.w, 1.5.h, 1.w, 0.h),
                         child: Text(
@@ -102,7 +102,7 @@ class _Mint_Car_CardState extends State<Mint_Car_Card> {
                       child: Text(
                         "${widget.car.id}",
                         style: Font.lato(
-                            const Color(0xFF9196A5), FontWeight.bold, 10.sp),
+                            widget.car.getCarGradeColor(), FontWeight.bold, 10.sp),
                       ),
                     ),
                     Container()
