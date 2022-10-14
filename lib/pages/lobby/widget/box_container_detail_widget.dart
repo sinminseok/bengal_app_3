@@ -18,7 +18,7 @@ Widget BoxContainer_Detail_Widget(BuildContext context, MiningBox box) {
           width: 78.w,
           height: 50.h,
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.shade300),
+            border: Border.all(color: box.isAbleSpecialBoxOpen()==true?kPrimaryColor:Colors.grey.shade300),
             borderRadius: BorderRadius.circular(6),
           ),
           child: Stack(
@@ -26,12 +26,17 @@ Widget BoxContainer_Detail_Widget(BuildContext context, MiningBox box) {
               Center(
                 child: Column(
                   children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(0.w, 4.h, 0.w, 0.h),
-                      child: Image.asset(
-                        box.getSpecialBoxAsset(),
-                        height: 30.h,
-                        width: 30.w,
+                    InkWell(
+                      onTap: (){
+
+                      },
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(0.w, 4.h, 0.w, 0.h),
+                        child: Image.asset(
+                          box.getSpecialBoxAsset(),
+                          height: 30.h,
+                          width: 30.w,
+                        ),
                       ),
                     ),
                     box.getSpecialBoxLogoText(),

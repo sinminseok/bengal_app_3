@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:get/get_navigation/src/root/get_material_app.dart";
 import 'package:provider/provider.dart';
-import 'package:video_player/video_player.dart';
+// import 'package:video_player/video_player.dart';
 import 'controller/CarsNft_controller/carnft_controller.dart';
 import 'controller/Frame_controller/frame_controller.dart';
 import 'controller/Inventory_controller/mint_controller.dart';

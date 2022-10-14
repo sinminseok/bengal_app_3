@@ -192,6 +192,17 @@ class CarNft {
     return ret;
   }
 
+  Color getCarGradeColor() {
+    var v = driven / StorageController().commonData.initialInfo.carMaxMileage;
+    var ret = kCharColor;
+    if (0.8 < v) {
+      ret = dangerColor;
+    } else if (0.5 < v) {
+      ret = warningColor;
+    }
+    return ret;
+  }
+
   Color getDrivenColor() {
     var v = driven / StorageController().commonData.initialInfo.carMaxMileage;
     var ret = kCharColor;

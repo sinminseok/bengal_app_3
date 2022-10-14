@@ -445,36 +445,7 @@ class _Wallet_Transfer_password_WidgetState
             style: TextStyle(color: Colors.white, fontSize: 12.sp,fontWeight: FontWeight.w400),
           ),
         ),
-        InkWell(
-          onTap: () {
-            if ("000000" == _password.text) {
-              ConfigController().certified = true;
-              Navigator.push(
-                  context,
-                  PageTransition(
-                      type: PageTransitionType.fade, child: const Transfer_View()));
-            } else {
-              Fluttertoast.showToast(
-                  msg: StringConfiguration().uiString(UiStringType.TOAST_MESSAGE_02),
-                  backgroundColor: Colors.white,
-                  textColor: Colors.black,
-                  gravity: ToastGravity.CENTER);
-            }
-          },
-          child: Container(
-            margin: EdgeInsets.fromLTRB(0.w, 30.h, 0.w, 0.h),
-            width: 160.w,
-            height: 40.h,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.white),
-                borderRadius: const BorderRadius.all(Radius.circular(30))),
-            child: Center(
-                child: Text(
-              "CONFIRM",
-              style: Font.lato(Colors.white, FontWeight.w400, 16.sp),
-            )),
-          ),
-        ),
+     
       ],
     );
   }

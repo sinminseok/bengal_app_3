@@ -67,7 +67,7 @@ class _Workshop_ViewState extends State<Workshop_View> {
                                 "Mint",
                                 style: Font.lato(Mint_selected != true
                                     ? Colors.grey
-                                    : Colors.white, FontWeight.bold, 12.sp),
+                                    : Colors.white,FontWeight.normal, 12.sp),
                               ),
                             ),
                           ),
@@ -95,7 +95,7 @@ class _Workshop_ViewState extends State<Workshop_View> {
                                 "Enhance",
                                 style: Font.lato(Enhance_selected != true
                                     ? Colors.grey
-                                    : Colors.white, FontWeight.bold, 12.sp),
+                                    : Colors.white, FontWeight.normal, 12.sp),
                               ),
                             ),
                           ),
@@ -123,7 +123,7 @@ class _Workshop_ViewState extends State<Workshop_View> {
                                 "Gem Upgrade",
                                 style: Font.lato(GemUpgrade_selected != true
                                     ? Colors.grey
-                                    : Colors.white, FontWeight.bold, 12.sp),
+                                    : Colors.white, FontWeight.normal, 12.sp),
                               ),
                             ),
                           ),
