@@ -71,8 +71,7 @@ class _Market_ViewState extends State<Market_View> {
                                   color: Cars_selected != true
                                       ? Colors.white
                                       : kPrimaryColor,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
+                                  borderRadius: const BorderRadius.all(Radius.circular(10))),
                               child: Center(
                                 child: Text(
                                   "Cars",
@@ -85,101 +84,89 @@ class _Market_ViewState extends State<Market_View> {
                             ),
                           ),
                         ),
-                        Container(
-
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                Cars_selected = false;
-                                Car_Boxes_selected = true;
-                                Gems_selected = false;
-                                Others_selected = false;
-                              });
-                            },
-                            child: Container(
-                              width: 86.w,
-                              height: 34.h,
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey.shade300),
-                                  color: Car_Boxes_selected != true
-                                      ? Colors.white
-                                      : kPrimaryColor,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                              child: Center(
-                                child: Text(
-                                  "Car Boxes",
-                                  style: TextStyle(
-                                      color: Car_Boxes_selected != true
-                                          ? Colors.grey
-                                          : Colors.white),
-                                ),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              Cars_selected = false;
+                              Car_Boxes_selected = true;
+                              Gems_selected = false;
+                              Others_selected = false;
+                            });
+                          },
+                          child: Container(
+                            width: 86.w,
+                            height: 34.h,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                color: Car_Boxes_selected != true
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                                borderRadius: const BorderRadius.all(Radius.circular(10))),
+                            child: Center(
+                              child: Text(
+                                "Car Boxes",
+                                style: TextStyle(
+                                    color: Car_Boxes_selected != true
+                                        ? Colors.grey
+                                        : Colors.white),
                               ),
                             ),
                           ),
                         ),
-                        Container(
-
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                Cars_selected = false;
-                                Car_Boxes_selected = false;
-                                Gems_selected = true;
-                                Others_selected = false;
-                              });
-                            },
-                            child: Container(
-                              width: 86.w,
-                              height: 34.h,
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey.shade300),
-                                  color: Gems_selected != true
-                                      ? Colors.white
-                                      : kPrimaryColor,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                              child: Center(
-                                child: Text(
-                                  "Gems",
-                                  style: TextStyle(
-                                      color: Gems_selected != true
-                                          ? Colors.grey
-                                          : Colors.white),
-                                ),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              Cars_selected = false;
+                              Car_Boxes_selected = false;
+                              Gems_selected = true;
+                              Others_selected = false;
+                            });
+                          },
+                          child: Container(
+                            width: 86.w,
+                            height: 34.h,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                color: Gems_selected != true
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                                borderRadius: const BorderRadius.all(Radius.circular(10))),
+                            child: Center(
+                              child: Text(
+                                "Gems",
+                                style: TextStyle(
+                                    color: Gems_selected != true
+                                        ? Colors.grey
+                                        : Colors.white),
                               ),
                             ),
                           ),
                         ),
-                        Container(
-
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                Cars_selected = false;
-                                Car_Boxes_selected = false;
-                                Gems_selected = false;
-                                Others_selected = true;
-                              });
-                            },
-                            child: Container(
-                              width: 86.w,
-                              height: 34.h,
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey.shade300),
-                                  color: Others_selected != true
-                                      ? Colors.white
-                                      : kPrimaryColor,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                              child: Center(
-                                child: Text(
-                                  "Others",
-                                  style: TextStyle(
-                                      color: Others_selected != true
-                                          ? Colors.grey
-                                          : Colors.white),
-                                ),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              Cars_selected = false;
+                              Car_Boxes_selected = false;
+                              Gems_selected = false;
+                              Others_selected = true;
+                            });
+                          },
+                          child: Container(
+                            width: 86.w,
+                            height: 34.h,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                color: Others_selected != true
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                                borderRadius: const BorderRadius.all(Radius.circular(10))),
+                            child: Center(
+                              child: Text(
+                                "Others",
+                                style: TextStyle(
+                                    color: Others_selected != true
+                                        ? Colors.grey
+                                        : Colors.white),
                               ),
                             ),
                           ),

@@ -15,7 +15,13 @@ class Market_Car_Card2 extends StatefulWidget {
       BuildContext context;
 
   CarNft car;
-   Market_Car_Card2({Key? key,required this.size,required this.color,required this.context,required this.car}) : super(key: key);
+   Market_Car_Card2({
+     Key? key,
+     required this.size,
+     required this.color,
+     required this.context,
+     required this.car
+   }) : super(key: key);
 
   @override
   _Market_Car_Card2State createState() => _Market_Car_Card2State();
@@ -84,9 +90,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                   height: 20.h,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
-                    borderRadius: const BorderRadius.all(
-                        Radius.circular(30.0) //         <--- border radius here
-                        ),
+                    borderRadius: const BorderRadius.all( Radius.circular(30.0) ),
                   ),
                   child: Row(
                     children: [
@@ -100,15 +104,13 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                           margin: EdgeInsets.fromLTRB(4.w, 0.h, 1.w, 2.h),
                           child: Text(
                             "#",
-                            style:
-                                Font.lato(Colors.white, FontWeight.w400, 1.sp),
+                            style: Font.lato(Colors.white, FontWeight.w400, 1.sp),
                           ),
                         ),
                       ),
                       Text(
                         "${widget.car.id}",
-                        style: Font.lato(
-                            const Color(0xFF9196A5), FontWeight.bold, 8.sp),
+                        style: Font.lato(const Color(0xFF9196A5), FontWeight.bold, 8.sp),
                       )
                     ],
                   ),
@@ -127,8 +129,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                         padding: const EdgeInsets.only(left: 3.0, bottom: 6),
                         child: Text(
                           "${widget.car.level}",
-                          style: Font.lato(
-                              const Color(0xFF342B35), FontWeight.bold, 14.sp),
+                          style: Font.lato(const Color(0xFF342B35), FontWeight.bold, 14.sp),
                         ),
                       ),
                     ],
@@ -149,8 +150,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                           ),
                           Text(
                             "${widget.car.speed}",
-                            style: Font.lato(const Color(0xFF746F7B),
-                                FontWeight.bold, 10.sp),
+                            style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                           )
                         ],
                       ),
@@ -166,8 +166,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                           ),
                           Text(
                             "${widget.car.lucky}",
-                            style: Font.lato(const Color(0xFF746F7B),
-                                FontWeight.bold, 10.sp),
+                            style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                           )
                         ],
                       ),
@@ -183,8 +182,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                           ),
                           Text(
                             "${widget.car.charge}",
-                            style: Font.lato(const Color(0xFF746F7B),
-                                FontWeight.bold, 10.sp),
+                            style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                           )
                         ],
                       ),
@@ -200,8 +198,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                           ),
                           Text(
                             "${widget.car.repair}",
-                            style: Font.lato(const Color(0xFF746F7B),
-                                FontWeight.bold, 10.sp),
+                            style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                           )
                         ],
                       ),
@@ -222,8 +219,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                       margin: EdgeInsets.fromLTRB(0.w, 0.h, 10.w, 3.h),
                       child: InkWell(
                         onTap: () async{
-                          // Market_popup().showDialog(size, context)
-                          Market_popup2().showDialog(widget.size, widget.context, widget.car);
+                          if (!widget.car.isSell) Market_popup2().showDialog(widget.size, widget.context, widget.car);
                         },
                         child: Container(
                           width: 70.w,
@@ -231,9 +227,7 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
                           margin: EdgeInsets.fromLTRB(0.w, 3.h, 0.w, 0.h),
                           decoration: BoxDecoration(
                             border: Border.all(color: kPrimaryColor),
-                            borderRadius: BorderRadius.all(Radius.circular(
-                                30.0) //         <--- border radius here
-                            ),
+                            borderRadius: const BorderRadius.all(Radius.circular(30.0)),
                           ),
                           child: Center(
                               child: Text(
@@ -248,19 +242,21 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
               ],
             ),
           ),
+          widget.car.isSell ?
           Positioned(
             right: 65.w,
             top: -10.h,
             child: Container(
               width: 44.w,
               height: 18.h,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: kPrimaryColor,
                   borderRadius: BorderRadius.all(Radius.circular(30))),
               child: Center(child: Text("Selling",style: TextStyle(color: Colors.white,fontSize: 8.sp),)),
             ),
+          ) :
+          Container(),
 
-          ),
           Positioned(
             left: -5.w,
             top: 5.h,

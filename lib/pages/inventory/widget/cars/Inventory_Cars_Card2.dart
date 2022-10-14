@@ -9,7 +9,7 @@ import '../../../../utils/font.dart';
 import '../../../car/Car_Detail_FrameView2.dart';
 
 Widget Inventory_Car_Card2(
-    Size size, Color color, BuildContext context, CarNft carNft) {
+    Size size, Color color, BuildContext context, CarNft car) {
   return InkWell(
     onTap: () {},
     child: Stack(
@@ -22,7 +22,7 @@ Widget Inventory_Car_Card2(
                 PageTransition(
                     type: PageTransitionType.fade,
                     child: Car_Detail_FrameView2(
-                      car: carNft,
+                      car: car,
                       carBuy: false,
                     )));
           },
@@ -44,7 +44,7 @@ Widget Inventory_Car_Card2(
                     Container(
                       margin: EdgeInsets.fromLTRB(0.w, 3.h, 10.w, 9.h),
                       child: Text(
-                        "Mint: ${carNft.mintingCount}",
+                        "Mint: ${car.mintingCount}",
                         style: Font.lato(Colors.black, FontWeight.w400, 10.sp),
                       ),
                     ),
@@ -54,7 +54,7 @@ Widget Inventory_Car_Card2(
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.asset(
-                    carNft.getAssetImage(),
+                    car.getAssetImage(),
                     width: 150.w,
                     height: 86.72,
                     fit: BoxFit.fill,
@@ -67,9 +67,7 @@ Widget Inventory_Car_Card2(
                   height: 20.h,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
-                    borderRadius: const BorderRadius.all(
-                        Radius.circular(30.0) //         <--- border radius here
-                        ),
+                    borderRadius: const BorderRadius.all(Radius.circular(30.0)),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -84,17 +82,15 @@ Widget Inventory_Car_Card2(
                           margin: EdgeInsets.fromLTRB(3.4.w, 1.5.h, 1.w, 0.h),
                           child: Text(
                             "#",
-                            style:
-                                Font.lato(Colors.white, FontWeight.w400, 6.sp),
+                            style: Font.lato(Colors.white, FontWeight.w400, 6.sp),
                           ),
                         ),
                       ),
                       Container(
                         margin: EdgeInsets.fromLTRB(3.w, 1.h, 8.w, 0.h),
                         child: Text(
-                          "${carNft.id}",
-                          style: Font.lato(
-                              const Color(0xFF9196A5), FontWeight.bold, 10.sp),
+                          "${car.id}",
+                          style: Font.lato(const Color(0xFF9196A5), FontWeight.bold, 10.sp),
                         ),
                       ),
                       Container()
@@ -108,15 +104,13 @@ Widget Inventory_Car_Card2(
                     children: [
                       Text(
                         "Level",
-                        style: Font.lato(
-                            const Color(0xFF746F7B), FontWeight.w400, 10.sp),
+                        style: Font.lato(const Color(0xFF746F7B), FontWeight.w400, 10.sp),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 3.0, bottom: 6),
                         child: Text(
-                          "${carNft.level}",
-                          style: Font.lato(
-                              const Color(0xFF342B35), FontWeight.bold, 14.sp),
+                          "${car.level}",
+                          style: Font.lato(const Color(0xFF342B35), FontWeight.bold, 14.sp),
                         ),
                       ),
                     ],
@@ -135,9 +129,8 @@ Widget Inventory_Car_Card2(
                             height: 24.h,
                           ),
                           Text(
-                            "${carNft.speed}",
-                            style: Font.lato(const Color(0xFF746F7B),
-                                FontWeight.bold, 10.sp),
+                            "${car.speed}",
+                            style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                           )
                         ],
                       ),
@@ -152,9 +145,8 @@ Widget Inventory_Car_Card2(
                             height: 24.h,
                           ),
                           Text(
-                            "${carNft.lucky}",
-                            style: Font.lato(const Color(0xFF746F7B),
-                                FontWeight.bold, 10.sp),
+                            "${car.lucky}",
+                            style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                           )
                         ],
                       ),
@@ -169,9 +161,8 @@ Widget Inventory_Car_Card2(
                             height: 24.h,
                           ),
                           Text(
-                            "${carNft.charge}",
-                            style: Font.lato(const Color(0xFF746F7B),
-                                FontWeight.bold, 10.sp),
+                            "${car.charge}",
+                            style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                           )
                         ],
                       ),
@@ -186,9 +177,8 @@ Widget Inventory_Car_Card2(
                             height: 24.h,
                           ),
                           Text(
-                            "${carNft.repair}",
-                            style: Font.lato(const Color(0xFF746F7B),
-                                FontWeight.bold, 10.sp),
+                            "${car.repair}",
+                            style: Font.lato(const Color(0xFF746F7B), FontWeight.bold, 10.sp),
                           )
                         ],
                       ),
@@ -198,30 +188,27 @@ Widget Inventory_Car_Card2(
                 Container(
                   margin: EdgeInsets.fromLTRB(10.w, 5.h, 0.w, 5.h),
                   child: LinearPercentIndicator(
-                    barRadius: Radius.circular(10),
+                    barRadius: const Radius.circular(10),
                     width: 150.w,
                     lineHeight: 8.0,
                     percent: 0.9,
-                    backgroundColor:Colors.grey.shade200,
-                    progressColor:Color(0xff15BEA0),
+                    backgroundColor: Colors.grey.shade200,
+                    progressColor: const Color(0xff15BEA0),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 140.w,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        child: Image.asset(
-                          "assets/images/inventory/card_icons/card_car_icon.png",
-                          width: 24.w,
-                          height: 13.h,
-                        ),
+                      Image.asset(
+                        "assets/images/inventory/card_icons/card_car_icon.png",
+                        width: 24.w,
+                        height: 13.h,
                       ),
                       Text(
-                        "${carNft.driven} km(Fine)",
-                        style: Font.lato(
-                            const Color(0xFF15BEA0), FontWeight.bold, 10.sp),
+                        "${car.driven} km(Fine)",
+                        style: Font.lato(const Color(0xFF15BEA0), FontWeight.bold, 10.sp),
                       )
                     ],
                   ),
@@ -230,24 +217,27 @@ Widget Inventory_Car_Card2(
             ),
           ),
         ),
+        car.isSell ?
         Positioned(
             right: 65.w,
             top: -10.h,
             child: Container(
               width: 44.w,
               height: 18.h,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: kPrimaryColor,
                   borderRadius: BorderRadius.all(Radius.circular(30))),
               child: Center(child: Text("Selling",style: TextStyle(color: Colors.white,fontSize: 8.sp),)),
             ),
 
-        ),
+        ) :
+        Container(),
+
         Positioned(
           left: -5.w,
           top: 5.h,
           child: Image.asset(
-            "assets/images/common/tags/tag_${carNft.getCarGradeString()}.png",
+            "assets/images/common/tags/tag_${car.getCarGradeString()}.png",
             fit: BoxFit.fill,
             width: 60.w,
             height: 20.h,
@@ -257,7 +247,7 @@ Widget Inventory_Car_Card2(
             left: -1.w,
             top: 7.h,
             child: Text(
-              carNft.getCarTypeString().toUpperCase(),
+              car.getCarTypeString().toUpperCase(),
               style: Font.lato(Colors.white, FontWeight.bold, 8.sp),
             )),
       ],

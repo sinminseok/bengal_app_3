@@ -572,8 +572,27 @@ class StorageController implements Subject {
 
     nft.isSell = true;
     nft.price = price;
-    carNftPool!.list.add(nft);
     carNftList!.list.removeWhere((o) => o.id == nft.id);
+    carNftPool!.list.add(nft);
+
+    var ret = await saveCarNftList();
+    ret &= await saveCarNftPool();
+
+    notifyObserver();
+
+    saveWallet();
+    return ret;
+  }
+
+  Future<bool> sellCarCancel(CarNft nft) async {
+    if (0 > carNftPool!.list.indexWhere((o) => o.id == nft.id)) return false;
+    if (0 <= carNftList!.list.indexWhere((o) => o.id == nft.id)) return false;
+
+    //if (!_sellNft(havah: price)) return false;
+
+    nft.isSell = false;
+    carNftPool!.list.removeWhere((o) => o.id == nft.id);
+    carNftList!.list.add(nft);
 
     var ret = await saveCarNftList();
     ret &= await saveCarNftPool();
