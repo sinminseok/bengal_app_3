@@ -42,6 +42,68 @@ class _Car_Maindetail_WidgetState extends State<Car_Maindetail_Widget> {
             height: 225.33.h,
             fit: BoxFit.fill,
           ),
+          Positioned(
+            left: -5.w,
+            top: 5.h,
+            child: Container(
+              width: 106.w,
+              child: Image.asset(
+                "assets/images/common/tags/tag_${widget.car.getCarGradeString()}.png",
+                fit: BoxFit.fitWidth,
+                width: 106.w,
+                height: 26.h,
+              ),
+            ),
+          ),
+          Positioned(
+              left: 10.w,
+              top: 8.h,
+              child:  Image.asset(
+                "${widget.car.getCarTypeIcon()}",
+                fit: BoxFit.fitWidth,
+                color: Colors.white,
+                width: 33.w,
+                height: 18.h,
+              ),),
+          Positioned(
+              left: 50.w,
+              top: 12.h,
+              child: Text(
+                widget.car.getCarTypeString().toUpperCase(),
+                style: Font.lato(Colors.white, FontWeight.bold, 8.sp),
+              )),
+
+                Container(
+                  margin: EdgeInsets.fromLTRB(260.w, 10.h, 0.w, 0.h),
+                  width: 115.w,
+
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Image.asset(
+                        "assets/images/common/cars/icons/red_lock.png",
+                        width: 26.w,
+                        height: 26.h,
+                      ),
+                      Image.asset(
+                        "assets/images/common/cars/icons/green_lock.png",
+                        width: 26.w,
+                        height: 26.h,
+                      ),
+                      Image.asset(
+                        "assets/images/common/cars/icons/yellow_lock.png",
+                        width: 26.w,
+                        height: 26.h,
+                      ),
+                      Image.asset(
+                        "assets/images/common/cars/icons/blue_lock.png",
+                        width: 26.w,
+                        height: 26.h,
+                      ),
+                    ],
+                  ),
+                ),
+
           Container(
             margin: EdgeInsets.fromLTRB(0.w, 200.h, 0.w, 0.h),
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [

@@ -42,7 +42,7 @@ class Car_Box_popup {
                     clipBehavior: Clip.none,
                     children: [
                       Positioned(
-                          bottom: 470.h,
+                          bottom: 370.h,
                           left: 265.w,
                           child: GestureDetector(
                               onTap: () {
@@ -54,7 +54,7 @@ class Car_Box_popup {
                               ))),
                       Container(
                           width: 300.w,
-                          height: 470.h,
+                          height: 350.h,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.white,
@@ -141,185 +141,8 @@ class Car_Box_popup {
                                 ),
                               ),
 
-                              Container(
-                                width: 260.w,
-                                height: 1.h,
-                                margin: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 0.h),
 
-                                color: Colors.grey.shade300,
-                              ),
-                              Container(
-                                margin: EdgeInsets.fromLTRB(
-                                    15.w, 13.h, 190.w, 0.h),
-                                child:
-                                Text("Minted From",style: TextStyle(color:   Colors.grey.shade600,fontSize: 14),),
-                              ),
 
-                              //Minted From
-                              Row(
-                                children: [
-
-                                  Stack(
-                                    clipBehavior: Clip.none,
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.fromLTRB(15.w, 10.h, 0.w, 0.h),
-
-                                        width: 129.w,
-                                        height: 112.h,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: kPrimaryColor),
-                                            borderRadius: BorderRadius.all(Radius.circular(10))),
-
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              margin: EdgeInsets.fromLTRB(3.w, 7.h, 4.w, 0.h),
-
-                                              width: 110.w,
-                                              height: 64.h,
-                                              child: Image.asset("assets/images/common/cars/car1.png",fit: BoxFit.fitWidth,),
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.fromLTRB(3.w, 13.h, 3.w, 0.h),
-
-                                              width: 62.w,
-                                              height:16.h,
-                                              decoration: BoxDecoration(
-                                                border: Border.all(color: Colors.grey),
-                                                borderRadius: const BorderRadius.all(
-                                                    Radius.circular(30.0) //         <--- border radius here
-                                                ),
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  Container(
-                                                    margin: EdgeInsets.fromLTRB(1.w, 1.h, 1.w, 1.h),
-
-                                                    width:12.w,
-                                                    height: 12.h,
-                                                    decoration: BoxDecoration(
-                                                        color: nft.getBoxGradeColor(), shape: BoxShape.circle),
-                                                    child: Row(
-                                                      children: [
-
-                                                        Container(
-                                                          margin: EdgeInsets.fromLTRB(3.5.w, 1.h, 0.w, 0.h),
-
-                                                          child: Text(
-                                                            "#",
-                                                            style: TextStyle(color: Colors.white,fontSize: 8),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-
-                                                  Text(
-                                                    "${nft.id}",
-                                                    style: TextStyle(fontSize: 8),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Positioned(
-                                        top: 20.h,
-                                        right: 83.w,
-                                        child: Image.asset("assets/images/common/tags/tag_${nft.getBoxGradeString()}.png",width: 60.w,height: 20.h,),
-                                      ),
-
-                                      Positioned(
-                                          right: 110.w,
-                                          top: 23.h,
-                                          child: Text(nft.getBoxGradeString(),style: TextStyle(fontSize: 8,color: Colors.white),)
-                                      ),
-                                    ],
-                                  ),
-                                  Stack(
-                                    clipBehavior: Clip.none,
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.fromLTRB(15.w, 10.h, 0.w, 0.h),
-
-                                        width: 129.w,
-                                        height: 112.h,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: kPrimaryColor),
-                                            borderRadius: const BorderRadius.all(Radius.circular(10))),
-
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              margin: EdgeInsets.fromLTRB(3.w, 7.h, 4.w, 0.h),
-
-                                              width: 110.w,
-                                              height: 64.h,
-                                              child: Image.asset("assets/images/common/cars/car1.png",fit: BoxFit.fitWidth,),
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.fromLTRB(3.w, 13.h, 3.w, 0.h),
-
-                                              width: 62.w,
-                                              height:16.h,
-                                              decoration: BoxDecoration(
-                                                border: Border.all(color: Colors.grey),
-                                                borderRadius: const BorderRadius.all(
-                                                    Radius.circular(30.0) //         <--- border radius here
-                                                ),
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  Container(
-                                                    margin: EdgeInsets.fromLTRB(1.w, 1.h, 1.w, 1.h),
-
-                                                    width:12.w,
-                                                    height: 12.h,
-                                                    decoration: BoxDecoration(
-                                                        color: nft.getBoxGradeColor(), shape: BoxShape.circle),
-                                                    child: Row(
-                                                      children: [
-
-                                                        Container(
-                                                          margin: EdgeInsets.fromLTRB(3.5.w, 1.h, 0.w, 0.h),
-
-                                                          child: Text(
-                                                            "#",
-                                                            style: TextStyle(color: Colors.white,fontSize: 8),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-
-                                                  Text(
-                                                    "${nft.id}",
-                                                    style: TextStyle(fontSize: 8),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Positioned(
-                                        top: 20.h,
-                                        right: 83.w,
-                                        child: Image.asset("assets/images/common/tags/tag_${nft.getBoxGradeString()}.png",width: 60.w,height: 20.h,),
-                                      ),
-
-                                      Positioned(
-                                          right: 110.w,
-                                          top: 23.h,
-                                          child: Text(nft.getBoxGradeString(),style: TextStyle(fontSize: 8,color: Colors.white),)
-                                      ),
-                                    ],
-                                  ),
-
-                                ],
-                              ),
 
                               GestureDetector(
                                 onTap: () {
@@ -330,7 +153,7 @@ class Car_Box_popup {
                                   width: 120.w,
                                   height: 34.h,
                                   margin: EdgeInsets.fromLTRB(
-                                      15.w, 23.h, 15.w, 0.h),
+                                      15.w, 40.h, 15.w, 0.h),
                                   decoration: const BoxDecoration(
                                       color: kPrimaryColor,
                                       borderRadius: BorderRadius.all(

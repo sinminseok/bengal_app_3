@@ -53,6 +53,29 @@ class _Wallet_Transfer_password_WidgetState
             : false;
 
     Size size = MediaQuery.of(context).size;
+
+    check_pw(){
+      //비밀번호가 일치할때
+      if(_password.text=="000000"){
+        Navigator.push(
+            context,
+            PageTransition(
+                type: PageTransitionType.rightToLeftWithFade,
+                child: Transfer_View(
+
+                )));
+      }else{
+        //비밀번호가 불일치 할때
+        setState(() {
+
+          _password.text = _password.text
+              .toString()
+              .substring(0, _password.text.length.toInt() - 6);
+        });
+        //showtoast와 같은 기능 추가
+      }
+
+    }
     return Column(
       children: [
         Container(
@@ -179,6 +202,7 @@ class _Wallet_Transfer_password_WidgetState
                             _password.text = _password.text + "1";
                           });
                         }
+                        check_pw();
                       },
                       child: Center(
                           child: Text(
@@ -200,6 +224,7 @@ class _Wallet_Transfer_password_WidgetState
                             _password.text = _password.text + "2";
                           });
                         }
+                        check_pw();
                       },
                       child: Center(
                           child: Text(
@@ -221,6 +246,7 @@ class _Wallet_Transfer_password_WidgetState
                             _password.text = _password.text + "3";
                           });
                         }
+                        check_pw();
                       },
                       child: Center(
                           child: Text(
@@ -249,7 +275,9 @@ class _Wallet_Transfer_password_WidgetState
                       setState(() {
                         _password.text = _password.text + "4";
                       });
+                      check_pw();
                     }
+                    check_pw();
                   },
                   child: Center(
                       child: Text(
@@ -270,6 +298,7 @@ class _Wallet_Transfer_password_WidgetState
                         _password.text = _password.text + "5";
                       });
                     }
+                    check_pw();
                   },
                   child: Center(
                       child: Text(
@@ -290,6 +319,7 @@ class _Wallet_Transfer_password_WidgetState
                         _password.text = _password.text + "6";
                       });
                     }
+                    check_pw();
                   },
                   child: Center(
                       child: Text(
@@ -319,6 +349,7 @@ class _Wallet_Transfer_password_WidgetState
                         _password.text = _password.text + "7";
                       });
                     }
+                    check_pw();
                   },
                   child: Center(
                       child: Text(
@@ -339,6 +370,7 @@ class _Wallet_Transfer_password_WidgetState
                         _password.text = _password.text + "8";
                       });
                     }
+                    check_pw();
                   },
                   child: Center(
                       child: Text(
@@ -359,6 +391,7 @@ class _Wallet_Transfer_password_WidgetState
                         _password.text = _password.text + "9";
                       });
                     }
+                    check_pw();
                   },
                   child: Center(
                       child: Text(
@@ -394,6 +427,7 @@ class _Wallet_Transfer_password_WidgetState
                       _password.text = _password.text + "0";
                     });
                   }
+                  check_pw();
                 },
                 child: Container(
                   width: 65.w,

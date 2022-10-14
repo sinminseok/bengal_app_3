@@ -63,7 +63,7 @@ class Car_detail_popup {
                                         SizedBox(
                                           width: 38,
                                           height: 15,
-                                          child: Image.asset("assets/images/game/empty_car/empty_car1.png",color: Colors.white,),
+                                          child: Image.asset("assets/images/game/empty_car/sedan.png",color: Colors.white,),
                                         ),
                                         Text(
                                           car.getCarTypeString().toUpperCase(),

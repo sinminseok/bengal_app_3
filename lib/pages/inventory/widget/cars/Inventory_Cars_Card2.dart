@@ -30,7 +30,7 @@ Widget Inventory_Car_Card2(
             // width: 170.w,
             // height: 270.h,
             decoration: BoxDecoration(
-              border: Border.all(color: color),
+              border: Border.all(color: car.getCarGradeColor()),
               borderRadius: const BorderRadius.all(
                   Radius.circular(6.0) //         <--- border radius here
                   ),
@@ -45,7 +45,7 @@ Widget Inventory_Car_Card2(
                       margin: EdgeInsets.fromLTRB(0.w, 3.h, 10.w, 9.h),
                       child: Text(
                         "Mint: ${car.mintingCount}",
-                        style: Font.lato(Colors.black, FontWeight.w400, 10.sp),
+                        style: Font.lato(car.getCarGradeColor(), FontWeight.w400, 10.sp),
                       ),
                     ),
                   ],
@@ -66,7 +66,7 @@ Widget Inventory_Car_Card2(
                   width: 85.w,
                   height: 20.h,
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
+                    border: Border.all(color: car.getCarGradeColor()),
                     borderRadius: const BorderRadius.all(Radius.circular(30.0)),
                   ),
                   child: Row(
@@ -77,7 +77,7 @@ Widget Inventory_Car_Card2(
                         height: 12.h,
                         margin: EdgeInsets.fromLTRB(1.w, 1.h, 0.w, 1.h),
                         decoration:
-                            BoxDecoration(color: color, shape: BoxShape.circle),
+                            BoxDecoration(color: car.getCarGradeColor(), shape: BoxShape.circle),
                         child: Container(
                           margin: EdgeInsets.fromLTRB(3.4.w, 1.5.h, 1.w, 0.h),
                           child: Text(
@@ -90,7 +90,7 @@ Widget Inventory_Car_Card2(
                         margin: EdgeInsets.fromLTRB(3.w, 1.h, 8.w, 0.h),
                         child: Text(
                           "${car.id}",
-                          style: Font.lato(const Color(0xFF9196A5), FontWeight.bold, 10.sp),
+                          style: Font.lato(car.getCarGradeColor(), FontWeight.bold, 10.sp),
                         ),
                       ),
                       Container()

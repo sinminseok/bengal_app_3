@@ -81,6 +81,16 @@ class CarNft {
     }
   }
 
+  String getCarTypeIcon() {
+    switch (type) {
+      case 1: return "assets/images/game/empty_car/empty_car1.png";
+      case 2: return "assets/images/game/empty_car/empty_car2.png";
+      case 3: return "assets/images/game/empty_car/empty_car3.png";
+      case 4: return "assets/images/game/empty_car/empty_car4.png";
+      default: return "Sedan";
+    }
+  }
+
   String getCarGradeString() {
     switch (grade) {
       case 1: return "normal";
@@ -193,14 +203,15 @@ class CarNft {
   }
 
   Color getCarGradeColor() {
-    var v = driven / StorageController().commonData.initialInfo.carMaxMileage;
-    var ret = kCharColor;
-    if (0.8 < v) {
-      ret = dangerColor;
-    } else if (0.5 < v) {
-      ret = warningColor;
+    switch (grade) {
+      case 1: return Color(0xff9297A5);
+      case 2: return Color(0xff5E9DED);
+      
+      case 3: return Color(0xffFCBD42);
+      case 4: return Color(0xff7665E5);
+      case 5: return Color(0xffDF4561);
+      default: return Color(0xff9297A5);
     }
-    return ret;
   }
 
   Color getDrivenColor() {
@@ -215,8 +226,11 @@ class CarNft {
   }
 
   Color getDurabilityColor() {
+
     var v = durability / StorageController().commonData.initialInfo.carMaxDurability;
+
     var ret = kCharColor;
+
     if (0.2 > v) {
       ret = dangerColor;
     } else if (0.5 > v) {

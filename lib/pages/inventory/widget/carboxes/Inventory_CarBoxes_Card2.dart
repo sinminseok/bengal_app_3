@@ -18,7 +18,7 @@ Widget Inventory_CarBoxes_Card2(Color color, BuildContext context, BoxNft nft) {
           width: 170.w,
           height: 270.h,
           decoration: BoxDecoration(
-            border: Border.all(color: color),
+            border: Border.all(color: nft.getBoxGradeColor()),
             borderRadius: const BorderRadius.all(
                 Radius.circular(6.0) //         <--- border radius here
                 ),
@@ -40,7 +40,7 @@ Widget Inventory_CarBoxes_Card2(Color color, BuildContext context, BoxNft nft) {
                 width: 76.w,
                 height: 24.h,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
+                  border: Border.all(color: nft.getBoxGradeColor()),
                   borderRadius: const BorderRadius.all(
                       Radius.circular(30.0) //         <--- border radius here
                       ),
@@ -52,7 +52,7 @@ Widget Inventory_CarBoxes_Card2(Color color, BuildContext context, BoxNft nft) {
                       width: 13.w,
                       height: 13.h,
                       decoration:
-                          BoxDecoration(color: color, shape: BoxShape.circle),
+                          BoxDecoration(color: nft.getBoxGradeColor(), shape: BoxShape.circle),
                       child: Row(
                         children: [
                           Container(
@@ -69,7 +69,7 @@ Widget Inventory_CarBoxes_Card2(Color color, BuildContext context, BoxNft nft) {
                     Text(
                       "${nft.id}",
                       style: Font.lato(
-                          const Color(0xFF5D9CEC), FontWeight.bold, 10.sp),
+                          nft.getBoxGradeColor(), FontWeight.bold, 10.sp),
                     )
                   ],
                 ),

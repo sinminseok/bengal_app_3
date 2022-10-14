@@ -16,7 +16,7 @@ Widget Value_Detail_Widget(String iconUrl, String title, double mainValue,
     child: Row(
       children: [
         Padding(
-          padding: EdgeInsets.fromLTRB(4.w, 4.h, 0.w, 0.h),
+          padding: EdgeInsets.fromLTRB(4.w, 0.h, 0.w, 0.h),
           child: Image.asset(
             "assets/images/lobby/icons/$iconUrl.png",
             width: 20.w,
