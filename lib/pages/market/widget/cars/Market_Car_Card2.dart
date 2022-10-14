@@ -50,8 +50,8 @@ class _Market_Car_Card2State extends State<Market_Car_Card2> {
         clipBehavior: Clip.none,
         children: [
           Container(
-            width: 170.w,
-            height: 270.h,
+            // width: 170.w,
+            // height: 270.h,
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
               borderRadius: const BorderRadius.all(Radius.circular(6.0)),

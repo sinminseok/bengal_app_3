@@ -1,3 +1,4 @@
+import 'package:bengal_app/types/constants.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -104,9 +105,9 @@ class CustomDropdownButton2 extends StatelessWidget {
         buttonPadding ?? const EdgeInsets.only(left: 14, right: 14),
         buttonDecoration: buttonDecoration ??
             BoxDecoration(
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(5),
               border: Border.all(
-                color: Colors.grey.shade300,
+                color: LINE_EBEBEB,
               ),
             ),
         buttonElevation: buttonElevation,

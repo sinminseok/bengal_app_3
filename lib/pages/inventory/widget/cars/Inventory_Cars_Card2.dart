@@ -27,8 +27,8 @@ Widget Inventory_Car_Card2(
                     )));
           },
           child: Container(
-            width: 170.w,
-            height: 270.h,
+            // width: 170.w,
+            // height: 270.h,
             decoration: BoxDecoration(
               border: Border.all(color: color),
               borderRadius: const BorderRadius.all(
