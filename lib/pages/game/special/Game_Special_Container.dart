@@ -50,7 +50,7 @@ Widget Game_Special_Container(BuildContext context, GameInfo game) {
               children: [
                 Container(
                   width: 70.w,
-                  height: 70.h,
+                  height: 75.h,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         alignment:Alignment.topLeft,
@@ -193,7 +193,7 @@ Widget Game_Special_Container(BuildContext context, GameInfo game) {
               Container(
                 margin: EdgeInsets.fromLTRB(0.w, 7.h, 0.w, 0.h),
                 width: 360.w,
-                height: 46.h,
+                height: 51.h,
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey.shade300),
                     borderRadius: const BorderRadius.only(

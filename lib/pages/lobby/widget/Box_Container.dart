@@ -22,7 +22,7 @@ class _BoxContainer_WidgetState extends State<BoxContainer_Widget> {
     return Container(
         margin: EdgeInsets.fromLTRB(15.w, 15.h, 15.w, 0.h),
         width: 360.w,
-        height: 70.h,
+        height: 75.h,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(13),
             boxShadow: [

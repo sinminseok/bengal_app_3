@@ -40,7 +40,7 @@ class _Value_ContainerState extends State<Value_Container> {
       margin: EdgeInsets.fromLTRB(15.w, 15.h, 15.w, 0.h),
       child: Container(
         width: 360.w,
-        height: 114.h,
+        height: 124.h,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             boxShadow: [
@@ -189,7 +189,7 @@ class _Value_ContainerState extends State<Value_Container> {
                 : Container(
                     margin: EdgeInsets.fromLTRB(15.w, 16.h, 0.w, 0.h),
                     width: 360.w,
-                    height: 60.h,
+                    height: 65.h,
                     child: Row(
                       children: [
                         Column(

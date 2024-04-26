@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.5
   image_size_getter: ^2.1.2
-  google_fonts: ^3.0.1
+  google_fonts: ^6.2.1
   yaml: ^3.1.1
   cli_util: ^0.3.5
   percent_indicator: ^4.2.2
@@ -46,16 +46,16 @@ dependencies:
   rflutter_alert: ^2.0.4
   bottom_drawer: ^0.0.5
   dropdown_button2: ^1.8.1
-  flutter_screenutil: ^5.5.4
+  flutter_screenutil: ^5.9.0
   flutter_fadein: ^2.0.0
-  vs_scrollbar: ^0.2.1
+  vs_scrollbar: ^1.0.0
   flutter_animated_dialog: ^2.0.1
   json_serializable: ^6.4.0
   fluttertoast: ^8.0.9
   flinq: ^2.0.2
   random_string: ^2.3.1
   shared_preferences: ^2.0.15
-  group_button: ^5.2.2
+  group_button: ^5.3.4
   external_app_launcher: ^3.1.0
   device_apps: ^2.2.0
   lottie: ^1.4.3
